@@ -5,7 +5,7 @@ description: Découvrez comment héberger et déployer une Blazor application à
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/25/2020
+ms.date: 10/09/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 3436620123618ab32daa44c4a37057aaadb89563
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 63954bd2fbb8fdb2e347d552a10adc52263c3ad6
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393689"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900711"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Héberger et déployer des ASP.NET Core Blazor WebAssembly
 
@@ -502,7 +502,7 @@ La suppression du gestionnaire ou la désactivation de l’héritage est effectu
 
 IIS peut être configuré via `web.config` pour servir des ressources compressées Brotli ou gzip Blazor . Pour obtenir un exemple de configuration, consultez [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true) .
 
-#### <a name="troubleshooting"></a>Dépannage
+#### <a name="troubleshooting"></a>Résolution des problèmes
 
 Si vous recevez un message *500 – Erreur interne du serveur* et que le Gestionnaire IIS lève des erreurs quand vous tentez d’accéder à la configuration du site web, vérifiez que le module de réécriture d’URL est installé. Lorsque le module n’est pas installé, le `web.config` fichier ne peut pas être analysé par IIS. Cela empêche le gestionnaire des services Internet de charger la configuration du site Web et le site Web à partir des Blazor fichiers statiques de service.
 
@@ -867,3 +867,76 @@ Dans le fichier projet, le script est exécuté après la publication de l’app
 
 > [!NOTE]
 > Lorsque vous renommez et chargez en différé les mêmes assemblys, consultez les instructions dans <xref:blazor/webassembly-lazy-load-assemblies#onnavigateasync-events-and-renamed-assembly-files> .
+
+## <a name="resolve-integrity-check-failures"></a>Résoudre les échecs de vérification de l’intégrité
+
+Lorsque Blazor WebAssembly télécharge les fichiers de démarrage d’une application, il demande au navigateur d’effectuer des contrôles d’intégrité sur les réponses. Elle utilise les informations du `blazor.boot.json` fichier pour spécifier les valeurs de hachage SHA-256 attendues pour `.dll` , `.wasm` et d’autres fichiers. Cela est bénéfique pour les raisons suivantes :
+
+* Cela vous garantit que vous ne risquez pas de charger un ensemble incohérent de fichiers, par exemple si un nouveau déploiement est appliqué à votre serveur Web pendant que l’utilisateur est en train de télécharger les fichiers d’application. Des fichiers incohérents peuvent entraîner un comportement indéfini.
+* Il garantit que le navigateur de l’utilisateur ne met jamais en cache les réponses incohérentes ou non valides, ce qui peut empêcher le démarrage de l’application, même s’il actualise la page manuellement.
+* Cela permet de mettre en cache les réponses et de ne pas même vérifier les modifications côté serveur tant que les hachages SHA-256 attendus eux-mêmes ne sont pas modifiés, de sorte que les chargements de page suivants impliquent moins de demandes et s’exécutent beaucoup plus rapidement.
+
+Si votre serveur Web renvoie des réponses qui ne correspondent pas aux hachages SHA-256 attendus, vous verrez une erreur semblable à celle qui suit s’afficher dans la console de développeur du navigateur :
+
+```
+Failed to find a valid digest in the 'integrity' attribute for resource 'https://myapp.example.com/_framework/MyBlazorApp.dll' with computed SHA-256 integrity 'IIa70iwvmEg5WiDV17OpQ5eCztNYqL186J56852RpJY='. The resource has been blocked.
+```
+
+Dans la plupart des cas, il ne s’agit *pas* d’un problème de vérification de l’intégrité. Au lieu de cela, cela signifie qu’il existe un autre problème et que la vérification de l’intégrité vous avertit de cet autre problème.
+
+### <a name="diagnosing-integrity-problems"></a>Diagnostic des problèmes d’intégrité
+
+Quand une application est générée, le `blazor.boot.json` manifeste généré décrit les hachages SHA-256 de vos ressources de démarrage (par exemple,, `.dll` et d' `.wasm` autres fichiers) au moment où la sortie de la génération est générée. Le contrôle d’intégrité réussit tant que les hachages SHA-256 dans `blazor.boot.json` correspondent aux fichiers remis au navigateur.
+
+Causes courantes de cet échec :
+
+ * La réponse du serveur Web est une erreur (par exemple, *404-introuvable* ou une *erreur de serveur 500-Internal*) au lieu du fichier demandé par le navigateur. Cela est signalé par le navigateur comme un échec de vérification de l’intégrité et non comme un échec de réponse.
+ * Une modification a été apportée au contenu des fichiers entre la génération et la remise des fichiers dans le navigateur. Cela peut se produire :
+   * Si vous ou les outils de génération modifiez manuellement la sortie de la génération.
+   * Si certains aspects du processus de déploiement ont modifié les fichiers. Par exemple, si vous utilisez un mécanisme de déploiement basé sur git, gardez à l’esprit que git convertit en toute transparence les fins de ligne de style Windows en terminaisons de ligne de style UNIX si vous validez des fichiers sur Windows et que vous les consultez sur Linux. La modification des fins de ligne de fichier modifie les hachages SHA-256. Pour éviter ce problème, envisagez [ `.gitattributes` d’utiliser pour traiter les artefacts de build comme des `binary` fichiers](https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes).
+   * Le serveur Web modifie le contenu du fichier dans le cadre de ses services. Par exemple, certains réseaux de distribution de contenu (CDN) tentent automatiquement de [réduire](xref:client-side/bundling-and-minification#minification) html, ce qui les modifie. Vous devrez peut-être désactiver ces fonctionnalités.
+
+Pour diagnostiquer les éléments suivants dans votre cas :
+
+ 1. Notez le fichier qui déclenche l’erreur en lisant le message d’erreur.
+ 1. Ouvrez les outils de développement de votre navigateur et recherchez dans l’onglet *réseau* . Si nécessaire, rechargez la page pour afficher la liste des demandes et des réponses. Recherchez le fichier qui déclenche l’erreur dans cette liste.
+ 1. Vérifiez le code d’état HTTP dans la réponse. Si le serveur retourne une valeur autre que *200-OK* (ou un autre code d’État 2xx), vous pouvez diagnostiquer un problème côté serveur. Par exemple, le code d’état 403 signifie qu’il y a un problème d’autorisation, alors que le code d’état 500 signifie que le serveur échoue de manière non spécifiée. Consultez les journaux côté serveur pour diagnostiquer et corriger l’application.
+ 1. Si le code d’État est *200-OK* pour la ressource, examinez le contenu de la réponse dans les outils de développement du navigateur et vérifiez que le contenu correspond aux données attendues. Par exemple, un problème courant consiste à configurer le routage de manière inhabituelle afin que les demandes retournent vos `index.html` données même pour d’autres fichiers. Assurez-vous que `.wasm` les réponses aux requêtes sont des binaires Webassembly et que les réponses aux `.dll` requêtes sont des binaires d’assembly .net. Si ce n’est pas le cas, vous pouvez diagnostiquer un problème de routage côté serveur.
+
+Si vous confirmez que le serveur retourne des données correctes plausibly, il doit y avoir une autre modification du contenu entre la génération et la remise du fichier. Pour examiner ce qui suit :
+
+ * Examinez le chaîne d’outils de build et le mécanisme de déploiement en cas de modification des fichiers après la génération des fichiers. C’est le cas, par exemple, lorsque git transforme les fins de ligne de fichier, comme décrit précédemment.
+ * Examinez le serveur Web ou la configuration CDN au cas où ils seraient configurés pour modifier les réponses de manière dynamique (par exemple, en tentant de réduire HTML). Il convient que le serveur Web implémente la compression HTTP (par exemple, en retournant `content-encoding: br` ou `content-encoding: gzip` ), car cela n’affecte pas le résultat après la décompression. Toutefois, il *n’est pas correct* pour le serveur Web de modifier les données non compressées.
+
+### <a name="disable-integrity-checking-for-non-pwa-apps"></a>Désactiver le contrôle d’intégrité pour les applications non-PWA
+
+Dans la plupart des cas, ne désactivez pas la vérification de l’intégrité. La désactivation de la vérification de l’intégrité ne résout pas le problème sous-jacent qui a provoqué les réponses inattendues et entraîne la perte des avantages répertoriés plus haut.
+
+Dans certains cas, le serveur Web ne peut pas être reporté pour retourner des réponses cohérentes et vous n’avez aucun choix, mais vous pouvez désactiver les contrôles d’intégrité. Pour désactiver les contrôles d’intégrité, ajoutez ce qui suit à un groupe de propriétés dans le Blazor WebAssembly fichier du projet `.csproj` :
+
+```xml
+<BlazorCacheBootResources>false</BlazorCacheBootResources>
+```
+
+`BlazorCacheBootResources` désactive également Blazor le comportement par défaut de la mise en cache des `.dll` `.wasm` fichiers, et d’autres fichiers en fonction de leurs hachages SHA-256, car la propriété indique que les hachages SHA-256 ne peuvent pas être basés sur l’exactitude. Même avec ce paramètre, le cache HTTP normal du navigateur peut toujours mettre en cache ces fichiers, mais cela dépend de la configuration de votre serveur Web et des `cache-control` en-têtes qu’il dessert.
+
+> [!NOTE]
+> La `BlazorCacheBootResources` propriété ne désactive pas les vérifications de l’intégrité des [applications Web progressives (PWA)](xref:blazor/progressive-web-app). Pour plus d’informations sur PWA, consultez la section [Disable Integrity checking for PWA](#disable-integrity-checking-for-pwas) .
+
+### <a name="disable-integrity-checking-for-pwas"></a>Désactiver la vérification de l’intégrité pour PWA
+
+Blazorle modèle d’application Web progressive (PWA) contient un `service-worker.published.js` fichier suggéré qui est responsable de l’extraction et du stockage des fichiers d’application en vue d’une utilisation hors connexion. Il s’agit d’un processus distinct du mécanisme normal de démarrage de l’application et d’une logique de vérification de l’intégrité distincte.
+
+À l’intérieur du `service-worker.published.js` fichier, la ligne suivante est présente :
+
+```javascript
+.map(asset => new Request(asset.url, { integrity: asset.hash }));
+```
+
+Pour désactiver la vérification de l’intégrité, supprimez le `integrity` paramètre en remplaçant la ligne par ce qui suit :
+
+```javascript
+.map(asset => new Request(asset.url));
+```
+
+Là encore, la désactivation de la vérification de l’intégrité signifie que vous perdez les garanties de sécurité offertes par le contrôle d’intégrité. Par exemple, il existe un risque que si le navigateur de l’utilisateur met en cache l’application au moment précis où vous déployez une nouvelle version, il peut mettre en cache certains fichiers de l’ancien déploiement et d’autres du nouveau déploiement. Si cela se produit, l’application est bloquée dans un état endommagé jusqu’à ce que vous déployiez une autre mise à jour.

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: d4fd0d501ff14e37bb55b78bb6493ad43f9e5a87
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: b8dd272d673e84b45a39272531385ebfd1d06175
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805568"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900984"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de débogage Blazor WebAssembly
 
@@ -93,7 +93,7 @@ Pour déboguer une Blazor WebAssembly application dans Visual Studio :
    > [!NOTE]
    > **Exécuter sans débogage** (<kbd>CTRL</kbd> + <kbd>F5</kbd>) n’est pas pris en charge. Lorsque l’application est exécutée dans la configuration Debug, le débogage entraîne toujours une réduction des performances minime.
 
-1. Dans l’application *cliente* , définissez un point d’arrêt sur la `currentCount++;` ligne dans `Pages/Counter.razor` .
+1. Dans l' `*Client*` application, définissez un point d’arrêt sur la `currentCount++;` ligne dans `Pages/Counter.razor` .
 1. Dans le navigateur, accédez à la `Counter` page et sélectionnez le bouton **Click Me** pour atteindre le point d’arrêt.
 1. Dans Visual Studio, examinez la valeur du `currentCount` champ dans la fenêtre **variables locales** .
 1. Appuyez sur <kbd>F5</kbd> pour poursuivre l’exécution.
@@ -180,7 +180,7 @@ Pour plus d’informations sur l’utilisation d’un chemin d’accès de base 
 
 1. L’application autonome est lancée et un navigateur de débogage est ouvert.
 
-1. Dans l’application *cliente* , définissez un point d’arrêt sur la `currentCount++;` ligne dans `Pages/Counter.razor` .
+1. Dans l' `*Client*` application, définissez un point d’arrêt sur la `currentCount++;` ligne dans `Pages/Counter.razor` .
 
 1. Dans le navigateur, accédez à la `Counter` page et sélectionnez le bouton **Click Me** pour atteindre le point d’arrêt.
 
@@ -285,7 +285,7 @@ Pour déboguer une Blazor WebAssembly application dans Visual Studio pour Mac :
    > [!IMPORTANT]
    > Google Chrome ou Microsoft Edge doit être le navigateur sélectionné pour la session de débogage.
 
-1. Dans l’application *cliente* , définissez un point d’arrêt sur la `currentCount++;` ligne dans `Pages/Counter.razor` .
+1. Dans l' `*Client*` application, définissez un point d’arrêt sur la `currentCount++;` ligne dans `Pages/Counter.razor` .
 1. Dans le navigateur, accédez à la `Counter` page, puis sélectionnez le bouton **Click Me** pour atteindre le point d’arrêt :
 1. Dans Visual Studio, examinez la valeur du `currentCount` champ dans la fenêtre **variables locales** .
 1. Appuyez sur <kbd>&#8984;</kbd> + <kbd>&#8617;</kbd> pour poursuivre l’exécution.
@@ -343,7 +343,7 @@ Les mappages de source de navigateur permettent au navigateur de mapper les fich
 Si vous rencontrez des erreurs, les conseils suivants peuvent vous aider :
 
 * Dans l’onglet **débogueur** , ouvrez les outils de développement de votre navigateur. Dans la console, exécutez `localStorage.clear()` pour supprimer tous les points d’arrêt.
-* Confirmez que vous avez installé et approuvé le certificat de développement ASP.NET Core HTTPs. Pour plus d’informations, consultez <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
+* Confirmez que vous avez installé et approuvé le certificat de développement ASP.NET Core HTTPs. Pour plus d'informations, consultez <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
 * Visual Studio requiert l’option **activer le débogage JavaScript pour ASP.net (chrome, Edge et IE)** dans **Outils**  >  **options**  >  **débogage**  >  **général**. Il s’agit du paramètre par défaut pour Visual Studio. Si le débogage ne fonctionne pas, vérifiez que l’option est sélectionnée.
 * Si votre environnement utilise un proxy HTTP, assurez-vous qu' `localhost` il est inclus dans les paramètres de contournement du proxy. Pour ce faire, vous pouvez définir la `NO_PROXY` variable d’environnement dans l’un ou l’autre des éléments suivants :
   * `launchSettings.json`Fichier pour le projet.

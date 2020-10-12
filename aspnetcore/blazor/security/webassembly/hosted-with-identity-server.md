@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 91cc7ffc46f5f1f68efd7e481479b19938476cb0
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 6ae8c55fcfc85dc725a7dd20a7dbecba063a13e9
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762241"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900781"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Sécuriser une Blazor WebAssembly application hébergée ASP.net core avec le Identity serveur
 
@@ -72,7 +72,7 @@ Pour créer un nouveau Blazor WebAssembly projet avec un mécanisme d’authenti
 
 ---
 
-## <a name="server-app-configuration"></a>Configuration de l’application serveur
+## <a name="server-app-configuration"></a>*`Server`* configuration de l’application
 
 Les sections suivantes décrivent les ajouts au projet lorsque la prise en charge de l’authentification est incluse.
 
@@ -170,7 +170,7 @@ Dans le fichier de paramètres d’application ( `appsettings.json` ) à la raci
 
 L’espace réservé `{APP ASSEMBLY}` est le nom de l’assembly de l’application (par exemple, `BlazorSample.Client` ).
 
-## <a name="client-app-configuration"></a>Configuration de l’application cliente
+## <a name="client-app-configuration"></a>*`Client`* configuration de l’application
 
 ### <a name="authentication-package"></a>Package d’authentification
 
@@ -287,7 +287,7 @@ Exécutez l’application à partir du projet serveur. Lorsque vous utilisez Vis
 
 ### <a name="custom-user-factory"></a>Fabrique d’utilisateur personnalisée
 
-Dans l’application cliente, créez une fabrique d’utilisateurs personnalisée. Identity Le serveur envoie plusieurs rôles sous forme de tableau JSON dans une seule `role` revendication. Un rôle unique est envoyé sous la forme d’une valeur de chaîne dans la revendication. La fabrique crée une `role` revendication individuelle pour chacun des rôles de l’utilisateur.
+Dans l' *`Client`* application, créez une fabrique d’utilisateurs personnalisée. Identity Le serveur envoie plusieurs rôles sous forme de tableau JSON dans une seule `role` revendication. Un rôle unique est envoyé sous la forme d’une valeur de chaîne dans la revendication. La fabrique crée une `role` revendication individuelle pour chacun des rôles de l’utilisateur.
 
 `CustomUserFactory.cs`:
 
@@ -349,14 +349,14 @@ public class CustomUserFactory
 }
 ```
 
-Dans l’application cliente, inscrivez la fabrique dans `Program.Main` ( `Program.cs` ) :
+Dans l' *`Client`* application, inscrivez la fabrique dans `Program.Main` ( `Program.cs` ) :
 
 ```csharp
 builder.Services.AddApiAuthorization()
     .AddAccountClaimsPrincipalFactory<CustomUserFactory>();
 ```
 
-Dans l’application serveur, appelez <xref:Microsoft.AspNetCore.Identity.IdentityBuilder.AddRoles*> sur le Identity générateur, qui ajoute des services liés aux rôles :
+Dans l' *`Server`* application, appelez <xref:Microsoft.AspNetCore.Identity.IdentityBuilder.AddRoles*> sur le Identity générateur, qui ajoute des services liés aux rôles :
 
 ```csharp
 using Microsoft.AspNetCore.Identity;
@@ -378,7 +378,7 @@ Utilisez l' **une** des approches suivantes :
 
 #### <a name="api-authorization-options"></a>Options d’autorisation d’API
 
-Dans l’application serveur :
+Dans l' *`Server`* application :
 
 * Configurez Identity le serveur pour placer les `name` `role` revendications et dans le jeton d’ID et le jeton d’accès.
 * Empêche le mappage par défaut des rôles dans le gestionnaire de jetons JWT.
@@ -402,7 +402,7 @@ JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
 
 #### <a name="profile-service"></a>Service de profil
 
-Dans l’application serveur, créez une `ProfileService` implémentation.
+Dans l' *`Server`* application, créez une `ProfileService` implémentation.
 
 `ProfileService.cs`:
 
@@ -436,7 +436,7 @@ public class ProfileService : IProfileService
 }
 ```
 
-Dans l’application serveur, inscrivez le service de profil dans `Startup.ConfigureServices` :
+Dans l' *`Server`* application, inscrivez le service de profil dans `Startup.ConfigureServices` :
 
 ```csharp
 using IdentityServer4.Services;
@@ -448,7 +448,7 @@ services.AddTransient<IProfileService, ProfileService>();
 
 ### <a name="use-authorization-mechanisms"></a>Utiliser des mécanismes d’autorisation
 
-Dans l’application cliente, les approches d’autorisation des composants sont fonctionnelles à ce stade. L’un des mécanismes d’autorisation des composants peut utiliser un rôle pour autoriser l’utilisateur :
+Dans l' *`Client`* application, les approches d’autorisation des composants sont fonctionnelles à ce stade. L’un des mécanismes d’autorisation des composants peut utiliser un rôle pour autoriser l’utilisateur :
 
 * [ `AuthorizeView` composant](xref:blazor/security/index#authorizeview-component) (exemple : `<AuthorizeView Roles="admin">` )
 * [ `[Authorize]` directive d’attribut](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ) (exemple : `@attribute [Authorize(Roles = "admin")]` )
@@ -463,7 +463,7 @@ Dans l’application cliente, les approches d’autorisation des composants sont
   }
   ```
 
-`User.Identity.Name` est renseigné dans l’application cliente avec le nom d’utilisateur de l’utilisateur, qui est généralement l’adresse de messagerie de connexion.
+`User.Identity.Name` est renseigné dans l' *`Client`* application avec le nom d’utilisateur de l’utilisateur, qui est généralement son adresse e-mail de connexion.
 
 [!INCLUDE[](~/includes/blazor-security/usermanager-signinmanager.md)]
 

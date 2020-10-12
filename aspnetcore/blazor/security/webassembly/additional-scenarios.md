@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: 2881b5d01f3b2e41659e3166a4e77b64a450f017
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: 50d455b37c51fdd6d3b52b10b3e819eb45526de4
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90592917"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900958"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly des scénarios de sécurité supplémentaires
 
@@ -177,7 +177,7 @@ Pour une Blazor application basée sur le Blazor WebAssembly modèle de projet h
 
 ### <a name="graph-api-example"></a>Exemple de API Graph
 
-Dans l’exemple suivant, un nommé <xref:System.Net.Http.HttpClient> pour API Graph est utilisé pour obtenir le numéro de téléphone mobile d’un utilisateur pour traiter un appel. Après avoir ajouté l’autorisation Microsoft Graph API `User.Read` dans la zone AAD de l’portail Azure, l’étendue est configurée pour le client nommé dans l’application autonome ou l’application cliente d’une solution hébergée Blazor .
+Dans l’exemple suivant, un nommé <xref:System.Net.Http.HttpClient> pour API Graph est utilisé pour obtenir le numéro de téléphone mobile d’un utilisateur pour traiter un appel. Après avoir ajouté l’autorisation Microsoft Graph API `User.Read` dans la zone AAD de l’portail Azure, l’étendue est configurée pour le client nommé dans l’application autonome ou l' *`Client`* application d’une solution hébergée Blazor .
 
 > [!NOTE]
 > L’exemple de cette section obtient API Graph données de l’utilisateur dans le *Code du composant*. Pour créer des revendications d’utilisateur à partir de API Graph, consultez les ressources suivantes :
@@ -732,7 +732,7 @@ builder.Services.AddSingleton<StateContainer>();
 
 Par défaut, la [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) bibliothèque utilise les itinéraires indiqués dans le tableau suivant pour représenter des États d’authentification différents.
 
-| Routage                            | Objectif |
+| Route                            | Objectif |
 | -------------------------------- | ------- |
 | `authentication/login`           | Déclenche une opération de connexion. |
 | `authentication/login-callback`  | Gère le résultat de toute opération de connexion. |
@@ -812,7 +812,7 @@ Si vous le souhaitez, vous avez la possibilité de scinder l’interface utilisa
 
 Le <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> a un fragment qui peut être utilisé par itinéraire d’authentification, comme indiqué dans le tableau suivant.
 
-| Routage                            | Fragment                |
+| Route                            | Fragment                |
 | -------------------------------- | ----------------------- |
 | `authentication/login`           | `<LoggingIn>`           |
 | `authentication/login-callback`  | `<CompletingLoggingIn>` |
@@ -1070,7 +1070,7 @@ Après avoir utilisé les instructions de l’une des rubriques de l’applicati
 * Prérend les chemins d’accès pour lesquels l’autorisation n’est pas requise.
 * N’effectue pas de prérendu des chemins pour lesquels une autorisation est requise.
 
-Dans la classe de l’application cliente `Program` ( `Program.cs` ), factorisez les inscriptions de service courantes dans une méthode distincte (par exemple, `ConfigureCommonServices` ) :
+Dans la *`Client`* classe de l’application `Program` ( `Program.cs` ), factorisez les inscriptions de service courantes dans une méthode distincte (par exemple, `ConfigureCommonServices` ) :
 
 ```csharp
 public class Program
@@ -1130,7 +1130,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-Dans l’application serveur, créez un `Pages` dossier s’il n’existe pas. Créez une `_Host.cshtml` page dans le dossier de l’application serveur `Pages` . Collez le contenu du fichier de l’application cliente `wwwroot/index.html` dans le `Pages/_Host.cshtml` fichier. Mettez à jour le contenu du fichier :
+Dans l’application serveur, créez un `Pages` dossier s’il n’existe pas. Créez une `_Host.cshtml` page dans le dossier de l’application serveur `Pages` . Collez le contenu du *`Client`* fichier de l’application `wwwroot/index.html` dans le `Pages/_Host.cshtml` fichier. Mettez à jour le contenu du fichier :
 
 * Ajoutez `@page "_Host"` en haut du fichier.
 * Remplacez la `<app>Loading...</app>` balise par le suivant :

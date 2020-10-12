@@ -12,7 +12,7 @@ L’une des méthodes permettant d’empêcher les cookies en attente et les don
 
 * Configurer un navigateur
   * Utilisez un navigateur pour le test que vous pouvez configurer pour supprimer tous les cookies et les données de site chaque fois que le navigateur est fermé.
-  * Assurez-vous que le navigateur est fermé manuellement ou par l’IDE entre toute modification apportée à l’application, à l’utilisateur de test ou à la configuration du fournisseur.
+  * Assurez-vous que le navigateur est fermé manuellement ou par l’IDE pour toute modification apportée à l’application, à l’utilisateur de test ou à la configuration du fournisseur.
 * Utilisez une commande personnalisée pour ouvrir un navigateur en mode Incognito ou privé dans Visual Studio :
   * Ouvrez la boîte de dialogue **naviguer avec** à partir du bouton **exécuter** de Visual Studio.
   * Sélectionnez le bouton **Ajouter**.
@@ -21,13 +21,13 @@ L’une des méthodes permettant d’empêcher les cookies en attente et les don
     * Google Chrome : `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`
     * Mozilla Firefox : `C:\Program Files\Mozilla Firefox\firefox.exe`
   * Dans le champ **arguments** , indiquez l’option de ligne de commande utilisée par le navigateur pour ouvrir en mode Incognito ou privé. Certains navigateurs requièrent l’URL de l’application.
-    * Microsoft Edge : `-inprivate`
-    * Google Chrome : `--incognito --new-window https://localhost:5001`
-    * Mozilla Firefox : `-private -url https://localhost:5001`
+    * Microsoft Edge : utilisez `-inprivate` .
+    * Google Chrome : utilisez `--incognito --new-window {URL}` , où l’espace réservé `{URL}` est l’URL à ouvrir (par exemple, `https://localhost:5001` ).
+    * Mozilla Firefox : utilisez `-private -url {URL}` , où l’espace réservé `{URL}` est l’URL à ouvrir (par exemple, `https://localhost:5001` ).
   * Entrez un nom dans le champ **nom convivial** . Par exemple : `Firefox Auth Testing`.
   * Cliquez sur le bouton **OK**.
   * Pour éviter d’avoir à sélectionner le profil de navigateur pour chaque itération de test avec une application, définissez le profil par défaut avec le bouton **définir comme valeur par défaut** .
-  * Assurez-vous que le navigateur est fermé par l’IDE entre toute modification apportée à l’application, à l’utilisateur de test ou à la configuration du fournisseur.
+  * Assurez-vous que le navigateur est fermé par l’IDE pour toute modification apportée à l’application, à l’utilisateur de test ou à la configuration du fournisseur.
 
 ### <a name="run-the-server-app"></a>Exécuter l’application serveur
 

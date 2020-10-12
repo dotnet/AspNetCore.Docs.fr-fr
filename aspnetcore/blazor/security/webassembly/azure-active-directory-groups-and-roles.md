@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 7a0c606d82dd625c179ec89e22b9313dfa5d18b4
-ms.sourcegitcommit: c026bf76a0e14a5ee68983519a63574c674e9ff7
+ms.openlocfilehash: ac666a4c7493140d4ae93047e18202c3d8314c7b
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91636775"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900698"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Groupes Azure Active Directory (AAD), rôles d’administrateur et rôles définis par l’utilisateur
 
@@ -49,7 +49,7 @@ Les instructions de cet article s’appliquent aux Blazor WebAssembly scénarios
 
 Un appel d' [API Microsoft Graph](/graph/use-the-api) est requis pour tout utilisateur d’application disposant de plus de cinq appartenances de groupe de sécurité et de rôle d’administrateur AAD.
 
-Pour autoriser les appels API Graph, accordez à l’application autonome ou cliente d’une solution hébergée l' Blazor une des [autorisations API Graph](/graph/permissions-reference) suivantes dans la portail Azure :
+Pour autoriser les appels API Graph, attribuez à l’application autonome ou à *`Client`* une solution hébergée l' Blazor une des [autorisations API Graph](/graph/permissions-reference) suivantes dans la portail Azure :
 
 * `Directory.Read.All`
 * `Directory.ReadWrite.All`
@@ -88,7 +88,7 @@ public class CustomUserAccount : RemoteUserAccount
 }
 ```
 
-Dans l’application autonome ou l’application cliente d’une Blazor solution hébergée, créez une <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> classe personnalisée. Utilisez l’étendue (autorisation) appropriée pour les appels API Graph qui obtiennent des informations sur les rôles et les groupes.
+Dans l’application autonome ou l' *`Client`* application d’une solution hébergée Blazor , créez une <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> classe personnalisée. Utilisez l’étendue (autorisation) appropriée pour les appels API Graph qui obtiennent des informations sur les rôles et les groupes.
 
 `GraphAPIAuthorizationMessageHandler.cs`:
 
@@ -250,7 +250,7 @@ Il n’est pas nécessaire de fournir du code pour supprimer la revendication d�
 >
 > La couverture générale de cette approche est disponible dans l' <xref:blazor/security/webassembly/additional-scenarios#custom-authorizationmessagehandler-class> article.
 
-Inscrire la fabrique dans `Program.Main` ( `Program.cs` ) de l’application autonome ou de l’application cliente d’une solution hébergée Blazor . Consentement de l' `Directory.Read.All` étendue d’autorisation en tant qu’étendue supplémentaire pour l’application :
+Inscrire la fabrique dans `Program.Main` ( `Program.cs` ) de l’application autonome ou *`Client`* de l’application d’une solution hébergée Blazor . Consentement de l' `Directory.Read.All` étendue d’autorisation en tant qu’étendue supplémentaire pour l’application :
 
 ```csharp
 builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
@@ -372,7 +372,7 @@ Ajoutez des références de package à l’application *serveur* pour les packag
 * Vérifiez que l’inscription de l’application *serveur* est donnée à l’accès d’API à l’autorisation API Graph pour `Directory.Read.All` , qui est le niveau d’accès le moins privilégié pour les groupes de sécurité. Confirmez que le consentement de l’administrateur est appliqué à l’autorisation après avoir effectué l’attribution d’autorisation.
 * Attribuez une nouvelle clé secrète client à l’application *serveur* . Notez le secret de la configuration de l’application dans la section paramètres de l' [application](#app-settings) .
 
-### <a name="app-settings"></a>Paramètres d’application
+### <a name="app-settings"></a>Paramètres de l’application
 
 Dans le fichier de paramètres d’application ( `appsettings.json` ou `appsettings.Production.json` ), créez une `ClientSecret` entrée avec la clé secrète client de l’application *serveur* à partir de la portail Azure :
 
@@ -386,7 +386,7 @@ Dans le fichier de paramètres d’application ( `appsettings.json` ou `appsetti
 },
 ```
 
-Exemple :
+Par exemple :
 
 ```json
 "AzureAd": {
@@ -651,9 +651,9 @@ L’exemple suivant suppose qu’une application est configurée avec deux rôle
 
 La `roles` revendication unique envoyée par AAD présente les rôles définis par l’utilisateur en tant que `appRoles` `value` s dans un tableau JSON. L’application doit convertir le tableau JSON de rôles en `role` revendications individuelles.
 
-La `CustomUserFactory` section des [groupes définis par l’utilisateur et des rôles d’administrateur AAD](#user-defined-groups-and-administrator-roles) est configurée pour agir sur une `roles` revendication avec une valeur de tableau JSON. Ajoutez et inscrivez l' `CustomUserFactory` dans l’application autonome ou l’application cliente d’une solution hébergée Blazor , comme indiqué dans la section [groupes définis par l’utilisateur et rôles d’administrateur AAD](#user-defined-groups-and-administrator-roles) . Il n’est pas nécessaire de fournir du code pour supprimer la revendication d’origine `roles` , car elle est automatiquement supprimée par l’infrastructure.
+La `CustomUserFactory` section des [groupes définis par l’utilisateur et des rôles d’administrateur AAD](#user-defined-groups-and-administrator-roles) est configurée pour agir sur une `roles` revendication avec une valeur de tableau JSON. Ajoutez et inscrivez `CustomUserFactory` dans l’application autonome ou dans l' *`Client`* application d’une Blazor solution hébergée, comme indiqué dans la section [groupes définis par l’utilisateur et rôles d’administrateur AAD](#user-defined-groups-and-administrator-roles) . Il n’est pas nécessaire de fournir du code pour supprimer la revendication d’origine `roles` , car elle est automatiquement supprimée par l’infrastructure.
 
-Dans `Program.Main` l’application autonome ou l’application cliente d’une Blazor solution hébergée, spécifiez la revendication nommée « `role` » comme revendication de rôle :
+Dans `Program.Main` l’application autonome ou l' *`Client`* application d’une solution hébergée Blazor , spécifiez la revendication nommée « `role` » comme revendication de rôle :
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>
