@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/performance
-ms.openlocfilehash: 4d50698b8c55f7fb3ef9a2c3102e73e046a22a9c
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: b54d13bfd9207a7b8961c1c4fa9908d3d54a4270
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722843"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113853"
 ---
 # <a name="performance-best-practices-with-grpc"></a>Meilleures pratiques en matière de performances avec gRPC
 
@@ -53,7 +53,7 @@ la fabrique de clients gRPC offre une méthode centralisée pour configurer les 
 
 ## <a name="connection-concurrency"></a>Accès concurrentiel de la connexion
 
-Les connexions HTTP/2 ont généralement une limite du nombre [maximal de flux simultanés (requêtes http actives)](https://http2.github.io/http2-spec/#rfc.section.5.1.2) sur une connexion à la fois. Par défaut, la plupart des serveurs définissent cette limite sur 100 flux simultanés.
+Les connexions HTTP/2 ont généralement une limite du nombre [maximal de flux simultanés (requêtes http actives)](https://httpwg.github.io/specs/rfc7540.html#rfc.section.5.1.2) sur une connexion à la fois. Par défaut, la plupart des serveurs définissent cette limite sur 100 flux simultanés.
 
 Un canal gRPC utilise une seule connexion HTTP/2, et les appels simultanés sont multiplexés sur cette connexion. Lorsque le nombre d’appels actifs atteint la limite du flux de connexion, les appels supplémentaires sont mis en file d’attente dans le client. Les appels en file d’attente attendent que les appels actifs se terminent avant d’être envoyés. Les applications avec une charge élevée, ou des appels de diffusion en continu à long terme, peuvent voir des problèmes de performances dus à la mise en file d’attente des appels en raison de cette limite.
 

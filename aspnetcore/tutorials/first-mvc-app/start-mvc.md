@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 9d70b292a93a5d19cc25b2fc592ec88ce8262434
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 177112106d143a6826c1f927aac807da0aa9f2b4
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629988"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113827"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Bien démarrer avec ASP.NET Core MVC
 
@@ -67,7 +67,7 @@ L’application gère une base de données de titres de films. Vous allez appren
 
 * Dans Visual Studio, sélectionnez **Créer un projet**.
 
-* Sélectionnez **Application web ASP.NET Core**, puis **Suivant**.
+* Sélectionnez **ASP.net Core application Web** > **suivant**.
 
 ![Nouvelle application web ASP.NET Core](start-mvc/_static/np_2.1.png)
 
@@ -75,7 +75,7 @@ L’application gère une base de données de titres de films. Vous allez appren
 
   ![Nouvelle application web ASP.NET Core](start-mvc/_static/config.png)
 
-* Sélectionnez **Application web (modèle-vue-contrôleur)**, puis **Créer**.
+* Sélectionnez **application Web (Model-View-Controller)**. Dans les zones de liste déroulante, sélectionnez **.net Core** et **ASP.net Core 3,1**, puis sélectionnez **créer**.
 
 ![Boîte de dialogue Nouveau projet, .NET Core dans le volet gauche, web ASP.NET Core ](start-mvc/_static/new_project30.png)
 
@@ -85,7 +85,7 @@ Visual Studio a utilisé le modèle par défaut pour le projet MVC que vous vene
 
 Il part du principe que vous connaissez déjà VS Code. Pour plus d’informations, consultez [Bien démarrer avec VS Code](https://code.visualstudio.com/docs) et [Aide de Visual Studio Code](#visual-studio-code-help).
 
-* Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
+* Ouvrez le [Terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
 * Exécutez la commande suivante :
 
@@ -238,7 +238,7 @@ Visual Studio a utilisé le modèle par défaut pour le projet MVC que vous vene
 
 Il part du principe que vous connaissez déjà VS Code. Pour plus d’informations, consultez [Bien démarrer avec VS Code](https://code.visualstudio.com/docs) et [Aide de Visual Studio Code](#visual-studio-code-help).
 
-* Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
+* Ouvrez le [Terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
 * Exécutez la commande suivante :
 

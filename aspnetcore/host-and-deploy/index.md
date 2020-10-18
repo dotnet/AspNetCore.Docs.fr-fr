@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/index
-ms.openlocfilehash: 0111b7944bc95932937f0fd74524e3960c5fb681
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f8271d71f34487062484581ba6b3b8445a62439c
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634616"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113789"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Héberger et déployer ASP.NET Core
 
@@ -70,7 +70,7 @@ Une configuration supplémentaire peut être nécessaire pour les applications h
 
 ## <a name="use-visual-studio-and-msbuild-to-automate-deployments"></a>Utiliser Visual Studio et MSBuild pour automatiser les déploiements
 
-Le déploiement nécessite souvent des tâches supplémentaires en plus de la copie de la sortie de [dotnet publish](/dotnet/core/tools/dotnet-publish) vers un serveur. Par exemple, des fichiers supplémentaires peuvent être requis ou exclus du dossier *publish*. Visual Studio utilise MSBuild pour le déploiement web, et MSBuild peut être personnalisé pour effectuer de nombreuses autres tâches pendant le déploiement. Pour plus d’informations, consultez <xref:host-and-deploy/visual-studio-publish-profiles> et l’ouvrage [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Utilisation de MSBuild et Team Foundation Build).
+Le déploiement nécessite souvent des tâches supplémentaires en plus de la copie de la sortie de [dotnet publish](/dotnet/core/tools/dotnet-publish) vers un serveur. Par exemple, des fichiers supplémentaires peuvent être requis ou exclus du dossier *publish*. Visual Studio utilise [MSBuild](/visualstudio/msbuild/msbuild) pour le déploiement Web et MSBuild peut être personnalisé pour effectuer de nombreuses autres tâches pendant le déploiement. Pour plus d’informations, consultez <xref:host-and-deploy/visual-studio-publish-profiles> et l’ouvrage [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Utilisation de MSBuild et Team Foundation Build).
 
 Les applications peuvent être déployées directement à partir de Visual Studio sur Azure App Service à l’aide de la [fonctionnalité de publication web](xref:tutorials/publish-to-azure-webapp-using-vs) ou de la [prise en charge intégrée de Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment). Azure DevOps Services prend en charge le [déploiement continu sur Azure App Service](/azure/devops/pipelines/targets/webapp). Pour plus d’informations, consultez [DevOps avec ASP.NET Core et Azure](xref:azure/devops/index).
 
@@ -98,7 +98,7 @@ Pour plus d'informations, consultez <xref:host-and-deploy/docker/index>.
 
 Utilisez Health Check Middleware pour effectuer des contrôles d’intégrité sur une application et ses dépendances. Pour plus d'informations, consultez <xref:host-and-deploy/health-checks>.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:test/troubleshoot>
 * [Hébergement ASP.NET](https://dotnet.microsoft.com/apps/aspnet/hosting)
@@ -172,7 +172,7 @@ Pour plus d’informations sur la configuration pour héberger des applications 
 
 Pour plus d'informations, consultez <xref:host-and-deploy/docker/index>.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:test/troubleshoot>
 * [Hébergement ASP.NET](https://dotnet.microsoft.com/apps/aspnet/hosting)

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 791cc14feac30ad8a571d155624ab821dfd77981
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 6f94323873937d1428d6cfa1b0ef15e44611fd47
+ms.sourcegitcommit: b3ec60f7682e43211c2b40c60eab3d4e45a48ab1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722856"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92153639"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Images Docker pour ASP.NET Core
 
@@ -70,7 +70,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
     * [Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
     * [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)
     * [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-  * [macOS](https://docs.docker.com/docker-for-mac/install/)
+  * [MacOS](https://docs.docker.com/docker-for-mac/install/)
   * [Windows](https://docs.docker.com/docker-for-windows/install/)
 
 * [Git](https://git-scm.com/download)
@@ -99,7 +99,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
 
 ## <a name="run-in-a-linux-container"></a>Exécuter dans un conteneur Linux
 
-* Dans le client Docker, basculez vers les conteneurs Linux.
+* Dans le client docker, [basculez vers les conteneurs Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 * Accédez au dossier Dockerfile à l’adresse *dotnet-docker/samples/aspnetapp*.
 
@@ -125,7 +125,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
 
 ## <a name="run-in-a-windows-container"></a>Exécuter dans un conteneur Windows
 
-* Dans le client Docker, basculez vers les conteneurs Windows.
+* Dans le client docker, [basculez vers les conteneurs Windows](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 Accédez au dossier de fichiers Dockerfile à l’adresse `dotnet-docker/samples/aspnetapp`.
 

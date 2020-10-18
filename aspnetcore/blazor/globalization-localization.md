@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 2b8820acba564bdfb85f8338ed5482573960fbb4
-ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
+ms.openlocfilehash: be73b0c1e33a2cd15c9ff0dc51044f9bd48c43fe
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90080275"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113814"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>BlazorGlobalisation et localisation ASP.net Core
 
@@ -76,7 +76,15 @@ Pour configurer explicitement la culture, définissez <xref:System.Globalization
 
 ::: moniker range=">= aspnetcore-5.0"
 
-Par défaut, Blazor WebAssembly transporte les ressources de globalisation requises pour afficher des valeurs, telles que les dates et les devises, dans la culture de l’utilisateur. Si l’application ne nécessite pas de localisation, vous pouvez configurer l’application pour qu’elle prenne en charge la culture dite indifférente, qui est basée sur la `en-US` culture :
+Par défaut, Blazor WebAssembly comporte des ressources de globalisation minimales requises pour afficher des valeurs, telles que les dates et les devises, dans la culture de l’utilisateur. Les applications qui doivent prendre en charge la modification dynamique de la culture doivent être configurées `BlazorWebAssemblyLoadAllGlobalizationData` dans le fichier projet :
+
+```xml
+<PropertyGroup>
+  <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+</PropertyGroup>
+```
+
+Si l’application ne nécessite pas de localisation, vous pouvez configurer l’application pour qu’elle prenne en charge la culture dite indifférente, qui est basée sur la `en-US` culture :
 
 ```xml
 <PropertyGroup>
@@ -100,7 +108,7 @@ Blazor Server les applications sont localisées à l’aide de l' [intergiciel (
 
 La culture peut être définie à l’aide de l’une des approches suivantes :
 
-* [Cookiex](#cookies)
+* [Cookies](#cookies)
 * [Fournir l’interface utilisateur pour choisir la culture](#provide-ui-to-choose-the-culture)
 
 Pour plus d’informations et d’exemples, consultez <xref:fundamentals/localization>.
