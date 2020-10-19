@@ -177,6 +177,9 @@
             - name: Déployer avec GitHub Actions >>
               display: 'tutorial, kubernetes, aks, acr, docker, devops'
               href: /learn/modules/microservices-devops-aspnet-core/
+            - name: Journaliser et superviser > >
+              display: 'tutorial, kubernetes, aks, acr, docker, serilog'
+              href: /learn/modules/microservices-logging-aspnet-core/
         - name: Accès aux données >>
           displayName: 'tutorial, ef, entity framework'
           href: /learn/modules/persist-data-ef-core/
@@ -1118,6 +1121,8 @@
           uid: security/authorization/policies
         - name: Fournisseurs de stratégies d’autorisation
           uid: security/authorization/iauthorizationpolicyprovider
+        - name: Personnaliser le comportement d’AuthorizationMiddleware
+          uid: security/authorization/authorizationmiddlewareresulthandler
         - name: Injection de dépendances dans les gestionnaires d’exigences
           uid: security/authorization/dependencyinjection
         - name: Autorisation basée sur les ressources
