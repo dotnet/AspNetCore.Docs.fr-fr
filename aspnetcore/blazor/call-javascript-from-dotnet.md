@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: a7ba41501b856482c8fcf7efa8e1d78857020bf5
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: 3bd881b124e00b91ab0aa9d3eb7531f10ef895f2
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113762"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326493"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Appeler des fonctions JavaScript à partir de méthodes .NET dans ASP.NET Core Blazor
 
@@ -260,9 +260,7 @@ public static ValueTask<T> GenericMethod<T>(this ElementReference elementRef,
 
 ## <a name="reference-elements-across-components"></a>Éléments de référence sur les composants
 
-Un <xref:Microsoft.AspNetCore.Components.ElementReference> est garanti uniquement valide dans la méthode d’un composant <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> (et une référence d’élément est un `struct` ), de sorte qu’une référence d’élément ne peut pas être transmise entre les composants.
-
-Pour qu’un composant parent rende une référence d’élément disponible pour d’autres composants, le composant parent peut :
+Une <xref:Microsoft.AspNetCore.Components.ElementReference> instance est garantie uniquement valide dans la méthode d’un composant <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> (et une référence d’élément est un `struct` ), de sorte qu’une référence d’élément ne peut pas être transmise entre les composants. Pour qu’un composant parent rende une référence d’élément disponible pour d’autres composants, le composant parent peut :
 
 * Autorisez les composants enfants à inscrire des rappels.
 * Appelez les rappels inscrits pendant l' <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> événement avec la référence d’élément passée. Indirectement, cette approche permet aux composants enfants d’interagir avec la référence d’élément du parent.

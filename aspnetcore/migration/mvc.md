@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: d615f67fc5cb23499ee7e14b747390a7a1b5a693
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 51228e59284b5edf0554e9929b16deafe08ea31e
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865136"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326627"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migrer ASP.NET MVC vers ASP.NET Core MVC
 
@@ -46,7 +46,7 @@ Pour la migration de la configuration et du Identity code, consultez [migrer la 
 
 Créer un exemple de projet MVC ASP.NET dans Visual Studio à migrer :
 
-1. Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
+1. Dans le menu **fichier** , sélectionnez **nouveau** > **projet**.
 1. Sélectionnez **application Web ASP.net (.NET Framework)** , puis sélectionnez **suivant**.
 1. Nommez le projet *application Web 1* pour que l’espace de noms corresponde au projet ASP.net Core créé à l’étape suivante. Sélectionnez **Create** (Créer).
 1. Sélectionnez **MVC**, puis sélectionnez **créer**.
@@ -56,8 +56,8 @@ Créer un exemple de projet MVC ASP.NET dans Visual Studio à migrer :
 Créer une solution avec un nouveau ASP.NET Core projet à migrer vers :
 
 1. Lancez une deuxième instance de Visual Studio.
-1. Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
-1. Sélectionnez **application web ASP.NET Web Core** , puis sélectionnez **suivant**.
+1. Dans le menu **fichier** , sélectionnez **nouveau** > **projet**.
+1. Sélectionnez **Application web ASP.NET Core**, puis **Suivant**.
 1. Dans la boîte de dialogue **configurer votre nouveau projet** , nommez le projet *application Web 1*.
 1. Définissez l’emplacement sur un répertoire différent de celui du projet précédent pour qu’il utilise le même nom de projet. L’utilisation du même espace de noms facilite la copie du code entre les deux projets. Sélectionnez **Create** (Créer).
 1. Dans la boîte de dialogue **créer une application Web ASP.net Core** , vérifiez que **.net Core** et **ASP.net Core 3,1** sont sélectionnés. Sélectionnez le modèle **de projet application Web (Model-View-Controller)** , puis sélectionnez **créer**.
@@ -267,7 +267,7 @@ Remplacez le contenu du fichier *Views/Home/Index.cshtml* par le balisage suivan
 <h1>Hello world!</h1>
 ```
 
-Exécutez l'application.
+Exécutez l’application.
 
 ![Application Web ouverte dans Microsoft Edge](mvc/_static/hello-world.png)
 
@@ -453,7 +453,7 @@ Remplacez le contenu du fichier *Views/Home/Index.cshtml* par le balisage suivan
 <h1>Hello world!</h1>
 ```
 
-Exécutez l'application.
+Exécutez l’application.
 
 ![Application Web ouverte dans Microsoft Edge](mvc/_static/hello-world.png)
 

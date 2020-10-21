@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 213807634a2a6990e9025de7871295cf97a81faf
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 808215d103db9c5d63fe63b6875a222e6b0ba1fa
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865589"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326613"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migrer des gestionnaires et des modules HTTP vers ASP.NET Core intergiciel
 
@@ -98,7 +98,7 @@ En plus des modules, vous pouvez ajouter des gestionnaires pour les événements
 
 * Consultez [création d’un pipeline d’intergiciel (middleware) avec IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)
 
-![Middlewares](http-modules/_static/middleware.png)
+![Intergiciel (middleware)](http-modules/_static/middleware.png)
 
 Notez comment dans l’image ci-dessus, l’intergiciel (middleware) d’authentification a court-circuité la demande.
 
@@ -356,7 +356,7 @@ Donne un ID unique pour chaque demande. Très utile pour inclure dans vos journa
 
 **HttpContext. Response. TransmitFile**
 
-Le traitement d’un fichier est abordé [ici](../fundamentals/request-features.md#middleware-and-request-features).
+Le traitement d’un fichier est abordé dans l’article [middleware et les fonctionnalités de demande](xref:fundamentals/request-features#middleware-and-request-features).
 
 **HttpContext. Response. en-têtes**
 
