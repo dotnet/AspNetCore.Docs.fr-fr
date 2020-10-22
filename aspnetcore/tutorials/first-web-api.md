@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 212d8a80bdc466479c34bc5fbd9c3261ca9d54c4
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 9f67f8104eb5c21f244449ca3a4aaa96c750836d
+ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393910"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379480"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Didacticiel : créer une API Web avec ASP.NET Core
 
@@ -91,7 +91,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 * Ouvrez le [Terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Définissez les répertoires (`cd`) sur le dossier destiné à contenir le dossier du projet.
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -324,7 +324,7 @@ Le code précédent :
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Exécutez les commandes suivantes :
+Exécutez les commandes suivantes :
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -388,7 +388,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 
 * Créez une requête.
 * Affectez `POST` à la méthode HTTP.
-* Définissez l’URI sur `https://localhost:<port>/api/TodoItems` . Par exemple : `https://localhost:5001/api/TodoItems`.
+* Définissez l’URI sur `https://localhost:<port>/api/TodoItems` . Par exemple, `https://localhost:5001/api/TodoItems`.
 * Sélectionnez l’onglet **Corps** .
 * Sélectionnez la case d’option **raw** (données brutes).
 * Définissez le type sur **JSON (application/json)**.
@@ -417,7 +417,7 @@ Pour effectuer un test dans le poster :
   ![Onglet Headers de la console Postman](first-web-api/_static/3/create.png)
 
 * Affectez `GET` à la méthode HTTP.
-* Définissez l’URI sur `https://localhost:<port>/api/TodoItems/1` . Par exemple : `https://localhost:5001/api/TodoItems/1`.
+* Définissez l’URI sur `https://localhost:<port>/api/TodoItems/1` . Par exemple, `https://localhost:5001/api/TodoItems/1`.
 * Sélectionnez **Envoyer**.
 
 ## <a name="examine-the-get-methods"></a>Examiner les méthodes GET
@@ -427,7 +427,7 @@ Deux points de terminaison d’extraction sont implémentés :
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Par exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Exemple :
 
 * `https://localhost:5001/api/TodoItems`
 * `https://localhost:5001/api/TodoItems/1`
@@ -448,7 +448,7 @@ Une réponse semblable à la suivante est produite par l’appel à `GetTodoItem
 
 * Créez une requête.
 * Définissez la méthode HTTP sur **GET**.
-* Définissez l’URI de la demande sur `https://localhost:<port>/api/TodoItems` . Par exemple : `https://localhost:5001/api/TodoItems`.
+* Définissez l’URI de la demande sur `https://localhost:<port>/api/TodoItems` . Par exemple, `https://localhost:5001/api/TodoItems`.
 * Définissez l’**affichage à deux volets** dans Postman.
 * Sélectionnez **Envoyer**.
 
@@ -520,7 +520,7 @@ Utilisez Postman pour supprimer une tâche :
 * Définissez l’URI de l’objet à supprimer (par exemple `https://localhost:5001/api/TodoItems/1` ).
 * Sélectionnez **Envoyer**.
 
-<a name="over-post"></a>
+<a name="over-post-v5"></a>
 
 ## <a name="prevent-over-posting"></a>Empêcher la post-validation
 
@@ -617,7 +617,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 * Ouvrez le [Terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Définissez les répertoires (`cd`) sur le dossier destiné à contenir le dossier du projet.
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -815,7 +815,7 @@ Le code précédent :
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Exécutez les commandes suivantes :
+Exécutez les commandes suivantes :
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -879,7 +879,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 
 * Créez une requête.
 * Affectez `POST` à la méthode HTTP.
-* Définissez l’URI sur `https://localhost:<port>/api/TodoItems` . Par exemple : `https://localhost:5001/api/TodoItems`.
+* Définissez l’URI sur `https://localhost:<port>/api/TodoItems` . Par exemple, `https://localhost:5001/api/TodoItems`.
 * Sélectionnez l’onglet **Corps** .
 * Sélectionnez la case d’option **raw** (données brutes).
 * Définissez le type sur **JSON (application/json)**.
@@ -904,7 +904,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
   ![Onglet Headers de la console Postman](first-web-api/_static/3/create.png)
 
 * Affectez `GET` à la méthode HTTP.
-* Définissez l’URI sur `https://localhost:<port>/api/TodoItems/1` . Par exemple : `https://localhost:5001/api/TodoItems/1`.
+* Définissez l’URI sur `https://localhost:<port>/api/TodoItems/1` . Par exemple, `https://localhost:5001/api/TodoItems/1`.
 * Sélectionnez **Envoyer**.
 
 ## <a name="examine-the-get-methods"></a>Examiner les méthodes GET
@@ -914,7 +914,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Par exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Exemple :
 
 * `https://localhost:5001/api/TodoItems`
 * `https://localhost:5001/api/TodoItems/1`
@@ -935,7 +935,7 @@ Une réponse semblable à la suivante est produite par l’appel à `GetTodoItem
 
 * Créez une requête.
 * Définissez la méthode HTTP sur **GET**.
-* Définissez l’URI de la demande sur `https://localhost:<port>/api/TodoItems` . Par exemple : `https://localhost:5001/api/TodoItems`.
+* Définissez l’URI de la demande sur `https://localhost:<port>/api/TodoItems` . Par exemple, `https://localhost:5001/api/TodoItems`.
 * Définissez l’**affichage à deux volets** dans Postman.
 * Sélectionnez **Envoyer**.
 
@@ -1008,6 +1008,7 @@ Utilisez Postman pour supprimer une tâche :
 * Sélectionnez **Envoyer**.
 
 <a name="over-post"></a>
+<a name="over-post-v3"></a>
 
 ## <a name="prevent-over-posting"></a>Empêcher la post-validation
 
@@ -1107,7 +1108,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 * Ouvrez le [Terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Définissez les répertoires (`cd`) sur le dossier destiné à contenir le dossier du projet.
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -1271,7 +1272,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 
 Arrêtez l’application si elle est toujours en cours d’exécution. Ensuite, réexécutez-la pour inclure les dernières modifications.
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Par exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Exemple :
 
 * `https://localhost:<port>/api/todo`
 * `https://localhost:<port>/api/todo/1`
@@ -1336,7 +1337,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 
 * Créez une requête.
   * Définissez la méthode HTTP sur **GET**.
-  * Définissez l’URI de la demande sur `https://localhost:<port>/api/todo` . Par exemple : `https://localhost:5001/api/todo`.
+  * Définissez l’URI de la demande sur `https://localhost:<port>/api/todo` . Par exemple, `https://localhost:5001/api/todo`.
 * Définissez l’**affichage à deux volets** dans Postman.
 * Sélectionnez **Envoyer**.
 
@@ -1362,7 +1363,7 @@ La méthode `CreatedAtAction` :
 
 * Créez le projet.
 * Dans Postman, définissez la méthode HTTP sur `POST`.
-* Définissez l’URI sur `https://localhost:<port>/api/TodoItem` . Par exemple : `https://localhost:5001/api/TodoItem`.
+* Définissez l’URI sur `https://localhost:<port>/api/TodoItem` . Par exemple, `https://localhost:5001/api/TodoItem`.
 * Sélectionnez l’onglet **Corps** .
 * Sélectionnez la case d’option **raw** (données brutes).
 * Définissez le type sur **JSON (application/json)**.
@@ -1389,7 +1390,7 @@ La méthode `CreatedAtAction` :
   ![Onglet Headers de la console Postman](first-web-api/_static/pmc2.png)
 
 * Définissez la méthode sur GET.
-* Définissez l’URI sur  `https://localhost:<port>/api/TodoItems/2` .Par exemple,  `https://localhost:5001/api/TodoItems/2` .
+* Définissez l’URI sur `https://localhost:<port>/api/TodoItems/2` . Par exemple, `https://localhost:5001/api/TodoItems/2`.
 * Sélectionnez **Envoyer**.
 
 ## <a name="add-a-puttodoitem-method-21"></a>Ajouter une méthode PutTodoItem 2,1

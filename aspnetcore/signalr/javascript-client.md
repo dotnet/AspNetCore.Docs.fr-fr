@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: 6fc586d144547585ef75d653bf54193def5c8b7f
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 6f611e56ec62ad7aea8a93e4761e1f67d0f76574
+ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606678"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379468"
 ---
 # <a name="aspnet-core-no-locsignalr-javascript-client"></a>SignalRClient JavaScript ASP.net Core
 
@@ -50,7 +50,7 @@ npm install @microsoft/signalr
 
 NPM installe le contenu du package dans le dossier *node_modules \\ @microsoft\signalr\dist\browser * . Créez un nouveau dossier nommé *signalr* sous le dossier de la * \\ bibliothèque wwwroot* . Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*
 
-Référencez le SignalR client JavaScript dans l' `<script>` élément. Par exemple :
+Référencez le SignalR client JavaScript dans l' `<script>` élément. Exemple :
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -58,7 +58,7 @@ Référencez le SignalR client JavaScript dans l' `<script>` élément. Par exem
 
 ### <a name="use-a-content-delivery-network-cdn"></a>Utiliser un réseau de distribution de contenu (CDN)
 
-Pour utiliser la bibliothèque cliente sans le composant requis NPM, référencez une copie hébergée par CDN de la bibliothèque cliente. Par exemple :
+Pour utiliser la bibliothèque cliente sans le composant requis NPM, référencez une copie hébergée par CDN de la bibliothèque cliente. Exemple :
 
 [!code-html[](javascript-client/samples/3.x/SignalRChat/Pages/Index.cshtml?name=snippet_CDN)]
 
@@ -278,56 +278,17 @@ Le code suivant illustre une approche de reconnexion manuelle classique :
 
 Une implémentation réelle utilise une interruption exponentielle ou une nouvelle tentative un nombre spécifié de fois avant d’abandonner.
 
-## <a name="troubleshoot-websocket-handshake-errors"></a>Résoudre les erreurs de protocole de transfert WebSocket
-
-Cette section fournit de l’aide sur l’exception *« erreur durant le protocole de transfert WebSocket »* qui se produit lors de la tentative d’établissement d’une connexion à ASP.net Core SignalR Hub.
-
-### <a name="response-code-400-or-503"></a>Code de réponse 400 ou 503
-
-Pour l’erreur suivante :
-
-```log
-WebSocket connection to 'wss://xxx/HubName' failed: Error during WebSocket handshake: Unexpected response code: 400
-
-Error: Failed to start the connection: Error: There was an error with the transport.
-```
-
-L’erreur est généralement due au fait que le client utilise uniquement le transport WebSockets, mais que le protocole WebSocket n’est pas activé sur le serveur.
-
-### <a name="response-code-307"></a>Code de réponse 307
-
-```log
-WebSocket connection to 'ws://xxx/HubName' failed: Error during WebSocket handshake: Unexpected response code: 307
-```
-
-Cela se produit souvent lorsque le SignalR serveur Hub :
-
-* Écoute et répond à la fois sur HTTP et HTTPs.
-* Est configuré pour appliquer le protocole HTTPs en appelant `UseHttpsRedirection` `Startup` , ou applique le protocole HTTPS via une règle de réécriture d’URL.
-
-Cette erreur peut être causée par la spécification de l’URL HTTP côté client à l’aide de `.withUrl("http://xxx/HubName")` . Le correctif pour ce cas consiste à modifier le code pour utiliser une URL HTTPs.
-
-### <a name="response-code-404"></a>Code de réponse 404
-
-```log
-WebSocket connection to 'wss://xxx/HubName' failed: Error during WebSocket handshake: Unexpected response code: 404
-```
-
-Si l’application fonctionne sur localhost, mais retourne cette erreur après la publication sur le serveur IIS :
-
-* Vérifiez que l’application ASP.NET Core SignalR est hébergée en tant que sous-application IIS.
-* Ne définissez pas l’URL avec le pathbase de la sous-application sur le SignalR côté client JavaScript `.withUrl("/SubAppName/HubName")` .
-
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Informations de référence sur l’API JavaScript](/javascript/api/?view=signalr-js-latest&preserve-view=true )
 * [Didacticiel JavaScript](xref:tutorials/signalr)
 * [Didacticiel WebPack et machine à écrire](xref:tutorials/signalr-typescript-webpack)
-* [Hubs](xref:signalr/hubs)
+* [Concentr](xref:signalr/hubs)
 * [Client .NET](xref:signalr/dotnet-client)
 * [Publication dans Azure](xref:signalr/publish-to-azure-web-app)
 * [Requêtes Cross-Origin (CORS)](xref:security/cors)
 * [SignalRDocumentation sans serveur de service Azure](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [Résoudre les erreurs de connexion](xref:signalr/troubleshoot)
 
 ::: moniker-end
 
@@ -354,7 +315,7 @@ npm install @aspnet/signalr
 
 NPM installe le contenu du package dans le dossier *node_modules \\ @aspnet\signalr\dist\browser * . Créez un nouveau dossier nommé *signalr* sous le dossier de la * \\ bibliothèque wwwroot* . Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*
 
-Référencez le SignalR client JavaScript dans l' `<script>` élément. Par exemple :
+Référencez le SignalR client JavaScript dans l' `<script>` élément. Exemple :
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -362,7 +323,7 @@ Référencez le SignalR client JavaScript dans l' `<script>` élément. Par exem
 
 ### <a name="use-a-content-delivery-network-cdn"></a>Utiliser un réseau de distribution de contenu (CDN)
 
-Pour utiliser la bibliothèque cliente sans le composant requis NPM, référencez une copie hébergée par CDN de la bibliothèque cliente. Par exemple :
+Pour utiliser la bibliothèque cliente sans le composant requis NPM, référencez une copie hébergée par CDN de la bibliothèque cliente. Exemple :
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.3/signalr.min.js"></script>
@@ -467,7 +428,7 @@ Une implémentation réelle utilise une interruption exponentielle ou une nouvel
 * [Informations de référence sur l’API JavaScript](/javascript/api/?view=signalr-js-latest)
 * [Didacticiel JavaScript](xref:tutorials/signalr)
 * [Didacticiel WebPack et machine à écrire](xref:tutorials/signalr-typescript-webpack)
-* [Hubs](xref:signalr/hubs)
+* [Concentr](xref:signalr/hubs)
 * [Client .NET](xref:signalr/dotnet-client)
 * [Publication dans Azure](xref:signalr/publish-to-azure-web-app)
 * [Requêtes Cross-Origin (CORS)](xref:security/cors)
