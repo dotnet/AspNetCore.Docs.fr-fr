@@ -1,7 +1,9 @@
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
 > [!WARNING]
 > Un paramètre **catch-all** peut faire correspondre les itinéraires de manière incorrecte en raison d’un [bogue](https://github.com/dotnet/aspnetcore/issues/18677) dans le routage. Les applications affectées par ce bogue présentent les caractéristiques suivantes :
 >
-> * Un itinéraire de rattrapage, par exemple,`{**slug}"`
+> * Un itinéraire de rattrapage, par exemple, `{**slug}"`
 > * L’itinéraire catch-all ne parvient pas à faire correspondre les demandes auxquelles il doit correspondre.
 > * La suppression d’autres itinéraires rend le fonctionnement de l’itinéraire de rattrapage.
 >
@@ -18,3 +20,5 @@
 >}
 >// Remaining code removed for brevity.
 >```
+
+::: moniker-end

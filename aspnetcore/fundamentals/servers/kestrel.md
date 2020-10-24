@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 44558a0f2fdc61eb860223658f5bef1d0117ba87
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: 50bf2a60f14238c9b71fe90a64c284da202bff59
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653940"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491598"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
@@ -354,6 +354,34 @@ webBuilder.ConfigureKestrel(serverOptions =>
 ```
 
 La valeur par défaut est 96 Ko (98 304).
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="http2-keep-alive-ping-configuration"></a>Configuration du ping Keep Alive HTTP/2
+
+Kestrel peut être configuré pour envoyer des pings HTTP/2 à des clients connectés. Les pings HTTP/2 servent plusieurs objectifs :
+
+* Conserver les connexions inactives actives. Certains clients et serveurs proxy ferment les connexions inactives. Les pings HTTP/2 sont considérés comme des activités sur une connexion et empêchent la fermeture de la connexion comme étant inactive.
+* Fermez les connexions défectueuses. Les connexions où le client ne répond pas au ping Keep Alive dans l’heure configurée sont fermées par le serveur.
+
+Il existe deux options de configuration relatives aux pings de maintien actifs HTTP/2 :
+
+* `Http2.KeepAlivePingInterval` est un `TimeSpan` qui configure le ping interne. Le serveur envoie un ping Keep Alive au client s’il ne reçoit aucune trame pendant cette période. Les commandes ping Keep Alive sont désactivées lorsque cette option a la valeur `TimeSpan.MaxValue` . La valeur par défaut est `TimeSpan.MaxValue`.
+* `Http2.KeepAlivePingTimeout` est un `TimeSpan` qui configure le délai d’exécution de la commande ping. Si le serveur ne reçoit aucune trame, telle qu’un ping de réponse, pendant ce délai, la connexion est fermée. Le délai d’attente Keep Alive est désactivé lorsque cette option a la valeur `TimeSpan.MaxValue` . La valeur par défaut est 20 secondes.
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Limits.Http2.KeepAlivePingInterval = TimeSpan.FromSeconds(30);
+    serverOptions.Limits.Http2.KeepAlivePingTimeout = TimeSpan.FromSeconds(60);
+});
+```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 ### <a name="trailers"></a>Bandes-annonce
 
