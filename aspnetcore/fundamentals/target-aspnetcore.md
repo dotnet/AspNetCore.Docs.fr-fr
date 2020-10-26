@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: fundamentals/target-aspnetcore
 ms.openlocfilehash: 571e6c66f60bbc09b902ff9064d2fb1c18c433dc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/26/2020
 ms.locfileid: "88630053"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>Utiliser des API ASP.NET Core dans une bibliothèque de classes
@@ -61,7 +61,7 @@ Pour prendre en charge la Razor consommation des composants à partir des [Blazo
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Utilisez le modèle de projet ** Razor bibliothèque de classes** . La case à cocher **pages de prise en charge et vues** du modèle doit être désélectionnée.
+Utilisez le modèle de projet **Razor bibliothèque de classes** . La case à cocher **pages de prise en charge et vues** du modèle doit être désélectionnée.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -73,7 +73,7 @@ dotnet new razorclasslib
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-Utilisez le modèle de projet ** Razor bibliothèque de classes** .
+Utilisez le modèle de projet **Razor bibliothèque de classes** .
 
 ---
 
@@ -85,7 +85,7 @@ Le projet généré à partir du modèle effectue les opérations suivantes :
   * [Microsoft. AspNetCore. Components](https://www.nuget.org/packages/Microsoft.AspNetCore.Components)
   * [Microsoft. AspNetCore. Components. Web](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Web)
 
-Par exemple :
+Exemple :
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netstandard2.0-razor-components-library.csproj)]
 
@@ -96,7 +96,7 @@ La prise en charge d’un modèle d’hébergement unique est beaucoup moins cou
 * Ciblez .NET Core 3. x.
 * Ajoutez un `<FrameworkReference>` élément pour le Framework partagé.
 
-Par exemple :
+Exemple :
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-razor-components-library.csproj)]
 
@@ -121,11 +121,11 @@ Si le projet cible .NET Core 3. x, il requiert :
 * `AddRazorSupportForMvc`Propriété MSBuild ayant la valeur `true` .
 * `<FrameworkReference>`Élément pour le Framework partagé.
 
-Le modèle de projet ** Razor bibliothèque de classes** remplit les conditions précédentes pour les projets ciblant .net Core 3. x. Utilisez les instructions suivantes pour votre éditeur.
+Le modèle de projet **Razor bibliothèque de classes** remplit les conditions précédentes pour les projets ciblant .net Core 3. x. Utilisez les instructions suivantes pour votre éditeur.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Utilisez le modèle de projet ** Razor bibliothèque de classes** . La case à cocher **pages de prise en charge et vues** du modèle doit être activée.
+Utilisez le modèle de projet **Razor bibliothèque de classes** . La case à cocher **pages de prise en charge et vues** du modèle doit être activée.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -141,31 +141,31 @@ Aucun modèle de projet n’est pris en charge pour le moment.
 
 ---
 
-Par exemple :
+Exemple :
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-razor-views-pages-library.csproj)]
 
-Si le projet cible .NET Standard à la place, une référence de package [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc) est requise. Le `Microsoft.AspNetCore.Mvc` package a été déplacé dans le Framework partagé dans ASP.NET Core 3,0 et n’est donc plus publié. Par exemple :
+Si le projet cible .NET Standard à la place, une référence de package [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc) est requise. Le `Microsoft.AspNetCore.Mvc` package a été déplacé dans le Framework partagé dans ASP.NET Core 3,0 et n’est donc plus publié. Exemple :
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netstandard2.0-razor-views-pages-library.csproj?highlight=8)]
 
 ### <a name="tag-helpers"></a>Tag Helpers
 
-Le kit de développement logiciel (SDK) doit être utilisé dans un projet qui comprend des [tag Helper](xref:mvc/views/tag-helpers/intro) `Microsoft.NET.Sdk` . Si vous ciblez .NET Core 3. x, ajoutez un `<FrameworkReference>` élément pour le Framework partagé. Par exemple :
+Le kit de développement logiciel (SDK) doit être utilisé dans un projet qui comprend des [tag Helper](xref:mvc/views/tag-helpers/intro) `Microsoft.NET.Sdk` . Si vous ciblez .NET Core 3. x, ajoutez un `<FrameworkReference>` élément pour le Framework partagé. Exemple :
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-basic-library.csproj)]
 
-Si vous ciblez .NET Standard (pour prendre en charge les versions antérieures à ASP.NET Core 3. x), ajoutez une référence de package à [Microsoft. AspNetCore. Mvc. Razor ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor) Le `Microsoft.AspNetCore.Mvc.Razor` package a été déplacé dans le Framework partagé et n’est donc plus publié. Par exemple :
+Si vous ciblez .NET Standard (pour prendre en charge les versions antérieures à ASP.NET Core 3. x), ajoutez une référence de package à [Microsoft. AspNetCore. Mvc. Razor ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor) Le `Microsoft.AspNetCore.Mvc.Razor` package a été déplacé dans le Framework partagé et n’est donc plus publié. Exemple :
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netstandard2.0-tag-helpers-library.csproj)]
 
 ### <a name="view-components"></a>Composants de vue
 
-Un projet qui comprend des [composants de vue](xref:mvc/views/view-components) doit utiliser le kit de `Microsoft.NET.Sdk` développement logiciel (SDK). Si vous ciblez .NET Core 3. x, ajoutez un `<FrameworkReference>` élément pour le Framework partagé. Par exemple :
+Un projet qui comprend des [composants de vue](xref:mvc/views/view-components) doit utiliser le kit de `Microsoft.NET.Sdk` développement logiciel (SDK). Si vous ciblez .NET Core 3. x, ajoutez un `<FrameworkReference>` élément pour le Framework partagé. Exemple :
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-basic-library.csproj)]
 
-Si vous ciblez .NET Standard (pour prendre en charge les versions antérieures à ASP.NET Core 3. x), ajoutez une référence de package à [Microsoft. AspNetCore. Mvc. ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures). Le `Microsoft.AspNetCore.Mvc.ViewFeatures` package a été déplacé dans le Framework partagé et n’est donc plus publié. Par exemple :
+Si vous ciblez .NET Standard (pour prendre en charge les versions antérieures à ASP.NET Core 3. x), ajoutez une référence de package à [Microsoft. AspNetCore. Mvc. ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures). Le `Microsoft.AspNetCore.Mvc.ViewFeatures` package a été déplacé dans le Framework partagé et n’est donc plus publié. Exemple :
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netstandard2.0-view-components-library.csproj)]
 
@@ -217,13 +217,13 @@ Si vous ne pouvez pas réécrire la bibliothèque, procédez comme suit :
 * Ajoutez un `<FrameworkReference>` élément pour le Framework partagé.
 * Utilisez la [directive de préprocesseur #if](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if) avec le symbole de Framework cible approprié pour compiler le code de façon conditionnelle.
 
-Par exemple, les lectures et écritures synchrones sur les flux de requête et de réponse HTTP sont désactivées par défaut à partir de ASP.NET Core 3,0. ASP.NET Core 2,2 prend en charge le comportement synchrone par défaut. Prenons l’exemple d’une bibliothèque middleware dans laquelle les lectures et écritures synchrones doivent être activées là où l’e/s se produit. La bibliothèque doit encadrer le code pour activer les fonctionnalités synchrones dans la directive de préprocesseur appropriée. Par exemple :
+Par exemple, les lectures et écritures synchrones sur les flux de requête et de réponse HTTP sont désactivées par défaut à partir de ASP.NET Core 3,0. ASP.NET Core 2,2 prend en charge le comportement synchrone par défaut. Prenons l’exemple d’une bibliothèque middleware dans laquelle les lectures et écritures synchrones doivent être activées là où l’e/s se produit. La bibliothèque doit encadrer le code pour activer les fonctionnalités synchrones dans la directive de préprocesseur appropriée. Exemple :
 
 [!code-csharp[](target-aspnetcore/samples/middleware.cs?highlight=9-24)]
 
 ## <a name="use-an-api-introduced-in-30"></a>Utiliser une API introduite dans 3,0
 
-Imaginez que vous souhaitez utiliser une API ASP.NET Core qui a été introduite dans ASP.NET Core 3,0. Considérez les questions suivantes :
+Imaginez que vous souhaitez utiliser une API ASP.NET Core qui a été introduite dans ASP.NET Core 3,0. Posez-vous les questions suivantes :
 
 1. La bibliothèque a-t-elle besoin de la nouvelle API ?
 1. La bibliothèque peut-elle implémenter cette fonctionnalité de manière différente ?
@@ -288,7 +288,7 @@ Par exemple, pour ajouter le client d’API Web :
 </Project>
 ```
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:razor-pages/ui-class>
 * <xref:blazor/components/class-libraries>
