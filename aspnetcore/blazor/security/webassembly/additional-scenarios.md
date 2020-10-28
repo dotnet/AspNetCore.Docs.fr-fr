@@ -1,48 +1,48 @@
 ---
-title: ASP.NET Core Blazor WebAssembly des scénarios de sécurité supplémentaires
+title: 'ASP.NET Core :::no-loc(Blazor WebAssembly)::: des scénarios de sécurité supplémentaires'
 author: guardrex
-description: Découvrez comment configurer Blazor WebAssembly pour d’autres scénarios de sécurité.
+description: 'Découvrez comment configurer :::no-loc(Blazor WebAssembly)::: pour d’autres scénarios de sécurité.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/03/2020
+ms.date: 10/27/2020
 no-loc:
-- ASP.NET Core Identity
-- cookie
-- Cookie
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: 50d455b37c51fdd6d3b52b10b3e819eb45526de4
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 055e248abfadd9092c173e4630e56ea69517da3b
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900958"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690581"
 ---
-# <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a><span data-ttu-id="72fbf-103">ASP.NET Core Blazor WebAssembly des scénarios de sécurité supplémentaires</span><span class="sxs-lookup"><span data-stu-id="72fbf-103">ASP.NET Core Blazor WebAssembly additional security scenarios</span></span>
+# <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a><span data-ttu-id="8dd91-103">ASP.NET Core :::no-loc(Blazor WebAssembly)::: des scénarios de sécurité supplémentaires</span><span class="sxs-lookup"><span data-stu-id="8dd91-103">ASP.NET Core :::no-loc(Blazor WebAssembly)::: additional security scenarios</span></span>
 
-<span data-ttu-id="72fbf-104">Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="72fbf-104">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="8dd91-104">Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="8dd91-104">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-## <a name="attach-tokens-to-outgoing-requests"></a><span data-ttu-id="72fbf-105">Attacher des jetons aux demandes sortantes</span><span class="sxs-lookup"><span data-stu-id="72fbf-105">Attach tokens to outgoing requests</span></span>
+## <a name="attach-tokens-to-outgoing-requests"></a><span data-ttu-id="8dd91-105">Attacher des jetons aux demandes sortantes</span><span class="sxs-lookup"><span data-stu-id="8dd91-105">Attach tokens to outgoing requests</span></span>
 
-<span data-ttu-id="72fbf-106"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> est <xref:System.Net.Http.DelegatingHandler> utilisé pour attacher des jetons d’accès aux instances sortantes <xref:System.Net.Http.HttpResponseMessage> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-106"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> is a <xref:System.Net.Http.DelegatingHandler> used to attach access tokens to outgoing <xref:System.Net.Http.HttpResponseMessage> instances.</span></span> <span data-ttu-id="72fbf-107">Les jetons sont acquis à l’aide du <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.IAccessTokenProvider> service, qui est enregistré par le Framework.</span><span class="sxs-lookup"><span data-stu-id="72fbf-107">Tokens are acquired using the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.IAccessTokenProvider> service, which is registered by the framework.</span></span> <span data-ttu-id="72fbf-108">Si un jeton ne peut pas être acquis, une <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> exception est levée.</span><span class="sxs-lookup"><span data-stu-id="72fbf-108">If a token can't be acquired, an <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> is thrown.</span></span> <span data-ttu-id="72fbf-109"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> dispose d’une <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException.Redirect%2A> méthode qui peut être utilisée pour accéder au fournisseur d’identité de l’utilisateur afin d’acquérir un nouveau jeton.</span><span class="sxs-lookup"><span data-stu-id="72fbf-109"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> has a <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException.Redirect%2A> method that can be used to navigate the user to the identity provider to acquire a new token.</span></span>
+<span data-ttu-id="8dd91-106"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> est <xref:System.Net.Http.DelegatingHandler> utilisé pour attacher des jetons d’accès aux instances sortantes <xref:System.Net.Http.HttpResponseMessage> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-106"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> is a <xref:System.Net.Http.DelegatingHandler> used to attach access tokens to outgoing <xref:System.Net.Http.HttpResponseMessage> instances.</span></span> <span data-ttu-id="8dd91-107">Les jetons sont acquis à l’aide du <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.IAccessTokenProvider> service, qui est enregistré par le Framework.</span><span class="sxs-lookup"><span data-stu-id="8dd91-107">Tokens are acquired using the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.IAccessTokenProvider> service, which is registered by the framework.</span></span> <span data-ttu-id="8dd91-108">Si un jeton ne peut pas être acquis, une <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> exception est levée.</span><span class="sxs-lookup"><span data-stu-id="8dd91-108">If a token can't be acquired, an <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> is thrown.</span></span> <span data-ttu-id="8dd91-109"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> dispose d’une <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException.Redirect%2A> méthode qui peut être utilisée pour accéder au fournisseur d’identité de l’utilisateur afin d’acquérir un nouveau jeton.</span><span class="sxs-lookup"><span data-stu-id="8dd91-109"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> has a <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException.Redirect%2A> method that can be used to navigate the user to the identity provider to acquire a new token.</span></span>
 
-<span data-ttu-id="72fbf-110">Pour plus de commodité, le Framework fournit l' <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> adresse préconfigurée avec l’adresse de base de l’application en tant qu’URL autorisée.</span><span class="sxs-lookup"><span data-stu-id="72fbf-110">For convenience, the framework provides the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> preconfigured with the app's base address as an authorized URL.</span></span> <span data-ttu-id="72fbf-111">**Les jetons d’accès sont ajoutés uniquement lorsque l’URI de la demande se trouve dans l’URI de base de l’application.**</span><span class="sxs-lookup"><span data-stu-id="72fbf-111">**Access tokens are only added when the request URI is within the app's base URI.**</span></span> <span data-ttu-id="72fbf-112">Lorsque les URI de demande sortants ne se trouvent pas dans l’URI de base de l’application, utilisez une [ `AuthorizationMessageHandler` classe personnalisée (*recommandé*)](#custom-authorizationmessagehandler-class) ou [configurez le `AuthorizationMessageHandler` ](#configure-authorizationmessagehandler).</span><span class="sxs-lookup"><span data-stu-id="72fbf-112">When outgoing request URIs aren't within the app's base URI, use a [custom `AuthorizationMessageHandler` class (*recommended*)](#custom-authorizationmessagehandler-class) or [configure the `AuthorizationMessageHandler`](#configure-authorizationmessagehandler).</span></span>
+<span data-ttu-id="8dd91-110">Pour plus de commodité, le Framework fournit l' <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> adresse préconfigurée avec l’adresse de base de l’application en tant qu’URL autorisée.</span><span class="sxs-lookup"><span data-stu-id="8dd91-110">For convenience, the framework provides the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> preconfigured with the app's base address as an authorized URL.</span></span> <span data-ttu-id="8dd91-111">**Les jetons d’accès sont ajoutés uniquement lorsque l’URI de la demande se trouve dans l’URI de base de l’application.**</span><span class="sxs-lookup"><span data-stu-id="8dd91-111">**Access tokens are only added when the request URI is within the app's base URI.**</span></span> <span data-ttu-id="8dd91-112">Lorsque les URI de demande sortants ne se trouvent pas dans l’URI de base de l’application, utilisez une [ `AuthorizationMessageHandler` classe personnalisée ( *recommandé* )](#custom-authorizationmessagehandler-class) ou [configurez le `AuthorizationMessageHandler`](#configure-authorizationmessagehandler).</span><span class="sxs-lookup"><span data-stu-id="8dd91-112">When outgoing request URIs aren't within the app's base URI, use a [custom `AuthorizationMessageHandler` class ( *recommended* )](#custom-authorizationmessagehandler-class) or [configure the `AuthorizationMessageHandler`](#configure-authorizationmessagehandler).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="72fbf-113">Outre la configuration de l’application cliente pour l’accès à l’API serveur, l’API serveur doit également autoriser les requêtes Cross-Origin (CORS) lorsque le client et le serveur ne se trouvent pas à la même adresse de base.</span><span class="sxs-lookup"><span data-stu-id="72fbf-113">In addition to the client app configuration for server API access, the server API must also allow cross-origin requests (CORS) when the client and the server don't reside at the same base address.</span></span> <span data-ttu-id="72fbf-114">Pour plus d’informations sur la configuration CORS côté serveur, consultez la section relative au [partage des ressources Cross-Origin (cors)](#cross-origin-resource-sharing-cors) plus loin dans cet article.</span><span class="sxs-lookup"><span data-stu-id="72fbf-114">For more information on server-side CORS configuration, see the [Cross-origin resource sharing (CORS)](#cross-origin-resource-sharing-cors) section later in this article.</span></span>
+> <span data-ttu-id="8dd91-113">Outre la configuration de l’application cliente pour l’accès à l’API serveur, l’API serveur doit également autoriser les requêtes Cross-Origin (CORS) lorsque le client et le serveur ne se trouvent pas à la même adresse de base.</span><span class="sxs-lookup"><span data-stu-id="8dd91-113">In addition to the client app configuration for server API access, the server API must also allow cross-origin requests (CORS) when the client and the server don't reside at the same base address.</span></span> <span data-ttu-id="8dd91-114">Pour plus d’informations sur la configuration CORS côté serveur, consultez la section relative au [partage des ressources Cross-Origin (cors)](#cross-origin-resource-sharing-cors) plus loin dans cet article.</span><span class="sxs-lookup"><span data-stu-id="8dd91-114">For more information on server-side CORS configuration, see the [Cross-origin resource sharing (CORS)](#cross-origin-resource-sharing-cors) section later in this article.</span></span>
 
-<span data-ttu-id="72fbf-115">Dans l’exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="72fbf-115">In the following example:</span></span>
+<span data-ttu-id="8dd91-115">Dans l’exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="8dd91-115">In the following example:</span></span>
 
-* <span data-ttu-id="72fbf-116"><xref:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient%2A> Ajoute <xref:System.Net.Http.IHttpClientFactory> des services connexes à la collection de services et configure un nommé <xref:System.Net.Http.HttpClient> ( `ServerAPI` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-116"><xref:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient%2A> adds <xref:System.Net.Http.IHttpClientFactory> and related services to the service collection and configures a named <xref:System.Net.Http.HttpClient> (`ServerAPI`).</span></span> <span data-ttu-id="72fbf-117"><xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> adresse de base de l’URI de la ressource lors de l’envoi des demandes.</span><span class="sxs-lookup"><span data-stu-id="72fbf-117"><xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> is the base address of the resource URI when sending requests.</span></span> <span data-ttu-id="72fbf-118"><xref:System.Net.Http.IHttpClientFactory> est fourni par le [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) package NuGet.</span><span class="sxs-lookup"><span data-stu-id="72fbf-118"><xref:System.Net.Http.IHttpClientFactory> is provided by the [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) NuGet package.</span></span>
-* <span data-ttu-id="72fbf-119"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> est <xref:System.Net.Http.DelegatingHandler> utilisé pour attacher des jetons d’accès aux instances sortantes <xref:System.Net.Http.HttpResponseMessage> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-119"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> is the <xref:System.Net.Http.DelegatingHandler> used to attach access tokens to outgoing <xref:System.Net.Http.HttpResponseMessage> instances.</span></span> <span data-ttu-id="72fbf-120">Les jetons d’accès sont ajoutés uniquement lorsque l’URI de la demande se trouve dans l’URI de base de l’application.</span><span class="sxs-lookup"><span data-stu-id="72fbf-120">Access tokens are only added when the request URI is within the app's base URI.</span></span>
-* <span data-ttu-id="72fbf-121"><xref:System.Net.Http.IHttpClientFactory.CreateClient%2A?displayProperty=nameWithType> crée et configure une <xref:System.Net.Http.HttpClient> instance pour les demandes sortantes à l’aide de la configuration qui correspond au nommé <xref:System.Net.Http.HttpClient> ( `ServerAPI` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-121"><xref:System.Net.Http.IHttpClientFactory.CreateClient%2A?displayProperty=nameWithType> creates and configures an <xref:System.Net.Http.HttpClient> instance for outgoing requests using the configuration that corresponds to the named <xref:System.Net.Http.HttpClient> (`ServerAPI`).</span></span>
+* <span data-ttu-id="8dd91-116"><xref:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient%2A> Ajoute <xref:System.Net.Http.IHttpClientFactory> des services connexes à la collection de services et configure un nommé <xref:System.Net.Http.HttpClient> ( `ServerAPI` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-116"><xref:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient%2A> adds <xref:System.Net.Http.IHttpClientFactory> and related services to the service collection and configures a named <xref:System.Net.Http.HttpClient> (`ServerAPI`).</span></span> <span data-ttu-id="8dd91-117"><xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> adresse de base de l’URI de la ressource lors de l’envoi des demandes.</span><span class="sxs-lookup"><span data-stu-id="8dd91-117"><xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> is the base address of the resource URI when sending requests.</span></span> <span data-ttu-id="8dd91-118"><xref:System.Net.Http.IHttpClientFactory> est fourni par le [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) package NuGet.</span><span class="sxs-lookup"><span data-stu-id="8dd91-118"><xref:System.Net.Http.IHttpClientFactory> is provided by the [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) NuGet package.</span></span>
+* <span data-ttu-id="8dd91-119"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> est <xref:System.Net.Http.DelegatingHandler> utilisé pour attacher des jetons d’accès aux instances sortantes <xref:System.Net.Http.HttpResponseMessage> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-119"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> is the <xref:System.Net.Http.DelegatingHandler> used to attach access tokens to outgoing <xref:System.Net.Http.HttpResponseMessage> instances.</span></span> <span data-ttu-id="8dd91-120">Les jetons d’accès sont ajoutés uniquement lorsque l’URI de la demande se trouve dans l’URI de base de l’application.</span><span class="sxs-lookup"><span data-stu-id="8dd91-120">Access tokens are only added when the request URI is within the app's base URI.</span></span>
+* <span data-ttu-id="8dd91-121"><xref:System.Net.Http.IHttpClientFactory.CreateClient%2A?displayProperty=nameWithType> crée et configure une <xref:System.Net.Http.HttpClient> instance pour les demandes sortantes à l’aide de la configuration qui correspond au nommé <xref:System.Net.Http.HttpClient> ( `ServerAPI` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-121"><xref:System.Net.Http.IHttpClientFactory.CreateClient%2A?displayProperty=nameWithType> creates and configures an <xref:System.Net.Http.HttpClient> instance for outgoing requests using the configuration that corresponds to the named <xref:System.Net.Http.HttpClient> (`ServerAPI`).</span></span>
 
 ```csharp
 using System.Net.Http;
@@ -58,9 +58,9 @@ builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
     .CreateClient("ServerAPI"));
 ```
 
-<span data-ttu-id="72fbf-122">Pour une Blazor application basée sur le Blazor WebAssembly modèle de projet hébergé, les URI de requête se trouvent dans l’URI de base de l’application par défaut.</span><span class="sxs-lookup"><span data-stu-id="72fbf-122">For a Blazor app based on the Blazor WebAssembly Hosted project template, request URIs are within the app's base URI by default.</span></span> <span data-ttu-id="72fbf-123">Par conséquent, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> ( `new Uri(builder.HostEnvironment.BaseAddress)` ) est assigné au <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> dans une application générée à partir du modèle de projet.</span><span class="sxs-lookup"><span data-stu-id="72fbf-123">Therefore, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> in an app generated from the project template.</span></span>
+<span data-ttu-id="8dd91-122">Pour une :::no-loc(Blazor)::: application basée sur le :::no-loc(Blazor WebAssembly)::: modèle de projet hébergé, les URI de requête se trouvent dans l’URI de base de l’application par défaut.</span><span class="sxs-lookup"><span data-stu-id="8dd91-122">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, request URIs are within the app's base URI by default.</span></span> <span data-ttu-id="8dd91-123">Par conséquent, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> ( `new Uri(builder.HostEnvironment.BaseAddress)` ) est assigné au <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> dans une application générée à partir du modèle de projet.</span><span class="sxs-lookup"><span data-stu-id="8dd91-123">Therefore, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> in an app generated from the project template.</span></span>
 
-<span data-ttu-id="72fbf-124">Le configuré <xref:System.Net.Http.HttpClient> est utilisé pour effectuer des demandes autorisées à l’aide du [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) modèle :</span><span class="sxs-lookup"><span data-stu-id="72fbf-124">The configured <xref:System.Net.Http.HttpClient> is used to make authorized requests using the [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) pattern:</span></span>
+<span data-ttu-id="8dd91-124">Le configuré <xref:System.Net.Http.HttpClient> est utilisé pour effectuer des demandes autorisées à l’aide du [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) modèle :</span><span class="sxs-lookup"><span data-stu-id="8dd91-124">The configured <xref:System.Net.Http.HttpClient> is used to make authorized requests using the [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) pattern:</span></span>
 
 ```razor
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
@@ -86,11 +86,11 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-### <a name="custom-authorizationmessagehandler-class"></a><span data-ttu-id="72fbf-125">`AuthorizationMessageHandler`Classe personnalisée</span><span class="sxs-lookup"><span data-stu-id="72fbf-125">Custom `AuthorizationMessageHandler` class</span></span>
+### <a name="custom-authorizationmessagehandler-class"></a><span data-ttu-id="8dd91-125">`AuthorizationMessageHandler`Classe personnalisée</span><span class="sxs-lookup"><span data-stu-id="8dd91-125">Custom `AuthorizationMessageHandler` class</span></span>
 
-<span data-ttu-id="72fbf-126">*Ce guide de cette section est recommandé pour les applications clientes qui effectuent des requêtes sortantes vers des URI qui ne se trouvent pas dans l’URI de base de l’application.*</span><span class="sxs-lookup"><span data-stu-id="72fbf-126">*This guidance in this section is recommended for client apps that make outgoing requests to URIs that aren't within the app's base URI.*</span></span>
+<span data-ttu-id="8dd91-126">*Ce guide de cette section est recommandé pour les applications clientes qui effectuent des requêtes sortantes vers des URI qui ne se trouvent pas dans l’URI de base de l’application.*</span><span class="sxs-lookup"><span data-stu-id="8dd91-126">*This guidance in this section is recommended for client apps that make outgoing requests to URIs that aren't within the app's base URI.*</span></span>
 
-<span data-ttu-id="72fbf-127">Dans l’exemple suivant, une classe personnalisée étend <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> pour une utilisation en tant que <xref:System.Net.Http.DelegatingHandler> pour un <xref:System.Net.Http.HttpClient> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-127">In the following example, a custom class extends <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> for use as the <xref:System.Net.Http.DelegatingHandler> for an <xref:System.Net.Http.HttpClient>.</span></span> <span data-ttu-id="72fbf-128"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> Configure ce gestionnaire pour autoriser les requêtes HTTP sortantes à l’aide d’un jeton d’accès.</span><span class="sxs-lookup"><span data-stu-id="72fbf-128"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> configures this handler to authorize outbound HTTP requests using an access token.</span></span> <span data-ttu-id="72fbf-129">Le jeton d’accès est attaché uniquement si au moins l’une des URL autorisées est une base de l’URI de la demande ( <xref:System.Net.Http.HttpRequestMessage.RequestUri?displayProperty=nameWithType> ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-129">The access token is only attached if at least one of the authorized URLs is a base of the request URI (<xref:System.Net.Http.HttpRequestMessage.RequestUri?displayProperty=nameWithType>).</span></span>
+<span data-ttu-id="8dd91-127">Dans l’exemple suivant, une classe personnalisée étend <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> pour une utilisation en tant que <xref:System.Net.Http.DelegatingHandler> pour un <xref:System.Net.Http.HttpClient> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-127">In the following example, a custom class extends <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> for use as the <xref:System.Net.Http.DelegatingHandler> for an <xref:System.Net.Http.HttpClient>.</span></span> <span data-ttu-id="8dd91-128"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> Configure ce gestionnaire pour autoriser les requêtes HTTP sortantes à l’aide d’un jeton d’accès.</span><span class="sxs-lookup"><span data-stu-id="8dd91-128"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> configures this handler to authorize outbound HTTP requests using an access token.</span></span> <span data-ttu-id="8dd91-129">Le jeton d’accès est attaché uniquement si au moins l’une des URL autorisées est une base de l’URI de la demande ( <xref:System.Net.Http.HttpRequestMessage.RequestUri?displayProperty=nameWithType> ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-129">The access token is only attached if at least one of the authorized URLs is a base of the request URI (<xref:System.Net.Http.HttpRequestMessage.RequestUri?displayProperty=nameWithType>).</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Components;
@@ -109,7 +109,7 @@ public class CustomAuthorizationMessageHandler : AuthorizationMessageHandler
 }
 ```
 
-<span data-ttu-id="72fbf-130">Dans `Program.Main` ( `Program.cs` ), `CustomAuthorizationMessageHandler` est inscrit en tant que service délimitéd et est configuré en tant que <xref:System.Net.Http.DelegatingHandler> pour les instances sortantes <xref:System.Net.Http.HttpResponseMessage> effectuées par un nommé <xref:System.Net.Http.HttpClient> :</span><span class="sxs-lookup"><span data-stu-id="72fbf-130">In `Program.Main` (`Program.cs`), `CustomAuthorizationMessageHandler` is registered as a scoped service and is configured as the <xref:System.Net.Http.DelegatingHandler> for outgoing <xref:System.Net.Http.HttpResponseMessage> instances made by a named <xref:System.Net.Http.HttpClient>:</span></span>
+<span data-ttu-id="8dd91-130">Dans `Program.Main` ( `Program.cs` ), `CustomAuthorizationMessageHandler` est inscrit en tant que service délimitéd et est configuré en tant que <xref:System.Net.Http.DelegatingHandler> pour les instances sortantes <xref:System.Net.Http.HttpResponseMessage> effectuées par un nommé <xref:System.Net.Http.HttpClient> :</span><span class="sxs-lookup"><span data-stu-id="8dd91-130">In `Program.Main` (`Program.cs`), `CustomAuthorizationMessageHandler` is registered as a scoped service and is configured as the <xref:System.Net.Http.DelegatingHandler> for outgoing <xref:System.Net.Http.HttpResponseMessage> instances made by a named <xref:System.Net.Http.HttpClient>:</span></span>
 
 ```csharp
 builder.Services.AddScoped<CustomAuthorizationMessageHandler>();
@@ -119,9 +119,9 @@ builder.Services.AddHttpClient("ServerAPI",
     .AddHttpMessageHandler<CustomAuthorizationMessageHandler>();
 ```
 
-<span data-ttu-id="72fbf-131">Pour une Blazor application basée sur le Blazor WebAssembly modèle de projet hébergé, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> ( `new Uri(builder.HostEnvironment.BaseAddress)` ) est assigné à <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> par défaut.</span><span class="sxs-lookup"><span data-stu-id="72fbf-131">For a Blazor app based on the Blazor WebAssembly Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
+<span data-ttu-id="8dd91-131">Pour une :::no-loc(Blazor)::: application basée sur le :::no-loc(Blazor WebAssembly)::: modèle de projet hébergé, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> ( `new Uri(builder.HostEnvironment.BaseAddress)` ) est assigné à <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> par défaut.</span><span class="sxs-lookup"><span data-stu-id="8dd91-131">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
 
-<span data-ttu-id="72fbf-132">Le configuré <xref:System.Net.Http.HttpClient> est utilisé pour effectuer des demandes autorisées à l’aide du [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) modèle.</span><span class="sxs-lookup"><span data-stu-id="72fbf-132">The configured <xref:System.Net.Http.HttpClient> is used to make authorized requests using the [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) pattern.</span></span> <span data-ttu-id="72fbf-133">Lorsque le client est créé avec <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A> ( [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) Package), <xref:System.Net.Http.HttpClient> est fourni les instances qui incluent des jetons d’accès lors de l’exécution de requêtes à l’API serveur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-133">Where the client is created with <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A> ([`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) package), the <xref:System.Net.Http.HttpClient> is supplied instances that include access tokens when making requests to the server API.</span></span> <span data-ttu-id="72fbf-134">Si l’URI de la demande est un URI relatif, comme c’est le cas dans l’exemple suivant ( `ExampleAPIMethod` ), il est combiné avec le <xref:System.Net.Http.HttpClient.BaseAddress> lorsque l’application cliente effectue la requête :</span><span class="sxs-lookup"><span data-stu-id="72fbf-134">If the request URI is a relative URI, as it is in the following example (`ExampleAPIMethod`), it's combined with the <xref:System.Net.Http.HttpClient.BaseAddress> when the client app makes the request:</span></span>
+<span data-ttu-id="8dd91-132">Le configuré <xref:System.Net.Http.HttpClient> est utilisé pour effectuer des demandes autorisées à l’aide du [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) modèle.</span><span class="sxs-lookup"><span data-stu-id="8dd91-132">The configured <xref:System.Net.Http.HttpClient> is used to make authorized requests using the [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) pattern.</span></span> <span data-ttu-id="8dd91-133">Lorsque le client est créé avec <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A> ( [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) Package), <xref:System.Net.Http.HttpClient> est fourni les instances qui incluent des jetons d’accès lors de l’exécution de requêtes à l’API serveur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-133">Where the client is created with <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A> ([`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) package), the <xref:System.Net.Http.HttpClient> is supplied instances that include access tokens when making requests to the server API.</span></span> <span data-ttu-id="8dd91-134">Si l’URI de la demande est un URI relatif, comme c’est le cas dans l’exemple suivant ( `ExampleAPIMethod` ), il est combiné avec le <xref:System.Net.Http.HttpClient.BaseAddress> lorsque l’application cliente effectue la requête :</span><span class="sxs-lookup"><span data-stu-id="8dd91-134">If the request URI is a relative URI, as it is in the following example (`ExampleAPIMethod`), it's combined with the <xref:System.Net.Http.HttpClient.BaseAddress> when the client app makes the request:</span></span>
 
 ```razor
 @inject IHttpClientFactory ClientFactory
@@ -148,11 +148,11 @@ builder.Services.AddHttpClient("ServerAPI",
 }
 ```
 
-### <a name="configure-authorizationmessagehandler"></a><span data-ttu-id="72fbf-135">Configurer `AuthorizationMessageHandler`</span><span class="sxs-lookup"><span data-stu-id="72fbf-135">Configure `AuthorizationMessageHandler`</span></span>
+### <a name="configure-authorizationmessagehandler"></a><span data-ttu-id="8dd91-135">Configurer `AuthorizationMessageHandler`</span><span class="sxs-lookup"><span data-stu-id="8dd91-135">Configure `AuthorizationMessageHandler`</span></span>
 
-<span data-ttu-id="72fbf-136"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> peut être configuré avec des URL, des étendues et une URL de retour autorisées à l’aide de la <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> méthode.</span><span class="sxs-lookup"><span data-stu-id="72fbf-136"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> can be configured with authorized URLs, scopes, and a return URL using the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> method.</span></span> <span data-ttu-id="72fbf-137"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> configure le gestionnaire pour autoriser les requêtes HTTP sortantes à l’aide d’un jeton d’accès.</span><span class="sxs-lookup"><span data-stu-id="72fbf-137"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> configures the handler to authorize outbound HTTP requests using an access token.</span></span> <span data-ttu-id="72fbf-138">Le jeton d’accès est attaché uniquement si au moins l’une des URL autorisées est une base de l’URI de la demande ( <xref:System.Net.Http.HttpRequestMessage.RequestUri?displayProperty=nameWithType> ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-138">The access token is only attached if at least one of the authorized URLs is a base of the request URI (<xref:System.Net.Http.HttpRequestMessage.RequestUri?displayProperty=nameWithType>).</span></span> <span data-ttu-id="72fbf-139">Si l’URI de la demande est un URI relatif, il est associé au <xref:System.Net.Http.HttpClient.BaseAddress> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-139">If the request URI is a relative URI, it's combined with the <xref:System.Net.Http.HttpClient.BaseAddress>.</span></span>
+<span data-ttu-id="8dd91-136"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> peut être configuré avec des URL, des étendues et une URL de retour autorisées à l’aide de la <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> méthode.</span><span class="sxs-lookup"><span data-stu-id="8dd91-136"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> can be configured with authorized URLs, scopes, and a return URL using the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> method.</span></span> <span data-ttu-id="8dd91-137"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> configure le gestionnaire pour autoriser les requêtes HTTP sortantes à l’aide d’un jeton d’accès.</span><span class="sxs-lookup"><span data-stu-id="8dd91-137"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> configures the handler to authorize outbound HTTP requests using an access token.</span></span> <span data-ttu-id="8dd91-138">Le jeton d’accès est attaché uniquement si au moins l’une des URL autorisées est une base de l’URI de la demande ( <xref:System.Net.Http.HttpRequestMessage.RequestUri?displayProperty=nameWithType> ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-138">The access token is only attached if at least one of the authorized URLs is a base of the request URI (<xref:System.Net.Http.HttpRequestMessage.RequestUri?displayProperty=nameWithType>).</span></span> <span data-ttu-id="8dd91-139">Si l’URI de la demande est un URI relatif, il est associé au <xref:System.Net.Http.HttpClient.BaseAddress> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-139">If the request URI is a relative URI, it's combined with the <xref:System.Net.Http.HttpClient.BaseAddress>.</span></span>
 
-<span data-ttu-id="72fbf-140">Dans l’exemple suivant, <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> configure un <xref:System.Net.Http.HttpClient> dans `Program.Main` ( `Program.cs` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-140">In the following example, <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> configures an <xref:System.Net.Http.HttpClient> in `Program.Main` (`Program.cs`):</span></span>
+<span data-ttu-id="8dd91-140">Dans l’exemple suivant, <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> configure un <xref:System.Net.Http.HttpClient> dans `Program.Main` ( `Program.cs` ) :</span><span class="sxs-lookup"><span data-stu-id="8dd91-140">In the following example, <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> configures an <xref:System.Net.Http.HttpClient> in `Program.Main` (`Program.cs`):</span></span>
 
 ```csharp
 using System.Net.Http;
@@ -170,138 +170,16 @@ builder.Services.AddScoped(sp => new HttpClient(
     });
 ```
 
-<span data-ttu-id="72fbf-141">Pour une Blazor application basée sur le Blazor WebAssembly modèle de projet hébergé, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> est assigné aux éléments suivants par défaut :</span><span class="sxs-lookup"><span data-stu-id="72fbf-141">For a Blazor app based on the Blazor WebAssembly Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> is assigned to the following by default:</span></span>
+<span data-ttu-id="8dd91-141">Pour une :::no-loc(Blazor)::: application basée sur le :::no-loc(Blazor WebAssembly)::: modèle de projet hébergé, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> est assigné aux éléments suivants par défaut :</span><span class="sxs-lookup"><span data-stu-id="8dd91-141">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> is assigned to the following by default:</span></span>
 
-* <span data-ttu-id="72fbf-142"><xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>( `new Uri(builder.HostEnvironment.BaseAddress)` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-142">The <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`).</span></span>
-* <span data-ttu-id="72fbf-143">URL du `authorizedUrls` tableau.</span><span class="sxs-lookup"><span data-stu-id="72fbf-143">A URL of the `authorizedUrls` array.</span></span>
+* <span data-ttu-id="8dd91-142"><xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>( `new Uri(builder.HostEnvironment.BaseAddress)` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-142">The <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`).</span></span>
+* <span data-ttu-id="8dd91-143">URL du `authorizedUrls` tableau.</span><span class="sxs-lookup"><span data-stu-id="8dd91-143">A URL of the `authorizedUrls` array.</span></span>
 
-### <a name="graph-api-example"></a><span data-ttu-id="72fbf-144">Exemple de API Graph</span><span class="sxs-lookup"><span data-stu-id="72fbf-144">Graph API example</span></span>
+## <a name="typed-httpclient"></a><span data-ttu-id="8dd91-144">Tapé `HttpClient`</span><span class="sxs-lookup"><span data-stu-id="8dd91-144">Typed `HttpClient`</span></span>
 
-<span data-ttu-id="72fbf-145">Dans l’exemple suivant, un nommé <xref:System.Net.Http.HttpClient> pour API Graph est utilisé pour obtenir le numéro de téléphone mobile d’un utilisateur pour traiter un appel.</span><span class="sxs-lookup"><span data-stu-id="72fbf-145">In the following example, a named <xref:System.Net.Http.HttpClient> for Graph API is used to obtain a user's mobile phone number to process a call.</span></span> <span data-ttu-id="72fbf-146">Après avoir ajouté l’autorisation Microsoft Graph API `User.Read` dans la zone AAD de l’portail Azure, l’étendue est configurée pour le client nommé dans l’application autonome ou l' *`Client`* application d’une solution hébergée Blazor .</span><span class="sxs-lookup"><span data-stu-id="72fbf-146">After adding the Microsoft Graph API `User.Read` permission in the AAD area of the Azure portal, the scope is configured for the named client in the standalone app or *`Client`* app of a hosted Blazor solution.</span></span>
+<span data-ttu-id="8dd91-145">Vous pouvez définir un client typé qui gère tous les problèmes d’acquisition de jetons et HTTP dans une même classe.</span><span class="sxs-lookup"><span data-stu-id="8dd91-145">A typed client can be defined that handles all of the HTTP and token acquisition concerns within a single class.</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="72fbf-147">L’exemple de cette section obtient API Graph données de l’utilisateur dans le *Code du composant*.</span><span class="sxs-lookup"><span data-stu-id="72fbf-147">The example in this section obtains Graph API data for the user in *component code*.</span></span> <span data-ttu-id="72fbf-148">Pour créer des revendications d’utilisateur à partir de API Graph, consultez les ressources suivantes :</span><span class="sxs-lookup"><span data-stu-id="72fbf-148">To create user claims from Graph API, see the following resources:</span></span>
->
-> * <span data-ttu-id="72fbf-149">[Personnaliser la section utilisateur](#customize-the-user)</span><span class="sxs-lookup"><span data-stu-id="72fbf-149">[Customize the user](#customize-the-user) section</span></span>
-> * <xref:blazor/security/webassembly/aad-groups-roles>
-
-<span data-ttu-id="72fbf-150">`GraphAuthorizationMessageHandler.cs`:</span><span class="sxs-lookup"><span data-stu-id="72fbf-150">`GraphAuthorizationMessageHandler.cs`:</span></span>
-
-```csharp
-public class GraphAPIAuthorizationMessageHandler : AuthorizationMessageHandler
-{
-    public GraphAPIAuthorizationMessageHandler(IAccessTokenProvider provider,
-        NavigationManager navigationManager)
-        : base(provider, navigationManager)
-    {
-        ConfigureHandler(
-            authorizedUrls: new[] { "https://graph.microsoft.com" },
-            scopes: new[] { "https://graph.microsoft.com/User.Read" });
-    }
-}
-```
-
-<span data-ttu-id="72fbf-151">Dans `Program.Main` ( `Program.cs` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-151">In `Program.Main` (`Program.cs`):</span></span>
-
-```csharp
-builder.Services.AddScoped<GraphAPIAuthorizationMessageHandler>();
-
-builder.Services.AddHttpClient("GraphAPI",
-        client => client.BaseAddress = new Uri("https://graph.microsoft.com"))
-    .AddHttpMessageHandler<GraphAPIAuthorizationMessageHandler>();
-```
-
-<span data-ttu-id="72fbf-152">Dans un Razor composant ( `Pages/CallUser.razor` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-152">In a Razor component (`Pages/CallUser.razor`):</span></span>
-
-```razor
-@page "/CallUser"
-@using System.ComponentModel.DataAnnotations
-@using System.Text.Json.Serialization
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@using Microsoft.Extensions.Logging
-@inject IAccessTokenProvider TokenProvider
-@inject IHttpClientFactory ClientFactory
-@inject ILogger<CallUser> Logger
-@inject ICallProcessor CallProcessor
-
-<h3>Call User</h3>
-
-<EditForm Model="@callInfo" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-
-    <p>
-        <label>
-            Message:
-            <InputTextArea @bind-Value="callInfo.Message" />
-        </label>
-    </p>
-
-    <button type="submit">Place call</button>
-
-    <p>
-        @formStatus
-    </p>
-</EditForm>
-
-@code {
-    private string formStatus;
-    private CallInfo callInfo = new CallInfo();
-
-    private async Task HandleValidSubmit()
-    {
-        var tokenResult = await TokenProvider.RequestAccessToken(
-            new AccessTokenRequestOptions
-            {
-                Scopes = new[] { "https://graph.microsoft.com/User.Read" }
-            });
-
-        if (tokenResult.TryGetToken(out var token))
-        {
-            var client = ClientFactory.CreateClient("GraphAPI");
-
-            var userInfo = await client.GetFromJsonAsync<UserInfo>("v1.0/me");
-
-            if (userInfo != null)
-            {
-                CallProcessor.Send(userInfo.MobilePhone, callInfo.Message);
-
-                formStatus = "Form successfully processed.";
-                Logger.LogInformation(
-                    $"Form successfully processed at {DateTime.UtcNow}. " +
-                    $"Mobile Phone: {userInfo.MobilePhone}");
-            }
-        }
-        else
-        {
-            formStatus = "There was a problem processing the form.";
-            Logger.LogError("Token failure");
-        }
-    }
-
-    private class CallInfo
-    {
-        [Required]
-        [StringLength(1000, ErrorMessage = "Message too long (1,000 char limit)")]
-        public string Message { get; set; }
-    }
-
-    private class UserInfo
-    {
-        [JsonPropertyName("mobilePhone")]
-        public string MobilePhone { get; set; }
-    }
-}
-```
-
-> [!NOTE]
-> <span data-ttu-id="72fbf-153">Dans l’exemple précédent, le développeur implémente le personnalisé `ICallProcessor` ( `CallProcessor` ) dans la file d’attente, puis place les appels automatisés.</span><span class="sxs-lookup"><span data-stu-id="72fbf-153">In the preceding example, the developer implements the custom `ICallProcessor` (`CallProcessor`) to queue and then place automated calls.</span></span>
-
-## <a name="typed-httpclient"></a><span data-ttu-id="72fbf-154">Tapé `HttpClient`</span><span class="sxs-lookup"><span data-stu-id="72fbf-154">Typed `HttpClient`</span></span>
-
-<span data-ttu-id="72fbf-155">Vous pouvez définir un client typé qui gère tous les problèmes d’acquisition de jetons et HTTP dans une même classe.</span><span class="sxs-lookup"><span data-stu-id="72fbf-155">A typed client can be defined that handles all of the HTTP and token acquisition concerns within a single class.</span></span>
-
-<span data-ttu-id="72fbf-156">`WeatherForecastClient.cs`:</span><span class="sxs-lookup"><span data-stu-id="72fbf-156">`WeatherForecastClient.cs`:</span></span>
+<span data-ttu-id="8dd91-146">`WeatherForecastClient.cs`:</span><span class="sxs-lookup"><span data-stu-id="8dd91-146">`WeatherForecastClient.cs`:</span></span>
 
 ```csharp
 using System.Net.Http;
@@ -338,9 +216,9 @@ public class WeatherForecastClient
 }
 ```
 
-<span data-ttu-id="72fbf-157">L’espace réservé `{APP ASSEMBLY}` est le nom de l’assembly de l’application (par exemple, `using static BlazorSample.Data;` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-157">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `using static BlazorSample.Data;`).</span></span>
+<span data-ttu-id="8dd91-147">L’espace réservé `{APP ASSEMBLY}` est le nom de l’assembly de l’application (par exemple, `using static :::no-loc(Blazor):::Sample.Data;` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-147">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `using static :::no-loc(Blazor):::Sample.Data;`).</span></span>
 
-<span data-ttu-id="72fbf-158">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="72fbf-158">`Program.Main` (`Program.cs`):</span></span>
+<span data-ttu-id="8dd91-148">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="8dd91-148">`Program.Main` (`Program.cs`):</span></span>
 
 ```csharp
 using System.Net.Http;
@@ -353,9 +231,9 @@ builder.Services.AddHttpClient<WeatherForecastClient>(
     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 ```
 
-<span data-ttu-id="72fbf-159">Pour une Blazor application basée sur le Blazor WebAssembly modèle de projet hébergé, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> ( `new Uri(builder.HostEnvironment.BaseAddress)` ) est assigné à <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> par défaut.</span><span class="sxs-lookup"><span data-stu-id="72fbf-159">For a Blazor app based on the Blazor WebAssembly Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
+<span data-ttu-id="8dd91-149">Pour une :::no-loc(Blazor)::: application basée sur le :::no-loc(Blazor WebAssembly)::: modèle de projet hébergé, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> ( `new Uri(builder.HostEnvironment.BaseAddress)` ) est assigné à <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> par défaut.</span><span class="sxs-lookup"><span data-stu-id="8dd91-149">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
 
-<span data-ttu-id="72fbf-160">`FetchData` composant ( `Pages/FetchData.razor` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-160">`FetchData` component (`Pages/FetchData.razor`):</span></span>
+<span data-ttu-id="8dd91-150">`FetchData` composant ( `Pages/FetchData.razor` ) :</span><span class="sxs-lookup"><span data-stu-id="8dd91-150">`FetchData` component (`Pages/FetchData.razor`):</span></span>
 
 ```razor
 @inject WeatherForecastClient Client
@@ -368,11 +246,11 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-## <a name="configure-the-httpclient-handler"></a><span data-ttu-id="72fbf-161">Configurer le `HttpClient` Gestionnaire</span><span class="sxs-lookup"><span data-stu-id="72fbf-161">Configure the `HttpClient` handler</span></span>
+## <a name="configure-the-httpclient-handler"></a><span data-ttu-id="8dd91-151">Configurer le `HttpClient` Gestionnaire</span><span class="sxs-lookup"><span data-stu-id="8dd91-151">Configure the `HttpClient` handler</span></span>
 
-<span data-ttu-id="72fbf-162">Le gestionnaire peut être configuré avec <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> pour les requêtes http sortantes.</span><span class="sxs-lookup"><span data-stu-id="72fbf-162">The handler can be further configured with <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> for outbound HTTP requests.</span></span>
+<span data-ttu-id="8dd91-152">Le gestionnaire peut être configuré avec <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> pour les requêtes http sortantes.</span><span class="sxs-lookup"><span data-stu-id="8dd91-152">The handler can be further configured with <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> for outbound HTTP requests.</span></span>
 
-<span data-ttu-id="72fbf-163">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="72fbf-163">`Program.Main` (`Program.cs`):</span></span>
+<span data-ttu-id="8dd91-153">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="8dd91-153">`Program.Main` (`Program.cs`):</span></span>
 
 ```csharp
 builder.Services.AddHttpClient<WeatherForecastClient>(
@@ -383,27 +261,27 @@ builder.Services.AddHttpClient<WeatherForecastClient>(
         scopes: new[] { "example.read", "example.write" }));
 ```
 
-<span data-ttu-id="72fbf-164">Pour une Blazor application basée sur le Blazor WebAssembly modèle de projet hébergé, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> est assigné aux éléments suivants par défaut :</span><span class="sxs-lookup"><span data-stu-id="72fbf-164">For a Blazor app based on the Blazor WebAssembly Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> is assigned to the following by default:</span></span>
+<span data-ttu-id="8dd91-154">Pour une :::no-loc(Blazor)::: application basée sur le :::no-loc(Blazor WebAssembly)::: modèle de projet hébergé, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> est assigné aux éléments suivants par défaut :</span><span class="sxs-lookup"><span data-stu-id="8dd91-154">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> is assigned to the following by default:</span></span>
 
-* <span data-ttu-id="72fbf-165"><xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>( `new Uri(builder.HostEnvironment.BaseAddress)` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-165">The <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`).</span></span>
-* <span data-ttu-id="72fbf-166">URL du `authorizedUrls` tableau.</span><span class="sxs-lookup"><span data-stu-id="72fbf-166">A URL of the `authorizedUrls` array.</span></span>
+* <span data-ttu-id="8dd91-155"><xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>( `new Uri(builder.HostEnvironment.BaseAddress)` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-155">The <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`).</span></span>
+* <span data-ttu-id="8dd91-156">URL du `authorizedUrls` tableau.</span><span class="sxs-lookup"><span data-stu-id="8dd91-156">A URL of the `authorizedUrls` array.</span></span>
 
-## <a name="unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client"></a><span data-ttu-id="72fbf-167">Demandes d’API Web non authentifiées ou non autorisées dans une application avec un client par défaut sécurisé</span><span class="sxs-lookup"><span data-stu-id="72fbf-167">Unauthenticated or unauthorized web API requests in an app with a secure default client</span></span>
+## <a name="unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client"></a><span data-ttu-id="8dd91-157">Demandes d’API Web non authentifiées ou non autorisées dans une application avec un client par défaut sécurisé</span><span class="sxs-lookup"><span data-stu-id="8dd91-157">Unauthenticated or unauthorized web API requests in an app with a secure default client</span></span>
 
-<span data-ttu-id="72fbf-168">Si l' Blazor WebAssembly application utilise généralement une valeur par défaut sécurisée <xref:System.Net.Http.HttpClient> , l’application peut également effectuer des demandes d’API Web non authentifiées ou non autorisées en configurant un nom <xref:System.Net.Http.HttpClient> :</span><span class="sxs-lookup"><span data-stu-id="72fbf-168">If the Blazor WebAssembly app ordinarily uses a secure default <xref:System.Net.Http.HttpClient>, the app can also make unauthenticated or unauthorized web API requests by configuring a named <xref:System.Net.Http.HttpClient>:</span></span>
+<span data-ttu-id="8dd91-158">Si l' :::no-loc(Blazor WebAssembly)::: application utilise généralement une valeur par défaut sécurisée <xref:System.Net.Http.HttpClient> , l’application peut également effectuer des demandes d’API Web non authentifiées ou non autorisées en configurant un nom <xref:System.Net.Http.HttpClient> :</span><span class="sxs-lookup"><span data-stu-id="8dd91-158">If the :::no-loc(Blazor WebAssembly)::: app ordinarily uses a secure default <xref:System.Net.Http.HttpClient>, the app can also make unauthenticated or unauthorized web API requests by configuring a named <xref:System.Net.Http.HttpClient>:</span></span>
 
-<span data-ttu-id="72fbf-169">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="72fbf-169">`Program.Main` (`Program.cs`):</span></span>
+<span data-ttu-id="8dd91-159">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="8dd91-159">`Program.Main` (`Program.cs`):</span></span>
 
 ```csharp
 builder.Services.AddHttpClient("ServerAPI.NoAuthenticationClient", 
     client => client.BaseAddress = new Uri("https://www.example.com/base"));
 ```
 
-<span data-ttu-id="72fbf-170">Pour une Blazor application basée sur le Blazor WebAssembly modèle de projet hébergé, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> ( `new Uri(builder.HostEnvironment.BaseAddress)` ) est assigné à <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> par défaut.</span><span class="sxs-lookup"><span data-stu-id="72fbf-170">For a Blazor app based on the Blazor WebAssembly Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
+<span data-ttu-id="8dd91-160">Pour une :::no-loc(Blazor)::: application basée sur le :::no-loc(Blazor WebAssembly)::: modèle de projet hébergé, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> ( `new Uri(builder.HostEnvironment.BaseAddress)` ) est assigné à <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> par défaut.</span><span class="sxs-lookup"><span data-stu-id="8dd91-160">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
 
-<span data-ttu-id="72fbf-171">L’inscription précédente s’ajoute à l’inscription par défaut sécurisée existante <xref:System.Net.Http.HttpClient> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-171">The preceding registration is in addition to the existing secure default <xref:System.Net.Http.HttpClient> registration.</span></span>
+<span data-ttu-id="8dd91-161">L’inscription précédente s’ajoute à l’inscription par défaut sécurisée existante <xref:System.Net.Http.HttpClient> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-161">The preceding registration is in addition to the existing secure default <xref:System.Net.Http.HttpClient> registration.</span></span>
 
-<span data-ttu-id="72fbf-172">Un composant crée le <xref:System.Net.Http.HttpClient> à partir du <xref:System.Net.Http.IHttpClientFactory> ( [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) Package) pour effectuer des demandes non authentifiées ou non autorisées :</span><span class="sxs-lookup"><span data-stu-id="72fbf-172">A component creates the <xref:System.Net.Http.HttpClient> from the <xref:System.Net.Http.IHttpClientFactory> ([`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) package) to make unauthenticated or unauthorized requests:</span></span>
+<span data-ttu-id="8dd91-162">Un composant crée le <xref:System.Net.Http.HttpClient> à partir du <xref:System.Net.Http.IHttpClientFactory> ( [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) Package) pour effectuer des demandes non authentifiées ou non autorisées :</span><span class="sxs-lookup"><span data-stu-id="8dd91-162">A component creates the <xref:System.Net.Http.HttpClient> from the <xref:System.Net.Http.IHttpClientFactory> ([`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) package) to make unauthenticated or unauthorized requests:</span></span>
 
 ```razor
 @inject IHttpClientFactory ClientFactory
@@ -424,17 +302,17 @@ builder.Services.AddHttpClient("ServerAPI.NoAuthenticationClient",
 ```
 
 > [!NOTE]
-> <span data-ttu-id="72fbf-173">Dans l’exemple précédent, le contrôleur de l’API serveur `WeatherForecastNoAuthenticationController` n’est pas marqué avec l' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut.</span><span class="sxs-lookup"><span data-stu-id="72fbf-173">The controller in the server API, `WeatherForecastNoAuthenticationController` for the preceding example, isn't marked with the [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute.</span></span>
+> <span data-ttu-id="8dd91-163">Dans l’exemple précédent, le contrôleur de l’API serveur `WeatherForecastNoAuthenticationController` n’est pas marqué avec l' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut.</span><span class="sxs-lookup"><span data-stu-id="8dd91-163">The controller in the server API, `WeatherForecastNoAuthenticationController` for the preceding example, isn't marked with the [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute.</span></span>
 
-<span data-ttu-id="72fbf-174">Le développeur doit décider s’il faut utiliser un client sécurisé ou un client non sécurisé comme instance par défaut <xref:System.Net.Http.HttpClient> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-174">The decision whether to use a secure client or an insecure client as the default <xref:System.Net.Http.HttpClient> instance is up to the developer.</span></span> <span data-ttu-id="72fbf-175">L’une des façons de prendre cette décision est de prendre en compte le nombre de points de terminaison authentifiés et non authentifiés que l’application contacte.</span><span class="sxs-lookup"><span data-stu-id="72fbf-175">One way to make this decision is to consider the number of authenticated versus unauthenticated endpoints that the app contacts.</span></span> <span data-ttu-id="72fbf-176">Si la majorité des demandes de l’application sont de sécuriser les points de terminaison d’API, utilisez l’instance authentifiée <xref:System.Net.Http.HttpClient> comme valeur par défaut.</span><span class="sxs-lookup"><span data-stu-id="72fbf-176">If the majority of the app's requests are to secure API endpoints, use the authenticated <xref:System.Net.Http.HttpClient> instance as the default.</span></span> <span data-ttu-id="72fbf-177">Sinon, inscrivez l’instance non authentifiée <xref:System.Net.Http.HttpClient> comme valeur par défaut.</span><span class="sxs-lookup"><span data-stu-id="72fbf-177">Otherwise, register the unauthenticated <xref:System.Net.Http.HttpClient> instance as the default.</span></span>
+<span data-ttu-id="8dd91-164">Le développeur doit décider s’il faut utiliser un client sécurisé ou un client non sécurisé comme instance par défaut <xref:System.Net.Http.HttpClient> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-164">The decision whether to use a secure client or an insecure client as the default <xref:System.Net.Http.HttpClient> instance is up to the developer.</span></span> <span data-ttu-id="8dd91-165">L’une des façons de prendre cette décision est de prendre en compte le nombre de points de terminaison authentifiés et non authentifiés que l’application contacte.</span><span class="sxs-lookup"><span data-stu-id="8dd91-165">One way to make this decision is to consider the number of authenticated versus unauthenticated endpoints that the app contacts.</span></span> <span data-ttu-id="8dd91-166">Si la majorité des demandes de l’application sont de sécuriser les points de terminaison d’API, utilisez l’instance authentifiée <xref:System.Net.Http.HttpClient> comme valeur par défaut.</span><span class="sxs-lookup"><span data-stu-id="8dd91-166">If the majority of the app's requests are to secure API endpoints, use the authenticated <xref:System.Net.Http.HttpClient> instance as the default.</span></span> <span data-ttu-id="8dd91-167">Sinon, inscrivez l’instance non authentifiée <xref:System.Net.Http.HttpClient> comme valeur par défaut.</span><span class="sxs-lookup"><span data-stu-id="8dd91-167">Otherwise, register the unauthenticated <xref:System.Net.Http.HttpClient> instance as the default.</span></span>
 
-<span data-ttu-id="72fbf-178">Une autre approche de l’utilisation de l' <xref:System.Net.Http.IHttpClientFactory> consiste à créer un [client typé](#typed-httpclient) pour l’accès non authentifié aux points de terminaison anonymes.</span><span class="sxs-lookup"><span data-stu-id="72fbf-178">An alternative approach to using the <xref:System.Net.Http.IHttpClientFactory> is to create a [typed client](#typed-httpclient) for unauthenticated access to anonymous endpoints.</span></span>
+<span data-ttu-id="8dd91-168">Une autre approche de l’utilisation de l' <xref:System.Net.Http.IHttpClientFactory> consiste à créer un [client typé](#typed-httpclient) pour l’accès non authentifié aux points de terminaison anonymes.</span><span class="sxs-lookup"><span data-stu-id="8dd91-168">An alternative approach to using the <xref:System.Net.Http.IHttpClientFactory> is to create a [typed client](#typed-httpclient) for unauthenticated access to anonymous endpoints.</span></span>
 
-## <a name="request-additional-access-tokens"></a><span data-ttu-id="72fbf-179">Demander des jetons d’accès supplémentaires</span><span class="sxs-lookup"><span data-stu-id="72fbf-179">Request additional access tokens</span></span>
+## <a name="request-additional-access-tokens"></a><span data-ttu-id="8dd91-169">Demander des jetons d’accès supplémentaires</span><span class="sxs-lookup"><span data-stu-id="8dd91-169">Request additional access tokens</span></span>
 
-<span data-ttu-id="72fbf-180">Les jetons d’accès peuvent être obtenus manuellement en appelant `IAccessTokenProvider.RequestAccessToken` .</span><span class="sxs-lookup"><span data-stu-id="72fbf-180">Access tokens can be manually obtained by calling `IAccessTokenProvider.RequestAccessToken`.</span></span> <span data-ttu-id="72fbf-181">Dans l’exemple suivant, une étendue supplémentaire est requise par une application pour la valeur par défaut <xref:System.Net.Http.HttpClient> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-181">In the following example, an additional scope is required by an app for the default <xref:System.Net.Http.HttpClient>.</span></span> <span data-ttu-id="72fbf-182">L’exemple de la bibliothèque d’authentification Microsoft (MSAL) configure l’étendue avec `MsalProviderOptions` :</span><span class="sxs-lookup"><span data-stu-id="72fbf-182">The Microsoft Authentication Library (MSAL) example configures the scope with `MsalProviderOptions`:</span></span>
+<span data-ttu-id="8dd91-170">Les jetons d’accès peuvent être obtenus manuellement en appelant `IAccessTokenProvider.RequestAccessToken` .</span><span class="sxs-lookup"><span data-stu-id="8dd91-170">Access tokens can be manually obtained by calling `IAccessTokenProvider.RequestAccessToken`.</span></span> <span data-ttu-id="8dd91-171">Dans l’exemple suivant, une étendue supplémentaire est requise par une application pour la valeur par défaut <xref:System.Net.Http.HttpClient> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-171">In the following example, an additional scope is required by an app for the default <xref:System.Net.Http.HttpClient>.</span></span> <span data-ttu-id="8dd91-172">L’exemple de la bibliothèque d’authentification Microsoft (MSAL) configure l’étendue avec `MsalProviderOptions` :</span><span class="sxs-lookup"><span data-stu-id="8dd91-172">The Microsoft Authentication Library (MSAL) example configures the scope with `MsalProviderOptions`:</span></span>
 
-<span data-ttu-id="72fbf-183">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="72fbf-183">`Program.Main` (`Program.cs`):</span></span>
+<span data-ttu-id="8dd91-173">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="8dd91-173">`Program.Main` (`Program.cs`):</span></span>
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>
@@ -446,11 +324,11 @@ builder.Services.AddMsalAuthentication(options =>
 }
 ```
 
-<span data-ttu-id="72fbf-184">Les `{CUSTOM SCOPE 1}` `{CUSTOM SCOPE 2}` espaces réservés et dans l’exemple précédent sont des étendues personnalisées.</span><span class="sxs-lookup"><span data-stu-id="72fbf-184">The `{CUSTOM SCOPE 1}` and `{CUSTOM SCOPE 2}` placeholders in the preceding example are custom scopes.</span></span>
+<span data-ttu-id="8dd91-174">Les `{CUSTOM SCOPE 1}` `{CUSTOM SCOPE 2}` espaces réservés et dans l’exemple précédent sont des étendues personnalisées.</span><span class="sxs-lookup"><span data-stu-id="8dd91-174">The `{CUSTOM SCOPE 1}` and `{CUSTOM SCOPE 2}` placeholders in the preceding example are custom scopes.</span></span>
 
-<span data-ttu-id="72fbf-185">La `IAccessTokenProvider.RequestToken` méthode fournit une surcharge qui permet à une application de configurer un jeton d’accès avec un ensemble donné d’étendues.</span><span class="sxs-lookup"><span data-stu-id="72fbf-185">The `IAccessTokenProvider.RequestToken` method provides an overload that allows an app to provision an access token with a given set of scopes.</span></span>
+<span data-ttu-id="8dd91-175">La `IAccessTokenProvider.RequestToken` méthode fournit une surcharge qui permet à une application de configurer un jeton d’accès avec un ensemble donné d’étendues.</span><span class="sxs-lookup"><span data-stu-id="8dd91-175">The `IAccessTokenProvider.RequestToken` method provides an overload that allows an app to provision an access token with a given set of scopes.</span></span>
 
-<span data-ttu-id="72fbf-186">Dans un Razor composant :</span><span class="sxs-lookup"><span data-stu-id="72fbf-186">In a Razor component:</span></span>
+<span data-ttu-id="8dd91-176">Dans un :::no-loc(Razor)::: composant :</span><span class="sxs-lookup"><span data-stu-id="8dd91-176">In a :::no-loc(Razor)::: component:</span></span>
 
 ```razor
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
@@ -470,23 +348,23 @@ if (tokenResult.TryGetToken(out var token))
 }
 ```
 
-<span data-ttu-id="72fbf-187">Les `{CUSTOM SCOPE 1}` `{CUSTOM SCOPE 2}` espaces réservés et dans l’exemple précédent sont des étendues personnalisées.</span><span class="sxs-lookup"><span data-stu-id="72fbf-187">The `{CUSTOM SCOPE 1}` and `{CUSTOM SCOPE 2}` placeholders in the preceding example are custom scopes.</span></span>
+<span data-ttu-id="8dd91-177">Les `{CUSTOM SCOPE 1}` `{CUSTOM SCOPE 2}` espaces réservés et dans l’exemple précédent sont des étendues personnalisées.</span><span class="sxs-lookup"><span data-stu-id="8dd91-177">The `{CUSTOM SCOPE 1}` and `{CUSTOM SCOPE 2}` placeholders in the preceding example are custom scopes.</span></span>
 
-<span data-ttu-id="72fbf-188"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenResult.TryGetToken%2A?displayProperty=nameWithType> Cette</span><span class="sxs-lookup"><span data-stu-id="72fbf-188"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenResult.TryGetToken%2A?displayProperty=nameWithType> returns:</span></span>
+<span data-ttu-id="8dd91-178"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenResult.TryGetToken%2A?displayProperty=nameWithType> Cette</span><span class="sxs-lookup"><span data-stu-id="8dd91-178"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenResult.TryGetToken%2A?displayProperty=nameWithType> returns:</span></span>
 
-* <span data-ttu-id="72fbf-189">`true` avec le `token` à utiliser.</span><span class="sxs-lookup"><span data-stu-id="72fbf-189">`true` with the `token` for use.</span></span>
-* <span data-ttu-id="72fbf-190">`false` Si le jeton n’est pas récupéré.</span><span class="sxs-lookup"><span data-stu-id="72fbf-190">`false` if the token isn't retrieved.</span></span>
+* <span data-ttu-id="8dd91-179">`true` avec le `token` à utiliser.</span><span class="sxs-lookup"><span data-stu-id="8dd91-179">`true` with the `token` for use.</span></span>
+* <span data-ttu-id="8dd91-180">`false` Si le jeton n’est pas récupéré.</span><span class="sxs-lookup"><span data-stu-id="8dd91-180">`false` if the token isn't retrieved.</span></span>
 
-## <a name="cross-origin-resource-sharing-cors"></a><span data-ttu-id="72fbf-191">Partage des ressources cross-origin (CORS)</span><span class="sxs-lookup"><span data-stu-id="72fbf-191">Cross-origin resource sharing (CORS)</span></span>
+## <a name="cross-origin-resource-sharing-cors"></a><span data-ttu-id="8dd91-181">Partage des ressources cross-origin (CORS)</span><span class="sxs-lookup"><span data-stu-id="8dd91-181">Cross-origin resource sharing (CORS)</span></span>
 
-<span data-ttu-id="72fbf-192">Lors de l’envoi d’informations d’identification ( cookie s/en-têtes d’autorisation) sur les demandes cors, l' `Authorization` en-tête doit être autorisé par la stratégie cors.</span><span class="sxs-lookup"><span data-stu-id="72fbf-192">When sending credentials (authorization cookies/headers) on CORS requests, the `Authorization` header must be allowed by the CORS policy.</span></span>
+<span data-ttu-id="8dd91-182">Lors de l’envoi d’informations d’identification ( :::no-loc(cookie)::: s/en-têtes d’autorisation) sur les demandes cors, l' `Authorization` en-tête doit être autorisé par la stratégie cors.</span><span class="sxs-lookup"><span data-stu-id="8dd91-182">When sending credentials (authorization :::no-loc(cookie):::s/headers) on CORS requests, the `Authorization` header must be allowed by the CORS policy.</span></span>
 
-<span data-ttu-id="72fbf-193">La stratégie suivante comprend la configuration pour :</span><span class="sxs-lookup"><span data-stu-id="72fbf-193">The following policy includes configuration for:</span></span>
+<span data-ttu-id="8dd91-183">La stratégie suivante comprend la configuration pour :</span><span class="sxs-lookup"><span data-stu-id="8dd91-183">The following policy includes configuration for:</span></span>
 
-* <span data-ttu-id="72fbf-194">Origines des demandes ( `http://localhost:5000` , `https://localhost:5001` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-194">Request origins (`http://localhost:5000`, `https://localhost:5001`).</span></span>
-* <span data-ttu-id="72fbf-195">Toute méthode (verbe).</span><span class="sxs-lookup"><span data-stu-id="72fbf-195">Any method (verb).</span></span>
-* <span data-ttu-id="72fbf-196">`Content-Type` et `Authorization` en-têtes.</span><span class="sxs-lookup"><span data-stu-id="72fbf-196">`Content-Type` and `Authorization` headers.</span></span> <span data-ttu-id="72fbf-197">Pour autoriser un en-tête personnalisé (par exemple, `x-custom-header` ), répertoriez l’en-tête lors de l’appel de <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-197">To allow a custom header (for example, `x-custom-header`), list the header when calling <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>.</span></span>
-* <span data-ttu-id="72fbf-198">Informations d’identification définies par le code JavaScript côté client (la `credentials` propriété a la valeur `include` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-198">Credentials set by client-side JavaScript code (`credentials` property set to `include`).</span></span>
+* <span data-ttu-id="8dd91-184">Origines des demandes ( `http://localhost:5000` , `https://localhost:5001` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-184">Request origins (`http://localhost:5000`, `https://localhost:5001`).</span></span>
+* <span data-ttu-id="8dd91-185">Toute méthode (verbe).</span><span class="sxs-lookup"><span data-stu-id="8dd91-185">Any method (verb).</span></span>
+* <span data-ttu-id="8dd91-186">`Content-Type` et `Authorization` en-têtes.</span><span class="sxs-lookup"><span data-stu-id="8dd91-186">`Content-Type` and `Authorization` headers.</span></span> <span data-ttu-id="8dd91-187">Pour autoriser un en-tête personnalisé (par exemple, `x-custom-header` ), répertoriez l’en-tête lors de l’appel de <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-187">To allow a custom header (for example, `x-custom-header`), list the header when calling <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>.</span></span>
+* <span data-ttu-id="8dd91-188">Informations d’identification définies par le code JavaScript côté client (la `credentials` propriété a la valeur `include` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-188">Credentials set by client-side JavaScript code (`credentials` property set to `include`).</span></span>
 
 ```csharp
 app.UseCors(policy => 
@@ -496,40 +374,40 @@ app.UseCors(policy =>
     .AllowCredentials());
 ```
 
-<span data-ttu-id="72fbf-199">Une solution hébergée Blazor basée sur le Blazor modèle de projet hébergé utilise la même adresse de base pour les applications clientes et serveur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-199">A hosted Blazor solution based on the Blazor Hosted project template uses the same base address for the client and server apps.</span></span> <span data-ttu-id="72fbf-200">La valeur de l’URI de l’application cliente <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> est `builder.HostEnvironment.BaseAddress` par défaut.</span><span class="sxs-lookup"><span data-stu-id="72fbf-200">The client app's <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> is set to a URI of `builder.HostEnvironment.BaseAddress` by default.</span></span> <span data-ttu-id="72fbf-201">La configuration CORS n’est **pas** requise dans la configuration par défaut d’une application hébergée créée à partir du Blazor modèle de projet hébergé.</span><span class="sxs-lookup"><span data-stu-id="72fbf-201">CORS configuration is **not** required in the default configuration of a hosted app created from the Blazor Hosted project template.</span></span> <span data-ttu-id="72fbf-202">Les applications clientes supplémentaires qui ne sont pas hébergées par le projet serveur et ne partagent pas **l’adresse de** base de l’application serveur nécessitent une configuration cors dans le projet serveur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-202">Additional client apps that aren't hosted by the server project and don't share the server app's base address **do** require CORS configuration in the server project.</span></span>
+<span data-ttu-id="8dd91-189">Une solution hébergée :::no-loc(Blazor)::: basée sur le :::no-loc(Blazor)::: modèle de projet hébergé utilise la même adresse de base pour les applications clientes et serveur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-189">A hosted :::no-loc(Blazor)::: solution based on the :::no-loc(Blazor)::: Hosted project template uses the same base address for the client and server apps.</span></span> <span data-ttu-id="8dd91-190">La valeur de l’URI de l’application cliente <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> est `builder.HostEnvironment.BaseAddress` par défaut.</span><span class="sxs-lookup"><span data-stu-id="8dd91-190">The client app's <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> is set to a URI of `builder.HostEnvironment.BaseAddress` by default.</span></span> <span data-ttu-id="8dd91-191">La configuration CORS n’est **pas** requise dans la configuration par défaut d’une application hébergée créée à partir du :::no-loc(Blazor)::: modèle de projet hébergé.</span><span class="sxs-lookup"><span data-stu-id="8dd91-191">CORS configuration is **not** required in the default configuration of a hosted app created from the :::no-loc(Blazor)::: Hosted project template.</span></span> <span data-ttu-id="8dd91-192">Les applications clientes supplémentaires qui ne sont pas hébergées par le projet serveur et ne partagent pas **l’adresse de** base de l’application serveur nécessitent une configuration cors dans le projet serveur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-192">Additional client apps that aren't hosted by the server project and don't share the server app's base address **do** require CORS configuration in the server project.</span></span>
 
-<span data-ttu-id="72fbf-203">Pour plus d’informations, consultez <xref:security/cors> et le composant testeur de requêtes http de l’exemple d’application ( `Components/HTTPRequestTester.razor` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-203">For more information, see <xref:security/cors> and the sample app's HTTP Request Tester component (`Components/HTTPRequestTester.razor`).</span></span>
+<span data-ttu-id="8dd91-193">Pour plus d’informations, consultez <xref:security/cors> et le composant testeur de requêtes http de l’exemple d’application ( `Components/HTTPRequestTester.razor` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-193">For more information, see <xref:security/cors> and the sample app's HTTP Request Tester component (`Components/HTTPRequestTester.razor`).</span></span>
 
-## <a name="handle-token-request-errors"></a><span data-ttu-id="72fbf-204">Gérer les erreurs de demande de jeton</span><span class="sxs-lookup"><span data-stu-id="72fbf-204">Handle token request errors</span></span>
+## <a name="handle-token-request-errors"></a><span data-ttu-id="8dd91-194">Gérer les erreurs de demande de jeton</span><span class="sxs-lookup"><span data-stu-id="8dd91-194">Handle token request errors</span></span>
 
-<span data-ttu-id="72fbf-205">Lorsqu’une application à page unique (SPA) authentifie un utilisateur à l’aide de OpenID Connect (OIDC), l’état d’authentification est conservé localement au sein du SPA et dans le Identity fournisseur (IP) sous la forme d’une session cookie définie à la suite de l’utilisateur qui fournit ses informations d’identification.</span><span class="sxs-lookup"><span data-stu-id="72fbf-205">When a Single Page Application (SPA) authenticates a user using OpenID Connect (OIDC), the authentication state is maintained locally within the SPA and in the Identity Provider (IP) in the form of a session cookie that's set as a result of the user providing their credentials.</span></span>
+<span data-ttu-id="8dd91-195">Lorsqu’une application à page unique (SPA) authentifie un utilisateur à l’aide de OpenID Connect (OIDC), l’état d’authentification est conservé localement au sein du SPA et dans le :::no-loc(Identity)::: fournisseur (IP) sous la forme d’une session :::no-loc(cookie)::: définie à la suite de l’utilisateur qui fournit ses informations d’identification.</span><span class="sxs-lookup"><span data-stu-id="8dd91-195">When a Single Page Application (SPA) authenticates a user using OpenID Connect (OIDC), the authentication state is maintained locally within the SPA and in the :::no-loc(Identity)::: Provider (IP) in the form of a session :::no-loc(cookie)::: that's set as a result of the user providing their credentials.</span></span>
 
-<span data-ttu-id="72fbf-206">Les jetons que l’adresse IP émet pour l’utilisateur sont généralement valides pendant de courtes périodes, environ une heure normalement, de sorte que l’application cliente doit régulièrement extraire les nouveaux jetons.</span><span class="sxs-lookup"><span data-stu-id="72fbf-206">The tokens that the IP emits for the user typically are valid for short periods of time, about one hour normally, so the client app must regularly fetch new tokens.</span></span> <span data-ttu-id="72fbf-207">Dans le cas contraire, l’utilisateur est déconnecté après l’expiration des jetons accordés.</span><span class="sxs-lookup"><span data-stu-id="72fbf-207">Otherwise, the user would be logged-out after the granted tokens expire.</span></span> <span data-ttu-id="72fbf-208">Dans la plupart des cas, les clients OIDC sont en mesure de configurer de nouveaux jetons sans que l’utilisateur soit obligé de s’authentifier à nouveau grâce à l’état d’authentification ou à la « session » qui est conservée au sein de l’adresse IP.</span><span class="sxs-lookup"><span data-stu-id="72fbf-208">In most cases, OIDC clients are able to provision new tokens without requiring the user to authenticate again thanks to the authentication state or "session" that is kept within the IP.</span></span>
+<span data-ttu-id="8dd91-196">Les jetons que l’adresse IP émet pour l’utilisateur sont généralement valides pendant de courtes périodes, environ une heure normalement, de sorte que l’application cliente doit régulièrement extraire les nouveaux jetons.</span><span class="sxs-lookup"><span data-stu-id="8dd91-196">The tokens that the IP emits for the user typically are valid for short periods of time, about one hour normally, so the client app must regularly fetch new tokens.</span></span> <span data-ttu-id="8dd91-197">Dans le cas contraire, l’utilisateur est déconnecté après l’expiration des jetons accordés.</span><span class="sxs-lookup"><span data-stu-id="8dd91-197">Otherwise, the user would be logged-out after the granted tokens expire.</span></span> <span data-ttu-id="8dd91-198">Dans la plupart des cas, les clients OIDC sont en mesure de configurer de nouveaux jetons sans que l’utilisateur soit obligé de s’authentifier à nouveau grâce à l’état d’authentification ou à la « session » qui est conservée au sein de l’adresse IP.</span><span class="sxs-lookup"><span data-stu-id="8dd91-198">In most cases, OIDC clients are able to provision new tokens without requiring the user to authenticate again thanks to the authentication state or "session" that is kept within the IP.</span></span>
 
-<span data-ttu-id="72fbf-209">Dans certains cas, le client ne peut pas obtenir un jeton sans intervention de l’utilisateur, par exemple, lorsque, pour une raison quelconque, l’utilisateur se déconnecte explicitement de l’adresse IP.</span><span class="sxs-lookup"><span data-stu-id="72fbf-209">There are some cases in which the client can't get a token without user interaction, for example, when for some reason the user explicitly logs out from the IP.</span></span> <span data-ttu-id="72fbf-210">Ce scénario se produit si un utilisateur visite `https://login.microsoftonline.com` et se déconnecte. Dans ces scénarios, l’application ne sait pas immédiatement que l’utilisateur s’est déconnecté. Tout jeton que le client contient peut ne plus être valide.</span><span class="sxs-lookup"><span data-stu-id="72fbf-210">This scenario occurs if a user visits `https://login.microsoftonline.com` and logs out. In these scenarios, the app doesn't know immediately that the user has logged out. Any token that the client holds might no longer be valid.</span></span> <span data-ttu-id="72fbf-211">En outre, le client n’est pas en mesure d’approvisionner un nouveau jeton sans interaction de l’utilisateur après l’expiration du jeton actuel.</span><span class="sxs-lookup"><span data-stu-id="72fbf-211">Also, the client isn't able to provision a new token without user interaction after the current token expires.</span></span>
+<span data-ttu-id="8dd91-199">Dans certains cas, le client ne peut pas obtenir un jeton sans intervention de l’utilisateur, par exemple, lorsque, pour une raison quelconque, l’utilisateur se déconnecte explicitement de l’adresse IP.</span><span class="sxs-lookup"><span data-stu-id="8dd91-199">There are some cases in which the client can't get a token without user interaction, for example, when for some reason the user explicitly logs out from the IP.</span></span> <span data-ttu-id="8dd91-200">Ce scénario se produit si un utilisateur visite `https://login.microsoftonline.com` et se déconnecte. Dans ces scénarios, l’application ne sait pas immédiatement que l’utilisateur s’est déconnecté. Tout jeton que le client contient peut ne plus être valide.</span><span class="sxs-lookup"><span data-stu-id="8dd91-200">This scenario occurs if a user visits `https://login.microsoftonline.com` and logs out. In these scenarios, the app doesn't know immediately that the user has logged out. Any token that the client holds might no longer be valid.</span></span> <span data-ttu-id="8dd91-201">En outre, le client n’est pas en mesure d’approvisionner un nouveau jeton sans interaction de l’utilisateur après l’expiration du jeton actuel.</span><span class="sxs-lookup"><span data-stu-id="8dd91-201">Also, the client isn't able to provision a new token without user interaction after the current token expires.</span></span>
 
-<span data-ttu-id="72fbf-212">Ces scénarios ne sont pas spécifiques à l’authentification basée sur les jetons.</span><span class="sxs-lookup"><span data-stu-id="72fbf-212">These scenarios aren't specific to token-based authentication.</span></span> <span data-ttu-id="72fbf-213">Elles font partie de la nature des SPAs.</span><span class="sxs-lookup"><span data-stu-id="72fbf-213">They are part of the nature of SPAs.</span></span> <span data-ttu-id="72fbf-214">Un SPA utilisant cookie s ne parvient pas non plus à appeler une API serveur si l’authentification cookie est supprimée.</span><span class="sxs-lookup"><span data-stu-id="72fbf-214">An SPA using cookies also fails to call a server API if the authentication cookie is removed.</span></span>
+<span data-ttu-id="8dd91-202">Ces scénarios ne sont pas spécifiques à l’authentification basée sur les jetons.</span><span class="sxs-lookup"><span data-stu-id="8dd91-202">These scenarios aren't specific to token-based authentication.</span></span> <span data-ttu-id="8dd91-203">Elles font partie de la nature des SPAs.</span><span class="sxs-lookup"><span data-stu-id="8dd91-203">They are part of the nature of SPAs.</span></span> <span data-ttu-id="8dd91-204">Un SPA utilisant :::no-loc(cookie)::: s ne parvient pas non plus à appeler une API serveur si l’authentification :::no-loc(cookie)::: est supprimée.</span><span class="sxs-lookup"><span data-stu-id="8dd91-204">An SPA using :::no-loc(cookie):::s also fails to call a server API if the authentication :::no-loc(cookie)::: is removed.</span></span>
 
-<span data-ttu-id="72fbf-215">Quand une application effectue des appels d’API vers des ressources protégées, vous devez tenir compte des éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="72fbf-215">When an app performs API calls to protected resources, you must be aware of the following:</span></span>
+<span data-ttu-id="8dd91-205">Quand une application effectue des appels d’API vers des ressources protégées, vous devez tenir compte des éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="8dd91-205">When an app performs API calls to protected resources, you must be aware of the following:</span></span>
 
-* <span data-ttu-id="72fbf-216">Pour approvisionner un nouveau jeton d’accès pour appeler l’API, l’utilisateur peut être amené à s’authentifier à nouveau.</span><span class="sxs-lookup"><span data-stu-id="72fbf-216">To provision a new access token to call the API, the user might be required to authenticate again.</span></span>
-* <span data-ttu-id="72fbf-217">Même si le client possède un jeton qui semble être valide, l’appel au serveur peut échouer parce que le jeton a été révoqué par l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-217">Even if the client has a token that seems to be valid, the call to the server might fail because the token was revoked by the user.</span></span>
+* <span data-ttu-id="8dd91-206">Pour approvisionner un nouveau jeton d’accès pour appeler l’API, l’utilisateur peut être amené à s’authentifier à nouveau.</span><span class="sxs-lookup"><span data-stu-id="8dd91-206">To provision a new access token to call the API, the user might be required to authenticate again.</span></span>
+* <span data-ttu-id="8dd91-207">Même si le client possède un jeton qui semble être valide, l’appel au serveur peut échouer parce que le jeton a été révoqué par l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-207">Even if the client has a token that seems to be valid, the call to the server might fail because the token was revoked by the user.</span></span>
 
-<span data-ttu-id="72fbf-218">Lorsque l’application demande un jeton, deux résultats sont possibles :</span><span class="sxs-lookup"><span data-stu-id="72fbf-218">When the app requests a token, there are two possible outcomes:</span></span>
+<span data-ttu-id="8dd91-208">Lorsque l’application demande un jeton, deux résultats sont possibles :</span><span class="sxs-lookup"><span data-stu-id="8dd91-208">When the app requests a token, there are two possible outcomes:</span></span>
 
-* <span data-ttu-id="72fbf-219">La demande a échoué et l’application a un jeton valide.</span><span class="sxs-lookup"><span data-stu-id="72fbf-219">The request succeeds, and the app has a valid token.</span></span>
-* <span data-ttu-id="72fbf-220">La demande échoue et l’application doit authentifier à nouveau l’utilisateur pour obtenir un nouveau jeton.</span><span class="sxs-lookup"><span data-stu-id="72fbf-220">The request fails, and the app must authenticate the user again to obtain a new token.</span></span>
+* <span data-ttu-id="8dd91-209">La demande a échoué et l’application a un jeton valide.</span><span class="sxs-lookup"><span data-stu-id="8dd91-209">The request succeeds, and the app has a valid token.</span></span>
+* <span data-ttu-id="8dd91-210">La demande échoue et l’application doit authentifier à nouveau l’utilisateur pour obtenir un nouveau jeton.</span><span class="sxs-lookup"><span data-stu-id="8dd91-210">The request fails, and the app must authenticate the user again to obtain a new token.</span></span>
 
-<span data-ttu-id="72fbf-221">En cas d’échec d’une demande de jeton, vous devez décider si vous souhaitez enregistrer un état actuel avant d’effectuer une redirection.</span><span class="sxs-lookup"><span data-stu-id="72fbf-221">When a token request fails, you need to decide whether you want to save any current state before you perform a redirection.</span></span> <span data-ttu-id="72fbf-222">Il existe plusieurs approches avec des niveaux de complexité de plus en plus complexes :</span><span class="sxs-lookup"><span data-stu-id="72fbf-222">Several approaches exist with increasing levels of complexity:</span></span>
+<span data-ttu-id="8dd91-211">En cas d’échec d’une demande de jeton, vous devez décider si vous souhaitez enregistrer un état actuel avant d’effectuer une redirection.</span><span class="sxs-lookup"><span data-stu-id="8dd91-211">When a token request fails, you need to decide whether you want to save any current state before you perform a redirection.</span></span> <span data-ttu-id="8dd91-212">Il existe plusieurs approches avec des niveaux de complexité de plus en plus complexes :</span><span class="sxs-lookup"><span data-stu-id="8dd91-212">Several approaches exist with increasing levels of complexity:</span></span>
 
-* <span data-ttu-id="72fbf-223">Stocke l’état actuel de la page dans le stockage de session.</span><span class="sxs-lookup"><span data-stu-id="72fbf-223">Store the current page state in session storage.</span></span> <span data-ttu-id="72fbf-224">Pendant l' [ `OnInitializedAsync` événement de cycle de vie](xref:blazor/components/lifecycle#component-initialization-methods) ( <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> ), vérifiez si l’État peut être restauré avant de continuer.</span><span class="sxs-lookup"><span data-stu-id="72fbf-224">During the [`OnInitializedAsync` lifecycle event](xref:blazor/components/lifecycle#component-initialization-methods) (<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>), check if state can be restored before continuing.</span></span>
-* <span data-ttu-id="72fbf-225">Ajoutez un paramètre de chaîne de requête et utilisez-le comme méthode pour signaler à l’application qu’elle doit réalimenter l’état enregistré précédemment.</span><span class="sxs-lookup"><span data-stu-id="72fbf-225">Add a query string parameter and use that as a way to signal the app that it needs to re-hydrate the previously saved state.</span></span>
-* <span data-ttu-id="72fbf-226">Ajoutez un paramètre de chaîne de requête avec un identificateur unique pour stocker les données dans le stockage de session sans risquer des collisions avec d’autres éléments.</span><span class="sxs-lookup"><span data-stu-id="72fbf-226">Add a query string parameter with a unique identifier to store data in session storage without risking collisions with other items.</span></span>
+* <span data-ttu-id="8dd91-213">Stocke l’état actuel de la page dans le stockage de session.</span><span class="sxs-lookup"><span data-stu-id="8dd91-213">Store the current page state in session storage.</span></span> <span data-ttu-id="8dd91-214">Pendant l' [ `OnInitializedAsync` événement de cycle de vie](xref:blazor/components/lifecycle#component-initialization-methods) ( <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> ), vérifiez si l’État peut être restauré avant de continuer.</span><span class="sxs-lookup"><span data-stu-id="8dd91-214">During the [`OnInitializedAsync` lifecycle event](xref:blazor/components/lifecycle#component-initialization-methods) (<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>), check if state can be restored before continuing.</span></span>
+* <span data-ttu-id="8dd91-215">Ajoutez un paramètre de chaîne de requête et utilisez-le comme méthode pour signaler à l’application qu’elle doit réalimenter l’état enregistré précédemment.</span><span class="sxs-lookup"><span data-stu-id="8dd91-215">Add a query string parameter and use that as a way to signal the app that it needs to re-hydrate the previously saved state.</span></span>
+* <span data-ttu-id="8dd91-216">Ajoutez un paramètre de chaîne de requête avec un identificateur unique pour stocker les données dans le stockage de session sans risquer des collisions avec d’autres éléments.</span><span class="sxs-lookup"><span data-stu-id="8dd91-216">Add a query string parameter with a unique identifier to store data in session storage without risking collisions with other items.</span></span>
 
-<span data-ttu-id="72fbf-227">L’exemple suivant montre comment :</span><span class="sxs-lookup"><span data-stu-id="72fbf-227">The following example shows how to:</span></span>
+<span data-ttu-id="8dd91-217">L’exemple suivant montre comment :</span><span class="sxs-lookup"><span data-stu-id="8dd91-217">The following example shows how to:</span></span>
 
-* <span data-ttu-id="72fbf-228">Conserver l’état avant la redirection vers la page de connexion.</span><span class="sxs-lookup"><span data-stu-id="72fbf-228">Preserve state before redirecting to the login page.</span></span>
-* <span data-ttu-id="72fbf-229">Récupérez l’état précédent après l’authentification à l’aide du paramètre de chaîne de requête.</span><span class="sxs-lookup"><span data-stu-id="72fbf-229">Recover the previous state afterward authentication using the query string parameter.</span></span>
+* <span data-ttu-id="8dd91-218">Conserver l’état avant la redirection vers la page de connexion.</span><span class="sxs-lookup"><span data-stu-id="8dd91-218">Preserve state before redirecting to the login page.</span></span>
+* <span data-ttu-id="8dd91-219">Récupérez l’état précédent après l’authentification à l’aide du paramètre de chaîne de requête.</span><span class="sxs-lookup"><span data-stu-id="8dd91-219">Recover the previous state afterward authentication using the query string parameter.</span></span>
 
 ```razor
 <EditForm Model="User" @onsubmit="OnSaveAsync">
@@ -590,11 +468,11 @@ app.UseCors(policy =>
 }
 ```
 
-## <a name="save-app-state-before-an-authentication-operation"></a><span data-ttu-id="72fbf-230">Enregistrer l’état de l’application avant une opération d’authentification</span><span class="sxs-lookup"><span data-stu-id="72fbf-230">Save app state before an authentication operation</span></span>
+## <a name="save-app-state-before-an-authentication-operation"></a><span data-ttu-id="8dd91-220">Enregistrer l’état de l’application avant une opération d’authentification</span><span class="sxs-lookup"><span data-stu-id="8dd91-220">Save app state before an authentication operation</span></span>
 
-<span data-ttu-id="72fbf-231">Au cours d’une opération d’authentification, il existe des cas où vous souhaitez enregistrer l’état de l’application avant que le navigateur soit redirigé vers l’adresse IP.</span><span class="sxs-lookup"><span data-stu-id="72fbf-231">During an authentication operation, there are cases where you want to save the app state before the browser is redirected to the IP.</span></span> <span data-ttu-id="72fbf-232">Cela peut être le cas lorsque vous utilisez un conteneur d’État et que vous souhaitez restaurer l’État une fois l’authentification réussie.</span><span class="sxs-lookup"><span data-stu-id="72fbf-232">This can be the case when you're using a state container and want to restore the state after the authentication succeeds.</span></span> <span data-ttu-id="72fbf-233">Vous pouvez utiliser un objet d’état d’authentification personnalisé pour conserver l’état spécifique à l’application ou une référence à celui-ci, et restaurer cet État une fois l’opération d’authentification terminée.</span><span class="sxs-lookup"><span data-stu-id="72fbf-233">You can use a custom authentication state object to preserve app-specific state or a reference to it and restore that state after the authentication operation successfully completes.</span></span> <span data-ttu-id="72fbf-234">L’exemple suivant illustre l’approche.</span><span class="sxs-lookup"><span data-stu-id="72fbf-234">The following example demonstrates the approach.</span></span>
+<span data-ttu-id="8dd91-221">Au cours d’une opération d’authentification, il existe des cas où vous souhaitez enregistrer l’état de l’application avant que le navigateur soit redirigé vers l’adresse IP.</span><span class="sxs-lookup"><span data-stu-id="8dd91-221">During an authentication operation, there are cases where you want to save the app state before the browser is redirected to the IP.</span></span> <span data-ttu-id="8dd91-222">Cela peut être le cas lorsque vous utilisez un conteneur d’État et que vous souhaitez restaurer l’État une fois l’authentification réussie.</span><span class="sxs-lookup"><span data-stu-id="8dd91-222">This can be the case when you're using a state container and want to restore the state after the authentication succeeds.</span></span> <span data-ttu-id="8dd91-223">Vous pouvez utiliser un objet d’état d’authentification personnalisé pour conserver l’état spécifique à l’application ou une référence à celui-ci, et restaurer cet État une fois l’opération d’authentification terminée.</span><span class="sxs-lookup"><span data-stu-id="8dd91-223">You can use a custom authentication state object to preserve app-specific state or a reference to it and restore that state after the authentication operation successfully completes.</span></span> <span data-ttu-id="8dd91-224">L’exemple suivant illustre l’approche.</span><span class="sxs-lookup"><span data-stu-id="8dd91-224">The following example demonstrates the approach.</span></span>
 
-<span data-ttu-id="72fbf-235">Une classe de conteneur d’État est créée dans l’application avec des propriétés pour contenir les valeurs d’état de l’application.</span><span class="sxs-lookup"><span data-stu-id="72fbf-235">A state container class is created in the app with properties to hold the app's state values.</span></span> <span data-ttu-id="72fbf-236">Dans l’exemple suivant, le conteneur est utilisé pour conserver la valeur de compteur du composant du modèle de projet par défaut `Counter` ( `Pages/Counter.razor` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-236">In the following example, the container is used to maintain the counter value of the default project template's `Counter` component (`Pages/Counter.razor`).</span></span> <span data-ttu-id="72fbf-237">Les méthodes de sérialisation et de désérialisation du conteneur sont basées sur <xref:System.Text.Json> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-237">Methods for serializing and deserializing the container are based on <xref:System.Text.Json>.</span></span>
+<span data-ttu-id="8dd91-225">Une classe de conteneur d’État est créée dans l’application avec des propriétés pour contenir les valeurs d’état de l’application.</span><span class="sxs-lookup"><span data-stu-id="8dd91-225">A state container class is created in the app with properties to hold the app's state values.</span></span> <span data-ttu-id="8dd91-226">Dans l’exemple suivant, le conteneur est utilisé pour conserver la valeur de compteur du composant du modèle de projet par défaut `Counter` ( `Pages/Counter.razor` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-226">In the following example, the container is used to maintain the counter value of the default project template's `Counter` component (`Pages/Counter.razor`).</span></span> <span data-ttu-id="8dd91-227">Les méthodes de sérialisation et de désérialisation du conteneur sont basées sur <xref:System.Text.Json> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-227">Methods for serializing and deserializing the container are based on <xref:System.Text.Json>.</span></span>
 
 ```csharp
 using System.Text.Json;
@@ -618,7 +496,7 @@ public class StateContainer
 }
 ```
 
-<span data-ttu-id="72fbf-238">Le `Counter` composant utilise le conteneur d’État pour conserver la `currentCount` valeur en dehors du composant :</span><span class="sxs-lookup"><span data-stu-id="72fbf-238">The `Counter` component uses the state container to maintain the `currentCount` value outside of the component:</span></span>
+<span data-ttu-id="8dd91-228">Le `Counter` composant utilise le conteneur d’État pour conserver la `currentCount` valeur en dehors du composant :</span><span class="sxs-lookup"><span data-stu-id="8dd91-228">The `Counter` component uses the state container to maintain the `currentCount` value outside of the component:</span></span>
 
 ```razor
 @page "/counter"
@@ -649,9 +527,9 @@ public class StateContainer
 }
 ```
 
-<span data-ttu-id="72fbf-239">Créez un `ApplicationAuthenticationState` à partir de <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticationState> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-239">Create an `ApplicationAuthenticationState` from <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticationState>.</span></span> <span data-ttu-id="72fbf-240">Fournissez une `Id` propriété, qui sert d’identificateur pour l’État stocké localement.</span><span class="sxs-lookup"><span data-stu-id="72fbf-240">Provide an `Id` property, which serves as an identifier for the locally-stored state.</span></span>
+<span data-ttu-id="8dd91-229">Créez un `ApplicationAuthenticationState` à partir de <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticationState> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-229">Create an `ApplicationAuthenticationState` from <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticationState>.</span></span> <span data-ttu-id="8dd91-230">Fournissez une `Id` propriété, qui sert d’identificateur pour l’État stocké localement.</span><span class="sxs-lookup"><span data-stu-id="8dd91-230">Provide an `Id` property, which serves as an identifier for the locally-stored state.</span></span>
 
-<span data-ttu-id="72fbf-241">`ApplicationAuthenticationState.cs`:</span><span class="sxs-lookup"><span data-stu-id="72fbf-241">`ApplicationAuthenticationState.cs`:</span></span>
+<span data-ttu-id="8dd91-231">`ApplicationAuthenticationState.cs`:</span><span class="sxs-lookup"><span data-stu-id="8dd91-231">`ApplicationAuthenticationState.cs`:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -662,7 +540,7 @@ public class ApplicationAuthenticationState : RemoteAuthenticationState
 }
 ```
 
-<span data-ttu-id="72fbf-242">Le `Authentication` composant ( `Pages/Authentication.razor` ) enregistre et restaure l’état de l’application à l’aide du stockage de session locale avec les `StateContainer` méthodes de sérialisation et de désérialisation, `GetStateForLocalStorage` et `SetStateFromLocalStorage` :</span><span class="sxs-lookup"><span data-stu-id="72fbf-242">The `Authentication` component (`Pages/Authentication.razor`) saves and restores the app's state using local session storage with the `StateContainer` serialization and deserialization methods, `GetStateForLocalStorage` and `SetStateFromLocalStorage`:</span></span>
+<span data-ttu-id="8dd91-232">Le `Authentication` composant ( `Pages/Authentication.razor` ) enregistre et restaure l’état de l’application à l’aide du stockage de session locale avec les `StateContainer` méthodes de sérialisation et de désérialisation, `GetStateForLocalStorage` et `SetStateFromLocalStorage` :</span><span class="sxs-lookup"><span data-stu-id="8dd91-232">The `Authentication` component (`Pages/Authentication.razor`) saves and restores the app's state using local session storage with the `StateContainer` serialization and deserialization methods, `GetStateForLocalStorage` and `SetStateFromLocalStorage`:</span></span>
 
 ```razor
 @page "/authentication/{action}"
@@ -714,10 +592,10 @@ public class ApplicationAuthenticationState : RemoteAuthenticationState
 }
 ```
 
-<span data-ttu-id="72fbf-243">Cet exemple utilise Azure Active Directory (AAD) pour l’authentification.</span><span class="sxs-lookup"><span data-stu-id="72fbf-243">This example uses Azure Active Directory (AAD) for authentication.</span></span> <span data-ttu-id="72fbf-244">Dans `Program.Main` ( `Program.cs` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-244">In `Program.Main` (`Program.cs`):</span></span>
+<span data-ttu-id="8dd91-233">Cet exemple utilise Azure Active Directory (AAD) pour l’authentification.</span><span class="sxs-lookup"><span data-stu-id="8dd91-233">This example uses Azure Active Directory (AAD) for authentication.</span></span> <span data-ttu-id="8dd91-234">Dans `Program.Main` ( `Program.cs` ) :</span><span class="sxs-lookup"><span data-stu-id="8dd91-234">In `Program.Main` (`Program.cs`):</span></span>
 
-* <span data-ttu-id="72fbf-245">Le `ApplicationAuthenticationState` est configuré en tant que type Microsoft authentification Library (MSAL) `RemoteAuthenticationState` .</span><span class="sxs-lookup"><span data-stu-id="72fbf-245">The `ApplicationAuthenticationState` is configured as the Microsoft Autentication Library (MSAL) `RemoteAuthenticationState` type.</span></span>
-* <span data-ttu-id="72fbf-246">Le conteneur d’État est inscrit dans le conteneur de service.</span><span class="sxs-lookup"><span data-stu-id="72fbf-246">The state container is registered in the service container.</span></span>
+* <span data-ttu-id="8dd91-235">Le `ApplicationAuthenticationState` est configuré en tant que type Microsoft authentification Library (MSAL) `RemoteAuthenticationState` .</span><span class="sxs-lookup"><span data-stu-id="8dd91-235">The `ApplicationAuthenticationState` is configured as the Microsoft Autentication Library (MSAL) `RemoteAuthenticationState` type.</span></span>
+* <span data-ttu-id="8dd91-236">Le conteneur d’État est inscrit dans le conteneur de service.</span><span class="sxs-lookup"><span data-stu-id="8dd91-236">The state container is registered in the service container.</span></span>
 
 ```csharp
 builder.Services.AddMsalAuthentication<ApplicationAuthenticationState>(options =>
@@ -728,27 +606,27 @@ builder.Services.AddMsalAuthentication<ApplicationAuthenticationState>(options =
 builder.Services.AddSingleton<StateContainer>();
 ```
 
-## <a name="customize-app-routes"></a><span data-ttu-id="72fbf-247">Personnaliser les itinéraires de l’application</span><span class="sxs-lookup"><span data-stu-id="72fbf-247">Customize app routes</span></span>
+## <a name="customize-app-routes"></a><span data-ttu-id="8dd91-237">Personnaliser les itinéraires de l’application</span><span class="sxs-lookup"><span data-stu-id="8dd91-237">Customize app routes</span></span>
 
-<span data-ttu-id="72fbf-248">Par défaut, la [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) bibliothèque utilise les itinéraires indiqués dans le tableau suivant pour représenter des États d’authentification différents.</span><span class="sxs-lookup"><span data-stu-id="72fbf-248">By default, the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) library uses the routes shown in the following table for representing different authentication states.</span></span>
+<span data-ttu-id="8dd91-238">Par défaut, la [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) bibliothèque utilise les itinéraires indiqués dans le tableau suivant pour représenter des États d’authentification différents.</span><span class="sxs-lookup"><span data-stu-id="8dd91-238">By default, the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) library uses the routes shown in the following table for representing different authentication states.</span></span>
 
-| <span data-ttu-id="72fbf-249">Route</span><span class="sxs-lookup"><span data-stu-id="72fbf-249">Route</span></span>                            | <span data-ttu-id="72fbf-250">Objectif</span><span class="sxs-lookup"><span data-stu-id="72fbf-250">Purpose</span></span> |
+| <span data-ttu-id="8dd91-239">Routage</span><span class="sxs-lookup"><span data-stu-id="8dd91-239">Route</span></span>                            | <span data-ttu-id="8dd91-240">Objectif</span><span class="sxs-lookup"><span data-stu-id="8dd91-240">Purpose</span></span> |
 | -------------------------------- | ------- |
-| `authentication/login`           | <span data-ttu-id="72fbf-251">Déclenche une opération de connexion.</span><span class="sxs-lookup"><span data-stu-id="72fbf-251">Triggers a sign-in operation.</span></span> |
-| `authentication/login-callback`  | <span data-ttu-id="72fbf-252">Gère le résultat de toute opération de connexion.</span><span class="sxs-lookup"><span data-stu-id="72fbf-252">Handles the result of any sign-in operation.</span></span> |
-| `authentication/login-failed`    | <span data-ttu-id="72fbf-253">Affiche des messages d’erreur lorsque l’opération de connexion échoue pour une raison quelconque.</span><span class="sxs-lookup"><span data-stu-id="72fbf-253">Displays error messages when the sign-in operation fails for some reason.</span></span> |
-| `authentication/logout`          | <span data-ttu-id="72fbf-254">Déclenche une opération de déconnexion.</span><span class="sxs-lookup"><span data-stu-id="72fbf-254">Triggers a sign-out operation.</span></span> |
-| `authentication/logout-callback` | <span data-ttu-id="72fbf-255">Gère le résultat d’une opération de déconnexion.</span><span class="sxs-lookup"><span data-stu-id="72fbf-255">Handles the result of a sign-out operation.</span></span> |
-| `authentication/logout-failed`   | <span data-ttu-id="72fbf-256">Affiche des messages d’erreur lorsque l’opération de déconnexion échoue pour une raison quelconque.</span><span class="sxs-lookup"><span data-stu-id="72fbf-256">Displays error messages when the sign-out operation fails for some reason.</span></span> |
-| `authentication/logged-out`      | <span data-ttu-id="72fbf-257">Indique que l’utilisateur a réussi à se déconnecter.</span><span class="sxs-lookup"><span data-stu-id="72fbf-257">Indicates that the user has successfully logout.</span></span> |
-| `authentication/profile`         | <span data-ttu-id="72fbf-258">Déclenche une opération de modification du profil utilisateur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-258">Triggers an operation to edit the user profile.</span></span> |
-| `authentication/register`        | <span data-ttu-id="72fbf-259">Déclenche une opération pour inscrire un nouvel utilisateur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-259">Triggers an operation to register a new user.</span></span> |
+| `authentication/login`           | <span data-ttu-id="8dd91-241">Déclenche une opération de connexion.</span><span class="sxs-lookup"><span data-stu-id="8dd91-241">Triggers a sign-in operation.</span></span> |
+| `authentication/login-callback`  | <span data-ttu-id="8dd91-242">Gère le résultat de toute opération de connexion.</span><span class="sxs-lookup"><span data-stu-id="8dd91-242">Handles the result of any sign-in operation.</span></span> |
+| `authentication/login-failed`    | <span data-ttu-id="8dd91-243">Affiche des messages d’erreur lorsque l’opération de connexion échoue pour une raison quelconque.</span><span class="sxs-lookup"><span data-stu-id="8dd91-243">Displays error messages when the sign-in operation fails for some reason.</span></span> |
+| `authentication/logout`          | <span data-ttu-id="8dd91-244">Déclenche une opération de déconnexion.</span><span class="sxs-lookup"><span data-stu-id="8dd91-244">Triggers a sign-out operation.</span></span> |
+| `authentication/logout-callback` | <span data-ttu-id="8dd91-245">Gère le résultat d’une opération de déconnexion.</span><span class="sxs-lookup"><span data-stu-id="8dd91-245">Handles the result of a sign-out operation.</span></span> |
+| `authentication/logout-failed`   | <span data-ttu-id="8dd91-246">Affiche des messages d’erreur lorsque l’opération de déconnexion échoue pour une raison quelconque.</span><span class="sxs-lookup"><span data-stu-id="8dd91-246">Displays error messages when the sign-out operation fails for some reason.</span></span> |
+| `authentication/logged-out`      | <span data-ttu-id="8dd91-247">Indique que l’utilisateur a réussi à se déconnecter.</span><span class="sxs-lookup"><span data-stu-id="8dd91-247">Indicates that the user has successfully logout.</span></span> |
+| `authentication/profile`         | <span data-ttu-id="8dd91-248">Déclenche une opération de modification du profil utilisateur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-248">Triggers an operation to edit the user profile.</span></span> |
+| `authentication/register`        | <span data-ttu-id="8dd91-249">Déclenche une opération pour inscrire un nouvel utilisateur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-249">Triggers an operation to register a new user.</span></span> |
 
-<span data-ttu-id="72fbf-260">Les itinéraires indiqués dans le tableau précédent sont configurables via <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticationOptions%601.AuthenticationPaths%2A?displayProperty=nameWithType> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-260">The routes shown in the preceding table are configurable via <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticationOptions%601.AuthenticationPaths%2A?displayProperty=nameWithType>.</span></span> <span data-ttu-id="72fbf-261">Quand vous définissez des options pour fournir des itinéraires personnalisés, vérifiez que l’application a un itinéraire qui gère chaque chemin d’accès.</span><span class="sxs-lookup"><span data-stu-id="72fbf-261">When setting options to provide custom routes, confirm that the app has a route that handles each path.</span></span>
+<span data-ttu-id="8dd91-250">Les itinéraires indiqués dans le tableau précédent sont configurables via <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticationOptions%601.AuthenticationPaths%2A?displayProperty=nameWithType> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-250">The routes shown in the preceding table are configurable via <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticationOptions%601.AuthenticationPaths%2A?displayProperty=nameWithType>.</span></span> <span data-ttu-id="8dd91-251">Quand vous définissez des options pour fournir des itinéraires personnalisés, vérifiez que l’application a un itinéraire qui gère chaque chemin d’accès.</span><span class="sxs-lookup"><span data-stu-id="8dd91-251">When setting options to provide custom routes, confirm that the app has a route that handles each path.</span></span>
 
-<span data-ttu-id="72fbf-262">Dans l’exemple suivant, tous les chemins d’accès ont pour préfixe `/security` .</span><span class="sxs-lookup"><span data-stu-id="72fbf-262">In the following example, all the paths are prefixed with `/security`.</span></span>
+<span data-ttu-id="8dd91-252">Dans l’exemple suivant, tous les chemins d’accès ont pour préfixe `/security` .</span><span class="sxs-lookup"><span data-stu-id="8dd91-252">In the following example, all the paths are prefixed with `/security`.</span></span>
 
-<span data-ttu-id="72fbf-263">`Authentication` composant ( `Pages/Authentication.razor` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-263">`Authentication` component (`Pages/Authentication.razor`):</span></span>
+<span data-ttu-id="8dd91-253">`Authentication` composant ( `Pages/Authentication.razor` ) :</span><span class="sxs-lookup"><span data-stu-id="8dd91-253">`Authentication` component (`Pages/Authentication.razor`):</span></span>
 
 ```razor
 @page "/security/{action}"
@@ -762,7 +640,7 @@ builder.Services.AddSingleton<StateContainer>();
 }
 ```
 
-<span data-ttu-id="72fbf-264">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="72fbf-264">`Program.Main` (`Program.cs`):</span></span>
+<span data-ttu-id="8dd91-254">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="8dd91-254">`Program.Main` (`Program.cs`):</span></span>
 
 ```csharp
 builder.Services.AddApiAuthorization(options => { 
@@ -778,7 +656,7 @@ builder.Services.AddApiAuthorization(options => {
 });
 ```
 
-<span data-ttu-id="72fbf-265">Si la spécification exige des chemins d’accès complètement différents, définissez les itinéraires comme décrit précédemment et affichez le <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> avec un paramètre d’action explicite :</span><span class="sxs-lookup"><span data-stu-id="72fbf-265">If the requirement calls for completely different paths, set the routes as described previously and render the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> with an explicit action parameter:</span></span>
+<span data-ttu-id="8dd91-255">Si la spécification exige des chemins d’accès complètement différents, définissez les itinéraires comme décrit précédemment et affichez le <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> avec un paramètre d’action explicite :</span><span class="sxs-lookup"><span data-stu-id="8dd91-255">If the requirement calls for completely different paths, set the routes as described previously and render the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> with an explicit action parameter:</span></span>
 
 ```razor
 @page "/register"
@@ -786,13 +664,13 @@ builder.Services.AddApiAuthorization(options => {
 <RemoteAuthenticatorView Action="@RemoteAuthenticationActions.Register" />
 ```
 
-<span data-ttu-id="72fbf-266">Si vous le souhaitez, vous avez la possibilité de scinder l’interface utilisateur en différentes pages.</span><span class="sxs-lookup"><span data-stu-id="72fbf-266">You're allowed to break the UI into different pages if you choose to do so.</span></span>
+<span data-ttu-id="8dd91-256">Si vous le souhaitez, vous avez la possibilité de scinder l’interface utilisateur en différentes pages.</span><span class="sxs-lookup"><span data-stu-id="8dd91-256">You're allowed to break the UI into different pages if you choose to do so.</span></span>
 
-## <a name="customize-the-authentication-user-interface"></a><span data-ttu-id="72fbf-267">Personnaliser l’interface utilisateur de l’authentification</span><span class="sxs-lookup"><span data-stu-id="72fbf-267">Customize the authentication user interface</span></span>
+## <a name="customize-the-authentication-user-interface"></a><span data-ttu-id="8dd91-257">Personnaliser l’interface utilisateur de l’authentification</span><span class="sxs-lookup"><span data-stu-id="8dd91-257">Customize the authentication user interface</span></span>
 
-<span data-ttu-id="72fbf-268"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> comprend un ensemble par défaut de parties de l’interface utilisateur pour chaque État d’authentification.</span><span class="sxs-lookup"><span data-stu-id="72fbf-268"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> includes a default set of UI pieces for each authentication state.</span></span> <span data-ttu-id="72fbf-269">Chaque État peut être personnalisé en passant un personnalisé <xref:Microsoft.AspNetCore.Components.RenderFragment> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-269">Each state can be customized by passing in a custom <xref:Microsoft.AspNetCore.Components.RenderFragment>.</span></span> <span data-ttu-id="72fbf-270">Pour personnaliser le texte affiché pendant le processus de connexion initial, peut modifier le <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> comme suit.</span><span class="sxs-lookup"><span data-stu-id="72fbf-270">To customize the displayed text during the initial login process, can change the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> as follows.</span></span>
+<span data-ttu-id="8dd91-258"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> comprend un ensemble par défaut de parties de l’interface utilisateur pour chaque État d’authentification.</span><span class="sxs-lookup"><span data-stu-id="8dd91-258"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> includes a default set of UI pieces for each authentication state.</span></span> <span data-ttu-id="8dd91-259">Chaque État peut être personnalisé en passant un personnalisé <xref:Microsoft.AspNetCore.Components.RenderFragment> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-259">Each state can be customized by passing in a custom <xref:Microsoft.AspNetCore.Components.RenderFragment>.</span></span> <span data-ttu-id="8dd91-260">Pour personnaliser le texte affiché pendant le processus de connexion initial, peut modifier le <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> comme suit.</span><span class="sxs-lookup"><span data-stu-id="8dd91-260">To customize the displayed text during the initial login process, can change the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> as follows.</span></span>
 
-<span data-ttu-id="72fbf-271">`Authentication` composant ( `Pages/Authentication.razor` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-271">`Authentication` component (`Pages/Authentication.razor`):</span></span>
+<span data-ttu-id="8dd91-261">`Authentication` composant ( `Pages/Authentication.razor` ) :</span><span class="sxs-lookup"><span data-stu-id="8dd91-261">`Authentication` component (`Pages/Authentication.razor`):</span></span>
 
 ```razor
 @page "/security/{action}"
@@ -810,9 +688,9 @@ builder.Services.AddApiAuthorization(options => {
 }
 ```
 
-<span data-ttu-id="72fbf-272">Le <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> a un fragment qui peut être utilisé par itinéraire d’authentification, comme indiqué dans le tableau suivant.</span><span class="sxs-lookup"><span data-stu-id="72fbf-272">The <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> has one fragment that can be used per authentication route shown in the following table.</span></span>
+<span data-ttu-id="8dd91-262">Le <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> a un fragment qui peut être utilisé par itinéraire d’authentification, comme indiqué dans le tableau suivant.</span><span class="sxs-lookup"><span data-stu-id="8dd91-262">The <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> has one fragment that can be used per authentication route shown in the following table.</span></span>
 
-| <span data-ttu-id="72fbf-273">Route</span><span class="sxs-lookup"><span data-stu-id="72fbf-273">Route</span></span>                            | <span data-ttu-id="72fbf-274">Fragment</span><span class="sxs-lookup"><span data-stu-id="72fbf-274">Fragment</span></span>                |
+| <span data-ttu-id="8dd91-263">Routage</span><span class="sxs-lookup"><span data-stu-id="8dd91-263">Route</span></span>                            | <span data-ttu-id="8dd91-264">Fragment</span><span class="sxs-lookup"><span data-stu-id="8dd91-264">Fragment</span></span>                |
 | -------------------------------- | ----------------------- |
 | `authentication/login`           | `<LoggingIn>`           |
 | `authentication/login-callback`  | `<CompletingLoggingIn>` |
@@ -824,15 +702,15 @@ builder.Services.AddApiAuthorization(options => {
 | `authentication/profile`         | `<UserProfile>`         |
 | `authentication/register`        | `<Registering>`         |
 
-## <a name="customize-the-user"></a><span data-ttu-id="72fbf-275">Personnaliser l’utilisateur</span><span class="sxs-lookup"><span data-stu-id="72fbf-275">Customize the user</span></span>
+## <a name="customize-the-user"></a><span data-ttu-id="8dd91-265">Personnaliser l’utilisateur</span><span class="sxs-lookup"><span data-stu-id="8dd91-265">Customize the user</span></span>
 
-<span data-ttu-id="72fbf-276">Les utilisateurs liés à l’application peuvent être personnalisés.</span><span class="sxs-lookup"><span data-stu-id="72fbf-276">Users bound to the app can be customized.</span></span>
+<span data-ttu-id="8dd91-266">Les utilisateurs liés à l’application peuvent être personnalisés.</span><span class="sxs-lookup"><span data-stu-id="8dd91-266">Users bound to the app can be customized.</span></span>
 
-### <a name="customize-the-user-with-a-payload-claim"></a><span data-ttu-id="72fbf-277">Personnaliser l’utilisateur avec une revendication de charge utile</span><span class="sxs-lookup"><span data-stu-id="72fbf-277">Customize the user with a payload claim</span></span>
+### <a name="customize-the-user-with-a-payload-claim"></a><span data-ttu-id="8dd91-267">Personnaliser l’utilisateur avec une revendication de charge utile</span><span class="sxs-lookup"><span data-stu-id="8dd91-267">Customize the user with a payload claim</span></span>
 
-<span data-ttu-id="72fbf-278">Dans l’exemple suivant, les utilisateurs authentifiés de l’application reçoivent une `amr` revendication pour chacune des méthodes d’authentification de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-278">In the following example, the app's authenticated users receive an `amr` claim for each of the user's authentication methods.</span></span> <span data-ttu-id="72fbf-279">La `amr` revendication identifie la manière dont le sujet du jeton a été authentifié dans les Identity revendications de [charge utile](/azure/active-directory/develop/access-tokens#the-amr-claim)Microsoft Platform v 1.0.</span><span class="sxs-lookup"><span data-stu-id="72fbf-279">The `amr` claim identifies how the subject of the token was authenticated in Microsoft Identity Platform v1.0 [payload claims](/azure/active-directory/develop/access-tokens#the-amr-claim).</span></span> <span data-ttu-id="72fbf-280">L’exemple utilise une classe de compte d’utilisateur personnalisée basée sur <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-280">The example uses a custom user account class based on <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>.</span></span>
+<span data-ttu-id="8dd91-268">Dans l’exemple suivant, les utilisateurs authentifiés de l’application reçoivent une `amr` revendication pour chacune des méthodes d’authentification de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-268">In the following example, the app's authenticated users receive an `amr` claim for each of the user's authentication methods.</span></span> <span data-ttu-id="8dd91-269">La `amr` revendication identifie la manière dont le sujet du jeton a été authentifié dans les :::no-loc(Identity)::: revendications de [charge utile](/azure/active-directory/develop/access-tokens#the-amr-claim)Microsoft Platform v 1.0.</span><span class="sxs-lookup"><span data-stu-id="8dd91-269">The `amr` claim identifies how the subject of the token was authenticated in Microsoft :::no-loc(Identity)::: Platform v1.0 [payload claims](/azure/active-directory/develop/access-tokens#the-amr-claim).</span></span> <span data-ttu-id="8dd91-270">L’exemple utilise une classe de compte d’utilisateur personnalisée basée sur <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-270">The example uses a custom user account class based on <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>.</span></span>
 
-<span data-ttu-id="72fbf-281">Créez une classe qui étend la <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> classe.</span><span class="sxs-lookup"><span data-stu-id="72fbf-281">Create a class that extends the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> class.</span></span> <span data-ttu-id="72fbf-282">L’exemple suivant affecte `AuthenticationMethod` à la propriété le tableau de valeurs de `amr` propriété JSON de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-282">The following example sets the `AuthenticationMethod` property to the user's array of `amr` JSON property values.</span></span> <span data-ttu-id="72fbf-283">`AuthenticationMethod` est rempli automatiquement par le Framework lorsque l’utilisateur est authentifié.</span><span class="sxs-lookup"><span data-stu-id="72fbf-283">`AuthenticationMethod` is populated automatically by the framework when the user is authenticated.</span></span>
+<span data-ttu-id="8dd91-271">Créez une classe qui étend la <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> classe.</span><span class="sxs-lookup"><span data-stu-id="8dd91-271">Create a class that extends the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> class.</span></span> <span data-ttu-id="8dd91-272">L’exemple suivant affecte `AuthenticationMethod` à la propriété le tableau de valeurs de `amr` propriété JSON de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-272">The following example sets the `AuthenticationMethod` property to the user's array of `amr` JSON property values.</span></span> <span data-ttu-id="8dd91-273">`AuthenticationMethod` est rempli automatiquement par le Framework lorsque l’utilisateur est authentifié.</span><span class="sxs-lookup"><span data-stu-id="8dd91-273">`AuthenticationMethod` is populated automatically by the framework when the user is authenticated.</span></span>
 
 ```csharp
 using System.Text.Json.Serialization;
@@ -845,7 +723,7 @@ public class CustomUserAccount : RemoteUserAccount
 }
 ```
 
-<span data-ttu-id="72fbf-284">Créez une fabrique qui étend <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccountClaimsPrincipalFactory%601> pour créer des revendications à partir des méthodes d’authentification de l’utilisateur stockées dans `CustomUserAccount.AuthenticationMethod` :</span><span class="sxs-lookup"><span data-stu-id="72fbf-284">Create a factory that extends <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccountClaimsPrincipalFactory%601> to create claims from the user's authentication methods stored in `CustomUserAccount.AuthenticationMethod`:</span></span>
+<span data-ttu-id="8dd91-274">Créez une fabrique qui étend <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccountClaimsPrincipalFactory%601> pour créer des revendications à partir des méthodes d’authentification de l’utilisateur stockées dans `CustomUserAccount.AuthenticationMethod` :</span><span class="sxs-lookup"><span data-stu-id="8dd91-274">Create a factory that extends <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccountClaimsPrincipalFactory%601> to create claims from the user's authentication methods stored in `CustomUserAccount.AuthenticationMethod`:</span></span>
 
 ```csharp
 using System.Security.Claims;
@@ -867,11 +745,11 @@ public class CustomAccountFactory
     {
         var initialUser = await base.CreateUserAsync(account, options);
 
-        if (initialUser.Identity.IsAuthenticated)
+        if (initialUser.:::no-loc(Identity):::.IsAuthenticated)
         {
             foreach (var value in account.AuthenticationMethod)
             {
-                ((ClaimsIdentity)initialUser.Identity)
+                ((Claims:::no-loc(Identity):::)initialUser.:::no-loc(Identity):::)
                     .AddClaim(new Claim("amr", value));
             }
         }
@@ -881,9 +759,9 @@ public class CustomAccountFactory
 }
 ```
 
-<span data-ttu-id="72fbf-285">Inscrivez le `CustomAccountFactory` pour le fournisseur d’authentification en cours d’utilisation.</span><span class="sxs-lookup"><span data-stu-id="72fbf-285">Register the `CustomAccountFactory` for the authentication provider in use.</span></span> <span data-ttu-id="72fbf-286">Les inscriptions suivantes sont valides :</span><span class="sxs-lookup"><span data-stu-id="72fbf-286">Any of the following registrations are valid:</span></span>
+<span data-ttu-id="8dd91-275">Inscrivez le `CustomAccountFactory` pour le fournisseur d’authentification en cours d’utilisation.</span><span class="sxs-lookup"><span data-stu-id="8dd91-275">Register the `CustomAccountFactory` for the authentication provider in use.</span></span> <span data-ttu-id="8dd91-276">Les inscriptions suivantes sont valides :</span><span class="sxs-lookup"><span data-stu-id="8dd91-276">Any of the following registrations are valid:</span></span>
 
-* <span data-ttu-id="72fbf-287"><xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A>:</span><span class="sxs-lookup"><span data-stu-id="72fbf-287"><xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A>:</span></span>
+* <span data-ttu-id="8dd91-277"><xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A>:</span><span class="sxs-lookup"><span data-stu-id="8dd91-277"><xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A>:</span></span>
 
   ```csharp
   using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -899,7 +777,7 @@ public class CustomAccountFactory
           CustomUserAccount, CustomAccountFactory>();
   ```
 
-* <span data-ttu-id="72fbf-288"><xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A>:</span><span class="sxs-lookup"><span data-stu-id="72fbf-288"><xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A>:</span></span>
+* <span data-ttu-id="8dd91-278"><xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A>:</span><span class="sxs-lookup"><span data-stu-id="8dd91-278"><xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A>:</span></span>
 
   ```csharp
   using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -915,7 +793,7 @@ public class CustomAccountFactory
           CustomUserAccount, CustomAccountFactory>();
   ```
   
-* <span data-ttu-id="72fbf-289"><xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddApiAuthorization%2A>:</span><span class="sxs-lookup"><span data-stu-id="72fbf-289"><xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddApiAuthorization%2A>:</span></span>
+* <span data-ttu-id="8dd91-279"><xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddApiAuthorization%2A>:</span><span class="sxs-lookup"><span data-stu-id="8dd91-279"><xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddApiAuthorization%2A>:</span></span>
 
   ```csharp
   using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -931,146 +809,18 @@ public class CustomAccountFactory
           CustomUserAccount, CustomAccountFactory>();
   ```
 
-### <a name="customize-the-user-with-graph-api-claims"></a><span data-ttu-id="72fbf-290">Personnaliser l’utilisateur avec des revendications API Graph</span><span class="sxs-lookup"><span data-stu-id="72fbf-290">Customize the user with Graph API claims</span></span>
+### <a name="aad-security-groups-and-roles-with-a-custom-user-account-class"></a><span data-ttu-id="8dd91-280">Groupes de sécurité et rôles AAD avec une classe de compte d’utilisateur personnalisée</span><span class="sxs-lookup"><span data-stu-id="8dd91-280">AAD security groups and roles with a custom user account class</span></span>
 
-<span data-ttu-id="72fbf-291">Dans l’exemple suivant, l’application crée une revendication de numéro de téléphone mobile pour l’utilisateur à partir de API Graph à l’aide de l' <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-291">In the following example, the app creates a mobile phone number claim for the user from Graph API using the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>.</span></span> <span data-ttu-id="72fbf-292">L’application doit avoir l' `User.Read` autorisation API Graph (étendue) configurée dans AAD.</span><span class="sxs-lookup"><span data-stu-id="72fbf-292">The app must have the `User.Read` Graph API permission (scope) configured in AAD.</span></span>
+<span data-ttu-id="8dd91-281">Pour obtenir un exemple supplémentaire qui fonctionne avec les groupes de sécurité AAD et les rôles d’administrateur AAD et une classe de compte d’utilisateur personnalisée, consultez <xref:blazor/security/webassembly/aad-groups-roles> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-281">For an additional example that works with AAD security groups and AAD Administrator Roles and a custom user account class, see <xref:blazor/security/webassembly/aad-groups-roles>.</span></span>
 
-<span data-ttu-id="72fbf-293">`GraphAuthorizationMessageHandler.cs`:</span><span class="sxs-lookup"><span data-stu-id="72fbf-293">`GraphAuthorizationMessageHandler.cs`:</span></span>
+## <a name="support-prerendering-with-authentication"></a><span data-ttu-id="8dd91-282">Prendre en charge le prérendu avec l’authentification</span><span class="sxs-lookup"><span data-stu-id="8dd91-282">Support prerendering with authentication</span></span>
 
-```csharp
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+<span data-ttu-id="8dd91-283">Après avoir utilisé les instructions de l’une des rubriques de l’application hébergée :::no-loc(Blazor WebAssembly)::: , suivez les instructions ci-dessous pour créer une application qui :</span><span class="sxs-lookup"><span data-stu-id="8dd91-283">After following the guidance in one of the hosted :::no-loc(Blazor WebAssembly)::: app topics, use the following instructions to create an app that:</span></span>
 
-public class GraphAPIAuthorizationMessageHandler : AuthorizationMessageHandler
-{
-    public GraphAPIAuthorizationMessageHandler(IAccessTokenProvider provider,
-        NavigationManager navigationManager)
-        : base(provider, navigationManager)
-    {
-        ConfigureHandler(
-            authorizedUrls: new[] { "https://graph.microsoft.com" },
-            scopes: new[] { "https://graph.microsoft.com/User.Read" });
-    }
-}
-```
+* <span data-ttu-id="8dd91-284">Prérend les chemins d’accès pour lesquels l’autorisation n’est pas requise.</span><span class="sxs-lookup"><span data-stu-id="8dd91-284">Prerenders paths for which authorization isn't required.</span></span>
+* <span data-ttu-id="8dd91-285">N’effectue pas de prérendu des chemins pour lesquels une autorisation est requise.</span><span class="sxs-lookup"><span data-stu-id="8dd91-285">Doesn't prerender paths for which authorization is required.</span></span>
 
-<span data-ttu-id="72fbf-294">Un nommé <xref:System.Net.Http.HttpClient> pour API Graph est créé dans `Program.Main` ( `Program.cs` ) à l’aide de `GraphAPIAuthorizationMessageHandler` :</span><span class="sxs-lookup"><span data-stu-id="72fbf-294">A named <xref:System.Net.Http.HttpClient> for Graph API is created in `Program.Main` (`Program.cs`) using the `GraphAPIAuthorizationMessageHandler`:</span></span>
-
-```csharp
-using System;
-
-...
-
-builder.Services.AddScoped<GraphAPIAuthorizationMessageHandler>();
-
-builder.Services.AddHttpClient("GraphAPI",
-        client => client.BaseAddress = new Uri("https://graph.microsoft.com"))
-    .AddHttpMessageHandler<GraphAPIAuthorizationMessageHandler>();
-```
-
-<span data-ttu-id="72fbf-295">`Models/UserInfo.cs`:</span><span class="sxs-lookup"><span data-stu-id="72fbf-295">`Models/UserInfo.cs`:</span></span>
-
-```csharp
-using System.Text.Json.Serialization;
-
-public class UserInfo
-{
-    [JsonPropertyName("mobilePhone")]
-    public string MobilePhone { get; set; }
-}
-```
-
-<span data-ttu-id="72fbf-296">Dans l’exemple suivant `CustomAccountFactory` ( `CustomAccountFactory.cs` ), le Framework <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> représente le compte de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-296">In the following `CustomAccountFactory` (`CustomAccountFactory.cs`), the framework's <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> represents the user's account.</span></span> <span data-ttu-id="72fbf-297">Si l’application nécessite une classe de compte d’utilisateur personnalisée qui étend <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> , échangez la classe de compte d’utilisateur personnalisée pour <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> dans le code suivant :</span><span class="sxs-lookup"><span data-stu-id="72fbf-297">If the app requires a custom user account class that extends <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>, swap the custom user account class for <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> in the following code:</span></span>
-
-```csharp
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
-using Microsoft.Extensions.Logging;
-
-public class CustomAccountFactory
-    : AccountClaimsPrincipalFactory<RemoteUserAccount>
-{
-    private readonly ILogger<CustomAccountFactory> logger;
-    private readonly IHttpClientFactory clientFactory;
-
-    public CustomAccountFactory(IAccessTokenProviderAccessor accessor, 
-        IHttpClientFactory clientFactory, 
-        ILogger<CustomAccountFactory> logger)
-        : base(accessor)
-    {
-        this.clientFactory = clientFactory;
-        this.logger = logger;
-    }
-
-    public async override ValueTask<ClaimsPrincipal> CreateUserAsync(
-        RemoteUserAccount account,
-        RemoteAuthenticationUserOptions options)
-    {
-        var initialUser = await base.CreateUserAsync(account, options);
-
-        if (initialUser.Identity.IsAuthenticated)
-        {
-            var userIdentity = (ClaimsIdentity)initialUser.Identity;
-
-            try
-            {
-                var client = clientFactory.CreateClient("GraphAPI");
-
-                var userInfo = await client.GetFromJsonAsync<UserInfo>("v1.0/me");
-
-                if (userInfo != null)
-                {
-                    userIdentity.AddClaim(new Claim("mobilephone", userInfo.MobilePhone));
-                }
-            }
-            catch (AccessTokenNotAvailableException exception)
-            {
-                logger.LogError("Graph API access token failure: {MESSAGE}",
-                    exception.Message);
-            }
-        }
-
-        return initialUser;
-    }
-}
-```
-
-<span data-ttu-id="72fbf-298">Dans `Program.Main` ( `Program.cs` ), configurez l’application pour qu’elle utilise la fabrique personnalisée.</span><span class="sxs-lookup"><span data-stu-id="72fbf-298">In `Program.Main` (`Program.cs`), configure the app to use the custom factory.</span></span> <span data-ttu-id="72fbf-299">Si l’application utilise une classe de compte d’utilisateur personnalisée qui étend <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> , échangez la classe de compte d’utilisateur personnalisée pour <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> dans le code suivant :</span><span class="sxs-lookup"><span data-stu-id="72fbf-299">If the app uses a custom user account class that extends <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>, swap the custom user account class for <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> in the following code:</span></span>
-
-```csharp
-using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-
-...
-
-builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
-    RemoteUserAccount>(options =>
-    {
-        builder.Configuration.Bind("AzureAd", 
-            options.ProviderOptions.Authentication);
-    })
-    .AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, RemoteUserAccount, 
-        CustomAccountFactory>();
-```
-
-<span data-ttu-id="72fbf-300">L’exemple précédent concerne une application qui utilise l’authentification AAD avec MSAL.</span><span class="sxs-lookup"><span data-stu-id="72fbf-300">The preceding example is for an app that uses AAD authentication with MSAL.</span></span> <span data-ttu-id="72fbf-301">Des modèles similaires existent pour l’authentification OIDC et l’API.</span><span class="sxs-lookup"><span data-stu-id="72fbf-301">Similar patterns exist for OIDC and API authentication.</span></span> <span data-ttu-id="72fbf-302">Pour plus d’informations, consultez les exemples à la fin de la section [personnaliser l’utilisateur avec une revendication de charge utile](#customize-the-user-with-a-payload-claim) .</span><span class="sxs-lookup"><span data-stu-id="72fbf-302">For more information, see the examples at the end of the [Customize the user with a payload claim](#customize-the-user-with-a-payload-claim) section.</span></span>
-
-### <a name="aad-security-groups-and-roles-with-a-custom-user-account-class"></a><span data-ttu-id="72fbf-303">Groupes de sécurité et rôles AAD avec une classe de compte d’utilisateur personnalisée</span><span class="sxs-lookup"><span data-stu-id="72fbf-303">AAD security groups and roles with a custom user account class</span></span>
-
-<span data-ttu-id="72fbf-304">Pour obtenir un exemple supplémentaire qui fonctionne avec les groupes de sécurité AAD et les rôles d’administrateur AAD et une classe de compte d’utilisateur personnalisée, consultez <xref:blazor/security/webassembly/aad-groups-roles> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-304">For an additional example that works with AAD security groups and AAD Administrator Roles and a custom user account class, see <xref:blazor/security/webassembly/aad-groups-roles>.</span></span>
-
-## <a name="support-prerendering-with-authentication"></a><span data-ttu-id="72fbf-305">Prendre en charge le prérendu avec l’authentification</span><span class="sxs-lookup"><span data-stu-id="72fbf-305">Support prerendering with authentication</span></span>
-
-<span data-ttu-id="72fbf-306">Après avoir utilisé les instructions de l’une des rubriques de l’application hébergée Blazor WebAssembly , suivez les instructions ci-dessous pour créer une application qui :</span><span class="sxs-lookup"><span data-stu-id="72fbf-306">After following the guidance in one of the hosted Blazor WebAssembly app topics, use the following instructions to create an app that:</span></span>
-
-* <span data-ttu-id="72fbf-307">Prérend les chemins d’accès pour lesquels l’autorisation n’est pas requise.</span><span class="sxs-lookup"><span data-stu-id="72fbf-307">Prerenders paths for which authorization isn't required.</span></span>
-* <span data-ttu-id="72fbf-308">N’effectue pas de prérendu des chemins pour lesquels une autorisation est requise.</span><span class="sxs-lookup"><span data-stu-id="72fbf-308">Doesn't prerender paths for which authorization is required.</span></span>
-
-<span data-ttu-id="72fbf-309">Dans la *`Client`* classe de l’application `Program` ( `Program.cs` ), factorisez les inscriptions de service courantes dans une méthode distincte (par exemple, `ConfigureCommonServices` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-309">In the *`Client`* app's `Program` class (`Program.cs`), factor common service registrations into a separate method (for example, `ConfigureCommonServices`):</span></span>
+<span data-ttu-id="8dd91-286">Dans la *`Client`* classe de l’application `Program` ( `Program.cs` ), factorisez les inscriptions de service courantes dans une méthode distincte (par exemple, `ConfigureCommonServices` ) :</span><span class="sxs-lookup"><span data-stu-id="8dd91-286">In the *`Client`* app's `Program` class (`Program.cs`), factor common service registrations into a separate method (for example, `ConfigureCommonServices`):</span></span>
 
 ```csharp
 public class Program
@@ -1100,7 +850,7 @@ public class Program
 }
 ```
 
-<span data-ttu-id="72fbf-310">Dans l’application serveur `Startup.ConfigureServices` , inscrivez les services supplémentaires suivants :</span><span class="sxs-lookup"><span data-stu-id="72fbf-310">In the server app's `Startup.ConfigureServices`, register the following additional services:</span></span>
+<span data-ttu-id="8dd91-287">Dans l’application serveur `Startup.ConfigureServices` , inscrivez les services supplémentaires suivants :</span><span class="sxs-lookup"><span data-stu-id="8dd91-287">In the server app's `Startup.ConfigureServices`, register the following additional services:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Components.Authorization;
@@ -1111,7 +861,7 @@ public void ConfigureServices(IServiceCollection services)
 {
     ...
 
-    services.AddRazorPages();
+    services.Add:::no-loc(Razor):::Pages();
     services.AddScoped<AuthenticationStateProvider, 
         ServerAuthenticationStateProvider>();
     services.AddScoped<SignOutSessionStateManager>();
@@ -1120,7 +870,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="72fbf-311">Dans la méthode de l’application serveur `Startup.Configure` , remplacez [`endpoints.MapFallbackToFile("index.html")`](xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A) par [`endpoints.MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-311">In the server app's `Startup.Configure` method, replace [`endpoints.MapFallbackToFile("index.html")`](xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A) with [`endpoints.MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A):</span></span>
+<span data-ttu-id="8dd91-288">Dans la méthode de l’application serveur `Startup.Configure` , remplacez [`endpoints.MapFallbackToFile("index.html")`](xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A) par [`endpoints.MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.:::no-loc(Razor):::PagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A) :</span><span class="sxs-lookup"><span data-stu-id="8dd91-288">In the server app's `Startup.Configure` method, replace [`endpoints.MapFallbackToFile("index.html")`](xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A) with [`endpoints.MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.:::no-loc(Razor):::PagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A):</span></span>
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -1130,10 +880,10 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-<span data-ttu-id="72fbf-312">Dans l’application serveur, créez un `Pages` dossier s’il n’existe pas.</span><span class="sxs-lookup"><span data-stu-id="72fbf-312">In the server app, create a `Pages` folder if it doesn't exist.</span></span> <span data-ttu-id="72fbf-313">Créez une `_Host.cshtml` page dans le dossier de l’application serveur `Pages` .</span><span class="sxs-lookup"><span data-stu-id="72fbf-313">Create a `_Host.cshtml` page inside the server app's `Pages` folder.</span></span> <span data-ttu-id="72fbf-314">Collez le contenu du *`Client`* fichier de l’application `wwwroot/index.html` dans le `Pages/_Host.cshtml` fichier.</span><span class="sxs-lookup"><span data-stu-id="72fbf-314">Paste the contents from the *`Client`* app's `wwwroot/index.html` file into the `Pages/_Host.cshtml` file.</span></span> <span data-ttu-id="72fbf-315">Mettez à jour le contenu du fichier :</span><span class="sxs-lookup"><span data-stu-id="72fbf-315">Update the file's contents:</span></span>
+<span data-ttu-id="8dd91-289">Dans l’application serveur, créez un `Pages` dossier s’il n’existe pas.</span><span class="sxs-lookup"><span data-stu-id="8dd91-289">In the server app, create a `Pages` folder if it doesn't exist.</span></span> <span data-ttu-id="8dd91-290">Créez une `_Host.cshtml` page dans le dossier de l’application serveur `Pages` .</span><span class="sxs-lookup"><span data-stu-id="8dd91-290">Create a `_Host.cshtml` page inside the server app's `Pages` folder.</span></span> <span data-ttu-id="8dd91-291">Collez le contenu du *`Client`* fichier de l’application `wwwroot/index.html` dans le `Pages/_Host.cshtml` fichier.</span><span class="sxs-lookup"><span data-stu-id="8dd91-291">Paste the contents from the *`Client`* app's `wwwroot/index.html` file into the `Pages/_Host.cshtml` file.</span></span> <span data-ttu-id="8dd91-292">Mettez à jour le contenu du fichier :</span><span class="sxs-lookup"><span data-stu-id="8dd91-292">Update the file's contents:</span></span>
 
-* <span data-ttu-id="72fbf-316">Ajoutez `@page "_Host"` en haut du fichier.</span><span class="sxs-lookup"><span data-stu-id="72fbf-316">Add `@page "_Host"` to the top of the file.</span></span>
-* <span data-ttu-id="72fbf-317">Remplacez la `<app>Loading...</app>` balise par le suivant :</span><span class="sxs-lookup"><span data-stu-id="72fbf-317">Replace the `<app>Loading...</app>` tag with the following:</span></span>
+* <span data-ttu-id="8dd91-293">Ajoutez `@page "_Host"` en haut du fichier.</span><span class="sxs-lookup"><span data-stu-id="8dd91-293">Add `@page "_Host"` to the top of the file.</span></span>
+* <span data-ttu-id="8dd91-294">Remplacez la `<app>Loading...</app>` balise par le suivant :</span><span class="sxs-lookup"><span data-stu-id="8dd91-294">Replace the `<app>Loading...</app>` tag with the following:</span></span>
 
   ```cshtml
   <app>
@@ -1149,53 +899,53 @@ app.UseEndpoints(endpoints =>
   </app>
   ```
   
-## <a name="options-for-hosted-apps-and-third-party-login-providers"></a><span data-ttu-id="72fbf-318">Options pour les applications hébergées et les fournisseurs de connexion tiers</span><span class="sxs-lookup"><span data-stu-id="72fbf-318">Options for hosted apps and third-party login providers</span></span>
+## <a name="options-for-hosted-apps-and-third-party-login-providers"></a><span data-ttu-id="8dd91-295">Options pour les applications hébergées et les fournisseurs de connexion tiers</span><span class="sxs-lookup"><span data-stu-id="8dd91-295">Options for hosted apps and third-party login providers</span></span>
 
-<span data-ttu-id="72fbf-319">Lors de l’authentification et de l’autorisation d’une application hébergée Blazor WebAssembly auprès d’un fournisseur tiers, plusieurs options sont disponibles pour l’authentification de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-319">When authenticating and authorizing a hosted Blazor WebAssembly app with a third-party provider, there are several options available for authenticating the user.</span></span> <span data-ttu-id="72fbf-320">Celui que vous choisissez dépend de votre scénario.</span><span class="sxs-lookup"><span data-stu-id="72fbf-320">Which one you choose depends on your scenario.</span></span>
+<span data-ttu-id="8dd91-296">Lors de l’authentification et de l’autorisation d’une application hébergée :::no-loc(Blazor WebAssembly)::: auprès d’un fournisseur tiers, plusieurs options sont disponibles pour l’authentification de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-296">When authenticating and authorizing a hosted :::no-loc(Blazor WebAssembly)::: app with a third-party provider, there are several options available for authenticating the user.</span></span> <span data-ttu-id="8dd91-297">Celui que vous choisissez dépend de votre scénario.</span><span class="sxs-lookup"><span data-stu-id="8dd91-297">Which one you choose depends on your scenario.</span></span>
 
-<span data-ttu-id="72fbf-321">Pour plus d'informations, consultez <xref:security/authentication/social/additional-claims>.</span><span class="sxs-lookup"><span data-stu-id="72fbf-321">For more information, see <xref:security/authentication/social/additional-claims>.</span></span>
+<span data-ttu-id="8dd91-298">Pour plus d'informations, consultez <xref:security/authentication/social/additional-claims>.</span><span class="sxs-lookup"><span data-stu-id="8dd91-298">For more information, see <xref:security/authentication/social/additional-claims>.</span></span>
 
-### <a name="authenticate-users-to-only-call-protected-third-party-apis"></a><span data-ttu-id="72fbf-322">Authentifier les utilisateurs pour appeler uniquement des API tierces protégées</span><span class="sxs-lookup"><span data-stu-id="72fbf-322">Authenticate users to only call protected third party APIs</span></span>
+### <a name="authenticate-users-to-only-call-protected-third-party-apis"></a><span data-ttu-id="8dd91-299">Authentifier les utilisateurs pour appeler uniquement des API tierces protégées</span><span class="sxs-lookup"><span data-stu-id="8dd91-299">Authenticate users to only call protected third party APIs</span></span>
 
-<span data-ttu-id="72fbf-323">Authentifiez l’utilisateur avec un fluide OAuth côté client par rapport au fournisseur d’API tiers :</span><span class="sxs-lookup"><span data-stu-id="72fbf-323">Authenticate the user with a client-side OAuth flow against the third-party API provider:</span></span>
+<span data-ttu-id="8dd91-300">Authentifiez l’utilisateur avec un fluide OAuth côté client par rapport au fournisseur d’API tiers :</span><span class="sxs-lookup"><span data-stu-id="8dd91-300">Authenticate the user with a client-side OAuth flow against the third-party API provider:</span></span>
 
  ```csharp
  builder.services.AddOidcAuthentication(options => { ... });
  ```
  
- <span data-ttu-id="72fbf-324">Dans ce scénario :</span><span class="sxs-lookup"><span data-stu-id="72fbf-324">In this scenario:</span></span>
+ <span data-ttu-id="8dd91-301">Dans ce scénario :</span><span class="sxs-lookup"><span data-stu-id="8dd91-301">In this scenario:</span></span>
 
-* <span data-ttu-id="72fbf-325">Le serveur hébergeant l’application ne joue aucun rôle.</span><span class="sxs-lookup"><span data-stu-id="72fbf-325">The server hosting the app doesn't play a role.</span></span>
-* <span data-ttu-id="72fbf-326">Les API sur le serveur ne peuvent pas être protégées.</span><span class="sxs-lookup"><span data-stu-id="72fbf-326">APIs on the server can't be protected.</span></span>
-* <span data-ttu-id="72fbf-327">L’application ne peut appeler que des API tierces protégées.</span><span class="sxs-lookup"><span data-stu-id="72fbf-327">The app can only call protected third-party APIs.</span></span>
+* <span data-ttu-id="8dd91-302">Le serveur hébergeant l’application ne joue aucun rôle.</span><span class="sxs-lookup"><span data-stu-id="8dd91-302">The server hosting the app doesn't play a role.</span></span>
+* <span data-ttu-id="8dd91-303">Les API sur le serveur ne peuvent pas être protégées.</span><span class="sxs-lookup"><span data-stu-id="8dd91-303">APIs on the server can't be protected.</span></span>
+* <span data-ttu-id="8dd91-304">L’application ne peut appeler que des API tierces protégées.</span><span class="sxs-lookup"><span data-stu-id="8dd91-304">The app can only call protected third-party APIs.</span></span>
 
-### <a name="authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party"></a><span data-ttu-id="72fbf-328">Authentifier les utilisateurs auprès d’un fournisseur tiers et appeler des API protégées sur le serveur hôte et le tiers</span><span class="sxs-lookup"><span data-stu-id="72fbf-328">Authenticate users with a third-party provider and call protected APIs on the host server and the third party</span></span>
+### <a name="authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party"></a><span data-ttu-id="8dd91-305">Authentifier les utilisateurs auprès d’un fournisseur tiers et appeler des API protégées sur le serveur hôte et le tiers</span><span class="sxs-lookup"><span data-stu-id="8dd91-305">Authenticate users with a third-party provider and call protected APIs on the host server and the third party</span></span>
 
-<span data-ttu-id="72fbf-329">Configurez Identity avec un fournisseur de connexion tiers.</span><span class="sxs-lookup"><span data-stu-id="72fbf-329">Configure Identity with a third-party login provider.</span></span> <span data-ttu-id="72fbf-330">Obtenez les jetons requis pour l’accès de l’API tierce et stockez-les.</span><span class="sxs-lookup"><span data-stu-id="72fbf-330">Obtain the tokens required for third-party API access and store them.</span></span>
+<span data-ttu-id="8dd91-306">Configurez :::no-loc(Identity)::: avec un fournisseur de connexion tiers.</span><span class="sxs-lookup"><span data-stu-id="8dd91-306">Configure :::no-loc(Identity)::: with a third-party login provider.</span></span> <span data-ttu-id="8dd91-307">Obtenez les jetons requis pour l’accès de l’API tierce et stockez-les.</span><span class="sxs-lookup"><span data-stu-id="8dd91-307">Obtain the tokens required for third-party API access and store them.</span></span>
 
-<span data-ttu-id="72fbf-331">Lorsqu’un utilisateur se connecte, Identity collecte les jetons d’accès et d’actualisation dans le cadre du processus d’authentification.</span><span class="sxs-lookup"><span data-stu-id="72fbf-331">When a user logs in, Identity collects access and refresh tokens as part of the authentication process.</span></span> <span data-ttu-id="72fbf-332">À ce stade, il existe deux approches disponibles pour effectuer des appels d’API à des API tierces.</span><span class="sxs-lookup"><span data-stu-id="72fbf-332">At that point, there are a couple of approaches available for making API calls to third-party APIs.</span></span>
+<span data-ttu-id="8dd91-308">Lorsqu’un utilisateur se connecte, :::no-loc(Identity)::: collecte les jetons d’accès et d’actualisation dans le cadre du processus d’authentification.</span><span class="sxs-lookup"><span data-stu-id="8dd91-308">When a user logs in, :::no-loc(Identity)::: collects access and refresh tokens as part of the authentication process.</span></span> <span data-ttu-id="8dd91-309">À ce stade, il existe deux approches disponibles pour effectuer des appels d’API à des API tierces.</span><span class="sxs-lookup"><span data-stu-id="8dd91-309">At that point, there are a couple of approaches available for making API calls to third-party APIs.</span></span>
 
-#### <a name="use-a-server-access-token-to-retrieve-the-third-party-access-token"></a><span data-ttu-id="72fbf-333">Utiliser un jeton d’accès au serveur pour récupérer le jeton d’accès tiers</span><span class="sxs-lookup"><span data-stu-id="72fbf-333">Use a server access token to retrieve the third-party access token</span></span>
+#### <a name="use-a-server-access-token-to-retrieve-the-third-party-access-token"></a><span data-ttu-id="8dd91-310">Utiliser un jeton d’accès au serveur pour récupérer le jeton d’accès tiers</span><span class="sxs-lookup"><span data-stu-id="8dd91-310">Use a server access token to retrieve the third-party access token</span></span>
 
-<span data-ttu-id="72fbf-334">Utilisez le jeton d’accès généré sur le serveur pour récupérer le jeton d’accès tiers à partir d’un point de terminaison d’API serveur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-334">Use the access token generated on the server to retrieve the third-party access token from a server API endpoint.</span></span> <span data-ttu-id="72fbf-335">À partir de là, utilisez le jeton d’accès tiers pour appeler des ressources d’API tierces directement à partir de Identity sur le client.</span><span class="sxs-lookup"><span data-stu-id="72fbf-335">From there, use the third-party access token to call third-party API resources directly from Identity on the client.</span></span>
+<span data-ttu-id="8dd91-311">Utilisez le jeton d’accès généré sur le serveur pour récupérer le jeton d’accès tiers à partir d’un point de terminaison d’API serveur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-311">Use the access token generated on the server to retrieve the third-party access token from a server API endpoint.</span></span> <span data-ttu-id="8dd91-312">À partir de là, utilisez le jeton d’accès tiers pour appeler des ressources d’API tierces directement à partir de :::no-loc(Identity)::: sur le client.</span><span class="sxs-lookup"><span data-stu-id="8dd91-312">From there, use the third-party access token to call third-party API resources directly from :::no-loc(Identity)::: on the client.</span></span>
 
-<span data-ttu-id="72fbf-336">Nous ne recommandons pas cette approche.</span><span class="sxs-lookup"><span data-stu-id="72fbf-336">We don't recommend this approach.</span></span> <span data-ttu-id="72fbf-337">Cette approche nécessite le traitement du jeton d’accès tiers comme s’il avait été généré pour un client public.</span><span class="sxs-lookup"><span data-stu-id="72fbf-337">This approach requires treating the third-party access token as if it were generated for a public client.</span></span> <span data-ttu-id="72fbf-338">Dans les termes OAuth, l’application publique n’a pas de clé secrète client, car elle ne peut pas être approuvée pour stocker des secrets en toute sécurité, et le jeton d’accès est généré pour un client confidentiel.</span><span class="sxs-lookup"><span data-stu-id="72fbf-338">In OAuth terms, the public app doesn't have a client secret because it can't be trusted to store secrets safely, and the access token is produced for a confidential client.</span></span> <span data-ttu-id="72fbf-339">Un client confidentiel est un client qui a une clé secrète client et est supposé être en mesure de stocker des secrets en toute sécurité.</span><span class="sxs-lookup"><span data-stu-id="72fbf-339">A confidential client is a client that has a client secret and is assumed to be able to safely store secrets.</span></span>
+<span data-ttu-id="8dd91-313">Nous ne recommandons pas cette approche.</span><span class="sxs-lookup"><span data-stu-id="8dd91-313">We don't recommend this approach.</span></span> <span data-ttu-id="8dd91-314">Cette approche nécessite le traitement du jeton d’accès tiers comme s’il avait été généré pour un client public.</span><span class="sxs-lookup"><span data-stu-id="8dd91-314">This approach requires treating the third-party access token as if it were generated for a public client.</span></span> <span data-ttu-id="8dd91-315">Dans les termes OAuth, l’application publique n’a pas de clé secrète client, car elle ne peut pas être approuvée pour stocker des secrets en toute sécurité, et le jeton d’accès est généré pour un client confidentiel.</span><span class="sxs-lookup"><span data-stu-id="8dd91-315">In OAuth terms, the public app doesn't have a client secret because it can't be trusted to store secrets safely, and the access token is produced for a confidential client.</span></span> <span data-ttu-id="8dd91-316">Un client confidentiel est un client qui a une clé secrète client et est supposé être en mesure de stocker des secrets en toute sécurité.</span><span class="sxs-lookup"><span data-stu-id="8dd91-316">A confidential client is a client that has a client secret and is assumed to be able to safely store secrets.</span></span>
 
-* <span data-ttu-id="72fbf-340">Le jeton d’accès tiers peut recevoir des étendues supplémentaires pour effectuer des opérations sensibles en fonction du fait que le tiers a émis le jeton pour un client plus fiable.</span><span class="sxs-lookup"><span data-stu-id="72fbf-340">The third-party access token might be granted additional scopes to perform sensitive operations based on the fact that the third-party emitted the token for a more trusted client.</span></span>
-* <span data-ttu-id="72fbf-341">De même, les jetons d’actualisation ne doivent pas être émis pour un client qui n’est pas approuvé, car cela donne au client un accès illimité, sauf si d’autres restrictions sont mises en place.</span><span class="sxs-lookup"><span data-stu-id="72fbf-341">Similarly, refresh tokens shouldn't be issued to a client that isn't trusted, as doing so gives the client unlimited access unless other restrictions are put into place.</span></span>
+* <span data-ttu-id="8dd91-317">Le jeton d’accès tiers peut recevoir des étendues supplémentaires pour effectuer des opérations sensibles en fonction du fait que le tiers a émis le jeton pour un client plus fiable.</span><span class="sxs-lookup"><span data-stu-id="8dd91-317">The third-party access token might be granted additional scopes to perform sensitive operations based on the fact that the third-party emitted the token for a more trusted client.</span></span>
+* <span data-ttu-id="8dd91-318">De même, les jetons d’actualisation ne doivent pas être émis pour un client qui n’est pas approuvé, car cela donne au client un accès illimité, sauf si d’autres restrictions sont mises en place.</span><span class="sxs-lookup"><span data-stu-id="8dd91-318">Similarly, refresh tokens shouldn't be issued to a client that isn't trusted, as doing so gives the client unlimited access unless other restrictions are put into place.</span></span>
 
-#### <a name="make-api-calls-from-the-client-to-the-server-api-in-order-to-call-third-party-apis"></a><span data-ttu-id="72fbf-342">Effectuer des appels d’API à partir du client vers l’API du serveur afin d’appeler des API tierces</span><span class="sxs-lookup"><span data-stu-id="72fbf-342">Make API calls from the client to the server API in order to call third-party APIs</span></span>
+#### <a name="make-api-calls-from-the-client-to-the-server-api-in-order-to-call-third-party-apis"></a><span data-ttu-id="8dd91-319">Effectuer des appels d’API à partir du client vers l’API du serveur afin d’appeler des API tierces</span><span class="sxs-lookup"><span data-stu-id="8dd91-319">Make API calls from the client to the server API in order to call third-party APIs</span></span>
 
-<span data-ttu-id="72fbf-343">Effectuez un appel d’API à partir du client vers l’API serveur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-343">Make an API call from the client to the server API.</span></span> <span data-ttu-id="72fbf-344">À partir du serveur, récupérez le jeton d’accès pour la ressource d’API tierce et émettez l’appel nécessaire.</span><span class="sxs-lookup"><span data-stu-id="72fbf-344">From the server, retrieve the access token for the third-party API resource and issue whatever call is necessary.</span></span>
+<span data-ttu-id="8dd91-320">Effectuez un appel d’API à partir du client vers l’API serveur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-320">Make an API call from the client to the server API.</span></span> <span data-ttu-id="8dd91-321">À partir du serveur, récupérez le jeton d’accès pour la ressource d’API tierce et émettez l’appel nécessaire.</span><span class="sxs-lookup"><span data-stu-id="8dd91-321">From the server, retrieve the access token for the third-party API resource and issue whatever call is necessary.</span></span>
 
-<span data-ttu-id="72fbf-345">Bien que cette approche nécessite un saut de réseau supplémentaire par le biais du serveur pour appeler une API tierce, elle a finalement pour résultat une expérience plus sûre :</span><span class="sxs-lookup"><span data-stu-id="72fbf-345">While this approach requires an extra network hop through the server to call a third-party API, it ultimately results in a safer experience:</span></span>
+<span data-ttu-id="8dd91-322">Bien que cette approche nécessite un saut de réseau supplémentaire par le biais du serveur pour appeler une API tierce, elle a finalement pour résultat une expérience plus sûre :</span><span class="sxs-lookup"><span data-stu-id="8dd91-322">While this approach requires an extra network hop through the server to call a third-party API, it ultimately results in a safer experience:</span></span>
 
-* <span data-ttu-id="72fbf-346">Le serveur peut stocker des jetons d’actualisation et s’assurer que l’application ne perd pas l’accès aux ressources tierces.</span><span class="sxs-lookup"><span data-stu-id="72fbf-346">The server can store refresh tokens and ensure that the app doesn't lose access to third-party resources.</span></span>
-* <span data-ttu-id="72fbf-347">L’application ne peut pas perdre les jetons d’accès du serveur qui peuvent contenir des autorisations plus sensibles.</span><span class="sxs-lookup"><span data-stu-id="72fbf-347">The app can't leak access tokens from the server that might contain more sensitive permissions.</span></span>
+* <span data-ttu-id="8dd91-323">Le serveur peut stocker des jetons d’actualisation et s’assurer que l’application ne perd pas l’accès aux ressources tierces.</span><span class="sxs-lookup"><span data-stu-id="8dd91-323">The server can store refresh tokens and ensure that the app doesn't lose access to third-party resources.</span></span>
+* <span data-ttu-id="8dd91-324">L’application ne peut pas perdre les jetons d’accès du serveur qui peuvent contenir des autorisations plus sensibles.</span><span class="sxs-lookup"><span data-stu-id="8dd91-324">The app can't leak access tokens from the server that might contain more sensitive permissions.</span></span>
 
-## <a name="use-openid-connect-oidc-v20-endpoints"></a><span data-ttu-id="72fbf-348">Utiliser des points de terminaison OpenID Connect (OIDC) v 2.0</span><span class="sxs-lookup"><span data-stu-id="72fbf-348">Use OpenID Connect (OIDC) v2.0 endpoints</span></span>
+## <a name="use-openid-connect-oidc-v20-endpoints"></a><span data-ttu-id="8dd91-325">Utiliser des points de terminaison OpenID Connect (OIDC) v 2.0</span><span class="sxs-lookup"><span data-stu-id="8dd91-325">Use OpenID Connect (OIDC) v2.0 endpoints</span></span>
 
-<span data-ttu-id="72fbf-349">La bibliothèque d’authentification et les Blazor modèles de projet utilisent des points de terminaison OpenID Connect (OIDC) v 1.0.</span><span class="sxs-lookup"><span data-stu-id="72fbf-349">The authentication library and Blazor project templates use OpenID Connect (OIDC) v1.0 endpoints.</span></span> <span data-ttu-id="72fbf-350">Pour utiliser un point de terminaison v 2.0, configurez l’option de support JWT <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> .</span><span class="sxs-lookup"><span data-stu-id="72fbf-350">To use a v2.0 endpoint, configure the JWT Bearer <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> option.</span></span> <span data-ttu-id="72fbf-351">Dans l’exemple suivant, AAD est configuré pour v 2.0 en ajoutant un `v2.0` segment à la <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority> propriété :</span><span class="sxs-lookup"><span data-stu-id="72fbf-351">In the following example, AAD is configured for v2.0 by appending a `v2.0` segment to the <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority> property:</span></span>
+<span data-ttu-id="8dd91-326">La bibliothèque d’authentification et les :::no-loc(Blazor)::: modèles de projet utilisent des points de terminaison OpenID Connect (OIDC) v 1.0.</span><span class="sxs-lookup"><span data-stu-id="8dd91-326">The authentication library and :::no-loc(Blazor)::: project templates use OpenID Connect (OIDC) v1.0 endpoints.</span></span> <span data-ttu-id="8dd91-327">Pour utiliser un point de terminaison v 2.0, configurez l’option de support JWT <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> .</span><span class="sxs-lookup"><span data-stu-id="8dd91-327">To use a v2.0 endpoint, configure the JWT Bearer <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> option.</span></span> <span data-ttu-id="8dd91-328">Dans l’exemple suivant, AAD est configuré pour v 2.0 en ajoutant un `v2.0` segment à la <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority> propriété :</span><span class="sxs-lookup"><span data-stu-id="8dd91-328">In the following example, AAD is configured for v2.0 by appending a `v2.0` segment to the <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority> property:</span></span>
 
 ```csharp
 builder.Services.Configure<JwtBearerOptions>(
@@ -1206,7 +956,7 @@ builder.Services.Configure<JwtBearerOptions>(
     });
 ```
 
-<span data-ttu-id="72fbf-352">Le paramètre peut également être défini dans le fichier de paramètres de l’application ( `appsettings.json` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-352">Alternatively, the setting can be made in the app settings (`appsettings.json`) file:</span></span>
+<span data-ttu-id="8dd91-329">Le paramètre peut également être défini dans le fichier de paramètres de l’application ( `appsettings.json` ) :</span><span class="sxs-lookup"><span data-stu-id="8dd91-329">Alternatively, the setting can be made in the app settings (`appsettings.json`) file:</span></span>
 
 ```json
 {
@@ -1217,16 +967,16 @@ builder.Services.Configure<JwtBearerOptions>(
 }
 ```
 
-<span data-ttu-id="72fbf-353">Si l’ajout d’un segment à l’autorité n’est pas approprié pour le fournisseur OIDC de l’application, par exemple avec les fournisseurs non AAD, définissez la <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> propriété directement.</span><span class="sxs-lookup"><span data-stu-id="72fbf-353">If tacking on a segment to the authority isn't appropriate for the app's OIDC provider, such as with non-AAD providers, set the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> property directly.</span></span> <span data-ttu-id="72fbf-354">Définissez la propriété dans <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions> ou dans le fichier de paramètres de l’application ( `appsettings.json` ) avec la `Authority` clé.</span><span class="sxs-lookup"><span data-stu-id="72fbf-354">Either set the property in <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions> or in the app settings file (`appsettings.json`) with the `Authority` key.</span></span>
+<span data-ttu-id="8dd91-330">Si l’ajout d’un segment à l’autorité n’est pas approprié pour le fournisseur OIDC de l’application, par exemple avec les fournisseurs non AAD, définissez la <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> propriété directement.</span><span class="sxs-lookup"><span data-stu-id="8dd91-330">If tacking on a segment to the authority isn't appropriate for the app's OIDC provider, such as with non-AAD providers, set the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> property directly.</span></span> <span data-ttu-id="8dd91-331">Définissez la propriété dans <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions> ou dans le fichier de paramètres de l’application ( `appsettings.json` ) avec la `Authority` clé.</span><span class="sxs-lookup"><span data-stu-id="8dd91-331">Either set the property in <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions> or in the app settings file (`appsettings.json`) with the `Authority` key.</span></span>
 
-<span data-ttu-id="72fbf-355">La liste des revendications dans le jeton d’ID change pour les points de terminaison v 2.0.</span><span class="sxs-lookup"><span data-stu-id="72fbf-355">The list of claims in the ID token changes for v2.0 endpoints.</span></span> <span data-ttu-id="72fbf-356">Pour plus d’informations, consultez [pourquoi mettre à jour vers Microsoft Identity Platform (v 2.0) ?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison).</span><span class="sxs-lookup"><span data-stu-id="72fbf-356">For more information, see [Why update to Microsoft identity platform (v2.0)?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison).</span></span>
+<span data-ttu-id="8dd91-332">La liste des revendications dans le jeton d’ID change pour les points de terminaison v 2.0.</span><span class="sxs-lookup"><span data-stu-id="8dd91-332">The list of claims in the ID token changes for v2.0 endpoints.</span></span> <span data-ttu-id="8dd91-333">Pour plus d’informations, consultez [pourquoi mettre à jour vers Microsoft Identity Platform (v 2.0) ?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison).</span><span class="sxs-lookup"><span data-stu-id="8dd91-333">For more information, see [Why update to Microsoft identity platform (v2.0)?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison).</span></span>
 
-## <a name="configure-and-use-grpc-in-components"></a><span data-ttu-id="72fbf-357">Configurer et utiliser gRPC dans les composants</span><span class="sxs-lookup"><span data-stu-id="72fbf-357">Configure and use gRPC in components</span></span>
+## <a name="configure-and-use-grpc-in-components"></a><span data-ttu-id="8dd91-334">Configurer et utiliser gRPC dans les composants</span><span class="sxs-lookup"><span data-stu-id="8dd91-334">Configure and use gRPC in components</span></span>
 
-<span data-ttu-id="72fbf-358">Pour configurer une Blazor WebAssembly application afin d’utiliser l' [infrastructure ASP.net Core gRPC](xref:grpc/index):</span><span class="sxs-lookup"><span data-stu-id="72fbf-358">To configure a Blazor WebAssembly app to use the [ASP.NET Core gRPC framework](xref:grpc/index):</span></span>
+<span data-ttu-id="8dd91-335">Pour configurer une :::no-loc(Blazor WebAssembly)::: application afin d’utiliser l' [infrastructure ASP.net Core gRPC](xref:grpc/index):</span><span class="sxs-lookup"><span data-stu-id="8dd91-335">To configure a :::no-loc(Blazor WebAssembly)::: app to use the [ASP.NET Core gRPC framework](xref:grpc/index):</span></span>
 
-* <span data-ttu-id="72fbf-359">Activez gRPC-Web sur le serveur.</span><span class="sxs-lookup"><span data-stu-id="72fbf-359">Enable gRPC-Web on the server.</span></span> <span data-ttu-id="72fbf-360">Pour plus d'informations, consultez <xref:grpc/browser>.</span><span class="sxs-lookup"><span data-stu-id="72fbf-360">For more information, see <xref:grpc/browser>.</span></span>
-* <span data-ttu-id="72fbf-361">Inscrivez les services gRPC pour le gestionnaire de messages de l’application.</span><span class="sxs-lookup"><span data-stu-id="72fbf-361">Register gRPC services for the app's message handler.</span></span> <span data-ttu-id="72fbf-362">L’exemple suivant configure le gestionnaire de messages d’autorisation de l’application pour qu’il utilise le [ `GreeterClient` service à partir du didacticiel gRPC](xref:tutorials/grpc/grpc-start#create-a-grpc-service) ( `Program.Main` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-362">The following example configures the app's authorization message handler to use the [`GreeterClient` service from the gRPC tutorial](xref:tutorials/grpc/grpc-start#create-a-grpc-service) (`Program.Main`):</span></span>
+* <span data-ttu-id="8dd91-336">Activez gRPC-Web sur le serveur.</span><span class="sxs-lookup"><span data-stu-id="8dd91-336">Enable gRPC-Web on the server.</span></span> <span data-ttu-id="8dd91-337">Pour plus d'informations, consultez <xref:grpc/browser>.</span><span class="sxs-lookup"><span data-stu-id="8dd91-337">For more information, see <xref:grpc/browser>.</span></span>
+* <span data-ttu-id="8dd91-338">Inscrivez les services gRPC pour le gestionnaire de messages de l’application.</span><span class="sxs-lookup"><span data-stu-id="8dd91-338">Register gRPC services for the app's message handler.</span></span> <span data-ttu-id="8dd91-339">L’exemple suivant configure le gestionnaire de messages d’autorisation de l’application pour qu’il utilise le [ `GreeterClient` service à partir du didacticiel gRPC](xref:tutorials/grpc/grpc-start#create-a-grpc-service) ( `Program.Main` ) :</span><span class="sxs-lookup"><span data-stu-id="8dd91-339">The following example configures the app's authorization message handler to use the [`GreeterClient` service from the gRPC tutorial](xref:tutorials/grpc/grpc-start#create-a-grpc-service) (`Program.Main`):</span></span>
 
 ```csharp
 using System.Net.Http;
@@ -1251,9 +1001,9 @@ builder.Services.AddScoped(sp =>
 });
 ```
 
-<span data-ttu-id="72fbf-363">L’espace réservé `{APP ASSEMBLY}` est le nom de l’assembly de l’application (par exemple, `BlazorSample` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-363">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `BlazorSample`).</span></span> <span data-ttu-id="72fbf-364">Placez le `.proto` fichier dans le `Shared` projet de la solution hébergée Blazor .</span><span class="sxs-lookup"><span data-stu-id="72fbf-364">Place the `.proto` file in the `Shared` project of the hosted Blazor solution.</span></span>
+<span data-ttu-id="8dd91-340">L’espace réservé `{APP ASSEMBLY}` est le nom de l’assembly de l’application (par exemple, `:::no-loc(Blazor):::Sample` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-340">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `:::no-loc(Blazor):::Sample`).</span></span> <span data-ttu-id="8dd91-341">Placez le `.proto` fichier dans le `Shared` projet de la solution hébergée :::no-loc(Blazor)::: .</span><span class="sxs-lookup"><span data-stu-id="8dd91-341">Place the `.proto` file in the `Shared` project of the hosted :::no-loc(Blazor)::: solution.</span></span>
 
-<span data-ttu-id="72fbf-365">Un composant de l’application cliente peut effectuer des appels gRPC à l’aide du client gRPC ( `Pages/Grpc.razor` ) :</span><span class="sxs-lookup"><span data-stu-id="72fbf-365">A component in the client app can make gRPC calls using the gRPC client (`Pages/Grpc.razor`):</span></span>
+<span data-ttu-id="8dd91-342">Un composant de l’application cliente peut effectuer des appels gRPC à l’aide du client gRPC ( `Pages/Grpc.razor` ) :</span><span class="sxs-lookup"><span data-stu-id="8dd91-342">A component in the client app can make gRPC calls using the gRPC client (`Pages/Grpc.razor`):</span></span>
 
 ```razor
 @page "/grpc"
@@ -1293,10 +1043,11 @@ Server response: <strong>@serverResponse</strong>
 }
 ```
 
-<span data-ttu-id="72fbf-366">L’espace réservé `{APP ASSEMBLY}` est le nom de l’assembly de l’application (par exemple, `BlazorSample` ).</span><span class="sxs-lookup"><span data-stu-id="72fbf-366">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `BlazorSample`).</span></span> <span data-ttu-id="72fbf-367">Pour utiliser la `Status.DebugException` propriété, utilisez [GRPC .net. client](https://www.nuget.org/packages/Grpc.Net.Client) version 2.30.0 ou ultérieure.</span><span class="sxs-lookup"><span data-stu-id="72fbf-367">To use the `Status.DebugException` property, use [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client) version 2.30.0 or later.</span></span>
+<span data-ttu-id="8dd91-343">L’espace réservé `{APP ASSEMBLY}` est le nom de l’assembly de l’application (par exemple, `:::no-loc(Blazor):::Sample` ).</span><span class="sxs-lookup"><span data-stu-id="8dd91-343">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `:::no-loc(Blazor):::Sample`).</span></span> <span data-ttu-id="8dd91-344">Pour utiliser la `Status.DebugException` propriété, utilisez [GRPC .net. client](https://www.nuget.org/packages/Grpc.Net.Client) version 2.30.0 ou ultérieure.</span><span class="sxs-lookup"><span data-stu-id="8dd91-344">To use the `Status.DebugException` property, use [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client) version 2.30.0 or later.</span></span>
 
-<span data-ttu-id="72fbf-368">Pour plus d'informations, consultez <xref:grpc/browser>.</span><span class="sxs-lookup"><span data-stu-id="72fbf-368">For more information, see <xref:grpc/browser>.</span></span>
+<span data-ttu-id="8dd91-345">Pour plus d'informations, consultez <xref:grpc/browser>.</span><span class="sxs-lookup"><span data-stu-id="8dd91-345">For more information, see <xref:grpc/browser>.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="72fbf-369">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="72fbf-369">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="8dd91-346">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="8dd91-346">Additional resources</span></span>
 
-* [<span data-ttu-id="72fbf-370">`HttpClient` et `HttpRequestMessage` avec les options de requête de l’API Fetch</span><span class="sxs-lookup"><span data-stu-id="72fbf-370">`HttpClient` and `HttpRequestMessage` with Fetch API request options</span></span>](xref:blazor/call-web-api#httpclient-and-httprequestmessage-with-fetch-api-request-options)
+* <xref:blazor/security/webassembly/graph-api>
+* [<span data-ttu-id="8dd91-347">`HttpClient` et `HttpRequestMessage` avec les options de requête de l’API Fetch</span><span class="sxs-lookup"><span data-stu-id="8dd91-347">`HttpClient` and `HttpRequestMessage` with Fetch API request options</span></span>](xref:blazor/call-web-api#httpclient-and-httprequestmessage-with-fetch-api-request-options)
