@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 07b67cd7c267c39b99277114b73642b5caa3e312
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 745703aaa4ceb39c75789bab0bde4564f3d79a30
+ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632835"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678555"
 ---
 # <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>Partie 6, méthodes et vues de contrôleur dans ASP.NET Core
 
@@ -31,7 +31,7 @@ Nous avons une bonne ébauche de l’application de films, mais sa présentation
 
 ![Vue d’index : Release Date apparaît en un seul mot (sans espace) et chaque date de sortie d’un film a comme heure « 12 AM »](working-with-sql/_static/m55.png)
 
-Ouvrez le fichier *Models/Movie.cs*, puis ajoutez les lignes en surbrillance ci-dessous :
+Ouvrez le fichier *Models/Movie.cs* , puis ajoutez les lignes en surbrillance ci-dessous :
 
 [!code-csharp[](start-mvc/sample/MvcMovie22/Models/MovieDateFixed.cs?name=snippet_1&highlight=2,3,12-13,17)]
 
@@ -43,7 +43,7 @@ Accédez au contrôleur `Movies` et maintenez le pointeur de la souris sur un li
 
 ![Fenêtre de navigateur avec la souris sur le lien Edit et l’URL de lien https://localhost:5001/Movies/Edit/5 affichée](~/tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-Les liens **Edit**, **Details** et **Delete** sont générés par le Tag Helper Anchor Core MVC dans le fichier *Views/Movies/Index.cshtml*.
+Les liens **Edit** , **Details** et **Delete** sont générés par le Tag Helper Anchor Core MVC dans le fichier *Views/Movies/Index.cshtml* .
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
@@ -107,7 +107,7 @@ Notez que la deuxième méthode d’action `Edit` est précédée de l’attribu
 
 L’attribut `HttpPost` indique que cette méthode `Edit` peut être appelée *uniquement* pour les requêtes `POST`. Vous pouvez appliquer l’attribut `[HttpGet]` à la première méthode Edit, mais cela n’est pas nécessaire car `[HttpGet]` est la valeur par défaut.
 
-L’attribut `ValidateAntiForgeryToken` est utilisé pour [lutter contre la falsification de requête](xref:security/anti-request-forgery). Il est associé à un jeton anti-contrefaçon généré dans le fichier de la vue Edit (*Views/Movies/Edit.cshtml*). Le fichier de la vue Edit génère le jeton anti-contrefaçon avec le [Tag Helper Form](xref:mvc/views/working-with-forms).
+L’attribut `ValidateAntiForgeryToken` est utilisé pour [lutter contre la falsification de requête](xref:security/anti-request-forgery). Il est associé à un jeton anti-contrefaçon généré dans le fichier de la vue Edit ( *Views/Movies/Edit.cshtml* ). Le fichier de la vue Edit génère le jeton anti-contrefaçon avec le [Tag Helper Form](xref:mvc/views/working-with-forms).
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 
@@ -149,7 +149,7 @@ Le code suivant montre la version `[HttpPost]` de la méthode d’action `Edit`.
 
 L’attribut `[ValidateAntiForgeryToken]` valide le jeton [XSRF](xref:security/anti-request-forgery) masqué généré par le générateur de jetons anti-contrefaçon dans le [Tag Helper Form](xref:mvc/views/working-with-forms)
 
-Le système de [liaison de modèle](xref:mvc/models/model-binding) prend les valeurs de formulaire publiées et crée un objet `Movie` qui est passé en tant que paramètre `movie`. La méthode `ModelState.IsValid` vérifie que les données envoyées dans le formulaire peuvent être utilisées pour changer (modifier ou mettre à jour) un objet `Movie`. Si les données sont valides, elles sont enregistrées. Les données de film mises à jour (modifiées) sont enregistrées dans la base de données en appelant la méthode `SaveChangesAsync` du contexte de base de données. Après avoir enregistré les données, le code redirige l’utilisateur vers la méthode d’action `Index` de la classe `MoviesController`, qui affiche la collection de films, avec notamment les modifications qui viennent d’être apportées.
+Le système de [liaison de modèle](xref:mvc/models/model-binding) prend les valeurs de formulaire publiées et crée un objet `Movie` qui est passé en tant que paramètre `movie`. La `ModelState.IsValid` propriété vérifie que les données envoyées dans le formulaire peuvent être utilisées pour modifier (modifier ou mettre à jour) un `Movie` objet. Si les données sont valides, elles sont enregistrées. Les données de film mises à jour (modifiées) sont enregistrées dans la base de données en appelant la méthode `SaveChangesAsync` du contexte de base de données. Après avoir enregistré les données, le code redirige l’utilisateur vers la méthode d’action `Index` de la classe `MoviesController`, qui affiche la collection de films, avec notamment les modifications qui viennent d’être apportées.
 
 Avant que le formulaire soit publié sur le serveur, la validation côté client vérifie les règles de validation sur les champs. En cas d’erreur de validation, un message d’erreur s’affiche et le formulaire n’est pas publié. Si JavaScript est désactivé, aucune validation côté client n’est effectuée, mais le serveur détecte les valeurs publiées qui ne sont pas valides, et les valeurs de formulaire sont réaffichées avec des messages d’erreur. Plus loin dans ce didacticiel, nous examinerons la [Validation du modèle](xref:mvc/models/validation) plus en détail. Le [Tag Helper Validation](xref:mvc/views/working-with-forms) dans le modèle de vue *Views/Movies/Edit.cshtml* se charge de l’affichage des messages d’erreur appropriés.
 
@@ -157,7 +157,7 @@ Avant que le formulaire soit publié sur le serveur, la validation côté client
 
 Toutes les méthodes `HttpGet` du contrôleur Movies suivent un modèle similaire. Elles reçoivent un objet de film (ou une liste d’objets, dans le cas de `Index`) et passent l’objet (modèle) à la vue. La méthode `Create` passe un objet de film vide à la vue `Create`. Toutes les méthodes qui créent, modifient, suppriment ou changent d’une quelconque manière des données le font dans la surcharge `[HttpPost]` de la méthode. Modifier des données dans une méthode `HTTP GET` présente un risque pour la sécurité. La modification des données dans une méthode `HTTP GET` enfreint également les bonnes pratiques HTTP et le modèle architectural [REST](http://rest.elkstein.org/), qui spécifie que les requêtes GET ne doivent pas changer l’état de votre application. En d’autres termes, une opération GET doit être sûre, ne doit avoir aucun effet secondaire et ne doit pas modifier vos données persistantes.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Globalisation et localisation](xref:fundamentals/localization)
 * [Introduction aux Tag Helpers](xref:mvc/views/tag-helpers/intro)

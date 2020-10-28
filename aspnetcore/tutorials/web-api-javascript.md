@@ -3,7 +3,7 @@ title: 'Didacticiel : appeler une API Web ASP.NET Core avec JavaScript'
 author: rick-anderson
 description: Découvrez comment appeler une API web ASP.NET Core avec JavaScript.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 11/26/2019
 no-loc:
 - ASP.NET Core Identity
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 3d097d724ac5e2313d24f1f06e47b881f29a4a98
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b41288bd63267a9aa7035e25ebc8d838eed5d93b
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633797"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690692"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Didacticiel : appeler une API Web ASP.NET Core avec JavaScript
 
@@ -51,7 +51,7 @@ La `fetch` fonction retourne un [Promise](https://developer.mozilla.org/docs/Web
 
 L'appel `fetch` le plus simple accepte un seul paramètre représentant l’itinéraire. Un deuxième paramètre, connu sous le nom d’objet `init`, est facultatif. `init` est utilisé pour configurer la requête HTTP.
 
-1. Configurez l’application pour [traiter les fichiers statiques](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) et [activer le mappage de fichiers par défaut](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_). Le code en surbrillance suivant est nécessaire dans la méthode `Configure` de *Startup.cs* :
+1. Configurez l’application pour [traiter les fichiers statiques](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) et [activer le mappage de fichiers par défaut](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_). Le code en surbrillance suivant est nécessaire dans la méthode `Configure` de *Startup.cs*  :
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 
@@ -69,18 +69,18 @@ L'appel `fetch` le plus simple accepte un seul paramètre représentant l’itin
 
 Vous devrez peut-être changer les paramètres de lancement du projet ASP.NET Core pour tester la page HTML localement :
 
-1. Ouvrez *Properties\launchSettings.json*.
+1. Ouvrez *Properties\launchSettings.json* .
 1. Supprimez la `launchUrl` propriété pour forcer l’ouverture de l’application à *index.html* &mdash; fichier par défaut du projet.
 
 Cet exemple appelle toutes les méthodes CRUD de l’API web. Les explications suivantes traitent des demandes de l’API web.
 
 ### <a name="get-a-list-of-to-do-items"></a>Obtenir une liste de tâches
 
-Dans le code suivant, une requête HTTP GET est envoyée à l'itinéraire *api/TodoItems* :
+Dans le code suivant, une requête HTTP GET est envoyée à l'itinéraire *api/TodoItems*  :
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_GetItems)]
 
-Quand l’API web retourne un code d’état de réussite, la fonction `_displayItems` est appelée. Chaque élément de tâche du paramètre de tableau accepté par `_displayItems` est ajouté à une table avec les boutons **Modifier** et **Supprimer**. Si la demande de l’API Web échoue, une erreur est consignée dans la console du navigateur.
+Quand l’API web retourne un code d’état de réussite, la fonction `_displayItems` est appelée. Chaque élément de tâche du paramètre de tableau accepté par `_displayItems` est ajouté à une table avec les boutons **Modifier** et **Supprimer** . Si la demande de l’API Web échoue, une erreur est consignée dans la console du navigateur.
 
 ### <a name="add-a-to-do-item"></a>Ajouter une tâche
 
@@ -91,7 +91,7 @@ Dans le code suivant :
   * `method`&mdash; spécifie le verbe d’action POST HTTP.
   * `body`&mdash; spécifie la représentation JSON du corps de la demande. Le JSON est généré en passant le littéral d’objet stocké dans `item` à la fonction [JSON. stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
   * `headers`&mdash; spécifie les en-têtes de requête HTTP `Accept` et `Content-Type`. Les deux en-têtes sont définies sur `application/json` pour spécifier le type de média respectivement reçu et envoyé.
-* Une requête HTTP POST est envoyée à l’itinéraire *api/TodoItems*.
+* Une requête HTTP POST est envoyée à l’itinéraire *api/TodoItems* .
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]
 
@@ -101,7 +101,7 @@ Quand l’API web retourne un code d’état de réussite, la fonction `getItems
 
 La mise à jour d’un élément de tâche est semblable à l’ajout d’un élément. Toutefois, il y a deux différences importantes :
 
-* L’itinéraire est suivi de l’identificateur unique de l’élément à mettre à jour. Par exemple, *api/TodoItems/1*.
+* L’itinéraire est suivi de l’identificateur unique de l’élément à mettre à jour. Par exemple, *api/TodoItems/1* .
 * Le verbe d’action HTTP est PUT, comme indiqué par l’option `method`.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_UpdateItem)]

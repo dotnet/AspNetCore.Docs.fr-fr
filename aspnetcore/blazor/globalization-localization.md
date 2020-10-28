@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 4345dd8525c2e72aaddc8e45a4fd4d9bfdd63040
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: 52810cb5a5961ffe932a7f5ac2a3a03033781cc9
+ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326530"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678491"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>BlazorGlobalisation et localisation ASP.net Core
 
@@ -164,6 +164,19 @@ La localisation est gérée par l’application dans la séquence d’événemen
 1. Le navigateur ouvre une connexion WebSocket pour créer une Blazor Server session interactive.
 1. L’intergiciel (middleware) de localisation lit cookie et assigne la culture.
 1. La Blazor Server session commence par la culture correcte.
+
+Lorsque vous travaillez avec un <xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage> , utilisez la <xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context> propriété :
+
+```razor
+@{
+    this.Context.Response.Cookies.Append(
+        CookieRequestCultureProvider.DefaultCookieName,
+        CookieRequestCultureProvider.MakeCookieValue(
+            new RequestCulture(
+                CultureInfo.CurrentCulture,
+                CultureInfo.CurrentUICulture)));
+}
+```
 
 #### <a name="provide-ui-to-choose-the-culture"></a>Fournir l’interface utilisateur pour choisir la culture
 

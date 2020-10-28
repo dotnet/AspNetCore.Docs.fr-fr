@@ -4,7 +4,7 @@ author: scottaddie
 description: Découvrez les avantages de l’utilisation des services JavaScript pour créer une application à page unique (SPA) sauvegardée par ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-js
 ms.date: 09/06/2019
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/spa-services
-ms.openlocfilehash: 379a8f52dab36d331bc42c1fee8d64b3971e9e91
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 33ae16c033142aa1c0f4cea53ca746e8a6aaf052
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625659"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690664"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Utilisez les services JavaScript pour créer des applications à page unique dans ASP.NET Core
 
@@ -132,7 +132,7 @@ L’argument received `UserName` est sérialisé à l’aide du sérialiseur JSO
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
-Les noms de propriétés passés dans tag helpers sont représentés par la notation **casse Pascal** . Comparez-le à JavaScript, où les mêmes noms de propriétés sont représentés avec **la casse mixte**. La configuration de sérialisation JSON par défaut est responsable de cette différence.
+Les noms de propriétés passés dans tag helpers sont représentés par la notation **casse Pascal** . Comparez-le à JavaScript, où les mêmes noms de propriétés sont représentés avec **la casse mixte** . La configuration de sérialisation JSON par défaut est responsable de cette différence.
 
 Pour développer l’exemple de code précédent, les données peuvent être transmises du serveur à la vue en mettant en attente la `globals` propriété fournie à la `resolve` fonction :
 
@@ -236,7 +236,7 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 La liste des modèles SPA disponibles s’affiche :
 
-| Modèles                                 | Nom court | Langage | Étiquettes        |
+| Modèles                                 | Nom court | Langage | Balises        |
 | ------------------------------------------| :--------: | :------: | :---------: |
 | ASP.NET Core MVC avec angle             | angular    | [C#]     | Web/MVC/SPA |
 | ASP.NET Core MVC avec React.js            | react      | [C#]     | Web/MVC/SPA |
@@ -252,10 +252,10 @@ dotnet new angular
 
 Il existe deux modes principaux de configuration du Runtime :
 
-* **Développement**:
+* **Développement** :
   * Comprend des mappages de sources pour faciliter le débogage.
   * N’optimise pas le code côté client pour des performances optimales.
-* **Production**:
+* **Production** :
   * Exclut les mappages de sources.
   * Optimise le code côté client via le regroupement et la minimisation.
 
@@ -281,7 +281,7 @@ L’application démarre sur localhost en fonction du [mode de configuration](#s
 
 Ouvrez le fichier *. csproj* généré par la commande [dotnet New](/dotnet/core/tools/dotnet-new) . Les packages NuGet et NPM requis sont restaurés automatiquement lors de l’ouverture du projet. Ce processus de restauration peut prendre quelques minutes, et l’application est prête à s’exécuter lorsqu’elle se termine. Cliquez sur le bouton vert exécuter ou appuyez sur `Ctrl + F5` , et le navigateur s’ouvre sur la page d’accueil de l’application. L’application s’exécute sur localhost en fonction du [mode de configuration du runtime](#set-the-runtime-configuration-mode).
 
-## <a name="test-the-app"></a>Test de l'application
+## <a name="test-the-app"></a>Tester l’application
 
 Les modèles SpaServices sont préconfigurés pour exécuter des tests côté client à l’aide de [Karma](https://karma-runner.github.io/1.0/index.html) et [Jasmine](https://jasmine.github.io/). Jasmine est un Framework de tests unitaires populaire pour JavaScript, tandis que Karma est un testeur de test pour ces tests. Karma est configuré pour fonctionner avec l' [intergiciel (middleware) WebPack dev](#webpack-dev-middleware) , de sorte que le développeur n’est pas obligé d’arrêter et d’exécuter le test à chaque fois que des modifications sont apportées. S’il s’agit du code qui s’exécute sur le cas de test ou le cas de test lui-même, le test s’exécute automatiquement.
 
@@ -289,7 +289,7 @@ Les modèles SpaServices sont préconfigurés pour exécuter des tests côté cl
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Ouvrez l’invite de commandes dans le répertoire *ClientApp* . Exécutez la commande suivante :
+Ouvrez l’invite de commandes dans le répertoire *ClientApp* . Exécutez la commande suivante :
 
 ```console
 npm test
@@ -320,6 +320,6 @@ La cible MSBuild est appelée lors de l’exécution de :
 dotnet publish -c Release
 ```
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Documents angulaires](https://angular.io/docs)

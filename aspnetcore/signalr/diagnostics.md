@@ -4,7 +4,7 @@ author: anurse
 description: Découvrez Comment collecter des diagnostics à partir de votre SignalR application ASP.net core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
-ms.custom: devx-track-csharp, signalr
+ms.custom: devx-track-csharp, signalr, devx-track-js
 ms.date: 06/12/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 649398a3868117b2e7f3358aa25544c99cc625b3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 890359c9e9f6c3c60f3105124f52c66b09a8a4fb
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631340"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690678"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Journalisation et diagnostics dans ASP.NET Core SignalR
 
@@ -41,7 +41,7 @@ Cet article fournit des conseils pour la collecte de diagnostics à partir de vo
 SignalR utilise deux catégories d’enregistreur d’événements :
 
 * `Microsoft.AspNetCore.SignalR`: Pour les journaux liés aux protocoles de concentrateur, l’activation de hubs, l’appel de méthodes et d’autres activités liées au Hub.
-* `Microsoft.AspNetCore.Http.Connections`: Pour les journaux liés aux transports, tels que les WebSockets, l’interrogation longue, les événements envoyés par le serveur et l’infrastructure de bas niveau SignalR .
+* `Microsoft.AspNetCore.Http.Connections`: Pour les journaux liés aux transports, tels que les WebSockets, l’interrogation longue, les événements de Server-Sent et l’infrastructure de bas niveau SignalR .
 
 Pour activer les journaux détaillés à partir de SignalR , configurez les deux préfixes précédents au `Debug` niveau de votre *appsettings.js* fichier en ajoutant les éléments suivants à la `LogLevel` sous-section dans `Logging` :
 
@@ -177,7 +177,7 @@ Remplacez `[interface]` par l’interface réseau sur laquelle vous souhaitez ef
 
 Cette méthode fonctionne uniquement pour les applications basées sur un navigateur.
 
-La plupart des Outils de développement de navigateur possèdent un onglet « réseau » qui vous permet de capturer l’activité réseau entre le navigateur et le serveur. Toutefois, ces traces n’incluent pas les messages d’événement WebSocket et envoyés par le serveur. Si vous utilisez ces transports, l’utilisation d’un outil tel que Fiddler ou TcpDump (décrit ci-dessous) est une meilleure approche.
+La plupart des Outils de développement de navigateur possèdent un onglet « réseau » qui vous permet de capturer l’activité réseau entre le navigateur et le serveur. Toutefois, ces traces n’incluent pas les messages d’événement WebSocket et Server-Sent. Si vous utilisez ces transports, l’utilisation d’un outil tel que Fiddler ou TcpDump (décrit ci-dessous) est une meilleure approche.
 
 ### <a name="microsoft-edge-and-internet-explorer"></a>Microsoft Edge et Internet Explorer
 
