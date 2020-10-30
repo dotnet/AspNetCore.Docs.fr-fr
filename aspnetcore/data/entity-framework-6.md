@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/14/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/entity-framework-6
-ms.openlocfilehash: 64d420d7076f1da453ee423cc4a3732eeb47b221
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: 086418c161677f585b08ed360555c93d8575e701
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876696"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059453"
 ---
 # <a name="aspnet-core-and-entity-framework-6"></a>ASP.NET Core et Entity Framework 6
 ::: moniker range=">= aspnetcore-3.0"
@@ -49,7 +50,7 @@ Pour utiliser Entity Framework 6, votre projet doit être compilé pour .NET Fra
 
 La méthode recommandée pour utiliser Entity Framework 6 dans une application ASP.NET Core consiste à placer le contexte EF6 et les classes de modèle dans un projet de bibliothèque de classes qui cible .NET Framework. Ajoutez une référence à la bibliothèque de classes depuis le projet ASP.NET Core. Consultez l’exemple [Solution Visual Studio avec des projets Entity Framework 6 et ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).  
 
-Vous ne pouvez pas mettre un contexte EF6 dans un projet ASP.NET Core, car les projets .NET Core ne prennent pas en charge toutes les fonctionnalités nécessaires pour les commandes EF6, comme *Enable-Migrations*.    
+Vous ne pouvez pas mettre un contexte EF6 dans un projet ASP.NET Core, car les projets .NET Core ne prennent pas en charge toutes les fonctionnalités nécessaires pour les commandes EF6, comme *Enable-Migrations* .    
 
 Quel que soit le type de projet où vous placez votre contexte EF6, seuls les outils en ligne de commande EF6 fonctionnent avec un contexte EF6. Par exemple, `Scaffold-DbContext` est disponible seulement dans Entity Framework Core. Si vous devez effectuer une ingénierie à rebours d’une base de données dans un modèle EF6, consultez <https://docs.microsoft.com/ef/ef6/modeling/code-first/workflows/existing-database> .    
 
@@ -59,7 +60,7 @@ Votre projet de ASP.NET Core doit cibler .NET Framework et référencer EF6. Par
 
 [!code-xml[](entity-framework-6/sample/MVCCore/MVCCore.csproj?range=3-9&highlight=2)]   
 
-Quand vous créez un projet, utilisez le modèle **Application web ASP.NET Core (.NET Framework)**.    
+Quand vous créez un projet, utilisez le modèle **Application web ASP.NET Core (.NET Framework)** .    
 
 ## <a name="handle-connection-strings"></a>Gérer les chaînes de connexion    
 
@@ -104,9 +105,9 @@ Vous pouvez créer cet exemple à partir de zéro dans Visual Studio en effectua
 
 * Dans le projet Core, ajoutez une référence de projet au projet de bibliothèque de classes.    
 
-* Dans le projet Core, dans *Startup.cs*, inscrivez le contexte pour l’injection de dépendances.    
+* Dans le projet Core, dans *Startup.cs* , inscrivez le contexte pour l’injection de dépendances.    
 
-* Dans le projet Core, dans *appsettings.json*, ajoutez la chaîne de connexion.    
+* Dans le projet de base, dans *appsettings.json* , ajoutez la chaîne de connexion.  
 
 * Dans le projet Core, ajoutez un contrôleur et une ou plusieurs vues pour vérifier que vous pouvez lire et écrire des données. (Notez que la génération de modèles automatique d’ASP.NET Core MVC ne fonctionne pas avec le contexte EF6 référencé depuis la bibliothèque de classes.)
 

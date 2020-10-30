@@ -5,6 +5,7 @@ description: Ce tutoriel montre comment installer et utiliser l’outil Observat
 ms.author: riande
 ms.date: 05/31/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 3569e9440b8e431ec0e5357e548af2e3783481ac
-ms.sourcegitcommit: 422e02bad384775bfe19a90910737340ad106c5b
+ms.openlocfilehash: 27420fe00ba6375e15b67fb359be06df055eff1f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90083451"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060038"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Développer des applications ASP.NET Core à l’aide d’un observateur de fichiers
 
@@ -33,14 +34,14 @@ Ce tutoriel utilise une API web existante avec deux points de terminaison : un q
 
 Téléchargez l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Elle se compose de deux projets : *WebApp* (API web ASP.NET Core) et *WebAppTests* (API de tests unitaires pour le web).
 
-Dans une interface de commande, accédez au dossier *WebApp*. Exécutez la commande suivante :
+Dans une interface de commande, accédez au dossier *WebApp* . Exécutez la commande suivante :
 
 ```dotnetcli
 dotnet run
 ```
 
 > [!NOTE]
-> Vous pouvez utiliser `dotnet run --project <PROJECT>` pour spécifier un projet à exécuter. Par exemple, `dotnet run --project WebApp` à la racine de l’exemple d’application aura également pour effet d’exécuter le projet *WebApp*.
+> Vous pouvez utiliser `dotnet run --project <PROJECT>` pour spécifier un projet à exécuter. Par exemple, `dotnet run --project WebApp` à la racine de l’exemple d’application aura également pour effet d’exécuter le projet *WebApp* .
 
 La sortie de la console affiche des messages semblables à ce qui suit (indiquant que l’application est en cours d’exécution et en attente de demandes) :
 
@@ -62,7 +63,7 @@ Accédez à l’API du produit (`http://localhost:<port number>/api/math/product
 
 L’outil Observateur de fichiers `dotnet watch` est inclus dans la version 2.1.300 du kit SDK .NET Core. Les étapes suivantes sont requises quand vous utilisez une version antérieure du kit SDK .NET Core.
 
-1. Ajoutez une référence de package `Microsoft.DotNet.Watcher.Tools` dans le fichier *.csproj* :
+1. Ajoutez une référence de package `Microsoft.DotNet.Watcher.Tools` dans le fichier *.csproj*  :
 
     ```xml
     <ItemGroup>
@@ -89,7 +90,7 @@ Toutes les [commandes de l’interface CLI de .NET Core](/dotnet/core/tools#cli-
 | dotnet Run-f netcoreapp 3.1----Arg1 | dotnet Watch Run-f netcoreapp 3.1----Arg1 |
 | dotnet test | dotnet watch test |
 
-Exécutez `dotnet watch run` dans le dossier *WebApp*. La sortie de la console indique que `watch` a démarré.
+Exécutez `dotnet watch run` dans le dossier *WebApp* . La sortie de la console indique que `watch` a démarré.
 
 ::: moniker range=">= aspnetcore-5.0"
 `dotnet watch run`L’exécution sur une application Web lance un navigateur qui navigue jusqu’à l’URL de l’application une fois que vous êtes prêt. `dotnet watch` pour cela, il lit la sortie de la console de l’application et attend le message Ready affiché par <xref:Microsoft.AspNetCore.WebHost> .
@@ -121,14 +122,14 @@ public static int Product(int a, int b)
 }
 ```
 
-Enregistrez le fichier . La sortie de la console indique que `dotnet watch` a détecté un changement de fichier et a redémarré l’application.
+Enregistrez le fichier. La sortie de la console indique que `dotnet watch` a détecté un changement de fichier et a redémarré l’application.
 
 Vérifiez que `http://localhost:<port number>/api/math/product?a=4&b=5` retourne le résultat correct.
 
 ## <a name="run-tests-using-dotnet-watch"></a>Exécuter les tests à l’aide de `dotnet watch`
 
-1. Changez la méthode `Product` de *MathController.cs* pour qu’elle retourne à nouveau la somme. Enregistrez le fichier .
-1. Dans une interface de commande, accédez au dossier *WebAppTests*.
+1. Changez la méthode `Product` de *MathController.cs* pour qu’elle retourne à nouveau la somme. Enregistrez le fichier.
+1. Dans une interface de commande, accédez au dossier *WebAppTests* .
 1. Exécutez [dotnet restore](/dotnet/core/tools/dotnet-restore).
 1. Exécutez `dotnet watch test`. Sa sortie indique qu’un test a échoué et que l’observateur est en attente de changement de fichier :
 
@@ -137,7 +138,7 @@ Vérifiez que `http://localhost:<port number>/api/math/product?a=4&b=5` retourne
      Test Run Failed.
      ```
 
-1. Corrigez le code de la méthode `Product` afin qu’elle retourne le produit. Enregistrez le fichier .
+1. Corrigez le code de la méthode `Product` afin qu’elle retourne le produit. Enregistrez le fichier.
 
 `dotnet watch` détecte le changement de fichier et réexécute les tests. La sortie de la console indique que les tests ont réussi.
 
@@ -149,7 +150,7 @@ Par défaut, `dotnet-watch` effectue le suivi de tous les fichiers qui correspon
 * `*.csproj`
 * `**/*.resx`
 
-Vous pouvez ajouter plusieurs éléments à la liste de suivi en modifiant le fichier *.csproj*. Vous pouvez spécifier des éléments individuellement ou en utilisant des modèles Glob.
+Vous pouvez ajouter plusieurs éléments à la liste de suivi en modifiant le fichier *.csproj* . Vous pouvez spécifier des éléments individuellement ou en utilisant des modèles Glob.
 
 ```xml
 <ItemGroup>
@@ -200,7 +201,7 @@ Si l’objectif est d’observer les deux projets, créez un fichier projet pers
 </Project>
 ```
 
-Pour démarrer l’observation de fichiers sur les deux projets, passez au dossier *test*. Exécutez la commande suivante :
+Pour démarrer l’observation de fichiers sur les deux projets, passez au dossier *test* . Exécutez la commande suivante :
 
 ```dotnetcli
 dotnet watch msbuild /t:Test
@@ -216,7 +217,7 @@ Certaines options de configuration peuvent être passées à `dotnet watch` via 
 | ------------- | ------------- |
 | `DOTNET_USE_POLLING_FILE_WATCHER`                | Si la valeur est « 1 » ou « true », `dotnet watch` utilise un observateur de fichiers d’interrogation au lieu de CoreFx `FileSystemWatcher` . Utilisé lors de l’observation de fichiers sur des partages réseau ou des volumes montés par l’amarrage.                       |
 | `DOTNET_WATCH_SUPPRESS_MSBUILD_INCREMENTALISM`   | Par défaut, `dotnet watch` optimise la génération en évitant certaines opérations, telles que l’exécution de la restauration ou la réévaluation de l’ensemble des fichiers surveillés à chaque modification de fichier. Si la valeur est « 1 » ou « true », ces optimisations sont désactivées. |
-| `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`   | `dotnet watch run` tente de lancer des navigateurs pour les applications Web avec `launchBrowser` configuré dans *launchSettings.jssur*. Si la valeur est « 1 » ou « true », ce comportement est supprimé. |
+| `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`   | `dotnet watch run` tente de lancer des navigateurs pour les applications Web avec `launchBrowser` configuré dans *launchSettings.jssur* . Si la valeur est « 1 » ou « true », ce comportement est supprimé. |
 | `DOTNET_WATCH_SUPPRESS_BROWSER_REFRESH`   | `dotnet watch run` tente d’actualiser les navigateurs lorsqu’il détecte des modifications de fichier. Si la valeur est « 1 » ou « true », ce comportement est supprimé. Ce comportement est également supprimé si `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER` est défini. |
 
 ## <a name="dotnet-watch-in-github"></a>`dotnet-watch` dans GitHub

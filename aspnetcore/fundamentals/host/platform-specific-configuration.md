@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: fadd93cf28603653e20ed6c7dceadcabf0dfb9a5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c12487875db69472ee328dfc7a611ee99974c770
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627518"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061052"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Utiliser des assemblys de démarrage d’hébergement dans ASP.NET Core
 
@@ -105,7 +106,7 @@ Créez un hébergement au démarrage avec un des types de projet suivants :
 
 Une amélioration de l’hébergement au démarrage peut être fournie dans une bibliothèque de classes. La bibliothèque contient un attribut `HostingStartup`.
 
-L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une Razor application pages, *HostingStartupApp*et une bibliothèque de classes, *HostingStartupLibrary*. La bibliothèque de classes :
+L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une Razor application pages, *HostingStartupApp* et une bibliothèque de classes, *HostingStartupLibrary* . La bibliothèque de classes :
 
 * Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`. `ServiceKeyInjection` Ajoute une paire de chaînes de service à la configuration de l’application à l’aide du fournisseur de configuration en mémoire ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).
 * Inclut un attribut `HostingStartup` qui identifie l’espace de noms et la classe d’hébergement au démarrage.
@@ -122,7 +123,7 @@ La page d’index de l’application lit et affiche les valeurs de configuration
 
 [!code-csharp[](platform-specific-configuration/samples/3.x/HostingStartupApp/Pages/Index.cshtml.cs?name=snippet1&highlight=5-6,11-12)]
 
-[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) inclut également un projet de package NuGet qui fournit un hébergement au démarrage distinct, *HostingStartupPackage*. Le package a les mêmes caractéristiques que la bibliothèque de classes décrite précédemment. Le package :
+[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) inclut également un projet de package NuGet qui fournit un hébergement au démarrage distinct, *HostingStartupPackage* . Le package a les mêmes caractéristiques que la bibliothèque de classes décrite précédemment. Le package :
 
 * Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`. `ServiceKeyInjection` ajoute une paire de chaînes de service à la configuration de l’application.
 * Inclut un attribut `HostingStartup`.
@@ -169,7 +170,7 @@ Une classe implémente `IHostingStartup`. La méthode de la classe <xref:Microso
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/3.x/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
-Durant la génération d’un projet `IHostingStartup`, le fichier de dépendances (*. deps.json*) définit le dossier *bin* comme emplacement du `runtime` :
+Durant la génération d’un projet `IHostingStartup`, le fichier de dépendances ( *. deps.json* ) définit le dossier *bin* comme emplacement du `runtime` :
 
 [!code-json[](platform-specific-configuration/samples-snapshot/3.x/StartupEnhancement1.deps.json?range=2-13&highlight=8)]
 
@@ -221,7 +222,7 @@ public class ConfigurationInjection : IHostingStartup
 
 Pour l’hébergement au démarrage fourni par une bibliothèque de classes ou une application console, spécifiez le nom de l’assembly d’hébergement au démarrage dans la variable d’environnement `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`. Cette variable est spécifiée sous la forme d’une liste d’assemblys délimitée par des points-virgules.
 
-L’analyse de détection de l’attribut `HostingStartup` porte uniquement sur les assemblys d’hébergement au démarrage. Dans l’exemple d’application (*HostingStartupApp*), pour permettre la détection des hébergements au démarrage décrits précédemment, la variable d’environnement est définie à la valeur suivante :
+L’analyse de détection de l’attribut `HostingStartup` porte uniquement sur les assemblys d’hébergement au démarrage. Dans l’exemple d’application ( *HostingStartupApp* ), pour permettre la détection des hébergements au démarrage décrits précédemment, la variable d’environnement est définie à la valeur suivante :
 
 ```
 HostingStartupLibrary;HostingStartupPackage;StartupDiagnostics
@@ -262,7 +263,7 @@ Une fois l’hébergement au démarrage créé, un magasin de runtime est géné
 dotnet store --manifest {MANIFEST FILE} --runtime {RUNTIME IDENTIFIER} --output {OUTPUT LOCATION} --skip-optimization
 ```
 
-Dans l’exemple d’application (projet *RuntimeStore*), la commande suivante est utilisée :
+Dans l’exemple d’application (projet *RuntimeStore* ), la commande suivante est utilisée :
 
 ```dotnetcli
 dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./deployment/store --skip-optimization
@@ -339,7 +340,7 @@ Placez le fichier *.deps.json* à l’emplacement suivant :
 * `{SHARED FRAMEWORK VERSION}`: Version minimale du Framework partagé.
 * `{ENHANCEMENT ASSEMBLY NAME}`: Le nom de l’assembly de l’amélioration.
 
-Dans l’exemple d’application (projet *RuntimeStore*), le fichier de dépendances supplémentaire est placé à l’emplacement suivant :
+Dans l’exemple d’application (projet *RuntimeStore* ), le fichier de dépendances supplémentaire est placé à l’emplacement suivant :
 
 ```
 deployment/additionalDeps/shared/Microsoft.AspNetCore.App/3.0.0/StartupDiagnostics.deps.json
@@ -347,7 +348,7 @@ deployment/additionalDeps/shared/Microsoft.AspNetCore.App/3.0.0/StartupDiagnosti
 
 Pour que le runtime découvre l’emplacement du magasin de runtime, l’emplacement du fichier de dépendances supplémentaire est ajouté à la variable d’environnement `DOTNET_ADDITIONAL_DEPS`.
 
-Dans l’exemple d’application (projet *RuntimeStore*), la génération du magasin de runtime et du fichier de dépendances supplémentaire s’effectue à l’aide d’un script [PowerShell](/powershell/scripting/powershell-scripting).
+Dans l’exemple d’application (projet *RuntimeStore* ), la génération du magasin de runtime et du fichier de dépendances supplémentaire s’effectue à l’aide d’un script [PowerShell](/powershell/scripting/powershell-scripting).
 
 Pour obtenir des exemples montrant comment définir des variables d’environnement pour différents systèmes d’exploitation, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments).
 
@@ -363,7 +364,7 @@ Pour faciliter le déploiement d’un hébergement au démarrage dans un environ
 
 Une amélioration de l’hébergement au démarrage peut être fournie dans un package NuGet. Le package a un attribut `HostingStartup`. Les types d’hébergement au démarrage fournis par le package sont mis à la disposition de l’application au moyen de l’une des approches suivantes :
 
-* Le fichier projet de l’application améliorée crée une référence de package à l’hébergement au démarrage dans le fichier projet de l’application (référence au moment de la compilation). Une fois la référence au moment de la compilation créée, l’assembly d’hébergement au démarrage et toutes ses dépendances sont ajoutés au fichier de dépendances de l’application (*.deps.json*). Cette approche s’applique à un package d’assembly d’hébergement au démarrage qui a été publié sur [nuget.org](https://www.nuget.org/).
+* Le fichier projet de l’application améliorée crée une référence de package à l’hébergement au démarrage dans le fichier projet de l’application (référence au moment de la compilation). Une fois la référence au moment de la compilation créée, l’assembly d’hébergement au démarrage et toutes ses dépendances sont ajoutés au fichier de dépendances de l’application ( *.deps.json* ). Cette approche s’applique à un package d’assembly d’hébergement au démarrage qui a été publié sur [nuget.org](https://www.nuget.org/).
 * Le fichier de dépendances de l’hébergement au démarrage est mis à la disposition de l’application améliorée de la façon décrite dans la section [Magasin de runtime](#runtime-store) (sans référence au moment de la compilation).
 
 Pour plus d’informations sur les packages NuGet et le magasin de runtime, consultez les rubriques suivantes :
@@ -376,12 +377,12 @@ Pour plus d’informations sur les packages NuGet et le magasin de runtime, cons
 
 Une amélioration de l’hébergement au démarrage peut être fournie par un assembly déployé à partir du dossier *bin* dans l’application améliorée. Les types d’hébergement au démarrage fournis par l’assembly sont mis à la disposition de l’application au moyen de l’une des approches suivantes :
 
-* Le fichier projet de l’application améliorée crée une référence d’assembly à l’hébergement au démarrage (référence au moment de la compilation). Une fois la référence au moment de la compilation créée, l’assembly d’hébergement au démarrage et toutes ses dépendances sont ajoutés au fichier de dépendances de l’application (*.deps.json*). Cette approche s’applique lorsque le scénario de déploiement appelle dans le but d’effectuer une référence au moment de la compilation à l’assembly d’hébergement au démarrage (fichier *.dll*) et en déplaçant l’assembly vers :
+* Le fichier projet de l’application améliorée crée une référence d’assembly à l’hébergement au démarrage (référence au moment de la compilation). Une fois la référence au moment de la compilation créée, l’assembly d’hébergement au démarrage et toutes ses dépendances sont ajoutés au fichier de dépendances de l’application ( *.deps.json* ). Cette approche s’applique lorsque le scénario de déploiement appelle dans le but d’effectuer une référence au moment de la compilation à l’assembly d’hébergement au démarrage (fichier *.dll* ) et en déplaçant l’assembly vers :
   * Le projet de consommation.
   * Un emplacement accessible par le projet de consommation.
 * Le fichier de dépendances de l’hébergement au démarrage est mis à la disposition de l’application améliorée de la façon décrite dans la section [Magasin de runtime](#runtime-store) (sans référence au moment de la compilation).
 * Lors du ciblage de .NET Framework, l’assembly peut être chargé dans le contexte de charge par défaut, qui, sur .NET Framework, signifie que l’assembly se trouve à l’un des emplacements suivants :
-  * Chemin de la base de l’application : dossier *bin* où se trouve l’exécutable de l’application (*. exe*).
+  * Chemin de la base de l’application : dossier *bin* où se trouve l’exécutable de l’application ( *. exe* ).
   * Global assembly cache (GAC) : le GAC stocke les assemblys partagés par plusieurs applications .NET Framework. Pour plus d’informations, consultez [Comment : installer un assembly dans le global assembly cache](/dotnet/framework/app-domains/how-to-install-an-assembly-into-the-gac) dans la documentation de .NET Framework.
 
 ## <a name="sample-code"></a>Exemple de code
@@ -389,9 +390,9 @@ Une amélioration de l’hébergement au démarrage peut être fournie par un as
 [L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([Comment télécharger un exemple](xref:index#how-to-download-a-sample)) montre des scénarios d’implémentation de l’hébergement au démarrage :
 
 * Deux assemblys d’hébergement au démarrage (bibliothèques de classes) définissent chacun une paire clé-valeur de configuration en mémoire :
-  * Package NuGet (*HostingStartupPackage*)
-  * Bibliothèque de classes (*HostingStartupLibrary*)
-* Un hébergement au démarrage est activé à partir d’un assembly déployé depuis le magasin de runtime (*StartupDiagnostics*). L’assembly ajoute deux middleware (intergiciels) à l’application au démarrage, qui fournissent des informations de diagnostic :
+  * Package NuGet ( *HostingStartupPackage* )
+  * Bibliothèque de classes ( *HostingStartupLibrary* )
+* Un hébergement au démarrage est activé à partir d’un assembly déployé depuis le magasin de runtime ( *StartupDiagnostics* ). L’assembly ajoute deux middleware (intergiciels) à l’application au démarrage, qui fournissent des informations de diagnostic :
   * Services inscrits
   * Adresse (schéma, hôte, chemin de base, chemin, chaîne de requête)
   * Connexion (adresse IP distante, port distant, adresse IP locale, port local, certificat client)
@@ -404,7 +405,7 @@ Pour exécuter l’exemple :
 
 1. Compilez le package *HostingStartupPackage* à l’aide de la commande [dotnet pack](/dotnet/core/tools/dotnet-pack).
 1. Ajoutez le nom de l’assembly du package *HostingStartupPackage* à la variable d’environnement `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
-1. Compilez et exécutez l’application. Une référence de package est présente dans l’application améliorée (référence au moment de la compilation). Un `<PropertyGroup>` dans le fichier projet de l’application spécifie la sortie du projet de package (*../HostingStartupPackage/bin/Debug*) comme source de package. Cela permet à l’application d’utiliser le package sans télécharger le package sur [NuGet.org](https://www.nuget.org/). Pour plus d’informations, consultez les notes dans le fichier projet de HostingStartupApp.
+1. Compilez et exécutez l’application. Une référence de package est présente dans l’application améliorée (référence au moment de la compilation). Un `<PropertyGroup>` dans le fichier projet de l’application spécifie la sortie du projet de package ( *../HostingStartupPackage/bin/Debug* ) comme source de package. Cela permet à l’application d’utiliser le package sans télécharger le package sur [NuGet.org](https://www.nuget.org/). Pour plus d’informations, consultez les notes dans le fichier projet de HostingStartupApp.
 
    ```xml
    <PropertyGroup>
@@ -424,8 +425,8 @@ dotnet nuget locals all --clear
 
 1. Compilez la bibliothèque de classes *HostingStartupLibrary* à l’aide de la commande [dotnet build](/dotnet/core/tools/dotnet-build).
 1. Ajoutez le nom de l’assembly de la bibliothèque de classes *HostingStartupLibrary* à la variable d’environnement `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
-1. À partir du dossier *bin*, déployez l’assembly de la bibliothèque de classes dans l’application en copiant le fichier *HostingStartupLibrary.dll* du résultat de la compilation de la bibliothèque de classes dans le dossier *bin/Debug* de l’application.
-1. Compilez et exécutez l’application. Un `<ItemGroup>` dans le fichier projet de l’application fait référence à l’assembly de la bibliothèque de classes (*.\bin\Debug\netcoreapp3.0\HostingStartupLibrary.dll*) (une référence au moment de la compilation). Pour plus d’informations, consultez les remarques dans le fichier projet de l’application HostingStartupApp.
+1. À partir du dossier *bin* , déployez l’assembly de la bibliothèque de classes dans l’application en copiant le fichier *HostingStartupLibrary.dll* du résultat de la compilation de la bibliothèque de classes dans le dossier *bin/Debug* de l’application.
+1. Compilez et exécutez l’application. Un `<ItemGroup>` dans le fichier projet de l’application fait référence à l’assembly de la bibliothèque de classes ( *.\bin\Debug\netcoreapp3.0\HostingStartupLibrary.dll* ) (une référence au moment de la compilation). Pour plus d’informations, consultez les remarques dans le fichier projet de l’application HostingStartupApp.
 
    ```xml
    <ItemGroup>
@@ -441,12 +442,12 @@ dotnet nuget locals all --clear
 **Activation à partir d’un assembly déployé à partir du magasin de runtime**
 
 1. Le projet *StartupDiagnostics* utilise [PowerShell](/powershell/scripting/powershell-scripting) pour modifier le fichier *StartupDiagnostics.deps.json* associé. PowerShell est installé par défaut sur Windows à compter de Windows 7 SP1 et de Windows Server 2008 R2 SP1. Pour obtenir PowerShell sur d’autres plateformes, consultez [installation de différentes versions de PowerShell](/powershell/scripting/install/installing-powershell).
-1. Exécutez le script *build.ps1* du dossier *RuntimeStore*. Le script :
+1. Exécutez le script *build.ps1* du dossier *RuntimeStore* . Le script :
    * Génère le `StartupDiagnostics` package dans le dossier *obj\packages* .
-   * Génère le magasin de runtime de `StartupDiagnostics` dans le dossier *store*. La commande `dotnet store` du script utilise l’ [identificateur de runtime (RID)](/dotnet/core/rid-catalog)`win7-x64` pour un hébergement au démarrage déployé sur Windows. Si vous fournissez l’hébergement au démarrage pour un autre runtime, spécifiez l’identificateur du runtime à la ligne 37 du script. Le magasin du runtime pour `StartupDiagnostics` serait déplacé ultérieurement vers la Banque d’exécution du système ou de l’utilisateur sur l’ordinateur sur lequel l’assembly sera consommé. L’emplacement d’installation du magasin d’exécution de l’utilisateur pour l' `StartupDiagnostics` assembly est *. dotnet/Store/x64/netcoreapp 3.0/startupdiagnostics/1.0.0/lib/netcoreapp 3.0/StartupDiagnostics.dll*.
-   * Génère le `additionalDeps` pour `StartupDiagnostics` dans le dossier *additionalDeps* . Les dépendances supplémentaires seraient ensuite déplacées vers les dépendances supplémentaires du système ou de l’utilisateur. L' `StartupDiagnostics` emplacement d’installation des dépendances supplémentaires de l’utilisateur est *. dotnet/x64/AdditionalDeps/StartupDiagnostics/Shared/Microsoft. Netcore. app/3.0.0/StartupDiagnostics.deps.jssur*.
-   * Place le fichier *deploy.ps1* dans le dossier *deployment*.
-1. Exécutez le script *deploy.ps1* du dossier *Deployment*. Le script ajoute :
+   * Génère le magasin de runtime de `StartupDiagnostics` dans le dossier *store* . La commande `dotnet store` du script utilise l’ [identificateur de runtime (RID)](/dotnet/core/rid-catalog)`win7-x64` pour un hébergement au démarrage déployé sur Windows. Si vous fournissez l’hébergement au démarrage pour un autre runtime, spécifiez l’identificateur du runtime à la ligne 37 du script. Le magasin du runtime pour `StartupDiagnostics` serait déplacé ultérieurement vers la Banque d’exécution du système ou de l’utilisateur sur l’ordinateur sur lequel l’assembly sera consommé. L’emplacement d’installation du magasin d’exécution de l’utilisateur pour l' `StartupDiagnostics` assembly est *. dotnet/Store/x64/netcoreapp 3.0/startupdiagnostics/1.0.0/lib/netcoreapp 3.0/StartupDiagnostics.dll* .
+   * Génère le `additionalDeps` pour `StartupDiagnostics` dans le dossier *additionalDeps* . Les dépendances supplémentaires seraient ensuite déplacées vers les dépendances supplémentaires du système ou de l’utilisateur. L' `StartupDiagnostics` emplacement d’installation des dépendances supplémentaires de l’utilisateur est *. dotnet/x64/AdditionalDeps/StartupDiagnostics/Shared/Microsoft. Netcore. app/3.0.0/StartupDiagnostics.deps.jssur* .
+   * Place le fichier *deploy.ps1* dans le dossier *deployment* .
+1. Exécutez le script *deploy.ps1* du dossier *Deployment* . Le script ajoute :
    * `StartupDiagnostics` à la variable d’environnement `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
    * Chemin d’accès des dépendances de démarrage d’hébergement (dans le dossier de *déploiement* du projet RuntimeStore) à la `DOTNET_ADDITIONAL_DEPS` variable d’environnement.
    * Chemin d’accès du magasin du Runtime (dans le dossier de *déploiement* du projet RuntimeStore) à la `DOTNET_SHARED_STORE` variable d’environnement.
@@ -503,7 +504,7 @@ Créez un hébergement au démarrage avec un des types de projet suivants :
 
 Une amélioration de l’hébergement au démarrage peut être fournie dans une bibliothèque de classes. La bibliothèque contient un attribut `HostingStartup`.
 
-L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une Razor application pages, *HostingStartupApp*et une bibliothèque de classes, *HostingStartupLibrary*. La bibliothèque de classes :
+L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une Razor application pages, *HostingStartupApp* et une bibliothèque de classes, *HostingStartupLibrary* . La bibliothèque de classes :
 
 * Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`. `ServiceKeyInjection` Ajoute une paire de chaînes de service à la configuration de l’application à l’aide du fournisseur de configuration en mémoire ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).
 * Inclut un attribut `HostingStartup` qui identifie l’espace de noms et la classe d’hébergement au démarrage.
@@ -520,7 +521,7 @@ La page d’index de l’application lit et affiche les valeurs de configuration
 
 [!code-csharp[](platform-specific-configuration/samples/2.x/HostingStartupApp/Pages/Index.cshtml.cs?name=snippet1&highlight=5-6,11-12)]
 
-[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) inclut également un projet de package NuGet qui fournit un hébergement au démarrage distinct, *HostingStartupPackage*. Le package a les mêmes caractéristiques que la bibliothèque de classes décrite précédemment. Le package :
+[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) inclut également un projet de package NuGet qui fournit un hébergement au démarrage distinct, *HostingStartupPackage* . Le package a les mêmes caractéristiques que la bibliothèque de classes décrite précédemment. Le package :
 
 * Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`. `ServiceKeyInjection` ajoute une paire de chaînes de service à la configuration de l’application.
 * Inclut un attribut `HostingStartup`.
@@ -567,7 +568,7 @@ Une classe implémente `IHostingStartup`. La méthode de la classe <xref:Microso
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
-Durant la génération d’un projet `IHostingStartup`, le fichier de dépendances (*. deps.json*) définit le dossier *bin* comme emplacement du `runtime` :
+Durant la génération d’un projet `IHostingStartup`, le fichier de dépendances ( *. deps.json* ) définit le dossier *bin* comme emplacement du `runtime` :
 
 [!code-json[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement1.deps.json?range=2-13&highlight=8)]
 
@@ -619,7 +620,7 @@ public class ConfigurationInjection : IHostingStartup
 
 Pour l’hébergement au démarrage fourni par une bibliothèque de classes ou une application console, spécifiez le nom de l’assembly d’hébergement au démarrage dans la variable d’environnement `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`. Cette variable est spécifiée sous la forme d’une liste d’assemblys délimitée par des points-virgules.
 
-L’analyse de détection de l’attribut `HostingStartup` porte uniquement sur les assemblys d’hébergement au démarrage. Dans l’exemple d’application (*HostingStartupApp*), pour permettre la détection des hébergements au démarrage décrits précédemment, la variable d’environnement est définie à la valeur suivante :
+L’analyse de détection de l’attribut `HostingStartup` porte uniquement sur les assemblys d’hébergement au démarrage. Dans l’exemple d’application ( *HostingStartupApp* ), pour permettre la détection des hébergements au démarrage décrits précédemment, la variable d’environnement est définie à la valeur suivante :
 
 ```
 HostingStartupLibrary;HostingStartupPackage;StartupDiagnostics
@@ -648,7 +649,7 @@ Une fois l’hébergement au démarrage créé, un magasin de runtime est géné
 dotnet store --manifest {MANIFEST FILE} --runtime {RUNTIME IDENTIFIER} --output {OUTPUT LOCATION} --skip-optimization
 ```
 
-Dans l’exemple d’application (projet *RuntimeStore*), la commande suivante est utilisée :
+Dans l’exemple d’application (projet *RuntimeStore* ), la commande suivante est utilisée :
 
 ```dotnetcli
 dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./deployment/store --skip-optimization
@@ -725,7 +726,7 @@ Placez le fichier *.deps.json* à l’emplacement suivant :
 * `{SHARED FRAMEWORK VERSION}`: Version minimale du Framework partagé.
 * `{ENHANCEMENT ASSEMBLY NAME}`: Le nom de l’assembly de l’amélioration.
 
-Dans l’exemple d’application (projet *RuntimeStore*), le fichier de dépendances supplémentaire est placé à l’emplacement suivant :
+Dans l’exemple d’application (projet *RuntimeStore* ), le fichier de dépendances supplémentaire est placé à l’emplacement suivant :
 
 ```
 deployment/additionalDeps/shared/Microsoft.AspNetCore.App/2.1.0/StartupDiagnostics.deps.json
@@ -733,7 +734,7 @@ deployment/additionalDeps/shared/Microsoft.AspNetCore.App/2.1.0/StartupDiagnosti
 
 Pour que le runtime découvre l’emplacement du magasin de runtime, l’emplacement du fichier de dépendances supplémentaire est ajouté à la variable d’environnement `DOTNET_ADDITIONAL_DEPS`.
 
-Dans l’exemple d’application (projet *RuntimeStore*), la génération du magasin de runtime et du fichier de dépendances supplémentaire s’effectue à l’aide d’un script [PowerShell](/powershell/scripting/powershell-scripting).
+Dans l’exemple d’application (projet *RuntimeStore* ), la génération du magasin de runtime et du fichier de dépendances supplémentaire s’effectue à l’aide d’un script [PowerShell](/powershell/scripting/powershell-scripting).
 
 Pour obtenir des exemples montrant comment définir des variables d’environnement pour différents systèmes d’exploitation, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments).
 
@@ -749,7 +750,7 @@ Pour faciliter le déploiement d’un hébergement au démarrage dans un environ
 
 Une amélioration de l’hébergement au démarrage peut être fournie dans un package NuGet. Le package a un attribut `HostingStartup`. Les types d’hébergement au démarrage fournis par le package sont mis à la disposition de l’application au moyen de l’une des approches suivantes :
 
-* Le fichier projet de l’application améliorée crée une référence de package à l’hébergement au démarrage dans le fichier projet de l’application (référence au moment de la compilation). Une fois la référence au moment de la compilation créée, l’assembly d’hébergement au démarrage et toutes ses dépendances sont ajoutés au fichier de dépendances de l’application (*.deps.json*). Cette approche s’applique à un package d’assembly d’hébergement au démarrage qui a été publié sur [nuget.org](https://www.nuget.org/).
+* Le fichier projet de l’application améliorée crée une référence de package à l’hébergement au démarrage dans le fichier projet de l’application (référence au moment de la compilation). Une fois la référence au moment de la compilation créée, l’assembly d’hébergement au démarrage et toutes ses dépendances sont ajoutés au fichier de dépendances de l’application ( *.deps.json* ). Cette approche s’applique à un package d’assembly d’hébergement au démarrage qui a été publié sur [nuget.org](https://www.nuget.org/).
 * Le fichier de dépendances de l’hébergement au démarrage est mis à la disposition de l’application améliorée de la façon décrite dans la section [Magasin de runtime](#runtime-store) (sans référence au moment de la compilation).
 
 Pour plus d’informations sur les packages NuGet et le magasin de runtime, consultez les rubriques suivantes :
@@ -762,12 +763,12 @@ Pour plus d’informations sur les packages NuGet et le magasin de runtime, cons
 
 Une amélioration de l’hébergement au démarrage peut être fournie par un assembly déployé à partir du dossier *bin* dans l’application améliorée. Les types d’hébergement au démarrage fournis par l’assembly sont mis à la disposition de l’application au moyen de l’une des approches suivantes :
 
-* Le fichier projet de l’application améliorée crée une référence d’assembly à l’hébergement au démarrage (référence au moment de la compilation). Une fois la référence au moment de la compilation créée, l’assembly d’hébergement au démarrage et toutes ses dépendances sont ajoutés au fichier de dépendances de l’application (*.deps.json*). Cette approche s’applique lorsque le scénario de déploiement appelle dans le but d’effectuer une référence au moment de la compilation à l’assembly d’hébergement au démarrage (fichier *.dll*) et en déplaçant l’assembly vers :
+* Le fichier projet de l’application améliorée crée une référence d’assembly à l’hébergement au démarrage (référence au moment de la compilation). Une fois la référence au moment de la compilation créée, l’assembly d’hébergement au démarrage et toutes ses dépendances sont ajoutés au fichier de dépendances de l’application ( *.deps.json* ). Cette approche s’applique lorsque le scénario de déploiement appelle dans le but d’effectuer une référence au moment de la compilation à l’assembly d’hébergement au démarrage (fichier *.dll* ) et en déplaçant l’assembly vers :
   * Le projet de consommation.
   * Un emplacement accessible par le projet de consommation.
 * Le fichier de dépendances de l’hébergement au démarrage est mis à la disposition de l’application améliorée de la façon décrite dans la section [Magasin de runtime](#runtime-store) (sans référence au moment de la compilation).
 * Lors du ciblage de .NET Framework, l’assembly peut être chargé dans le contexte de charge par défaut, qui, sur .NET Framework, signifie que l’assembly se trouve à l’un des emplacements suivants :
-  * Chemin de la base de l’application : dossier *bin* où se trouve l’exécutable de l’application (*. exe*).
+  * Chemin de la base de l’application : dossier *bin* où se trouve l’exécutable de l’application ( *. exe* ).
   * Global assembly cache (GAC) : le GAC stocke les assemblys partagés par plusieurs applications .NET Framework. Pour plus d’informations, consultez [Comment : installer un assembly dans le global assembly cache](/dotnet/framework/app-domains/how-to-install-an-assembly-into-the-gac) dans la documentation de .NET Framework.
 
 ## <a name="sample-code"></a>Exemple de code
@@ -775,9 +776,9 @@ Une amélioration de l’hébergement au démarrage peut être fournie par un as
 [L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([Comment télécharger un exemple](xref:index#how-to-download-a-sample)) montre des scénarios d’implémentation de l’hébergement au démarrage :
 
 * Deux assemblys d’hébergement au démarrage (bibliothèques de classes) définissent chacun une paire clé-valeur de configuration en mémoire :
-  * Package NuGet (*HostingStartupPackage*)
-  * Bibliothèque de classes (*HostingStartupLibrary*)
-* Un hébergement au démarrage est activé à partir d’un assembly déployé depuis le magasin de runtime (*StartupDiagnostics*). L’assembly ajoute deux middleware (intergiciels) à l’application au démarrage, qui fournissent des informations de diagnostic :
+  * Package NuGet ( *HostingStartupPackage* )
+  * Bibliothèque de classes ( *HostingStartupLibrary* )
+* Un hébergement au démarrage est activé à partir d’un assembly déployé depuis le magasin de runtime ( *StartupDiagnostics* ). L’assembly ajoute deux middleware (intergiciels) à l’application au démarrage, qui fournissent des informations de diagnostic :
   * Services inscrits
   * Adresse (schéma, hôte, chemin de base, chemin, chaîne de requête)
   * Connexion (adresse IP distante, port distant, adresse IP locale, port local, certificat client)
@@ -790,7 +791,7 @@ Pour exécuter l’exemple :
 
 1. Compilez le package *HostingStartupPackage* à l’aide de la commande [dotnet pack](/dotnet/core/tools/dotnet-pack).
 1. Ajoutez le nom de l’assembly du package *HostingStartupPackage* à la variable d’environnement `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
-1. Compilez et exécutez l’application. Une référence de package est présente dans l’application améliorée (référence au moment de la compilation). Un `<PropertyGroup>` dans le fichier projet de l’application spécifie la sortie du projet de package (*../HostingStartupPackage/bin/Debug*) comme source de package. Cela permet à l’application d’utiliser le package sans télécharger le package sur [NuGet.org](https://www.nuget.org/). Pour plus d’informations, consultez les notes dans le fichier projet de HostingStartupApp.
+1. Compilez et exécutez l’application. Une référence de package est présente dans l’application améliorée (référence au moment de la compilation). Un `<PropertyGroup>` dans le fichier projet de l’application spécifie la sortie du projet de package ( *../HostingStartupPackage/bin/Debug* ) comme source de package. Cela permet à l’application d’utiliser le package sans télécharger le package sur [NuGet.org](https://www.nuget.org/). Pour plus d’informations, consultez les notes dans le fichier projet de HostingStartupApp.
 
    ```xml
    <PropertyGroup>
@@ -810,8 +811,8 @@ dotnet nuget locals all --clear
 
 1. Compilez la bibliothèque de classes *HostingStartupLibrary* à l’aide de la commande [dotnet build](/dotnet/core/tools/dotnet-build).
 1. Ajoutez le nom de l’assembly de la bibliothèque de classes *HostingStartupLibrary* à la variable d’environnement `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
-1. À partir du dossier *bin*, déployez l’assembly de la bibliothèque de classes dans l’application en copiant le fichier *HostingStartupLibrary.dll* du résultat de la compilation de la bibliothèque de classes dans le dossier *bin/Debug* de l’application.
-1. Compilez et exécutez l’application. Dans le fichier projet de l’application, un `<ItemGroup>` référence l’assembly de la bibliothèque de classes (*.\bin\Debug\netcoreapp2.1\HostingStartupLibrary.dll*) (référence au moment de la compilation). Pour plus d’informations, consultez les remarques dans le fichier projet de l’application HostingStartupApp.
+1. À partir du dossier *bin* , déployez l’assembly de la bibliothèque de classes dans l’application en copiant le fichier *HostingStartupLibrary.dll* du résultat de la compilation de la bibliothèque de classes dans le dossier *bin/Debug* de l’application.
+1. Compilez et exécutez l’application. Dans le fichier projet de l’application, un `<ItemGroup>` référence l’assembly de la bibliothèque de classes ( *.\bin\Debug\netcoreapp2.1\HostingStartupLibrary.dll* ) (référence au moment de la compilation). Pour plus d’informations, consultez les remarques dans le fichier projet de l’application HostingStartupApp.
 
    ```xml
    <ItemGroup>
@@ -827,12 +828,12 @@ dotnet nuget locals all --clear
 **Activation à partir d’un assembly déployé à partir du magasin de runtime**
 
 1. Le projet *StartupDiagnostics* utilise [PowerShell](/powershell/scripting/powershell-scripting) pour modifier le fichier *StartupDiagnostics.deps.json* associé. PowerShell est installé par défaut sur Windows à compter de Windows 7 SP1 et de Windows Server 2008 R2 SP1. Pour obtenir PowerShell sur d’autres plateformes, consultez [installation de différentes versions de PowerShell](/powershell/scripting/install/installing-powershell).
-1. Exécutez le script *build.ps1* du dossier *RuntimeStore*. Le script :
+1. Exécutez le script *build.ps1* du dossier *RuntimeStore* . Le script :
    * Génère le `StartupDiagnostics` package dans le dossier *obj\packages* .
-   * Génère le magasin de runtime de `StartupDiagnostics` dans le dossier *store*. La commande `dotnet store` du script utilise l’ [identificateur de runtime (RID)](/dotnet/core/rid-catalog)`win7-x64` pour un hébergement au démarrage déployé sur Windows. Si vous fournissez l’hébergement au démarrage pour un autre runtime, spécifiez l’identificateur du runtime à la ligne 37 du script. Le magasin du runtime pour `StartupDiagnostics` serait déplacé ultérieurement vers la Banque d’exécution du système ou de l’utilisateur sur l’ordinateur sur lequel l’assembly sera consommé. L’emplacement d’installation du magasin d’exécution de l’utilisateur pour l' `StartupDiagnostics` assembly est *. dotnet/Store/x64/netcoreapp 2.2/startupdiagnostics/1.0.0/lib/netcoreapp 2.2/StartupDiagnostics.dll*.
-   * Génère le `additionalDeps` pour `StartupDiagnostics` dans le dossier *additionalDeps* . Les dépendances supplémentaires seraient ensuite déplacées vers les dépendances supplémentaires du système ou de l’utilisateur. L' `StartupDiagnostics` emplacement d’installation des dépendances supplémentaires de l’utilisateur est *. dotnet/x64/AdditionalDeps/StartupDiagnostics/Shared/Microsoft. Netcore. app/2.2.0/StartupDiagnostics.deps.jssur*.
-   * Place le fichier *deploy.ps1* dans le dossier *deployment*.
-1. Exécutez le script *deploy.ps1* du dossier *Deployment*. Le script ajoute :
+   * Génère le magasin de runtime de `StartupDiagnostics` dans le dossier *store* . La commande `dotnet store` du script utilise l’ [identificateur de runtime (RID)](/dotnet/core/rid-catalog)`win7-x64` pour un hébergement au démarrage déployé sur Windows. Si vous fournissez l’hébergement au démarrage pour un autre runtime, spécifiez l’identificateur du runtime à la ligne 37 du script. Le magasin du runtime pour `StartupDiagnostics` serait déplacé ultérieurement vers la Banque d’exécution du système ou de l’utilisateur sur l’ordinateur sur lequel l’assembly sera consommé. L’emplacement d’installation du magasin d’exécution de l’utilisateur pour l' `StartupDiagnostics` assembly est *. dotnet/Store/x64/netcoreapp 2.2/startupdiagnostics/1.0.0/lib/netcoreapp 2.2/StartupDiagnostics.dll* .
+   * Génère le `additionalDeps` pour `StartupDiagnostics` dans le dossier *additionalDeps* . Les dépendances supplémentaires seraient ensuite déplacées vers les dépendances supplémentaires du système ou de l’utilisateur. L' `StartupDiagnostics` emplacement d’installation des dépendances supplémentaires de l’utilisateur est *. dotnet/x64/AdditionalDeps/StartupDiagnostics/Shared/Microsoft. Netcore. app/2.2.0/StartupDiagnostics.deps.jssur* .
+   * Place le fichier *deploy.ps1* dans le dossier *deployment* .
+1. Exécutez le script *deploy.ps1* du dossier *Deployment* . Le script ajoute :
    * `StartupDiagnostics` à la variable d’environnement `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
    * Chemin d’accès des dépendances de démarrage d’hébergement (dans le dossier de *déploiement* du projet RuntimeStore) à la `DOTNET_ADDITIONAL_DEPS` variable d’environnement.
    * Chemin d’accès du magasin du Runtime (dans le dossier de *déploiement* du projet RuntimeStore) à la `DOTNET_SHARED_STORE` variable d’environnement.

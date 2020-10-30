@@ -5,6 +5,7 @@ description: Découvrez comment ajouter des vérifications de revendications pou
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/claims
-ms.openlocfilehash: 0615e9f13b0eca7d7ac924d90ae2004e41a51586
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d6317da6bca69b4c46d74a2f76d81af4059d1cd8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632601"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060272"
 ---
 # <a name="claims-based-authorization-in-aspnet-core"></a>Autorisation basée sur les revendications dans ASP.NET Core
 
@@ -157,7 +158,7 @@ Si la valeur de revendication n’est pas une valeur unique ou si une transforma
 
 ## <a name="multiple-policy-evaluation"></a>Évaluation de plusieurs stratégies
 
-Si vous appliquez plusieurs stratégies à un contrôleur ou à une action, toutes les stratégies doivent réussir avant l’octroi de l’accès. Par exemple :
+Si vous appliquez plusieurs stratégies à un contrôleur ou à une action, toutes les stratégies doivent réussir avant l’octroi de l’accès. Exemple :
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]

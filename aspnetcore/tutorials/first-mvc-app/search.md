@@ -5,6 +5,7 @@ description: Partie 7 de la série de didacticiels sur ASP.NET Core MVC.
 ms.author: riande
 ms.date: 12/13/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: fcb96300c08d9f985cbfe4d3bf055036be7d2eb0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 657072803f59feb99de8b31ddb3a6433d832aa30
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629572"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059622"
 ---
 # <a name="part-7-add-search-to-an-aspnet-core-mvc-app"></a>Partie 7, ajouter une recherche à une application ASP.NET Core MVC
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Dans cette section, vous ajoutez une fonctionnalité de recherche à la méthode d’action `Index` qui vous permet de rechercher des films par *genre* ou par *nom*.
+Dans cette section, vous ajoutez une fonctionnalité de recherche à la méthode d’action `Index` qui vous permet de rechercher des films par *genre* ou par *nom* .
 
 Mettez à jour la méthode `Index` trouvée dans *Controllers/MoviesController.cs* avec le code suivant :
 
@@ -54,7 +55,7 @@ Accédez à `/Movies/Index`. Ajoutez une chaîne de requête comme `?searchStrin
 
 ![Vue Index](~/tutorials/first-mvc-app/search/_static/ghost.png)
 
-Si vous changez la signature de la méthode `Index` pour y inclure un paramètre nommé `id`, le paramètre`id` correspondra à l’espace réservé facultatif `{id}` pour les routes par défaut définies dans *Startup.cs*.
+Si vous changez la signature de la méthode `Index` pour y inclure un paramètre nommé `id`, le paramètre`id` correspondra à l’espace réservé facultatif `{id}` pour les routes par défaut définies dans *Startup.cs* .
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
 
@@ -102,7 +103,7 @@ Cependant, même si vous ajoutez cette version `[HttpPost]` de la méthode `Inde
 
 Vous pouvez voir le paramètre de recherche et le jeton [XSRF](xref:security/anti-request-forgery) dans le corps de la demande. Notez que, comme indiqué dans le didacticiel précédent, le [Tag Helper de formulaire](xref:mvc/views/working-with-forms) génère un jeton [XSRF](xref:security/anti-request-forgery) anti-contrefaçon. Nous ne modifions pas les données : nous n’avons donc pas besoin de valider le jeton dans la méthode du contrôleur.
 
-Comme le paramètre de recherche se trouve dans le corps de la demande et pas dans l’URL, vous ne pouvez pas capturer ces informations de recherche pour les insérer dans un signet ou les partager avec d’autres personnes. Corrigez ce problème en indiquant que la requête doit être `HTTP GET` trouvée dans le fichier *Views/Movies/Index.cshtml*.
+Comme le paramètre de recherche se trouve dans le corps de la demande et pas dans l’URL, vous ne pouvez pas capturer ces informations de recherche pour les insérer dans un signet ou les partager avec d’autres personnes. Corrigez ce problème en indiquant que la requête doit être `HTTP GET` trouvée dans le fichier *Views/Movies/Index.cshtml* .
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGet.cshtml?highlight=12&range=1-23)]
 

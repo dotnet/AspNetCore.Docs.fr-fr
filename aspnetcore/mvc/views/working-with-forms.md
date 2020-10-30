@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: c337e727a4683b0b3c67307af93ef8efa246e2ad
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a568ad481eb09587e2ddce8e84d0ac3eff01e990
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631015"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060896"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Tag Helpers dans les formulaires dans ASP.NET Core
 
@@ -67,7 +68,7 @@ L’attribut Tag Helper `asp-route` peut également générer des balises pour l
 
 [!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
-Un bon nombre des vues du dossier *Vues/Compte* (généré quand vous créez une application web avec des *comptes d’utilisateurs individuels*) contiennent l’attribut [asp-route-returnurl](xref:mvc/views/working-with-forms) :
+Un bon nombre des vues du dossier *Vues/Compte* (généré quand vous créez une application web avec des *comptes d’utilisateurs individuels* ) contiennent l’attribut [asp-route-returnurl](xref:mvc/views/working-with-forms) :
 
 ```cshtml
 <form asp-controller="Account" asp-action="Login"
@@ -91,7 +92,7 @@ Attributs [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-hel
 |[asp-area](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-area)|Nom de la zone.|
 |[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|Nom de la Razor page.|
 |[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Nom du gestionnaire de Razor page.|
-|[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|Nom de l’itinéraire.|
+|[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|Nom de l'itinéraire.|
 |[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|Valeur de routage d’URL unique. Par exemple : `asp-route-id="1234"`.|
 |[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|Toutes les valeurs d’itinéraire.|
 |[asp-fragment](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-fragment)|Fragment d’URL.|
@@ -190,7 +191,7 @@ Tag Helper Input :
 
 * Génère des attributs de validation [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) à partir des attributs d’[annotation de données](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) appliqués aux propriétés de modèle
 
-* Chevauche des fonctionnalités HTML Helper avec `Html.TextBoxFor` et `Html.EditorFor`. Pour plus d’informations, consultez la section **Alternatives HTML Helper au Tag Helper Input**.
+* Chevauche des fonctionnalités HTML Helper avec `Html.TextBoxFor` et `Html.EditorFor`. Pour plus d’informations, consultez la section **Alternatives HTML Helper au Tag Helper Input** .
 
 * Fournit un typage fort. Si le nom de la propriété change et si vous ne mettez pas à jour le Tag Helper, vous obtenez une erreur similaire à celle-ci :
 
@@ -330,7 +331,7 @@ L’exemple suivant Razor montre comment accéder à un `Color` élément spéci
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
-Modèle *Views/Shared/EditorTemplates/String.cshtml* :
+Modèle *Views/Shared/EditorTemplates/String.cshtml*  :
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
 
@@ -342,7 +343,7 @@ L’exemple suivant Razor montre comment effectuer une itération au sein d’un
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
-Modèle *Views/Shared/EditorTemplates/ToDoItem.cshtml* :
+Modèle *Views/Shared/EditorTemplates/ToDoItem.cshtml*  :
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
@@ -502,7 +503,7 @@ Code HTML généré (quand le modèle est valide) :
 
 * Comporte une alternative HTML Helper avec `Html.DropDownListFor` et `Html.ListBoxFor`
 
-Le `Select Tag Helper` `asp-for` spécifie le nom de propriété de modèle de l’élément [select](https://www.w3.org/wiki/HTML/Elements/select), et `asp-items` spécifie les éléments [option](https://www.w3.org/wiki/HTML/Elements/option).  Par exemple :
+Le `Select Tag Helper` `asp-for` spécifie le nom de propriété de modèle de l’élément [select](https://www.w3.org/wiki/HTML/Elements/select), et `asp-items` spécifie les éléments [option](https://www.w3.org/wiki/HTML/Elements/option).  Exemple :
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
@@ -646,7 +647,7 @@ Si vous constatez que l’option « not specified » est utilisée dans plusie
 
 [!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
 
-Modèle *Views/Shared/EditorTemplates/CountryViewModel.cshtml* :
+Modèle *Views/Shared/EditorTemplates/CountryViewModel.cshtml*  :
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
@@ -673,7 +674,7 @@ L’élément `<option>` approprié est sélectionné (il contient l’attribut 
  </form>
  ```
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:mvc/views/tag-helpers/intro>
 * [Élément de formulaire HTML](https://www.w3.org/TR/html401/interact/forms.html)

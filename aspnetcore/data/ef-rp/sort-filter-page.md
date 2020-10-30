@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: e01704cb10c88f3e9442e74034f5e5d39787f300
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: 51a1e2a90259898262ac655b7a0e8a55d766f0c7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653891"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061039"
 ---
 # <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Partie 3 : Razor pages avec EF Core dans ASP.net Core-Trier, filtrer, pagination
 
@@ -55,13 +56,13 @@ La méthode `OnGetAsync` reçoit un paramètre `sortOrder` à partir de la chaî
 
 Le `sortOrder` paramètre a la valeur `Name` ou `Date` . Le `sortOrder` paramètre est éventuellement suivi `_desc` de pour spécifier l’ordre décroissant. L’ordre de tri par défaut est croissant.
 
-Quand la page Index est demandée à partir du lien **Students**, il n’existe aucune chaîne de requête. Les étudiants sont affichés par nom de famille dans l’ordre croissant. L’ordre croissant par nom de famille est le `default` dans l' `switch` instruction. Quand l’utilisateur clique sur un lien d’en-tête de colonne, la valeur `sortOrder` appropriée est fournie dans la valeur de chaîne de requête.
+Quand la page Index est demandée à partir du lien **Students** , il n’existe aucune chaîne de requête. Les étudiants sont affichés par nom de famille dans l’ordre croissant. L’ordre croissant par nom de famille est le `default` dans l' `switch` instruction. Quand l’utilisateur clique sur un lien d’en-tête de colonne, la valeur `sortOrder` appropriée est fournie dans la valeur de chaîne de requête.
 
 `NameSort` et `DateSort` sont utilisés par la Razor page pour configurer les liens hypertexte d’en-tête de colonne avec les valeurs de chaîne de requête appropriées :
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_Ternary)]
 
-Le code utilise l' [opérateur conditionnel C# ?:](/dotnet/csharp/language-reference/operators/conditional-operator). L' `?:` opérateur est un opérateur ternaire qui prend trois opérandes. La première ligne spécifie que lorsque `sortOrder` a la valeur null ou est vide, `NameSort` a la valeur `name_desc` . Si `sortOrder` n’est ***pas*** null ou vide, `NameSort` prend pour valeur une chaîne vide.
+Le code utilise l' [opérateur conditionnel C# ?:](/dotnet/csharp/language-reference/operators/conditional-operator). L' `?:` opérateur est un opérateur ternaire qui prend trois opérandes. La première ligne spécifie que lorsque `sortOrder` a la valeur null ou est vide, `NameSort` a la valeur `name_desc` . Si `sortOrder` est * *_not_* _ null ou vide, `NameSort` a pour valeur une chaîne vide.
 
 Ces deux instructions permettent à la page de définir les liens hypertexte d’en-tête de colonne comme suit :
 
@@ -84,7 +85,7 @@ Lorsqu’une `IQueryable` est créée ou modifiée, aucune requête n’est envo
 
 ### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a>Ajouter des liens hypertexte d’en-tête de colonne à la page d’index des étudiants
 
-Remplacez le code de *Students/Index.cshtml* par le code suivant : Les modifications sont mises en surbrillance.
+Remplacez le code dans _Students/index.cshtml *, par le code suivant. Les modifications sont mises en surbrillance.
 
 [!code-cshtml[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml?highlight=5,8,17-19,22,25-27,33)]
 
@@ -97,7 +98,7 @@ Le code précédent :
 
 Pour vérifier que le tri fonctionne
 
-* Exécutez l’application et sélectionnez l’onglet **Students**.
+* Exécutez l’application et sélectionnez l’onglet **Students** .
 * Cliquez sur les en-têtes de colonne.
 
 ## <a name="add-filtering"></a>Ajouter la fonctionnalité de filtrage
@@ -150,9 +151,9 @@ Testez l’application :
 
 * Sélectionnez l’onglet **Students** et entrez une chaîne de recherche. Si vous utilisez SQLite, le filtre n’est pas sensible à la casse seulement si vous avez implémenté le code `ToUpper` facultatif indiqué plus haut.
 
-* Sélectionnez **Recherche**.
+* Sélectionnez **Recherche** .
 
-Notez que l’URL contient la chaîne de recherche. Par exemple :
+Notez que l’URL contient la chaîne de recherche. Exemple :
 
 ```browser-address-bar
 https://localhost:5001/Students?SearchString=an
@@ -174,7 +175,7 @@ Dans le dossier du projet, créez `PaginatedList.cs` avec le code suivant :
 
 [!code-csharp[Main](intro/samples/cu30/PaginatedList.cs)]
 
-La méthode `CreateAsync` dans le code précédent prend la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées au `IQueryable`. Quand `ToListAsync` est appelée sur le `IQueryable`, elle retourne une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` sont utilisées pour activer ou désactiver les boutons de pagination **Previous** et **Next**.
+La méthode `CreateAsync` dans le code précédent prend la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées au `IQueryable`. Quand `ToListAsync` est appelée sur le `IQueryable`, elle retourne une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` sont utilisées pour activer ou désactiver les boutons de pagination **Previous** et **Next** .
 
 La méthode `CreateAsync` est utilisée pour créer le `PaginatedList<T>`. Un constructeur ne peut pas créer l’objet `PaginatedList<T>`, car les constructeurs ne peuvent pas exécuter du code asynchrone.
 
@@ -195,7 +196,7 @@ Le code précédent :
 
 Tous les paramètres reçus par `OnGetAsync` sont Null si :
 
-* La page est appelée à partir du lien **Students**.
+* La page est appelée à partir du lien **Students** .
 * L’utilisateur n’a pas cliqué sur un lien de pagination ou de tri.
 
 Quand l’utilisateur clique sur un lien de pagination, la variable d’index de page contient le numéro de page à afficher.
@@ -246,7 +247,7 @@ Cette section crée la page About (À propos) qui indique le nombre d’étudian
 
 ### <a name="create-the-view-model"></a>Créer le modèle d’affichage
 
-Créez un dossier *Models/SchoolViewModels*.
+Créez un dossier *Models/SchoolViewModels* .
 
 Créez *SchoolViewModels/EnrollmentDateGroup.cs* avec le code suivant :
 
@@ -305,7 +306,7 @@ Le code précédent reçoit un paramètre `sortOrder` à partir de la chaîne de
 
 Le paramètre `sortOrder` est « Name » ou « Date ». Le paramètre `sortOrder` peut être suivi de « _desc » pour spécifier l’ordre décroissant. L’ordre de tri par défaut est croissant.
 
-Quand la page Index est demandée à partir du lien **Students**, il n’existe aucune chaîne de requête. Les étudiants sont affichés par nom de famille dans l’ordre croissant. Le tri croissant par nom de famille est la valeur par défaut dans l’instruction `switch`. Quand l’utilisateur clique sur un lien d’en-tête de colonne, la valeur `sortOrder` appropriée est fournie dans la valeur de chaîne de requête.
+Quand la page Index est demandée à partir du lien **Students** , il n’existe aucune chaîne de requête. Les étudiants sont affichés par nom de famille dans l’ordre croissant. Le tri croissant par nom de famille est la valeur par défaut dans l’instruction `switch`. Quand l’utilisateur clique sur un lien d’en-tête de colonne, la valeur `sortOrder` appropriée est fournie dans la valeur de chaîne de requête.
 
 `NameSort` et `DateSort` sont utilisés par la Razor page pour configurer les liens hypertexte d’en-tête de colonne avec les valeurs de chaîne de requête appropriées :
 
@@ -351,15 +352,15 @@ Le code précédent :
 
 Pour vérifier que le tri fonctionne
 
-* Exécutez l’application et sélectionnez l’onglet **Students**.
-* Cliquez sur **Last Name**.
-* Cliquez sur **Enrollment Date**.
+* Exécutez l’application et sélectionnez l’onglet **Students** .
+* Cliquez sur **Last Name** .
+* Cliquez sur **Enrollment Date** .
 
 Pour mieux comprendre le fonctionnement du code
 
-* Dans *Students/Index.cshtml.cs*, définissez un point d’arrêt sur `switch (sortOrder)`.
+* Dans *Students/Index.cshtml.cs* , définissez un point d’arrêt sur `switch (sortOrder)`.
 * Ajoutez un espion pour `NameSort` et `DateSort`.
-* Dans *Students/Index.cshtml*, définissez un point d’arrêt sur `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
+* Dans *Students/Index.cshtml* , définissez un point d’arrêt sur `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
 
 Effectuez un pas à pas détaillé dans le débogueur.
 
@@ -396,7 +397,7 @@ Il existe un coût en matière de performances en cas d’appel à `ToUpper`. Le
 
 ### <a name="add-a-search-box-to-the-student-index-page"></a>Ajouter une zone de recherche à la page d’index des étudiants
 
-Dans *Pages/Students/Index.cshtml*, ajoutez le code en surbrillance suivant pour créer un bouton **Search** et le chrome assorti.
+Dans *Pages/Students/Index.cshtml* , ajoutez le code en surbrillance suivant pour créer un bouton **Search** et le chrome assorti.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
@@ -405,7 +406,7 @@ Le code précédent utilise le  [Tag Helper](xref:mvc/views/tag-helpers/intro)`<
 Testez l’application :
 
 * Sélectionnez l’onglet **Students** et entrez une chaîne de recherche.
-* Sélectionnez **Recherche**.
+* Sélectionnez **Recherche** .
 
 Notez que l’URL contient la chaîne de recherche.
 
@@ -427,13 +428,13 @@ Dans le dossier du projet, créez `PaginatedList.cs` avec le code suivant :
 
 [!code-csharp[](intro/samples/cu21/PaginatedList.cs)]
 
-La méthode `CreateAsync` dans le code précédent prend la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées au `IQueryable`. Quand `ToListAsync` est appelée sur le `IQueryable`, elle retourne une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` sont utilisées pour activer ou désactiver les boutons de pagination **Previous** et **Next**.
+La méthode `CreateAsync` dans le code précédent prend la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées au `IQueryable`. Quand `ToListAsync` est appelée sur le `IQueryable`, elle retourne une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` sont utilisées pour activer ou désactiver les boutons de pagination **Previous** et **Next** .
 
 La méthode `CreateAsync` est utilisée pour créer le `PaginatedList<T>`. Un constructeur ne peut pas créer l’objet `PaginatedList<T>` ; les constructeurs ne peuvent pas exécuter du code asynchrone.
 
 ## <a name="add-paging-functionality-to-the-index-method"></a>Ajouter la fonctionnalité de pagination à la méthode Index
 
-Dans *Students/Index.cshtml.cs*, mettez à jour le type de `Student` en remplaçant `IList<Student>` par `PaginatedList<Student>` :
+Dans *Students/Index.cshtml.cs* , mettez à jour le type de `Student` en remplaçant `IList<Student>` par `PaginatedList<Student>` :
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPageType)]
 
@@ -447,7 +448,7 @@ Le code précédent ajoute l’index de page, le `sortOrder` actuel et le `curre
 
 Tous les paramètres sont null quand :
 
-* La page est appelée à partir du lien **Students**.
+* La page est appelée à partir du lien **Students** .
 * L’utilisateur n’a pas cliqué sur un lien de pagination ou de tri.
 
 Quand l’utilisateur clique sur un lien de pagination, la variable d’index de page contient le numéro de page à afficher.
@@ -474,7 +475,7 @@ Les deux points d’interrogation dans `PaginatedList.CreateAsync` représentent
 
 ## <a name="add-paging-links-to-the-student-no-locrazor-page"></a>Ajouter des liens de pagination à la page Student Razor
 
-Mettez à jour le balisage dans *Students/Index.cshtml*. Les modifications apparaissent en surbrillance :
+Mettez à jour le balisage dans *Students/Index.cshtml* . Les modifications apparaissent en surbrillance :
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
 
@@ -495,9 +496,9 @@ Exécutez l’application et accédez à la page des étudiants.
 
 Pour mieux comprendre le fonctionnement du code
 
-* Dans *Students/Index.cshtml.cs*, définissez un point d’arrêt sur `switch (sortOrder)`.
+* Dans *Students/Index.cshtml.cs* , définissez un point d’arrêt sur `switch (sortOrder)`.
 * Ajoutez un espion pour `NameSort`, `DateSort`, `CurrentSort` et `Model.Student.PageIndex`.
-* Dans *Students/Index.cshtml*, définissez un point d’arrêt sur `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
+* Dans *Students/Index.cshtml* , définissez un point d’arrêt sur `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
 
 Effectuez un pas à pas détaillé dans le débogueur.
 
@@ -505,14 +506,14 @@ Effectuez un pas à pas détaillé dans le débogueur.
 
 Lors de cette étape, nous allons mettre à jour *Pages/About.cshtml* afin d’afficher le nombre d’étudiants qui se sont inscrits pour chaque date d’inscription. La mise à jour utilise le regroupement et comprend les étapes suivantes :
 
-* Créer un modèle de vue pour les données utilisées par la page **About**.
+* Créer un modèle de vue pour les données utilisées par la page **About** .
 * Mettre à jour la page About pour utiliser le modèle de vue.
 
 ### <a name="create-the-view-model"></a>Créer le modèle d’affichage
 
-Créez un dossier *SchoolViewModels* dans le dossier *Models*.
+Créez un dossier *SchoolViewModels* dans le dossier *Models* .
 
-Dans le dossier *SchoolViewModels*, ajoutez un *EnrollmentDateGroup.cs* avec le code suivant :
+Dans le dossier *SchoolViewModels* , ajoutez un *EnrollmentDateGroup.cs* avec le code suivant :
 
 [!code-csharp[](intro/samples/cu21/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 

@@ -5,6 +5,7 @@ description: Partie 3 de la série de didacticiels sur les Razor pages.
 ms.author: riande
 ms.date: 08/17/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 03febbd71df19cd3524d26e229a8bd8798a874b5
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 7d0085e1d444de30ca124ef544668122ab350c93
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865123"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060051"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>Partie 3, Razor pages de génération de modèles automatique dans ASP.net Core
 
@@ -35,7 +36,7 @@ Ce didacticiel examine les Razor pages créées par génération de modèles aut
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>Pages Create, Delete, Details et Edit
 
-Examinez le modèle de page *Pages/Movies/Index.cshtml.cs* : 
+Examinez le modèle de page *Pages/Movies/Index.cshtml.cs*  : 
 
 [!code-csharp[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs)]
 
@@ -75,7 +76,7 @@ La `@model` directive spécifie le type du modèle passé à la Razor page. Dans
 
 ### <a name="the-layout-page"></a>La page de disposition
 
-Sélectionnez les liens de menu (** Razor PagesMovie**, **début**et **confidentialité**). Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Pages/Shared/_Layout.cshtml*. Ouvrez le fichier *Pages/Shared/_Layout.cshtml*.
+Sélectionnez les liens de menu ( **Razor PagesMovie** , **début** et **confidentialité** ). Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Pages/Shared/_Layout.cshtml* . Ouvrez le fichier *Pages/Shared/_Layout.cshtml* .
 
 Les modèles de [Disposition](xref:mvc/views/layout) permettent que la disposition du conteneur HTML soit :
 
@@ -88,7 +89,7 @@ Recherchez la ligne `@RenderBody()`. `RenderBody` est un espace réservé dans l
 
 ### <a name="viewdata-and-layout"></a>ViewData et disposition
 
-Considérez la balise suivante du fichier *Pages/Movies/Index.cshtml* :
+Considérez la balise suivante du fichier *Pages/Movies/Index.cshtml*  :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Index.cshtml?range=1-6&highlight=4-999)]
 
@@ -96,7 +97,7 @@ Le balisage en surbrillance précédent est un exemple de Razor transition en C#
 
 La `PageModel` classe de base contient une `ViewData` propriété de dictionnaire qui peut être utilisée pour passer des données à une vue. Des objets sont ajoutés au dictionnaire `ViewData` à l’aide d’un modèle clé/valeur. Dans l’exemple précédent, la propriété `"Title"` est ajoutée au dictionnaire `ViewData`.
 
-La propriété `"Title"` est utilisée dans le fichier * Pages/Shared/_Layout.cshtml*. La balise suivante montre les premières lignes du fichier *_Layout.cshtml*.
+La propriété `"Title"` est utilisée dans le fichier *Pages/Shared/_Layout.cshtml* . La balise suivante montre les premières lignes du fichier *_Layout.cshtml* .
 
 <!-- We need a snapshot copy of layout because we are changing in the next step. -->
 
@@ -106,11 +107,11 @@ La ligne `@*Markup removed for brevity.*@` est un Razor commentaire. Contraireme
 
 ### <a name="update-the-layout"></a>Mettre à jour la disposition
 
-Modifiez l' `<title>` élément dans le fichier *pages/Shared/_Layout. cshtml* pour afficher **Movie** plutôt que ** Razor PagesMovie**.
+Modifiez l' `<title>` élément dans le fichier *pages/Shared/_Layout. cshtml* pour afficher **Movie** plutôt que **Razor PagesMovie** .
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
-Recherchez l’élément anchor suivant dans le fichier *Pages/Shared/_Layout.cshtml*.
+Recherchez l’élément anchor suivant dans le fichier *Pages/Shared/_Layout.cshtml* .
 
 ```cshtml
 <a class="navbar-brand" asp-area="" asp-page="/Index">RazorPagesMovie</a>
@@ -124,14 +125,14 @@ Remplacez l’élément précédent par la balise suivante :
 
 L’élément anchor précédent est un [Tag Helper](xref:mvc/views/tag-helpers/intro). Dans le cas présent, il s’agit du [Tag Helper d’ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper). L' `asp-page="/Movies/Index"` attribut et la valeur tag Helper crée un lien vers la `/Movies/Index` Razor page. La valeur de l’attribut `asp-area` est vide : la zone n’est donc pas utilisée dans le lien. Pour plus d’informations, consultez [Zones](xref:mvc/controllers/areas).
 
-Enregistrez vos changements, puis testez l’application en cliquant sur le lien **RpMovie**. Consultez le fichier [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) dans GitHub si vous rencontrez des problèmes.
+Enregistrez vos changements, puis testez l’application en cliquant sur le lien **RpMovie** . Consultez le fichier [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) dans GitHub si vous rencontrez des problèmes.
 
-Testez les autres liens (**Home**, **RpMovie**, **Create**, **Edit** et **Delete**). Chaque page définit le titre, que vous pouvez voir dans l’onglet navigateur. Lorsque vous ajoutez une page à un signet, le titre est utilisé pour le signet.
+Testez les autres liens ( **Home** , **RpMovie** , **Create** , **Edit** et **Delete** ). Chaque page définit le titre, que vous pouvez voir dans l’onglet navigateur. Lorsque vous ajoutez une page à un signet, le titre est utilisé pour le signet.
 
 > [!NOTE]
 > Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que l’anglais qui utilisent une virgule (« , ») comme décimale et des formats de date autres que l’anglais des États-Unis, vous devez effectuer des étapes pour localiser votre application. Consultez cette page [GitHub problème 4076](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) pour savoir comment ajouter une virgule décimale.
 
-La propriété `Layout` est définie dans le fichier *Pages/_ViewStart.cshtml* :
+La propriété `Layout` est définie dans le fichier *Pages/_ViewStart.cshtml*  :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/_ViewStart.cshtml)]
 
@@ -143,7 +144,7 @@ Examinez le modèle de page *Pages/Movies/Create.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
-La méthode `OnGet` initialise l’état nécessaire pour la page. La page Create n’ayant aucun état à initialiser, `Page` est retourné. Plus loin dans le tutoriel, un exemple d’état d’initialisation `OnGet` est affiché. La méthode `Page` crée un objet `PageResult` qui affiche la page *Create.cshtml*.
+La méthode `OnGet` initialise l’état nécessaire pour la page. La page Create n’ayant aucun état à initialiser, `Page` est retourné. Plus loin dans le tutoriel, un exemple d’état d’initialisation `OnGet` est affiché. La méthode `Page` crée un objet `PageResult` qui affiche la page *Create.cshtml* .
 
 La propriété `Movie` utilise l’attribut `[BindProperty]` pour adhérer à la [liaison de données](xref:mvc/models/model-binding). Quand le formulaire Create publie les valeurs de formulaire, le runtime ASP.NET Core lie les valeurs publiées au modèle `Movie`.
 
@@ -161,7 +162,7 @@ Examinez le fichier de page *pages/movies/Create. cshtml* Razor :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Create.cshtml)]
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Visual Studio affiche la balise suivante dans une police différenciée en gras utilisée pour les Tag Helpers :
 
@@ -227,7 +228,7 @@ Ce didacticiel examine les Razor pages créées par génération de modèles aut
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>Pages Create, Delete, Details et Edit
 
-Examinez le modèle de page *Pages/Movies/Index.cshtml.cs* : 
+Examinez le modèle de page *Pages/Movies/Index.cshtml.cs*  : 
 
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs)]
 
@@ -265,15 +266,15 @@ La `@model` directive spécifie le type du modèle passé à la Razor page. Dans
 
 ### <a name="the-layout-page"></a>La page de disposition
 
-Sélectionnez les liens de menu (** Razor PagesMovie**, **début**et **confidentialité**). Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Pages/Shared/_Layout.cshtml*. Ouvrez le fichier *Pages/Shared/_Layout.cshtml*.
+Sélectionnez les liens de menu ( **Razor PagesMovie** , **début** et **confidentialité** ). Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Pages/Shared/_Layout.cshtml* . Ouvrez le fichier *Pages/Shared/_Layout.cshtml* .
 
-Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifier la disposition du conteneur HTML de votre site dans un emplacement unique, puis de l’appliquer sur plusieurs pages de votre site. Recherchez la ligne `@RenderBody()`. `RenderBody` est un espace réservé dans lequel tous les affichages spécifiques à la page que vous créez s’affichent, *inclus* dans la page de disposition. Par exemple, si vous sélectionnez le lien **Confidentialité**, la vue **Pages/Privacy.cshtml** est restituée dans la méthode `RenderBody`.
+Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifier la disposition du conteneur HTML de votre site dans un emplacement unique, puis de l’appliquer sur plusieurs pages de votre site. Recherchez la ligne `@RenderBody()`. `RenderBody` est un espace réservé dans lequel tous les affichages spécifiques à la page que vous créez s’affichent, *inclus* dans la page de disposition. Par exemple, si vous sélectionnez le lien **Confidentialité** , la vue **Pages/Privacy.cshtml** est restituée dans la méthode `RenderBody`.
 
 <a name="vd"></a>
 
 ### <a name="viewdata-and-layout"></a>ViewData et disposition
 
-Considérez le code suivant du fichier *Pages/Movies/Index.cshtml*:
+Considérez le code suivant du fichier *Pages/Movies/Index.cshtml* :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-6&highlight=4-999)]
 
@@ -281,7 +282,7 @@ Le code en surbrillance précédent est un exemple de Razor transition en C#. Le
 
 La classe de base `PageModel` a une propriété de dictionnaire `ViewData` qui permet d’ajouter des données à passer à une vue. Vous pouvez ajouter des objets au dictionnaire `ViewData` à l’aide d’un modèle clé/valeur. Dans l’exemple précédent, la propriété « Title » est ajoutée au dictionnaire `ViewData`.
 
-La propriété « Title » est utilisée dans le fichier *Pages/Shared/_Layout.cshtml*. La balise suivante montre les premières lignes du fichier *_Layout.cshtml*.
+La propriété « Title » est utilisée dans le fichier *Pages/Shared/_Layout.cshtml* . La balise suivante montre les premières lignes du fichier *_Layout.cshtml* .
 
 <!-- We need a snapshot copy of layout because we are changing in the next step. -->
 
@@ -291,11 +292,11 @@ La ligne `@*Markup removed for brevity.*@` est un Razor commentaire qui n’appa
 
 ### <a name="update-the-layout"></a>Mettre à jour la disposition
 
-Modifiez l' `<title>` élément dans le fichier *pages/Shared/_Layout. cshtml* pour afficher **Movie** plutôt que ** Razor PagesMovie**.
+Modifiez l' `<title>` élément dans le fichier *pages/Shared/_Layout. cshtml* pour afficher **Movie** plutôt que **Razor PagesMovie** .
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
-Recherchez l’élément anchor suivant dans le fichier *Pages/Shared/_Layout.cshtml*.
+Recherchez l’élément anchor suivant dans le fichier *Pages/Shared/_Layout.cshtml* .
 
 ```cshtml
 <a class="navbar-brand" asp-area="" asp-page="/Index">RazorPagesMovie</a>
@@ -309,14 +310,14 @@ Remplacez l’élément précédent par le code suivant.
 
 L’élément anchor précédent est un [Tag Helper](xref:mvc/views/tag-helpers/intro). Dans le cas présent, il s’agit du [Tag Helper d’ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper). L' `asp-page="/Movies/Index"` attribut et la valeur tag Helper crée un lien vers la `/Movies/Index` Razor page. La valeur de l’attribut `asp-area` est vide : la zone n’est donc pas utilisée dans le lien. Pour plus d’informations, consultez [Zones](xref:mvc/controllers/areas).
 
-Enregistrez vos changements, puis testez l’application en cliquant sur le lien **RpMovie**. Consultez le fichier [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) dans GitHub si vous rencontrez des problèmes.
+Enregistrez vos changements, puis testez l’application en cliquant sur le lien **RpMovie** . Consultez le fichier [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) dans GitHub si vous rencontrez des problèmes.
 
-Testez les autres liens (**Home**, **RpMovie**, **Create**, **Edit** et **Delete**). Chaque page définit le titre, que vous pouvez voir dans l’onglet navigateur. Lorsque vous ajoutez une page à un signet, le titre est utilisé pour le signet.
+Testez les autres liens ( **Home** , **RpMovie** , **Create** , **Edit** et **Delete** ). Chaque page définit le titre, que vous pouvez voir dans l’onglet navigateur. Lorsque vous ajoutez une page à un signet, le titre est utilisé pour le signet.
 
 > [!NOTE]
 > Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que l’anglais qui utilisent une virgule (« , ») comme décimale et des formats de date autres que l’anglais des États-Unis, vous devez effectuer des étapes pour localiser votre application. Consultez la page [GitHub problème 4076](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) pour savoir comment ajouter une virgule décimale.
 
-La propriété `Layout` est définie dans le fichier *Pages/_ViewStart.cshtml* :
+La propriété `Layout` est définie dans le fichier *Pages/_ViewStart.cshtml*  :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/_ViewStart.cshtml)]
 
@@ -328,7 +329,7 @@ Examinez le modèle de page *Pages/Movies/Create.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
-La méthode `OnGet` initialise l’état nécessaire pour la page. La page Create n’ayant aucun état à initialiser, `Page` est retourné. Ce tutoriel illustre plus loin l’initialisation de l’état par la méthode `OnGet`. La méthode `Page` crée un objet `PageResult` qui affiche la page *Create.cshtml*.
+La méthode `OnGet` initialise l’état nécessaire pour la page. La page Create n’ayant aucun état à initialiser, `Page` est retourné. Ce tutoriel illustre plus loin l’initialisation de l’état par la méthode `OnGet`. La méthode `Page` crée un objet `PageResult` qui affiche la page *Create.cshtml* .
 
 La propriété `Movie` utilise l’attribut `[BindProperty]` pour adhérer à la [liaison de données](xref:mvc/models/model-binding). Quand le formulaire Create publie les valeurs de formulaire, le runtime ASP.NET Core lie les valeurs publiées au modèle `Movie`.
 
@@ -346,7 +347,7 @@ Examinez le fichier de page *pages/movies/Create. cshtml* Razor :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml)]
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Visual Studio affiche la balise `<form method="post">` dans une police différenciée en gras utilisée pour les Tag Helpers :
 

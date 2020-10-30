@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,20 +18,20 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: db718b8d4c305b75ad52054efde6b2d03f6825ed
-ms.sourcegitcommit: 4cce99cbd44372fd4575e8da8c0f4345949f4d9a
+ms.openlocfilehash: 08ec018238d18cd253e793267c5b146df8319485
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89153530"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060766"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>Extensibilité de la gestion des clés dans ASP.NET Core
 
 Lisez la section [gestion des clés](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management) avant de lire cette section, car elle explique certains concepts fondamentaux sous-jacents à ces API.
 
-**Avertissement**: les types qui implémentent l’une des interfaces suivantes doivent être thread-safe pour plusieurs appelants.
+**Avertissement** : les types qui implémentent l’une des interfaces suivantes doivent être thread-safe pour plusieurs appelants.
 
-## <a name="key"></a>Clé
+## <a name="key"></a>Clé :
 
 L' `IKey` interface est la représentation de base d’une clé dans chiffrement. Le terme clé est utilisé ici dans le sens abstrait, et non dans le sens littéral du « matériel de clé de chiffrement ». Une clé a les propriétés suivantes :
 

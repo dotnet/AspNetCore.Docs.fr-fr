@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 86c523c69d3ee85f56bf1a51719a0bd93cbe97fc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 991a0f29c0edc5a220dfde69bd22dc4ed758394d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633550"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060727"
 ---
 # <a name="part-8-add-validation-to-an-aspnet-core-no-locrazor-page"></a>Partie 8, ajouter une validation à une Razor Page ASP.net Core
 
@@ -32,7 +33,7 @@ Dans cette section, une logique de validation est ajoutée au modèle `Movie`. L
 
 ## <a name="validation"></a>Validation
 
-[DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (« **D**on't **R**epeat **Y**ourself », Ne vous répétez pas) constitue un principe clé du développement de logiciel. Razor Les pages encouragent le développement dans lequel la fonctionnalité est spécifiée une seule fois, et elle est reflétée dans l’application. DRY peut aider à :
+[DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (« **D** on't **R** epeat **Y** ourself », Ne vous répétez pas) constitue un principe clé du développement de logiciel. Razor Les pages encouragent le développement dans lequel la fonctionnalité est spécifiée une seule fois, et elle est reflétée dans l’application. DRY peut aider à :
 
 * Réduire la quantité de code dans une application.
 * Rendre le code moins sujet aux erreurs, et plus facile à tester et à maintenir.
@@ -70,7 +71,7 @@ L’application automatique des règles de validation par ASP.NET Core permet d�
 
 Exécutez l’application, puis accédez à Pages/Movies.
 
-Sélectionnez le lien **Créer nouveau**. Complétez le formulaire avec des valeurs non valides. Quand la validation jQuery côté client détecte l’erreur, elle affiche un message d’erreur.
+Sélectionnez le lien **Créer nouveau** . Complétez le formulaire avec des valeurs non valides. Quand la validation jQuery côté client détecte l’erreur, elle affiche un message d’erreur.
 
 ![Formulaire de vue Movie avec plusieurs erreurs de validation jQuery côté client](validation/_static/val.png)
 
@@ -78,11 +79,11 @@ Sélectionnez le lien **Créer nouveau**. Complétez le formulaire avec des vale
 
 Notez que le formulaire a affiché automatiquement un message d’erreur de validation dans chaque champ contenant une valeur non valide. Les erreurs sont appliquées à la fois côté client (à l’aide de JavaScript et de jQuery) et côté serveur (quand JavaScript est désactivé pour un utilisateur).
 
-L’un des principaux avantages est qu’**aucun** changement de code n’a été nécessaire dans les pages Créer ou Modifier. Une fois les attributs DataAnnotations appliqués au modèle, l’interface utilisateur de validation a été activée. Les Razor pages créées dans ce didacticiel ont automatiquement récupéré les règles de validation (à l’aide des attributs de validation sur les propriétés de la `Movie` classe de modèle). Testez la validation à l’aide de la page de modification. La même validation est appliquée.
+L’un des principaux avantages est qu’ **aucun** changement de code n’a été nécessaire dans les pages Créer ou Modifier. Une fois les attributs DataAnnotations appliqués au modèle, l’interface utilisateur de validation a été activée. Les Razor pages créées dans ce didacticiel ont automatiquement récupéré les règles de validation (à l’aide des attributs de validation sur les propriétés de la `Movie` classe de modèle). Testez la validation à l’aide de la page de modification. La même validation est appliquée.
 
 Les données de formulaire ne sont pas publiées sur le serveur tant qu’il y a des erreurs de validation côté client. Vérifiez que les données du formulaire ne sont pas publiées à l’aide d’une ou de plusieurs des approches suivantes :
 
-* Placez un point d’arrêt dans la méthode `OnPostAsync`. Envoyer le formulaire (en sélectionnant **Créer** ou **Enregistrer**). Le point d’arrêt n’est jamais atteint.
+* Placez un point d’arrêt dans la méthode `OnPostAsync`. Envoyer le formulaire (en sélectionnant **Créer** ou **Enregistrer** ). Le point d’arrêt n’est jamais atteint.
 * Utilisez l’[outil Fiddler](https://www.telerik.com/fiddler).
 * Utilisez les outils de développement du navigateur pour surveiller le trafic réseau.
 
@@ -168,7 +169,7 @@ Le DataAnnotations appliqué à la classe modifie le schéma. Par exemple, DataA
 * limite les caractères à 60 ;
 * n’autorise pas de valeur `null`.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 La table `Movie` a actuellement le schéma suivant :
 
@@ -186,7 +187,7 @@ CREATE TABLE [dbo].[Movie] (
 
 Les modifications précédentes du schéma n’entraînent pas la levée d’une exception par EF. Cependant, créez une migration pour que le schéma soit cohérent avec le modèle.
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
+Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package** .
 Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
@@ -224,7 +225,7 @@ Pour plus d’informations sur le déploiement sur Azure, consultez [Didacticiel
 
 Merci d’avoir effectué cette introduction aux Razor pages. [Prise en main de Razor Pages et EF Core](xref:data/ef-rp/intro) est un excellent suivi de ce didacticiel.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:mvc/views/working-with-forms>
 * <xref:fundamentals/localization>

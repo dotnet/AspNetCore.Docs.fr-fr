@@ -5,6 +5,7 @@ description: ''
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/actions
-ms.openlocfilehash: 9542a7c0fd16c00f46ee69c5873878a7c70ef626
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a9319e74d0213b178c2a71be69a0332270d9446c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630326"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061455"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Gérer les requêtes avec des contrôleurs dans ASP.NET Core MVC
 
@@ -31,7 +32,7 @@ Les contrôleurs, les actions et les résultats des actions sont une part fondam
 
 ## <a name="what-is-a-controller"></a>Qu’est-ce qu’un contrôleur ?
 
-Un contrôleur est utilisé pour définir et regrouper un ensemble d’actions. Une action (ou *méthode d’action*) est une méthode sur un contrôleur qui gère les demandes. Les contrôleurs regroupent de façon logique des actions similaires. Cette agrégation des actions permet l’application collective de jeux de règles communs, comme le routage, la mise en cache et les autorisations. Les demandes sont mappées à des actions via un [routage](xref:mvc/controllers/routing).
+Un contrôleur est utilisé pour définir et regrouper un ensemble d’actions. Une action (ou *méthode d’action* ) est une méthode sur un contrôleur qui gère les demandes. Les contrôleurs regroupent de façon logique des actions similaires. Cette agrégation des actions permet l’application collective de jeux de règles communs, comme le routage, la mise en cache et les autorisations. Les demandes sont mappées à des actions via un [routage](xref:mvc/controllers/routing).
 
 Par convention, les classes de contrôleur :
 
@@ -48,11 +49,11 @@ Une classe de contrôleur ne doit pas avoir d’attribut `[NonController]` assoc
 
 Les contrôleurs doivent suivre le [principe de dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies). Il existe deux approches pour implémenter ce principe. Si plusieurs actions de contrôleur nécessitent le même service, envisagez d’utiliser [l’injection de constructeur](xref:mvc/controllers/dependency-injection#constructor-injection) pour demander ces dépendances. Si le service est nécessaire pour une seule méthode d’action, envisagez d’utiliser [l’injection d’action](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) pour demander la dépendance.
 
-Dans le **M**odèle-**V**ue-**C**ontrôleur, un contrôleur est responsable du traitement initial de la demande et de l’instanciation du modèle. En règle générale, les décisions métier doivent être prises dans le modèle.
+Dans le **M** odèle- **V** ue- **C** ontrôleur, un contrôleur est responsable du traitement initial de la demande et de l’instanciation du modèle. En règle générale, les décisions métier doivent être prises dans le modèle.
 
 Le contrôleur prend le résultat du traitement du modèle (le cas échéant) et retourne la vue appropriée et les données associées à cette vue, ou bien le résultat de l’appel d’API. Pour en savoir plus, consultez [Vue d’ensemble d’ASP.NET Core MVC](xref:mvc/overview) et [Bien démarrer avec ASP.NET Core MVC et Visual Studio](xref:tutorials/first-mvc-app/start-mvc).
 
-Le contrôleur est une abstraction *au niveau de l’interface utilisateur*. Ses responsabilités sont de garantir que les données de la demande sont valides et de choisir la vue (ou le résultat d’API) à retourner. Dans les applications bien construites, il n’inclut pas directement l’accès aux données ni la logique métier. Au lieu de cela, le contrôleur délègue à des services la gestion de ces responsabilités.
+Le contrôleur est une abstraction *au niveau de l’interface utilisateur* . Ses responsabilités sont de garantir que les données de la demande sont valides et de choisir la vue (ou le résultat d’API) à retourner. Dans les applications bien construites, il n’inclut pas directement l’accès aux données ni la logique métier. Au lieu de cela, le contrôleur délègue à des services la gestion de ces responsabilités.
 
 ## <a name="defining-actions"></a>Définition des actions
 
@@ -60,7 +61,7 @@ Les méthodes publiques sur un contrôleur, à l’exception de celles avec l' `
 
 Les méthodes d’action doivent contenir la logique nécessaire pour mapper une demande à un problème métier. Les problèmes métier doivent généralement être représentés comme des services auxquels le contrôleur accède via [l’injection de dépendances](xref:mvc/controllers/dependency-injection). Les actions mappent ensuite le résultat de l’action métier à un état de l’application.
 
-Les actions peuvent retourner des valeurs de n’importe quel type, mais elles retournent souvent une instance de `IActionResult` (ou de `Task<IActionResult>` pour les méthodes asynchrones) qui produit une réponse. La méthode d’action est responsable du choix du *type de réponse*. Le résultat de l’action *constitue la réponse*.
+Les actions peuvent retourner des valeurs de n’importe quel type, mais elles retournent souvent une instance de `IActionResult` (ou de `Task<IActionResult>` pour les méthodes asynchrones) qui produit une réponse. La méthode d’action est responsable du choix du *type de réponse* . Le résultat de l’action *constitue la réponse* .
 
 ### <a name="controller-helper-methods"></a>Méthodes helper des contrôleurs
 
@@ -88,7 +89,7 @@ La plupart des méthodes helper de cette catégorie incluent une propriété `Co
 
 Il existe deux types de résultats dans cette catégorie : [Vue](xref:mvc/views/overview) et [Réponse mise en forme](xref:web-api/advanced/formatting).
 
-* **Afficher**
+* **Visualiser**
 
     Ce type retourne une vue qui utilise un modèle pour rendre le HTML. Par exemple, `return View(customer);` passe un modèle à la vue pour la liaison de données.
 
@@ -100,13 +101,13 @@ Il existe deux types de résultats dans cette catégorie : [Vue](xref:mvc/views/
 
 #### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. les méthodes qui aboutissent à un corps de réponse non vide mis en forme dans un type de contenu négocié avec le client
 
-Cette catégorie est plus connue sous le nom de **Négociation de contenu**. La [Négociation de contenu](xref:web-api/advanced/formatting#content-negotiation) s’applique chaque fois qu’une action retourne un type [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) ou quelque chose d’autre qu’une implémentation de [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult). Une action qui retourne une implémentation autre que `IActionResult` (par exemple `object`) retourne également une Réponse mise en forme.
+Cette catégorie est plus connue sous le nom de **Négociation de contenu** . La [Négociation de contenu](xref:web-api/advanced/formatting#content-negotiation) s’applique chaque fois qu’une action retourne un type [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) ou quelque chose d’autre qu’une implémentation de [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult). Une action qui retourne une implémentation autre que `IActionResult` (par exemple `object`) retourne également une Réponse mise en forme.
 
 `BadRequest`, `CreatedAtRoute` et `Ok` sont des méthodes helper de ce type. `return BadRequest(modelState);`, `return CreatedAtRoute("routename", values, newobject);` et `return Ok(value);` sont des exemples respectifs de ces méthodes. Notez que `BadRequest` et `Ok` effectuent une négociation de contenu seulement quand ils reçoivent une valeur ; si aucune valeur ne leur est passée, ils délivrent à la place des types de résultats Code d’état HTTP. La méthode `CreatedAtRoute` effectue quant à elle toujours une négociation de contenu, car ses surcharges nécessitent toutes qu’une valeur soit passée.
 
 ### <a name="cross-cutting-concerns"></a>Problèmes transversaux
 
-En règle générale, les applications partagent des parties de leur flux de travail. C’est par exemple le cas d’une application qui exige une authentification pour l’accès au panier d’achat ou qui met en cache les données de certaines pages. Pour exécuter la logique avant ou après une méthode d’action, utilisez un *filtre*. L’utilisation de [Filtres](xref:mvc/controllers/filters) sur les problèmes transversaux peut réduire la duplication.
+En règle générale, les applications partagent des parties de leur flux de travail. C’est par exemple le cas d’une application qui exige une authentification pour l’accès au panier d’achat ou qui met en cache les données de certaines pages. Pour exécuter la logique avant ou après une méthode d’action, utilisez un *filtre* . L’utilisation de [Filtres](xref:mvc/controllers/filters) sur les problèmes transversaux peut réduire la duplication.
 
 La plupart des attributs des filtres, comme `[Authorize]`, peuvent être appliqués au niveau du contrôleur ou de l’action, selon le niveau de granularité souhaité.
 

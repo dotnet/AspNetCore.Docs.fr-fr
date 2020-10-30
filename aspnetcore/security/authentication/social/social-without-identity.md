@@ -5,6 +5,7 @@ description: Explication de l’utilisation de l’authentification utilisateur 
 ms.author: riande
 ms.date: 12/10/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/social-without-identity
-ms.openlocfilehash: a91a2f2fb7873e5a672c624e9cf863ae720c8005
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cd7545a3ddaccedfa64ef5e9d5458c21c651257a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634226"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060285"
 ---
 # <a name="use-social-sign-in-provider-authentication-without-no-locaspnet-core-identity"></a>Utiliser l’authentification du fournisseur de connexion sociale sans ASP.NET Core Identity
 
@@ -76,7 +77,7 @@ Pour déconnecter l’utilisateur actuel et supprimer son cookie , appelez [Sign
 
 Notez que l’appel à `SignOutAsync` ne spécifie pas de schéma d’authentification. Le de l' `DefaultScheme` application `CookieAuthenticationDefaults.AuthenticationScheme` est utilisé comme un recul.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:security/authorization/simple>
 * <xref:security/authentication/social/additional-claims>

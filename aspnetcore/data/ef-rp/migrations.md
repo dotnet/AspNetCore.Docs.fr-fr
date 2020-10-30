@@ -5,6 +5,7 @@ description: Partie 4 des Razor pages et Entity Framework de la série de didact
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 78eb466fcfeb130e411df490f033114b3fdebeef
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: e6d1b9f041e892aaa37840c28fdb3153bf098b0d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722629"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061104"
 ---
 # <a name="part-4-no-locrazor-pages-with-ef-core-migrations-in-aspnet-core"></a>Partie 4 : Razor pages avec EF Core migrations dans ASP.net Core
 
@@ -45,7 +46,7 @@ Au lieu de supprimer et de recréer la base de données quand le modèle de donn
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Utilisez l’**Explorateur d’objets SQL Server** (SSOX) pour supprimer la base de données ou exécutez la commande suivante dans la **console du Gestionnaire de package** (PMC) :
+Utilisez l’ **Explorateur d’objets SQL Server** (SSOX) pour supprimer la base de données ou exécutez la commande suivante dans la **console du Gestionnaire de package** (PMC) :
 
 ```powershell
 Drop-Database
@@ -59,7 +60,7 @@ Drop-Database
   dotnet tool install --global dotnet-ef
   ```
 
-* Dans l’invite de commandes, accédez au dossier du projet. Le dossier du projet contient le fichier *ContosoUniversity.csproj*.
+* Dans l’invite de commandes, accédez au dossier du projet. Le dossier du projet contient le fichier *ContosoUniversity.csproj* .
 
 * Supprimez le fichier *CU.db* ou exécutez la commande suivante :
 
@@ -113,7 +114,7 @@ Le paramètre de nom de migration (« InitialCreate » dans l’exemple) est uti
 
 ## <a name="the-data-model-snapshot"></a>Capture instantanée du modèle de données
 
-Les migrations créent une *capture instantanée* du modèle de données actif dans *Migrations/SchoolContextModelSnapshot.cs*. Quand vous ajoutez une migration, EF détermine ce qui a changé en comparant le modèle de données actif au fichier de capture instantanée.
+Les migrations créent une *capture instantanée* du modèle de données actif dans *Migrations/SchoolContextModelSnapshot.cs* . Quand vous ajoutez une migration, EF détermine ce qui a changé en comparant le modèle de données actif au fichier de capture instantanée.
 
 Comme le fichier de capture instantané suit l’état du modèle de données, vous ne pouvez pas supprimer une migration en supprimant le fichier `<timestamp>_<migrationname>.cs`. Pour annuler la migration la plus récente, vous devez utiliser la commande `migrations remove`. Cette commande supprime la migration et vérifie que la capture instantanée est correctement réinitialisée. Pour plus d’informations, voir [migrations dotnet EF supprimer](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove).
 
@@ -123,7 +124,7 @@ Cette série de tutoriels a commencé en utilisant `EnsureCreated`. La méthode 
 
 À partir de là, les tutoriels utilisent des migrations.
 
-Dans *Data/DBInitializer. cs*, commentez la ligne suivante :
+Dans *Data/DBInitializer. cs* , commentez la ligne suivante :
 
 ```csharp
 context.Database.EnsureCreated();
@@ -189,7 +190,7 @@ Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande `databa
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
+Dans la **console du Gestionnaire de package** , exécutez la commande suivante :
 
 ```powershell
 Drop-Database
@@ -199,7 +200,7 @@ Exécutez `Get-Help about_EntityFrameworkCore` à partir de la console du Gestio
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier du projet contient le fichier *Startup.cs*.
+Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier du projet contient le fichier *Startup.cs* .
 
 Entrez ce qui suit dans la fenêtre de commande :
 
@@ -250,7 +251,7 @@ Comme la base de données a été supprimée et n’existe pas, les migrations c
 
 ### <a name="the-data-model-snapshot"></a>Capture instantanée du modèle de données
 
-Les migrations créent un *instantané* du schéma de base de données actuel dans *Migrations/SchoolContextModelSnapshot.cs*. Quand vous ajoutez une migration, EF détermine ce qui a changé en comparant le modèle de données au fichier de capture instantanée.
+Les migrations créent un *instantané* du schéma de base de données actuel dans *Migrations/SchoolContextModelSnapshot.cs* . Quand vous ajoutez une migration, EF détermine ce qui a changé en comparant le modèle de données au fichier de capture instantanée.
 
 Pour supprimer une migration, utilisez la commande suivante :
 

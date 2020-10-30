@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 03/26/2020
 ms.custom: mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/add-user-data
-ms.openlocfilehash: a71395e82ed15dae753888a438471495208a14da
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a4e1fd780947cfa5f09fb1e03964595fa09f0f18
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631847"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061416"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-no-locidentity-in-an-aspnet-core-project"></a>Ajouter, télécharger et supprimer des données utilisateur personnalisées Identity dans un projet ASP.net Core
 
@@ -53,11 +54,11 @@ L’exemple de projet est créé à partir d’une Razor application Web pages, 
 
 ## <a name="create-a-no-locrazor-web-app"></a>Créer une Razor application Web
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**. Nommez le projet **application Web 1** si vous souhaitez qu’il corresponde à l’espace de noms de l’exemple de code de [Téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
+* Dans Visual Studio, dans le menu **Fichier** , sélectionnez **Nouveau** > **Projet** . Nommez le projet **application Web 1** si vous souhaitez qu’il corresponde à l’espace de noms de l’exemple de code de [Téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
 * Sélectionnez **ASP.net Core application Web** > **OK**
 * Sélectionnez **ASP.NET Core 3,0** dans la liste déroulante
 * Sélectionner l' **application Web** > **OK**
@@ -67,7 +68,7 @@ L’exemple de projet est créé à partir d’une Razor application Web pages, 
 
 ::: moniker range="< aspnetcore-3.0"
 
-* Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**. Nommez le projet **application Web 1** si vous souhaitez qu’il corresponde à l’espace de noms de l’exemple de code de [Téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
+* Dans Visual Studio, dans le menu **Fichier** , sélectionnez **Nouveau** > **Projet** . Nommez le projet **application Web 1** si vous souhaitez qu’il corresponde à l’espace de noms de l’exemple de code de [Téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
 * Sélectionnez **ASP.net Core application Web** > **OK**
 * Sélectionnez **ASP.NET Core 2,2** dans la liste déroulante
 * Sélectionner l' **application Web** > **OK**
@@ -86,18 +87,18 @@ dotnet new webapp -o WebApp1
 
 ## <a name="run-the-no-locidentity-scaffolder"></a>Exécuter le générateur de Identity modèles
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans **Explorateur de solutions**, cliquez avec le bouton droit sur le projet > **Ajouter**  >  **un nouvel élément de génération de modèles**automatique.
-* Dans le volet gauche de la boîte de dialogue **Ajouter une structure** , sélectionnez **Identity**  >  **Ajouter**.
-* Dans la boîte de dialogue **ajouter Identity ** , les options suivantes sont disponibles :
+* Dans **Explorateur de solutions** , cliquez avec le bouton droit sur le projet > **Ajouter**  >  **un nouvel élément de génération de modèles** automatique.
+* Dans le volet gauche de la boîte de dialogue **Ajouter une structure** , sélectionnez **Identity**  >  **Ajouter** .
+* Dans la boîte de dialogue **ajouter Identity** , les options suivantes sont disponibles :
   * Sélectionner le fichier de disposition existant  *~/Pages/Shared/_Layout. cshtml*
   * Sélectionnez les fichiers suivants à remplacer :
     * **Compte/inscription**
     * **Compte/gestion/index**
-  * Sélectionnez le **+** bouton pour créer une **classe de contexte de données**. Acceptez le type (**application Web 1. Models. WebApp1Context** si le projet est nommé **application Web 1**).
-  * Sélectionnez le **+** bouton pour créer une nouvelle **classe d’utilisateur**. Acceptez le type (**WebApp1User** si le projet est nommé **application Web 1**) > **Ajouter**.
-* Sélectionnez **Ajouter**.
+  * Sélectionnez le **+** bouton pour créer une **classe de contexte de données** . Acceptez le type ( **application Web 1. Models. WebApp1Context** si le projet est nommé **application Web 1** ).
+  * Sélectionnez le **+** bouton pour créer une nouvelle **classe d’utilisateur** . Acceptez le type ( **WebApp1User** si le projet est nommé **application Web 1** ) > **Ajouter** .
+* Sélectionnez **Ajouter** .
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
@@ -142,7 +143,7 @@ Suivez les instructions dans [migrations, UseAuthentication et Layout](xref:secu
 
 ## <a name="add-custom-user-data-to-the-no-locidentity-db"></a>Ajouter des données utilisateur personnalisées à la base de données Identity
 
-Mettez à jour la `IdentityUser` classe dérivée avec des propriétés personnalisées. Si vous avez nommé le projet application Web 1, le fichier est nommé *Areas/ Identity /Data/WebApp1User.cs*. Mettez à jour le fichier avec le code suivant :
+Mettez à jour la `IdentityUser` classe dérivée avec des propriétés personnalisées. Si vous avez nommé le projet application Web 1, le fichier est nommé *Areas/ Identity /Data/WebApp1User.cs* . Mettez à jour le fichier avec le code suivant :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -214,9 +215,9 @@ Créez le projet.
 
 ### <a name="add-a-migration-for-the-custom-user-data"></a>Ajouter une migration pour les données utilisateur personnalisées
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Dans la console du **Gestionnaire de package**Visual Studio :
+Dans la console du **Gestionnaire de package** Visual Studio :
 
 ```powershell
 Add-Migration CustomUserData

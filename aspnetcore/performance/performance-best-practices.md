@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 01575ec87d2d346da7367523ca5e257d53de4983
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: a3fc398569fafefc0b4634e80433a5d4e0e1b4ff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722616"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061000"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Meilleures pratiques en matière de performances de ASP.NET Core
 
@@ -44,13 +45,13 @@ ASP.NET Core applications doivent être conçues pour traiter plusieurs demandes
 
 Un problème de performances courant dans les applications de ASP.NET Core consiste à bloquer les appels qui pourraient être asynchrones. De nombreux appels de blocage synchrones conduisent à la [privation de pool de threads](/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall) et aux temps de réponse dégradés.
 
-**Ne pas**:
+**Ne pas** :
 
 * Bloquer l’exécution asynchrone en appelant [Task. Wait](/dotnet/api/system.threading.tasks.task.wait) ou [Task. Result](/dotnet/api/system.threading.tasks.task-1.result).
 * Acquérir des verrous dans les chemins de code communs. Les applications ASP.NET Core sont plus performantes quand elles sont conçues pour exécuter du code en parallèle.
 * Appelez [Task. Run](/dotnet/api/system.threading.tasks.task.run) et attendez-y immédiatement. ASP.NET Core exécute déjà le code d’application sur des threads de pool de threads normaux, donc l’appel de Task. Run entraîne uniquement une planification de pool de threads superflue. Même si le code planifié bloque un thread, Task. Run n’empêche pas cela.
 
-**Procédez**comme suit :
+**Procédez** comme suit :
 
 * Rendez les [chemins de code à chaud](#understand-hot-code-paths) asynchrones.
 * Appeler l’accès aux données, les e/s et les API d’opérations de longue durée de manière asynchrone si une API asynchrone est disponible. N' **not** utilisez pas [Task. Run](/dotnet/api/system.threading.tasks.task.run) pour rendre une API synchrone asynchrone.
@@ -71,7 +72,7 @@ Le [garbage collector .net Core](/dotnet/standard/garbage-collection/) gère l�
 Recommandations :
 
 * **Envisagez** de mettre en cache des objets volumineux fréquemment utilisés. La mise en cache des objets volumineux empêche les allocations coûteuses.
-* **Effectuez** des tampons de pool à l’aide d’un [ArrayPool \<T> ](/dotnet/api/system.buffers.arraypool-1) pour stocker de grands tableaux.
+* **Effectuez** des tampons de pool à l’aide d’un [ArrayPool \<T>](/dotnet/api/system.buffers.arraypool-1) pour stocker de grands tableaux.
 * **N'** allouez pas de nombreux objets volumineux à courte durée de vie sur les [chemins de code à chaud](#understand-hot-code-paths).
 
 Les problèmes de mémoire, tels que le précédent, peuvent être diagnostiqués en examinant les statistiques de garbage collection (GC) dans [PerfView](https://github.com/Microsoft/perfview) et en examinant :
@@ -117,7 +118,7 @@ Recommandations :
 
 ## <a name="keep-common-code-paths-fast"></a>Conserver les chemins de code communs rapidement
 
-Vous souhaitez que tout votre code soit rapide. Les chemins de code fréquemment appelés sont les plus importants à optimiser. En voici quelques-uns :
+Vous souhaitez que tout votre code soit rapide. Les chemins de code fréquemment appelés sont les plus importants à optimiser. Elles incluent notamment :
 
 * Composants de l’intergiciel (middleware) dans le pipeline de traitement des demandes de l’application, en particulier les intergiciels (middleware) exécutés au début du pipeline. Ces composants ont un impact important sur les performances.
 * Code qui est exécuté pour chaque demande ou plusieurs fois par demande. Par exemple, la journalisation personnalisée, les gestionnaires d’autorisation ou l’initialisation de services temporaires.

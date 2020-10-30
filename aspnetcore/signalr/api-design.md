@@ -7,6 +7,7 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/api-design
-ms.openlocfilehash: 4a838c3a051476bd3d281e133d08b643656ae3b7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 87665a7950edbc70b664230d2f078598e9dbc0aa
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632900"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059648"
 ---
 # <a name="no-locsignalr-api-design-considerations"></a>SignalR Considérations relatives à la conception d’API
 
@@ -33,7 +34,7 @@ Cet article fournit des conseils sur la création d' SignalR API basées sur.
 
 ## <a name="use-custom-object-parameters-to-ensure-backwards-compatibility"></a>Utiliser des paramètres d’objet personnalisés pour garantir la compatibilité descendante
 
-L’ajout de paramètres à une SignalR méthode de concentrateur (sur le client ou le serveur) est une *modification avec rupture*. Cela signifie que les clients/serveurs plus anciens recevront des erreurs lorsqu’ils essaieront d’appeler la méthode sans le nombre approprié de paramètres. Toutefois, l’ajout de propriétés à un paramètre d’objet personnalisé n’est **pas** une modification avec rupture. Cela peut être utilisé pour concevoir des API compatibles qui résistent aux modifications sur le client ou le serveur.
+L’ajout de paramètres à une SignalR méthode de concentrateur (sur le client ou le serveur) est une *modification avec rupture* . Cela signifie que les clients/serveurs plus anciens recevront des erreurs lorsqu’ils essaieront d’appeler la méthode sans le nombre approprié de paramètres. Toutefois, l’ajout de propriétés à un paramètre d’objet personnalisé n’est **pas** une modification avec rupture. Cela peut être utilisé pour concevoir des API compatibles qui résistent aux modifications sur le client ou le serveur.
 
 Par exemple, considérez une API côté serveur comme suit :
 
@@ -43,7 +44,7 @@ Le client JavaScript appelle cette méthode à l’aide `invoke` de comme suit 
 
 [!code-typescript[CallWithOneParameter](api-design/sample/Samples.ts?name=CallWithOneParameter)]
 
-Si vous ajoutez ultérieurement un deuxième paramètre à la méthode serveur, les clients plus anciens ne fourniront pas cette valeur de paramètre. Par exemple :
+Si vous ajoutez ultérieurement un deuxième paramètre à la méthode serveur, les clients plus anciens ne fourniront pas cette valeur de paramètre. Exemple :
 
 [!code-csharp[ParameterBasedNewVersion](api-design/sample/Samples.cs?name=ParameterBasedNewVersion)]
 

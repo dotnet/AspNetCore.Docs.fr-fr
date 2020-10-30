@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc
 ms.date: 01/21/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: edacded5df4d5f4819b3657bc7eff99e6d96d394
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: f917bec8f2d929e62bf43494159a63458f135c5f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712543"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061390"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification Cloud avec Azure Active Directory B2C dans ASP.NET Core
 
@@ -46,7 +47,7 @@ Dans ce tutoriel, vous allez apprendre à effectuer les actions suivantes :
 Les éléments suivants sont requis pour cette procédure pas à pas :
 
 * [Abonnement Microsoft Azure](https://azure.microsoft.com/free/dotnet/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>Créer le locataire Azure Active Directory B2C
 
@@ -61,11 +62,11 @@ Utilisez les valeurs suivantes :
 | Paramètre                       | Valeur                     | Notes                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Nom**                      | *&lt;nom de l’application&gt;*        | Entrez un **nom** pour l’application qui décrit votre application aux consommateurs.                                                                                                                                 |
-| **Inclure une application/API web** | Oui                       |                                                                                                                                                                                                    |
-| **Autoriser le flux implicite**       | Oui                       |                                                                                                                                                                                                    |
+| **Inclure une application/API web** | Yes                       |                                                                                                                                                                                                    |
+| **Autoriser le flux implicite**       | Yes                       |                                                                                                                                                                                                    |
 | **URL de réponse**                 | `https://localhost:44300/signin-oidc` | Les URL de réponse sont des points de terminaison auxquels Azure AD B2C retourne les jetons demandés par votre application. Visual Studio fournit l’URL de réponse à utiliser. Pour le moment, entrez `https://localhost:44300/signin-oidc` pour remplir le formulaire. |
 | **URI ID de l’application**                | Laisser vide               | Non requis pour ce didacticiel.                                                                                                                                                                    |
-| **Inclure le client natif**     | Non                        |                                                                                                                                                                                                    |
+| **Inclure le client natif**     | No                        |                                                                                                                                                                                                    |
 
 > [!WARNING]
 > Si vous configurez une URL de réponse non-localhost, tenez compte des [contraintes sur ce qui est autorisé dans la liste des URL de réponse](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application). 
@@ -86,7 +87,7 @@ Dans Visual Studio :
     
     ![Bouton modifier l’authentification](./azure-ad-b2c/_static/changeauth.png)
 
-4. Dans la boîte de dialogue **modifier l’authentification** , sélectionnez **comptes d’utilisateur individuels**, puis sélectionnez **se connecter à un magasin d’utilisateurs existant dans le Cloud** dans la liste déroulante. 
+4. Dans la boîte de dialogue **modifier l’authentification** , sélectionnez **comptes d’utilisateur individuels** , puis sélectionnez **se connecter à un magasin d’utilisateurs existant dans le Cloud** dans la liste déroulante. 
     
     ![Boîte de dialogue Modifier l’authentification](./azure-ad-b2c/_static/changeauthdialog.png)
 
@@ -95,7 +96,7 @@ Dans Visual Studio :
     | Paramètre                       | Valeur                                                 |
     |-------------------------------|-------------------------------------------------------|
     | **Nom de domaine**               | *&lt;nom de domaine de votre client B2C&gt;*          |
-    | **ID d’application**            | *&lt;coller l’ID d’application à partir du presse-papiers&gt;* |
+    | **ID de l’application**            | *&lt;coller l’ID d’application à partir du presse-papiers&gt;* |
     | **Chemin de rappel**             | *&lt;utiliser la valeur par défaut&gt;*                       |
     | **Stratégie d’inscription ou de connexion** | `B2C_1_SiUpIn`                                        |
     | **Réinitialiser la stratégie de mot de passe**     | `B2C_1_SSPR`                                          |
@@ -108,14 +109,14 @@ Dans Visual Studio :
 Revenez à la fenêtre du navigateur avec les propriétés de l’application B2C toujours ouverte. Modifiez l' **URL de réponse** temporaire spécifiée précédemment pour la valeur copiée à partir de Visual Studio. Sélectionnez **Enregistrer** en haut de la fenêtre.
 
 > [!TIP]
-> Si vous n’avez pas copié l’URL de réponse, utilisez l’adresse HTTPs à partir de l’onglet Déboguer dans les propriétés du projet Web, puis ajoutez la valeur **CallbackPath** à partir de *appsettings.jssur*.
+> Si vous n’avez pas copié l’URL de réponse, utilisez l’adresse HTTPs à partir de l’onglet Déboguer dans les propriétés du projet Web, puis ajoutez la valeur **CallbackPath** à partir de *appsettings.json* .
 
 ## <a name="configure-policies"></a>Configurer des stratégies
 
-Utilisez les étapes de la documentation de Azure AD B2C pour [créer une stratégie d’inscription ou de connexion](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions), puis [créez une stratégie de réinitialisation de mot de passe](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions). Utilisez les exemples de valeurs fournis dans la documentation pour les ** Identity fournisseurs**, les **attributs d’inscription**et les **revendications d’application**. L’utilisation du bouton **Exécuter maintenant** pour tester les stratégies, comme décrit dans la documentation, est facultative.
+Utilisez les étapes de la documentation de Azure AD B2C pour [créer une stratégie d’inscription ou de connexion](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions), puis [créez une stratégie de réinitialisation de mot de passe](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions). Utilisez les exemples de valeurs fournis dans la documentation pour les **Identity fournisseurs** , les **attributs d’inscription** et les **revendications d’application** . L’utilisation du bouton **Exécuter maintenant** pour tester les stratégies, comme décrit dans la documentation, est facultative.
 
 > [!WARNING]
-> Vérifiez que les noms de stratégie sont exactement comme décrit dans la documentation, car ces stratégies ont été utilisées dans la boîte de dialogue **modifier l’authentification** dans Visual Studio. Les noms de stratégie peuvent être vérifiés dans *appsettings.jssur*.
+> Vérifiez que les noms de stratégie sont exactement comme décrit dans la documentation, car ces stratégies ont été utilisées dans la boîte de dialogue **modifier l’authentification** dans Visual Studio. Les noms de stratégie peuvent être vérifiés dans *appsettings.json* .
 
 ## <a name="configure-the-underlying-openidconnectoptionsjwtbearerno-loccookie-options"></a>Configurer les options OpenIdConnectOptions/JwtBearer/sous-jacentes Cookie
 
@@ -143,7 +144,7 @@ services.Configure<JwtBearerOptions>(
 
 ## <a name="run-the-app"></a>Exécuter l’application
 
-Dans Visual Studio, appuyez sur **F5** pour générer et exécuter l’application. Après le lancement de l’application Web, sélectionnez **accepter** pour accepter l’utilisation des cookie s (si vous y êtes invité), puis sélectionnez **se connecter**.
+Dans Visual Studio, appuyez sur **F5** pour générer et exécuter l’application. Après le lancement de l’application Web, sélectionnez **accepter** pour accepter l’utilisation des cookie s (si vous y êtes invité), puis sélectionnez **se connecter** .
 
 ![Connectez-vous à l’application](./azure-ad-b2c/_static/signin.png)
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/file-providers
-ms.openlocfilehash: 30c28e7bd4cd9c926b157f5a7b9e6688bd5b9b9a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 16e5ead9898125c804da4d60322510474201d897
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634603"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059440"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Fournisseurs de fichiers dans ASP.NET Core
 
@@ -31,7 +32,7 @@ Par [Steve Smith](https://ardalis.com/)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-ASP.NET Core fournit un accès au système de fichiers en utilisant des fournisseurs de fichiers. Les fournisseurs de fichiers sont utilisés dans l’infrastructure ASP.NET Core. Par exemple :
+ASP.NET Core fournit un accès au système de fichiers en utilisant des fournisseurs de fichiers. Les fournisseurs de fichiers sont utilisés dans l’infrastructure ASP.NET Core. Exemple :
 
 * <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> expose la racine de [contenu](xref:fundamentals/index#content-root) et la [racine Web](xref:fundamentals/index#web-root) de l’application en tant que `IFileProvider` types.
 * [L’intergiciel (middleware) de fichiers statiques](xref:fundamentals/static-files) utilise des fournisseurs de fichiers pour localiser les fichiers statiques.
@@ -114,7 +115,7 @@ Utilisez les [modèles glob](#glob-patterns) pour spécifier un ou plusieurs fic
 
 L’exemple d’application *FileProviderSample* crée un `ManifestEmbeddedFileProvider` et passe l’assembly en cours d’exécution à son constructeur.
 
-*Startup.cs*:
+*Startup.cs* :
 
 ```csharp
 var manifestEmbeddedProvider = 
@@ -161,7 +162,7 @@ Certains systèmes de fichiers, comme les conteneurs Docker et les partages rés
 
 ### <a name="glob-patterns"></a>Modèles Glob
 
-Les chemins de système de fichiers utilisent des modèles à caractères génériques appelés *modèles Glob (ou d’utilisation des caractères génériques)*. Spécifiez les groupes de fichiers avec ces modèles. Les deux caractères génériques sont `*` et `**` :
+Les chemins de système de fichiers utilisent des modèles à caractères génériques appelés *modèles Glob (ou d’utilisation des caractères génériques)* . Spécifiez les groupes de fichiers avec ces modèles. Les deux caractères génériques sont `*` et `**` :
 
 **`*`**  
 Établit une correspondance avec n’importe quel élément au niveau de dossier actuel, avec n’importe quel nom de fichier ou avec n’importe quelle extension de fichier. Les correspondances sont terminées par des caractères `/` et `.` dans le chemin des fichiers.
@@ -175,7 +176,7 @@ Le tableau suivant fournit des exemples courants de modèles glob.
 |---------|---------|
 |`directory/file.txt`|Établit une correspondance avec un fichier spécifique dans un répertoire spécifique.|
 |`directory/*.txt`|Établit une correspondance avec tous les fichiers ayant l’extension *.txt* dans un répertoire spécifique.|
-|`directory/*/appsettings.json`|Met en correspondance tous les *appsettings.jsdes* fichiers dans les répertoires exactement un niveau sous le dossier du *répertoire* .|
+|`directory/*/appsettings.json`|Met en correspondance tous les *appsettings.json* fichiers dans les répertoires exactement un niveau sous le dossier du *répertoire* .|
 |`directory/**/*.txt`|Correspond à tous les fichiers avec une extension *. txt* située n’importe où dans le dossier du *répertoire* .|
 
 ::: moniker-end
@@ -261,7 +262,7 @@ Utilisez les [modèles glob](#glob-patterns) pour spécifier un ou plusieurs fic
 
 L’exemple d’application crée un `ManifestEmbeddedFileProvider` et transmet l’assembly en cours d’exécution à son constructeur.
 
-*Startup.cs*:
+*Startup.cs* :
 
 ```csharp
 var manifestEmbeddedProvider = 
@@ -303,7 +304,7 @@ Certains systèmes de fichiers, comme les conteneurs Docker et les partages rés
 
 ## <a name="glob-patterns"></a>Modèles Glob
 
-Les chemins de système de fichiers utilisent des modèles à caractères génériques appelés *modèles Glob (ou d’utilisation des caractères génériques)*. Spécifiez les groupes de fichiers avec ces modèles. Les deux caractères génériques sont `*` et `**` :
+Les chemins de système de fichiers utilisent des modèles à caractères génériques appelés *modèles Glob (ou d’utilisation des caractères génériques)* . Spécifiez les groupes de fichiers avec ces modèles. Les deux caractères génériques sont `*` et `**` :
 
 **`*`**  
 Établit une correspondance avec n’importe quel élément au niveau de dossier actuel, avec n’importe quel nom de fichier ou avec n’importe quelle extension de fichier. Les correspondances sont terminées par des caractères `/` et `.` dans le chemin des fichiers.
@@ -320,9 +321,9 @@ Les chemins de système de fichiers utilisent des modèles à caractères géné
 Établit une correspondance avec tous les fichiers ayant l’extension *.txt* dans un répertoire spécifique.
 
 **`directory/*/appsettings.json`**  
-Établit une correspondance avec tous les fichiers `appsettings.json` dans les répertoires situés exactement un niveau en dessous du dossier *répertoire*.
+Établit une correspondance avec tous les fichiers `appsettings.json` dans les répertoires situés exactement un niveau en dessous du dossier *répertoire* .
 
 **`directory/**/*.txt`**  
-Établit une correspondance avec tous les fichiers ayant l’extension *.txt* et se trouvant n’importe où sous le dossier *répertoire*.
+Établit une correspondance avec tous les fichiers ayant l’extension *.txt* et se trouvant n’importe où sous le dossier *répertoire* .
 
 ::: moniker-end

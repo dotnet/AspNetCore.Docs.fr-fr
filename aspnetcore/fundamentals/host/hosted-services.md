@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/10/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 04841eb4f6adfec76020d3fe61601037c3fc0733
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b8d6ec079ed39fb3a2c314816ebae6cea0847a36
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635344"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061078"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tâches d’arrière-plan avec des services hébergés dans ASP.NET Core
 
@@ -31,7 +32,7 @@ Par [Jeow Li Huan](https://github.com/huan086)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Dans ASP.NET Core, les tâches d’arrière-plan peuvent être implémentées en tant que *services hébergés*. Un service hébergé est une classe avec la logique de tâches en arrière-plan qui implémente l’interface <xref:Microsoft.Extensions.Hosting.IHostedService>. Cette rubrique contient trois exemples de service hébergé :
+Dans ASP.NET Core, les tâches d’arrière-plan peuvent être implémentées en tant que *services hébergés* . Un service hébergé est une classe avec la logique de tâches en arrière-plan qui implémente l’interface <xref:Microsoft.Extensions.Hosting.IHostedService>. Cette rubrique contient trois exemples de service hébergé :
 
 * Tâche d’arrière-plan qui s’exécute sur un minuteur.
 * Service hébergé qui active un [service étendu](xref:fundamentals/dependency-injection#service-lifetimes). Le service étendu peut utiliser l' [injection de dépendances (di)](xref:fundamentals/dependency-injection).
@@ -51,9 +52,9 @@ Pour utiliser le modèle en tant que base d’une application de services héber
 
 [!INCLUDE[](~/includes/worker-template-instructions.md)]
 
-## <a name="package"></a>Package
+## <a name="package"></a>Paquet
 
-Une application basée sur le modèle de service worker utilise le `Microsoft.NET.Sdk.Worker` Kit de développement logiciel (SDK) et possède une référence de package explicite au package [Microsoft. extensions. Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) . Par exemple, consultez le fichier projet de l’exemple d’application (*BackgroundTasksSample. csproj*).
+Une application basée sur le modèle de service worker utilise le `Microsoft.NET.Sdk.Worker` Kit de développement logiciel (SDK) et possède une référence de package explicite au package [Microsoft. extensions. Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) . Par exemple, consultez le fichier projet de l’exemple d’application ( *BackgroundTasksSample. csproj* ).
 
 Pour les applications Web qui utilisent le `Microsoft.NET.Sdk.Web` Kit de développement logiciel (SDK), le package [Microsoft. extensions. Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) est référencé implicitement à partir de l’infrastructure partagée. Une référence de package explicite dans le fichier projet de l’application n’est pas obligatoire.
 
@@ -61,7 +62,7 @@ Pour les applications Web qui utilisent le `Microsoft.NET.Sdk.Web` Kit de dével
 
 L' <xref:Microsoft.Extensions.Hosting.IHostedService> interface définit deux méthodes pour les objets gérés par l’hôte :
 
-* [StartAsync (CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*): `StartAsync` contient la logique de démarrage de la tâche en arrière-plan. `StartAsync` est appelé *avant*:
+* [StartAsync (CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*): `StartAsync` contient la logique de démarrage de la tâche en arrière-plan. `StartAsync` est appelé *avant* :
 
   * Le pipeline de traitement des demandes de l’application est configuré ( `Startup.Configure` ).
   * Le serveur est démarré et [IApplicationLifetime. ApplicationStarted](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*) est déclenché.
@@ -127,7 +128,7 @@ Une tâche d’arrière-plan avec minuteur utilise la classe [System.Threading.T
 
 Le <xref:System.Threading.Timer> n’attend pas que les exécutions précédentes se `DoWork` terminent. l’approche illustrée peut donc ne pas convenir à chaque scénario. Avec [verrouillage. l’incrément](xref:System.Threading.Interlocked.Increment*) est utilisé pour incrémenter le compteur d’exécution comme une opération atomique, ce qui garantit que plusieurs threads ne sont pas mis à jour `executionCount` simultanément.
 
-Le service est inscrit dans `IHostBuilder.ConfigureServices` (*Program.cs*) avec la `AddHostedService` méthode d’extension :
+Le service est inscrit dans `IHostBuilder.ConfigureServices` ( *Program.cs* ) avec la `AddHostedService` méthode d’extension :
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet1)]
 
@@ -146,7 +147,7 @@ Le service hébergé crée une étendue pour résoudre le service de tâche d’
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=19,22-35)]
 
-Les services sont inscrits dans `IHostBuilder.ConfigureServices` (*Program.cs*). Le service hébergé est inscrit avec la `AddHostedService` méthode d’extension :
+Les services sont inscrits dans `IHostBuilder.ConfigureServices` ( *Program.cs* ). Le service hébergé est inscrit avec la `AddHostedService` méthode d’extension :
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet2)]
 
@@ -169,12 +170,12 @@ Un `MonitorLoop` service gère les tâches de mise en file d’attente pour le s
 * `IBackgroundTaskQueue`Est injecté dans le `MonitorLoop` service.
 * `IBackgroundTaskQueue.QueueBackgroundWorkItem` est appelé pour empiler un élément de travail.
 * L’élément de travail simule une tâche en arrière-plan de longue durée :
-  * Trois retards de 5 secondes sont exécutés ( `Task.Delay` ).
+  * Les retards de 3 5 seconde sont exécutés ( `Task.Delay` ).
   * Une `try-catch` instruction intercepte <xref:System.OperationCanceledException> si la tâche est annulée.
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/MonitorLoop.cs?name=snippet_Monitor&highlight=7,33)]
 
-Les services sont inscrits dans `IHostBuilder.ConfigureServices` (*Program.cs*). Le service hébergé est inscrit avec la `AddHostedService` méthode d’extension :
+Les services sont inscrits dans `IHostBuilder.ConfigureServices` ( *Program.cs* ). Le service hébergé est inscrit avec la `AddHostedService` méthode d’extension :
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet3)]
 
@@ -186,7 +187,7 @@ Les services sont inscrits dans `IHostBuilder.ConfigureServices` (*Program.cs*).
 
 ::: moniker range="< aspnetcore-3.0"
 
-Dans ASP.NET Core, les tâches d’arrière-plan peuvent être implémentées en tant que *services hébergés*. Un service hébergé est une classe avec la logique de tâches en arrière-plan qui implémente l’interface <xref:Microsoft.Extensions.Hosting.IHostedService>. Cette rubrique contient trois exemples de service hébergé :
+Dans ASP.NET Core, les tâches d’arrière-plan peuvent être implémentées en tant que *services hébergés* . Un service hébergé est une classe avec la logique de tâches en arrière-plan qui implémente l’interface <xref:Microsoft.Extensions.Hosting.IHostedService>. Cette rubrique contient trois exemples de service hébergé :
 
 * Tâche d’arrière-plan qui s’exécute sur un minuteur.
 * Service hébergé qui active un [service étendu](xref:fundamentals/dependency-injection#service-lifetimes). Le service étendu peut utiliser l' [injection de dépendances (di)](xref:fundamentals/dependency-injection)
@@ -194,7 +195,7 @@ Dans ASP.NET Core, les tâches d’arrière-plan peuvent être implémentées en
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="package"></a>Package
+## <a name="package"></a>Paquet
 
 Référencer le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ou ajouter une référence de package au package [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting).
 
@@ -277,7 +278,7 @@ Quand le bouton **Ajouter une tâche** est sélectionné dans la page Index, la 
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Implémenter des tâches d’arrière-plan dans des microservices avec IHostedService et la classe BackgroundService](/dotnet/standard/microservices-architecture/multi-container-microservice-net-applications/background-tasks-with-ihostedservice)
 * [Exécuter des tâches en arrière-plan avec les tâches Web dans Azure App Service](/azure/app-service/webjobs-create)

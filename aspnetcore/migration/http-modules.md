@@ -5,6 +5,7 @@ description: ''
 ms.author: riande
 ms.date: 12/07/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 808215d103db9c5d63fe63b6875a222e6b0ba1fa
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: 9664f49bd709d2c9e46130773211c339e391d1f6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326613"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060701"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migrer des gestionnaires et des modules HTTP vers ASP.NET Core intergiciel
 
@@ -57,7 +58,7 @@ Avant de passer à ASP.NET Core intergiciel, nous allons tout d’abord récapit
 
 1. <https://docs.microsoft.com/previous-versions/ms227673(v=vs.140)>, Qui est un événement de série déclenché par ASP.net : [beginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest), etc. Chaque module peut créer un gestionnaire pour un ou plusieurs événements.
 
-2. Pour le même événement, ordre dans lequel ils sont configurés dans *Web.config*.
+2. Pour le même événement, ordre dans lequel ils sont configurés dans *Web.config* .
 
 En plus des modules, vous pouvez ajouter des gestionnaires pour les événements de cycle de vie à votre fichier *global.asax.cs* . Ces gestionnaires s’exécutent après les gestionnaires dans les modules configurés.
 
@@ -65,7 +66,7 @@ En plus des modules, vous pouvez ajouter des gestionnaires pour les événements
 
 **Les intergiciels (middleware) sont plus simples que les gestionnaires et les modules HTTP :**
 
-* Les modules, les gestionnaires, les *global.asax.cs*, les *Web.config* (à l’exception de la configuration IIS) et le cycle de vie de l’application ont disparu
+* Les modules, les gestionnaires, les *global.asax.cs* , les *Web.config* (à l’exception de la configuration IIS) et le cycle de vie de l’application ont disparu
 
 * Les rôles des modules et des gestionnaires ont été pris en charge par l’intergiciel (middleware)
 
@@ -98,7 +99,7 @@ En plus des modules, vous pouvez ajouter des gestionnaires pour les événements
 
 * Consultez [création d’un pipeline d’intergiciel (middleware) avec IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)
 
-![Intergiciel (middleware)](http-modules/_static/middleware.png)
+![Middleware](http-modules/_static/middleware.png)
 
 Notez comment dans l’image ci-dessus, l’intergiciel (middleware) d’authentification a court-circuité la demande.
 
@@ -132,7 +133,7 @@ Lorsque vous migrez les fonctionnalités de votre module vers votre nouvel inter
 
 ## <a name="migrating-module-insertion-into-the-request-pipeline"></a>Migration de l’insertion du module dans le pipeline de requête
 
-Les modules HTTP sont généralement ajoutés au pipeline de requêtes à l’aide de *Web.config*:
+Les modules HTTP sont généralement ajoutés au pipeline de requêtes à l’aide de *Web.config* :
 
 [!code-xml[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32-33,36,43,50,101)]
 
@@ -140,7 +141,7 @@ Convertissez ceci en [ajoutant votre nouvel intergiciel](xref:fundamentals/middl
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=16)]
 
-L’emplacement exact dans le pipeline où vous insérez votre nouvel intergiciel dépend de l’événement qu’il a traité en tant que module ( `BeginRequest` , `EndRequest` , etc.) et de son ordre dans la liste des modules de *Web.config*.
+L’emplacement exact dans le pipeline où vous insérez votre nouvel intergiciel dépend de l’événement qu’il a traité en tant que module ( `BeginRequest` , `EndRequest` , etc.) et de son ordre dans la liste des modules de *Web.config* .
 
 Comme indiqué précédemment, il n’existe aucun cycle de vie d’application dans ASP.NET Core et l’ordre dans lequel les réponses sont traitées par l’intergiciel diffère de l’ordre utilisé par les modules. Cela pourrait rendre votre décision de classement plus complexe.
 
@@ -180,7 +181,7 @@ Intergiciel ajouté au pipeline avant que la branche ne soit appelée sur toutes
 
 ## <a name="loading-middleware-options-using-the-options-pattern"></a>Chargement des options de l’intergiciel (middleware) à l’aide du modèle options
 
-Certains modules et gestionnaires possèdent des options de configuration qui sont stockées dans *Web.config*. Toutefois, dans ASP.NET Core un nouveau modèle de configuration est utilisé à la place de *Web.config*.
+Certains modules et gestionnaires possèdent des options de configuration qui sont stockées dans *Web.config* . Toutefois, dans ASP.NET Core un nouveau modèle de configuration est utilisé à la place de *Web.config* .
 
 Le nouveau [système de configuration](xref:fundamentals/configuration/index) vous offre les options suivantes pour résoudre ce qui suit :
 
@@ -194,7 +195,7 @@ Le nouveau [système de configuration](xref:fundamentals/configuration/index) vo
 
 2. Stocker les valeurs d’option
 
-   Le système de configuration vous permet de stocker les valeurs d’option où vous le souhaitez. Toutefois, la plupart des sites utilisent *appsettings.js*, donc nous allons adopter cette approche :
+   Le système de configuration vous permet de stocker les valeurs d’option où vous le souhaitez. Toutefois, la plupart des sites utilisent *appsettings.json* . nous allons donc adopter cette approche :
 
    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,14-18)]
 
@@ -206,7 +207,7 @@ Le nouveau [système de configuration](xref:fundamentals/configuration/index) vo
 
     Mettez à jour votre `Startup` classe :
 
-   1. Si vous utilisez *appsettings.jssur*, ajoutez-le au générateur de configuration dans le `Startup` constructeur :
+   1. Si vous utilisez *appsettings.json* , ajoutez-le au générateur de configuration dans le `Startup` constructeur :
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Ctor&highlight=5-6)]
 
@@ -234,9 +235,9 @@ Cela s’arrête si vous souhaitez utiliser le même intergiciel deux fois, avec
 
 La solution consiste à récupérer les objets d’options avec les valeurs d’options réelles dans votre `Startup` classe et à les transmettre directement à chaque instance de votre intergiciel.
 
-1. Ajouter une deuxième clé à *appsettings.js*
+1. Ajouter une deuxième clé à *appsettings.json*
 
-   Pour ajouter un deuxième ensemble d’options à la *appsettings.jssur* le fichier, utilisez une nouvelle clé pour l’identifier de manière unique :
+   Pour ajouter un deuxième ensemble d’options au *appsettings.json* fichier, utilisez une nouvelle clé pour l’identifier de manière unique :
 
    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,10-18&highlight=2-5)]
 
@@ -323,7 +324,7 @@ Donne un ID unique pour chaque demande. Très utile pour inclure dans vos journa
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Form)]
 
 > [!WARNING]
-> Lire les valeurs de formulaire uniquement si le sous-type de contenu est *x-www-form-urlencoded* ou *Form-Data*.
+> Lire les valeurs de formulaire uniquement si le sous-type de contenu est *x-www-form-urlencoded* ou *Form-Data* .
 
 **HttpContext. Request. InputStream** se traduit par :
 
@@ -379,7 +380,7 @@ La `SetHeaders` méthode de rappel ressemble à ceci :
 
 **HttpContext. Response. Cookie x**
 
-Cookiese déplace vers le navigateur dans un en-tête *Set- Cookie * Response. Par conséquent, l’envoi cookie de s requiert le même rappel que celui utilisé pour l’envoi des en-têtes de réponse :
+Cookiese déplace vers le navigateur dans un en-tête *Set- Cookie* Response. Par conséquent, l’envoi cookie de s requiert le même rappel que celui utilisé pour l’envoi des en-têtes de réponse :
 
 ```csharp
 public async Task Invoke(HttpContext httpContext)

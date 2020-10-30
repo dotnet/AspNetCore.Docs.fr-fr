@@ -7,6 +7,7 @@ ms.author: anurse
 ms.custom: devx-track-csharp, signalr, devx-track-js
 ms.date: 06/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 890359c9e9f6c3c60f3105124f52c66b09a8a4fb
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 6e5e9d866a1e03e69856cc63dcfe30284048dd6d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690678"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061312"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Journalisation et diagnostics dans ASP.NET Core SignalR
 
@@ -43,7 +44,7 @@ SignalR utilise deux catégories d’enregistreur d’événements :
 * `Microsoft.AspNetCore.SignalR`: Pour les journaux liés aux protocoles de concentrateur, l’activation de hubs, l’appel de méthodes et d’autres activités liées au Hub.
 * `Microsoft.AspNetCore.Http.Connections`: Pour les journaux liés aux transports, tels que les WebSockets, l’interrogation longue, les événements de Server-Sent et l’infrastructure de bas niveau SignalR .
 
-Pour activer les journaux détaillés à partir de SignalR , configurez les deux préfixes précédents au `Debug` niveau de votre *appsettings.js* fichier en ajoutant les éléments suivants à la `LogLevel` sous-section dans `Logging` :
+Pour activer les journaux détaillés à partir de SignalR , configurez les deux préfixes précédents au `Debug` niveau de votre *appsettings.json* fichier en ajoutant les éléments suivants à la `LogLevel` sous-section dans `Logging` :
 
 [!code-json[](diagnostics/logging-config.json?highlight=7-8)]
 
@@ -105,7 +106,7 @@ Le tableau suivant montre les niveaux de journal disponibles pour le client Java
 
 Une fois que vous avez configuré le niveau de détail, les journaux sont écrits dans la console du navigateur (ou la sortie standard dans une application NodeJS).
 
-Si vous souhaitez envoyer des journaux à un système de journalisation personnalisé, vous pouvez fournir un objet JavaScript qui implémente l' `ILogger` interface. La seule méthode qui doit être implémentée est `log` , qui prend le niveau de l’événement et le message associé à l’événement. Par exemple :
+Si vous souhaitez envoyer des journaux à un système de journalisation personnalisé, vous pouvez fournir un objet JavaScript qui implémente l' `ILogger` interface. La seule méthode qui doit être implémentée est `log` , qui prend le niveau de l’événement et le message associé à l’événement. Exemple :
 
 [!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
 

@@ -5,6 +5,7 @@ description: Découvrez les détails de l’implémentation des API d’immuabil
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-immutability
-ms.openlocfilehash: 32925a3ef6d52a7be3a852cefe670c15d545b490
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 8efca1d96945cb7af0132b27801b23a45714e08a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627622"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061247"
 ---
 # <a name="key-immutability-and-key-settings-in-aspnet-core"></a>Immuabilité des clés et paramètres de clé dans ASP.NET Core
 

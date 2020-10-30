@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/memory
-ms.openlocfilehash: 7f1d20687f6dd588e125acf3815815c2bcf0cd04
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 6d2a89ec7c64728bc585ad235293f2277f9a66f7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722681"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061481"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Gestion de la mémoire et garbage collection (GC) dans ASP.NET Core
 
@@ -137,8 +138,8 @@ Le graphique précédent montre les éléments suivants :
 
 Le garbage collector .NET a deux modes différents :
 
-* **GC de station de travail**: optimisé pour le bureau.
-* **GC du serveur**. GC par défaut pour les applications ASP.NET Core. Optimisé pour le serveur.
+* **GC de station de travail** : optimisé pour le bureau.
+* **GC du serveur** . GC par défaut pour les applications ASP.NET Core. Optimisé pour le serveur.
 
 Le mode GC peut être défini explicitement dans le fichier projet ou dans le *runtimeconfig.js* fichier de l’application publiée. Le balisage suivant illustre la définition `ServerGarbageCollection` dans le fichier projet :
 
@@ -235,7 +236,7 @@ La même fuite peut se produire dans le code utilisateur, par l’un des éléme
 
 ### <a name="large-objects-heap"></a>Tas d’objets volumineux
 
-Les cycles d’allocation de mémoire/libre fréquents peuvent fragmenter la mémoire, en particulier lors de l’allocation de gros blocs de mémoire. Les objets sont alloués dans des blocs de mémoire contigus. Pour limiter la fragmentation, lorsque le garbage collector libère de la mémoire, il tente de le défragmenter. Ce processus est appelé **compactage**. Le compactage implique le déplacement d’objets. Le déplacement d’objets volumineux impose une baisse des performances. Pour cette raison, le GC crée une zone de mémoire spéciale pour les objets _volumineux_ , appelée tas d’objets [volumineux](/dotnet/standard/garbage-collection/large-object-heap) (LOH). Les objets dont la taille est supérieure à 85 000 octets (environ 83 Ko) sont :
+Les cycles d’allocation de mémoire/libre fréquents peuvent fragmenter la mémoire, en particulier lors de l’allocation de gros blocs de mémoire. Les objets sont alloués dans des blocs de mémoire contigus. Pour limiter la fragmentation, lorsque le garbage collector libère de la mémoire, il tente de le défragmenter. Ce processus est appelé **compactage** . Le compactage implique le déplacement d’objets. Le déplacement d’objets volumineux impose une baisse des performances. Pour cette raison, le GC crée une zone de mémoire spéciale pour les objets _volumineux_ , appelée tas d’objets [volumineux](/dotnet/standard/garbage-collection/large-object-heap) (LOH). Les objets dont la taille est supérieure à 85 000 octets (environ 83 Ko) sont :
 
 * Placé sur le LOH.
 * Non compacté.
@@ -271,7 +272,7 @@ Le graphique suivant montre le profil de mémoire de l’appel du `/api/loh/8497
 
 ![graphique précédent](memory/_static/loh1.png)
 
-Le graphique suivant montre le profil de mémoire de l’appel du `/api/loh/84976` point de terminaison, en allouant *juste un octet de plus*:
+Le graphique suivant montre le profil de mémoire de l’appel du `/api/loh/84976` point de terminaison, en allouant *juste un octet de plus* :
 
 ![graphique précédent](memory/_static/loh2.png)
 

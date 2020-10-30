@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,22 +18,22 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: bb75d8b7d78c82c9c32605ac645b8895fdfb78e3
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 01fb87205f7855f0995cbcd135b6b01f15835e3b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393650"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060597"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vues partielles dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) et [Scott Sauber](https://twitter.com/scottsauber)
 
-Une vue partielle est un [Razor](xref:mvc/views/razor) fichier de balisage (*. cshtml*) sans [`@page`](xref:mvc/views/razor#page) directive qui restitue la sortie HTML *dans* la sortie rendue d’un autre fichier de balisage.
+Une vue partielle est un [Razor](xref:mvc/views/razor) fichier de balisage ( *. cshtml* ) sans [`@page`](xref:mvc/views/razor#page) directive qui restitue la sortie HTML *dans* la sortie rendue d’un autre fichier de balisage.
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Le terme *vue partielle* est utilisé lors du développement d’une application MVC, où les fichiers de balisage sont appelés *vues*ou Razor application pages, où les fichiers de balisage sont appelés *pages*. Cette rubrique fait référence aux pages vues et Razor pages MVC en tant que *fichiers de balisage*.
+Le terme *vue partielle* est utilisé lors du développement d’une application MVC, où les fichiers de balisage sont appelés *vues* ou Razor application pages, où les fichiers de balisage sont appelés *pages* . Cette rubrique fait référence aux pages vues et Razor pages MVC en tant que *fichiers de balisage* .
 
 ::: moniker-end
 
@@ -61,7 +62,7 @@ Une vue partielle est un fichier de balisage *. cshtml* sans [`@page`](xref:mvc/
 
 Dans ASP.NET Core MVC, le <xref:Microsoft.AspNetCore.Mvc.ViewResult> d’un contrôleur peut retourner une vue ou une vue partielle. Dans Razor les pages, un <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> peut retourner une vue partielle représentée comme un <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> objet. Le référencement et le rendu des vues partielles sont décrits dans la section [Référencer une vue partielle](#reference-a-partial-view).
 
-Contrairement au rendu d’une vue MVC ou d’une page, une vue partielle n’exécute pas *_ViewStart.cshtml*. Pour plus d’informations sur *_ViewStart.cshtml*, consultez <xref:mvc/views/layout>.
+Contrairement au rendu d’une vue MVC ou d’une page, une vue partielle n’exécute pas *_ViewStart.cshtml* . Pour plus d’informations sur *_ViewStart.cshtml* , consultez <xref:mvc/views/layout>.
 
 Les noms de fichiers des vues partielles commencent souvent par un trait de soulignement (`_`). Cette convention de nommage n’est pas obligatoire, mais elle aide à différencier visuellement les vues partielles des autres vues et pages.
 
@@ -69,11 +70,11 @@ Les noms de fichiers des vues partielles commencent souvent par un trait de soul
 
 ::: moniker range="< aspnetcore-2.0"
 
-Une vue partielle est un fichier de balisage *.cshtml* tenu à jour dans le dossier *Vues*.
+Une vue partielle est un fichier de balisage *.cshtml* tenu à jour dans le dossier *Vues* .
 
 Le <xref:Microsoft.AspNetCore.Mvc.ViewResult> d’un contrôleur peut retourner une vue ou une vue partielle. Le référencement et le rendu des vues partielles sont décrits dans la section [Référencer une vue partielle](#reference-a-partial-view).
 
-Contrairement au rendu d’une vue MVC, une vue partielle n’exécute pas *_ViewStart.cshtml*. Pour plus d’informations sur *_ViewStart.cshtml*, consultez <xref:mvc/views/layout>.
+Contrairement au rendu d’une vue MVC, une vue partielle n’exécute pas *_ViewStart.cshtml* . Pour plus d’informations sur *_ViewStart.cshtml* , consultez <xref:mvc/views/layout>.
 
 Les noms de fichiers des vues partielles commencent souvent par un trait de soulignement (`_`). Cette convention de nommage n’est pas obligatoire, mais elle aide à différencier visuellement les vues partielles des autres vues.
 
@@ -85,7 +86,7 @@ Les noms de fichiers des vues partielles commencent souvent par un trait de soul
 
 ### <a name="use-a-partial-view-in-a-no-locrazor-pages-pagemodel"></a>Utiliser une vue partielle dans une Razor page PageModel
 
-Dans ASP.NET Core 2,0 ou 2,1, la méthode de gestionnaire suivante restitue la vue partielle * \_ AuthorPartialRP. cshtml* à la réponse :
+Dans ASP.NET Core 2,0 ou 2,1, la méthode de gestionnaire suivante restitue la vue partielle *\_ AuthorPartialRP. cshtml* à la réponse :
 
 ```csharp
 public IActionResult OnGetPartial() =>
@@ -273,7 +274,7 @@ Quand une vue partielle est référencée par son nom sans extension de fichier,
 Les conventions suivantes s’appliquent à la détection des vues partielles :
 
 * Vous pouvez avoir plusieurs vues partielles avec le même nom de fichier à condition que les vues partielles se trouvent dans des dossiers distincts.
-* Quand vous référencez une vue partielle par son nom (sans extension de fichier) et que la vue partielle est présente à la fois dans le dossier de l’appelant et le dossier *Partagé*, la vue partielle fournie est celle du dossier de l’appelant. Si la vue partielle n’est pas présente dans le dossier de l’appelant, la vue partielle fournie est celle du dossier *Partagé*. Les vues partielles dans le dossier *Partagé* sont appelées *vues partielles partagées* ou *vues partielles par défaut*.
+* Quand vous référencez une vue partielle par son nom (sans extension de fichier) et que la vue partielle est présente à la fois dans le dossier de l’appelant et le dossier *Partagé* , la vue partielle fournie est celle du dossier de l’appelant. Si la vue partielle n’est pas présente dans le dossier de l’appelant, la vue partielle fournie est celle du dossier *Partagé* . Les vues partielles dans le dossier *Partagé* sont appelées *vues partielles partagées* ou *vues partielles par défaut* .
 * Les vues partielles peuvent être *chaînées* &mdash; une vue partielle peut appeler une autre vue partielle si une référence circulaire n’est pas formée par les appels. Les chemins relatifs sont toujours relatifs au fichier actuel, et non au fichier racine ou parent associé.
 
 > [!NOTE]
@@ -299,7 +300,7 @@ Vous pouvez passer un modèle dans une vue partielle. Le modèle peut être un o
 
 **Razor Pages**
 
-Le balisage suivant dans l’exemple d’application est extrait de la page *Pages/ArticlesRP/ReadRP.cshtml*. La page contient deux vues partielles. La seconde vue partielle passe un modèle et `ViewData` à la vue partielle. La surcharge de constructeur `ViewDataDictionary` passe un nouveau dictionnaire `ViewData` tout en conservant le dictionnaire `ViewData` existant.
+Le balisage suivant dans l’exemple d’application est extrait de la page *Pages/ArticlesRP/ReadRP.cshtml* . La page contient deux vues partielles. La seconde vue partielle passe un modèle et `ViewData` à la vue partielle. La surcharge de constructeur `ViewDataDictionary` passe un nouveau dictionnaire `ViewData` tout en conservant le dictionnaire `ViewData` existant.
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-20)]
 
@@ -315,7 +316,7 @@ Le balisage suivant dans l’exemple d’application est extrait de la page *Pag
 
 ::: moniker-end
 
-Le balisage suivant dans l’exemple d’application illustre la vue *Views/Articles/Read.cshtml*. La vue contient deux vues partielles. La seconde vue partielle passe un modèle et `ViewData` à la vue partielle. La surcharge de constructeur `ViewDataDictionary` passe un nouveau dictionnaire `ViewData` tout en conservant le dictionnaire `ViewData` existant.
+Le balisage suivant dans l’exemple d’application illustre la vue *Views/Articles/Read.cshtml* . La vue contient deux vues partielles. La seconde vue partielle passe un modèle et `ViewData` à la vue partielle. La surcharge de constructeur `ViewDataDictionary` passe un nouveau dictionnaire `ViewData` tout en conservant le dictionnaire `ViewData` existant.
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-20)]
 

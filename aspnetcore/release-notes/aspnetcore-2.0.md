@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.0
-ms.openlocfilehash: 9d8c33ef10825baa212466fe683d4c1dc582f7eb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f9fad5a63c76a3b21341a12fd40baafcdf2c9dac
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632458"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059726"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Nouveautés d’ASP.NET Core 2.0
 
@@ -63,7 +64,7 @@ Pour plus d’informations sur l’état de la documentation planifiée, consult
 
 ## <a name="logging-update"></a>Mise à jour de la journalisation
 
-Dans ASP.NET Core 2.0, la journalisation est incorporée dans le système d’injection de dépendance par défaut. Vous pouvez ajouter des fournisseurs et configurer le filtrage dans le fichier *Program.cs* plutôt que dans le fichier *Startup.cs*. De plus, le `ILoggerFactory` par défaut prend en charge le filtrage d’une manière qui vous permet d’adopter une approche flexible pour le filtrage entre fournisseurs et le filtrage propre au fournisseur.
+Dans ASP.NET Core 2.0, la journalisation est incorporée dans le système d’injection de dépendance par défaut. Vous pouvez ajouter des fournisseurs et configurer le filtrage dans le fichier *Program.cs* plutôt que dans le fichier *Startup.cs* . De plus, le `ILoggerFactory` par défaut prend en charge le filtrage d’une manière qui vous permet d’adopter une approche flexible pour le filtrage entre fournisseurs et le filtrage propre au fournisseur.
 
 Pour plus d’informations, consultez [Introduction à la journalisation](xref:fundamentals/logging/index).
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, devx-track-js
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 201ffe692c1ded3661a5e1ac566f90b29d61ce9e
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 197954965ee57b2a44ad0217d79ba142114e7df6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690346"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060844"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Empêcher les attaques de falsification de requête intersites (XSRF/CSRF) dans ASP.NET Core
 
@@ -250,7 +251,7 @@ services.AddAntiforgery(options =>
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Détermine les paramètres utilisés pour créer les anti-falsifications cookie . |
 | [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Domaine du cookie . La valeur par défaut est `null`. Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée est Cookie . Domain. |
 | [CookieNomme](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Nom de l'objet cookie. Si la valeur n’est pas définie, le système génère un nom unique commençant par le [ Cookie préfixe par défaut](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) («». AspNetCore. anti-contrefaçon.»). Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée est Cookie . Nomme. |
-| [CookieChemin d’accès](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Chemin d’accès défini sur le cookie . Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée est Cookie . D. |
+| [CookieD](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Chemin d’accès défini sur le cookie . Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée est Cookie . D. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Nom du champ de formulaire masqué utilisé par le système anti-contrefaçon pour le rendu des jetons anti-contrefaçon dans les vues. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Nom de l’en-tête utilisé par le système anti-contrefaçon. Si `null` la condition est, le système considère uniquement les données de formulaire. |
 | [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Spécifie si le système anti-contrefaçon exige le protocole HTTPs. Si la `true` , les demandes non-HTTPS échouent. La valeur par défaut est `false`. Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée consiste à définir Cookie . SecurePolicy. |

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/memory
-ms.openlocfilehash: c4d21992695828e81e03eca92f167c0a3d69c724
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4d5f459d54a3c74a2eb23a50db6537eeaf8596b3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627284"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061442"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Cache en mémoire dans ASP.NET Core
 
@@ -121,7 +122,7 @@ L’exemple suivant :
 
 Une `MemoryCache` instance peut éventuellement spécifier et appliquer une limite de taille. La limite de taille du cache n’a pas d’unité de mesure définie car le cache n’a pas de mécanisme pour mesurer la taille des entrées. Si la limite de taille du cache est définie, toutes les entrées doivent spécifier la taille. Le runtime ASP.NET Core ne limite pas la taille du cache en fonction de la sollicitation de la mémoire. C’est au développeur de limiter la taille du cache. La taille spécifiée est dans les unités choisies par le développeur.
 
-Par exemple :
+Exemple :
 
 * Si l’application Web a principalement mis en cache des chaînes, chaque taille d’entrée de cache peut être la longueur de chaîne.
 * L’application peut spécifier la taille de toutes les entrées en tant que 1, et la limite de taille est le nombre d’entrées.
@@ -195,7 +196,7 @@ L’utilisation de <xref:System.Threading.CancellationTokenSource> permet de sup
 
 Utilisez un [service d’arrière-plan](xref:fundamentals/host/hosted-services) tel que <xref:Microsoft.Extensions.Hosting.IHostedService> pour mettre à jour le cache. Le service d’arrière-plan peut recalculer les entrées, puis les assigner au cache uniquement lorsqu’elles sont prêtes.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:performance/caching/distributed>
 * <xref:fundamentals/change-tokens>
@@ -297,7 +298,7 @@ L’exemple suivant :
 
 Une `MemoryCache` instance peut éventuellement spécifier et appliquer une limite de taille. La limite de taille du cache n’a pas d’unité de mesure définie car le cache n’a pas de mécanisme pour mesurer la taille des entrées. Si la limite de taille du cache est définie, toutes les entrées doivent spécifier la taille. Le runtime ASP.NET Core ne limite pas la taille du cache en fonction de la sollicitation de la mémoire. C’est au développeur de limiter la taille du cache. La taille spécifiée est dans les unités choisies par le développeur.
 
-Par exemple :
+Exemple :
 
 * Si l’application Web a principalement mis en cache des chaînes, chaque taille d’entrée de cache peut être la longueur de chaîne.
 * L’application peut spécifier la taille de toutes les entrées en tant que 1, et la limite de taille est le nombre d’entrées.

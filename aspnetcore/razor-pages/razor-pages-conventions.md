@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: fc639178fc29438e16ad0989e61bd8dd32cf7590
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2947bf0b697ca01f17d260b9f31aa3cc79d457b6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625490"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059869"
 ---
 # <a name="no-locrazor-pages-route-and-app-conventions-in-aspnet-core"></a>Razor Conventions de routage et d’application des pages dans ASP.NET Core
 
@@ -127,7 +128,7 @@ L’exemple d’application utilise la classe `AddHeaderAttribute` pour ajouter 
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -141,7 +142,7 @@ Utilisez <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -153,7 +154,7 @@ Le fournisseur de modèles de routage par défaut qui dérive de <xref:Microsoft
 
 Utilisez <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> pour créer et ajouter un <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> objet qui appelle une action sur le <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> pour toutes les pages du dossier spécifié.
 
-L’exemple d’application utilise <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> pour ajouter un modèle de routage `{otherPagesTemplate?}` aux pages du dossier *OtherPages* :
+L’exemple d’application utilise <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> pour ajouter un modèle de routage `{otherPagesTemplate?}` aux pages du dossier *OtherPages*  :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet3)]
 
@@ -211,7 +212,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Utilisez <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> pour configurer un itinéraire vers une page au niveau du chemin de page spécifié. Les liens générés qui pointent vers la page utilisent le routage que vous avez spécifié. `AddPageRoute` utilise `AddPageRouteModelConvention` pour établir le routage.
 
-L’exemple d’application crée un routage vers `/TheContactPage` pour *Contact.cshtml* :
+L’exemple d’application crée un routage vers `/TheContactPage` pour *Contact.cshtml*  :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -271,7 +272,7 @@ Demandez la page About de l’exemple sur `localhost:5000/About` et examinez les
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet8)]
 
-Le modèle d’application de page est utilisé pour vérifier le chemin relatif des segments qui mènent à la page Page2 dans le dossier *OtherPages*. Si la condition est satisfaite, un en-tête est ajouté. Sinon, `EmptyFilter` est appliqué.
+Le modèle d’application de page est utilisé pour vérifier le chemin relatif des segments qui mènent à la page Page2 dans le dossier *OtherPages* . Si la condition est satisfaite, un en-tête est ajouté. Sinon, `EmptyFilter` est appliqué.
 
 `EmptyFilter` est un [filtre d’action](xref:mvc/controllers/filters#action-filters). Étant donné que les filtres d’action sont ignorés par Razor les pages, le n' `EmptyFilter` a aucun effet comme prévu si le chemin d’accès ne contient pas `OtherPages/Page2` .
 
@@ -287,7 +288,7 @@ L’exemple d’application illustre l’utilisation d’une [fabrique de filtre
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs* :
+*AddHeaderWithFactory.cs*  :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 
@@ -301,7 +302,7 @@ Les [filtres d’action](xref:mvc/controllers/filters#action-filters) MVC sont i
 
 Le filtre de page ( <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> ) est un filtre qui s’applique aux Razor pages. Pour plus d’informations, consultez [méthodes de filtre pour les Razor pages](xref:razor-pages/filter).
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:security/authorization/razor-pages-authorization>
 * <xref:mvc/controllers/areas#areas-with-razor-pages>
@@ -409,7 +410,7 @@ L’exemple d’application utilise la classe `AddHeaderAttribute` pour ajouter 
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -423,7 +424,7 @@ Utilisez <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -435,7 +436,7 @@ Le fournisseur de modèles de routage par défaut qui dérive de <xref:Microsoft
 
 Utilisez <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> pour créer et ajouter un <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> objet qui appelle une action sur le <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> pour toutes les pages du dossier spécifié.
 
-L’exemple d’application utilise <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> pour ajouter un modèle de routage `{otherPagesTemplate?}` aux pages du dossier *OtherPages* :
+L’exemple d’application utilise <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> pour ajouter un modèle de routage `{otherPagesTemplate?}` aux pages du dossier *OtherPages*  :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet3)]
 
@@ -501,7 +502,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 Utilisez <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> pour configurer un itinéraire vers une page au niveau du chemin de page spécifié. Les liens générés qui pointent vers la page utilisent le routage que vous avez spécifié. `AddPageRoute` utilise `AddPageRouteModelConvention` pour établir le routage.
 
-L’exemple d’application crée un routage vers `/TheContactPage` pour *Contact.cshtml* :
+L’exemple d’application crée un routage vers `/TheContactPage` pour *Contact.cshtml*  :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -561,7 +562,7 @@ Demandez la page About de l’exemple sur `localhost:5000/About` et examinez les
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet8)]
 
-Le modèle d’application de page est utilisé pour vérifier le chemin relatif des segments qui mènent à la page Page2 dans le dossier *OtherPages*. Si la condition est satisfaite, un en-tête est ajouté. Sinon, `EmptyFilter` est appliqué.
+Le modèle d’application de page est utilisé pour vérifier le chemin relatif des segments qui mènent à la page Page2 dans le dossier *OtherPages* . Si la condition est satisfaite, un en-tête est ajouté. Sinon, `EmptyFilter` est appliqué.
 
 `EmptyFilter` est un [filtre d’action](xref:mvc/controllers/filters#action-filters). Étant donné que les filtres d’action sont ignorés par Razor les pages, le n' `EmptyFilter` a aucun effet comme prévu si le chemin d’accès ne contient pas `OtherPages/Page2` .
 
@@ -577,7 +578,7 @@ L’exemple d’application illustre l’utilisation d’une [fabrique de filtre
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs* :
+*AddHeaderWithFactory.cs*  :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 
@@ -591,7 +592,7 @@ Les [filtres d’action](xref:mvc/controllers/filters#action-filters) MVC sont i
 
 Le filtre de page ( <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> ) est un filtre qui s’applique aux Razor pages. Pour plus d’informations, consultez [méthodes de filtre pour les Razor pages](xref:razor-pages/filter).
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:security/authorization/razor-pages-authorization>
 * <xref:mvc/controllers/areas#areas-with-razor-pages>
@@ -699,7 +700,7 @@ L’exemple d’application utilise la classe `AddHeaderAttribute` pour ajouter 
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -713,7 +714,7 @@ Utilisez <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -725,7 +726,7 @@ Le fournisseur de modèles de routage par défaut qui dérive de <xref:Microsoft
 
 Utilisez <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> pour créer et ajouter un <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> objet qui appelle une action sur le <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> pour toutes les pages du dossier spécifié.
 
-L’exemple d’application utilise <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> pour ajouter un modèle de routage `{otherPagesTemplate?}` aux pages du dossier *OtherPages* :
+L’exemple d’application utilise <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> pour ajouter un modèle de routage `{otherPagesTemplate?}` aux pages du dossier *OtherPages*  :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet3)]
 
@@ -757,7 +758,7 @@ Demandez la page About de l’exemple sur `localhost:5000/About/GlobalRouteValue
 
 Utilisez <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> pour configurer un itinéraire vers une page au niveau du chemin de page spécifié. Les liens générés qui pointent vers la page utilisent le routage que vous avez spécifié. `AddPageRoute` utilise `AddPageRouteModelConvention` pour établir le routage.
 
-L’exemple d’application crée un routage vers `/TheContactPage` pour *Contact.cshtml* :
+L’exemple d’application crée un routage vers `/TheContactPage` pour *Contact.cshtml*  :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -817,7 +818,7 @@ Demandez la page About de l’exemple sur `localhost:5000/About` et examinez les
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet8)]
 
-Le modèle d’application de page est utilisé pour vérifier le chemin relatif des segments qui mènent à la page Page2 dans le dossier *OtherPages*. Si la condition est satisfaite, un en-tête est ajouté. Sinon, `EmptyFilter` est appliqué.
+Le modèle d’application de page est utilisé pour vérifier le chemin relatif des segments qui mènent à la page Page2 dans le dossier *OtherPages* . Si la condition est satisfaite, un en-tête est ajouté. Sinon, `EmptyFilter` est appliqué.
 
 `EmptyFilter` est un [filtre d’action](xref:mvc/controllers/filters#action-filters). Étant donné que les filtres d’action sont ignorés par Razor les pages, le n' `EmptyFilter` a aucun effet comme prévu si le chemin d’accès ne contient pas `OtherPages/Page2` .
 
@@ -833,7 +834,7 @@ L’exemple d’application illustre l’utilisation d’une [fabrique de filtre
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs* :
+*AddHeaderWithFactory.cs*  :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 

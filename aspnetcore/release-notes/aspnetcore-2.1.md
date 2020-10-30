@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: d10fd89a3eac34e855ba92673033edc541aa6393
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 62fc9d866adcf05ff024501db68cce8bb8b11a98
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632406"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059713"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Nouveautés d’ASP.NET Core 2.1
 
@@ -92,7 +93,7 @@ ASP.NET Core fournit des API et des modèles qui aident à satisfaire à certain
 
 Un nouveau package est introduit qui simplifie la création et l’exécution de tests. Le package [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) gère les tâches suivantes :
 
-* Copie le fichier de dépendance (* \* . DEPS*) de l’application testée dans le dossier *bin* du projet de test.
+* Copie le fichier de dépendance ( *\* . DEPS* ) de l’application testée dans le dossier *bin* du projet de test.
 * Il définit la racine du contenu sur la racine du projet de l’application testée afin que soient trouvés les pages/vues et fichiers statiques quand les tests sont exécutés.
 * Il fournit la classe [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) afin de simplifier l’amorçage de l’application testée avec [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver).
 
@@ -172,7 +173,7 @@ Dans 2,1, les Razor pages recherchent les Razor ressources (telles que les mises
 
 ## <a name="no-locrazor-pages-in-an-area"></a>Razor Pages dans une zone
 
-Razor Les pages prennent désormais en charge les [zones](xref:mvc/controllers/areas). Pour voir un exemple de zones, créez une Razor application Web de pages avec des comptes d’utilisateur individuels. Une Razor application Web de pages avec des comptes d’utilisateur individuels comprend */Areas/ Identity /pages*.
+Razor Les pages prennent désormais en charge les [zones](xref:mvc/controllers/areas). Pour voir un exemple de zones, créez une Razor application Web de pages avec des comptes d’utilisateur individuels. Une Razor application Web de pages avec des comptes d’utilisateur individuels comprend */Areas/ Identity /pages* .
 
 ## <a name="mvc-compatibility-version"></a>Version de compatibilité MVC
 

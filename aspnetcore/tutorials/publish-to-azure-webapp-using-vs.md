@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: devx-track-csharp, mvc
 ms.date: 07/10/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: ebfe89d68725d597d6975015bbf84414ff818829
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 817169503a80a771354e32123d65ba2bf388aa2d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722908"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060220"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publier une application ASP.NET Core sur Azure avec Visual Studio
 
@@ -50,28 +51,28 @@ Dans la page de démarrage de Visual Studio, sélectionnez **Fichier > Nouveau >
 
 Renseignez la boîte de dialogue **Nouveau projet** :
 
-* Sélectionnez **Application web ASP.NET Core**.
-* Sélectionnez **Suivant**.
+* Sélectionnez **Application web ASP.NET Core** .
+* Sélectionnez **Suivant** .
 
 ![Boîte de dialogue Nouveau projet](publish-to-azure-webapp-using-vs/_static/new_prj.png)
 
 Dans la boîte de dialogue **Nouvelle application web ASP.NET Core** :
 
-* Sélectionnez **application Web**.
+* Sélectionnez **application Web** .
 * Sélectionnez **modifier** sous authentification.
 
 ![Boîte de dialogue Nouveau ASP.NET Core Web](publish-to-azure-webapp-using-vs/_static/new_prj_2.png)
 
 La boîte de dialogue **Modifier l’authentification** s’affiche. 
 
-* Sélectionnez **Comptes d’utilisateur individuels**.
-* Sélectionnez **OK** pour revenir à la **nouvelle application Web ASP.net Core**, puis sélectionnez **créer**.
+* Sélectionnez **Comptes d’utilisateur individuels** .
+* Sélectionnez **OK** pour revenir à la **nouvelle application Web ASP.net Core** , puis sélectionnez **créer** .
 
 ![Boîte de dialogue Nouvelle application web ASP.NET Core](publish-to-azure-webapp-using-vs/_static/new_prj_auth.png) 
 
 Visual Studio crée la solution.
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécuter l’application
 
 * Appuyez sur CTRL+F5 pour exécuter le projet.
 * Testez le lien de **confidentialité** .
@@ -80,10 +81,10 @@ Visual Studio crée la solution.
 
 ### <a name="register-a-user"></a>Inscrire un utilisateur
 
-* Sélectionnez **S’inscrire**, puis inscrivez un nouvel utilisateur. Vous pouvez utiliser une adresse e-mail fictive. Quand vous effectuez l’envoi, la page affiche l’erreur suivante :
+* Sélectionnez **S’inscrire** , puis inscrivez un nouvel utilisateur. Vous pouvez utiliser une adresse e-mail fictive. Quand vous effectuez l’envoi, la page affiche l’erreur suivante :
 
     *«Une opération de base de données a échoué lors du traitement de la demande. L’application de migrations existantes pour le contexte de la base de la base de la base de de l’application peut résoudre ce problème*
-* Sélectionnez **Appliquer les migrations**, puis, une fois la page mise à jour, actualisez-la.
+* Sélectionnez **Appliquer les migrations** , puis, une fois la page mise à jour, actualisez-la.
 
 ![Une opération de base de données a échoué lors du traitement de la requête. Appliquer des migrations existantes pour le contexte de base de données d’application peut résoudre ce problème.](publish-to-azure-webapp-using-vs/_static/mig.png)
 
@@ -93,21 +94,21 @@ L’application affiche l’e-mail utilisé pour inscrire le nouvel utilisateur 
 
 ## <a name="deploy-the-app-to-azure"></a>Déploiement de l’application dans Azure
 
-Dans Explorateur de solutions, cliquez avec le bouton droit sur le projet, puis sélectionnez **publier...**.
+Dans Explorateur de solutions, cliquez avec le bouton droit sur le projet, puis sélectionnez **publier...** .
 
 ![Menu contextuel ouvert avec le lien Publier mis en surbrillance](publish-to-azure-webapp-using-vs/_static/pub.png)
 
 Dans la boîte de dialogue **Publier** :
 
-* Sélectionnez **Azure**.
-* Sélectionnez **Suivant**.
+* Sélectionnez **Azure** .
+* Sélectionnez **Suivant** .
 
 ![Boîte de dialogue Publier](publish-to-azure-webapp-using-vs/_static/maas1.png)
 
 Dans la boîte de dialogue **Publier** :
 
-* Sélectionnez **Azure App service (Linux)**.
-* Sélectionnez **Suivant**.
+* Sélectionnez **Azure App service (Linux)** .
+* Sélectionnez **Suivant** .
 
 ![Boîte de dialogue publier : sélectionner un service Azure](publish-to-azure-webapp-using-vs/_static/maas2.png)
 
@@ -117,7 +118,7 @@ Dans la boîte de dialogue **publier** , sélectionnez **créer une Azure App se
 
 La boîte de dialogue **créer un app service** s’affiche :
 
-* Les champs d’entrée **Nom de l’application**, **Groupe de ressources** et **Plan App Service** sont renseignés. Vous pouvez conserver ces noms ou les changer.
+* Les champs d’entrée **Nom de l’application** , **Groupe de ressources** et **Plan App Service** sont renseignés. Vous pouvez conserver ces noms ou les changer.
 * Sélectionnez **Create** (Créer).
 
 ![Boîte de dialogue Créer App Service](publish-to-azure-webapp-using-vs/_static/newrg1.png)
@@ -125,18 +126,18 @@ La boîte de dialogue **créer un app service** s’affiche :
 Une fois la création terminée, la boîte de dialogue est fermée automatiquement et la boîte de dialogue **publier** se met à nouveau en place :
 
 * La nouvelle instance qui vient d’être créée est automatiquement sélectionnée.
-* Sélectionnez **Terminer**.
+* Sélectionnez **Terminer** .
 
 ![Boîte de dialogue publier : sélectionner une instance de App Service](publish-to-azure-webapp-using-vs/_static/select_as.png)
 
-Vous voyez ensuite la page **Résumé du profil de publication** . Visual Studio a détecté que cette application nécessite une base de données SQL Server et qu’elle vous demande de la configurer. Sélectionnez **Configurer**.
+Vous voyez ensuite la page **Résumé du profil de publication** . Visual Studio a détecté que cette application nécessite une base de données SQL Server et qu’elle vous demande de la configurer. Sélectionnez **Configurer** .
 
 ![Page Résumé du profil de publication : configurer la dépendance SQL Server](publish-to-azure-webapp-using-vs/_static/sql.png)
 
 La boîte de dialogue **configurer la dépendance** s’affiche :
 
-* Sélectionnez **Azure SQL Database**.
-* Sélectionnez **Suivant**.
+* Sélectionnez **Azure SQL Database** .
+* Sélectionnez **Suivant** .
 
 ![Boîte de dialogue configurer SQL Server dépendance](publish-to-azure-webapp-using-vs/_static/sql1.png)
 
@@ -146,7 +147,7 @@ Dans la boîte **de dialogue Configurer la base de données SQL Azure** , sélec
 
 L' **Azure SQL Database créer** s’affiche :
 
-* Les champs **nom de la base de données**, **groupe de ressources**, **serveur de base de données** et entrée du **plan de App service** sont remplis. Vous pouvez conserver ces valeurs ou les modifier.
+* Les champs **nom de la base de données** , **groupe de ressources** , **serveur de base de données** et entrée du **plan de App service** sont remplis. Vous pouvez conserver ces valeurs ou les modifier.
 * Entrez le **nom d’utilisateur** et le **mot de passe** de l’administrateur de base de données pour le **serveur de base de données** sélectionné (Notez que le compte que vous utilisez doit disposer des autorisations nécessaires pour créer la nouvelle base de données SQL Azure)
 * Sélectionnez **Create** (Créer).
 
@@ -155,31 +156,31 @@ L' **Azure SQL Database créer** s’affiche :
 Une fois la création terminée, la boîte de dialogue est fermée automatiquement et la boîte de dialogue **configurer Azure SQL Database** est à nouveau activée :
 
 * La nouvelle instance qui vient d’être créée est automatiquement sélectionnée.
-* Sélectionnez **Suivant**.
+* Sélectionnez **Suivant** .
 
 ![Boîte de dialogue Configurer Azure SQL Database](publish-to-azure-webapp-using-vs/_static/sql_select.png)
 
 À l’étape suivante de la boîte de dialogue **configurer Azure SQL Database** :
 
 * Entrez les champs **nom d’utilisateur** et **mot de passe de** connexion à la base de données. Il s’agit des détails que votre application utilisera pour se connecter à la base de données au moment de l’exécution. La meilleure pratique consiste à éviter d’utiliser les mêmes détails que le nom d’utilisateur administrateur & mot de passe utilisé à l’étape précédente.
-* Sélectionnez **Terminer**.
+* Sélectionnez **Terminer** .
 
 ![Boîte de dialogue Configurer Azure SQL Database, détails de la chaîne de connexion](publish-to-azure-webapp-using-vs/_static/sql_connection.png)
 
-Dans la page **Résumé du profil de publication** , sélectionnez **paramètres**:
+Dans la page **Résumé du profil de publication** , sélectionnez **paramètres** :
 
 ![Page Résumé du profil de publication : modifier les paramètres](publish-to-azure-webapp-using-vs/_static/pp_configured.png)
 
 Dans la page **Paramètres** de la boîte de dialogue **Publier** :
 
-* Développez **bases de données** et cochez **la case utiliser cette chaîne de connexion au moment de l’exécution**.
-* Développez **Entity Framework migrations** et cochez **appliquer cette migration lors de la publication**.
+* Développez **bases de données** et cochez **la case utiliser cette chaîne de connexion au moment de l’exécution** .
+* Développez **Entity Framework migrations** et cochez **appliquer cette migration lors de la publication** .
 
-* Sélectionnez **Enregistrer**. Visual Studio retourne à la boîte de dialogue **Publier**. 
+* Sélectionnez **Enregistrer** . Visual Studio retourne à la boîte de dialogue **Publier** . 
 
 ![Boîte de dialogue Publier : panneau Paramètres](publish-to-azure-webapp-using-vs/_static/pp_settings.png)
 
-Cliquez sur **Publier**. Visual Studio publie votre application sur Azure. Quand le déploiement est terminé, l’application est ouverte dans un navigateur.
+Cliquez sur **Publier** . Visual Studio publie votre application sur Azure. Quand le déploiement est terminé, l’application est ouverte dans un navigateur.
 
 ![Boîte de dialogue Publier : panneau Paramètres](publish-to-azure-webapp-using-vs/_static/pp_publish.png)
 
@@ -197,19 +198,19 @@ Cliquez sur **Publier**. Visual Studio publie votre application sur Azure. Quand
 
 ![Vérifiez que la tâche est terminée](publish-to-azure-webapp-using-vs/_static/final.png)
 
-### <a name="clean-up"></a>Nettoyer
+### <a name="clean-up"></a>Nettoyage
 
 Après avoir testé l’application, accédez au [portail Azure](https://portal.azure.com/), puis supprimez l’application.
 
-* Sélectionnez **Groupes de ressources**, puis sélectionnez le groupe de ressources que vous avez créé.
+* Sélectionnez **Groupes de ressources** , puis sélectionnez le groupe de ressources que vous avez créé.
 
 ![Portail Azure : Groupes de ressources dans le menu de la barre latérale](publish-to-azure-webapp-using-vs/_static/portalrg.png)
 
-* Dans la page **Groupes de ressources**, sélectionnez **Supprimer**.
+* Dans la page **Groupes de ressources** , sélectionnez **Supprimer** .
 
 ![Portail Azure : page Groupes de ressources](publish-to-azure-webapp-using-vs/_static/rgd.png)
 
-* Entrez le nom du groupe de ressources et sélectionnez **supprimer**. Votre application et toutes les autres ressources créées dans ce didacticiel sont désormais supprimées d’Azure.
+* Entrez le nom du groupe de ressources et sélectionnez **supprimer** . Votre application et toutes les autres ressources créées dans ce didacticiel sont désormais supprimées d’Azure.
 
 ### <a name="next-steps"></a>Étapes suivantes
 

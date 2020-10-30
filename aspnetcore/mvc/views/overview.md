@@ -5,6 +5,7 @@ description: Découvrez comment les vues gèrent la présentation des données e
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/overview
-ms.openlocfilehash: 6afd69414f2dc0158f724c6e6f7b3a3e51c1e92c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 373b17377740441d3859e3b7d942017a22bc7a68
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630677"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060623"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Vues dans ASP.NET Core MVC
 
@@ -35,7 +36,7 @@ Dans ASP.NET Core MVC, les vues sont des fichiers *. cshtml* qui utilisent le [l
 
 ![Dossier Vues développé dans l’Explorateur de solutions de Visual Studio, avec le dossier Accueil ouvert contenant les fichiers About.cshtml, Contact.cshtml et Index.cshtml](overview/_static/views_solution_explorer.png)
 
-Le contrôleur *Home* est représenté par un dossier *Accueil* dans le dossier *Vues*. Le dossier *Accueil* contient les vues associées aux pages d’accueil web *About*, *Contact* et *Index*. Quand un utilisateur demande l’une de ces trois pages web, les actions dans le contrôleur *Home* déterminent laquelle des trois vues est utilisée pour générer une page web et la retourner à l’utilisateur.
+Le contrôleur *Home* est représenté par un dossier *Accueil* dans le dossier *Vues* . Le dossier *Accueil* contient les vues associées aux pages d’accueil web *About* , *Contact* et *Index* . Quand un utilisateur demande l’une de ces trois pages web, les actions dans le contrôleur *Home* déterminent laquelle des trois vues est utilisée pour générer une page web et la retourner à l’utilisateur.
 
 Utilisez des [dispositions](xref:mvc/views/layout) pour rendre les sections de page web homogènes et réduire la répétition de code. Les dispositions contiennent souvent l’en-tête, des éléments de menu et de navigation, ainsi que le pied de page. L’en-tête et le pied de page renferment généralement le code de balisage réutilisable pour divers éléments de métadonnées, et les liens vers des ressources de script et de style. Les dispositions vous permettent de limiter l’usage de ce balisage réutilisable dans vos vues.
 
@@ -54,7 +55,7 @@ Les vues facilitent l’implémentation du principe de conception basé sur la s
 
 ## <a name="creating-a-view"></a>Création d’une vue
 
-Les vues associées à un contrôleur spécifique sont créées dans le dossier *Vues/[nom_contrôleur]*. Les vues communes à plusieurs contrôleurs sont créées dans le dossier *Vues/Partagé*. Pour créer une vue, ajoutez un nouveau fichier et attribuez-lui le même nom que son action de contrôleur associée, avec l’extension de fichier *.cshtml*. Pour créer une vue correspondant à l’action *About* dans le contrôleur *Home*, créez un fichier *About.cshtml* dans le dossier *Vues/Accueil* :
+Les vues associées à un contrôleur spécifique sont créées dans le dossier *Vues/[nom_contrôleur]* . Les vues communes à plusieurs contrôleurs sont créées dans le dossier *Vues/Partagé* . Pour créer une vue, ajoutez un nouveau fichier et attribuez-lui le même nom que son action de contrôleur associée, avec l’extension de fichier *.cshtml* . Pour créer une vue correspondant à l’action *About* dans le contrôleur *Home* , créez un fichier *About.cshtml* dans le dossier *Vues/Accueil* :
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
@@ -98,7 +99,7 @@ La méthode d’assistance `View` a plusieurs surcharges. Vous pouvez éventuell
 
 Quand une action doit retourner une vue, un processus appelé *détection de la vue* s’enclenche. Ce processus détermine quel fichier de vue est utilisé en fonction du nom de la vue. 
 
-Le comportement par défaut de la méthode `View` (`return View();`) est de retourner une vue du même nom que la méthode d’action à partir de laquelle elle est appelée. Par exemple, le *About* `ActionResult` nom de la méthode about du contrôleur est utilisé pour rechercher un fichier de vue nommé *about. cshtml*. Le Runtime commence par rechercher la vue dans le dossier *Vues/[nom_contrôleur]*. S’il ne trouve pas de vue correspondante, il recherche ensuite la vue dans le dossier *Partagé*.
+Le comportement par défaut de la méthode `View` (`return View();`) est de retourner une vue du même nom que la méthode d’action à partir de laquelle elle est appelée. Par exemple, le *About* `ActionResult` nom de la méthode about du contrôleur est utilisé pour rechercher un fichier de vue nommé *about. cshtml* . Le Runtime commence par rechercher la vue dans le dossier *Vues/[nom_contrôleur]* . S’il ne trouve pas de vue correspondante, il recherche ensuite la vue dans le dossier *Partagé* .
 
 Peu importe si vous retournez implicitement `ViewResult` avec `return View();` ou si vous passez explicitement le nom de la vue à la méthode `View` avec `return View("<ViewName>");`. Dans les deux cas, la détection de la vue recherche un fichier de vue correspondant dans cet ordre :
 
@@ -111,7 +112,7 @@ Vous pouvez spécifier le chemin du fichier de vue au lieu du nom de la vue. Si 
 return View("Views/Home/About.cshtml");
 ```
 
-Vous pouvez également utiliser un chemin relatif pour spécifier des vues situées dans des répertoires différents. Dans ce cas, n’indiquez pas l’extension *.cshtml*. Dans `HomeController`, vous pouvez retourner la vue *Index* du dossier de vues *Gérer* avec un chemin relatif :
+Vous pouvez également utiliser un chemin relatif pour spécifier des vues situées dans des répertoires différents. Dans ce cas, n’indiquez pas l’extension *.cshtml* . Dans `HomeController`, vous pouvez retourner la vue *Index* du dossier de vues *Gérer* avec un chemin relatif :
 
 ```csharp
 return View("../Manage/Index");
@@ -142,9 +143,9 @@ Plusieurs approches sont possibles pour passer des données aux vues :
 
 ### <a name="strongly-typed-data-viewmodel"></a>Données fortement typées (viewmodel)
 
-L’approche la plus fiable consiste à spécifier un type de [modèle](xref:mvc/models/model-binding) dans la vue. Ce modèle est communément appelé *ViewModel*. Vous passez une instance de type ViewModel à la vue à partir de l’action.
+L’approche la plus fiable consiste à spécifier un type de [modèle](xref:mvc/models/model-binding) dans la vue. Ce modèle est communément appelé *ViewModel* . Vous passez une instance de type ViewModel à la vue à partir de l’action.
 
-L’utilisation d’un ViewModel pour passer des données à une vue vous permet d’effectuer un contrôle de type *fort* dans la vue. Le terme *typage fort* (ou *fortement typé*) signifie que chaque variable et constante a un type défini explicitement (par exemple, `string`, `int` ou `DateTime`). La validité des types utilisés dans une vue est contrôlée au moment de la compilation.
+L’utilisation d’un ViewModel pour passer des données à une vue vous permet d’effectuer un contrôle de type *fort* dans la vue. Le terme *typage fort* (ou *fortement typé* ) signifie que chaque variable et constante a un type défini explicitement (par exemple, `string`, `int` ou `DateTime`). La validité des types utilisés dans une vue est contrôlée au moment de la compilation.
 
 [Visual Studio](https://visualstudio.microsoft.com) et [Visual Studio Code](https://code.visualstudio.com/) répertorient les membres de classe fortement typés à l’aide d’une fonctionnalité appelée [IntelliSense](/visualstudio/ide/using-intellisense). Quand vous voulez afficher les propriétés d’un ViewModel, tapez le nom de variable pour le ViewModel suivi d’un point (`.`). Cela vous permet d’écrire du code plus rapidement et avec moins d’erreurs.
 
@@ -205,7 +206,7 @@ Rien ne vous empêche d’utiliser les mêmes classes pour vos types de ViewMode
 
 `ViewBag`*n’est pas disponible dans Razor Pages.*
 
-En plus des vues fortement typées, les vues ont accès à une collection de données *faiblement typées* (ou *librement typées*). Contrairement aux types forts, les *types faibles* (ou *types libres*) ne nécessitent pas de déclarer explicitement le type de données utilisé. Vous pouvez utiliser la collection de données faiblement typées pour passer de petites quantités de données entre les contrôleurs et les vues.
+En plus des vues fortement typées, les vues ont accès à une collection de données *faiblement typées* (ou *librement typées* ). Contrairement aux types forts, les *types faibles* (ou *types libres* ) ne nécessitent pas de déclarer explicitement le type de données utilisé. Vous pouvez utiliser la collection de données faiblement typées pour passer de petites quantités de données entre les contrôleurs et les vues.
 
 | Passer des données entre...                        | Exemple                                                                        |
 | ------------------------------------------------- | ------------------------------------------------------------------------------ |
@@ -344,7 +345,7 @@ Définissez le titre avec `ViewBag` et la description avec `ViewData` au début 
 }
 ```
 
-Lisez les propriétés, mais inversez l’utilisation de `ViewData` et `ViewBag`. Dans le fichier *_Layout.cshtml*, obtenez le titre et la description avec `ViewData` et `ViewBag`, respectivement :
+Lisez les propriétés, mais inversez l’utilisation de `ViewData` et `ViewBag`. Dans le fichier *_Layout.cshtml* , obtenez le titre et la description avec `ViewData` et `ViewBag`, respectivement :
 
 ```cshtml
 <!DOCTYPE html>
@@ -374,11 +375,11 @@ L’utilisation simultanée de `ViewData` et `ViewBag` est possible, de la même
 
 * `ViewData`
   * Dérivé de [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), il possède des propriétés de dictionnaire qui peuvent être utiles, telles que `ContainsKey` , `Add` , `Remove` et `Clear` .
-  * Les clés contenues dans le dictionnaire sont des chaînes ; les espaces blancs sont donc autorisés. Exemple : `ViewData["Some Key With Whitespace"]`
+  * Les clés contenues dans le dictionnaire sont des chaînes ; les espaces blancs sont donc autorisés. Exemple : `ViewData["Some Key With Whitespace"]`
   * Les autres types que `string` doivent être castés dans la vue pour utiliser `ViewData`.
 * `ViewBag`
   * Dérivé de [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata), cet objet permet de créer des propriétés dynamiques avec la notation par points (`@ViewBag.SomeKey = <value or object>`). Aucun cast n’est nécessaire. La syntaxe de `ViewBag` facilite son ajout aux contrôleurs et aux vues.
-  * Simplifie la vérification des valeurs Null. Exemple : `@ViewBag.Person?.Name`
+  * Simplifie la vérification des valeurs Null. Exemple : `@ViewBag.Person?.Name`
 
 **Quand utiliser ViewData ou ViewBag ?**
 

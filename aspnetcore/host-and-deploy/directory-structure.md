@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: b557f1d1650b3deadcda679f300b1bc45a6202e7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 918bc11e06b8f2bea5506d3b61f462e15998efa0
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627375"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059856"
 ---
 # <a name="aspnet-core-directory-structure"></a>Structure de répertoires ASP.NET Core
 
@@ -34,7 +35,7 @@ Le répertoire *publier* contient les ressources de l’application qui peuvent 
 * Les fichiers de l’application
 * Fichiers de configuration
 * Les ressources statiques
-* .
+* Paquets
 * Un runtime ([déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) uniquement)
 
 | Type d'application | Structure de répertoires |
@@ -44,11 +45,11 @@ Le répertoire *publier* contient les ressources de l’application qui peuvent 
 
 &dagger;Indique un répertoire
 
-Le répertoire *publish* représente le *chemin racine du contenu*, également appelé *chemin de base de l’application*, du déploiement. Quel que soit le nom donné au répertoire *publish* de l’application déployée sur le serveur, son emplacement sert de chemin physique, sur le serveur, de l’application hébergée.
+Le répertoire *publish* représente le *chemin racine du contenu* , également appelé *chemin de base de l’application* , du déploiement. Quel que soit le nom donné au répertoire *publish* de l’application déployée sur le serveur, son emplacement sert de chemin physique, sur le serveur, de l’application hébergée.
 
-Le répertoire *wwwroot*, s’il existe, contient uniquement des ressources statiques.
+Le répertoire *wwwroot* , s’il existe, contient uniquement des ressources statiques.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [dotnet publish](/dotnet/core/tools/dotnet-publish)
 * [Déploiement d’applications .NET Core](/dotnet/core/deploying/)
@@ -64,7 +65,7 @@ Le répertoire *publier* contient les ressources de l’application qui peuvent 
 * Les fichiers de l’application
 * Fichiers de configuration
 * Les ressources statiques
-* .
+* Paquets
 * Un runtime ([déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) uniquement)
 
 | Type d'application | Structure de répertoires |
@@ -74,9 +75,9 @@ Le répertoire *publier* contient les ressources de l’application qui peuvent 
 
 &dagger;Indique un répertoire
 
-Le répertoire *publish* représente le *chemin racine du contenu*, également appelé *chemin de base de l’application*, du déploiement. Quel que soit le nom donné au répertoire *publish* de l’application déployée sur le serveur, son emplacement sert de chemin physique, sur le serveur, de l’application hébergée.
+Le répertoire *publish* représente le *chemin racine du contenu* , également appelé *chemin de base de l’application* , du déploiement. Quel que soit le nom donné au répertoire *publish* de l’application déployée sur le serveur, son emplacement sert de chemin physique, sur le serveur, de l’application hébergée.
 
-Le répertoire *wwwroot*, s’il existe, contient uniquement des ressources statiques.
+Le répertoire *wwwroot* , s’il existe, contient uniquement des ressources statiques.
 
 La création d’un dossier *Logs* est utile à la [journalisation de débogage améliorée du module ASP.NET Core](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Les dossiers situés dans le chemin fourni pour la valeur `<handlerSetting>` ne sont pas créés automatiquement par le module. Ils doivent préexister dans le déploiement pour permettre au module d’écrire dans le journal de débogage.
 
@@ -95,13 +96,13 @@ Vous pouvez créer le répertoire *Logs* pour le déploiement à l’aide de l�
    </Target>
    ```
 
-   L’élément `<MakeDir>` crée un dossier *Logs* vide dans la sortie publiée. L’élément utilise la propriété `PublishDir` pour déterminer l’emplacement cible en vue de la création du dossier. Plusieurs méthodes de déploiement, telles que Web Deploy, ignorent les dossiers vides pendant le déploiement. L’élément `<WriteLinesToFile>` génère un fichier dans le dossier *Logs*, ce qui garantit le déploiement du dossier sur le serveur. La création d’un dossier à l’aide de cette approche échoue si le processus de travail n’a pas accès en écriture au dossier cible.
+   L’élément `<MakeDir>` crée un dossier *Logs* vide dans la sortie publiée. L’élément utilise la propriété `PublishDir` pour déterminer l’emplacement cible en vue de la création du dossier. Plusieurs méthodes de déploiement, telles que Web Deploy, ignorent les dossiers vides pendant le déploiement. L’élément `<WriteLinesToFile>` génère un fichier dans le dossier *Logs* , ce qui garantit le déploiement du dossier sur le serveur. La création d’un dossier à l’aide de cette approche échoue si le processus de travail n’a pas accès en écriture au dossier cible.
 
 * Créez physiquement le répertoire *Logs* sur le serveur dans le déploiement.
 
 Le répertoire de déploiement requiert des autorisations de lecture et d’exécution. Le répertoire *Logs* requiert des autorisations de lecture et d’écriture. D’autres répertoires où des fichiers sont écrits nécessitent des autorisations de lecture et d’écriture.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [dotnet publish](/dotnet/core/tools/dotnet-publish)
 * [Déploiement d’applications .NET Core](/dotnet/core/deploying/)

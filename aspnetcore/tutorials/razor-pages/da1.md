@@ -5,6 +5,7 @@ description: Partie 5 de la série de didacticiels sur les Razor pages.
 ms.author: riande
 ms.date: 12/20/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 04479e5c3a0b1e9badbb4e58043cf059beefb4ab
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 7d25dae67c928fa659654ce4ab34cfdad08b5300
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632796"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060064"
 ---
 # <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a>Partie 5 : mettre à jour les pages générées dans une application ASP.NET Core
 
@@ -35,7 +36,7 @@ L’application de gestion des films générée est un bon début, mais la prés
 
 ## <a name="update-the-generated-code"></a>Mettre à jour le code généré
 
-Ouvrez le fichier *Models/Movie.cs*, puis ajoutez les lignes affichées en surbrillance dans le code suivant :
+Ouvrez le fichier *Models/Movie.cs* , puis ajoutez les lignes affichées en surbrillance dans le code suivant :
 
 [!code-csharp[Main](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateFixed.cs?name=snippet_1&highlight=3,12,17)]
 
@@ -47,7 +48,7 @@ Accédez à Pages/Movies, puis placez le curseur sur un lien **Modifier** pour a
 
 ![Fenêtre de navigateur avec la souris sur le lien Edit et l’URL de lien http://localhost:1234/Movies/Edit/5 affichée](~/tutorials/razor-pages/da1/edit7.png)
 
-Les liens **Edit**, **Details**, et **Delete** sont générés par le [Tag Helper d’ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) dans le fichier *Pages/Movies/Index.cshtml*.
+Les liens **Edit** , **Details** , et **Delete** sont générés par le [Tag Helper d’ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) dans le fichier *Pages/Movies/Index.cshtml* .
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
@@ -86,14 +87,14 @@ Une requête à la page avec le modèle d’itinéraire « {id:int} » qui n’i
 Pour tester le comportement de `@page "{id:int?}"` :
 
 * Définissez la directive de page dans *Pages/Movies/Details.cshtml* sur `@page "{id:int?}"`.
-* Définissez un point d’arrêt dans `public async Task<IActionResult> OnGetAsync(int? id)` (dans *Pages/Movies/Details.cshtml.cs*).
+* Définissez un point d’arrêt dans `public async Task<IActionResult> OnGetAsync(int? id)` (dans *Pages/Movies/Details.cshtml.cs* ).
 * Accédez à `https://localhost:5001/Movies/Details/`.
 
 Avec la directive `@page "{id:int}"`, le point d’arrêt n’est jamais atteint. Le moteur de routage retourne l’erreur HTTP 404. Avec `@page "{id:int?}"`, la méthode `OnGetAsync` retourne `NotFound` (HTTP 404).
 
 ### <a name="review-concurrency-exception-handling"></a>Passer en revue la gestion des exceptions d’accès concurrentiel
 
-Passez en revue la méthode `OnPostAsync` dans le fichier *Pages/Movies/Edit.cshtml.cs* :
+Passez en revue la méthode `OnPostAsync` dans le fichier *Pages/Movies/Edit.cshtml.cs*  :
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
@@ -134,7 +135,7 @@ Quand la page Movies/Edit est postée :
 
 Les méthodes HTTP d’extraction des pages index, Create et Delete Razor suivent un modèle similaire. La méthode HTTP après `OnPostAsync` dans la Razor page créer suit un modèle similaire à la `OnPostAsync` méthode dans la Razor page Modifier.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 > [!div class="step-by-step"]
 > [Précédent : utilisation d’une base de données](xref:tutorials/razor-pages/sql) 
@@ -150,7 +151,7 @@ L’application de gestion des films générée est un bon début, mais la prés
 
 ## <a name="update-the-generated-code"></a>Mettre à jour le code généré
 
-Ouvrez le fichier *Models/Movie.cs*, puis ajoutez les lignes affichées en surbrillance dans le code suivant :
+Ouvrez le fichier *Models/Movie.cs* , puis ajoutez les lignes affichées en surbrillance dans le code suivant :
 
 [!code-csharp[Main](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateFixed.cs?name=snippet_1&highlight=3,12,17)]
 
@@ -162,7 +163,7 @@ Accédez à Pages/Movies, puis placez le curseur sur un lien **Modifier** pour a
 
 ![Fenêtre de navigateur avec la souris sur le lien Edit et l’URL de lien http://localhost:1234/Movies/Edit/5 affichée](~/tutorials/razor-pages/da1/edit7.png)
 
-Les liens **Edit**, **Details**, et **Delete** sont générés par le [Tag Helper d’ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) dans le fichier *Pages/Movies/Index.cshtml*.
+Les liens **Edit** , **Details** , et **Delete** sont générés par le [Tag Helper d’ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) dans le fichier *Pages/Movies/Index.cshtml* .
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
@@ -199,14 +200,14 @@ Une requête à la page avec le modèle d’itinéraire « {id:int} » qui n’i
 Pour tester le comportement de `@page "{id:int?}"` :
 
 * Définissez la directive de page dans *Pages/Movies/Details.cshtml* sur `@page "{id:int?}"`.
-* Définissez un point d’arrêt dans `public async Task<IActionResult> OnGetAsync(int? id)` (dans *Pages/Movies/Details.cshtml.cs*).
+* Définissez un point d’arrêt dans `public async Task<IActionResult> OnGetAsync(int? id)` (dans *Pages/Movies/Details.cshtml.cs* ).
 * Accédez à `https://localhost:5001/Movies/Details/`.
 
 Avec la directive `@page "{id:int}"`, le point d’arrêt n’est jamais atteint. Le moteur de routage retourne l’erreur HTTP 404. Avec `@page "{id:int?}"`, la méthode `OnGetAsync` retourne `NotFound` (HTTP 404).
 
 ### <a name="review-concurrency-exception-handling"></a>Passer en revue la gestion des exceptions d’accès concurrentiel
 
-Passez en revue la méthode `OnPostAsync` dans le fichier *Pages/Movies/Edit.cshtml.cs* :
+Passez en revue la méthode `OnPostAsync` dans le fichier *Pages/Movies/Edit.cshtml.cs*  :
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
@@ -249,7 +250,7 @@ Les méthodes HTTP d’extraction des pages index, Create et Delete Razor suiven
 
 La fonction de recherche est ajoutée dans le prochain didacticiel.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Version YouTube de ce tutoriel](https://youtu.be/yLnnleREMtQ)
 

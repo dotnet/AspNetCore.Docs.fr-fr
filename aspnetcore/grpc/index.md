@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/index
-ms.openlocfilehash: 4a2f86d906c7b268b1fb2a63c50a1b8f0dd2b154
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 80f44e3845cc1e3c87d5d657807a318eb65e6c6f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633186"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059895"
 ---
 # <a name="introduction-to-grpc-on-net-core"></a>Présentation de gRPC sur .NET Core
 
 Par [John Luo](https://github.com/juntaoluo) et [James Newton-King](https://twitter.com/jamesnk)
 
-[gRPC](https://grpc.io/docs/guides/) est un Framework d’appel de procédure distante (RPC) indépendant du langage.
+[gRPC](https://grpc.io/docs/guides/) est un Framework d’appel de procédure distante (RPC) indépendant du langage et de haute performance.
 
 Les principaux avantages de gRPC sont :
 * Framework RPC léger, moderne et à haut niveau de performance.
@@ -46,7 +47,7 @@ Ces avantages font de gRPC la solution idéale pour :
 
 ## <a name="c-tooling-support-for-proto-files"></a>Prise en charge des outils C# pour les fichiers. proto
 
-gRPC utilise une approche contrat d’abord pour le développement d’API. Les services et les messages sont définis dans les fichiers * \* . proto* :
+gRPC utilise une approche contrat d’abord pour le développement d’API. Les services et les messages sont définis dans les fichiers *\* . proto* :
 
 ```protobuf
 syntax = "proto3";
@@ -64,10 +65,10 @@ message HelloReply {
 }
 ```
 
-Les types .NET pour les services, les clients et les messages sont générés automatiquement par l’inclusion de fichiers * \* . proto* dans un projet :
+Les types .NET pour les services, les clients et les messages sont générés automatiquement par l’inclusion de fichiers *\* . proto* dans un projet :
 
 * Ajoutez une référence de package au package [GRPC. Tools](https://www.nuget.org/packages/Grpc.Tools/) .
-* Ajoutez des fichiers * \* . proto* au `<Protobuf>` groupe d’éléments.
+* Ajoutez des fichiers *\* . proto* au `<Protobuf>` groupe d’éléments.
 
 ```xml
 <ItemGroup>
@@ -105,7 +106,7 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-`GreeterService`hérite du `GreeterBase` type, qui est généré à partir du `Greeter` service dans le fichier * \* . proto* . Le service est rendu accessible aux clients dans *Startup.cs*:
+`GreeterService`hérite du `GreeterBase` type, qui est généré à partir du `Greeter` service dans le fichier *\* . proto* . Le service est rendu accessible aux clients dans *Startup.cs* :
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -118,7 +119,7 @@ Pour en savoir plus sur les services gRPC sur ASP.NET Core, consultez <xref:grpc
 
 ## <a name="call-grpc-services-with-a-net-client"></a>Appeler gRPC services avec un client .NET
 
-les clients gRPC sont des types de client concrets qui sont [générés à partir de fichiers * \* . proto* ](xref:grpc/basics#generated-c-assets). Le client gRPC concret possède des méthodes qui traduisent le service gRPC dans le fichier * \* . proto* .
+les clients gRPC sont des types de client concrets qui sont [générés à partir de fichiers *\* . proto*](xref:grpc/basics#generated-c-assets). Le client gRPC concret possède des méthodes qui traduisent le service gRPC dans le fichier *\* . proto* .
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");

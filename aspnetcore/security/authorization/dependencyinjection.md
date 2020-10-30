@@ -5,6 +5,7 @@ description: Découvrez comment injecter des gestionnaires d’exigence d’auto
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,22 +17,22 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/dependencyinjection
-ms.openlocfilehash: 4bc7eb38262c8a94a84aacc978737a778bfd71a1
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6598a9c9cfd1e6597fffcc1aa0c53fa493532458
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632562"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060259"
 ---
 # <a name="dependency-injection-in-requirement-handlers-in-aspnet-core"></a>Injection de dépendances dans les gestionnaires d’exigences dans ASP.NET Core
 
 <a name="security-authorization-di"></a>
 
-Les [gestionnaires d’autorisations doivent être inscrits](xref:security/authorization/policies#handler-registration) dans la collection de services pendant la configuration (à l’aide de l' [injection de dépendances](xref:fundamentals/dependency-injection)).
+Les [gestionnaires d’autorisations doivent être inscrits](xref:security/authorization/policies#handler-registration) dans la collection de services lors de la configuration à l’aide de l' [injection de dépendances](xref:fundamentals/dependency-injection).
 
-Supposons que vous disposiez d’un référentiel de règles que vous souhaitiez évaluer à l’intérieur d’un gestionnaire d’autorisations et que ce dépôt ait été enregistré dans la collection de services. L’autorisation va résoudre et l’injecter dans votre constructeur.
+Supposons que vous disposiez d’un référentiel de règles que vous souhaitiez évaluer à l’intérieur d’un gestionnaire d’autorisations et que ce dépôt ait été enregistré dans la collection de services. L’autorisation le résout et l’injecte dans le constructeur.
 
-Par exemple, si vous souhaitez utiliser ASP. L’infrastructure de journalisation de .net que vous souhaiteriez injecter `ILoggerFactory` dans votre gestionnaire. Un tel gestionnaire peut se présenter comme suit :
+Par exemple, pour utiliser ASP. L’infrastructure de journalisation de .net, injecter `ILoggerFactory` dans le gestionnaire. Un tel gestionnaire peut se présenter comme le code suivant :
 
 ```csharp
 public class LoggingAuthorizationHandler : AuthorizationHandler<MyRequirement>
@@ -52,13 +53,13 @@ public class LoggingAuthorizationHandler : AuthorizationHandler<MyRequirement>
    }
    ```
 
-Vous devez enregistrer le gestionnaire avec `services.AddSingleton()` :
+Le gestionnaire précédent peut être inscrit avec toute [durée de vie de service](/dotnet/core/extensions/dependency-injection#service-lifetimes). Le code suivant utilise `AddSingleton` pour inscrire le gestionnaire précédent :
 
 ```csharp
 services.AddSingleton<IAuthorizationHandler, LoggingAuthorizationHandler>();
 ```
 
-Une instance du gestionnaire est créée au démarrage de votre application, et DI injecte le inscrit `ILoggerFactory` dans votre constructeur.
+Une instance du gestionnaire est créée au démarrage de l’application, et DI injecte le inscrit `ILoggerFactory` dans le constructeur.
 
 > [!NOTE]
 > Les gestionnaires qui utilisent Entity Framework ne doivent pas être inscrits en tant que singletons.

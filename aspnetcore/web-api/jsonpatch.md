@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/02/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/jsonpatch
-ms.openlocfilehash: e57c5185323305ccbef7960653c9174931e45d75
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: da507974b88c21de22e2c7a56950943207565138
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635396"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060545"
 ---
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>JsonPatch dans l’API web ASP.NET Core
 
@@ -37,7 +38,7 @@ Cet article explique comment gérer les demandes de correctifs JSON dans une API
 Pour activer la prise en charge des correctifs JSON dans votre application, procédez comme suit :
 
 1. Installez le [`Microsoft.AspNetCore.Mvc.NewtonsoftJson`](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) package NuGet.
-1. Mettez à jour la `Startup.ConfigureServices` méthode du projet à appeler <xref:Microsoft.Extensions.DependencyInjection.NewtonsoftJsonMvcBuilderExtensions.AddNewtonsoftJson*> . Par exemple :
+1. Mettez à jour la `Startup.ConfigureServices` méthode du projet à appeler <xref:Microsoft.Extensions.DependencyInjection.NewtonsoftJsonMvcBuilderExtensions.AddNewtonsoftJson*> . Exemple :
 
     ```csharp
     services
@@ -67,7 +68,7 @@ Les méthodes PUT et [PATCH](https://tools.ietf.org/html/rfc5789) sont utilisée
 
 ## <a name="json-patch"></a>JSON Patch
 
-[JSON Patch](https://tools.ietf.org/html/rfc6902) est un format qui spécifie des mises à jour à appliquer à une ressource. Un document JSON Patch possède un tableau des *opérations*. Chaque opération identifie un type particulier de modification. Les exemples de ces modifications incluent l’ajout d’un élément de tableau ou le remplacement d’une valeur de propriété.
+[JSON Patch](https://tools.ietf.org/html/rfc6902) est un format qui spécifie des mises à jour à appliquer à une ressource. Un document JSON Patch possède un tableau des *opérations* . Chaque opération identifie un type particulier de modification. Les exemples de ces modifications incluent l’ajout d’un élément de tableau ou le remplacement d’une valeur de propriété.
 
 Par exemple, les documents JSON suivants représentent une ressource, un document de correctif JSON pour la ressource et le résultat de l’application des correctifs.
 
@@ -259,7 +260,7 @@ Pour tester l’exemple, exécutez l’application et envoyez des demandes HTTP 
 * En-tête : `Content-Type: application/json-patch+json`
 * Corps : copiez et collez l’un des exemples de document de correctif JSON à partir du dossier de projet *JSON* .
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Spécification de méthode PATCH IETF RFC 5789 PATCH](https://tools.ietf.org/html/rfc5789)
 * [Spécification JSON Patch IETF RFC 6902](https://tools.ietf.org/html/rfc6902)
@@ -279,7 +280,7 @@ Les méthodes PUT et [PATCH](https://tools.ietf.org/html/rfc5789) sont utilisée
 
 ## <a name="json-patch"></a>JSON Patch
 
-[JSON Patch](https://tools.ietf.org/html/rfc6902) est un format qui spécifie des mises à jour à appliquer à une ressource. Un document JSON Patch possède un tableau des *opérations*. Chaque opération identifie un type particulier de modification, tel qu’ajouter un élément de tableau ou remplacer une valeur de propriété.
+[JSON Patch](https://tools.ietf.org/html/rfc6902) est un format qui spécifie des mises à jour à appliquer à une ressource. Un document JSON Patch possède un tableau des *opérations* . Chaque opération identifie un type particulier de modification, tel qu’ajouter un élément de tableau ou remplacer une valeur de propriété.
 
 Par exemple, les documents JSON suivants représentent une ressource, un document de correctif JSON pour la ressource et le résultat de l’application de l’application des correctifs.
 
@@ -471,7 +472,7 @@ Pour tester l’exemple, exécutez l’application et envoyez des demandes HTTP 
 * En-tête : `Content-Type: application/json-patch+json`
 * Corps : copiez et collez l’un des exemples de document de correctif JSON à partir du dossier de projet *JSON* .
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Spécification de méthode PATCH IETF RFC 5789 PATCH](https://tools.ietf.org/html/rfc5789)
 * [Spécification JSON Patch IETF RFC 6902](https://tools.ietf.org/html/rfc6902)

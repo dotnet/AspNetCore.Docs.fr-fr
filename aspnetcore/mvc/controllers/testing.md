@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/22/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/testing
-ms.openlocfilehash: d6c70d828d6c2f62f9e7b849a299df3077f2da32
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 962c1cf0be0f80ecd6c3adda7d22db7f16519a2a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635227"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060350"
 ---
 # <a name="unit-test-controller-logic-in-aspnet-core"></a>Logique du contrôleur de test unitaire dans ASP.NET Core
 
@@ -35,7 +36,7 @@ Les [tests unitaires](/dotnet/articles/core/testing/unit-testing-with-dotnet-tes
 
 ## <a name="unit-testing-controllers"></a>Contrôleurs de test unitaire
 
-Configurez des tests unitaires d’actions de contrôleur pour qu’ils s’attachent uniquement au comportement du contrôleur. Un test unitaire de contrôleur évite des scénarios, tels que les [filtres](xref:mvc/controllers/filters), le [routage](xref:fundamentals/routing) et la [liaison de données](xref:mvc/models/model-binding). Les tests couvrant les interactions entre les composants qui répondent collectivement à une requête sont gérés par des *tests d’intégration*. Pour plus d’informations sur les tests d’intégration, consultez <xref:test/integration-tests>.
+Configurez des tests unitaires d’actions de contrôleur pour qu’ils s’attachent uniquement au comportement du contrôleur. Un test unitaire de contrôleur évite des scénarios, tels que les [filtres](xref:mvc/controllers/filters), le [routage](xref:fundamentals/routing) et la [liaison de données](xref:mvc/models/model-binding). Les tests couvrant les interactions entre les composants qui répondent collectivement à une requête sont gérés par des *tests d’intégration* . Pour plus d’informations sur les tests d’intégration, consultez <xref:test/integration-tests>.
 
 Si vous écrivez des routes et des filtres personnalisés, testez-les de manière isolée avec des tests unitaires plutôt que dans le cadre de tests exécutés sur une action de contrôleur spécifique.
 
@@ -89,7 +90,7 @@ Les appels fictifs qui ne sont pas appelés sont normalement ignorés, mais l’
 > [!NOTE]
 > La bibliothèque Moq utilisée dans cet exemple permet la combinaison d’éléments fictifs vérifiables (ou « stricts ») avec des éléments fictifs non vérifiables (également appelés stubs ou éléments « lâches »). Découvrez plus d’informations sur la [personnalisation des éléments fictifs avec Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-Dans l’exemple d’application, [SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) affiche des informations relatives à une session de brainstorming. Le contrôleur inclut la logique pour traiter des valeurs `id` non valides (il existe deux scénarios `return` dans l’exemple suivant pour couvrir ces scénarios). La dernière instruction `return` retourne un nouveau `StormSessionViewModel` à la vue (*Controllers/SessionController.cs*) :
+Dans l’exemple d’application, [SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) affiche des informations relatives à une session de brainstorming. Le contrôleur inclut la logique pour traiter des valeurs `id` non valides (il existe deux scénarios `return` dans l’exemple suivant pour couvrir ces scénarios). La dernière instruction `return` retourne un nouveau `StormSessionViewModel` à la vue ( *Controllers/SessionController.cs* ) :
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -202,7 +203,7 @@ Les [contrôleurs](xref:mvc/controllers/actions) jouent un rôle essentiel dans 
 
 Les [tests unitaires](/dotnet/articles/core/testing/unit-testing-with-dotnet-test) impliquent le test d’une partie d’une application de façon isolée par rapport à son infrastructure et à ses dépendances. Lors du test de la logique d’un contrôleur, seuls les contenus d’une action sont testés, et non pas le comportement de ses dépendances ou du framework lui-même.
 
-Configurez des tests unitaires d’actions de contrôleur pour qu’ils s’attachent uniquement au comportement du contrôleur. Un test unitaire de contrôleur évite des scénarios, tels que les [filtres](xref:mvc/controllers/filters), le [routage](xref:fundamentals/routing) et la [liaison de données](xref:mvc/models/model-binding). Les tests couvrant les interactions entre les composants qui répondent collectivement à une requête sont gérés par des *tests d’intégration*. Pour plus d’informations sur les tests d’intégration, consultez <xref:test/integration-tests>.
+Configurez des tests unitaires d’actions de contrôleur pour qu’ils s’attachent uniquement au comportement du contrôleur. Un test unitaire de contrôleur évite des scénarios, tels que les [filtres](xref:mvc/controllers/filters), le [routage](xref:fundamentals/routing) et la [liaison de données](xref:mvc/models/model-binding). Les tests couvrant les interactions entre les composants qui répondent collectivement à une requête sont gérés par des *tests d’intégration* . Pour plus d’informations sur les tests d’intégration, consultez <xref:test/integration-tests>.
 
 Si vous écrivez des routes et des filtres personnalisés, testez-les de manière isolée avec des tests unitaires plutôt que dans le cadre de tests exécutés sur une action de contrôleur spécifique.
 
@@ -252,7 +253,7 @@ Les appels fictifs qui ne sont pas appelés sont normalement ignorés, mais l’
 > [!NOTE]
 > La bibliothèque Moq utilisée dans cet exemple permet la combinaison d’éléments fictifs vérifiables (ou « stricts ») avec des éléments fictifs non vérifiables (également appelés stubs ou éléments « lâches »). Découvrez plus d’informations sur la [personnalisation des éléments fictifs avec Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-Dans l’exemple d’application, [SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) affiche des informations relatives à une session de brainstorming. Le contrôleur inclut la logique pour traiter des valeurs `id` non valides (il existe deux scénarios `return` dans l’exemple suivant pour couvrir ces scénarios). La dernière instruction `return` retourne un nouveau `StormSessionViewModel` à la vue (*Controllers/SessionController.cs*) :
+Dans l’exemple d’application, [SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) affiche des informations relatives à une session de brainstorming. Le contrôleur inclut la logique pour traiter des valeurs `id` non valides (il existe deux scénarios `return` dans l’exemple suivant pour couvrir ces scénarios). La dernière instruction `return` retourne un nouveau `StormSessionViewModel` à la vue ( *Controllers/SessionController.cs* ) :
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -355,10 +356,10 @@ Pour un `id` de session valide, le dernier test confirme que :
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:test/integration-tests>
 * [Créer et exécuter des tests unitaires avec Visual Studio](/visualstudio/test/unit-test-your-code)
-* [Bibliothèque de tests MyTested. AspNetCore. Mvc-Fluent pour ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): bibliothèque de tests unitaires fortement typés, fournissant une interface Fluent pour tester les applications MVC et API Web. (*Non géré ou pris en charge par Microsoft.*)
-* [JustMockLite](https://github.com/telerik/JustMockLite): un Framework fictif pour les développeurs .net. (*Non géré ou pris en charge par Microsoft.*)
+* [Bibliothèque de tests MyTested. AspNetCore. Mvc-Fluent pour ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): bibliothèque de tests unitaires fortement typés, fournissant une interface Fluent pour tester les applications MVC et API Web. ( *Non géré ou pris en charge par Microsoft.* )
+* [JustMockLite](https://github.com/telerik/JustMockLite): un Framework fictif pour les développeurs .net. ( *Non géré ou pris en charge par Microsoft.* )
 

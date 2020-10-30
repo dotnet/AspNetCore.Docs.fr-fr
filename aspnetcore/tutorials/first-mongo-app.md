@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 08/17/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 61f72c4d281e7957b520e1660440e536ebd4c78a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 350df417886fe1ea5fef89dc221c217d596768b3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631769"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060740"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Créer une API web avec ASP.NET Core et MongoDB
 
@@ -69,7 +70,7 @@ Dans ce tutoriel, vous allez apprendre à :
 
 ## <a name="configure-mongodb"></a>Configurer MongoDB
 
-Si vous utilisez Windows, MongoDB est installé par défaut dans *C:\\Program Files\\MongoDB*. Ajoutez *C : \\ Program Files de l' \\ \\ \\ \<version_number> \\ emplacement du serveur MongoDB* à la `Path` variable d’environnement. Cette modification permet d’accéder à MongoDB depuis n’importe quel emplacement sur votre ordinateur de développement.
+Si vous utilisez Windows, MongoDB est installé par défaut dans *C:\\Program Files\\MongoDB* . Ajoutez *C : \\ Program Files de l' \\ \\ \\ \<version_number> \\ emplacement du serveur MongoDB* à la `Path` variable d’environnement. Cette modification permet d’accéder à MongoDB depuis n’importe quel emplacement sur votre ordinateur de développement.
 
 Utilisez l’interpréteur de commandes mongo dans les étapes suivantes pour créer une base de données, des collections, et stocker des documents. Pour plus d’informations sur les commandes de l’interpréteur mongo, consultez [Utilisation de l’interpréteur de commandes mongo](https://docs.mongodb.com/manual/mongo/#working-with-the-mongo-shell).
 
@@ -158,13 +159,13 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>Créer le projet d’API web ASP.NET Core
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Accédez à **fichier** > **nouveau** > **projet**.
-1. Sélectionnez le type de projet **Application web ASP.NET Core**, puis sélectionnez **Suivant**.
-1. Nommez le projet *BooksApi*, puis sélectionnez **Créer**.
-1. Sélectionnez le framework cible **.NET Core** et **ASP.NET Core 3.0**. Sélectionnez le modèle de projet **API**, puis sélectionnez **Créer**.
-1. Visitez la [galerie NuGet : MongoDB. Driver](https://www.nuget.org/packages/MongoDB.Driver/) pour déterminer la dernière version stable du pilote .net pour MongoDB. Dans la fenêtre **Console du Gestionnaire de Package**, accédez à la racine du projet. Exécutez la commande suivante afin d’installer le pilote .NET pour MongoDB :
+1. Accédez à **fichier** > **nouveau** > **projet** .
+1. Sélectionnez le type de projet **Application web ASP.NET Core** , puis sélectionnez **Suivant** .
+1. Nommez le projet *BooksApi* , puis sélectionnez **Créer** .
+1. Sélectionnez le framework cible **.NET Core** et **ASP.NET Core 3.0** . Sélectionnez le modèle de projet **API** , puis sélectionnez **Créer** .
+1. Visitez la [galerie NuGet : MongoDB. Driver](https://www.nuget.org/packages/MongoDB.Driver/) pour déterminer la dernière version stable du pilote .net pour MongoDB. Dans la fenêtre **Console du Gestionnaire de Package** , accédez à la racine du projet. Exécutez la commande suivante afin d’installer le pilote .NET pour MongoDB :
 
    ```powershell
    Install-Package MongoDB.Driver -Version {VERSION}
@@ -181,7 +182,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
    Un nouveau projet API web ASP.NET Core ciblant .NET Core est généré et ouvert dans Visual Studio Code.
 
-1. Une fois que l’icône de flamme OmniSharp de la barre d’État devient verte, une boîte de dialogue demande les **ressources requises à générer et à déboguer manquantes dans « BooksApi ». Ajoutez-les ?**. Sélectionnez **Oui**.
+1. Une fois que l’icône de flamme OmniSharp de la barre d’État devient verte, une boîte de dialogue demande les **ressources requises à générer et à déboguer manquantes dans « BooksApi ». Ajoutez-les ?** . Sélectionnez **Oui** .
 1. Visitez la [galerie NuGet : MongoDB. Driver](https://www.nuget.org/packages/MongoDB.Driver/) pour déterminer la dernière version stable du pilote .net pour MongoDB. Ouvrez **Terminal intégré** et accédez à la racine du projet. Exécutez la commande suivante afin d’installer le pilote .NET pour MongoDB :
 
    ```dotnetcli
@@ -191,12 +192,12 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 1. Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez **fichier**  >  **nouvelle solution**  >  **application .net Core**  >  **App** dans la barre latérale. Dans la version 8,6 ou ultérieure, sélectionnez **fichier**  >  **nouvelle solution**  >  **Web et**  >  **application** console dans la barre latérale.
-1. Sélectionnez le modèle de projet **ASP.net Core** > **API** C#, puis sélectionnez **suivant**.
-1. Sélectionnez **.net Core 3,1** dans la liste déroulante **Framework cible** , puis sélectionnez **suivant**.
-1. Entrez *BooksApi* pour **Nom de projet**, puis sélectionnez **Créer**.
-1. Dans le panneau **Solution**, cliquez avec le bouton droit sur le nœud **Dépendances** du projet, puis sélectionnez **Ajouter des packages**.
-1. Entrez *MongoDB.Driver* dans la zone de recherche, sélectionnez le package *MongoDB.Driver*, puis sélectionnez **Ajouter un package**.
-1. Sélectionnez le bouton **Accepter** dans la boîte de dialogue **Acceptation de la licence**.
+1. Sélectionnez le modèle de projet **ASP.net Core** > **API** C#, puis sélectionnez **suivant** .
+1. Sélectionnez **.net Core 3,1** dans la liste déroulante **Framework cible** , puis sélectionnez **suivant** .
+1. Entrez *BooksApi* pour **Nom de projet** , puis sélectionnez **Créer** .
+1. Dans le panneau **Solution** , cliquez avec le bouton droit sur le nœud **Dépendances** du projet, puis sélectionnez **Ajouter des packages** .
+1. Entrez *MongoDB.Driver* dans la zone de recherche, sélectionnez le package *MongoDB.Driver* , puis sélectionnez **Ajouter un package** .
+1. Sélectionnez le bouton **Accepter** dans la boîte de dialogue **Acceptation de la licence** .
 
 ---
 
@@ -239,7 +240,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
 ## <a name="add-a-configuration-model"></a>Ajouter un modèle de configuration
 
-1. Ajoutez les valeurs de configuration de base de données suivantes à *appsettings.json* :
+1. Ajoutez les valeurs de configuration de la base de données suivantes à *appsettings.json* :
 
    [!code-json[](first-mongo-app/samples/3.x/SampleApp/appsettings.json?highlight=2-6)]
 
@@ -247,7 +248,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Models/BookstoreDatabaseSettings.cs)]
 
-   La classe `BookstoreDatabaseSettings` précédente est utilisée pour stocker les valeurs de propriété `BookstoreDatabaseSettings` du fichier * appsettings.json*. Les noms de propriétés JSON et C# sont nommés de manière identique pour faciliter le processus de mappage.
+   La `BookstoreDatabaseSettings` classe précédente est utilisée pour stocker les *appsettings.json* valeurs de `BookstoreDatabaseSettings` propriété du fichier. Les noms de propriétés JSON et C# sont nommés de manière identique pour faciliter le processus de mappage.
 
 1. Ajoutez le code en surbrillance suivant à `Startup.ConfigureServices` :
 
@@ -255,7 +256,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
    Dans le code précédent :
 
-   * L’instance de configuration à laquelle la section `BookstoreDatabaseSettings` du fichier *appsettings.json* est liée est inscrite dans le conteneur d’injection de dépendances. Par exemple, la propriété `ConnectionString` d’un objet `BookstoreDatabaseSettings` est peuplée avec la propriété `BookstoreDatabaseSettings:ConnectionString` dans *appsettings.json*.
+   * L’instance de configuration vers laquelle la *appsettings.json* section du fichier `BookstoreDatabaseSettings` est liée est inscrite dans le conteneur d’injection de dépendance (di). Par exemple, `BookstoreDatabaseSettings` la propriété d’un objet `ConnectionString` est remplie avec la `BookstoreDatabaseSettings:ConnectionString` propriété dans *appsettings.json* .
    * L’interface `IBookstoreDatabaseSettings` est inscrite auprès de l’injection de dépendances avec une [durée de vie de service](xref:fundamentals/dependency-injection#service-lifetimes) de singleton. Une fois injectée, l’instance d’interface est résolue en objet `BookstoreDatabaseSettings`.
 
 1. Ajoutez le code suivant en haut de *Startup.cs* pour résoudre les références à `BookstoreDatabaseSettings` et `IBookstoreDatabaseSettings` :
@@ -269,7 +270,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Services/BookService.cs?name=snippet_BookServiceClass)]
 
-   Dans le code précédent, une instance de `IBookstoreDatabaseSettings` est récupérée à partir de l’injection de dépendances via l’injection de constructeur. Cette technique permet d’accéder aux valeurs de configuration d’*appsettings.json*, qui ont été ajoutées à la section [Ajouter un modèle de configuration](#add-a-configuration-model).
+   Dans le code précédent, une instance de `IBookstoreDatabaseSettings` est récupérée à partir de l’injection de dépendances via l’injection de constructeur. Cette technique permet d’accéder aux *appsettings.json* valeurs de configuration qui ont été ajoutées dans la section [Ajouter un modèle de configuration](#add-a-configuration-model) .
 
 1. Ajoutez le code en surbrillance suivant à `Startup.ConfigureServices` :
 
@@ -365,7 +366,7 @@ Pour satisfaire les exigences précédentes, apportez les changements suivants 
 
    À la suite du changement effectué, les noms de propriétés de la réponse JSON sérialisée de l’API web correspondent aux noms de propriétés équivalents du type d’objet CLR. Par exemple, la propriété `Author` de la classe `Book` est sérialisée en tant que `Author`.
 
-1. Dans *Models/Book. cs*, annotez la `BookName` propriété avec l' [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) attribut suivant :
+1. Dans *Models/Book. cs* , annotez la `BookName` propriété avec l' [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) attribut suivant :
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 
@@ -419,7 +420,7 @@ Dans ce tutoriel, vous allez apprendre à :
 
 ## <a name="configure-mongodb"></a>Configurer MongoDB
 
-Si vous utilisez Windows, MongoDB est installé par défaut dans *C:\\Program Files\\MongoDB*. Ajoutez *C : \\ Program Files de l' \\ \\ \\ \<version_number> \\ emplacement du serveur MongoDB* à la `Path` variable d’environnement. Cette modification permet d’accéder à MongoDB depuis n’importe quel emplacement sur votre ordinateur de développement.
+Si vous utilisez Windows, MongoDB est installé par défaut dans *C:\\Program Files\\MongoDB* . Ajoutez *C : \\ Program Files de l' \\ \\ \\ \<version_number> \\ emplacement du serveur MongoDB* à la `Path` variable d’environnement. Cette modification permet d’accéder à MongoDB depuis n’importe quel emplacement sur votre ordinateur de développement.
 
 Utilisez l’interpréteur de commandes mongo dans les étapes suivantes pour créer une base de données, des collections, et stocker des documents. Pour plus d’informations sur les commandes de l’interpréteur mongo, consultez [Utilisation de l’interpréteur de commandes mongo](https://docs.mongodb.com/manual/mongo/#working-with-the-mongo-shell).
 
@@ -508,13 +509,13 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>Créer le projet d’API web ASP.NET Core
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Accédez à **fichier** > **nouveau** > **projet**.
-1. Sélectionnez le type de projet **Application web ASP.NET Core**, puis sélectionnez **Suivant**.
-1. Nommez le projet *BooksApi*, puis sélectionnez **Créer**.
-1. Sélectionnez la version cible de .NET Framework **.NET Core** et **ASP.NET Core 2.2**. Sélectionnez le modèle de projet **API**, puis sélectionnez **Créer**.
-1. Visitez la [galerie NuGet : MongoDB. Driver](https://www.nuget.org/packages/MongoDB.Driver/) pour déterminer la dernière version stable du pilote .net pour MongoDB. Dans la fenêtre **Console du Gestionnaire de Package**, accédez à la racine du projet. Exécutez la commande suivante afin d’installer le pilote .NET pour MongoDB :
+1. Accédez à **fichier** > **nouveau** > **projet** .
+1. Sélectionnez le type de projet **Application web ASP.NET Core** , puis sélectionnez **Suivant** .
+1. Nommez le projet *BooksApi* , puis sélectionnez **Créer** .
+1. Sélectionnez la version cible de .NET Framework **.NET Core** et **ASP.NET Core 2.2** . Sélectionnez le modèle de projet **API** , puis sélectionnez **Créer** .
+1. Visitez la [galerie NuGet : MongoDB. Driver](https://www.nuget.org/packages/MongoDB.Driver/) pour déterminer la dernière version stable du pilote .net pour MongoDB. Dans la fenêtre **Console du Gestionnaire de Package** , accédez à la racine du projet. Exécutez la commande suivante afin d’installer le pilote .NET pour MongoDB :
 
    ```powershell
    Install-Package MongoDB.Driver -Version {VERSION}
@@ -531,7 +532,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
    Un nouveau projet API web ASP.NET Core ciblant .NET Core est généré et ouvert dans Visual Studio Code.
 
-1. Une fois que l’icône de flamme OmniSharp de la barre d’État devient verte, une boîte de dialogue demande les **ressources requises à générer et à déboguer manquantes dans « BooksApi ». Ajoutez-les ?**. Sélectionnez **Oui**.
+1. Une fois que l’icône de flamme OmniSharp de la barre d’État devient verte, une boîte de dialogue demande les **ressources requises à générer et à déboguer manquantes dans « BooksApi ». Ajoutez-les ?** . Sélectionnez **Oui** .
 1. Visitez la [galerie NuGet : MongoDB. Driver](https://www.nuget.org/packages/MongoDB.Driver/) pour déterminer la dernière version stable du pilote .net pour MongoDB. Ouvrez **Terminal intégré** et accédez à la racine du projet. Exécutez la commande suivante afin d’installer le pilote .NET pour MongoDB :
 
    ```dotnetcli
@@ -541,12 +542,12 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 1. Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez **fichier**  >  **nouvelle solution**  >  **application .net Core**  >  **App** dans la barre latérale. Dans la version 8,6 ou ultérieure, sélectionnez **fichier**  >  **nouvelle solution**  >  **Web et**  >  **application** console dans la barre latérale.
-1. Sélectionnez le modèle de projet C# **API web ASP.NET Core**, puis sélectionnez **Suivant**.
-1. Sélectionnez **.NET Core 2.2** dans la liste déroulante **Framework cible**, puis sélectionnez **Suivant**.
-1. Entrez *BooksApi* pour **Nom de projet**, puis sélectionnez **Créer**.
-1. Dans le panneau **Solution**, cliquez avec le bouton droit sur le nœud **Dépendances** du projet, puis sélectionnez **Ajouter des packages**.
-1. Entrez *MongoDB.Driver* dans la zone de recherche, sélectionnez le package *MongoDB.Driver*, puis sélectionnez **Ajouter un package**.
-1. Sélectionnez le bouton **Accepter** dans la boîte de dialogue **Acceptation de la licence**.
+1. Sélectionnez le modèle de projet C# **API web ASP.NET Core** , puis sélectionnez **Suivant** .
+1. Sélectionnez **.NET Core 2.2** dans la liste déroulante **Framework cible** , puis sélectionnez **Suivant** .
+1. Entrez *BooksApi* pour **Nom de projet** , puis sélectionnez **Créer** .
+1. Dans le panneau **Solution** , cliquez avec le bouton droit sur le nœud **Dépendances** du projet, puis sélectionnez **Ajouter des packages** .
+1. Entrez *MongoDB.Driver* dans la zone de recherche, sélectionnez le package *MongoDB.Driver* , puis sélectionnez **Ajouter un package** .
+1. Sélectionnez le bouton **Accepter** dans la boîte de dialogue **Acceptation de la licence** .
 
 ---
 
@@ -589,7 +590,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
 ## <a name="add-a-configuration-model"></a>Ajouter un modèle de configuration
 
-1. Ajoutez les valeurs de configuration de base de données suivantes à *appsettings.json* :
+1. Ajoutez les valeurs de configuration de la base de données suivantes à *appsettings.json* :
 
    [!code-json[](first-mongo-app/samples/2.x/SampleApp/appsettings.json?highlight=2-6)]
 
@@ -597,7 +598,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Models/BookstoreDatabaseSettings.cs)]
 
-   La classe `BookstoreDatabaseSettings` précédente est utilisée pour stocker les valeurs de propriété `BookstoreDatabaseSettings` du fichier * appsettings.json*. Les noms de propriétés JSON et C# sont nommés de manière identique pour faciliter le processus de mappage.
+   La `BookstoreDatabaseSettings` classe précédente est utilisée pour stocker les *appsettings.json* valeurs de `BookstoreDatabaseSettings` propriété du fichier. Les noms de propriétés JSON et C# sont nommés de manière identique pour faciliter le processus de mappage.
 
 1. Ajoutez le code en surbrillance suivant à `Startup.ConfigureServices` :
 
@@ -605,7 +606,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
    Dans le code précédent :
 
-   * L’instance de configuration à laquelle la section `BookstoreDatabaseSettings` du fichier *appsettings.json* est liée est inscrite dans le conteneur d’injection de dépendances. Par exemple, la propriété `ConnectionString` d’un objet `BookstoreDatabaseSettings` est peuplée avec la propriété `BookstoreDatabaseSettings:ConnectionString` dans *appsettings.json*.
+   * L’instance de configuration vers laquelle la *appsettings.json* section du fichier `BookstoreDatabaseSettings` est liée est inscrite dans le conteneur d’injection de dépendance (di). Par exemple, `BookstoreDatabaseSettings` la propriété d’un objet `ConnectionString` est remplie avec la `BookstoreDatabaseSettings:ConnectionString` propriété dans *appsettings.json* .
    * L’interface `IBookstoreDatabaseSettings` est inscrite auprès de l’injection de dépendances avec une [durée de vie de service](xref:fundamentals/dependency-injection#service-lifetimes) de singleton. Une fois injectée, l’instance d’interface est résolue en objet `BookstoreDatabaseSettings`.
 
 1. Ajoutez le code suivant en haut de *Startup.cs* pour résoudre les références à `BookstoreDatabaseSettings` et `IBookstoreDatabaseSettings` :
@@ -619,7 +620,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Services/BookService.cs?name=snippet_BookServiceClass)]
 
-   Dans le code précédent, une instance de `IBookstoreDatabaseSettings` est récupérée à partir de l’injection de dépendances via l’injection de constructeur. Cette technique permet d’accéder aux valeurs de configuration d’*appsettings.json*, qui ont été ajoutées à la section [Ajouter un modèle de configuration](#add-a-configuration-model).
+   Dans le code précédent, une instance de `IBookstoreDatabaseSettings` est récupérée à partir de l’injection de dépendances via l’injection de constructeur. Cette technique permet d’accéder aux *appsettings.json* valeurs de configuration qui ont été ajoutées dans la section [Ajouter un modèle de configuration](#add-a-configuration-model) .
 
 1. Ajoutez le code en surbrillance suivant à `Startup.ConfigureServices` :
 
@@ -713,7 +714,7 @@ Pour satisfaire les exigences précédentes, apportez les changements suivants 
 
    À la suite du changement effectué, les noms de propriétés de la réponse JSON sérialisée de l’API web correspondent aux noms de propriétés équivalents du type d’objet CLR. Par exemple, la propriété `Author` de la classe `Book` est sérialisée en tant que `Author`.
 
-1. Dans *Models/Book. cs*, annotez la `BookName` propriété avec l' [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) attribut suivant :
+1. Dans *Models/Book. cs* , annotez la `BookName` propriété avec l' [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) attribut suivant :
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 

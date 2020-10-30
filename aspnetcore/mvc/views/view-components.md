@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 32ae699c4ef501096a9c4ab7bca6673139910f02
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e0ff97b53d12fbf6c6a89e94704de1aee9d7f9e6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635084"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060584"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -95,9 +96,9 @@ Le Runtime recherche la vue dans les chemins suivants :
 
 Le chemin de recherche s’applique aux projets qui utilisent des contrôleurs, des vues et des Razor pages.
 
-Le nom de la vue par défaut pour un composant de vue est *Default*. Votre fichier de vue est donc normalement appelé *Default.cshtml*. Vous pouvez spécifier un nom de vue différent quand vous créez le résultat du composant de vue ou quand vous appelez la méthode `View`.
+Le nom de la vue par défaut pour un composant de vue est *Default* . Votre fichier de vue est donc normalement appelé *Default.cshtml* . Vous pouvez spécifier un nom de vue différent quand vous créez le résultat du composant de vue ou quand vous appelez la méthode `View`.
 
-Nous vous recommandons de nommer le fichier de vue *Default.cshtml* et d’utiliser le chemin *Views/Shared/Components/{View Component Name}/{View Name}*. Le composant de vue `PriorityList` montré dans cet exemple utilise le chemin *Views/Shared/Components/PriorityList/Default.cshtml* pour la vue.
+Nous vous recommandons de nommer le fichier de vue *Default.cshtml* et d’utiliser le chemin *Views/Shared/Components/{View Component Name}/{View Name}* . Le composant de vue `PriorityList` montré dans cet exemple utilise le chemin *Views/Shared/Components/PriorityList/Default.cshtml* pour la vue.
 
 ### <a name="customize-the-view-search-path"></a>Personnaliser le chemin de recherche d’affichage
 
@@ -115,7 +116,7 @@ Pour utiliser le composant de vue, appelez-le dans une vue, comme ci-dessous :
 @await Component.InvokeAsync("Name of view component", {Anonymous Type Containing Parameters})
 ```
 
-Les paramètres sont passés à la méthode `InvokeAsync`. Le composant de vue `PriorityList` décrit dans cet article est appelé du fichier de vue *Views/ToDo/Index.cshtml*. Dans le code suivant, la méthode `InvokeAsync` est appelée avec deux paramètres :
+Les paramètres sont passés à la méthode `InvokeAsync`. Le composant de vue `PriorityList` décrit dans cet article est appelé du fichier de vue *Views/ToDo/Index.cshtml* . Dans le code suivant, la méthode `InvokeAsync` est appelée avec deux paramètres :
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexFinal.cshtml?range=35)]
 
@@ -166,7 +167,7 @@ Dans cet exemple, le composant de vue est appelé directement du contrôleur :
 
 ## <a name="walkthrough-creating-a-simple-view-component"></a>Procédure pas à pas : Création d’un composant de vue simple
 
-[Téléchargez](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample), générez et testez le code de démarrage. Il s’agit d’un projet simple avec un contrôleur `ToDo` qui affiche une liste de tâches *ToDo*.
+[Téléchargez](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample), générez et testez le code de démarrage. Il s’agit d’un projet simple avec un contrôleur `ToDo` qui affiche une liste de tâches *ToDo* .
 
 ![Liste des tâches Todo](view-components/_static/2dos.png)
 
@@ -179,7 +180,7 @@ Créez un dossier *ViewComponents* et ajoutez la classe `PriorityListViewCompone
 Remarques sur le code :
 
 * Les classes ViewComponent peuvent être ajoutées à **n’importe** quel dossier dans le projet.
-* Étant donné que le nom de classe PriorityList**ViewComponent** se termine par le suffixe **ViewComponent**, le Runtime utilise la chaîne « PriorityList » pour référencer le composant de la classe à partir d’une vue. J’expliquerai ce point plus en détail plus tard.
+* Étant donné que le nom de classe PriorityList **ViewComponent** se termine par le suffixe **ViewComponent** , le Runtime utilise la chaîne « PriorityList » pour référencer le composant de la classe à partir d’une vue. J’expliquerai ce point plus en détail plus tard.
 * L’attribut `[ViewComponent]` peut changer le nom utilisé pour faire référence à un composant de vue. Par exemple, nous pourrions avoir nommé la classe `XYZ` et appliqué l’attribut `ViewComponent` :
 
   ```csharp
@@ -194,18 +195,18 @@ Remarques sur le code :
 
 ### <a name="create-the-view-component-no-locrazor-view"></a>Créer la vue de composant de vue Razor
 
-* Créez le dossier *Views/Shared/Components*. Ce dossier **doit** être nommé *Components*.
+* Créez le dossier *Views/Shared/Components* . Ce dossier **doit** être nommé *Components* .
 
-* Créez le dossier *Views/Shared/Components/PriorityList*. Ce nom de dossier doit correspondre au nom de la classe du composant de vue, ou au nom de la classe sans le suffixe (dans le cas où vous avez suivi la convention et utilisé le suffixe *ViewComponent* dans le nom de la classe). Si vous avez utilisé l’attribut `ViewComponent`, le nom de la classe doit correspondre à la désignation de l’attribut.
+* Créez le dossier *Views/Shared/Components/PriorityList* . Ce nom de dossier doit correspondre au nom de la classe du composant de vue, ou au nom de la classe sans le suffixe (dans le cas où vous avez suivi la convention et utilisé le suffixe *ViewComponent* dans le nom de la classe). Si vous avez utilisé l’attribut `ViewComponent`, le nom de la classe doit correspondre à la désignation de l’attribut.
 
 * Créer une vue *Views/Shared/Components/PriorityList/default. cshtml* Razor :
 
 
   [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
 
-   La Razor vue prend la liste `TodoItem` et les affiche. Si la méthode `InvokeAsync` du composant de vue ne passe pas le nom de la vue (comme dans notre exemple), le nom de vue *Default* est utilisé par convention. Je vous montrerai comment passer le nom de la vue plus tard dans ce didacticiel. Pour substituer le style par défaut d’un contrôleur spécifique, ajoutez une vue dans le dossier des vues du contrôleur (par exemple, *Views/ToDo/Components/PriorityList/Default.cshtml)*.
+   La Razor vue prend la liste `TodoItem` et les affiche. Si la méthode `InvokeAsync` du composant de vue ne passe pas le nom de la vue (comme dans notre exemple), le nom de vue *Default* est utilisé par convention. Je vous montrerai comment passer le nom de la vue plus tard dans ce didacticiel. Pour substituer le style par défaut d’un contrôleur spécifique, ajoutez une vue dans le dossier des vues du contrôleur (par exemple, *Views/ToDo/Components/PriorityList/Default.cshtml)* .
 
-    Si le composant de vue est spécifique au contrôleur, vous pouvez l’ajouter au dossier du contrôleur (*Views/ToDo/Components/PriorityList/Default.cshtml*).
+    Si le composant de vue est spécifique au contrôleur, vous pouvez l’ajouter au dossier du contrôleur ( *Views/ToDo/Components/PriorityList/Default.cshtml* ).
 
 * Ajoutez une balise `div` contenant un appel au composant de liste des priorités à la fin du fichier *Views/ToDo/index.cshtml* :
 
@@ -229,7 +230,7 @@ Un composant de vue complexe peut avoir besoin de spécifier une autre vue que l
 
 [!code-csharp[](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9&range=28-39)]
 
-Copiez le fichier *Views/Shared/Components/PriorityList/Default.cshtml* dans une vue nommée *Views/Shared/Components/PriorityList/PVC.cshtml*. Ajoutez un titre pour indiquer que la vue PVC est utilisée.
+Copiez le fichier *Views/Shared/Components/PriorityList/Default.cshtml* dans une vue nommée *Views/Shared/Components/PriorityList/PVC.cshtml* . Ajoutez un titre pour indiquer que la vue PVC est utilisée.
 
 [!code-cshtml[](../../mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml?highlight=3)]
 
@@ -248,7 +249,7 @@ Si la vue PVC ne s’affiche pas, vérifiez que vous appelez le composant de vue
 ### <a name="examine-the-view-path"></a>Vérifier le chemin de la vue
 
 * Changez le paramètre de priorité à une priorité inférieure ou égale à 3 pour empêcher l’affichage de la vue des priorités.
-* Renommez temporairement *Views/ToDo/Components/PriorityList/Default.cshtml* en *1Default.cshtml*.
+* Renommez temporairement *Views/ToDo/Components/PriorityList/Default.cshtml* en *1Default.cshtml* .
 * Testez l’application. Vous obtenez l’erreur suivante :
 
    ```
@@ -259,9 +260,9 @@ Si la vue PVC ne s’affiche pas, vérifiez que vous appelez le composant de vue
    EnsureSuccessful
    ```
 
-* Copiez *Views/ToDo/Components/PriorityList/1Default.cshtml* vers *Views/Shared/Components/PriorityList/Default.cshtml*.
-* Ajoutez du balisage à la vue ToDo *Shared* du composant de vue pour indiquer que la vue provient du dossier *Shared*.
-* Testez la vue de composant **Shared**.
+* Copiez *Views/ToDo/Components/PriorityList/1Default.cshtml* vers *Views/Shared/Components/PriorityList/Default.cshtml* .
+* Ajoutez du balisage à la vue ToDo *Shared* du composant de vue pour indiquer que la vue provient du dossier *Shared* .
+* Testez la vue de composant **Shared** .
 
 ![Affichage de tâches ToDo avec la vue de composant Shared](view-components/_static/shared.png)
 
@@ -290,7 +291,7 @@ public class PriorityList : ViewComponent
 }
 ```
 
-Le fichier du composant de vue Razor répertorie les chaînes passées à la `Invoke` méthode (*views/domotique/Components/PriorityList/default. cshtml*) :
+Le fichier du composant de vue Razor répertorie les chaînes passées à la `Invoke` méthode ( *views/domotique/Components/PriorityList/default. cshtml* ) :
 
 ```cshtml
 @model List<string>
@@ -306,7 +307,7 @@ Le fichier du composant de vue Razor répertorie les chaînes passées à la `In
 
 ::: moniker range=">= aspnetcore-1.1"
 
-Le composant de vue est appelé dans un Razor fichier (par exemple, *views/orig/index. cshtml*) à l’aide de l’une des approches suivantes :
+Le composant de vue est appelé dans un Razor fichier (par exemple, *views/orig/index. cshtml* ) à l’aide de l’une des approches suivantes :
 
 * <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>
 * [Tag Helper](xref:mvc/views/tag-helpers/intro)
@@ -317,7 +318,7 @@ Pour utiliser l’approche <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>,
 
 ::: moniker range="< aspnetcore-1.1"
 
-Le composant de vue est appelé dans un Razor fichier (par exemple, *views/orig/index. cshtml*) avec <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> .
+Le composant de vue est appelé dans un Razor fichier (par exemple, *views/orig/index. cshtml* ) avec <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> .
 
 Appelez `Component.InvokeAsync` :
 
@@ -354,6 +355,6 @@ Chaque paramètre d’un composant de vue est un attribut requis. Consultez [ce 
 * ViewComponent n’affiche aucun balisage.
 * Aucune erreur n’est levée.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Injection de dépendances dans les vues](xref:mvc/views/dependency-injection)

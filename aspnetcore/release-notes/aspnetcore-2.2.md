@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: 085a26d508af5bdce506ab923a3256046b3894ab
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 67581904c686b0f8b6736b751c8e3f1545f6a286
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722486"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059700"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Nouveautés d’ASP.NET Core 2.2
 
@@ -49,7 +50,7 @@ ASP.NET Core 2.2 utilise un nouveau système de *routage de point de terminaison
 Pour plus d’informations, consultez les ressources suivantes :
 
 * [Routage de point de terminaison dans la version 2.2](https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/)
-* [Transformateurs de paramètres de route](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (consultez la section **Routage**)
+* [Transformateurs de paramètres de route](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (consultez la section **Routage** )
 * [Différences entre le routage IRouter et le routage de point de terminaison](xref:fundamentals/routing?view=aspnetcore-2.2#differences-from-earlier-versions-of-routing)
 
 ## <a name="health-checks"></a>Contrôles d’intégrité
@@ -86,7 +87,7 @@ Dans les versions antérieures d’ASP.NET Core, les options de Kestrel sont con
 
 ## <a name="iis-in-process-hosting"></a>Hébergement in-process d’IIS
 
-Dans les versions antérieures d’ASP.NET Core, IIS sert de proxy inverse. Dans la version 2.2, le module ASP.NET Core peut démarrer CoreCLR et héberger une application au sein du processus worker IIS (*w3wp.exe*). L’hébergement in-process offre des gains en matière de performances et de diagnostic lors de l’exécution avec IIS.
+Dans les versions antérieures d’ASP.NET Core, IIS sert de proxy inverse. Dans la version 2.2, le module ASP.NET Core peut démarrer CoreCLR et héberger une application au sein du processus worker IIS ( *w3wp.exe* ). L’hébergement in-process offre des gains en matière de performances et de diagnostic lors de l’exécution avec IIS.
 
 Pour plus d’informations, consultez [Hébergement in-process pour IIS](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model).
 

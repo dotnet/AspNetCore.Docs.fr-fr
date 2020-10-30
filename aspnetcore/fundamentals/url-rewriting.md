@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/16/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: a1d31428945adade6748185c17d42ef60a61b5dc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e7bd5f4d61661dd23eb0907f896d0d32b7799aac
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631704"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061299"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Intergiciel (middleware) de réécriture d’URL dans ASP.NET Core
 
@@ -97,7 +98,7 @@ Les principales raisons d’utiliser les technologies de réécriture d’URL ba
 
   Mener des tests de performances est la seule façon de savoir exactement quelle approche dégrade le plus les performances ou si la dégradation des performances est négligeable.
 
-## <a name="package"></a>Package
+## <a name="package"></a>Paquet
 
 L’intergiciel (middleware) de réécriture d’URL est fourni par le package [Microsoft.AspNetCore.Rewrite](https://www.nuget.org/packages/Microsoft.AspNetCore.Rewrite), qui est implicitement inclus dans les applications ASP.NET Core.
 
@@ -117,31 +118,31 @@ Trois options permettent à l’application de rediriger des demandes non-`www` 
 
 ### <a name="url-redirect"></a>Redirection d’URL
 
-Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> pour rediriger des requêtes. Le premier paramètre contient votre expression régulière pour la mise en correspondance sur le chemin de l’URL entrante. Le deuxième paramètre est la chaîne de remplacement. Le troisième paramètre, le cas échéant, spécifie le code d’état. Si vous ne spécifiez pas le code d’état, sa valeur par défaut est *302 - Trouvé*, ce qui indique que la ressource est temporairement déplacée ou remplacée.
+Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> pour rediriger des requêtes. Le premier paramètre contient votre expression régulière pour la mise en correspondance sur le chemin de l’URL entrante. Le deuxième paramètre est la chaîne de remplacement. Le troisième paramètre, le cas échéant, spécifie le code d’état. Si vous ne spécifiez pas le code d’état, sa valeur par défaut est *302 - Trouvé* , ce qui indique que la ressource est temporairement déplacée ou remplacée.
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=9)]
 
-Dans un navigateur dans lequel les outils de développement sont activés, effectuez une requête à l’exemple d’application avec le chemin `/redirect-rule/1234/5678`. L’expression régulière établit une correspondance avec le chemin de la requête sur `redirect-rule/(.*)`, et le chemin est remplacé par `/redirected/1234/5678`. L’URL de redirection est renvoyée au client avec le code d’état *302 - Trouvé*. Le navigateur effectue une nouvelle requête à l’URL de redirection, qui apparaît dans la barre d’adresse du navigateur. Comme aucune règle de l’exemple d’application ne correspond sur l’URL de redirection :
+Dans un navigateur dans lequel les outils de développement sont activés, effectuez une requête à l’exemple d’application avec le chemin `/redirect-rule/1234/5678`. L’expression régulière établit une correspondance avec le chemin de la requête sur `redirect-rule/(.*)`, et le chemin est remplacé par `/redirected/1234/5678`. L’URL de redirection est renvoyée au client avec le code d’état *302 - Trouvé* . Le navigateur effectue une nouvelle requête à l’URL de redirection, qui apparaît dans la barre d’adresse du navigateur. Comme aucune règle de l’exemple d’application ne correspond sur l’URL de redirection :
 
 * La deuxième requête reçoit une réponse *200 - OK* de l’application.
 * Le corps de la réponse montre l’URL de redirection.
 
-Un aller-retour est effectué avec le serveur quand une URL est *redirigée*.
+Un aller-retour est effectué avec le serveur quand une URL est *redirigée* .
 
 > [!WARNING]
-> Soyez prudent lors de l’établissement de règles de redirection. Les règles de redirection sont évaluées à chaque requête effectuée à l’application, notamment après une redirection. Il est facile de créer accidentellement une *boucle de redirections infinies*.
+> Soyez prudent lors de l’établissement de règles de redirection. Les règles de redirection sont évaluées à chaque requête effectuée à l’application, notamment après une redirection. Il est facile de créer accidentellement une *boucle de redirections infinies* .
 
 Requête d’origine : `/redirect-rule/1234/5678`
 
 ![Fenêtre de navigateur avec les requêtes et les réponses suivies par les Outils de développement](url-rewriting/_static/add_redirect.png)
 
-La partie de l’expression entre parenthèses est appelée *groupe de capture*. Le point (`.`) de l’expression signifie *mettre en correspondance n’importe quel caractère*. L’astérisque (`*`) indique *mettre en correspondance zéro occurrence ou plus du caractère précédent*. Par conséquent, les deux derniers segments de chemin de l’URL, `1234/5678`, sont capturés par le groupe de capture `(.*)`. Toute valeur fournie dans l’URL de la requête après `redirect-rule/` est capturée par ce groupe de capture unique.
+La partie de l’expression entre parenthèses est appelée *groupe de capture* . Le point (`.`) de l’expression signifie *mettre en correspondance n’importe quel caractère* . L’astérisque (`*`) indique *mettre en correspondance zéro occurrence ou plus du caractère précédent* . Par conséquent, les deux derniers segments de chemin de l’URL, `1234/5678`, sont capturés par le groupe de capture `(.*)`. Toute valeur fournie dans l’URL de la requête après `redirect-rule/` est capturée par ce groupe de capture unique.
 
 Dans la chaîne de remplacement, les groupes capturés sont injectés dans la chaîne avec le signe dollar (`$`) suivi du numéro de séquence de la capture. La valeur du premier groupe de capture est obtenue avec `$1`, la deuxième avec `$2`, et ainsi de suite en séquence pour les groupes de capture de votre expression régulière. Comme il n’y a qu’un seul groupe capturé dans l’expression régulière de la règle de redirection de l’exemple d’application, un seul groupe est injecté dans la chaîne de remplacement, à savoir `$1`. Quand la règle est appliquée, l’URL devient `/redirected/1234/5678`.
 
 ### <a name="url-redirect-to-a-secure-endpoint"></a>Redirection d’URL vers un point de terminaison sécurisé
 
-Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttps*> pour rediriger les requêtes HTTP vers le même hôte et le même chemin avec le protocole HTTPS. Si le code d’état n’est pas fourni, le middleware utilise par défaut *302 - Trouvé*. Si le port n’est pas fourni :
+Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttps*> pour rediriger les requêtes HTTP vers le même hôte et le même chemin avec le protocole HTTPS. Si le code d’état n’est pas fourni, le middleware utilise par défaut *302 - Trouvé* . Si le port n’est pas fourni :
 
 * Le middleware utilise par défaut `null`.
 * Le schéma change en `https` (protocole HTTPS), et le client accède à la ressource sur le port 443.
@@ -158,7 +159,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttpsPermanent*> pour rediriger les requêtes non sécurisées vers le même hôte et le même chemin avec le protocole HTTPS sécurisé sur le port 443. Le middleware définit le code d’état sur *301 - Déplacé de façon permanente*.
+Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttpsPermanent*> pour rediriger les requêtes non sécurisées vers le même hôte et le même chemin avec le protocole HTTPS sécurisé sur le port 443. Le middleware définit le code d’état sur *301 - Déplacé de façon permanente* .
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -197,7 +198,7 @@ Le caret (`^`) au début de l’expression signifie que la correspondance commen
 
 Dans l’exemple précédent avec la règle de redirection, `redirect-rule/(.*)`, il n’existe pas de caret (`^`) au début de l’expression régulière. Ainsi, n’importe quel caractère peut précéder `redirect-rule/` dans le chemin pour qu’une correspondance soit établie.
 
-| Chemin d’accès                               | Faire correspondre |
+| Chemin d’accès                               | Correspond |
 | ---------------------------------- | :---: |
 | `/redirect-rule/1234/5678`         | Oui   |
 | `/my-cool-redirect-rule/1234/5678` | Oui   |
@@ -205,15 +206,15 @@ Dans l’exemple précédent avec la règle de redirection, `redirect-rule/(.*)`
 
 La règle de réécriture, `^rewrite-rule/(\d+)/(\d+)`, établit une correspondance uniquement avec des chemins d’accès s’ils commencent par `rewrite-rule/`. Dans le tableau suivant, notez la différence de correspondance.
 
-| Chemin d’accès                              | Faire correspondre |
+| Chemin d’accès                              | Correspond |
 | --------------------------------- | :---: |
 | `/rewrite-rule/1234/5678`         | Oui   |
 | `/my-cool-rewrite-rule/1234/5678` | Non    |
 | `/anotherrewrite-rule/1234/5678`  | Non    |
 
-À la suite de la partie `^rewrite-rule/` de l’expression se trouvent deux groupes de capture, `(\d+)/(\d+)`. `\d` signifie *établir une correspondance avec un chiffre (nombre)*. Le signe plus (`+`) signifie *établir une correspondance avec une ou plusieurs occurrences du caractère précédent*. Par conséquent, l’URL doit contenir un nombre suivi d’une barre oblique, elle-même suivie d’un autre nombre. Ces groupes sont injectés dans l’URL réécrite sous la forme `$1` et `$2`. La chaîne de remplacement de la règle de réécriture place les groupes capturés dans la chaîne de requête. Le chemin demandé `/rewrite-rule/1234/5678` est réécrit pour obtenir la ressource à l’emplacement `/rewritten?var1=1234&var2=5678`. Si une chaîne de requête est présente dans la requête d’origine, elle est conservée lors de la réécriture de l’URL.
+À la suite de la partie `^rewrite-rule/` de l’expression se trouvent deux groupes de capture, `(\d+)/(\d+)`. `\d` signifie *établir une correspondance avec un chiffre (nombre)* . Le signe plus (`+`) signifie *établir une correspondance avec une ou plusieurs occurrences du caractère précédent* . Par conséquent, l’URL doit contenir un nombre suivi d’une barre oblique, elle-même suivie d’un autre nombre. Ces groupes sont injectés dans l’URL réécrite sous la forme `$1` et `$2`. La chaîne de remplacement de la règle de réécriture place les groupes capturés dans la chaîne de requête. Le chemin demandé `/rewrite-rule/1234/5678` est réécrit pour obtenir la ressource à l’emplacement `/rewritten?var1=1234&var2=5678`. Si une chaîne de requête est présente dans la requête d’origine, elle est conservée lors de la réécriture de l’URL.
 
-Il n’y a pas d’aller-retour avec le serveur pour obtenir la ressource. Si la ressource existe, elle est récupérée et retournée au client avec le code d’état *200 - OK*. Comme le client n’est pas redirigé, l’URL dans la barre d’adresse du navigateur ne change pas. Les clients ne peuvent pas détecter qu’une opération de réécriture d’URL s’est produite sur le serveur.
+Il n’y a pas d’aller-retour avec le serveur pour obtenir la ressource. Si la ressource existe, elle est récupérée et retournée au client avec le code d’état *200 - OK* . Comme le client n’est pas redirigé, l’URL dans la barre d’adresse du navigateur ne change pas. Les clients ne peuvent pas détecter qu’une opération de réécriture d’URL s’est produite sur le serveur.
 
 > [!NOTE]
 > Quand c’est possible, utilisez `skipRemainingRules: true`, car la mise en correspondance de règles est un processus gourmand en ressources qui augmente le temps de réponse de l’application. Pour obtenir la réponse d’application la plus rapide :
@@ -229,7 +230,7 @@ Un <xref:System.IO.StreamReader> est utilisé pour lire les règles à partir du
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=3-4,12)]
 
-L’exemple d’application redirige les requêtes de `/apache-mod-rules-redirect/(.\*)` vers `/redirected?id=$1`. Le code d’état de la réponse est *302 - Trouvé*.
+L’exemple d’application redirige les requêtes de `/apache-mod-rules-redirect/(.\*)` vers `/redirected?id=$1`. Le code d’état de la réponse est *302 - Trouvé* .
 
 [!code[](url-rewriting/samples/3.x/SampleApp/ApacheModRewrite.txt)]
 
@@ -260,7 +261,7 @@ L’intergiciel prend en charge les variables de serveur Apache mod_rewrite suiv
 * SERVER_ADDR
 * SERVER_PORT
 * SERVER_PROTOCOL
-* TEMPS
+* TIME
 * TIME_DAY
 * TIME_HOUR
 * TIME_MIN
@@ -277,7 +278,7 @@ Un <xref:System.IO.StreamReader> est utilisé pour lire les règles à partir du
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=5-6,13)]
 
-L’exemple d’application réécrit les requêtes de `/iis-rules-rewrite/(.*)` vers `/rewritten?id=$1`. La réponse est envoyée au client avec le code d’état *200 - OK*.
+L’exemple d’application réécrit les requêtes de `/iis-rules-rewrite/(.*)` vers `/rewritten?id=$1`. La réponse est envoyée au client avec le code d’état *200 - OK* .
 
 [!code-xml[](url-rewriting/samples/3.x/SampleApp/IISUrlRewrite.xml)]
 
@@ -330,23 +331,23 @@ Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> pour 
 
 | Réécrire le résultat du contexte               | Action                                                           |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `RuleResult.ContinueRules` (par défaut) | Continuer à appliquer les règles.                                         |
+| `RuleResult.ContinueRules` (valeur par défaut) | Continuer à appliquer les règles.                                         |
 | `RuleResult.EndResponse`             | Cesser d’appliquer les règles et envoyer la réponse.                       |
 | `RuleResult.SkipRemainingRules`      | Cesser d’appliquer les règles et envoyer le contexte au middleware suivant. |
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=14)]
 
-L’exemple d’application présente une méthode qui redirige les requêtes de chemins qui se terminent par *.xml*. Si une requête est faite pour `/file.xml`, la requête est redirigée vers `/xmlfiles/file.xml`. Le code d’état est défini sur *301 - Déplacé de façon permanente*. Quand le navigateur fait une nouvelle requête pour */xmlfiles/file.xml*, le middleware de fichiers statiques délivre le fichier au client à partir du dossier *wwwroot/xmlfiles*. Pour une redirection, définissez explicitement le code d’état de la réponse. Sinon, un code d’état *200 - OK* est retourné et la redirection ne se produit pas sur le client.
+L’exemple d’application présente une méthode qui redirige les requêtes de chemins qui se terminent par *.xml* . Si une requête est faite pour `/file.xml`, la requête est redirigée vers `/xmlfiles/file.xml`. Le code d’état est défini sur *301 - Déplacé de façon permanente* . Quand le navigateur fait une nouvelle requête pour */xmlfiles/file.xml* , le middleware de fichiers statiques délivre le fichier au client à partir du dossier *wwwroot/xmlfiles* . Pour une redirection, définissez explicitement le code d’état de la réponse. Sinon, un code d’état *200 - OK* est retourné et la redirection ne se produit pas sur le client.
 
-*RewriteRules.cs* :
+*RewriteRules.cs*  :
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RedirectXmlFileRequests&highlight=14-18)]
 
-Cette approche peut également réécrire des requêtes. L’exemple d’application montre la réécriture du chemin pour toute requête demandant de délivrer le fichier texte *file.txt* à partir du dossier *wwwroot*. Le middleware de fichiers statiques délivre le fichier en fonction du chemin de requête mis à jour :
+Cette approche peut également réécrire des requêtes. L’exemple d’application montre la réécriture du chemin pour toute requête demandant de délivrer le fichier texte *file.txt* à partir du dossier *wwwroot* . Le middleware de fichiers statiques délivre le fichier en fonction du chemin de requête mis à jour :
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=15,22)]
 
-*RewriteRules.cs* :
+*RewriteRules.cs*  :
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RewriteTextFileRequests&highlight=7-8)]
 
@@ -356,7 +357,7 @@ Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> pour 
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=16-17)]
 
-Les valeurs des paramètres dans l’exemple d’application pour `extension` et `newPath` sont vérifiées afin de remplir plusieurs conditions. `extension` doit contenir une valeur, laquelle doit être *.png*, *.jpg* ou *.gif*. Si `newPath` n’est pas valide, un <xref:System.ArgumentException> est levé. Si une requête est faite pour *image.png*, la requête est redirigée vers `/png-images/image.png`. Si une requête est faite pour *image.jpg*, la requête est redirigée vers `/jpg-images/image.jpg`. Le code d’état est défini sur *301 - Déplacé de façon permanente*, et `context.Result` est défini de façon à cesser le traitement des règles et envoyer la réponse.
+Les valeurs des paramètres dans l’exemple d’application pour `extension` et `newPath` sont vérifiées afin de remplir plusieurs conditions. `extension` doit contenir une valeur, laquelle doit être *.png* , *.jpg* ou *.gif* . Si `newPath` n’est pas valide, un <xref:System.ArgumentException> est levé. Si une requête est faite pour *image.png* , la requête est redirigée vers `/png-images/image.png`. Si une requête est faite pour *image.jpg* , la requête est redirigée vers `/jpg-images/image.jpg`. Le code d’état est défini sur *301 - Déplacé de façon permanente* , et `context.Result` est défini de façon à cesser le traitement des règles et envoyer la réponse.
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RedirectImageRequests)]
 
@@ -449,7 +450,7 @@ Les principales raisons d’utiliser les technologies de réécriture d’URL ba
 
   Mener des tests de performances est la seule façon de savoir exactement quelle approche dégrade le plus les performances ou si la dégradation des performances est négligeable.
 
-## <a name="package"></a>Package
+## <a name="package"></a>Paquet
 
 Pour inclure le middleware dans votre projet, ajoutez une référence de package au [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) dans le fichier projet, qui contient le package [Microsoft.AspNetCore.Rewrite](https://www.nuget.org/packages/Microsoft.AspNetCore.Rewrite).
 
@@ -471,31 +472,31 @@ Trois options permettent à l’application de rediriger des demandes non-`www` 
 
 ### <a name="url-redirect"></a>Redirection d’URL
 
-Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> pour rediriger des requêtes. Le premier paramètre contient votre expression régulière pour la mise en correspondance sur le chemin de l’URL entrante. Le deuxième paramètre est la chaîne de remplacement. Le troisième paramètre, le cas échéant, spécifie le code d’état. Si vous ne spécifiez pas le code d’état, sa valeur par défaut est *302 - Trouvé*, ce qui indique que la ressource est temporairement déplacée ou remplacée.
+Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> pour rediriger des requêtes. Le premier paramètre contient votre expression régulière pour la mise en correspondance sur le chemin de l’URL entrante. Le deuxième paramètre est la chaîne de remplacement. Le troisième paramètre, le cas échéant, spécifie le code d’état. Si vous ne spécifiez pas le code d’état, sa valeur par défaut est *302 - Trouvé* , ce qui indique que la ressource est temporairement déplacée ou remplacée.
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=9)]
 
-Dans un navigateur dans lequel les outils de développement sont activés, effectuez une requête à l’exemple d’application avec le chemin `/redirect-rule/1234/5678`. L’expression régulière établit une correspondance avec le chemin de la requête sur `redirect-rule/(.*)`, et le chemin est remplacé par `/redirected/1234/5678`. L’URL de redirection est renvoyée au client avec le code d’état *302 - Trouvé*. Le navigateur effectue une nouvelle requête à l’URL de redirection, qui apparaît dans la barre d’adresse du navigateur. Comme aucune règle de l’exemple d’application ne correspond sur l’URL de redirection :
+Dans un navigateur dans lequel les outils de développement sont activés, effectuez une requête à l’exemple d’application avec le chemin `/redirect-rule/1234/5678`. L’expression régulière établit une correspondance avec le chemin de la requête sur `redirect-rule/(.*)`, et le chemin est remplacé par `/redirected/1234/5678`. L’URL de redirection est renvoyée au client avec le code d’état *302 - Trouvé* . Le navigateur effectue une nouvelle requête à l’URL de redirection, qui apparaît dans la barre d’adresse du navigateur. Comme aucune règle de l’exemple d’application ne correspond sur l’URL de redirection :
 
 * La deuxième requête reçoit une réponse *200 - OK* de l’application.
 * Le corps de la réponse montre l’URL de redirection.
 
-Un aller-retour est effectué avec le serveur quand une URL est *redirigée*.
+Un aller-retour est effectué avec le serveur quand une URL est *redirigée* .
 
 > [!WARNING]
-> Soyez prudent lors de l’établissement de règles de redirection. Les règles de redirection sont évaluées à chaque requête effectuée à l’application, notamment après une redirection. Il est facile de créer accidentellement une *boucle de redirections infinies*.
+> Soyez prudent lors de l’établissement de règles de redirection. Les règles de redirection sont évaluées à chaque requête effectuée à l’application, notamment après une redirection. Il est facile de créer accidentellement une *boucle de redirections infinies* .
 
 Requête d’origine : `/redirect-rule/1234/5678`
 
 ![Fenêtre de navigateur avec les requêtes et les réponses suivies par les Outils de développement](url-rewriting/_static/add_redirect.png)
 
-La partie de l’expression entre parenthèses est appelée *groupe de capture*. Le point (`.`) de l’expression signifie *mettre en correspondance n’importe quel caractère*. L’astérisque (`*`) indique *mettre en correspondance zéro occurrence ou plus du caractère précédent*. Par conséquent, les deux derniers segments de chemin de l’URL, `1234/5678`, sont capturés par le groupe de capture `(.*)`. Toute valeur fournie dans l’URL de la requête après `redirect-rule/` est capturée par ce groupe de capture unique.
+La partie de l’expression entre parenthèses est appelée *groupe de capture* . Le point (`.`) de l’expression signifie *mettre en correspondance n’importe quel caractère* . L’astérisque (`*`) indique *mettre en correspondance zéro occurrence ou plus du caractère précédent* . Par conséquent, les deux derniers segments de chemin de l’URL, `1234/5678`, sont capturés par le groupe de capture `(.*)`. Toute valeur fournie dans l’URL de la requête après `redirect-rule/` est capturée par ce groupe de capture unique.
 
 Dans la chaîne de remplacement, les groupes capturés sont injectés dans la chaîne avec le signe dollar (`$`) suivi du numéro de séquence de la capture. La valeur du premier groupe de capture est obtenue avec `$1`, la deuxième avec `$2`, et ainsi de suite en séquence pour les groupes de capture de votre expression régulière. Comme il n’y a qu’un seul groupe capturé dans l’expression régulière de la règle de redirection de l’exemple d’application, un seul groupe est injecté dans la chaîne de remplacement, à savoir `$1`. Quand la règle est appliquée, l’URL devient `/redirected/1234/5678`.
 
 ### <a name="url-redirect-to-a-secure-endpoint"></a>Redirection d’URL vers un point de terminaison sécurisé
 
-Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttps*> pour rediriger les requêtes HTTP vers le même hôte et le même chemin avec le protocole HTTPS. Si le code d’état n’est pas fourni, le middleware utilise par défaut *302 - Trouvé*. Si le port n’est pas fourni :
+Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttps*> pour rediriger les requêtes HTTP vers le même hôte et le même chemin avec le protocole HTTPS. Si le code d’état n’est pas fourni, le middleware utilise par défaut *302 - Trouvé* . Si le port n’est pas fourni :
 
 * Le middleware utilise par défaut `null`.
 * Le schéma change en `https` (protocole HTTPS), et le client accède à la ressource sur le port 443.
@@ -512,7 +513,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttpsPermanent*> pour rediriger les requêtes non sécurisées vers le même hôte et le même chemin avec le protocole HTTPS sécurisé sur le port 443. Le middleware définit le code d’état sur *301 - Déplacé de façon permanente*.
+Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttpsPermanent*> pour rediriger les requêtes non sécurisées vers le même hôte et le même chemin avec le protocole HTTPS sécurisé sur le port 443. Le middleware définit le code d’état sur *301 - Déplacé de façon permanente* .
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -551,7 +552,7 @@ Le caret (`^`) au début de l’expression signifie que la correspondance commen
 
 Dans l’exemple précédent avec la règle de redirection, `redirect-rule/(.*)`, il n’existe pas de caret (`^`) au début de l’expression régulière. Ainsi, n’importe quel caractère peut précéder `redirect-rule/` dans le chemin pour qu’une correspondance soit établie.
 
-| Chemin d’accès                               | Faire correspondre |
+| Chemin d’accès                               | Correspond |
 | ---------------------------------- | :---: |
 | `/redirect-rule/1234/5678`         | Oui   |
 | `/my-cool-redirect-rule/1234/5678` | Oui   |
@@ -559,15 +560,15 @@ Dans l’exemple précédent avec la règle de redirection, `redirect-rule/(.*)`
 
 La règle de réécriture, `^rewrite-rule/(\d+)/(\d+)`, établit une correspondance uniquement avec des chemins d’accès s’ils commencent par `rewrite-rule/`. Dans le tableau suivant, notez la différence de correspondance.
 
-| Chemin d’accès                              | Faire correspondre |
+| Chemin d’accès                              | Correspond |
 | --------------------------------- | :---: |
 | `/rewrite-rule/1234/5678`         | Oui   |
 | `/my-cool-rewrite-rule/1234/5678` | Non    |
 | `/anotherrewrite-rule/1234/5678`  | Non    |
 
-À la suite de la partie `^rewrite-rule/` de l’expression se trouvent deux groupes de capture, `(\d+)/(\d+)`. `\d` signifie *établir une correspondance avec un chiffre (nombre)*. Le signe plus (`+`) signifie *établir une correspondance avec une ou plusieurs occurrences du caractère précédent*. Par conséquent, l’URL doit contenir un nombre suivi d’une barre oblique, elle-même suivie d’un autre nombre. Ces groupes sont injectés dans l’URL réécrite sous la forme `$1` et `$2`. La chaîne de remplacement de la règle de réécriture place les groupes capturés dans la chaîne de requête. Le chemin demandé `/rewrite-rule/1234/5678` est réécrit pour obtenir la ressource à l’emplacement `/rewritten?var1=1234&var2=5678`. Si une chaîne de requête est présente dans la requête d’origine, elle est conservée lors de la réécriture de l’URL.
+À la suite de la partie `^rewrite-rule/` de l’expression se trouvent deux groupes de capture, `(\d+)/(\d+)`. `\d` signifie *établir une correspondance avec un chiffre (nombre)* . Le signe plus (`+`) signifie *établir une correspondance avec une ou plusieurs occurrences du caractère précédent* . Par conséquent, l’URL doit contenir un nombre suivi d’une barre oblique, elle-même suivie d’un autre nombre. Ces groupes sont injectés dans l’URL réécrite sous la forme `$1` et `$2`. La chaîne de remplacement de la règle de réécriture place les groupes capturés dans la chaîne de requête. Le chemin demandé `/rewrite-rule/1234/5678` est réécrit pour obtenir la ressource à l’emplacement `/rewritten?var1=1234&var2=5678`. Si une chaîne de requête est présente dans la requête d’origine, elle est conservée lors de la réécriture de l’URL.
 
-Il n’y a pas d’aller-retour avec le serveur pour obtenir la ressource. Si la ressource existe, elle est récupérée et retournée au client avec le code d’état *200 - OK*. Comme le client n’est pas redirigé, l’URL dans la barre d’adresse du navigateur ne change pas. Les clients ne peuvent pas détecter qu’une opération de réécriture d’URL s’est produite sur le serveur.
+Il n’y a pas d’aller-retour avec le serveur pour obtenir la ressource. Si la ressource existe, elle est récupérée et retournée au client avec le code d’état *200 - OK* . Comme le client n’est pas redirigé, l’URL dans la barre d’adresse du navigateur ne change pas. Les clients ne peuvent pas détecter qu’une opération de réécriture d’URL s’est produite sur le serveur.
 
 > [!NOTE]
 > Quand c’est possible, utilisez `skipRemainingRules: true`, car la mise en correspondance de règles est un processus gourmand en ressources qui augmente le temps de réponse de l’application. Pour obtenir la réponse d’application la plus rapide :
@@ -583,7 +584,7 @@ Un <xref:System.IO.StreamReader> est utilisé pour lire les règles à partir du
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=3-4,12)]
 
-L’exemple d’application redirige les requêtes de `/apache-mod-rules-redirect/(.\*)` vers `/redirected?id=$1`. Le code d’état de la réponse est *302 - Trouvé*.
+L’exemple d’application redirige les requêtes de `/apache-mod-rules-redirect/(.\*)` vers `/redirected?id=$1`. Le code d’état de la réponse est *302 - Trouvé* .
 
 [!code[](url-rewriting/samples/2.x/SampleApp/ApacheModRewrite.txt)]
 
@@ -614,7 +615,7 @@ L’intergiciel prend en charge les variables de serveur Apache mod_rewrite suiv
 * SERVER_ADDR
 * SERVER_PORT
 * SERVER_PROTOCOL
-* TEMPS
+* TIME
 * TIME_DAY
 * TIME_HOUR
 * TIME_MIN
@@ -631,7 +632,7 @@ Un <xref:System.IO.StreamReader> est utilisé pour lire les règles à partir du
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=5-6,13)]
 
-L’exemple d’application réécrit les requêtes de `/iis-rules-rewrite/(.*)` vers `/rewritten?id=$1`. La réponse est envoyée au client avec le code d’état *200 - OK*.
+L’exemple d’application réécrit les requêtes de `/iis-rules-rewrite/(.*)` vers `/rewritten?id=$1`. La réponse est envoyée au client avec le code d’état *200 - OK* .
 
 [!code-xml[](url-rewriting/samples/2.x/SampleApp/IISUrlRewrite.xml)]
 
@@ -684,23 +685,23 @@ Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> pour 
 
 | Réécrire le résultat du contexte               | Action                                                           |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `RuleResult.ContinueRules` (par défaut) | Continuer à appliquer les règles.                                         |
+| `RuleResult.ContinueRules` (valeur par défaut) | Continuer à appliquer les règles.                                         |
 | `RuleResult.EndResponse`             | Cesser d’appliquer les règles et envoyer la réponse.                       |
 | `RuleResult.SkipRemainingRules`      | Cesser d’appliquer les règles et envoyer le contexte au middleware suivant. |
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=14)]
 
-L’exemple d’application présente une méthode qui redirige les requêtes de chemins qui se terminent par *.xml*. Si une requête est faite pour `/file.xml`, la requête est redirigée vers `/xmlfiles/file.xml`. Le code d’état est défini sur *301 - Déplacé de façon permanente*. Quand le navigateur fait une nouvelle requête pour */xmlfiles/file.xml*, le middleware de fichiers statiques délivre le fichier au client à partir du dossier *wwwroot/xmlfiles*. Pour une redirection, définissez explicitement le code d’état de la réponse. Sinon, un code d’état *200 - OK* est retourné et la redirection ne se produit pas sur le client.
+L’exemple d’application présente une méthode qui redirige les requêtes de chemins qui se terminent par *.xml* . Si une requête est faite pour `/file.xml`, la requête est redirigée vers `/xmlfiles/file.xml`. Le code d’état est défini sur *301 - Déplacé de façon permanente* . Quand le navigateur fait une nouvelle requête pour */xmlfiles/file.xml* , le middleware de fichiers statiques délivre le fichier au client à partir du dossier *wwwroot/xmlfiles* . Pour une redirection, définissez explicitement le code d’état de la réponse. Sinon, un code d’état *200 - OK* est retourné et la redirection ne se produit pas sur le client.
 
-*RewriteRules.cs* :
+*RewriteRules.cs*  :
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RedirectXmlFileRequests&highlight=14-18)]
 
-Cette approche peut également réécrire des requêtes. L’exemple d’application montre la réécriture du chemin pour toute requête demandant de délivrer le fichier texte *file.txt* à partir du dossier *wwwroot*. Le middleware de fichiers statiques délivre le fichier en fonction du chemin de requête mis à jour :
+Cette approche peut également réécrire des requêtes. L’exemple d’application montre la réécriture du chemin pour toute requête demandant de délivrer le fichier texte *file.txt* à partir du dossier *wwwroot* . Le middleware de fichiers statiques délivre le fichier en fonction du chemin de requête mis à jour :
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=15,22)]
 
-*RewriteRules.cs* :
+*RewriteRules.cs*  :
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RewriteTextFileRequests&highlight=7-8)]
 
@@ -710,7 +711,7 @@ Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> pour 
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=16-17)]
 
-Les valeurs des paramètres dans l’exemple d’application pour `extension` et `newPath` sont vérifiées afin de remplir plusieurs conditions. `extension` doit contenir une valeur, laquelle doit être *.png*, *.jpg* ou *.gif*. Si `newPath` n’est pas valide, un <xref:System.ArgumentException> est levé. Si une requête est faite pour *image.png*, la requête est redirigée vers `/png-images/image.png`. Si une requête est faite pour *image.jpg*, la requête est redirigée vers `/jpg-images/image.jpg`. Le code d’état est défini sur *301 - Déplacé de façon permanente*, et `context.Result` est défini de façon à cesser le traitement des règles et envoyer la réponse.
+Les valeurs des paramètres dans l’exemple d’application pour `extension` et `newPath` sont vérifiées afin de remplir plusieurs conditions. `extension` doit contenir une valeur, laquelle doit être *.png* , *.jpg* ou *.gif* . Si `newPath` n’est pas valide, un <xref:System.ArgumentException> est levé. Si une requête est faite pour *image.png* , la requête est redirigée vers `/png-images/image.png`. Si une requête est faite pour *image.jpg* , la requête est redirigée vers `/jpg-images/image.jpg`. Le code d’état est défini sur *301 - Déplacé de façon permanente* , et `context.Result` est défini de façon à cesser le traitement des règles et envoyer la réponse.
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RedirectImageRequests)]
 
@@ -735,7 +736,7 @@ Requête d’origine : `/image.jpg`
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/index>

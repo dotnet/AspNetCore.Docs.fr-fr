@@ -5,6 +5,7 @@ description: Découvrez comment les contrôleurs ASP.NET Core MVC demandent expl
 ms.author: riande
 ms.date: 02/24/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 74c43e4f01e5b0d6923bf06f8859341c49088ef6
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1282cd984584be423fba755e64e5d2f1afd2af89
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635240"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060610"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Injection de dépendances dans les contrôleurs dans ASP.NET Core
 
@@ -65,7 +66,7 @@ Exécutez l’application et un message s’affiche en fonction de l’heure.
 
 L’accès aux paramètres de configuration ou d’application à partir d’un contrôleur est un modèle commun. Le *modèle options* décrit dans <xref:fundamentals/configuration/options> est l’approche à privilégier pour gérer les paramètres. En règle générale, n’injectez pas directement <xref:Microsoft.Extensions.Configuration.IConfiguration> dans un contrôleur.
 
-Créez une classe qui représente les options. Par exemple :
+Créez une classe qui représente les options. Exemple :
 
 [!code-csharp[](dependency-injection/3.1sample/ControllerDI/Models/SampleWebSettings.cs?name=snippet)]
 
@@ -81,7 +82,7 @@ Le code suivant demande les paramètres `IOptions<SampleWebSettings>` au contene
 
 [!code-csharp[](dependency-injection/3.1sample/ControllerDI/Controllers/SettingsController.cs?name=snippet)]
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * Consultez <xref:mvc/controllers/testing> pour savoir comment rendre le code plus facile à tester en demandant explicitement des dépendances dans les contrôleurs.
 
@@ -129,7 +130,7 @@ Exécutez l’application et un message s’affiche en fonction de l’heure.
 
 L’accès aux paramètres de configuration ou d’application à partir d’un contrôleur est un modèle commun. Le *modèle options* décrit dans <xref:fundamentals/configuration/options> est l’approche à privilégier pour gérer les paramètres. En règle générale, n’injectez pas directement <xref:Microsoft.Extensions.Configuration.IConfiguration> dans un contrôleur.
 
-Créez une classe qui représente les options. Par exemple :
+Créez une classe qui représente les options. Exemple :
 
 [!code-csharp[](dependency-injection/sample/ControllerDI/Models/SampleWebSettings.cs?name=snippet)]
 
@@ -145,7 +146,7 @@ Le code suivant demande les paramètres `IOptions<SampleWebSettings>` au contene
 
 [!code-csharp[](dependency-injection/sample/ControllerDI/Controllers/SettingsController.cs?name=snippet)]
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * Consultez <xref:mvc/controllers/testing> pour savoir comment rendre le code plus facile à tester en demandant explicitement des dépendances dans les contrôleurs.
 

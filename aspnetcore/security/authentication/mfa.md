@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/mfa
-ms.openlocfilehash: 76a11aa7b89b3ce60ed11bd7553a7e5898f661f4
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 873f7d113df84c931ad7fbf2c72aa292e4e87c48
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606798"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060389"
 ---
 # <a name="multi-factor-authentication-in-aspnet-core"></a>Multi-Factor Authentication dans ASP.NET Core
 
@@ -151,7 +152,7 @@ namespace IdentityStandaloneMfa
 }
 ```
 
-Étant donné que l' Identity installation du service a changé dans la `Startup` classe, les dispositions du Identity doivent être mises à jour. Générez l’échafaudage des Identity pages dans l’application. Définissez la disposition dans le fichier * Identity /Account/Manage/_Layout. cshtml* .
+Étant donné que l' Identity installation du service a changé dans la `Startup` classe, les dispositions du Identity doivent être mises à jour. Générez l’échafaudage des Identity pages dans l’application. Définissez la disposition dans le fichier *Identity /Account/Manage/_Layout. cshtml* .
 
 ```cshtml
 @{
@@ -332,7 +333,7 @@ You can enable MFA to login here:
 
 Dans la `Login` méthode, l' `IIdentityServerInteractionService` implémentation de l’interface `_interaction` est utilisée pour accéder aux paramètres de la demande de connexion OpenID. Le `acr_values` paramètre est accessible à l’aide de la `AcrValues` propriété. À mesure que le client l' `mfa` a envoyé avec set, cette valeur peut ensuite être vérifiée.
 
-Si l’authentification multifacteur est requise et que l’authentification MFA est activée pour l’utilisateur dans ASP.NET Core Identity , la connexion se poursuit. Lorsque l’option MFA n’est pas activée pour l’utilisateur, l’utilisateur est redirigé vers la vue personnalisée *ErrorEnable2FA. cshtml*. ASP.NET Core IdentityConnecte ensuite l’utilisateur.
+Si l’authentification multifacteur est requise et que l’authentification MFA est activée pour l’utilisateur dans ASP.NET Core Identity , la connexion se poursuit. Lorsque l’option MFA n’est pas activée pour l’utilisateur, l’utilisateur est redirigé vers la vue personnalisée *ErrorEnable2FA. cshtml* . ASP.NET Core IdentityConnecte ensuite l’utilisateur.
 
 ```csharp
 //

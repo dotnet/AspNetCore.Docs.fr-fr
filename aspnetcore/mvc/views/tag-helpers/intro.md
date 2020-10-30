@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 345d20494111b808dac9678637de060169730a53
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 781365d99c6d36d8abaec9681128ba712db8cb88
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865356"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060662"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Tag Helpers dans ASP.NET Core
 
@@ -75,13 +76,13 @@ L’étendue des Tag Helpers est contrôlée par une combinaison de `@addTagHelp
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper` rend les Tag Helpers disponibles
 
-Si vous créez une application web ASP.NET Core nommée *AuthoringTagHelpers*, le fichier qui suit *Views/_ViewImports.cshtml* est ajouté à votre projet :
+Si vous créez une application web ASP.NET Core nommée *AuthoringTagHelpers* , le fichier qui suit *Views/_ViewImports.cshtml* est ajouté à votre projet :
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
-La directive `@addTagHelper` rend les Tag Helpers disponibles dans l’affichage. Dans cet exemple, le fichier d’affichage est *Pages/_ViewImports.cshtml*, qui est hérité par défaut par tous les fichiers dans le dossier et les sous-dossiers *Pages* ; les Tag Helpers sont ainsi disponibles. Le code ci-dessus utilise la syntaxe d’expressions génériques (« \* ») pour spécifier que tous les Tag Helpers dans l’assembly spécifié (*Microsoft.AspNetCore.Mvc.TagHelpers*) sont disponibles pour chaque fichier d’affichage du répertoire ou sous-répertoire *Views*. Le premier paramètre après `@addTagHelper` spécifie les Tag Helpers à charger (nous utilisons « \* » pour tous les Tag Helpers), et le deuxième paramètre « Microsoft.AspNetCore.Mvc.TagHelpers » spécifie l’assembly qui contient les Tag Helpers. *Microsoft.AspNetCore.Mvc.TagHelpers* est l’assembly des Tag Helpers ASP.NET Core intégrés.
+La directive `@addTagHelper` rend les Tag Helpers disponibles dans l’affichage. Dans cet exemple, le fichier d’affichage est *Pages/_ViewImports.cshtml* , qui est hérité par défaut par tous les fichiers dans le dossier et les sous-dossiers *Pages*  ; les Tag Helpers sont ainsi disponibles. Le code ci-dessus utilise la syntaxe d’expressions génériques (« \* ») pour spécifier que tous les Tag Helpers dans l’assembly spécifié ( *Microsoft.AspNetCore.Mvc.TagHelpers* ) sont disponibles pour chaque fichier d’affichage du répertoire ou sous-répertoire *Views* . Le premier paramètre après `@addTagHelper` spécifie les Tag Helpers à charger (nous utilisons « \* » pour tous les Tag Helpers), et le deuxième paramètre « Microsoft.AspNetCore.Mvc.TagHelpers » spécifie l’assembly qui contient les Tag Helpers. *Microsoft.AspNetCore.Mvc.TagHelpers* est l’assembly des Tag Helpers ASP.NET Core intégrés.
 
-Pour exposer tous les Tag Helpers inclus dans ce projet (ce qui crée un assembly nommé *AuthoringTagHelpers*), utilisez ce qui suit :
+Pour exposer tous les Tag Helpers inclus dans ce projet (ce qui crée un assembly nommé *AuthoringTagHelpers* ), utilisez ce qui suit :
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=3)]
 
@@ -93,24 +94,24 @@ Si votre projet contient un `EmailTagHelper` avec l’espace de noms par défaut
 @addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
 ```
 
-Pour ajouter un Tag Helper à un affichage à l’aide d’un FQN, vous ajoutez d’abord ce FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), puis le nom de l’assembly (*AuthoringTagHelpers*). La plupart des développeurs préfèrent utiliser la syntaxe d’expressions génériques « \* ». Celle-ci permet d’insérer le caractère générique « \* » en guise de suffixe dans un FQN. Par exemple, chacune des directives suivantes affiche le `EmailTagHelper` :
+Pour ajouter un Tag Helper à un affichage à l’aide d’un FQN, vous ajoutez d’abord ce FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), puis le nom de l’assembly ( *AuthoringTagHelpers* ). La plupart des développeurs préfèrent utiliser la syntaxe d’expressions génériques « \* ». Celle-ci permet d’insérer le caractère générique « \* » en guise de suffixe dans un FQN. Par exemple, chacune des directives suivantes affiche le `EmailTagHelper` :
 
 ```cshtml
 @addTagHelper AuthoringTagHelpers.TagHelpers.E*, AuthoringTagHelpers
 @addTagHelper AuthoringTagHelpers.TagHelpers.Email*, AuthoringTagHelpers
 ```
 
-Comme mentionné précédemment, l’ajout de la directive `@addTagHelper` au fichier *Views/_ViewImports.cshtml* met le Tag Helper à la disposition de tous les fichiers d’affichage inclus dans le répertoire et les sous-répertoires *Views*. Vous pouvez utiliser la directive `@addTagHelper` dans des fichiers d’affichage spécifiques si vous choisissez d’exposer le Tag Helper uniquement à ces affichages.
+Comme mentionné précédemment, l’ajout de la directive `@addTagHelper` au fichier *Views/_ViewImports.cshtml* met le Tag Helper à la disposition de tous les fichiers d’affichage inclus dans le répertoire et les sous-répertoires *Views* . Vous pouvez utiliser la directive `@addTagHelper` dans des fichiers d’affichage spécifiques si vous choisissez d’exposer le Tag Helper uniquement à ces affichages.
 
 <a name="remove-razor-directives-label"></a>
 
 ### <a name="removetaghelper-removes-tag-helpers"></a>`@removeTagHelper` supprime les Tag Helpers
 
-Le`@removeTagHelper` a les deux mêmes paramètres que `@addTagHelper`, et il supprime un Tag helper ajoutée précédemment. Par exemple, `@removeTagHelper` appliqué à une vue supprime le Tag helper spécifié de la vue. Utiliser `@removeTagHelper` dans un fichier *Views/Folder/_ViewImports.cshtml* supprime le Tag helper à partir de toutes les vues du *dossier*.
+Le`@removeTagHelper` a les deux mêmes paramètres que `@addTagHelper`, et il supprime un Tag helper ajoutée précédemment. Par exemple, `@removeTagHelper` appliqué à une vue supprime le Tag helper spécifié de la vue. Utiliser `@removeTagHelper` dans un fichier *Views/Folder/_ViewImports.cshtml* supprime le Tag helper à partir de toutes les vues du *dossier* .
 
 ### <a name="controlling-tag-helper-scope-with-the-_viewimportscshtml-file"></a>Contrôle de l’étendue des Tag Helpers à l’aide du fichier *_ViewImports.cshtml*
 
-Vous pouvez ajouter un fichier *_ViewImports.cshtml* à tout dossier d’affichage. Le moteur d’affichage applique les directives de ce fichier et du fichier *Views/_ViewImports.cshtml*. Si vous avez ajouté un fichier *Views/Home/_ViewImports.cshtml* vide pour les affichages *Home*, rien n’est modifié car le fichier *_ViewImports.cshtml* est additif. Toute directive `@addTagHelper` que vous ajoutez au fichier *Views/Home/_ViewImports.cshtml* (qui n’est pas dans le fichier *Views/_ViewImports.cshtml* par défaut) expose ces Tag Helpers uniquement aux affichages inclus dans le dossier *Home*.
+Vous pouvez ajouter un fichier *_ViewImports.cshtml* à tout dossier d’affichage. Le moteur d’affichage applique les directives de ce fichier et du fichier *Views/_ViewImports.cshtml* . Si vous avez ajouté un fichier *Views/Home/_ViewImports.cshtml* vide pour les affichages *Home* , rien n’est modifié car le fichier *_ViewImports.cshtml* est additif. Toute directive `@addTagHelper` que vous ajoutez au fichier *Views/Home/_ViewImports.cshtml* (qui n’est pas dans le fichier *Views/_ViewImports.cshtml* par défaut) expose ces Tag Helpers uniquement aux affichages inclus dans le dossier *Home* .
 
 <a name="opt-out"></a>
 
@@ -128,7 +129,7 @@ Vous devez appliquer le caractère d’annulation de Tag Helper à la balise d�
 
 ### <a name="using-taghelperprefix-to-make-tag-helper-usage-explicit"></a>Utilisation de `@tagHelperPrefix` pour rendre l’utilisation du Tag Helper explicite
 
-La directive `@tagHelperPrefix` vous permet de spécifier une chaîne de préfixe de balise pour activer la prise en charge des Tag Helpers et rendre leur utilisation explicite. Par exemple, vous pouvez ajouter le balisage suivant au fichier *Views/_ViewImports.cshtml* :
+La directive `@tagHelperPrefix` vous permet de spécifier une chaîne de préfixe de balise pour activer la prise en charge des Tag Helpers et rendre leur utilisation explicite. Par exemple, vous pouvez ajouter le balisage suivant au fichier *Views/_ViewImports.cshtml*  :
 
 ```cshtml
 @tagHelperPrefix th:
@@ -244,7 +245,7 @@ est présenté avec un arrière-plan gris. La plupart du balisage dans l’affic
 
 Le balisage est beaucoup plus claire et facile à lire, modifier et gérer qu’avec l’approche des HTML Helpers. Le code C# est réduit au minimum que le serveur doit savoir. L’éditeur Visual Studio présente le balisage ciblé par un Tag Helper dans une police caractéristique.
 
-Examinez le groupe *Email* :
+Examinez le groupe *Email*  :
 
 [!code-cshtml[](intro/sample/Register.cshtml?range=12-18)]
 
@@ -272,7 +273,7 @@ L’éditeur Visual Studio vous aide à écrire **tout** le balisage dans l’ap
 
 ## <a name="customizing-the-tag-helper-element-font"></a>Personnalisation de la police des éléments Tag Helper
 
-Vous pouvez personnaliser la police et la coloration à partir des options **Outils**  >  **Options**  >  **Environment**  >  **polices et couleurs**de l’environnement :
+Vous pouvez personnaliser la police et la coloration à partir des options **Outils**  >  **Options**  >  **Environment**  >  **polices et couleurs** de l’environnement :
 
 ![image](intro/_static/fontoptions2.png)
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 6ff78b26e8e2363cf6c54ebb2a392f390fb2995c
-ms.sourcegitcommit: cd412a44f26cb416ceb348fc0a1ccc9a6e9ca73e
+ms.openlocfilehash: 14561bace565c104d0a9c926cad3105c4865e72a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88720277"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061169"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Charger des fichiers dans ASP.NET Core
 
@@ -124,7 +125,7 @@ La diffusion en continu de fichiers volumineux est traitée dans la section [cha
 
 Pour télécharger des fichiers de petite taille, utilisez un formulaire en plusieurs parties ou créez une requête de publication à l’aide de JavaScript.
 
-L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier (*pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
+L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier ( *pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -194,7 +195,7 @@ L’exemple suivant est similaire à l’exemple précédent, à l’exception d
 Pour exécuter la publication de formulaire dans JavaScript pour les clients qui [ne prennent pas en charge l’API FETCH](https://caniuse.com/#feat=fetch), utilisez l’une des approches suivantes :
 
 * Utilisez un Polyfill d’extraction (par exemple, [Window. Fetch Polyfill (GitHub/fetch)](https://github.com/github/fetch)).
-* Utiliser `XMLHttpRequest`. Par exemple :
+* Utiliser `XMLHttpRequest`. Exemple :
 
   ```javascript
   <script>
@@ -435,7 +436,7 @@ La `StreamingController.UploadDatabase` méthode complète pour la diffusion en 
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*) :
+`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper. cs* ) :
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -467,7 +468,7 @@ L’analyse des fichiers exige des ressources serveur dans des scénarios de vol
 
 ### <a name="file-extension-validation"></a>Validation de l’extension de fichier
 
-L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Par exemple :
+L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Exemple :
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -533,7 +534,7 @@ De nombreuses implémentations doivent inclure une vérification de l’existenc
 
 Limitez la taille des fichiers téléchargés.
 
-Dans l’exemple d’application, la taille du fichier est limitée à 2 Mo (indiquée en octets). La limite est fournie via la [configuration](xref:fundamentals/configuration/index) à partir du *appsettings.jssur* le fichier :
+Dans l’exemple d’application, la taille du fichier est limitée à 2 Mo (indiquée en octets). La limite est fournie via la [configuration](xref:fundamentals/configuration/index) à partir du *appsettings.json* fichier :
 
 ```json
 {
@@ -848,7 +849,7 @@ La diffusion en continu de fichiers volumineux est traitée dans la section [cha
 
 Pour télécharger des fichiers de petite taille, utilisez un formulaire en plusieurs parties ou créez une requête de publication à l’aide de JavaScript.
 
-L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier (*pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
+L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier ( *pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -918,7 +919,7 @@ L’exemple suivant est similaire à l’exemple précédent, à l’exception d
 Pour exécuter la publication de formulaire dans JavaScript pour les clients qui [ne prennent pas en charge l’API FETCH](https://caniuse.com/#feat=fetch), utilisez l’une des approches suivantes :
 
 * Utilisez un Polyfill d’extraction (par exemple, [Window. Fetch Polyfill (GitHub/fetch)](https://github.com/github/fetch)).
-* Utiliser `XMLHttpRequest`. Par exemple :
+* Utiliser `XMLHttpRequest`. Exemple :
 
   ```javascript
   <script>
@@ -1159,7 +1160,7 @@ La `StreamingController.UploadDatabase` méthode complète pour la diffusion en 
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*) :
+`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper. cs* ) :
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1191,7 +1192,7 @@ L’analyse des fichiers exige des ressources serveur dans des scénarios de vol
 
 ### <a name="file-extension-validation"></a>Validation de l’extension de fichier
 
-L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Par exemple :
+L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Exemple :
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -1257,7 +1258,7 @@ De nombreuses implémentations doivent inclure une vérification de l’existenc
 
 Limitez la taille des fichiers téléchargés.
 
-Dans l’exemple d’application, la taille du fichier est limitée à 2 Mo (indiquée en octets). La limite est fournie via la [configuration](xref:fundamentals/configuration/index) à partir du *appsettings.jssur* le fichier :
+Dans l’exemple d’application, la taille du fichier est limitée à 2 Mo (indiquée en octets). La limite est fournie via la [configuration](xref:fundamentals/configuration/index) à partir du *appsettings.json* fichier :
 
 ```json
 {
@@ -1583,7 +1584,7 @@ La diffusion en continu de fichiers volumineux est traitée dans la section [cha
 
 Pour télécharger des fichiers de petite taille, utilisez un formulaire en plusieurs parties ou créez une requête de publication à l’aide de JavaScript.
 
-L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier (*pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
+L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier ( *pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1653,7 +1654,7 @@ L’exemple suivant est similaire à l’exemple précédent, à l’exception d
 Pour exécuter la publication de formulaire dans JavaScript pour les clients qui [ne prennent pas en charge l’API FETCH](https://caniuse.com/#feat=fetch), utilisez l’une des approches suivantes :
 
 * Utilisez un Polyfill d’extraction (par exemple, [Window. Fetch Polyfill (GitHub/fetch)](https://github.com/github/fetch)).
-* Utiliser `XMLHttpRequest`. Par exemple :
+* Utiliser `XMLHttpRequest`. Exemple :
 
   ```javascript
   <script>
@@ -1894,7 +1895,7 @@ La `StreamingController.UploadDatabase` méthode complète pour la diffusion en 
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*) :
+`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper. cs* ) :
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1926,7 +1927,7 @@ L’analyse des fichiers exige des ressources serveur dans des scénarios de vol
 
 ### <a name="file-extension-validation"></a>Validation de l’extension de fichier
 
-L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Par exemple :
+L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Exemple :
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -1992,7 +1993,7 @@ De nombreuses implémentations doivent inclure une vérification de l’existenc
 
 Limitez la taille des fichiers téléchargés.
 
-Dans l’exemple d’application, la taille du fichier est limitée à 2 Mo (indiquée en octets). La limite est fournie via la [configuration](xref:fundamentals/configuration/index) à partir du *appsettings.jssur* le fichier :
+Dans l’exemple d’application, la taille du fichier est limitée à 2 Mo (indiquée en octets). La limite est fournie via la [configuration](xref:fundamentals/configuration/index) à partir du *appsettings.json* fichier :
 
 ```json
 {

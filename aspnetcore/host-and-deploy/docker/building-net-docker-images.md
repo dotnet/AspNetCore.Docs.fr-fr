@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 6f94323873937d1428d6cfa1b0ef15e44611fd47
-ms.sourcegitcommit: b3ec60f7682e43211c2b40c60eab3d4e45a48ab1
+ms.openlocfilehash: 81daa1d4a996519f44e513b4f61c27cdf2b6ef5e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92153639"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059804"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Images Docker pour ASP.NET Core
 
@@ -70,7 +71,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
     * [Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
     * [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)
     * [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-  * [MacOS](https://docs.docker.com/docker-for-mac/install/)
+  * [macOS](https://docs.docker.com/docker-for-mac/install/)
   * [Windows](https://docs.docker.com/docker-for-windows/install/)
 
 * [Git](https://git-scm.com/download)
@@ -85,7 +86,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
 
 ## <a name="run-the-app-locally"></a>Exécutez l’application localement.
 
-* Accédez au dossier de projet à l’adresse *dotnet-docker/samples/aspnetapp/aspnetapp*.
+* Accédez au dossier de projet à l’adresse *dotnet-docker/samples/aspnetapp/aspnetapp* .
 
 * Exécutez la commande suivante pour générer et exécuter l’application localement :
 
@@ -101,7 +102,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
 
 * Dans le client docker, [basculez vers les conteneurs Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
-* Accédez au dossier Dockerfile à l’adresse *dotnet-docker/samples/aspnetapp*.
+* Accédez au dossier Dockerfile à l’adresse *dotnet-docker/samples/aspnetapp* .
 
 * Exécutez les commandes suivantes pour générer et exécuter l’exemple dans Docker :
 
@@ -157,7 +158,7 @@ Accédez au dossier de fichiers Dockerfile à l’adresse `dotnet-docker/samples
 
 Dans certains scénarios, il peut être intéressant de déployer une application sur un conteneur en y copiant les fichiers d’application nécessaires à l’exécution. Cette section montre comment effectuer un déploiement manuel.
 
-* Accédez au dossier de projet à l’adresse *dotnet-docker/samples/aspnetapp/aspnetapp*.
+* Accédez au dossier de projet à l’adresse *dotnet-docker/samples/aspnetapp/aspnetapp* .
 
 * Exécutez la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) :
 
@@ -167,7 +168,7 @@ Dans certains scénarios, il peut être intéressant de déployer une applicatio
 
   Voici le rôle des arguments de la commande :
   * Générez l’application en mode version finale (la valeur par défaut est le mode débogage).
-  * Créer les fichiers dans le dossier *published*.
+  * Créer les fichiers dans le dossier *published* .
 
 * Exécutez l'application.
 
@@ -255,7 +256,7 @@ COPY --from=build /app/aspnetapp/out ./
 ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 ```
 
-Comme indiqué dans le fichier dockerfile précédent, les `*.csproj` fichiers sont copiés et restaurés en tant que *couches*distinctes. Lorsque la `docker build` commande génère une image, elle utilise un cache intégré. Si les `*.csproj` fichiers n’ont pas été modifiés depuis la dernière exécution de la `docker build` commande, la `dotnet restore` commande n’a pas besoin de s’exécuter à nouveau. Au lieu de cela, le cache intégré pour la `dotnet restore` couche correspondante est réutilisé. Pour plus d’informations, consultez [meilleures pratiques pour l’écriture de fichiers dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache).
+Comme indiqué dans le fichier dockerfile précédent, les `*.csproj` fichiers sont copiés et restaurés en tant que *couches* distinctes. Lorsque la `docker build` commande génère une image, elle utilise un cache intégré. Si les `*.csproj` fichiers n’ont pas été modifiés depuis la dernière exécution de la `docker build` commande, la `dotnet restore` commande n’a pas besoin de s’exécuter à nouveau. Au lieu de cela, le cache intégré pour la `dotnet restore` couche correspondante est réutilisé. Pour plus d’informations, consultez [meilleures pratiques pour l’écriture de fichiers dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache).
 
 ::: moniker-end
 

@@ -5,6 +5,7 @@ description: Découvrez comment limiter la durée de vie d’une charge utile pr
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/consumer-apis/limited-lifetime-payloads
-ms.openlocfilehash: f76aca460c293b5f814ba10ee6c8ac68b3d147bb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 74417d076399066a49271c27ff128d9de6c10f94
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060792"
 ---
 # <a name="limit-the-lifetime-of-protected-payloads-in-aspnet-core"></a>Limiter la durée de vie des charges utiles protégées dans ASP.NET Core
 

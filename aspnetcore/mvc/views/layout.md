@@ -5,6 +5,7 @@ description: Apprenez à utiliser des dispositions communes, à partager des dir
 ms.author: riande
 ms.date: 07/30/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/layout
-ms.openlocfilehash: 308e567e0480f83972ab7a55c7b957af83a164fd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 502df268e7f5f33acfffccd5ec0bd65267fa12da
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630690"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060974"
 ---
 # <a name="layout-in-aspnet-core"></a>Disposition dans ASP.NET Core
 
@@ -46,7 +47,7 @@ La plupart des applications web ont une disposition commune pour offrir aux util
 
 Les structures HTML courantes, comme les scripts et les feuilles de style, sont également fréquemment utilisées par de nombreuses pages dans une application. Tous ces éléments partagés peuvent être définis dans un fichier de *disposition* , qui peut ensuite être référencé par n’importe quelle vue utilisée dans l’application. Les dispositions réduisent la duplication de code dans les vues.
 
-Par convention, la disposition par défaut d’une application ASP.NET Core se nomme *_Layout.cshtml*. Les fichiers de disposition pour les projets ASP.NET Core créés avec les modèles sont les suivants :
+Par convention, la disposition par défaut d’une application ASP.NET Core se nomme *_Layout.cshtml* . Les fichiers de disposition pour les projets ASP.NET Core créés avec les modèles sont les suivants :
 
 * Razor Pages : *pages/Shared/_Layout. cshtml*
 
@@ -68,7 +69,7 @@ Razor les vues ont une `Layout` propriété. Chaque vue spécifie une dispositio
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
-La disposition spécifiée peut utiliser un chemin complet (par exemple, */Pages/Shared/_Layout.cshtml* ou */Views/Shared/_Layout.cshtml*) ou un nom partiel (exemple : `_Layout`). Quand un nom partiel est fourni, le Razor moteur d’affichage recherche le fichier de disposition à l’aide de son processus de découverte standard. Le dossier où se trouve la méthode de gestionnaire (ou contrôleur) est parcouru en premier, suivi du dossier *Shared*. Ce processus de détection est le même que celui utilisé pour détecter les [vues partielles](xref:mvc/views/partial#partial-view-discovery).
+La disposition spécifiée peut utiliser un chemin complet (par exemple, */Pages/Shared/_Layout.cshtml* ou */Views/Shared/_Layout.cshtml* ) ou un nom partiel (exemple : `_Layout`). Quand un nom partiel est fourni, le Razor moteur d’affichage recherche le fichier de disposition à l’aide de son processus de découverte standard. Le dossier où se trouve la méthode de gestionnaire (ou contrôleur) est parcouru en premier, suivi du dossier *Shared* . Ce processus de détection est le même que celui utilisé pour détecter les [vues partielles](xref:mvc/views/partial#partial-view-discovery).
 
 Par défaut, chaque disposition doit appeler `RenderBody`. À chaque appel de `RenderBody`, le contenu de la vue est affiché.
 
@@ -76,7 +77,7 @@ Par défaut, chaque disposition doit appeler `RenderBody`. À chaque appel de `R
 <!-- https://stackoverflow.com/questions/23327578 -->
 ### <a name="sections"></a>Sections
 
-Une disposition peut éventuellement faire référence à une ou plusieurs *sections*, en appelant `RenderSection`. Les sections sont un moyen d’organiser certains éléments dans la page. Chaque appel à `RenderSection` peut spécifier si cette section est obligatoire ou facultative :
+Une disposition peut éventuellement faire référence à une ou plusieurs *sections* , en appelant `RenderSection`. Les sections sont un moyen d’organiser certains éléments dans la page. Chaque appel à `RenderSection` peut spécifier si cette section est obligatoire ou facultative :
 
 ```html
 <script type="text/javascript" src="~/scripts/global.js"></script>
@@ -96,7 +97,7 @@ Exemple `@section` de définition en Razor mode pages :
 
 Dans le code précédent, *scripts/main.js* est ajouté à la section `scripts` sur une page ou vue. Il est possible que les autres pages ou vues de la même application ne nécessitent pas ce script et ne définissent pas de section de scripts.
 
-Le balisage suivant utilise le [Tag Helper Partial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper) pour afficher *_ValidationScriptsPartial.cshtml* :
+Le balisage suivant utilise le [Tag Helper Partial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper) pour afficher *_ValidationScriptsPartial.cshtml*  :
 
 ```html
 @section Scripts {
@@ -136,7 +137,7 @@ Exemple de fichier `_ViewImports.cshtml` :
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
-Le fichier *_ViewImports.cshtml* pour une application ASP.NET Core MVC est généralement créé dans le dossier *Pages* (ou *Views*). Un fichier *_ViewImports.cshtml* peut être créé dans un autre dossier ; dans ce cas, il s’applique uniquement aux pages ou vues contenues dans ce dossier et ses sous-dossiers. Les fichiers `_ViewImports` sont traités à partir de la racine, puis pour chaque dossier conduisant à l’emplacement de la page ou vue elle-même. Les paramètres `_ViewImports` spécifiés au niveau de la racine peuvent être remplacés au niveau du dossier.
+Le fichier *_ViewImports.cshtml* pour une application ASP.NET Core MVC est généralement créé dans le dossier *Pages* (ou *Views* ). Un fichier *_ViewImports.cshtml* peut être créé dans un autre dossier ; dans ce cas, il s’applique uniquement aux pages ou vues contenues dans ce dossier et ses sous-dossiers. Les fichiers `_ViewImports` sont traités à partir de la racine, puis pour chaque dossier conduisant à l’emplacement de la page ou vue elle-même. Les paramètres `_ViewImports` spécifiés au niveau de la racine peuvent être remplacés au niveau du dossier.
 
 Par exemple, supposons que :
 
@@ -145,7 +146,7 @@ Par exemple, supposons que :
 
 Les pages et vues dans le sous-dossier ont accès aux Tag Helpers et au modèle `MyModel2`.
 
-Si la hiérarchie des fichiers comprend plusieurs fichiers *_ViewImports.cshtml*, le comportement combiné des directives est le suivant :
+Si la hiérarchie des fichiers comprend plusieurs fichiers *_ViewImports.cshtml* , le comportement combiné des directives est le suivant :
 
 * `@addTagHelper`, `@removeTagHelper` : les deux directives sont exécutées, dans l’ordre
 * `@tagHelperPrefix` : la directive la plus proche de la vue se substitue aux autres
@@ -158,12 +159,12 @@ Si la hiérarchie des fichiers comprend plusieurs fichiers *_ViewImports.cshtml*
 
 ## <a name="running-code-before-each-view"></a>Exécution du code avant chaque vue
 
-Le code qui doit s’exécuter avant chaque vue ou page doit être placé dans le fichier *_ViewStart.cshtml*. Par convention, le fichier *_ViewStart.cshtml* se trouve dans le dossier *Pages* (ou *Views*). Les instructions contenues dans *_ViewStart.cshtml* sont exécutées avant chaque vue complète (donc hors dispositions et vues partielles). Comme [ViewImports.cshtml](xref:mvc/views/layout#viewimports), *_ViewStart.cshtml* est hiérarchique. Si un fichier *_ViewStart.cshtml* est défini dans le dossier des vues ou des pages, il est exécuté après celui qui est défini à la racine du dossier *Pages* (ou *Views*) (le cas échéant).
+Le code qui doit s’exécuter avant chaque vue ou page doit être placé dans le fichier *_ViewStart.cshtml* . Par convention, le fichier *_ViewStart.cshtml* se trouve dans le dossier *Pages* (ou *Views* ). Les instructions contenues dans *_ViewStart.cshtml* sont exécutées avant chaque vue complète (donc hors dispositions et vues partielles). Comme [ViewImports.cshtml](xref:mvc/views/layout#viewimports), *_ViewStart.cshtml* est hiérarchique. Si un fichier *_ViewStart.cshtml* est défini dans le dossier des vues ou des pages, il est exécuté après celui qui est défini à la racine du dossier *Pages* (ou *Views* ) (le cas échéant).
 
-Exemple de fichier *_ViewStart.cshtml* :
+Exemple de fichier *_ViewStart.cshtml*  :
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
 
-Le fichier ci-dessus spécifie que toutes les vues doivent utiliser la disposition *_Layout.cshtml*.
+Le fichier ci-dessus spécifie que toutes les vues doivent utiliser la disposition *_Layout.cshtml* .
 
-*_ViewStart.cshtml* et *_ViewImports.cshtml***ne sont pas** généralement placés dans le dossier */Pages/Shared* (ou */Views/Shared*). Les versions de ces fichiers qui sont au niveau de l’application doivent être placées directement dans le dossier */Pages* (ou */Views*).
+*_ViewStart.cshtml* et *_ViewImports.cshtml***ne sont pas** généralement placés dans le dossier */Pages/Shared* (ou */Views/Shared* ). Les versions de ces fichiers qui sont au niveau de l’application doivent être placées directement dans le dossier */Pages* (ou */Views* ).

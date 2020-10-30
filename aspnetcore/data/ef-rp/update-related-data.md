@@ -5,6 +5,7 @@ description: Partie 7 de Razor pages et Entity Framework série de didacticiels.
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 17b200f0ba90035c417c96689798263af16551de
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 3ec88a862697c540a1a98e733c31d76922f81f7c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722817"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060532"
 ---
 # <a name="part-7-no-locrazor-pages-with-ef-core-in-aspnet-core---update-related-data"></a>Partie 7, Razor pages avec EF Core dans ASP.net Core mettre à jour les données associées
 
@@ -76,7 +77,7 @@ Mettez à jour *Pages/Courses/Create.cshtml* à l’aide du code suivant :
 
 Le code précédent apporte les modifications suivantes :
 
-* Modifie la légende de **DepartmentID** en **Department**. 
+* Modifie la légende de **DepartmentID** en **Department** . 
 * Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
 * Il ajoute l’option « Select Department ». Si vous n’avez pas encore sélectionné de département, ce changement affiche l’option « Select Department » dans la liste déroulante, plutôt que le premier département.
 * Il ajoute un message de validation quand le département n’est pas sélectionné.
@@ -104,10 +105,10 @@ Mettez à jour *Pages/Courses/Edit.cshtml* avec le code suivant :
 Le code précédent apporte les modifications suivantes :
 
 * Affiche l’identificateur du cours. En général la clé primaire (PK) d’une entité n’est pas affichée. Les clés primaires sont généralement sans signification pour les utilisateurs. Dans ce cas, la clé est le numéro de cours.
-* Change la légende de la liste déroulante en remplaçant **DepartmentID** par **Department**.
+* Change la légende de la liste déroulante en remplaçant **DepartmentID** par **Department** .
 * Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
 
-La page contient un champ masqué (`<input type="hidden">`) pour le numéro de cours. L’ajout d’un Tag Helper `<label>` avec `asp-for="Course.CourseID"` n’élimine pas la nécessité de la présence du champ masqué. `<input type="hidden">` est obligatoire pour que le numéro de cours soit inclus dans les données publiées quand l’utilisateur clique sur **Save**.
+La page contient un champ masqué (`<input type="hidden">`) pour le numéro de cours. L’ajout d’un Tag Helper `<label>` avec `asp-for="Course.CourseID"` n’élimine pas la nécessité de la présence du champ masqué. `<input type="hidden">` est obligatoire pour que le numéro de cours soit inclus dans les données publiées quand l’utilisateur clique sur **Save** .
 
 ## <a name="update-the-course-details-and-delete-pages"></a>Mettre à jour les pages de détails et de suppression du cours
 
@@ -119,7 +120,7 @@ Mettez à jour *Pages/Courses/Delete.cshtml.cs* à l’aide du code suivant pour
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Delete.cshtml.cs?highlight=29)]
 
-Apportez la même modification dans le fichier *Pages/Courses/Details.cshtml.cs* :
+Apportez la même modification dans le fichier *Pages/Courses/Details.cshtml.cs*  :
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Details.cshtml.cs?highlight=28)]
 
@@ -155,7 +156,7 @@ La classe `AssignedCourseData` contient des données permettant de créer les ca
 
 ### <a name="create-an-instructor-page-model-base-class"></a>Créer une classe de base pour le modèle de page du formateur
 
-Créez la classe de base *Pages/Instructors/InstructorCoursesPageModel.cs* :
+Créez la classe de base *Pages/Instructors/InstructorCoursesPageModel.cs*  :
 
 [!code-csharp[](intro/samples/cu30/Pages/Instructors/InstructorCoursesPageModel.cs?name=snippet_All)]
 
@@ -293,7 +294,7 @@ Mettez à jour *Pages/Courses/Create.cshtml* à l’aide du code suivant :
 
 Le balisage précédent apporte les modifications suivantes :
 
-* Modifie la légende de **DepartmentID** en **Department**. 
+* Modifie la légende de **DepartmentID** en **Department** . 
 * Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
 * Il ajoute l’option « Select Department ». Cette modification entraîne l’affichage de « Select Department » plutôt que du premier département.
 * Il ajoute un message de validation quand le département n’est pas sélectionné.
@@ -319,10 +320,10 @@ Mettez à jour *Pages/Courses/Edit.cshtml* avec le balisage suivant :
 Le balisage précédent apporte les modifications suivantes :
 
 * Affiche l’identificateur du cours. En général la clé primaire (PK) d’une entité n’est pas affichée. Les clés primaires sont généralement sans signification pour les utilisateurs. Dans ce cas, la clé est le numéro de cours.
-* Modifie la légende de **DepartmentID** en **Department**. 
+* Modifie la légende de **DepartmentID** en **Department** . 
 * Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
 
-La page contient un champ masqué (`<input type="hidden">`) pour le numéro de cours. L’ajout d’un Tag Helper `<label>` avec `asp-for="Course.CourseID"` n’élimine pas la nécessité de la présence du champ masqué. `<input type="hidden">` est obligatoire pour que le numéro de cours soit inclus dans les données publiées quand l’utilisateur clique sur **Save**.
+La page contient un champ masqué (`<input type="hidden">`) pour le numéro de cours. L’ajout d’un Tag Helper `<label>` avec `asp-for="Course.CourseID"` n’élimine pas la nécessité de la présence du champ masqué. `<input type="hidden">` est obligatoire pour que le numéro de cours soit inclus dans les données publiées quand l’utilisateur clique sur **Save** .
 
 Testez le code mis à jour. Créez, modifiez et supprimez un cours.
 
@@ -332,7 +333,7 @@ Testez le code mis à jour. Créez, modifiez et supprimez un cours.
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 
-Mettez à jour la méthode `OnGetAsync` dans le fichier *Pages/Courses/Details.cshtml.cs* :
+Mettez à jour la méthode `OnGetAsync` dans le fichier *Pages/Courses/Details.cshtml.cs*  :
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
 
@@ -435,7 +436,7 @@ Mettez à jour le modèle de page de création de formateur avec le code suivant
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Create.cshtml.cs)]
 
-Le code précédent est similaire au code de *Pages/Instructors/Edit.cshtml.cs*.
+Le code précédent est similaire au code de *Pages/Instructors/Edit.cshtml.cs* .
 
 Mettez à jour la Razor page de création de l’instructeur avec le balisage suivant :
 

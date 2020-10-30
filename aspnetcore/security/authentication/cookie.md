@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 02/11/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/cookie
-ms.openlocfilehash: 211b6c7ec0bc7a48671e614427961cb332d06aa3
-ms.sourcegitcommit: c0a15ab8549cb729731a0fdf1d7da0b7feaa11ff
+ms.openlocfilehash: 04469e0e75c433b40b364873a7e72e30421936f4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671767"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061351"
 ---
 # <a name="use-no-loccookie-authentication-without-no-locaspnet-core-identity"></a>Utiliser cookie l’authentification sans ASP.NET Core Identity
 
@@ -30,7 +31,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-ASP.NET Core Identity est un fournisseur d’authentification complet et complet pour la création et la gestion des connexions. Toutefois, cookie il n’est pas possible d’utiliser un fournisseur d’authentification basé sur ASP.NET Core Identity . Pour plus d’informations, consultez <xref:security/authentication/identity>.
+ASP.NET Core Identity est un fournisseur d’authentification complet et complet pour la création et la gestion des connexions. Toutefois, cookie il n’est pas possible d’utiliser un fournisseur d’authentification basé sur ASP.NET Core Identity . Pour plus d'informations, consultez <xref:security/authentication/identity>.
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
@@ -46,7 +47,7 @@ Dans la `Startup.ConfigureServices` méthode, créez les services d’intergicie
 
 Le schéma d’authentification de l’application est différent du schéma d’authentification de l’application cookie . Lorsqu’un cookie schéma d’authentification n’est pas fourni à <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> , il utilise `CookieAuthenticationDefaults.AuthenticationScheme` (« Cookie s »).
 
-La cookie propriété de l’authentification <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> a la valeur `true` par défaut. cookieLes s d’authentification sont autorisées lorsqu’un visiteur du site n’a pas consenti à la collecte de données. Pour plus d’informations, consultez <xref:security/gdpr#essential-cookies>.
+La cookie propriété de l’authentification <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> a la valeur `true` par défaut. cookieLes s d’authentification sont autorisées lorsqu’un visiteur du site n’a pas consenti à la collecte de données. Pour plus d'informations, consultez <xref:security/gdpr#essential-cookies>.
 
 Dans `Startup.Configure` , appelez `UseAuthentication` et `UseAuthorization` pour définir la `HttpContext.User` propriété et exécuter l’intergiciel (middleware) des autorisations pour les demandes. Appelez les `UseAuthentication` `UseAuthorization` méthodes et avant d’appeler `UseEndpoints` :
 
@@ -251,7 +252,7 @@ await HttpContext.SignInAsync(
 
 ::: moniker range="< aspnetcore-3.0"
 
-ASP.NET Core Identity est un fournisseur d’authentification complet et complet pour la création et la gestion des connexions. Toutefois, cookie il n’est pas possible d’utiliser un fournisseur d’authentification basé sur ASP.NET Core Identity . Pour plus d’informations, consultez <xref:security/authentication/identity>.
+ASP.NET Core Identity est un fournisseur d’authentification complet et complet pour la création et la gestion des connexions. Toutefois, cookie il n’est pas possible d’utiliser un fournisseur d’authentification basé sur ASP.NET Core Identity . Pour plus d'informations, consultez <xref:security/authentication/identity>.
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
@@ -269,7 +270,7 @@ Dans la `Startup.ConfigureServices` méthode, créez le service d’intergiciel 
 
 Le schéma d’authentification de l’application est différent du schéma d’authentification de l’application cookie . Lorsqu’un cookie schéma d’authentification n’est pas fourni à <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> , il utilise `CookieAuthenticationDefaults.AuthenticationScheme` (« Cookie s »).
 
-La cookie propriété de l’authentification <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> a la valeur `true` par défaut. cookieLes s d’authentification sont autorisées lorsqu’un visiteur du site n’a pas consenti à la collecte de données. Pour plus d’informations, consultez <xref:security/gdpr#essential-cookies>.
+La cookie propriété de l’authentification <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> a la valeur `true` par défaut. cookieLes s d’authentification sont autorisées lorsqu’un visiteur du site n’a pas consenti à la collecte de données. Pour plus d'informations, consultez <xref:security/gdpr#essential-cookies>.
 
 Dans la `Startup.Configure` méthode, appelez la `UseAuthentication` méthode pour appeler l’intergiciel (middleware) d’authentification qui définit la `HttpContext.User` propriété. Appelez la `UseAuthentication` méthode avant d’appeler `UseMvcWithDefaultRoute` ou `UseMvc` :
 
