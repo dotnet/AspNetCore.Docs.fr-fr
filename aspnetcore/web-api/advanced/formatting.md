@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 04/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: b89be93fc33d1eba5c2ad9508adf93fa54014ff8
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 89e3e51373db5f7cff974b7a8c69d06bedf856ca
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606792"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052511"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Mettre en forme les données des réponses dans l’API web ASP.NET Core
 
@@ -146,7 +147,7 @@ services.AddControllers().AddJsonOptions(options =>
 });
 ```
 
-Les options de sérialisation de sortie, en fonction de l’action, peuvent être configurées à l’aide de `JsonResult` . Par exemple :
+Les options de sérialisation de sortie, en fonction de l’action, peuvent être configurées à l’aide de `JsonResult` . Exemple :
 
 ```csharp
 public IActionResult Get()
@@ -174,7 +175,7 @@ Dans le code précédent, l’appel à `AddNewtonsoftJson` configure les fonctio
 
 Certaines fonctionnalités peuvent ne pas fonctionner correctement avec `System.Text.Json` les formateurs basés sur et nécessitent une référence aux `Newtonsoft.Json` formateurs basés sur. Continuer à utiliser les `Newtonsoft.Json` formateurs basés sur, si l’application :
 
-* Utilise des `Newtonsoft.Json` attributs.  Par exemple, `[JsonProperty]` ou `[JsonIgnore]`.
+* Utilise des `Newtonsoft.Json` attributs. Par exemple, `[JsonProperty]` ou `[JsonIgnore]`.
 * Personnalise les paramètres de sérialisation.
 * S’appuie sur les fonctionnalités `Newtonsoft.Json` fournies par.
 * Configure `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`. Avant ASP.NET Core 3.0, `JsonResult.SerializerSettings` accepte une instance de `JsonSerializerSettings` spécifique à `Newtonsoft.Json`.
@@ -193,7 +194,7 @@ services.AddControllers().AddNewtonsoftJson(options =>
 });
 ```
 
-Les options de sérialisation de sortie, en fonction de l’action, peuvent être configurées à l’aide de `JsonResult` . Par exemple :
+Les options de sérialisation de sortie, en fonction de l’action, peuvent être configurées à l’aide de `JsonResult` . Exemple :
 
 ```csharp
 public IActionResult Get()
@@ -238,7 +239,7 @@ Pour plus d’informations, consultez [filtres](xref:mvc/controllers/filters).
 
 ### <a name="special-case-formatters"></a>Formateurs de cas spéciaux
 
-Certains cas spéciaux sont implémentés avec des formateurs intégrés. Par défaut, `string` les types de retour sont mis en forme en tant que *texte/plain* (*texte/html* si demandé via l' `Accept` en-tête). Ce comportement peut être supprimé en supprimant le <xref:Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter> . Les formateurs sont supprimés de la `ConfigureServices` méthode. Les actions qui ont un type de retour d’objet de modèle retournent `204 No Content` lors du retour de `null` . Ce comportement peut être supprimé en supprimant le <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter> . Le code suivant supprime `StringOutputFormatter` et `HttpNoContentOutputFormatter`.
+Certains cas spéciaux sont implémentés avec des formateurs intégrés. Par défaut, `string` les types de retour sont mis en forme en tant que *texte/plain* ( *texte/html* si demandé via l' `Accept` en-tête). Ce comportement peut être supprimé en supprimant le <xref:Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter> . Les formateurs sont supprimés de la `ConfigureServices` méthode. Les actions qui ont un type de retour d’objet de modèle retournent `204 No Content` lors du retour de `null` . Ce comportement peut être supprimé en supprimant le <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter> . Le code suivant supprime `StringOutputFormatter` et `HttpNoContentOutputFormatter`.
 
 ::: moniker range=">= aspnetcore-3.0"
 [!code-csharp[](./formatting/3.0sample/StartupStringOutputFormatter.cs?name=snippet)]
@@ -249,7 +250,7 @@ Certains cas spéciaux sont implémentés avec des formateurs intégrés. Par d�
 
 Sans le `StringOutputFormatter` , le formateur JSON intégré met en forme les `string` types de retour. Si le formateur JSON intégré est supprimé et qu’un formateur XML est disponible, le formateur XML met en forme les `string` types de retour. Sinon, les `string` types de retour retournent `406 Not Acceptable` .
 
-Sans `HttpNoContentOutputFormatter`, les objets null sont mis en forme avec le formateur configuré. Par exemple :
+Sans `HttpNoContentOutputFormatter`, les objets null sont mis en forme avec le formateur configuré. Exemple :
 
 * Le formateur JSON retourne une réponse avec un corps de `null` .
 * Le formateur XML retourne un élément XML vide avec l’ensemble d’attributs `xsi:nil="true"` .
@@ -261,7 +262,7 @@ Les clients peuvent demander un format particulier dans le cadre de l’URL, par
 * Dans la chaîne de requête ou dans une partie du chemin d’accès.
 * En utilisant une extension de fichier spécifique au format, par exemple. XML ou. JSON.
 
-Le mappage du chemin de la requête doit être spécifié dans la route utilisée par l’API. Par exemple :
+Le mappage du chemin de la requête doit être spécifié dans la route utilisée par l’API. Exemple :
 
 [!code-csharp[](./formatting/sample/Controllers/ProductsController.cs?name=snippet)]
 

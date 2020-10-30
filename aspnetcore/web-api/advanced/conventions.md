@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 425f1aaf1fa86f10d857c34e621c302f2db258e5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0c5ea8ba69e4c6287afce1771ac9cee65bb188a8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626790"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052537"
 ---
 # <a name="use-web-api-conventions"></a>Utiliser les conventions d’API web
 
@@ -36,7 +37,7 @@ Une convention vous permet de :
 * Définir les types de retours les plus courants et les codes d’état retournés à partir d’un type d’action spécifique.
 * Identifier les actions qui s’écartent de la norme définie.
 
-ASP.NET Core MVC 2.2 et ses versions ultérieures incluent un ensemble de conventions par défaut dans <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>. Les conventions sont basées sur le contrôleur (*ValuesController.cs*) fourni dans le modèle de projet de l’**API** ASP.NET Core. Si vos actions suivent les profils dans le modèle, vous devriez normalement réussir à utiliser les conventions par défaut. Si les conventions par défaut ne répondent pas à vos besoins, consultez [Créer des conventions d’API web](#create-web-api-conventions).
+ASP.NET Core MVC 2.2 et ses versions ultérieures incluent un ensemble de conventions par défaut dans <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>. Les conventions sont basées sur le contrôleur ( *ValuesController.cs* ) fourni dans le modèle de projet de l’ **API** ASP.NET Core. Si vos actions suivent les profils dans le modèle, vous devriez normalement réussir à utiliser les conventions par défaut. Si les conventions par défaut ne répondent pas à vos besoins, consultez [Créer des conventions d’API web](#create-web-api-conventions).
 
 À l’exécution, <xref:Microsoft.AspNetCore.Mvc.ApiExplorer> comprend les conventions. `ApiExplorer` est l’abstraction de MVC pour communiquer avec des générateurs de documents [OpenAPI](https://www.openapis.org/) (également nommé Swagger). Les attributs provenant de la convention appliquée sont associés à une action et sont inclus dans la documentation OpenAPI de l’action. Les [analyseurs d’API](xref:web-api/advanced/analyzers) comprennent également les conventions. Si votre action n’est pas conventionnelle (par exemple, elle retourne un code d’état qui n’est pas documenté par la convention appliquée), un avertissement vous encourage à documenter le code d’état.
 
@@ -69,7 +70,7 @@ Les conventions ne se combinent pas : chaque action peut être associée à une 
 
     [!code-csharp[](conventions/sample/Controllers/ContactsConventionController.cs?name=snippet_ApiConventionTypeAttribute&highlight=2)]
 
-1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` appliqué à un assembly &mdash; applique le type de convention spécifié à tous les contrôleurs dans l’assembly actif. Il est recommandé d’appliquer des attributs de niveau assembly au fichier *Startup.cs*.
+1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` appliqué à un assembly &mdash; applique le type de convention spécifié à tous les contrôleurs dans l’assembly actif. Il est recommandé d’appliquer des attributs de niveau assembly au fichier *Startup.cs* .
 
     Dans l’exemple suivant, l’ensemble de conventions par défaut est appliqué à tous les contrôleurs dans l’assembly :
 
@@ -84,7 +85,7 @@ Si les conventions d’API par défaut ne répondent pas à vos besoins, créez 
 
 ### <a name="response-types"></a>Types de réponse
 
-Ces méthodes sont annotées avec des attributs `[ProducesResponseType]` ou `[ProducesDefaultResponseType]`. Par exemple :
+Ces méthodes sont annotées avec des attributs `[ProducesResponseType]` ou `[ProducesDefaultResponseType]`. Exemple :
 
 ```csharp
 public static class MyAppConventions
@@ -102,9 +103,9 @@ Si des attributs de métadonnées plus spécifiques sont absents, l’applicatio
 * La méthode de convention s’applique à toute action nommée `Find`.
 * Un paramètre nommé `id` est présent sur l’action `Find`.
 
-### <a name="naming-requirements"></a>Exigences concernant l’affectation des noms
+### <a name="naming-requirements"></a>Conditions de nommage
 
-Les attributs `[ApiConventionNameMatch]` et `[ApiConventionTypeMatch]` peuvent être appliqués à la méthode de convention qui détermine les actions auxquelles ils s’appliquent. Par exemple :
+Les attributs `[ApiConventionNameMatch]` et `[ApiConventionTypeMatch]` peuvent être appliqués à la méthode de convention qui détermine les actions auxquelles ils s’appliquent. Exemple :
 
 ```csharp
 [ProducesResponseType(StatusCodes.Status200OK)]

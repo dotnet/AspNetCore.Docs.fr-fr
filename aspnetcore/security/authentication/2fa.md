@@ -7,6 +7,7 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/2fa
-ms.openlocfilehash: e5e606afaf0219f3a0eb7301203b7142a00322be
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1ee9e656c2e631c9b5588149e0a75e07108baff1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634109"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051263"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Authentification à deux facteurs avec SMS dans ASP.NET Core
 
@@ -48,17 +49,17 @@ Créez un compte SMS, par exemple, à partir de [Twilio](https://www.twilio.com/
 
 **Twilio**
 
-À partir de l’onglet tableau de bord de votre compte Twilio, copiez le **SID de compte** et le **jeton d’authentification**.
+À partir de l’onglet tableau de bord de votre compte Twilio, copiez le **SID de compte** et le **jeton d’authentification** .
 
 **ASPSMS:**
 
-Dans les paramètres de votre compte, accédez à **sensibles** et copiez-le avec votre **mot de passe**.
+Dans les paramètres de votre compte, accédez à **sensibles** et copiez-le avec votre **mot de passe** .
 
 Nous stockerons ces valeurs ultérieurement dans avec l’outil secret-Manager dans les clés `SMSAccountIdentification` et `SMSAccountPassword` .
 
 #### <a name="specifying-senderid--originator"></a>Spécification de SenderID/Originator
 
-**Twilio :** Dans l’onglet nombres, copiez votre **numéro de téléphone**Twilio.
+**Twilio :** Dans l’onglet nombres, copiez votre **numéro de téléphone** Twilio.
 
 **ASPSMS :** Dans le menu déverrouiller les expéditeurs, déverrouillez un ou plusieurs expéditeurs ou choisissez un expéditeur alphanumérique (non pris en charge par tous les réseaux).
 
@@ -72,7 +73,7 @@ Nous allons utiliser le [modèle d’options](xref:fundamentals/configuration/op
 
 [!code-csharp[](2fa/sample/Web2FA/Services/SMSoptions.cs)]
 
-Définissez les `SMSAccountIdentification` `SMSAccountPassword` et `SMSAccountFrom` avec l' [outil de gestion de secret](xref:security/app-secrets). Par exemple :
+Définissez les `SMSAccountIdentification` `SMSAccountPassword` et `SMSAccountFrom` avec l' [outil de gestion de secret](xref:security/app-secrets). Exemple :
 
 ```none
 C:/Web2FA/src/WebApp1>dotnet user-secrets set SMSAccountIdentification 12345
@@ -99,7 +100,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ### <a name="configure-startup-to-use-smsoptions"></a>Configurer le démarrage à utiliser `SMSoptions`
 
-Ajoutez `SMSoptions` au conteneur de service dans la `ConfigureServices` méthode de *Startup.cs*:
+Ajoutez `SMSoptions` au conteneur de service dans la `ConfigureServices` méthode de *Startup.cs* :
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet1&highlight=4)]
 
@@ -117,7 +118,7 @@ Ouvrez le fichier de vue *views/Manage/index. cshtml* Razor et supprimez les car
 
 ![Gérer l’affichage-Appuyez sur le lien « ajouter »](2fa/_static/login2fa2.png)
 
-* Ajoutez un numéro de téléphone qui recevra le code de vérification, puis appuyez sur **Envoyer le code de vérification**.
+* Ajoutez un numéro de téléphone qui recevra le code de vérification, puis appuyez sur **Envoyer le code de vérification** .
 
 ![Page Ajouter un numéro de téléphone](2fa/_static/login2fa3.png)
 
@@ -141,13 +142,13 @@ Si vous n’obtenez pas de SMS, consultez la page du journal Twilio.
 
 * Connectez-vous.
 
-* Le compte d’utilisateur a activé l’authentification à deux facteurs. vous devez donc fournir le deuxième facteur d’authentification. Dans ce didacticiel, vous avez activé la vérification par téléphone. Les modèles intégrés vous permettent également de configurer le courrier électronique comme second facteur. Vous pouvez configurer des facteurs secondaires supplémentaires pour l’authentification, tels que les codes QR. Appuyez sur **Envoyer**.
+* Le compte d’utilisateur a activé l’authentification à deux facteurs. vous devez donc fournir le deuxième facteur d’authentification. Dans ce didacticiel, vous avez activé la vérification par téléphone. Les modèles intégrés vous permettent également de configurer le courrier électronique comme second facteur. Vous pouvez configurer des facteurs secondaires supplémentaires pour l’authentification, tels que les codes QR. Appuyez sur **Envoyer** .
 
 ![Envoyer l’affichage du code de vérification](2fa/_static/login2fa7.png)
 
 * Entrez le code que vous recevez dans le message SMS.
 
-* Si vous cliquez sur la case à cocher **mémoriser ce navigateur** , vous ne devez pas utiliser 2FA pour vous connecter lorsque vous utilisez le même appareil et le même navigateur. L’activation de 2FA et le clic sur **mémoriser ce navigateur** vous offriront une protection 2FA renforcée contre les utilisateurs malveillants qui essaient d’accéder à votre compte, tant qu’ils n’ont pas accès à votre appareil. Vous pouvez le faire sur n’importe quel appareil privé que vous utilisez régulièrement. En définissant  **mémoriser ce navigateur**, vous bénéficiez de la sécurité supplémentaire de 2FA à partir des appareils que vous n’utilisez pas régulièrement, et vous avez l’avantage de ne pas devoir passer par 2FA sur vos propres appareils.
+* Si vous cliquez sur la case à cocher **mémoriser ce navigateur** , vous ne devez pas utiliser 2FA pour vous connecter lorsque vous utilisez le même appareil et le même navigateur. L’activation de 2FA et le clic sur **mémoriser ce navigateur** vous offriront une protection 2FA renforcée contre les utilisateurs malveillants qui essaient d’accéder à votre compte, tant qu’ils n’ont pas accès à votre appareil. Vous pouvez le faire sur n’importe quel appareil privé que vous utilisez régulièrement. En définissant  **mémoriser ce navigateur** , vous bénéficiez de la sécurité supplémentaire de 2FA à partir des appareils que vous n’utilisez pas régulièrement, et vous avez l’avantage de ne pas devoir passer par 2FA sur vos propres appareils.
 
 ![Vérifier l’affichage](2fa/_static/login2fa8.png)
 

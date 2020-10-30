@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 7/18/2020
 ms.custom: mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: 5f86e514ee6339888171d83ab3117e9b3fcf107e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: accfd46fa72c33976f8af2a39267c993447e036e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627817"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051939"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>Créer une application Web ASP.NET Core avec les données utilisateur protégées par l’autorisation
 
@@ -127,11 +128,11 @@ Définissez la stratégie d’authentification de secours pour exiger que les ut
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
-Le code en surbrillance précédent définit la [stratégie d’authentification de secours](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). La stratégie d’authentification de secours exige que ***tous*** les utilisateurs soient authentifiés, à l’exception des Razor pages, des contrôleurs ou des méthodes d’action avec un attribut d’authentification. Par exemple, Razor les pages, les contrôleurs ou les méthodes d’action avec `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` utilisent l’attribut d’authentification appliqué plutôt que la stratégie d’authentification de secours.
+Le code en surbrillance précédent définit la [stratégie d’authentification de secours](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). La stratégie d’authentification de secours exige que * *_tous_* les utilisateurs soient authentifiés, à l’exception des Razor pages, des contrôleurs ou des méthodes d’action avec un attribut d’authentification. Par exemple, Razor les pages, les contrôleurs ou les méthodes d’action avec `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` utilisent l’attribut d’authentification appliqué plutôt que la stratégie d’authentification de secours.
 
 Stratégie d’authentification de secours :
 
-* Est appliqué à toutes les demandes qui ne spécifient pas explicitement une stratégie d’authentification. Pour les demandes traitées par le routage de point de terminaison, cela inclut tout point de terminaison qui ne spécifie pas d’attribut d’autorisation. Pour les demandes servies par un autre intergiciel après l’intergiciel (middleware) d’autorisation, par exemple des [fichiers statiques](xref:fundamentals/static-files), cela applique la stratégie à toutes les demandes.
+_ Est appliqué à toutes les demandes qui ne spécifient pas explicitement une stratégie d’authentification. Pour les demandes traitées par le routage de point de terminaison, cela inclut tout point de terminaison qui ne spécifie pas d’attribut d’autorisation. Pour les demandes servies par un autre intergiciel après l’intergiciel (middleware) d’autorisation, par exemple des [fichiers statiques](xref:fundamentals/static-files), cela applique la stratégie à toutes les demandes.
 
 La définition de la stratégie d’authentification de secours pour exiger que les utilisateurs soient authentifiés protège les pages et les contrôleurs qui viennent d’être ajoutés Razor . L’authentification requise par défaut est plus sécurisée que le fait de s’appuyer sur de nouveaux contrôleurs et Razor pages pour inclure l' `[Authorize]` attribut.
 
@@ -151,7 +152,7 @@ Ajoutez [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowano
 
 ### <a name="configure-the-test-account"></a>Configurer le compte de test
 
-La `SeedData` classe crée deux comptes : administrateur et gestionnaire. Utilisez l' [outil secret Manager](xref:security/app-secrets) pour définir un mot de passe pour ces comptes. Définissez le mot de passe à partir du répertoire du projet (répertoire contenant *Program.cs*) :
+La `SeedData` classe crée deux comptes : administrateur et gestionnaire. Utilisez l' [outil secret Manager](xref:security/app-secrets) pour définir un mot de passe pour ces comptes. Définissez le mot de passe à partir du répertoire du projet (répertoire contenant *Program.cs* ) :
 
 ```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
@@ -333,16 +334,16 @@ Un moyen simple de tester l’application terminée consiste à lancer trois nav
 
 | Utilisateur                | Amorcé par l’application | Options                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | Non                | Modifiez/supprimez les données.                |
-| manager@contoso.com | Oui               | Approuver/refuser et modifier/supprimer des données. |
-| admin@contoso.com   | Oui               | Approuver/refuser et modifier/supprimer toutes les données. |
+| test@example.com    | No                | Modifiez/supprimez les données.                |
+| manager@contoso.com | Yes               | Approuver/refuser et modifier/supprimer des données. |
+| admin@contoso.com   | Yes               | Approuver/refuser et modifier/supprimer toutes les données. |
 
 Créez un contact dans le navigateur de l’administrateur. Copiez l’URL de la suppression et de la modification à partir du contact de l’administrateur. Collez ces liens dans le navigateur de l’utilisateur de test pour vérifier que l’utilisateur de test ne peut pas effectuer ces opérations.
 
 ## <a name="create-the-starter-app"></a>Créer l’application de démarrage
 
 * Créer une Razor application pages nommée « ContactManager »
-  * Créez l’application avec des **comptes d’utilisateur individuels**.
+  * Créez l’application avec des **comptes d’utilisateur individuels** .
   * Nommez-la « ContactManager » pour que l’espace de noms corresponde à l’espace de noms utilisé dans l’exemple.
   * `-uld` spécifie la base de données locale au lieu de SQLite
 
@@ -350,7 +351,7 @@ Créez un contact dans le navigateur de l’administrateur. Copiez l’URL de la
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Ajouter des *modèles/contact. cs*:
+* Ajouter des *modèles/contact. cs* :
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
@@ -487,7 +488,7 @@ Ajoutez [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowano
 
 ### <a name="configure-the-test-account"></a>Configurer le compte de test
 
-La `SeedData` classe crée deux comptes : administrateur et gestionnaire. Utilisez l' [outil secret Manager](xref:security/app-secrets) pour définir un mot de passe pour ces comptes. Définissez le mot de passe à partir du répertoire du projet (répertoire contenant *Program.cs*) :
+La `SeedData` classe crée deux comptes : administrateur et gestionnaire. Utilisez l' [outil secret Manager](xref:security/app-secrets) pour définir un mot de passe pour ces comptes. Définissez le mot de passe à partir du répertoire du projet (répertoire contenant *Program.cs* ) :
 
 ```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
@@ -660,16 +661,16 @@ Un moyen simple de tester l’application terminée consiste à lancer trois nav
 
 | Utilisateur                | Amorcé par l’application | Options                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | Non                | Modifiez/supprimez les données.                |
-| manager@contoso.com | Oui               | Approuver/refuser et modifier/supprimer des données. |
-| admin@contoso.com   | Oui               | Approuver/refuser et modifier/supprimer toutes les données. |
+| test@example.com    | No                | Modifiez/supprimez les données.                |
+| manager@contoso.com | Yes               | Approuver/refuser et modifier/supprimer des données. |
+| admin@contoso.com   | Yes               | Approuver/refuser et modifier/supprimer toutes les données. |
 
 Créez un contact dans le navigateur de l’administrateur. Copiez l’URL de la suppression et de la modification à partir du contact de l’administrateur. Collez ces liens dans le navigateur de l’utilisateur de test pour vérifier que l’utilisateur de test ne peut pas effectuer ces opérations.
 
 ## <a name="create-the-starter-app"></a>Créer l’application de démarrage
 
 * Créer une Razor application pages nommée « ContactManager »
-  * Créez l’application avec des **comptes d’utilisateur individuels**.
+  * Créez l’application avec des **comptes d’utilisateur individuels** .
   * Nommez-la « ContactManager » pour que l’espace de noms corresponde à l’espace de noms utilisé dans l’exemple.
   * `-uld` spécifie la base de données locale au lieu de SQLite
 
@@ -677,7 +678,7 @@ Créez un contact dans le navigateur de l’administrateur. Copiez l’URL de la
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Ajouter des *modèles/contact. cs*:
+* Ajouter des *modèles/contact. cs* :
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
@@ -713,7 +714,7 @@ Vérifiez que l’application a amorcé la base de données. Si la base de coord
 
 <a name="secure-data-add-resources-label"></a>
 
-### <a name="additional-resources"></a>Ressources complémentaires
+### <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Créer une application Web .NET Core et SQL Database dans Azure App Service](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 * [ASP.net Core laboratoire d’autorisation](https://github.com/blowdart/AspNetAuthorizationWorkshop). Ce laboratoire aborde plus en détail les fonctionnalités de sécurité présentées dans ce didacticiel.

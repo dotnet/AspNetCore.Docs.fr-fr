@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/27/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: ab850fa8afbee9d2664868937362388a03374908
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1810fef903362addcef4a6c9ec53264604f58d2b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634694"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051471"
 ---
 # <a name="introduction-to-aspnet-core-no-locsignalr"></a>Présentation de ASP.NET Core SignalR
 
@@ -54,7 +55,7 @@ La source est hébergée dans un [ SignalR référentiel sur GitHub](https://git
 SignalR prend en charge les techniques suivantes pour gérer les communications en temps réel (par ordre de secours normal) :
 
 * [WebSockets](https://tools.ietf.org/html/rfc7118)
-* Événements envoyés par le serveur
+* Événements de Server-Sent
 * Interrogation longue
 
 SignalR choisit automatiquement la meilleure méthode de transport parmi les capacités du serveur et du client.
@@ -71,5 +72,5 @@ Les hubs appellent le code côté client en envoyant des messages qui contiennen
 
 * [Prise en main SignalR de pour ASP.net Core](xref:tutorials/signalr)
 * [Plateformes prises en charge](xref:signalr/supported-platforms)
-* [Concentr](xref:signalr/hubs)
+* [Hubs](xref:signalr/hubs)
 * [Client JavaScript](xref:signalr/javascript-client)

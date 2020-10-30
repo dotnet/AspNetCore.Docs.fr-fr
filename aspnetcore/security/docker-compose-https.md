@@ -7,6 +7,7 @@ ms.author: ravipal
 ms.custom: mvc
 ms.date: 03/28/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-compose-https
-ms.openlocfilehash: cd46fdcbe10dc0b7829fbe7eaef821889f395df4
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 37a0142dac1e26afd26dbf2aad46bee20693652e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393702"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051640"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a>Hébergement d’images ASP.NET Core avec Docker Compose sur HTTPs
 
@@ -51,7 +52,7 @@ Pour les certificats de production :
 * L' `dotnet dev-certs` outil n’est pas requis.
 * Les certificats n’ont pas besoin d’être stockés à l’emplacement utilisé dans les instructions. Stockez les certificats dans n’importe quel emplacement en dehors de l’annuaire de sites.
 
-Les instructions contenues dans la section suivante contiennent des certificats de montage de volume dans des conteneurs à l’aide `volumes` de la propriété dans *docker-compose. yml.* Vous pouvez ajouter des certificats dans des images de conteneur à l’aide d’une `COPY` commande dans un *fichier dockerfile*, mais cela n’est pas recommandé. La copie de certificats dans une image n’est pas recommandée pour les raisons suivantes :
+Les instructions contenues dans la section suivante contiennent des certificats de montage de volume dans des conteneurs à l’aide `volumes` de la propriété dans *docker-compose. yml.* Vous pouvez ajouter des certificats dans des images de conteneur à l’aide d’une `COPY` commande dans un *fichier dockerfile* , mais cela n’est pas recommandé. La copie de certificats dans une image n’est pas recommandée pour les raisons suivantes :
 
 * Il est donc difficile d’utiliser la même image pour le test avec des certificats de développeur.
 * Il est donc difficile d’utiliser la même image pour l’hébergement avec des certificats de production.

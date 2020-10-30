@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/14/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: 2d231440847270b3b2fe47fbe29359f494900292
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0f6f628cee0623c21a2a93aa11470005f8c78c58
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635201"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053135"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>Fournisseurs de stratégies d’autorisation personnalisés utilisant IAuthorizationPolicyProvider dans ASP.NET Core 
 
@@ -187,9 +188,9 @@ public Task<AuthorizationPolicy> GetFallbackPolicyAsync() =>
 
 ## <a name="use-a-custom-iauthorizationpolicyprovider"></a>Utiliser un IAuthorizationPolicyProvider personnalisé
 
-Pour utiliser des stratégies personnalisées à partir d’un `IAuthorizationPolicyProvider` , vous ***devez***:
+Pour utiliser des stratégies personnalisées à partir d’un `IAuthorizationPolicyProvider` , vous * **devez** _ :
 
-* Inscrire les `AuthorizationHandler` types appropriés avec l’injection de dépendances (décrite dans [autorisation basée sur la stratégie](xref:security/authorization/policies#authorization-handlers)), comme avec tous les scénarios d’autorisation basés sur des stratégies.
+_ Enregistrer les `AuthorizationHandler` types appropriés avec l’injection de dépendances (décrite dans [autorisation basée sur la stratégie](xref:security/authorization/policies#authorization-handlers)), comme avec tous les scénarios d’autorisation basés sur des stratégies.
 * Inscrivez le `IAuthorizationPolicyProvider` type personnalisé dans la collection de services d’injection de dépendances de l’application dans `Startup.ConfigureServices` pour remplacer le fournisseur de stratégie par défaut.
 
   ```csharp

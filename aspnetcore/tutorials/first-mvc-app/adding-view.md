@@ -5,6 +5,7 @@ description: Partie 3 de la série de didacticiels sur ASP.NET Core MVC.
 ms.author: riande
 ms.date: 8/04/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 970cc1fe6e0a0e0204ddafec09c15db6fed9aa66
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 078329d1e5dfe41a7713b1e53894a9b09886752d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629754"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052667"
 ---
 # <a name="part-3-add-a-view-to-an-aspnet-core-mvc-app"></a>Partie 3 : ajouter une vue à une application ASP.NET Core MVC
 
@@ -37,23 +38,23 @@ Actuellement, la méthode `Index` retourne une chaîne avec un message qui est c
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controller.View*> du contrôleur. Il utilise un modèle de vue pour générer une réponse HTML. Les méthodes du contrôleur (également appelées *méthodes d’action*), comme la méthode `Index` ci-dessus, retournent généralement un <xref:Microsoft.AspNetCore.Mvc.IActionResult> (ou une classe dérivée de <xref:Microsoft.AspNetCore.Mvc.ActionResult>), et non un type comme `string`.
+Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controller.View*> du contrôleur. Il utilise un modèle de vue pour générer une réponse HTML. Les méthodes du contrôleur (également appelées *méthodes d’action* ), comme la méthode `Index` ci-dessus, retournent généralement un <xref:Microsoft.AspNetCore.Mvc.IActionResult> (ou une classe dérivée de <xref:Microsoft.AspNetCore.Mvc.ActionResult>), et non un type comme `string`.
 
 ## <a name="add-a-view"></a>Ajouter une vue
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues* , cliquez sur **Ajouter > Nouveau dossier** , puis nommez le dossier *HelloWorld* .
 
-* Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouvel élément**.
+* Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld* , puis cliquez sur **Ajouter > Nouvel élément** .
 
 * Dans la boîte de dialogue **Ajouter un nouvel élément - MvcMovie**
 
   * Dans la zone de recherche située en haut à droite, entrez *vue*
 
-  * Sélectionner une ** Razor vue**
+  * Sélectionner une **Razor vue**
 
-  * Conservez la valeur de la zone **Nom**, *Index.cshtml*.
+  * Conservez la valeur de la zone **Nom** , *Index.cshtml* .
 
   * Sélectionnez **Ajouter**
 
@@ -63,19 +64,19 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 Ajoutez une vue `Index` pour `HelloWorldController`.
 
-* Ajoutez un nouveau dossier nommé *Views/HelloWorld*.
-* Ajoutez un nouveau fichier à la *vues/HelloWorld* nom du dossier *Index.cshtml*.
+* Ajoutez un nouveau dossier nommé *Views/HelloWorld* .
+* Ajoutez un nouveau fichier à la *vues/HelloWorld* nom du dossier *Index.cshtml* .
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
-* Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouveau fichier**.
+* Cliquez avec le bouton droit sur le dossier *Vues* , cliquez sur **Ajouter > Nouveau dossier** , puis nommez le dossier *HelloWorld* .
+* Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld* , puis cliquez sur **Ajouter > Nouveau fichier** .
 * Dans la boîte de dialogue **Nouveau fichier** :
 
   * Sélectionnez **ASP .net Core** dans le volet gauche.
   * Sélectionnez la **page vue MVC** dans le volet central.
   * Dans la zone **nom** , tapez *index* .
-  * Sélectionnez **Nouveau**.
+  * Sélectionnez **Nouveau** .
 
 ![Boîte de dialogue Ajouter un nouvel élément](adding-view/_static/add_view_mac.png)
 
@@ -91,9 +92,9 @@ Accédez à `https://localhost:{PORT}/HelloWorld`. La méthode `Index` dans `Hel
 
 ## <a name="change-views-and-layout-pages"></a>Changer les vues et les pages de disposition
 
-Sélectionnez les liens du menu (**MvcMovie**, **Accueil** et **Confidentialité**). Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Views/Shared/_Layout.cshtml*. Ouvrez le fichier *Views/Shared/_Layout.cshtml*.
+Sélectionnez les liens du menu ( **MvcMovie** , **Accueil** et **Confidentialité** ). Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Views/Shared/_Layout.cshtml* . Ouvrez le fichier *Views/Shared/_Layout.cshtml* .
 
-Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifier la disposition du conteneur HTML de votre site dans un emplacement unique, puis de l’appliquer sur plusieurs pages de votre site. Recherchez la ligne `@RenderBody()`. `RenderBody` est un espace réservé dans lequel toutes les pages spécifiques aux vues que vous créez s’affichent, *encapsulées* dans la page de disposition. Par exemple, si vous sélectionnez le lien **Confidentialité**, la vue **Views/Home/Privacy.cshtml** est restituée dans la méthode `RenderBody`.
+Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifier la disposition du conteneur HTML de votre site dans un emplacement unique, puis de l’appliquer sur plusieurs pages de votre site. Recherchez la ligne `@RenderBody()`. `RenderBody` est un espace réservé dans lequel toutes les pages spécifiques aux vues que vous créez s’affichent, *encapsulées* dans la page de disposition. Par exemple, si vous sélectionnez le lien **Confidentialité** , la vue **Views/Home/Privacy.cshtml** est restituée dans la méthode `RenderBody`.
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>Changer le lien de titre, de pied de page et de menu dans le fichier de disposition
 
@@ -108,13 +109,13 @@ Le balisage précédent apporte les modifications suivantes :
 
 Dans le balisage précédent, l’ [attribut Tag Helper d’ancrage `asp-area=""`](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) et la valeur d’attribut ont été omis, car cette application n’utilise pas de [zones](xref:mvc/controllers/areas).
 
-**Remarque**: le `Movies` contrôleur n’a pas été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
+**Remarque** : le `Movies` contrôleur n’a pas été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
 
-Enregistrer vos modifications et sélectionnez le lien **Confidentialité**. Notez comment le titre sur l’onglet du navigateur affiche **Stratégie de confidentialité - Movie App** au lieu de **Stratégie de confidentialité - Mvc Movie** :
+Enregistrer vos modifications et sélectionnez le lien **Confidentialité** . Notez comment le titre sur l’onglet du navigateur affiche **Stratégie de confidentialité - Movie App** au lieu de **Stratégie de confidentialité - Mvc Movie** :
 
 ![Onglet Confidentialité](~/tutorials/first-mvc-app/adding-view/_static/about2.png)
 
-Sélectionnez le lien **Accueil** et notez que le titre et le texte d’ancrage affichent également **Movie App**. Nous avons pu effectuer ce changement une fois dans le modèle de disposition et avoir le nouveau texte de lien et le nouveau titre reflétés sur toutes les pages du site.
+Sélectionnez le lien **Accueil** et notez que le titre et le texte d’ancrage affichent également **Movie App** . Nous avons pu effectuer ce changement une fois dans le modèle de disposition et avoir le nouveau texte de lien et le nouveau titre reflétés sur toutes les pages du site.
 
 Examinez le fichier *Views/_ViewStart.cshtml* :
 
@@ -140,7 +141,7 @@ Dans le code ci-dessus, `ViewData["Title"] = "Movie List";` définit la proprié
 
 Enregistrez la modification et accédez à `https://localhost:{PORT}/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur CTRL + F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec la `ViewData["Title"]` valeur définie dans le modèle d’affichage *index. cshtml* et l’application « -Movie » supplémentaire ajoutée au fichier de disposition.
 
-Le contenu du modèle de vue *Index.cshtml* est fusionné avec le modèle de vue *Views/Shared/_Layout.cshtml*. Une réponse HTML unique est envoyée au navigateur. Les modèles de disposition permettent d’apporter facilement des modifications qui s’appliquent à toutes les pages d’une application. Pour en savoir plus, consultez [Disposition](xref:mvc/views/layout).
+Le contenu du modèle de vue *Index.cshtml* est fusionné avec le modèle de vue *Views/Shared/_Layout.cshtml* . Une réponse HTML unique est envoyée au navigateur. Les modèles de disposition permettent d’apporter facilement des modifications qui s’appliquent à toutes les pages d’une application. Pour en savoir plus, consultez [Disposition](xref:mvc/views/layout).
 
 ![Vue Movie List](~/tutorials/first-mvc-app/adding-view/_static/hell3.png)
 
@@ -154,13 +155,13 @@ Les contrôleurs sont chargés de fournir les données nécessaires pour qu’un
 
 Actuellement, le `Welcome` méthode présente dans la classe `HelloWorldController` prend un paramètre `name` et un paramètre `ID`, puis sort les valeurs directement dans le navigateur. Au lieu que le contrôleur restitue cette réponse sous forme de chaîne, changez le contrôleur pour qu’il utilise un modèle de vue à la place. Comme le modèle de vue génère une réponse dynamique, les bits de données appropriés doivent être passés du contrôleur à la vue pour générer la réponse. Pour cela, le contrôleur doit placer les données dynamiques (paramètres) dont le modèle de vue a besoin dans un dictionnaire `ViewData` auquel le modèle de vue peut ensuite accéder.
 
-Dans *HelloWorldController.cs*, modifiez la méthode `Welcome` pour ajouter une valeur `Message` et `NumTimes` au dictionnaire `ViewData`. Le dictionnaire `ViewData` est un objet dynamique, ce qui signifie que n’importe quel type peut être utilisé, l’objet `ViewData` ne possède aucune propriété définie tant que vous ne placez pas d’élément dedans. Le [système de liaison de données MVC](xref:mvc/models/model-binding) mappe automatiquement les paramètres nommés (`name` et `numTimes`) provenant de la chaîne de requête dans la barre d’adresse aux paramètres de votre méthode. Le fichier *HelloWorldController.cs* complet ressemble à ceci :
+Dans *HelloWorldController.cs* , modifiez la méthode `Welcome` pour ajouter une valeur `Message` et `NumTimes` au dictionnaire `ViewData`. Le dictionnaire `ViewData` est un objet dynamique, ce qui signifie que n’importe quel type peut être utilisé, l’objet `ViewData` ne possède aucune propriété définie tant que vous ne placez pas d’élément dedans. Le [système de liaison de données MVC](xref:mvc/models/model-binding) mappe automatiquement les paramètres nommés (`name` et `numTimes`) provenant de la chaîne de requête dans la barre d’adresse aux paramètres de votre méthode. Le fichier *HelloWorldController.cs* complet ressemble à ceci :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
 L’objet dictionnaire `ViewData` contient des données qui seront passées à la vue.
 
-Créez un modèle de vue Welcome nommé *Views/HelloWorld/Welcome.cshtml*.
+Créez un modèle de vue Welcome nommé *Views/HelloWorld/Welcome.cshtml* .
 
 Vous allez créer une boucle dans le modèle de vue *Welcome.cshtml* qui affiche « Hello » `NumTimes`. Remplacez le contenu de *Views/HelloWorld/Welcome.cshtml* avec le code suivant :
 
@@ -194,23 +195,23 @@ Actuellement, la méthode `Index` retourne une chaîne avec un message qui est c
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controller.View*> du contrôleur. Il utilise un modèle de vue pour générer une réponse HTML. Les méthodes du contrôleur (également appelées *méthodes d’action*), comme la méthode `Index` ci-dessus, retournent généralement un <xref:Microsoft.AspNetCore.Mvc.IActionResult> (ou une classe dérivée de <xref:Microsoft.AspNetCore.Mvc.ActionResult>), et non un type comme `string`.
+Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controller.View*> du contrôleur. Il utilise un modèle de vue pour générer une réponse HTML. Les méthodes du contrôleur (également appelées *méthodes d’action* ), comme la méthode `Index` ci-dessus, retournent généralement un <xref:Microsoft.AspNetCore.Mvc.IActionResult> (ou une classe dérivée de <xref:Microsoft.AspNetCore.Mvc.ActionResult>), et non un type comme `string`.
 
 ## <a name="add-a-view"></a>Ajouter une vue
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues* , cliquez sur **Ajouter > Nouveau dossier** , puis nommez le dossier *HelloWorld* .
 
-* Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouvel élément**.
+* Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld* , puis cliquez sur **Ajouter > Nouvel élément** .
 
 * Dans la boîte de dialogue **Ajouter un nouvel élément - MvcMovie**
 
   * Dans la zone de recherche située en haut à droite, entrez *vue*
 
-  * Sélectionner une ** Razor vue**
+  * Sélectionner une **Razor vue**
 
-  * Conservez la valeur de la zone **Nom**, *Index.cshtml*.
+  * Conservez la valeur de la zone **Nom** , *Index.cshtml* .
 
   * Sélectionnez **Ajouter**
 
@@ -220,19 +221,19 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 Ajoutez une vue `Index` pour `HelloWorldController`.
 
-* Ajoutez un nouveau dossier nommé *Views/HelloWorld*.
-* Ajoutez un nouveau fichier à la *vues/HelloWorld* nom du dossier *Index.cshtml*.
+* Ajoutez un nouveau dossier nommé *Views/HelloWorld* .
+* Ajoutez un nouveau fichier à la *vues/HelloWorld* nom du dossier *Index.cshtml* .
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
-* Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouveau fichier**.
+* Cliquez avec le bouton droit sur le dossier *Vues* , cliquez sur **Ajouter > Nouveau dossier** , puis nommez le dossier *HelloWorld* .
+* Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld* , puis cliquez sur **Ajouter > Nouveau fichier** .
 * Dans la boîte de dialogue **Nouveau fichier** :
 
   * Sélectionnez **Web** dans le volet gauche.
   * Sélectionnez **Fichier HTML vide** dans le volet central.
-  * Tapez *Index.cshtml* dans la zone **Nom**.
-  * Sélectionnez **Nouveau**.
+  * Tapez *Index.cshtml* dans la zone **Nom** .
+  * Sélectionnez **Nouveau** .
 
 ![Boîte de dialogue Ajouter un nouvel élément](adding-view/_static/add_view_mac.png)
 
@@ -248,9 +249,9 @@ Accédez à `https://localhost:{PORT}/HelloWorld`. La méthode `Index` dans `Hel
 
 ## <a name="change-views-and-layout-pages"></a>Changer les vues et les pages de disposition
 
-Sélectionnez les liens du menu (**MvcMovie**, **Accueil** et **Confidentialité**). Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Views/Shared/_Layout.cshtml*. Ouvrez le fichier *Views/Shared/_Layout.cshtml*.
+Sélectionnez les liens du menu ( **MvcMovie** , **Accueil** et **Confidentialité** ). Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Views/Shared/_Layout.cshtml* . Ouvrez le fichier *Views/Shared/_Layout.cshtml* .
 
-Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifier la disposition du conteneur HTML de votre site dans un emplacement unique, puis de l’appliquer sur plusieurs pages de votre site. Recherchez la ligne `@RenderBody()`. `RenderBody` est un espace réservé dans lequel toutes les pages spécifiques aux vues que vous créez s’affichent, *encapsulées* dans la page de disposition. Par exemple, si vous sélectionnez le lien **Confidentialité**, la vue **Views/Home/Privacy.cshtml** est restituée dans la méthode `RenderBody`.
+Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifier la disposition du conteneur HTML de votre site dans un emplacement unique, puis de l’appliquer sur plusieurs pages de votre site. Recherchez la ligne `@RenderBody()`. `RenderBody` est un espace réservé dans lequel toutes les pages spécifiques aux vues que vous créez s’affichent, *encapsulées* dans la page de disposition. Par exemple, si vous sélectionnez le lien **Confidentialité** , la vue **Views/Home/Privacy.cshtml** est restituée dans la méthode `RenderBody`.
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>Changer le lien de titre, de pied de page et de menu dans le fichier de disposition
 
@@ -268,13 +269,13 @@ Dans le balisage précédent, l’ [attribut Tag Helper Ancre](xref:mvc/views/ta
 > We haven't implemented the `Movies` controller yet, so if you click the `Movie App` link, you get a 404 (Not found) error.
 -->
 
-**Remarque**: le `Movies` contrôleur n’a pas été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
+**Remarque** : le `Movies` contrôleur n’a pas été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
 
-Enregistrer vos modifications et sélectionnez le lien **Confidentialité**. Notez comment le titre sur l’onglet du navigateur affiche **Stratégie de confidentialité - Movie App** au lieu de **Stratégie de confidentialité - Mvc Movie** :
+Enregistrer vos modifications et sélectionnez le lien **Confidentialité** . Notez comment le titre sur l’onglet du navigateur affiche **Stratégie de confidentialité - Movie App** au lieu de **Stratégie de confidentialité - Mvc Movie** :
 
 ![Onglet Confidentialité](~/tutorials/first-mvc-app/adding-view/_static/about2.png)
 
-Sélectionnez le lien **Accueil** et notez que le titre et le texte d’ancrage affichent également **Movie App**. Nous avons pu effectuer ce changement une fois dans le modèle de disposition et avoir le nouveau texte de lien et le nouveau titre reflétés sur toutes les pages du site.
+Sélectionnez le lien **Accueil** et notez que le titre et le texte d’ancrage affichent également **Movie App** . Nous avons pu effectuer ce changement une fois dans le modèle de disposition et avoir le nouveau texte de lien et le nouveau titre reflétés sur toutes les pages du site.
 
 Examinez le fichier *Views/_ViewStart.cshtml* :
 
@@ -314,13 +315,13 @@ Les contrôleurs sont chargés de fournir les données nécessaires pour qu’un
 
 Actuellement, le `Welcome` méthode présente dans la classe `HelloWorldController` prend un paramètre `name` et un paramètre `ID`, puis sort les valeurs directement dans le navigateur. Au lieu que le contrôleur restitue cette réponse sous forme de chaîne, changez le contrôleur pour qu’il utilise un modèle de vue à la place. Comme le modèle de vue génère une réponse dynamique, les bits de données appropriés doivent être passés du contrôleur à la vue pour générer la réponse. Pour cela, le contrôleur doit placer les données dynamiques (paramètres) dont le modèle de vue a besoin dans un dictionnaire `ViewData` auquel le modèle de vue peut ensuite accéder.
 
-Dans *HelloWorldController.cs*, modifiez la méthode `Welcome` pour ajouter une valeur `Message` et `NumTimes` au dictionnaire `ViewData`. Le dictionnaire `ViewData` est un objet dynamique, ce qui signifie que n’importe quel type peut être utilisé, l’objet `ViewData` ne possède aucune propriété définie tant que vous ne placez pas d’élément dedans. Le [système de liaison de données MVC](xref:mvc/models/model-binding) mappe automatiquement les paramètres nommés (`name` et `numTimes`) provenant de la chaîne de requête dans la barre d’adresse aux paramètres de votre méthode. Le fichier *HelloWorldController.cs* complet ressemble à ceci :
+Dans *HelloWorldController.cs* , modifiez la méthode `Welcome` pour ajouter une valeur `Message` et `NumTimes` au dictionnaire `ViewData`. Le dictionnaire `ViewData` est un objet dynamique, ce qui signifie que n’importe quel type peut être utilisé, l’objet `ViewData` ne possède aucune propriété définie tant que vous ne placez pas d’élément dedans. Le [système de liaison de données MVC](xref:mvc/models/model-binding) mappe automatiquement les paramètres nommés (`name` et `numTimes`) provenant de la chaîne de requête dans la barre d’adresse aux paramètres de votre méthode. Le fichier *HelloWorldController.cs* complet ressemble à ceci :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
 L’objet dictionnaire `ViewData` contient des données qui seront passées à la vue.
 
-Créez un modèle de vue Welcome nommé *Views/HelloWorld/Welcome.cshtml*.
+Créez un modèle de vue Welcome nommé *Views/HelloWorld/Welcome.cshtml* .
 
 Vous allez créer une boucle dans le modèle de vue *Welcome.cshtml* qui affiche « Hello » `NumTimes`. Remplacez le contenu de *Views/HelloWorld/Welcome.cshtml* avec le code suivant :
 

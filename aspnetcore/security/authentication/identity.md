@@ -5,6 +5,7 @@ description: Utilisez Identity avec une application ASP.net core. Découvrez com
 ms.author: riande
 ms.date: 7/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 1d14a3668192a165ea5025ae0575a8e3d6dfd8e4
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: bfcef860beb07ab81dda1a10a1648491ae187bef
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633251"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052017"
 ---
 # <a name="introduction-to-no-locidentity-on-aspnet-core"></a>Présentation de Identity sur ASP.net Core
 
@@ -59,12 +60,12 @@ Dans cette rubrique, vous allez apprendre à utiliser Identity pour inscrire, se
 
 Créez un projet d’application Web ASP.NET Core avec des comptes d’utilisateur individuels.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Sélectionnez **fichier** > **nouveau** > **projet**.
-* Sélectionnez **Application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK**.
-* Sélectionnez une **application Web**ASP.net Core, puis sélectionnez **modifier l’authentification**.
-* Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK**.
+* Sélectionnez **fichier** > **nouveau** > **projet** .
+* Sélectionnez **Application web ASP.NET Core** . Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK** .
+* Sélectionnez une **application Web** ASP.net Core, puis sélectionnez **modifier l’authentification** .
+* Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK** .
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
@@ -80,7 +81,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication/identity) une [ Razor bibliothèque de classes](xref:razor-pages/ui-class). La Identity Razor bibliothèque de classes expose des points de terminaison avec la `Identity` zone. Par exemple :
+Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication/identity) une [ Razor bibliothèque de classes](xref:razor-pages/ui-class). La Identity Razor bibliothèque de classes expose des points de terminaison avec la `Identity` zone. Exemple :
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -90,7 +91,7 @@ Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication
 
 Appliquez les migrations pour initialiser la base de données.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez la commande suivante dans la console du gestionnaire de package (PMC) :
 
@@ -136,13 +137,13 @@ Pour plus d’informations sur `IdentityOptions` et `Startup` , consultez <xref:
 
 ## <a name="scaffold-register-login-logout-and-registerconfirmation"></a>Registre de génération de modèles, connexion, déconnexion et RegisterConfirmation
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ajoutez les `Register` fichiers,, `Login` `LogOut` et `RegisterConfirmation` . Suivez l' [identité de l’échafaudage dans un Razor projet avec des instructions d’autorisation](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) pour générer le code présenté dans cette section.
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Si vous avez créé le projet avec le nom **application Web 1**, exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour `ApplicationDbContext` :
+Si vous avez créé le projet avec le nom **application Web 1** , exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour `ApplicationDbContext` :
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -189,7 +190,7 @@ Dans le code précédent, le code `return RedirectToPage();` doit être une redi
 
 [SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) efface les revendications de l’utilisateur stockées dans un cookie .
 
-La publication est spécifiée dans *pages/Shared/_LoginPartial. cshtml*:
+La publication est spécifiée dans *pages/Shared/_LoginPartial. cshtml* :
 
 [!code-cshtml[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
 
@@ -293,12 +294,12 @@ Pour plus d’informations, consultez [ Identity source AddDefault](https://gith
 
 Créez un projet d’application Web ASP.NET Core avec des comptes d’utilisateur individuels.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Sélectionnez **fichier** > **nouveau** > **projet**.
-* Sélectionnez **Application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK**.
-* Sélectionnez une **application Web**ASP.net Core, puis sélectionnez **modifier l’authentification**.
-* Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK**.
+* Sélectionnez **fichier** > **nouveau** > **projet** .
+* Sélectionnez **Application web ASP.NET Core** . Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK** .
+* Sélectionnez une **application Web** ASP.net Core, puis sélectionnez **modifier l’authentification** .
+* Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK** .
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
@@ -308,7 +309,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication/identity) une [ Razor bibliothèque de classes](xref:razor-pages/ui-class). La Identity Razor bibliothèque de classes expose des points de terminaison avec la `Identity` zone. Par exemple :
+Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication/identity) une [ Razor bibliothèque de classes](xref:razor-pages/ui-class). La Identity Razor bibliothèque de classes expose des points de terminaison avec la `Identity` zone. Exemple :
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -318,7 +319,7 @@ Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication
 
 Appliquez les migrations pour initialiser la base de données.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez la commande suivante dans la console du gestionnaire de package (PMC) :
 
@@ -360,13 +361,13 @@ Pour plus d’informations, consultez la [ Identity classe options](/dotnet/api/
 
 Suivez l' [identité de l’échafaudage dans un Razor projet avec des instructions d’autorisation](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) pour générer le code présenté dans cette section.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ajoutez les fichiers Register, login et LogOut.
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Si vous avez créé le projet avec le nom **application Web 1**, exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour `ApplicationDbContext` :
+Si vous avez créé le projet avec le nom **application Web 1** , exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour `ApplicationDbContext` :
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -408,7 +409,7 @@ Le lien de **déconnexion** appelle l' `LogoutModel.OnPost` action.
 
 [SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) efface les revendications de l’utilisateur stockées dans un cookie .
 
-La publication est spécifiée dans *pages/Shared/_LoginPartial. cshtml*:
+La publication est spécifiée dans *pages/Shared/_LoginPartial. cshtml* :
 
 [!code-cshtml[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 

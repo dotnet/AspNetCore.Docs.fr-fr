@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: 95035ec372ab6adb5bafb40f2b939c549ac6f839
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633810"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051406"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Gestion de session et d’état dans ASP.NET Core
 
@@ -141,7 +142,7 @@ Pour remplacer les cookie valeurs par défaut de la session, utilisez <xref:Micr
 
 L’application utilise la <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> propriété pour déterminer la durée pendant laquelle une session peut être inactive avant que son contenu dans le cache du serveur soit abandonné. Cette propriété est indépendante de l' cookie expiration. Chaque requête qui passe par le [middleware Session](xref:Microsoft.AspNetCore.Session.SessionMiddleware) réinitialise le délai d’expiration.
 
-L’état de session est *sans verrouillage*. Si deux requêtes tentent simultanément de modifier le contenu d’une session, la dernière requête remplace la première. `Session` est implémentée comme une *session cohérente*, ce qui signifie que tout le contenu est stocké au même emplacement. Quand deux requêtes tentent de modifier différentes valeurs de session, la dernière requête peut remplacer les modifications de session effectuées par la première.
+L’état de session est *sans verrouillage* . Si deux requêtes tentent simultanément de modifier le contenu d’une session, la dernière requête remplace la première. `Session` est implémentée comme une *session cohérente* , ce qui signifie que tout le contenu est stocké au même emplacement. Quand deux requêtes tentent de modifier différentes valeurs de session, la dernière requête peut remplacer les modifications de session effectuées par la première.
 
 ### <a name="set-and-get-session-values"></a>Définir et obtenir des valeurs Session
 
@@ -264,7 +265,7 @@ Tout autre code peut accéder à la valeur stockée dans `HttpContext.Items` à 
 
 Cette approche a également l’avantage d’éliminer l’utilisation des chaînes de clés dans le code.
 
-## <a name="cache"></a>d'instance/de clé
+## <a name="cache"></a>Cache
 
 La mise en cache est un moyen efficace de stocker et récupérer des données. L’application peut contrôler la durée de vie des éléments mis en cache. Pour plus d'informations, consultez <xref:performance/caching/response>.
 
@@ -291,7 +292,7 @@ L’approche recommandée pour rechercher des erreurs consiste à appeler `await
 
 SignalR les applications ne doivent pas utiliser l’état de session pour stocker des informations. SignalR les applications peuvent stocker par État de connexion dans `Context.Items` le Hub. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 <xref:host-and-deploy/web-farm>
 ::: moniker-end
@@ -401,7 +402,7 @@ Pour remplacer les cookie valeurs par défaut de la session, utilisez `SessionOp
 
 L’application utilise la <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> propriété pour déterminer la durée pendant laquelle une session peut être inactive avant que son contenu dans le cache du serveur soit abandonné. Cette propriété est indépendante de l' cookie expiration. Chaque requête qui passe par le [middleware Session](xref:Microsoft.AspNetCore.Session.SessionMiddleware) réinitialise le délai d’expiration.
 
-L’état de session est *sans verrouillage*. Si deux requêtes tentent simultanément de modifier le contenu d’une session, la dernière requête remplace la première. `Session` est implémentée comme une *session cohérente*, ce qui signifie que tout le contenu est stocké au même emplacement. Quand deux requêtes tentent de modifier différentes valeurs de session, la dernière requête peut remplacer les modifications de session effectuées par la première.
+L’état de session est *sans verrouillage* . Si deux requêtes tentent simultanément de modifier le contenu d’une session, la dernière requête remplace la première. `Session` est implémentée comme une *session cohérente* , ce qui signifie que tout le contenu est stocké au même emplacement. Quand deux requêtes tentent de modifier différentes valeurs de session, la dernière requête peut remplacer les modifications de session effectuées par la première.
 
 ### <a name="set-and-get-session-values"></a>Définir et obtenir des valeurs Session
 
@@ -543,7 +544,7 @@ Tout autre code peut accéder à la valeur stockée dans `HttpContext.Items` à 
 
 Cette approche a également l’avantage d’éliminer l’utilisation des chaînes de clés dans le code.
 
-## <a name="cache"></a>d'instance/de clé
+## <a name="cache"></a>Cache
 
 La mise en cache est un moyen efficace de stocker et récupérer des données. L’application peut contrôler la durée de vie des éléments mis en cache.
 

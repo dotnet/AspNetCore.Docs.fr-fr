@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: index
-ms.openlocfilehash: f1235337748bacdb6eaa775a5853238bf729e605
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4301e0d59364573767ab4cae25a4818ff84b9abc
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634551"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052225"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -57,7 +58,7 @@ Le modèle MVC d’ASP.NET Core fournit des fonctionnalités pour créer des [AP
 
 ## <a name="client-side-development"></a>Développement côté client
 
-ASP.NET Core s’intègre de façon transparente aux infrastructures et bibliothèques courantes côté client, notamment [Blazor](xref:blazor/index) , [angulaires](xref:spa/angular), [réactifs](xref:spa/react)et [bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez <xref:blazor/index> et les rubriques connexes sous *Développement côté client*.
+ASP.NET Core s’intègre de façon transparente aux infrastructures et bibliothèques courantes côté client, notamment [Blazor](xref:blazor/index) , [angulaires](xref:spa/angular), [réactifs](xref:spa/react)et [bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez <xref:blazor/index> et les rubriques connexes sous *Développement côté client* .
 
 <a name="target-framework"></a>
 
@@ -136,7 +137,7 @@ Le modèle MVC d’ASP.NET Core fournit des fonctionnalités pour créer des [AP
 
 ## <a name="client-side-development"></a>Développement côté client
 
-ASP.NET Core s’intègre de façon transparente aux infrastructures et bibliothèques courantes côté client, notamment [Blazor](xref:blazor/index) , [angulaires](xref:spa/angular), [réactifs](xref:spa/react)et [bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez <xref:blazor/index> et les rubriques connexes sous *Développement côté client*.
+ASP.NET Core s’intègre de façon transparente aux infrastructures et bibliothèques courantes côté client, notamment [Blazor](xref:blazor/index) , [angulaires](xref:spa/angular), [réactifs](xref:spa/react)et [bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez <xref:blazor/index> et les rubriques connexes sous *Développement côté client* .
 
 <a name="target-framework"></a>
 
@@ -198,7 +199,7 @@ Pour obtenir un guide de référence sur la migration d’applications ASP.NET v
 La plupart des articles et tutoriels contiennent des liens vers des exemples de code.
 
 1. [Téléchargez le fichier zip du référentiel ASP.NET](https://codeload.github.com/dotnet/AspNetCore.Docs/zip/master).
-1. Décompressez le fichier *Docs-master.zip*.
+1. Décompressez le fichier *Docs-master.zip* .
 1. Utilisez l’URL contenue dans l’exemple de lien pour vous aider à naviguer dans l’exemple de répertoire.
 
 ### <a name="preprocessor-directives-in-sample-code"></a>Directives de préprocesseur dans l’exemple de code

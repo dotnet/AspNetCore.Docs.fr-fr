@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: 3ba033b4165b19131d11311e5ae9d64e6afe48ca
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 6f826416e3045df32abf41e94e667120e71ae717
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865435"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051614"
 ---
 # <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>Utiliser des SameSite cookie dans ASP.net Core
 
@@ -157,7 +158,7 @@ Les [correctifs](https://devblogs.microsoft.com/dotnet/net-core-November-2019/) 
 
 ## <a name="supporting-older-browsers"></a>Prise en charge des navigateurs plus anciens
 
-La norme 2016 SameSite stipule que les valeurs inconnues doivent être traitées en tant que `SameSite=Strict` valeurs. Les applications accessibles depuis des navigateurs plus anciens qui prennent en charge la norme 2016 SameSite peuvent s’arrêter lorsqu’ils obtiennent une propriété SameSite avec la valeur `None` . Les applications Web doivent implémenter la détection du navigateur si elles envisagent de prendre en charge des navigateurs plus anciens. ASP.NET Core n’implémente pas la détection du navigateur, car les valeurs des agents utilisateur sont très volatiles et changent fréquemment. Un point d’extension dans <xref:Microsoft.AspNetCore.CookiePolicy> permet de brancher une logique spécifique à l’agent utilisateur.
+La norme 2016 SameSite stipule que les valeurs inconnues doivent être traitées en tant que `SameSite=Strict` valeurs. Les applications accessibles depuis des navigateurs plus anciens qui prennent en charge la norme 2016 SameSite peuvent s’arrêter lorsqu’ils obtiennent une propriété SameSite avec la valeur `None` . Les applications Web doivent implémenter la détection du navigateur si elles envisagent de prendre en charge des navigateurs plus anciens. ASP.NET Core n’implémente pas la détection du navigateur, car User-Agents valeurs sont très volatiles et changent fréquemment. Un point d’extension dans <xref:Microsoft.AspNetCore.CookiePolicy> permet de connecter User-Agent logique spécifique.
 
 Dans `Startup.Configure` , ajoutez le code qui appelle <xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*> avant <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> *d'* appeler ou toute méthode qui écrit cookie s :
 
@@ -201,7 +202,7 @@ Testez les applications Web à l’aide d’une version du client qui peut s’a
 
 ### <a name="test-with-chrome"></a>Tester avec chrome
 
-Chrome 78 + donne des résultats trompeurs, car une atténuation temporaire est en place. Le chrome 78 + atténuation temporaire autorise les cookie savesets de moins de deux minutes. Le chrome 76 ou 77 avec les indicateurs de test appropriés activés fournit des résultats plus précis. Pour tester le nouveau comportement de SameSite, basculez `chrome://flags/#same-site-by-default-cookies` vers **activé**. Les anciennes versions de chrome (75 et versions antérieures) sont signalées pour échouer avec le nouveau `None` paramètre. Consultez [prise en charge des navigateurs plus anciens](#sob) dans ce document.
+Chrome 78 + donne des résultats trompeurs, car une atténuation temporaire est en place. Le chrome 78 + atténuation temporaire autorise les cookie savesets de moins de deux minutes. Le chrome 76 ou 77 avec les indicateurs de test appropriés activés fournit des résultats plus précis. Pour tester le nouveau comportement de SameSite, basculez `chrome://flags/#same-site-by-default-cookies` vers **activé** . Les anciennes versions de chrome (75 et versions antérieures) sont signalées pour échouer avec le nouveau `None` paramètre. Consultez [prise en charge des navigateurs plus anciens](#sob) dans ce document.
 
 Google ne rend pas les versions de chrome plus anciennes disponibles. Suivez les instructions de [Télécharger chrome](https://www.chromium.org/getting-involved/download-chromium) pour tester les anciennes versions de chrome. Ne téléchargez **pas** chrome à partir des liens fournis en recherchant les anciennes versions de chrome.
 

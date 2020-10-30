@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubs
-ms.openlocfilehash: 71ca0896bc645b7625f60c3a9e8fe321079d524a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4a31c16eb44e2244574d0df49c30e7a44b2bba6e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631275"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050938"
 ---
 # <a name="use-hubs-in-no-locsignalr-for-aspnet-core"></a>Utiliser des hubs dans SignalR pour ASP.net Core
 
@@ -155,7 +156,7 @@ Cette interface peut être utilisée pour refactoriser l' `ChatHub` exemple pré
 
 L’utilisation `Hub<IChatClient>` de active la vérification au moment de la compilation des méthodes clientes. Cela empêche les problèmes causés par l’utilisation de chaînes magiques, car `Hub<T>` peut uniquement fournir l’accès aux méthodes définies dans l’interface.
 
-L’utilisation d’un fortement typé `Hub<T>` désactive la capacité à utiliser `SendAsync` . Toutes les méthodes définies sur l’interface peuvent toujours être définies comme asynchrones. En fait, chacune de ces méthodes doit retourner un `Task` . Étant donné qu’il s’agit d’une interface, n’utilisez pas le `async` mot clé. Par exemple :
+L’utilisation d’un fortement typé `Hub<T>` désactive la capacité à utiliser `SendAsync` . Toutes les méthodes définies sur l’interface peuvent toujours être définies comme asynchrones. En fait, chacune de ces méthodes doit retourner un `Task` . Étant donné qu’il s’agit d’une interface, n’utilisez pas le `async` mot clé. Exemple :
 
 ```csharp
 public interface IClient
@@ -191,7 +192,7 @@ Les exceptions levées dans vos méthodes de concentrateur sont envoyées au cli
 
 [!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
-Si votre Hub lève une exception, les connexions ne sont pas fermées. Par défaut, SignalR retourne un message d’erreur générique au client. Par exemple :
+Si votre Hub lève une exception, les connexions ne sont pas fermées. Par défaut, SignalR retourne un message d’erreur générique au client. Exemple :
 
 ```
 Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking 'MethodName' on the server.
@@ -210,4 +211,4 @@ Si vous avez une condition *exceptionnelle que vous souhaitez* propager au clien
 
 * [Introduction à ASP.NET Core SignalR](xref:signalr/introduction)
 * [Client JavaScript](xref:signalr/javascript-client)
-* [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
+* [Publication dans Azure](xref:signalr/publish-to-azure-web-app)

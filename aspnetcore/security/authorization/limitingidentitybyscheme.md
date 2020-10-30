@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/08/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: f52f6ec9c557add2c66105397eb2733a0dcb9e87
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4dc86480d40d8ee40b3c03aa7fd2994e6c15b105
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635188"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053122"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>Autorisation avec un schéma spécifique dans ASP.NET Core
 
 Dans certains scénarios, tels que les applications à page unique (SPAs), il est courant d’utiliser plusieurs méthodes d’authentification. Par exemple, l’application peut utiliser l' cookie authentification basée sur pour se connecter et l’authentification du porteur JWT pour les demandes JavaScript. Dans certains cas, l’application peut avoir plusieurs instances d’un gestionnaire d’authentification. Par exemple, deux cookie gestionnaires où l’un contient une identité de base et l’autre est créé lorsqu’une authentification multifacteur (MFA) a été déclenchée. L’authentification multifacteur peut être déclenchée, car l’utilisateur a demandé une opération nécessitant une sécurité supplémentaire. Pour plus d’informations sur l’application de l’authentification MFA lorsqu’un utilisateur demande une ressource qui requiert l’authentification MFA, consultez la section GitHub issue [protection avec MFA](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195).
 
-Un schéma d’authentification est nommé lorsque le service d’authentification est configuré pendant l’authentification. Par exemple :
+Un schéma d’authentification est nommé lorsque le service d’authentification est configuré pendant l’authentification. Exemple :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -53,7 +54,7 @@ Dans le code précédent, deux gestionnaires d’authentification ont été ajou
 
 ## <a name="selecting-the-scheme-with-the-authorize-attribute"></a>Sélection du schéma avec l’attribut Authorize
 
-Au point d’autorisation, l’application indique le gestionnaire à utiliser. Sélectionnez le gestionnaire avec lequel l’application autorisera en passant une liste de schémas d’authentification délimités par des virgules à `[Authorize]` . L' `[Authorize]` attribut spécifie le ou les schémas d’authentification à utiliser, qu’une valeur par défaut soit configurée ou non. Par exemple :
+Au point d’autorisation, l’application indique le gestionnaire à utiliser. Sélectionnez le gestionnaire avec lequel l’application autorisera en passant une liste de schémas d’authentification délimités par des virgules à `[Authorize]` . L' `[Authorize]` attribut spécifie le ou les schémas d’authentification à utiliser, qu’une valeur par défaut soit configurée ou non. Exemple :
 
 ```csharp
 [Authorize(AuthenticationSchemes = AuthSchemes)]
@@ -129,7 +130,7 @@ public void ConfigureServices(IServiceCollection services)
 > [!NOTE]
 > Une seule authentification du porteur JWT est enregistrée avec le schéma d’authentification par défaut `JwtBearerDefaults.AuthenticationScheme` . Une authentification supplémentaire doit être inscrite avec un schéma d’authentification unique.
 
-L’étape suivante consiste à mettre à jour la stratégie d’autorisation par défaut pour accepter les deux schémas d’authentification. Par exemple :
+L’étape suivante consiste à mettre à jour la stratégie d’autorisation par défaut pour accepter les deux schémas d’authentification. Exemple :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 7fe9629e1c60a6156c69e546736049653a4229b7
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 3c28b6c736f07c0d0483152eeec4300a5a92224c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722642"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052108"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Intergiciel de mise en cache des réponses dans ASP.NET Core
 
@@ -124,7 +125,7 @@ Le tableau suivant fournit des informations sur les en-têtes HTTP qui affectent
 | `Content-Length` | En cas de service à partir du cache, l' `Content-Length` en-tête est défini par l’intergiciel (middleware) s’il n’a pas été fourni dans la réponse d’origine. |
 | `Age` | L' `Age` en-tête envoyé dans la réponse d’origine est ignoré. L’intergiciel (middleware) calcule une nouvelle valeur lors de la fourniture d’une réponse mise en cache. |
 
-## <a name="caching-respects-request-cache-control-directives"></a>Mise en cache respecte les directives de contrôle de cache de demande
+## <a name="caching-respects-request-cache-control-directives"></a>Mise en cache respecte les directives de Cache-Control de demande
 
 L’intergiciel respecte les règles de la [spécification de mise en cache HTTP 1,1](https://tools.ietf.org/html/rfc7234#section-5.2). Les règles requièrent qu’un cache honore un `Cache-Control` en-tête valide envoyé par le client. Dans le cadre de la spécification, un client peut faire des demandes avec une `no-cache` valeur d’en-tête et forcer le serveur à générer une nouvelle réponse pour chaque demande. Actuellement, il n’y a pas de contrôle du développeur sur ce comportement de mise en cache lors de l’utilisation de l’intergiciel (middleware), car l’intergiciel respecte la spécification officielle de mise en cache.
 
@@ -268,7 +269,7 @@ Le tableau suivant fournit des informations sur les en-têtes HTTP qui affectent
 | `Content-Length` | En cas de service à partir du cache, l' `Content-Length` en-tête est défini par l’intergiciel (middleware) s’il n’a pas été fourni dans la réponse d’origine. |
 | `Age` | L' `Age` en-tête envoyé dans la réponse d’origine est ignoré. L’intergiciel (middleware) calcule une nouvelle valeur lors de la fourniture d’une réponse mise en cache. |
 
-## <a name="caching-respects-request-cache-control-directives"></a>Mise en cache respecte les directives de contrôle de cache de demande
+## <a name="caching-respects-request-cache-control-directives"></a>Mise en cache respecte les directives de Cache-Control de demande
 
 L’intergiciel respecte les règles de la [spécification de mise en cache HTTP 1,1](https://tools.ietf.org/html/rfc7234#section-5.2). Les règles requièrent qu’un cache honore un `Cache-Control` en-tête valide envoyé par le client. Dans le cadre de la spécification, un client peut faire des demandes avec une `no-cache` valeur d’en-tête et forcer le serveur à générer une nouvelle réponse pour chaque demande. Actuellement, il n’y a pas de contrôle du développeur sur ce comportement de mise en cache lors de l’utilisation de l’intergiciel (middleware), car l’intergiciel respecte la spécification officielle de mise en cache.
 

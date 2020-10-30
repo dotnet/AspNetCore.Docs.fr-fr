@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 2a80a9c4848703802b15348a30f2564f9580a24b
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: d2b3b22a94e3119712e331565cc74ffa60ada726
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113879"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050704"
 ---
 # <a name="part-8-add-a-new-field-to-an-aspnet-core-mvc-app"></a>Partie 8, ajouter un nouveau champ à une application ASP.NET Core MVC
 
@@ -46,7 +47,7 @@ Ajouter une propriété `Rating` à *Models/Movie.cs* :
 
 Générer l’application
 
-### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
  Ctrl+Maj+B
 
@@ -62,7 +63,7 @@ Commande ⌘ + B
 
 ------
 
-Étant donné que vous avez ajouté un nouveau champ à la `Movie` classe, vous devez mettre à jour la liste des liaisons de propriétés pour inclure cette nouvelle propriété. Dans *MoviesController.cs*, mettez à jour l’attribut `[Bind]` des méthodes d’action `Create` et `Edit` pour y inclure la propriété `Rating` :
+Étant donné que vous avez ajouté un nouveau champ à la `Movie` classe, vous devez mettre à jour la liste des liaisons de propriétés pour inclure cette nouvelle propriété. Dans *MoviesController.cs* , mettez à jour l’attribut `[Bind]` des méthodes d’action `Create` et `Edit` pour y inclure la propriété `Rating` :
 
 ```csharp
 [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")]
@@ -110,9 +111,9 @@ Plusieurs approches sont possibles pour résoudre l’erreur :
 
 Pour ce didacticiel, les migrations Code First sont utilisées.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
+Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package** .
 
   ![Menu Console du Gestionnaire de package](adding-model/_static/pmc.png)
 

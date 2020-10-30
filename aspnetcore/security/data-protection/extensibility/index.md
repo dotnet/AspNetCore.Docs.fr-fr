@@ -5,6 +5,7 @@ description: Découvrez les différentes rubriques sur l’extensibilité de la 
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/extensibility/index
-ms.openlocfilehash: 329a458e91cd7620a2dd035f561cf3a545e95e8e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 239258a2e7bdd733de778555c59b3a43d6bbcb2e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634031"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051848"
 ---
 # <a name="aspnet-core-data-protection-extensibility-apis"></a>API d’extensibilité de la protection des données ASP.NET Core
 

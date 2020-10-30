@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: f5efb121b95d84876c9029cf06a96f827137e660
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 951a8ada57ae523f362313426c0279556eb8339b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631444"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050613"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Partie 7, ajouter un nouveau champ à une Razor page dans ASP.net Core
 
@@ -52,7 +53,7 @@ Ouvrez le fichier *Models/Movie.cs* et ajoutez une propriété `Rating` :
 
 Générez l'application.
 
-Modifiez *Pages/Movies/Index.cshtml*et ajoutez un champ `Rating` :
+Modifiez *Pages/Movies/Index.cshtml* et ajoutez un champ `Rating` :
 
 <a name="addrat"></a>
 
@@ -88,13 +89,13 @@ Consultez le [fichier SeedData.cs complet](https://github.com/dotnet/AspNetCore.
 
 Générez la solution.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 <a name="pmc"></a>
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
+Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package** .
 Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
@@ -118,9 +119,9 @@ Si vous supprimez tous les enregistrements de la base de données, l’initialis
 Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données. Pour supprimer la base de données dans SSOX :
 
 * Sélectionnez la base de données dans SSOX.
-* Cliquez avec le bouton droit sur la base de données, puis sélectionnez *Supprimer*.
-* Cochez **Fermer les connexions existantes**.
-* Sélectionnez **OK**.
+* Cliquez avec le bouton droit sur la base de données, puis sélectionnez *Supprimer* .
+* Cochez **Fermer les connexions existantes** .
+* Sélectionnez **OK** .
 * Dans le [PMC](xref:tutorials/razor-pages/new-field#pmc), mettez à jour la base de données :
 
   ```powershell
@@ -145,7 +146,7 @@ dotnet ef database update
 
 Exécutez l’application et vérifiez que vous pouvez créer/modifier/afficher des films avec un champ `Rating`. Si la base de données n’est pas amorcée, définissez un point d’arrêt dans la méthode `SeedData.Initialize`.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Version YouTube de ce tutoriel](https://youtu.be/3i7uMxiGGR8)
 
@@ -179,7 +180,7 @@ Ouvrez le fichier *Models/Movie.cs* et ajoutez une propriété `Rating` :
 
 Générez l'application.
 
-Modifiez *Pages/Movies/Index.cshtml*et ajoutez un champ `Rating` :
+Modifiez *Pages/Movies/Index.cshtml* et ajoutez un champ `Rating` :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/IndexRating.cshtml?highlight=40-42,61-63)]
 
@@ -213,13 +214,13 @@ Consultez le [fichier SeedData.cs complet](https://github.com/dotnet/AspNetCore.
 
 Générez la solution.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 <a name="pmc"></a>
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
+Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package** .
 Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
@@ -243,9 +244,9 @@ Si vous supprimez tous les enregistrements de la base de données, l’initialis
 Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données. Pour supprimer la base de données dans SSOX :
 
 * Sélectionnez la base de données dans SSOX.
-* Cliquez avec le bouton droit sur la base de données, puis sélectionnez *Supprimer*.
-* Cochez **Fermer les connexions existantes**.
-* Sélectionnez **OK**.
+* Cliquez avec le bouton droit sur la base de données, puis sélectionnez *Supprimer* .
+* Cochez **Fermer les connexions existantes** .
+* Sélectionnez **OK** .
 * Dans le [PMC](xref:tutorials/razor-pages/new-field#pmc), mettez à jour la base de données :
 
   ```powershell
@@ -258,7 +259,7 @@ Une autre option consiste à supprimer la base de données et à utiliser des mi
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-Supprimer la base de données et utiliser des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données (*MvcMovie.db*). Ensuite, exécutez la commande `ef database update` :
+Supprimer la base de données et utiliser des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données ( *MvcMovie.db* ). Ensuite, exécutez la commande `ef database update` :
 
 ```dotnetcli
 dotnet ef database update
@@ -268,7 +269,7 @@ dotnet ef database update
 
 Exécutez l’application et vérifiez que vous pouvez créer/modifier/afficher des films avec un champ `Rating`. Si la base de données n’est pas amorcée, définissez un point d’arrêt dans la méthode `SeedData.Initialize`.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Version YouTube de ce tutoriel](https://youtu.be/3i7uMxiGGR8)
 

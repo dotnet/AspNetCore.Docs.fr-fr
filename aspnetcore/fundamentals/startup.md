@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/startup
-ms.openlocfilehash: b10ddf52ea7d22ea98c295da61c09da8c87fc7a7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 747b13abb0ce3fed2d1dc018c6dbf82db1ae7130
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633745"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052238"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
@@ -73,13 +74,13 @@ Pour plus d’informations sur l’hôte, consultez [L’hôte](xref:fundamental
 
 La méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> est :
 
-* facultatif.
+* Optionnel.
 * Appelée par l’hôte avant la méthode `Configure` pour configurer les services de l’application
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
 L’hôte peut configurer certains services avant l’appel des méthodes `Startup`. Pour plus d’informations, consultez [L’hôte](xref:fundamentals/index#host).
 
-Pour les fonctionnalités qui nécessitent une configuration importante, il existe des méthodes d’extension `Add{Service}` pour <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Par exemple, **Add**DbContext, **Add**default Identity , **Add**EntityFrameworkStores et **Add** Razor pages :
+Pour les fonctionnalités qui nécessitent une configuration importante, il existe des méthodes d’extension `Add{Service}` pour <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Par exemple, **Add** DbContext, **Add** default Identity , **Add** EntityFrameworkStores et **Add** Razor pages :
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/StartupIdentity.cs?name=snippet)]
 
@@ -156,9 +157,9 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 
 Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d'informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Hôte](xref:fundamentals/index#host)
+* [L’hôte](xref:fundamentals/index#host)
 * <xref:fundamentals/environments>
 * <xref:fundamentals/middleware/index>
 * <xref:fundamentals/logging/index>
@@ -205,13 +206,13 @@ Pour plus d’informations sur l’hôte, consultez [L’hôte](xref:fundamental
 
 La méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> est :
 
-* facultatif.
+* Optionnel.
 * Appelée par l’hôte avant la méthode `Configure` pour configurer les services de l’application
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
 L’hôte peut configurer certains services avant l’appel des méthodes `Startup`. Pour plus d’informations, consultez [L’hôte](xref:fundamentals/index#host).
 
-Pour les fonctionnalités qui nécessitent une configuration importante, il existe des méthodes d’extension `Add{Service}` pour <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Par exemple, **Add**DbContext, **Add**default Identity , **Add**EntityFrameworkStores et **Add** Razor pages :
+Pour les fonctionnalités qui nécessitent une configuration importante, il existe des méthodes d’extension `Add{Service}` pour <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Par exemple, **Add** DbContext, **Add** default Identity , **Add** EntityFrameworkStores et **Add** Razor pages :
 
 [!code-csharp[](startup/sample_snapshot/Startup3.cs)]
 
@@ -288,9 +289,9 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 
 Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d'informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Hôte](xref:fundamentals/index#host)
+* [L’hôte](xref:fundamentals/index#host)
 * <xref:fundamentals/environments>
 * <xref:fundamentals/middleware/index>
 * <xref:fundamentals/logging/index>

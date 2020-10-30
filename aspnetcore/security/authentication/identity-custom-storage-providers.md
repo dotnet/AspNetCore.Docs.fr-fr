@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: a8414efeece1afd55d0f30d232ef360d0a21714c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c89098bf0b2c4396f9856aca2be9967af5df0cb7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630131"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051900"
 ---
 # <a name="custom-storage-providers-for-no-locaspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 
@@ -34,7 +35,7 @@ ASP.NET Core Identity est un système extensible qui vous permet de créer un fo
 
 ## <a name="introduction"></a>Introduction
 
-Par défaut, le ASP.NET Core Identity système stocke les informations utilisateur dans une base de données SQL Server à l’aide de Entity Framework Core. Pour de nombreuses applications, cette approche fonctionne bien. Toutefois, vous préférerez peut-être utiliser un mécanisme de persistance ou un schéma de données différent. Par exemple :
+Par défaut, le ASP.NET Core Identity système stocke les informations utilisateur dans une base de données SQL Server à l’aide de Entity Framework Core. Pour de nombreuses applications, cette approche fonctionne bien. Toutefois, vous préférerez peut-être utiliser un mécanisme de persistance ou un schéma de données différent. Exemple :
 
 * Vous utilisez le [stockage table Azure](/azure/storage/) ou un autre magasin de données.
 * Les tables de votre base de données ont une structure différente. 
@@ -180,7 +181,7 @@ Dans la `UserStore` classe, vous utilisez les classes d’accès aux données qu
 * **IQueryableUserStore**  
  L' [interface &lt; IQueryableUserStore &gt; TUser](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) définit les membres que vous implémentez pour fournir un magasin d’utilisateurs interrogeable.
 
-Vous implémentez uniquement les interfaces qui sont nécessaires dans votre application. Par exemple :
+Vous implémentez uniquement les interfaces qui sont nécessaires dans votre application. Exemple :
 
 ```csharp
 public class UserStore : IUserStore<IdentityUser>,
@@ -246,7 +247,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="references"></a>References
+## <a name="references"></a>Références
 
 * [Fournisseurs de stockage personnalisés pour ASP.NET 4. x Identity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
 * [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/master/src/Identity): Ce référentiel contient des liens vers des fournisseurs de magasins gérés par la communauté.

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/introduction
-ms.openlocfilehash: 4f578e30a972b0d4ce5db08b2ec844e270c11406
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5fd5676b286e758f0648d78bf8cb4171e7a98f60
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630079"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051692"
 ---
 # <a name="aspnet-core-data-protection"></a>Protection des données ASP.NET Core
 
@@ -74,7 +75,7 @@ Le système de protection des données est divisé en cinq packages principaux. 
 
    «J’ai besoin de remplacer un composant entier dans le système, car j’ai véritablement des exigences comportementales uniques. Je souhaite apprendre les parties utilisées de manière inhabituelle de la surface de l’API afin de créer un plug-in qui répond à mes exigences.»
 
-## <a name="package-layout"></a>Disposition du package
+## <a name="package-layout"></a>Disposition de package
 
 La pile de protection des données est constituée de cinq packages.
 

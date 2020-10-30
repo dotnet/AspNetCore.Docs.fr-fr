@@ -5,6 +5,7 @@ description: Cet article explique comment personnaliser le modèle de données E
 ms.author: avickers
 ms.date: 07/01/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 71f532aa00c2afeeb0d6b93c01cb6a1fbd0a686c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6e520c76a3377e889166ca8d08b75754ef34b6a1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634304"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052043"
 ---
 # <a name="no-locidentity-model-customization-in-aspnet-core"></a>Identity personnalisation de modèle dans ASP.NET Core
 
@@ -220,7 +221,7 @@ Identity définit les types CLR ( [Common Language Runtime](/dotnet/standard/glo
 
 Au lieu d’utiliser directement ces types, les types peuvent être utilisés comme classes de base pour les types de l’application. Les `DbContext` classes définies par Identity sont génériques, de sorte que différents types CLR peuvent être utilisés pour un ou plusieurs types d’entité dans le modèle. Ces types génériques permettent également `User` de modifier le type de données de la clé primaire (PK).
 
-Lors de l’utilisation de Identity avec la prise en charge des rôles, une <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext> classe doit être utilisée. Par exemple :
+Lors de l’utilisation de Identity avec la prise en charge des rôles, une <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext> classe doit être utilisée. Exemple :
 
 ```csharp
 // Uses all the built-in Identity types
@@ -435,7 +436,7 @@ Pour modifier le type de clé primaire, procédez comme suit :
 
     ::: moniker-end
 
-4. Si une `ApplicationUser` classe personnalisée est utilisée, mettez à jour la classe pour qu’elle hérite de `IdentityUser` . Par exemple :
+4. Si une `ApplicationUser` classe personnalisée est utilisée, mettez à jour la classe pour qu’elle hérite de `IdentityUser` . Exemple :
 
     ::: moniker range="<= aspnetcore-1.1"
 
@@ -503,7 +504,7 @@ Pour modifier le type de clé primaire, procédez comme suit :
 
     ::: moniker-end
 
-5. Si une `ApplicationRole` classe personnalisée est utilisée, mettez à jour la classe pour qu’elle hérite de `IdentityRole<TKey>` . Par exemple :
+5. Si une `ApplicationRole` classe personnalisée est utilisée, mettez à jour la classe pour qu’elle hérite de `IdentityRole<TKey>` . Exemple :
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Data/ApplicationRole.cs?name=snippet_ApplicationRole&highlight=4)]
 
@@ -952,7 +953,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ### <a name="map-to-a-different-schema"></a>Mapper à un schéma différent
 
-Les schémas peuvent se comporter différemment entre les fournisseurs de base de données. Par SQL Server, la valeur par défaut consiste à créer toutes les tables dans le schéma *dbo* . Les tables peuvent être créées dans un schéma différent. Par exemple :
+Les schémas peuvent se comporter différemment entre les fournisseurs de base de données. Par SQL Server, la valeur par défaut consiste à créer toutes les tables dans le schéma *dbo* . Les tables peuvent être créées dans un schéma différent. Exemple :
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)

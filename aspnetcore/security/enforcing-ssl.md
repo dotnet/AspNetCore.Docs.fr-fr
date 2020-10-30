@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: b5260084c2fdd296168e918f06d8b54faf1865d5
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: e473da9a7cbd91a601ad4af0c7c02c7f576f348c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722655"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051120"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer le protocole HTTPs en ASP.NET Core
 
@@ -113,7 +114,7 @@ Spécifiez le port HTTPs à l’aide de l’une des approches suivantes :
 
   * Dans la configuration de l’hôte.
   * En définissant la `ASPNETCORE_HTTPS_PORT` variable d’environnement.
-  * En ajoutant une entrée de niveau supérieur dans *appsettings.jssur*:
+  * En ajoutant une entrée de niveau supérieur dans *appsettings.json* :
 
     [!code-json[](enforcing-ssl/sample-snapshot/3.x/appsettings.json?highlight=2)]
 
@@ -127,7 +128,7 @@ Spécifiez le port HTTPs à l’aide de l’une des approches suivantes :
 
   * Dans la configuration de l’hôte.
   * En définissant la `ASPNETCORE_HTTPS_PORT` variable d’environnement.
-  * En ajoutant une entrée de niveau supérieur dans *appsettings.jssur*:
+  * En ajoutant une entrée de niveau supérieur dans *appsettings.json* :
 
     [!code-json[](enforcing-ssl/sample-snapshot/2.x/appsettings.json?highlight=2)]
 
@@ -135,7 +136,7 @@ Spécifiez le port HTTPs à l’aide de l’une des approches suivantes :
 
 ::: moniker-end
 
-* Dans développement, définissez une URL HTTPs dans *launchsettings.js*. Activez le protocole HTTPs lorsque IIS Express est utilisé.
+* Dans développement, définissez une URL HTTPs dans *launchsettings.js* . Activez le protocole HTTPs lorsque IIS Express est utilisé.
 
 * Configurez un point de terminaison d’URL HTTPs pour un déploiement de périphérie public d’un serveur [Kestrel](xref:fundamentals/servers/kestrel) ou d’un serveur [HTTP.sys](xref:fundamentals/servers/httpsys) . **Un seul port HTTPS** est utilisé par l’application. L’intergiciel Découvre le port via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> .
 
@@ -192,7 +193,7 @@ Par défaut, l’intergiciel envoie un [Status307TemporaryRedirect](/dotnet/api/
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Lors de la configuration des services dans *Startup.cs*:
+Lors de la configuration des services dans *Startup.cs* :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -213,7 +214,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range="<= aspnetcore-2.2"
 
-Lors de la configuration des services dans *Startup.cs*:
+Lors de la configuration des services dans *Startup.cs* :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -398,7 +399,7 @@ Cette section fournit de l’aide lorsque le certificat de développement HTTPs 
 
 ### <a name="all-platforms---certificate-not-trusted"></a>Toutes les plateformes-certificat non approuvé
 
-Exécutez les commandes suivantes :
+Exécutez les commandes suivantes :
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -412,14 +413,14 @@ Les commandes précédentes résolvent la plupart des problèmes d’approbation
 ### <a name="docker---certificate-not-trusted"></a>Dockr-certificat non approuvé
 
 * Supprimez le dossier *C:\Users \{ User} \AppData\Roaming\ASP.NET\Https* .
-* Nettoyez la solution. Supprimez les dossiers *bin* et *obj*.
+* Nettoyez la solution. Supprimez les dossiers *bin* et *obj* .
 * Redémarrez l’outil de développement. Par exemple, Visual Studio, Visual Studio Code ou Visual Studio pour Mac.
 
 ### <a name="windows---certificate-not-trusted"></a>Windows-certificat non approuvé
 
 * Vérifiez les certificats dans le magasin de certificats. Il doit y avoir un `localhost` certificat avec le `ASP.NET Core HTTPS development certificate` nom convivial à la fois sous `Current User > Personal > Certificates` et `Current User > Trusted root certification authorities > Certificates`
 * Supprimez tous les certificats détectés des autorités de certification racines personnelles et de confiance. Ne supprimez **pas** le certificat IIS Express localhost.
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -435,7 +436,7 @@ Fermez toutes les instances de navigateur ouvertes. Ouvrez une nouvelle fenêtre
 * Vérifiez la présence d’un certificat localhost.
 * Vérifiez qu’il contient un `+` symbole sur l’icône pour indiquer qu’il est approuvé pour tous les utilisateurs.
 * Supprimez le certificat du trousseau système.
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
 ```dotnetcli
 dotnet dev-certs https --clean

@@ -5,6 +5,7 @@ description: Découvrez comment créer une application ASP.NET Core avec une con
 ms.author: riande
 ms.date: 03/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: d6ea37ceb83ffbaa94187e0c541c79428594e4b4
-ms.sourcegitcommit: 2039e60eb7b482da8298f82dcd5eda27cf747f32
+ms.openlocfilehash: 91148c67d5dc0bf97e2f926f50dcff5dd0708f4b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88906447"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052316"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Account confirmation and password recovery in ASP.NET Core (Confirmation de compte et récupération de mot de passe dans ASP.NET Core)
 
@@ -53,10 +54,10 @@ dotnet run
 
 Exécutez l’application, sélectionnez le lien **Register** et inscrivez un utilisateur. Une fois inscrit, vous êtes redirigé vers la `/Identity/Account/RegisterConfirmation` page vers qui contient un lien pour simuler la confirmation de l’e-mail :
 
-* Sélectionnez le lien `Click here to confirm your account`.
+* Sélectionnez le `Click here to confirm your account` lien.
 * Sélectionnez le lien de **connexion** et connectez-vous avec les mêmes informations d’identification.
 * Sélectionnez le `Hello YourEmail@provider.com!` lien, qui vous redirige vers la `/Identity/Account/Manage/PersonalData` page.
-* Sélectionnez l’onglet **données personnelles** sur la gauche, puis sélectionnez **supprimer**.
+* Sélectionnez l’onglet **données personnelles** sur la gauche, puis sélectionnez **supprimer** .
 
 ### <a name="configure-an-email-provider"></a>Configurer un fournisseur de messagerie
 
@@ -64,13 +65,13 @@ Dans ce didacticiel, [SendGrid](https://sendgrid.com) est utilisé pour envoyer 
 
 Le compte SendGrid peut nécessiter l' [Ajout d’un expéditeur](https://sendgrid.com/docs/ui/sending-email/senders/).
 
-Créez une classe pour extraire la clé de messagerie sécurisée. Pour cet exemple, créez *services/AuthMessageSenderOptions. cs*:
+Créez une classe pour extraire la clé de messagerie sécurisée. Pour cet exemple, créez *services/AuthMessageSenderOptions. cs* :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
 #### <a name="configure-sendgrid-user-secrets"></a>Configurer des secrets d’utilisateur SendGrid
 
-Définissez les `SendGridUser` et `SendGridKey` avec l' [outil de gestion de secret](xref:security/app-secrets). Par exemple :
+Définissez les `SendGridUser` et `SendGridKey` avec l' [outil de gestion de secret](xref:security/app-secrets). Exemple :
 
 ```dotnetcli
 dotnet user-secrets set SendGridUser RickAndMSFT
@@ -98,7 +99,7 @@ Ce didacticiel montre comment ajouter des notifications par courrier électroniq
 
 Installez le `SendGrid` package NuGet :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 À partir de la console du gestionnaire de package, entrez la commande suivante :
 
@@ -155,7 +156,7 @@ Exécutez l’application Web et testez le processus de confirmation et de récu
 
 ### <a name="test-password-reset"></a>Test de réinitialisation du mot de passe
 
-* Si vous êtes connecté, sélectionnez **déconnexion**.
+* Si vous êtes connecté, sélectionnez **déconnexion** .
 * Sélectionnez le lien **se connecter** , puis sélectionnez le lien vous **avez oublié votre mot de passe ?** .
 * Entrez l’adresse de messagerie que vous avez utilisée pour inscrire le compte.
 * Un e-mail contenant un lien pour réinitialiser votre mot de passe est envoyé. Vérifiez votre adresse de messagerie, puis cliquez sur le lien pour réinitialiser votre mot de passe. Une fois que votre mot de passe a été réinitialisé avec succès, vous pouvez vous connecter avec votre adresse de messagerie et votre nouveau mot de passe.
@@ -266,7 +267,7 @@ Exécutez l’application, sélectionnez le lien **Register** et inscrivez un ut
 
 Notez que le champ de la table `EmailConfirmed` est `False` .
 
-Vous souhaiterez peut-être réutiliser cet e-mail à l’étape suivante lorsque l’application envoie un e-mail de confirmation. Cliquez avec le bouton droit sur la ligne et sélectionnez **supprimer**. La suppression de l’alias de messagerie le rend plus facile dans les étapes suivantes.
+Vous souhaiterez peut-être réutiliser cet e-mail à l’étape suivante lorsque l’application envoie un e-mail de confirmation. Cliquez avec le bouton droit sur la ligne et sélectionnez **supprimer** . La suppression de l’alias de messagerie le rend plus facile dans les étapes suivantes.
 
 <a name="prevent-login-at-registration"></a>
 
@@ -286,13 +287,13 @@ Mise à jour `Startup.ConfigureServices`  pour exiger un e-mail confirmé :
 
 Dans ce didacticiel, [SendGrid](https://sendgrid.com) est utilisé pour envoyer des messages électroniques. Vous avez besoin d’un compte et d’une clé SendGrid pour envoyer des messages électroniques. Vous pouvez utiliser d’autres fournisseurs de courrier électronique. ASP.NET Core 2. x comprend `System.Net.Mail` , qui vous permet d’envoyer des e-mails à partir de votre application. Nous vous recommandons d’utiliser SendGrid ou un autre service de messagerie pour envoyer des courriers électroniques. SMTP est difficile à sécuriser et à configurer correctement.
 
-Créez une classe pour extraire la clé de messagerie sécurisée. Pour cet exemple, créez *services/AuthMessageSenderOptions. cs*:
+Créez une classe pour extraire la clé de messagerie sécurisée. Pour cet exemple, créez *services/AuthMessageSenderOptions. cs* :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
 #### <a name="configure-sendgrid-user-secrets"></a>Configurer des secrets d’utilisateur SendGrid
 
-Définissez les `SendGridUser` et `SendGridKey` avec l' [outil de gestion de secret](xref:security/app-secrets). Par exemple :
+Définissez les `SendGridUser` et `SendGridKey` avec l' [outil de gestion de secret](xref:security/app-secrets). Exemple :
 
 ```console
 C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT
@@ -318,7 +319,7 @@ Ce didacticiel montre comment ajouter des notifications par courrier électroniq
 
 Installez le `SendGrid` package NuGet :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 À partir de la console du gestionnaire de package, entrez la commande suivante :
 
@@ -355,7 +356,7 @@ Ajoutez le code suivant à la `ConfigureServices` méthode dans le fichier *Star
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>Activer la récupération du mot de passe et la confirmation du compte
 
-Le modèle dispose du code pour la confirmation du compte et la récupération du mot de passe. Recherchez la `OnPostAsync` méthode dans *Areas/ Identity /pages/Account/Register.cshtml.cs*.
+Le modèle dispose du code pour la confirmation du compte et la récupération du mot de passe. Recherchez la `OnPostAsync` méthode dans *Areas/ Identity /pages/Account/Register.cshtml.cs* .
 
 Empêchez les utilisateurs nouvellement inscrits d’être automatiquement connectés en commentant la ligne suivante :
 
@@ -385,7 +386,7 @@ La page gérer s’affiche avec l’onglet **Profil** sélectionné. L' **e-mail
 
 ### <a name="test-password-reset"></a>Test de réinitialisation du mot de passe
 
-* Si vous êtes connecté, sélectionnez **déconnexion**.
+* Si vous êtes connecté, sélectionnez **déconnexion** .
 * Sélectionnez le lien **se connecter** , puis sélectionnez le lien vous **avez oublié votre mot de passe ?** .
 * Entrez l’adresse de messagerie que vous avez utilisée pour inscrire le compte.
 * Un e-mail contenant un lien pour réinitialiser votre mot de passe est envoyé. Vérifiez votre adresse de messagerie, puis cliquez sur le lien pour réinitialiser votre mot de passe. Une fois que votre mot de passe a été réinitialisé avec succès, vous pouvez vous connecter avec votre adresse de messagerie et votre nouveau mot de passe.

@@ -5,6 +5,7 @@ description: En savoir plus sur la prise en charge de la définition d’une str
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/machine-wide-policy
-ms.openlocfilehash: dea34a3c0fcee26bcf6bffb92f1b3fdcce0e9386
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f6f258e193bf964cb9b4cbd24da2740c5ed89a91
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632874"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052992"
 ---
 # <a name="data-protection-machine-wide-policy-support-in-aspnet-core"></a>Prise en charge des stratégies à l’ensemble de la protection des données dans ASP.NET Core
 

@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 2bfe05748e6740043be7f1ccc6dbe22ad4b0ca44
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: d3e9cd23a55702bcf9b002dcce556428683afeca
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722564"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052771"
 ---
 # <a name="aspnet-core-no-locsignalr-hosting-and-scaling"></a>SignalRHébergement et mise à l’échelle ASP.net Core
 
@@ -45,7 +46,7 @@ Pour obtenir des conseils sur la configuration de Azure App Service pour SignalR
 
 ## <a name="tcp-connection-resources"></a>Ressources de connexion TCP
 
-Le nombre de connexions TCP simultanées qu’un serveur Web peut prendre en charge est limité. Les clients HTTP standard utilisent des connexions *éphémères* . Ces connexions peuvent être fermées lorsque le client devient inactif et rouvert ultérieurement. En revanche, une SignalR connexion est *persistante*. SignalR les connexions restent ouvertes même lorsque le client devient inactif. Dans une application à trafic élevé qui dessert de nombreux clients, ces connexions persistantes peuvent entraîner l’atteinte du nombre maximal de connexions des serveurs.
+Le nombre de connexions TCP simultanées qu’un serveur Web peut prendre en charge est limité. Les clients HTTP standard utilisent des connexions *éphémères* . Ces connexions peuvent être fermées lorsque le client devient inactif et rouvert ultérieurement. En revanche, une SignalR connexion est *persistante* . SignalR les connexions restent ouvertes même lorsque le client devient inactif. Dans une application à trafic élevé qui dessert de nombreux clients, ces connexions persistantes peuvent entraîner l’atteinte du nombre maximal de connexions des serveurs.
 
 Les connexions persistantes consomment également de la mémoire supplémentaire pour effectuer le suivi de chaque connexion.
 
@@ -120,14 +121,85 @@ Les conditions précédentes permettent d’atteindre la limite de 10 connexions
 
 ## <a name="linux-with-nginx"></a>Linux avec Nginx
 
-Définissez les `Connection` `Upgrade` en-têtes et du proxy sur les éléments suivants pour SignalR WebSocket :
+L’exemple suivant contient les paramètres requis minimum pour activer WebSockets, ServerSentEvents et LongPolling pour SignalR :
 
 ```nginx
-proxy_set_header Upgrade $http_upgrade;
-proxy_set_header Connection $connection_upgrade;
+http {
+  map $http_connection $connection_upgrade {
+    "~*Upgrade" $http_connection;
+    default keep-alive;
+}
+
+  server {
+    listen 80;
+    server_name example.com *.example.com;
+
+    # Configure the SignalR Endpoint
+    location /hubroute {
+      # App server url
+      proxy_pass http://localhost:5000;
+
+      # Configuration for WebSockets
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection $connection_upgrade;
+      proxy_cache off;
+
+      # Configuration for ServerSentEvents
+      proxy_buffering off;
+
+      # Configuration for LongPolling or if your KeepAliveInterval is longer than 60 seconds
+      proxy_read_timeout 100s;
+
+      proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+  }
+}
 ```
 
-Pour plus d’informations, consultez [Nginx comme proxy WebSocket](https://www.nginx.com/blog/websocket-nginx/).
+Lorsque plusieurs serveurs principaux sont utilisés, des sessions rémanentes doivent être ajoutées pour empêcher les SignalR connexions de changer de serveur lors de la connexion. Il existe plusieurs façons d’ajouter des sessions rémanentes dans nginx. Deux approches sont présentées ci-dessous en fonction de ce que vous avez disponible.
+
+Les éléments suivants sont ajoutés en plus de la configuration précédente. Dans les exemples suivants, `backend` est le nom du groupe de serveurs.
+
+Avec [Nginx Open source](https://nginx.org/en/), utilisez `ip_hash` pour acheminer les connexions à un serveur en fonction de l’adresse IP du client :
+
+```nginx
+http {
+  upstream backend {
+    # App server 1
+    server http://localhost:5000;
+    # App server 2
+    server http://localhost:5002;
+
+    ip_hash;
+  }
+}
+```
+
+Avec [Nginx plus](https://www.nginx.com/products/nginx), utilisez `sticky` pour ajouter un cookie à des demandes et épingler les demandes de l’utilisateur à un serveur :
+
+```nginx
+http {
+  upstream backend {
+    # App server 1
+    server http://localhost:5000;
+    # App server 2
+    server http://localhost:5002;
+
+    sticky cookie srv_id expires=max domain=.example.com path=/ httponly;
+  }
+}
+```
+
+Enfin, remplacez `proxy_pass http://localhost:5000` la `server` section par `proxy_pass http://backend` .
+
+Pour plus d’informations sur les WebSockets sur nginx, consultez [Nginx en tant que proxy WebSocket](https://www.nginx.com/blog/websocket-nginx).
+
+Pour plus d’informations sur l’équilibrage de charge et les sessions rémanentes, consultez [équilibrage de charge Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
+
+Pour plus d’informations sur les ASP.NET Core avec nginx, consultez l’article suivant :
+* <xref:host-and-deploy/linux-nginx>
 
 ## <a name="third-party-no-locsignalr-backplane-providers"></a>SignalRFournisseurs de fond de panier tiers
 

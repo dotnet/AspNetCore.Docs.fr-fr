@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/middleware
-ms.openlocfilehash: 1a5259f65261fb95fcfaa59df3f04da14d3f1ae3
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: 2dd5fa127af4432c612bb654d50eb4147aea6868
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102863"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051432"
 ---
 # <a name="test-aspnet-core-middleware"></a>Tester l’intergiciel (middleware) ASP.NET Core
 
@@ -67,7 +68,7 @@ Envoyer une demande à l’aide de <xref:System.Net.Http.HttpClient> :
 
 Déclarez le résultat. Tout d’abord, faites d’une assertion l’inverse du résultat attendu. Une exécution initiale avec une assertion false positive confirme que le test échoue quand l’intergiciel s’exécute correctement. Exécutez le test et vérifiez que le test échoue.
 
-Dans l’exemple suivant, l’intergiciel (middleware) doit retourner un code d’État 404 (*introuvable*) quand le point de terminaison racine est demandé. Effectuez la première série de tests avec `Assert.NotEqual( ... );` , qui doit échouer :
+Dans l’exemple suivant, l’intergiciel (middleware) doit retourner un code d’État 404 ( *introuvable* ) quand le point de terminaison racine est demandé. Effectuez la première série de tests avec `Assert.NotEqual( ... );` , qui doit échouer :
 
 [!code-csharp[](middleware/samples_snapshot/3.x/false-failure-check.cs?highlight=22)]
 
@@ -135,14 +136,14 @@ Comme dans l’exemple précédent qui a testé une réponse *404-introuvable* ,
 TestServer
 
 * A été créé pour répliquer des comportements de serveur pour tester l’intergiciel (middleware).
-* N’essaie ***pas*** de répliquer tous les <xref:System.Net.Http.HttpClient> comportements.
-* Tente d’accorder au client un accès au plus grand contrôle du serveur que possible et avec autant de visibilité sur ce qui se passe sur le serveur que possible. Par exemple, il peut lever des exceptions qui ne sont normalement pas levées par afin `HttpClient` de communiquer directement l’état du serveur.
+* Do * **not** _ tente de répliquer tous les <xref:System.Net.Http.HttpClient> comportements.
+_ Tente d’accorder au client un accès au plus grand contrôle du serveur que possible et avec autant de visibilité sur ce qui se passe sur le serveur que possible. Par exemple, il peut lever des exceptions qui ne sont normalement pas levées par afin `HttpClient` de communiquer directement l’état du serveur.
 * Ne définit pas certains en-têtes de transport par défaut, car ceux-ci ne sont généralement pas pertinents pour l’intergiciel (middleware). Pour plus d'informations, consultez la section suivante.
 
 ### <a name="content-length-and-transfer-encoding-headers"></a>En-têtes Content-Length et Transfer-Encoding
 
-TestServer ne définit ***pas*** les en-têtes de demande ou de réponse de transport tels que [Content-Length](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Length) ou [Transfer-Encoding](https://developer.mozilla.org/docs/Web/HTTP/Headers/Transfer-Encoding). Les applications doivent éviter en fonction de ces en-têtes, car leur utilisation varie selon le client, le scénario et le protocole. Si `Content-Length` et `Transfer-Encoding` sont nécessaires pour tester un scénario spécifique, ils peuvent être spécifiés dans le test lors de la composition de <xref:System.Net.Http.HttpRequestMessage> ou de <xref:Microsoft.AspNetCore.Http.HttpContext> . Pour plus d’informations, consultez les problèmes GitHub suivants :
+TestServer ne permet **pas** de définir des en-têtes de demande ou de réponse de transport tels que [Content-Length](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Length) ou [Transfer-Encoding](https://developer.mozilla.org/docs/Web/HTTP/Headers/Transfer-Encoding). Les applications doivent éviter en fonction de ces en-têtes, car leur utilisation varie selon le client, le scénario et le protocole. Si `Content-Length` et `Transfer-Encoding` sont nécessaires pour tester un scénario spécifique, ils peuvent être spécifiés dans le test lors de la composition de <xref:System.Net.Http.HttpRequestMessage> ou de <xref:Microsoft.AspNetCore.Http.HttpContext> . Pour plus d’informations, consultez les problèmes GitHub suivants :
 
-* [dotnet/aspnetcore # 21677](https://github.com/dotnet/aspnetcore/issues/21677)
+_ [dotnet/aspnetcore # 21677](https://github.com/dotnet/aspnetcore/issues/21677)
 * [dotnet/aspnetcore # 18463](https://github.com/dotnet/aspnetcore/issues/18463)
 * [dotnet/aspnetcore # 13273](https://github.com/dotnet/aspnetcore/issues/13273)

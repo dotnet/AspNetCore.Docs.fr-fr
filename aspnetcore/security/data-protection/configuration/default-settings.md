@@ -5,6 +5,7 @@ description: En savoir plus sur la gestion et la durée de vie des clés de prot
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: b4578737a0ea36463b3c44254aad85a484c46090
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1303c5c2c993f1d20383457666aebfa2a583e938
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634473"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053005"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>Gestion et durée de vie des clés de protection des données dans ASP.NET Core
 
@@ -40,8 +41,8 @@ L’application tente de détecter son environnement d’exploitation et de gér
 
    L’[attribut setProfileEnvironment](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) du pool d’applications doit également être activé. La valeur par défaut de `setProfileEnvironment` est `true`. Dans certains scénarios (par exemple pour le système d’exploitation Windows), `setProfileEnvironment` est défini sur `false`. Si les clés ne sont pas stockées dans le répertoire de profil utilisateur comme prévu :
 
-   1. Accédez au dossier *%windir%/system32/inetsrv/config*.
-   1. Ouvrez le fichier *applicationHost.config*.
+   1. Accédez au dossier *%windir%/system32/inetsrv/config* .
+   1. Ouvrez le fichier *applicationHost.config* .
    1. Recherchez l’élément `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>`.
    1. Confirmez que l’attribut `setProfileEnvironment` n’est pas présent, ce qui implique que la valeur par défaut est `true`, ou définissez de manière explicite la valeur de l’attribut sur `true`.
 

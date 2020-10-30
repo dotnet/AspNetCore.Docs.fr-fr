@@ -5,6 +5,7 @@ description: En savoir plus sur la hiérarchie des chaînes à usage général e
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/consumer-apis/purpose-strings-multitenancy
-ms.openlocfilehash: 65799c10b8e810853023c094b95ccafa0d71eb8b
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 84714cd852a3cbc7ff77d0fd0c88931536dead1a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632081"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052784"
 ---
 # <a name="purpose-hierarchy-and-multi-tenancy-in-aspnet-core"></a>Hiérarchie des objectifs et architecture mutualisée dans ASP.NET Core
 

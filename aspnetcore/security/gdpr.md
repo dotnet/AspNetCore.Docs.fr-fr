@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/gdpr
-ms.openlocfilehash: 35a12cb8d2a9617e51d886e798cff5ee60b0a8ad
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ec65a2c8362c15716bebd6b22f5639785ba74c98
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634707"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051003"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Prise en charge de l’UE Règlement général sur la protection des données (RGPD) dans ASP.NET Core
 
@@ -46,7 +47,7 @@ Pour activer la fonctionnalité de consentement par défaut cookie qui se trouve
 
   [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_Layout.cshtml?name=snippet&highlight=4)]
 
-* Ajoutez le fichier * \_ Cookie ConsentPartial. cshtml* au projet :
+* Ajoutez le fichier *\_ Cookie ConsentPartial. cshtml* au projet :
 
   [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_CookieConsentPartial.cshtml)]
 
@@ -71,8 +72,8 @@ L' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/live
 Razor Les pages et les projets MVC créés avec les modèles de projet incluent la prise en charge RGPD suivante :
 
 * [ Cookie PolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) et [la Cookie stratégie d’utilisation](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) sont définis dans la `Startup` classe.
-* [Vue partielle](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper) * \_ Cookie ConsentPartial. cshtml* . Un bouton **accepter** est inclus dans ce fichier. Quand l’utilisateur clique sur le bouton **accepter** , le consentement pour les magasins cookie est fourni.
-* La page *pages/privacy. cshtml* ou *vues/page d’affichage/privé/confidentialité. cshtml* fournit une page pour détailler la politique de confidentialité de votre site. Le fichier * \_ Cookie ConsentPartial. cshtml* génère un lien vers la page de confidentialité.
+* [Vue partielle](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper) *\_ Cookie ConsentPartial. cshtml* . Un bouton **accepter** est inclus dans ce fichier. Quand l’utilisateur clique sur le bouton **accepter** , le consentement pour les magasins cookie est fourni.
+* La page *pages/privacy. cshtml* ou *vues/page d’affichage/privé/confidentialité. cshtml* fournit une page pour détailler la politique de confidentialité de votre site. Le fichier *\_ Cookie ConsentPartial. cshtml* génère un lien vers la page de confidentialité.
 * Pour les applications créées avec des comptes d’utilisateur individuels, la page gérer fournit des liens permettant de télécharger et de supprimer des [données utilisateur personnelles](#pd).
 
 ### <a name="no-loccookiepolicyoptions-and-useno-loccookiepolicy"></a>CookiePolicyOptions et utiliser la Cookie stratégie
@@ -87,13 +88,13 @@ Les [ Cookie PolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolic
 
 ### <a name="_no-loccookieconsentpartialcshtml-partial-view"></a>\_CookieVue partielle de ConsentPartial. cshtml
 
-Vue partielle * \_ Cookie ConsentPartial. cshtml* :
+Vue partielle *\_ Cookie ConsentPartial. cshtml* :
 
 [!code-cshtml[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
 
 Voici ce qui est partiel :
 
-* Obtient l’état de suivi de l’utilisateur. Si l’application est configurée pour exiger un consentement, l’utilisateur doit donner son consentement avant que les cookie s puissent être suivies. Si le consentement est requis, le cookie volet de consentement est corrigé en haut de la barre de navigation créée par le fichier * \_ Layout. cshtml* .
+* Obtient l’état de suivi de l’utilisateur. Si l’application est configurée pour exiger un consentement, l’utilisateur doit donner son consentement avant que les cookie s puissent être suivies. Si le consentement est requis, le cookie volet de consentement est corrigé en haut de la barre de navigation créée par le fichier *\_ Layout. cshtml* .
 * Fournit un `<p>` élément HTML pour résumer votre stratégie de confidentialité et d' cookie utilisation.
 * Fournit un lien vers la page de confidentialité ou une vue qui vous permet de détailler la politique de confidentialité de votre site.
 
@@ -121,7 +122,7 @@ Le [fournisseur TempData](xref:fundamentals/app-state#tempdata) cookie n’est p
 
 ASP.NET Core applications créées avec des comptes d’utilisateur individuels incluent du code pour télécharger et supprimer des données personnelles.
 
-Sélectionnez le nom d’utilisateur, puis sélectionnez **données personnelles**:
+Sélectionnez le nom d’utilisateur, puis sélectionnez **données personnelles** :
 
 ![Page gérer les données personnelles](gdpr/_static/pd.png)
 
@@ -143,20 +144,20 @@ Certaines bases de données et mécanismes de stockage permettent le chiffrement
 * Est l’option la plus simple et la plus sûre.
 * Permet à la base de données de gérer les clés et le chiffrement.
 
-Par exemple :
+Exemple :
 
 * Microsoft SQL et Azure SQL fournissent des [transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE).
 * [SQL Azure chiffre par défaut la base de données](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
 * [Les objets BLOB, les fichiers, les tables et le stockage de files d’attente Azure sont chiffrés par défaut](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 
-Pour les bases de données qui ne fournissent pas de chiffrement intégré au repos, vous pouvez utiliser le chiffrement de disque pour offrir la même protection. Par exemple :
+Pour les bases de données qui ne fournissent pas de chiffrement intégré au repos, vous pouvez utiliser le chiffrement de disque pour offrir la même protection. Exemple :
 
 * [BitLocker pour Windows Server](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
 * Linux :
   * [eCryptfs](https://launchpad.net/ecryptfs)
   * [Encfs](https://github.com/vgough/encfs).
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Microsoft.com/GDPR](https://www.microsoft.com/trustcenter/Privacy/GDPR)
 * [RGPD-ajout d’un bouton de consentement REVOKE dans ASP.NET Core](https://www.joeaudette.com/blog/2018/08/28/gdpr---adding-a-revoke-consent-button-in-aspnet-core)

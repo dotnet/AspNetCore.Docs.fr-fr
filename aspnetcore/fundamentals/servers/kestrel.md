@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/04/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 50bf2a60f14238c9b71fe90a64c284da202bff59
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: 56ac6635639eed93a84f47fc915c7013c6ed2381
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491598"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052329"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
@@ -66,7 +67,7 @@ HTTP/2 est désactivé par défaut. Pour plus d’informations sur la configurat
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Quand utiliser Kestrel avec un proxy inverse ?
 
-Vous pouvez utiliser Kestrel par lui-même ou avec un *serveur proxy inverse*, comme [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/). Un serveur proxy inverse reçoit les requêtes HTTP en provenance du réseau et les transmet à Kestrel.
+Vous pouvez utiliser Kestrel par lui-même ou avec un *serveur proxy inverse* , comme [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/). Un serveur proxy inverse reçoit les requêtes HTTP en provenance du réseau et les transmet à Kestrel.
 
 Kestrel utilisé comme serveur web edge (accessible sur Internet) :
 
@@ -94,7 +95,7 @@ Un proxy inverse :
 
 ## <a name="kestrel-in-aspnet-core-apps"></a>Kestrel dans les applications ASP.NET Core
 
-Les modèles de projet ASP.NET Core utilisent Kestrel par défaut. Dans *Program.cs*, la <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> méthode appelle <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> :
+Les modèles de projet ASP.NET Core utilisent Kestrel par défaut. Dans *Program.cs* , la <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> méthode appelle <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> :
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=8)]
 
@@ -127,7 +128,7 @@ Les exemples suivants utilisent l’espace de noms <xref:Microsoft.AspNetCore.Se
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-Dans les exemples présentés plus loin dans cet article, les options Kestrel sont configurées dans le code C#. Les options Kestrel peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index). Par exemple, le [fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider) peut charger la configuration Kestrel à partir d’un *appsettings.jssur* ou *appSettings. { Fichier Environment}. JSON* :
+Dans les exemples présentés plus loin dans cet article, les options Kestrel sont configurées dans le code C#. Les options Kestrel peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index). Par exemple, le [fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider) peut charger la configuration Kestrel à partir d’un *appsettings.json* ou *appSettings. { Fichier Environment}. JSON* :
 
 ```json
 {
@@ -178,7 +179,7 @@ Utilisez l' **une** des approches suivantes :
 
 * Configurez Kestrel lors de la génération de l’hôte :
 
-  Dans *Program.cs*, chargez la `Kestrel` section de configuration dans la configuration de Kestrel :
+  Dans *Program.cs* , chargez la `Kestrel` section de configuration dans la configuration de Kestrel :
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -527,10 +528,10 @@ Kestrel écoute sur `http://localhost:5000` et sur `https://localhost:5001` (si 
 
 Par défaut, `CreateDefaultBuilder` appelle `Configure(context.Configuration.GetSection("Kestrel"))` pour charger la configuration de Kestrel. Un schéma de configuration des paramètres d’application HTTPS par défaut est disponible pour Kestrel. Configurez plusieurs points de terminaison, notamment les URL et les certificats à utiliser, à partir d’un fichier sur disque ou d’un magasin de certificats.
 
-Dans l’exemple de fichier *appsettings.json* suivant :
+Dans l' *appsettings.json* exemple suivant :
 
 * Définissez **AllowInvalid** sur `true` pour permettre l’utilisation de certificats non valides (par exemple des certificats auto-signés).
-* Tout point de terminaison HTTPS qui ne spécifie pas de certificat (**HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut ** ou au certificat de développement.
+* Tout point de terminaison HTTPS qui ne spécifie pas de certificat ( **HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut** ou au certificat de développement.
 
 ```json
 {
@@ -576,7 +577,7 @@ Dans l’exemple de fichier *appsettings.json* suivant :
 }
 ```
 
-Une alternative à l’utilisation de **Chemin** et de **Mot de passe** pour un nœud de certificat consiste à spécifier le certificat avec des champs du magasin de certificats. Par exemple, le **Certificates**  >  certificat**par défaut** des certificats peut être spécifié comme suit :
+Une alternative à l’utilisation de **Chemin** et de **Mot de passe** pour un nœud de certificat consiste à spécifier le certificat avec des champs du magasin de certificats. Par exemple, le **Certificates**  >  certificat **par défaut** des certificats peut être spécifié comme suit :
 
 ```json
 "Default": {
@@ -593,7 +594,7 @@ Notes de schéma :
 * Le paramètre `Url` est obligatoire pour chaque point de terminaison. Le format de ce paramètre est le même que celui du paramètre de configuration `Urls` du plus haut niveau, sauf qu’il est limité à une seule valeur.
 * Ces points de terminaison remplacent ceux qui sont définis dans le paramètre de configuration `Urls` du plus haut niveau configuration, au lieu de s’y ajouter. Les points de terminaison définis dans le code via `Listen` sont cumulatifs avec les points de terminaison définis dans la section de configuration.
 * La section `Certificate` est facultative. Si la section `Certificate` n’est pas spécifiée, les valeurs par défaut définies dans les scénarios précédents sont utilisées. Si aucune valeur par défaut n’est disponible, le serveur lève une exception et son démarrage échoue.
-* La `Certificate` section prend en **Path**charge les &ndash; certificats**de mot de passe** de chemin d’accès et de magasin d' **objets** &ndash; **Store** .
+* La `Certificate` section prend en **Path** charge les &ndash; certificats **de mot de passe** de chemin d’accès et de magasin d' **objets** &ndash; **Store** .
 * Vous pouvez définir un nombre quelconque de points de terminaison de cette façon, pour autant qu’ils ne provoquent pas de conflits de port.
 * `options.Configure(context.Configuration.GetSection("{SECTION}"))` retourne un `KestrelConfigurationLoader` avec une méthode `.Endpoint(string name, listenOptions => { })` qui peut être utilisée pour compléter les paramètres d’un point de terminaison configuré :
 
@@ -889,7 +890,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 Par défaut, `CreateDefaultBuilder` appelle `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` pour charger la configuration de Kestrel.
 
-Le *appsettings.jssuivant sur* l’exemple établit http/1.1 comme protocole de connexion par défaut pour tous les points de terminaison :
+L' *appsettings.json* exemple suivant établit http/1.1 comme protocole de connexion par défaut pour tous les points de terminaison :
 
 ```json
 {
@@ -901,7 +902,7 @@ Le *appsettings.jssuivant sur* l’exemple établit http/1.1 comme protocole de 
 }
 ```
 
-L' *appsettings.js* suivant montre comment établir le protocole de connexion http/1.1 pour un point de terminaison spécifique :
+L' *appsettings.json* exemple suivant établit le protocole de connexion http/1.1 pour un point de terminaison spécifique :
 
 ```json
 {
@@ -1001,9 +1002,9 @@ En guise de solution de contournement, utilisez le middleware de filtrage d’h�
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-Le middleware de filtrage d’hôtes est désactivé par défaut. Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *appsettings.jssur* / *appSettings. \<EnvironmentName> JSON*. La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :
+Le middleware de filtrage d’hôtes est désactivé par défaut. Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *appsettings.json* / *appSettings. \<EnvironmentName> JSON* . La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :
 
-*appsettings.js*:
+*appsettings.json* :
 
 ```json
 {
@@ -1055,7 +1056,7 @@ HTTP/2 est désactivé par défaut. Pour plus d’informations sur la configurat
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Quand utiliser Kestrel avec un proxy inverse ?
 
-Vous pouvez utiliser Kestrel par lui-même ou avec un *serveur proxy inverse*, comme [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/). Un serveur proxy inverse reçoit les requêtes HTTP en provenance du réseau et les transmet à Kestrel.
+Vous pouvez utiliser Kestrel par lui-même ou avec un *serveur proxy inverse* , comme [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/). Un serveur proxy inverse reçoit les requêtes HTTP en provenance du réseau et les transmet à Kestrel.
 
 Kestrel utilisé comme serveur web edge (accessible sur Internet) :
 
@@ -1085,7 +1086,7 @@ Un proxy inverse :
 
 Le package [Microsoft. AspNetCore. Server. Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) est inclus dans le sous- [package Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).
 
-Les modèles de projet ASP.NET Core utilisent Kestrel par défaut. Dans *Program.cs*, le modèle de code appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, qui appelle <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> en arrière-plan.
+Les modèles de projet ASP.NET Core utilisent Kestrel par défaut. Dans *Program.cs* , le modèle de code appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, qui appelle <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> en arrière-plan.
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
 
@@ -1135,7 +1136,7 @@ Les exemples suivants utilisent l’espace de noms <xref:Microsoft.AspNetCore.Se
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-Les options Kestrel, qui sont configurées dans le code C# dans les exemples suivants, peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index). Par exemple, le fournisseur de configuration de fichier peut charger la configuration Kestrel à partir d’un *appsettings.jssur* ou *appSettings. { Fichier Environment}. JSON* :
+Les options Kestrel, qui sont configurées dans le code C# dans les exemples suivants, peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index). Par exemple, le fournisseur de configuration de fichier peut charger la configuration Kestrel à partir d’un *appsettings.json* ou *appSettings. { Fichier Environment}. JSON* :
 
 ```json
 {
@@ -1182,7 +1183,7 @@ Utilisez l' **une** des approches suivantes :
 
 * Configurez Kestrel lors de la génération de l’hôte :
 
-  Dans *Program.cs*, chargez la `Kestrel` section de configuration dans la configuration de Kestrel :
+  Dans *Program.cs* , chargez la `Kestrel` section de configuration dans la configuration de Kestrel :
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -1515,10 +1516,10 @@ Kestrel écoute sur `http://localhost:5000` et sur `https://localhost:5001` (si 
 
 Par défaut, `CreateDefaultBuilder` appelle `Configure(context.Configuration.GetSection("Kestrel"))` pour charger la configuration de Kestrel. Un schéma de configuration des paramètres d’application HTTPS par défaut est disponible pour Kestrel. Configurez plusieurs points de terminaison, notamment les URL et les certificats à utiliser, à partir d’un fichier sur disque ou d’un magasin de certificats.
 
-Dans l’exemple de fichier *appsettings.json* suivant :
+Dans l' *appsettings.json* exemple suivant :
 
 * Définissez **AllowInvalid** sur `true` pour permettre l’utilisation de certificats non valides (par exemple des certificats auto-signés).
-* Tout point de terminaison HTTPS qui ne spécifie pas de certificat (**HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut ** ou au certificat de développement.
+* Tout point de terminaison HTTPS qui ne spécifie pas de certificat ( **HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut** ou au certificat de développement.
 
 ```json
 {
@@ -1568,7 +1569,7 @@ Dans l’exemple de fichier *appsettings.json* suivant :
 }
 ```
 
-Une alternative à l’utilisation de **Chemin** et de **Mot de passe** pour un nœud de certificat consiste à spécifier le certificat avec des champs du magasin de certificats. Par exemple, le **Certificates**  >  certificat**par défaut** des certificats peut être spécifié comme suit :
+Une alternative à l’utilisation de **Chemin** et de **Mot de passe** pour un nœud de certificat consiste à spécifier le certificat avec des champs du magasin de certificats. Par exemple, le **Certificates**  >  certificat **par défaut** des certificats peut être spécifié comme suit :
 
 ```json
 "Default": {
@@ -1585,7 +1586,7 @@ Notes de schéma :
 * Le paramètre `Url` est obligatoire pour chaque point de terminaison. Le format de ce paramètre est le même que celui du paramètre de configuration `Urls` du plus haut niveau, sauf qu’il est limité à une seule valeur.
 * Ces points de terminaison remplacent ceux qui sont définis dans le paramètre de configuration `Urls` du plus haut niveau configuration, au lieu de s’y ajouter. Les points de terminaison définis dans le code via `Listen` sont cumulatifs avec les points de terminaison définis dans la section de configuration.
 * La section `Certificate` est facultative. Si la section `Certificate` n’est pas spécifiée, les valeurs par défaut définies dans les scénarios précédents sont utilisées. Si aucune valeur par défaut n’est disponible, le serveur lève une exception et son démarrage échoue.
-* La `Certificate` section prend en **Path**charge les &ndash; certificats**de mot de passe** de chemin d’accès et de magasin d' **objets** &ndash; **Store** .
+* La `Certificate` section prend en **Path** charge les &ndash; certificats **de mot de passe** de chemin d’accès et de magasin d' **objets** &ndash; **Store** .
 * Vous pouvez définir un nombre quelconque de points de terminaison de cette façon, pour autant qu’ils ne provoquent pas de conflits de port.
 * `options.Configure(context.Configuration.GetSection("{SECTION}"))` retourne un `KestrelConfigurationLoader` avec une méthode `.Endpoint(string name, listenOptions => { })` qui peut être utilisée pour compléter les paramètres d’un point de terminaison configuré :
 
@@ -1838,7 +1839,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 Par défaut, <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> appelle `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` pour charger la configuration de Kestrel.
 
-Dans l’exemple *appsettings.json* suivant, un protocole de connexion par défaut (HTTP/1.1 et HTTP/2) est établi pour l’ensemble des points de terminaison de Kestrel :
+Dans l' *appsettings.json* exemple suivant, un protocole de connexion par défaut (http/1.1 et http/2) est établi pour tous les points de terminaison de Kestrel :
 
 ```json
 {
@@ -1952,9 +1953,9 @@ En guise de solution de contournement, utilisez le middleware de filtrage d’h�
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-Le middleware de filtrage d’hôtes est désactivé par défaut. Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *appsettings.jssur* / *appSettings. \<EnvironmentName> JSON*. La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :
+Le middleware de filtrage d’hôtes est désactivé par défaut. Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *appsettings.json* / *appSettings. \<EnvironmentName> JSON* . La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :
 
-*appsettings.js*:
+*appsettings.json* :
 
 ```json
 {
@@ -1985,7 +1986,7 @@ Kestrel est pris en charge sur toutes les plateformes et les versions prises en 
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Quand utiliser Kestrel avec un proxy inverse ?
 
-Vous pouvez utiliser Kestrel par lui-même ou avec un *serveur proxy inverse*, comme [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/). Un serveur proxy inverse reçoit les requêtes HTTP en provenance du réseau et les transmet à Kestrel.
+Vous pouvez utiliser Kestrel par lui-même ou avec un *serveur proxy inverse* , comme [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/). Un serveur proxy inverse reçoit les requêtes HTTP en provenance du réseau et les transmet à Kestrel.
 
 Kestrel utilisé comme serveur web edge (accessible sur Internet) :
 
@@ -2015,7 +2016,7 @@ Un proxy inverse :
 
 Le package [Microsoft. AspNetCore. Server. Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) est inclus dans le sous- [package Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).
 
-Les modèles de projet ASP.NET Core utilisent Kestrel par défaut. Dans *Program.cs*, le modèle de code appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, qui appelle <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> en arrière-plan.
+Les modèles de projet ASP.NET Core utilisent Kestrel par défaut. Dans *Program.cs* , le modèle de code appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, qui appelle <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> en arrière-plan.
 
 Pour fournir une configuration supplémentaire après l’appel de `CreateDefaultBuilder`, appelez <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> :
 
@@ -2043,7 +2044,7 @@ Les exemples suivants utilisent l’espace de noms <xref:Microsoft.AspNetCore.Se
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-Les options Kestrel, qui sont configurées dans le code C# dans les exemples suivants, peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index). Par exemple, le fournisseur de configuration de fichier peut charger la configuration Kestrel à partir d’un *appsettings.jssur* ou *appSettings. { Fichier Environment}. JSON* :
+Les options Kestrel, qui sont configurées dans le code C# dans les exemples suivants, peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index). Par exemple, le fournisseur de configuration de fichier peut charger la configuration Kestrel à partir d’un *appsettings.json* ou *appSettings. { Fichier Environment}. JSON* :
 
 ```json
 {
@@ -2090,7 +2091,7 @@ Utilisez l' **une** des approches suivantes :
 
 * Configurez Kestrel lors de la génération de l’hôte :
 
-  Dans *Program.cs*, chargez la `Kestrel` section de configuration dans la configuration de Kestrel :
+  Dans *Program.cs* , chargez la `Kestrel` section de configuration dans la configuration de Kestrel :
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -2379,10 +2380,10 @@ Kestrel écoute sur `http://localhost:5000` et sur `https://localhost:5001` (si 
 
 Par défaut, `CreateDefaultBuilder` appelle `Configure(context.Configuration.GetSection("Kestrel"))` pour charger la configuration de Kestrel. Un schéma de configuration des paramètres d’application HTTPS par défaut est disponible pour Kestrel. Configurez plusieurs points de terminaison, notamment les URL et les certificats à utiliser, à partir d’un fichier sur disque ou d’un magasin de certificats.
 
-Dans l’exemple de fichier *appsettings.json* suivant :
+Dans l' *appsettings.json* exemple suivant :
 
 * Définissez **AllowInvalid** sur `true` pour permettre l’utilisation de certificats non valides (par exemple des certificats auto-signés).
-* Tout point de terminaison HTTPS qui ne spécifie pas de certificat (**HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut ** ou au certificat de développement.
+* Tout point de terminaison HTTPS qui ne spécifie pas de certificat ( **HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut** ou au certificat de développement.
 
 ```json
 {
@@ -2432,7 +2433,7 @@ Dans l’exemple de fichier *appsettings.json* suivant :
 }
 ```
 
-Une alternative à l’utilisation de **Chemin** et de **Mot de passe** pour un nœud de certificat consiste à spécifier le certificat avec des champs du magasin de certificats. Par exemple, le **Certificates**  >  certificat**par défaut** des certificats peut être spécifié comme suit :
+Une alternative à l’utilisation de **Chemin** et de **Mot de passe** pour un nœud de certificat consiste à spécifier le certificat avec des champs du magasin de certificats. Par exemple, le **Certificates**  >  certificat **par défaut** des certificats peut être spécifié comme suit :
 
 ```json
 "Default": {
@@ -2449,7 +2450,7 @@ Notes de schéma :
 * Le paramètre `Url` est obligatoire pour chaque point de terminaison. Le format de ce paramètre est le même que celui du paramètre de configuration `Urls` du plus haut niveau, sauf qu’il est limité à une seule valeur.
 * Ces points de terminaison remplacent ceux qui sont définis dans le paramètre de configuration `Urls` du plus haut niveau configuration, au lieu de s’y ajouter. Les points de terminaison définis dans le code via `Listen` sont cumulatifs avec les points de terminaison définis dans la section de configuration.
 * La section `Certificate` est facultative. Si la section `Certificate` n’est pas spécifiée, les valeurs par défaut définies dans les scénarios précédents sont utilisées. Si aucune valeur par défaut n’est disponible, le serveur lève une exception et son démarrage échoue.
-* La `Certificate` section prend en **Path**charge les &ndash; certificats**de mot de passe** de chemin d’accès et de magasin d' **objets** &ndash; **Store** .
+* La `Certificate` section prend en **Path** charge les &ndash; certificats **de mot de passe** de chemin d’accès et de magasin d' **objets** &ndash; **Store** .
 * Vous pouvez définir un nombre quelconque de points de terminaison de cette façon, pour autant qu’ils ne provoquent pas de conflits de port.
 * `options.Configure(context.Configuration.GetSection("{SECTION}"))` retourne un `KestrelConfigurationLoader` avec une méthode `.Endpoint(string name, listenOptions => { })` qui peut être utilisée pour compléter les paramètres d’un point de terminaison configuré :
 
@@ -2742,9 +2743,9 @@ En guise de solution de contournement, utilisez le middleware de filtrage d’h�
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-Le middleware de filtrage d’hôtes est désactivé par défaut. Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *appsettings.jssur* / *appSettings. \<EnvironmentName> JSON*. La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :
+Le middleware de filtrage d’hôtes est désactivé par défaut. Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *appsettings.json* / *appSettings. \<EnvironmentName> JSON* . La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :
 
-*appsettings.js*:
+*appsettings.json* :
 
 ```json
 {

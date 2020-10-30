@@ -5,6 +5,7 @@ description: Découvrez les scripts inter-sites (XSS) et les techniques permetta
 ms.author: riande
 ms.date: 10/02/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cross-site-scripting
-ms.openlocfilehash: 38e9e102e9ac18ec14bceebf391c11a434492ac9
-ms.sourcegitcommit: 6ecdc481d5b9a10d2c6e091217f017b36bdba957
+ms.openlocfilehash: 1c90a786efe8c3c205a729a2da9d3a99d0222012
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90456060"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053083"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Empêcher les scripts entre sites (XSS) dans ASP.NET Core
 
@@ -161,10 +162,9 @@ Le code précédent génère la sortie suivante :
 ```
 
 >[!WARNING]
-> Ne concaténez ***pas*** d’entrée non fiable dans JavaScript pour créer des éléments DOM ou utiliser `document.write()` sur du contenu généré dynamiquement.
+> Do * **not** _ concaténer une entrée non fiable dans JavaScript pour créer des éléments DOM ou utiliser `document.write()` sur du contenu généré dynamiquement.
 >
-> Utilisez l’une des approches suivantes pour empêcher l’exposition du code au XSS basé sur DOM :
-> * `createElement()` et assignent des valeurs de propriété avec des méthodes ou des propriétés appropriées, telles que `node.textContent=` ou node. InnerText = '.
+> Utilisez l’une des approches suivantes pour empêcher le code d’être exposé au code XSS basé sur DOM : _ `createElement()` et assigner des valeurs de propriété avec des méthodes ou des propriétés appropriées telles que `node.textContent=` ou node. InnerText = '.
 > * `document.CreateTextNode()` et l’ajouter à l’emplacement DOM approprié.
 > * `element.SetAttribute()`
 > * `element[attribute]=`
@@ -173,7 +173,7 @@ Le code précédent génère la sortie suivante :
 
 Les encodeurs HTML, JavaScript et d’URL sont disponibles pour votre code de deux manières, vous pouvez les injecter via l' [injection de dépendances](xref:fundamentals/dependency-injection) ou vous pouvez utiliser les encodeurs par défaut contenus dans l' `System.Text.Encodings.Web` espace de noms. Si vous utilisez les encodeurs par défaut, tout ce que vous avez appliqué aux plages de caractères à traiter comme sécurisé ne prendra pas effet : les encodeurs par défaut utilisent les règles d’encodage les plus sûres possibles.
 
-Pour utiliser les encodeurs configurables via l’injection de code, les constructeurs doivent accepter un paramètre *HtmlEncoder*, *JavaScriptEncoder* et *UrlEncoder* , selon le cas. Par exemple :
+Pour utiliser les encodeurs configurables via l’injection de code, les constructeurs doivent accepter un paramètre *HtmlEncoder* , *JavaScriptEncoder* et *UrlEncoder* , selon le cas. Par exemple :
 
 ```csharp
 public class HomeController : Controller

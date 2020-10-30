@@ -7,6 +7,7 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: 12293c5cb3dc49d505225f1b44e824e9273cfffc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5ecbf07b1527e9c68443870f7fce77adc29a5416
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630989"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050834"
 ---
 # <a name="security-considerations-in-aspnet-core-no-locsignalr"></a>Considérations relatives à la sécurité dans ASP.NET Core SignalR
 
@@ -33,7 +34,7 @@ Cet article fournit des informations sur la sécurisation de SignalR .
 
 ## <a name="cross-origin-resource-sharing"></a>Partage de ressources cross-origin
 
-Le [partage des ressources Cross-Origin (cors)](https://www.w3.org/TR/cors/) peut être utilisé pour autoriser les connexions Cross-Origin SignalR dans le navigateur. Si le code JavaScript est hébergé sur un domaine différent de l' SignalR application, l' [intergiciel (middleware) cors](xref:security/cors) doit être activé pour permettre au JavaScript de se connecter à l' SignalR application. Autorisez les requêtes Cross-Origin uniquement à partir des domaines que vous approuvez ou contrôlez. Par exemple :
+Le [partage des ressources Cross-Origin (cors)](https://www.w3.org/TR/cors/) peut être utilisé pour autoriser les connexions Cross-Origin SignalR dans le navigateur. Si le code JavaScript est hébergé sur un domaine différent de l' SignalR application, l' [intergiciel (middleware) cors](xref:security/cors) doit être activé pour permettre au JavaScript de se connecter à l' SignalR application. Autorisez les requêtes Cross-Origin uniquement à partir des domaines que vous approuvez ou contrôlez. Exemple :
 
 * Votre site est hébergé sur `http://www.example.com`
 * Votre SignalR application est hébergée sur `http://signalr.example.com`
@@ -123,7 +124,7 @@ L’exposition `ConnectionId` peut entraîner un emprunt d’identité malveilla
 
 ## <a name="access-token-logging"></a>Journalisation des jetons d’accès
 
-Lorsque vous utilisez des WebSockets ou des événements envoyés par le serveur, le client du navigateur envoie le jeton d’accès dans la chaîne de requête. La réception du jeton d’accès via la chaîne de requête est généralement sécurisée à l’aide de l' `Authorization` en-tête standard. Utilisez toujours le protocole HTTPs pour garantir une connexion sécurisée de bout en bout entre le client et le serveur. De nombreux serveurs Web consignent l’URL pour chaque demande, y compris la chaîne de requête. La journalisation des URL peut enregistrer le jeton d’accès. ASP.NET Core enregistre l’URL pour chaque demande par défaut, qui inclut la chaîne de requête. Par exemple :
+Lors de l’utilisation d’événements WebSocket ou Server-Sent, le client navigateur envoie le jeton d’accès dans la chaîne de requête. La réception du jeton d’accès via la chaîne de requête est généralement sécurisée à l’aide de l' `Authorization` en-tête standard. Utilisez toujours le protocole HTTPs pour garantir une connexion sécurisée de bout en bout entre le client et le serveur. De nombreux serveurs Web consignent l’URL pour chaque demande, y compris la chaîne de requête. La journalisation des URL peut enregistrer le jeton d’accès. ASP.NET Core enregistre l’URL pour chaque demande par défaut, qui inclut la chaîne de requête. Exemple :
 
 ```
 info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]

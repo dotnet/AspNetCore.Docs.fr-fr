@@ -5,6 +5,7 @@ description: Découvrez comment prendre en charge les scénarios de protection d
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/non-di-scenarios
-ms.openlocfilehash: 5b27d21b046333d7a01f2e81f25d7bd34253cf36
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 03257596cafd9ec99f90b44d8fcb878b6747ba39
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629169"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052823"
 ---
 # <a name="non-di-aware-scenarios-for-data-protection-in-aspnet-core"></a>Scénarios non compatibles avec l’injection de dépendances pour la protection des données dans ASP.NET Core
 
