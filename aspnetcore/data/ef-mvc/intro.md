@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/intro
-ms.openlocfilehash: e081c13f9ffb33c1ff137cb0989e747d51571ea7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 36d72e037087399c8893d5ecb4a6fffdca3a3608
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629195"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054240"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Didacticiel : prise en main de EF Core dans une application Web MVC ASP.NET
 
@@ -81,23 +82,23 @@ Les utilisateurs peuvent afficher et mettre à jour les informations relatives a
 
 * Ouvrez Visual Studio.
 
-* Dans le menu **Fichier**, sélectionnez **Nouveau > Projet**.
+* Dans le menu **Fichier** , sélectionnez **Nouveau > Projet** .
 
-* Dans le volet gauche, sélectionnez **Installé > Visual C# > Web**.
+* Dans le volet gauche, sélectionnez **Installé > Visual C# > Web** .
 
-* Sélectionnez le modèle de projet **Application web ASP.NET Core**.
+* Sélectionnez le modèle de projet **Application web ASP.NET Core** .
 
-* Entrez **ContosoUniversity** comme nom et cliquez sur **OK**.
+* Entrez **ContosoUniversity** comme nom et cliquez sur **OK** .
 
   ![Boîte de dialogue Nouveau projet](intro/_static/new-project2.png)
 
-* Patientez jusqu’à l’affichage de la boîte de dialogue **Nouvelle application web ASP.NET Core**.
+* Patientez jusqu’à l’affichage de la boîte de dialogue **Nouvelle application web ASP.NET Core** .
 
-* Sélectionnez **.NET Core**, **ASP.NET Core 2.2** et le modèle **Application web (Model-View-Controller)**.
+* Sélectionnez **.NET Core** , **ASP.NET Core 2.2** et le modèle **Application web (Model-View-Controller)** .
 
-* Assurez-vous que **l’authentification** est définie sur **aucune authentification**.
+* Assurez-vous que **l’authentification** est définie sur **aucune authentification** .
 
-* Sélectionnez **OK**.
+* Sélectionnez **OK** .
 
   ![Boîte de dialogue Nouveau projet ASP.NET Core](intro/_static/new-aspnet2.png)
 
@@ -109,13 +110,13 @@ Ouvrez *Views/Shared/_Layout.cshtml* et apportez les modifications suivantes :
 
 * Remplacez chaque occurrence de « ContosoUniversity » par « Contoso University ». Il y a trois occurrences.
 
-* Ajoutez des entrées de menu pour **About**, **Students**, **Courses**, **Instructors**, et **Departments**, et supprimez l’entrée de menu **Privacy**.
+* Ajoutez des entrées de menu pour **About** , **Students** , **Courses** , **Instructors** , et **Departments** , et supprimez l’entrée de menu **Privacy** .
 
 Les modifications sont mises en surbrillance.
 
 [!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,34-48,63)]
 
-Dans *Views/Home/Index.cshtml*, remplacez le contenu du fichier par le code suivant, afin de remplacer le texte relatif à ASP.NET et MVC par le texte relatif à cette application :
+Dans *Views/Home/Index.cshtml* , remplacez le contenu du fichier par le code suivant, afin de remplacer le texte relatif à ASP.NET et MVC par le texte relatif à cette application :
 
 [!code-cshtml[](intro/samples/cu/Views/Home/Index.cshtml)]
 
@@ -145,11 +146,11 @@ Dans les sections suivantes, vous allez créer une classe pour chacune de ces en
 
 ![Diagramme de l’entité Student](intro/_static/student-entity.png)
 
-Dans le dossier *Models*, créez un fichier de classe nommé *Student.cs* et remplacez le code du modèle par le code suivant.
+Dans le dossier *Models* , créez un fichier de classe nommé *Student.cs* et remplacez le code du modèle par le code suivant.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Intro)]
 
-La propriété `ID` devient la colonne de clé primaire de la table de base de données qui correspond à cette classe. Par défaut, Entity Framework interprète une propriété nommée `ID` ou `classnameID` comme clé primaire.
+La propriété `ID` devient la colonne de clé primaire de la table de base de données qui correspond à cette classe. Par défaut, Entity Framework interprète une propriété nommée `ID` ou `classnameID` comme étant la clé primaire.
 
 La `Enrollments` propriété est une [propriété de navigation](/ef/core/modeling/relationships). Les propriétés de navigation contiennent d’autres entités qui sont associées à cette entité. Dans ce cas, la propriété `Enrollments` d’un `Student entity` contient toutes les entités `Enrollment` associées à l’entité `Student`. En d’autres termes, si une ligne Student donnée dans la base de données a deux lignes Enrollment associées (lignes qui contiennent la valeur de clé primaire de cet étudiant dans la colonne de clé étrangère StudentID), la propriété de navigation `Enrollments` de cette entité `Student` contiendra ces deux entités `Enrollment`.
 
@@ -159,7 +160,7 @@ Si une propriété de navigation peut contenir plusieurs entités (comme dans de
 
 ![Diagramme de l’entité Enrollment](intro/_static/enrollment-entity.png)
 
-Dans le dossier *Models*, créez *Enrollment.cs* et remplacez le code existant par le code suivant :
+Dans le dossier *Models* , créez *Enrollment.cs* et remplacez le code existant par le code suivant :
 
 [!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Intro)]
 
@@ -177,7 +178,7 @@ Entity Framework interprète une propriété comme une propriété de clé étra
 
 ![Diagramme de l’entité Course](intro/_static/course-entity.png)
 
-Dans le dossier *Models*, créez *cs* et remplacez le code existant par le code suivant :
+Dans le dossier *Models* , créez *cs* et remplacez le code existant par le code suivant :
 
 [!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Intro)]
 
@@ -189,9 +190,9 @@ Nous fournirons plus de détails sur l’attribut `DatabaseGenerated` dans un [d
 
 La classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données spécifié est la classe de contexte de base de données. Vous créez cette classe en dérivant de la classe `Microsoft.EntityFrameworkCore.DbContext`. Dans votre code, vous spécifiez les entités qui sont incluses dans le modèle de données. Vous pouvez également personnaliser un certain comportement d’Entity Framework. Dans ce projet, la classe est nommée `SchoolContext`.
 
-Dans le dossier du projet, créez un dossier nommé *Data*.
+Dans le dossier du projet, créez un dossier nommé *Data* .
 
-Dans ce dossier *Data*, créez un nouveau fichier de classe nommé *SchoolContext.cs* et remplacez le code du modèle par le code suivant :
+Dans ce dossier *Data* , créez un nouveau fichier de classe nommé *SchoolContext.cs* et remplacez le code du modèle par le code suivant :
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
 
@@ -211,13 +212,13 @@ Pour inscrire `SchoolContext` en tant que service, ouvrez *Startup.cs* et ajoute
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=9-10)]
 
-Le nom de la chaîne de connexion est transmis au contexte en appelant une méthode sur un objet `DbContextOptionsBuilder`. Pour le développement local, le [système de configuration ASP.NET Core](xref:fundamentals/configuration/index) lit la chaîne de connexion à partir du fichier *appsettings.json*.
+Le nom de la chaîne de connexion est transmis au contexte en appelant une méthode sur un objet `DbContextOptionsBuilder`. Pour le développement local, le [système de configuration ASP.net Core](xref:fundamentals/configuration/index) lit la chaîne de connexion à partir du *appsettings.json* fichier.
 
 Ajoutez des instructions `using` pour les espaces de noms `ContosoUniversity.Data` et `Microsoft.EntityFrameworkCore`, puis générez le projet.
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Usings)]
 
-Ouvrez le fichier *appsettings.json* et ajoutez une chaîne de connexion comme indiqué dans l’exemple suivant.
+Ouvrez le *appsettings.json* fichier et ajoutez une chaîne de connexion comme indiqué dans l’exemple suivant.
 
 [!code-json[](./intro/samples/cu/appsettings1.json?highlight=2-4)]
 
@@ -231,13 +232,13 @@ Entity Framework créera une base de données vide pour vous. Dans cette section
 
 Là, vous allez utiliser la méthode `EnsureCreated` pour créer automatiquement la base de données. Dans un [didacticiel ultérieur](migrations.md), vous verrez comment traiter les modifications des modèles à l’aide des migrations Code First pour modifier le schéma de base de données au lieu de supprimer et de recréer la base de données.
 
-Dans le dossier *Data*, créez un nouveau fichier de classe nommé *DbInitializer.cs* et remplacez le code de modèle par le code suivant, qui entraîne la création d’une base de données, si nécessaire, et charge les données de test dans la nouvelle base de données.
+Dans le dossier *Data* , créez un nouveau fichier de classe nommé *DbInitializer.cs* et remplacez le code de modèle par le code suivant, qui entraîne la création d’une base de données, si nécessaire, et charge les données de test dans la nouvelle base de données.
 
 [!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Intro)]
 
 Le code vérifie si des étudiants figurent dans la base de données et, dans la négative, il suppose que la base de données est nouvelle et doit être initialement peuplée avec des données de test. Il charge les données de test dans des tableaux plutôt que des collections `List<T>` afin d’optimiser les performances.
 
-Dans *Program.cs*, modifiez la méthode `Main` pour effectuer les opérations suivantes au démarrage de l’application :
+Dans *Program.cs* , modifiez la méthode `Main` pour effectuer les opérations suivantes au démarrage de l’application :
 
 * Obtenir une instance de contexte de base de données à partir du conteneur d’injection de dépendance.
 * Appeler la méthode de remplissage initial, en lui transmettant le contexte.
@@ -249,7 +250,7 @@ Ajoutez des instructions `using` :
 
 [!code-csharp[](intro/samples/cu/Program.cs?name=snippet_Usings)]
 
-Dans les didacticiels plus anciens, vous pouvez voir un code similaire dans la méthode `Configure`, dans *Startup.cs*. Nous vous recommandons d’utiliser la méthode `Configure` uniquement pour configurer le pipeline de demande. Le code de démarrage d’application doit figurer dans la méthode `Main`.
+Dans les didacticiels plus anciens, vous pouvez voir un code similaire dans la méthode `Configure`, dans *Startup.cs* . Nous vous recommandons d’utiliser la méthode `Configure` uniquement pour configurer le pipeline de demande. Le code de démarrage d’application doit figurer dans la méthode `Main`.
 
 À présent, la première fois que vous exécutez l’application, la base de données est créée et initialement peuplée avec les données de test. Chaque fois que vous changez votre modèle de données, vous pouvez supprimer la base de données, mettre à jour votre méthode de peuplement initial et repartir de la même façon avec une nouvelle base de données. Dans les didacticiels suivants, vous verrez comment modifier la base de données quand le modèle de données change, sans supprimer et recréer la base de données.
 
@@ -259,27 +260,27 @@ Ensuite, vous utiliserez le moteur de génération de modèles automatique dans 
 
 La création automatique de vues et de méthodes d’action CRUD porte le nom de génération de modèles automatique. La génération de modèles automatique diffère de la génération de code dans la mesure où le code obtenu par génération de modèles automatique est un point de départ que vous pouvez modifier pour prendre en compte vos propres exigences, tandis qu’en général vous ne modifiez pas le code généré. Lorsque vous avez besoin de personnaliser le code généré, vous utilisez des classes partielles ou vous regénérez le code en cas de changements.
 
-* Cliquez avec le bouton droit sur le dossier **Contrôleurs** dans l’**Explorateur de solutions**, puis sélectionnez **Ajouter > Nouvel élément généré automatiquement**.
+* Cliquez avec le bouton droit sur le dossier **Contrôleurs** dans l’ **Explorateur de solutions** , puis sélectionnez **Ajouter > Nouvel élément généré automatiquement** .
 
 * Dans la boîte de dialogue **Ajouter un modèle automatique** :
 
-  * Sélectionnez **Contrôleur MVC avec vues, utilisant Entity Framework**.
+  * Sélectionnez **Contrôleur MVC avec vues, utilisant Entity Framework** .
 
-  * Cliquez sur **Add**. La boîte de dialogue **Ajouter un contrôleur MVC avec vues, utilisant Entity Framework** s’affiche.
+  * Cliquez sur **Add** . La boîte de dialogue **Ajouter un contrôleur MVC avec vues, utilisant Entity Framework** s’affiche.
 
     ![Génération de modèles automatique – Étudiant](intro/_static/scaffold-student2.png)
 
-  * Dans **Classe de modèle**, sélectionnez **Student**.
+  * Dans **Classe de modèle** , sélectionnez **Student** .
 
-  * Dans **Classe du contexte de données**, sélectionnez **SchoolContext**.
+  * Dans **Classe du contexte de données** , sélectionnez **SchoolContext** .
 
   * Acceptez la valeur par défaut **StudentsController** comme nom.
 
-  * Cliquez sur **Add**.
+  * Cliquez sur **Add** .
 
-  Lorsque vous cliquez sur **Ajouter**, le moteur de génération de modèles automatique de Visual Studio crée un fichier *StudentsController.cs* et un ensemble de vues (fichiers *.cshtml*) qui fonctionnent avec le contrôleur.
+  Lorsque vous cliquez sur **Ajouter** , le moteur de génération de modèles automatique de Visual Studio crée un fichier *StudentsController.cs* et un ensemble de vues (fichiers *.cshtml* ) qui fonctionnent avec le contrôleur.
 
-(Le moteur de génération de modèles automatique peut également créer le contexte de base de données pour vous, si vous ne l’avez pas déjà créé manuellement, comme vous l’avez fait précédemment pour ce didacticiel. Vous pouvez spécifier une nouvelle classe de contexte dans la zone **Ajouter un contrôleur** en cliquant sur le signe plus à droite de **Classe du contexte de données**.  Visual Studio crée ensuite votre classe `DbContext` ainsi que le contrôleur et les vues.)
+(Le moteur de génération de modèles automatique peut également créer le contexte de base de données pour vous, si vous ne l’avez pas déjà créé manuellement, comme vous l’avez fait précédemment pour ce didacticiel. Vous pouvez spécifier une nouvelle classe de contexte dans la zone **Ajouter un contrôleur** en cliquant sur le signe plus à droite de **Classe du contexte de données** .  Visual Studio crée ensuite votre classe `DbContext` ainsi que le contrôleur et les vues.)
 
 Vous pouvez remarquer que le contrôleur accepte un `SchoolContext` comme paramètre de constructeur.
 
@@ -307,13 +308,13 @@ Cliquez sur l’onglet Students pour afficher les données de test que la métho
 
 ## <a name="view-the-database"></a>Afficher la base de données
 
-Lorsque vous avez démarré l’application, la méthode `DbInitializer.Initialize` appelle `EnsureCreated`. EF a vu qu’il n’y avait pas de base de données et en a donc créé une, puis le reste du code de la méthode `Initialize` a rempli la base de données avec des données. Vous pouvez utiliser l’**Explorateur d’objets SQL Server** (SSOX) pour afficher la base de données dans Visual Studio.
+Lorsque vous avez démarré l’application, la méthode `DbInitializer.Initialize` appelle `EnsureCreated`. EF a vu qu’il n’y avait pas de base de données et en a donc créé une, puis le reste du code de la méthode `Initialize` a rempli la base de données avec des données. Vous pouvez utiliser l’ **Explorateur d’objets SQL Server** (SSOX) pour afficher la base de données dans Visual Studio.
 
 Fermez le navigateur.
 
 Si la fenêtre SSOX n’est pas déjà ouverte, sélectionnez-la dans le menu **Affichage** de Visual Studio.
 
-Dans SSOX, cliquez sur **(localdb)\MSSQLLocalDB > Bases de données**, puis cliquez sur l’entrée pour le nom de la base de données qui se trouve dans la chaîne de connexion, dans votre fichier *appsettings.json*.
+Dans SSOX, cliquez sur **\MSSQLLocalDB > bases de données** , puis cliquez sur l’entrée correspondant au nom de la base de données qui se trouve dans la chaîne de connexion de votre *appsettings.json* fichier.
 
 Développez le nœud **Tables** pour afficher les tables de votre base de données.
 
@@ -323,7 +324,7 @@ Cliquez avec le bouton droit sur la table **Student** et cliquez sur **Afficher 
 
 ![Table Student dans SSOX](intro/_static/ssox-student-table.png)
 
-Les fichiers de base de données *.mdf* et *.ldf* se trouvent dans le dossier *C:\Utilisateurs\\\<yourusername>*.
+Les fichiers de base de données *.mdf* et *.ldf* se trouvent dans le dossier *C:\Utilisateurs\\\<yourusername>* .
 
 Étant donné que vous appelez `EnsureCreated` dans la méthode d’initialiseur qui s’exécute au démarrage de l’application, vous pouvez maintenant apporter une modification à la classe `Student`, supprimer la base de données ou réexécuter l’application, et la base de données serait automatiquement recréée conformément à votre modification. Par exemple, si vous ajoutez une propriété `EmailAddress` à la classe `Student`, vous voyez une nouvelle colonne `EmailAddress` dans la table recréée.
 

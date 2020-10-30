@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 01/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/using-browserlink
-ms.openlocfilehash: ab4ca78fa50768ff66536608a7cf03e73aecf73a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 80f05acab55af973faf08b5db79ea4cbaf896b14
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628818"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054487"
 ---
 # <a name="browser-link-in-aspnet-core"></a>Lien du navigateur dans ASP.NET Core
 
@@ -34,7 +35,7 @@ Le lien du navigateur est une fonctionnalité de Visual Studio. Il crée un cana
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Ajoutez le package [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) à votre projet. Pour les Razor Pages ASP.net Core ou les projets MVC, activez également la compilation du runtime des Razor fichiers (*. cshtml*) comme décrit dans <xref:mvc/views/view-compilation> . Razor les modifications de syntaxe sont appliquées uniquement lorsque la compilation du runtime a été activée.
+Ajoutez le package [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) à votre projet. Pour les Razor Pages ASP.net Core ou les projets MVC, activez également la compilation du runtime des Razor fichiers ( *. cshtml* ) comme décrit dans <xref:mvc/views/view-compilation> . Razor les modifications de syntaxe sont appliquées uniquement lorsque la compilation du runtime a été activée.
 
 ::: moniker-end
 
@@ -46,7 +47,7 @@ Lors de la conversion d’un projet ASP.NET Core 2,0 en ASP.NET Core 2,1 et de l
 
 ::: moniker range="= aspnetcore-2.0"
 
-Les modèles de projet **application web**ASP.net Core 2,0, **vide**et **API Web** utilisent le sous- [package Microsoft. AspNetCore. All](xref:fundamentals/metapackage), qui contient une référence de package pour [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/). Par conséquent, l’utilisation du `Microsoft.AspNetCore.All` package ne nécessite aucune action supplémentaire pour rendre le lien de navigateur disponible.
+Les modèles de projet **application web** ASP.net Core 2,0, **vide** et **API Web** utilisent le sous- [package Microsoft. AspNetCore. All](xref:fundamentals/metapackage), qui contient une référence de package pour [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/). Par conséquent, l’utilisation du `Microsoft.AspNetCore.All` package ne nécessite aucune action supplémentaire pour rendre le lien de navigateur disponible.
 
 ::: moniker-end
 
@@ -64,7 +65,7 @@ Appelez `UseBrowserLink` dans la méthode `Startup.Configure` :
 app.UseBrowserLink();
 ```
 
-L' `UseBrowserLink` appel est généralement placé à l’intérieur d’un `if` bloc qui active uniquement le lien de navigateur dans l’environnement de développement. Par exemple :
+L' `UseBrowserLink` appel est généralement placé à l’intérieur d’un `if` bloc qui active uniquement le lien de navigateur dans l’environnement de développement. Exemple :
 
 ```csharp
 if (env.IsDevelopment())
@@ -85,8 +86,8 @@ Quand un projet de ASP.NET Core est ouvert, Visual Studio affiche le contrôle d
 Dans le contrôle de barre d’outils lien de navigateur, vous pouvez :
 
 * Actualisez l’application Web dans plusieurs navigateurs à la fois.
-* Ouvrez le **tableau de bord du lien de navigateur**.
-* Activez ou désactivez le **lien du navigateur**. Remarque : le lien du navigateur est désactivé par défaut dans Visual Studio.
+* Ouvrez le **tableau de bord du lien de navigateur** .
+* Activez ou désactivez le **lien du navigateur** . Remarque : le lien du navigateur est désactivé par défaut dans Visual Studio.
 * Activez ou désactivez la [synchronisation automatique CSS](#enable-or-disable-css-auto-sync).
 
 ## <a name="refresh-the-web-app-in-several-browsers-at-once"></a>Actualiser l’application Web dans plusieurs navigateurs à la fois
@@ -95,7 +96,7 @@ Pour choisir un seul navigateur Web à lancer au démarrage du projet, utilisez 
 
 ![Menu déroulant F5](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-Pour ouvrir plusieurs navigateurs à la fois, choisissez **Parcourir avec...** dans la même liste déroulante. Maintenez la touche <kbd>CTRL</kbd> enfoncée pour sélectionner les navigateurs de votre choix, puis cliquez sur **Parcourir**:
+Pour ouvrir plusieurs navigateurs à la fois, choisissez **Parcourir avec...** dans la même liste déroulante. Maintenez la touche <kbd>CTRL</kbd> enfoncée pour sélectionner les navigateurs de votre choix, puis cliquez sur **Parcourir** :
 
 ![Ouvrir plusieurs navigateurs à la fois](using-browserlink/_static/open-many-browsers-at-once.png)
 

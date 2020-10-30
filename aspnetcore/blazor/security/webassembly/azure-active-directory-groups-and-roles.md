@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: devx-track-csharp, mvc
 ms.date: 10/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 7a56f03f2c3acd08b009673ef7533186bf703604
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 680b44a705b66be0aab824487119cdb118b44d0f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690465"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055306"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Groupes Azure Active Directory (AAD), rôles d’administrateur et rôles définis par l’utilisateur
 
@@ -531,7 +532,7 @@ Dans le fichier de paramètres d’application ( `appsettings.json` ou `appsetti
 },
 ```
 
-Par exemple :
+Exemple :
 
 ```json
 "AzureAd": {
@@ -617,7 +618,7 @@ public class BillingDataController : ControllerBase
 
 ::: moniker range=">= aspnetcore-5.0"
 
-### <a name="packages"></a>.
+### <a name="packages"></a>Paquets
 
 Ajoutez des références de package à l’application *serveur* pour les packages suivants :
 
@@ -748,7 +749,7 @@ Dans le code précédent, la gestion des erreurs de jeton suivantes est facultat
 
 ::: moniker range="< aspnetcore-5.0"
 
-### <a name="packages"></a>.
+### <a name="packages"></a>Paquets
 
 Ajoutez des références de package à l’application *serveur* pour les packages suivants :
 

@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: fabb0ed9c0f64a529b516d521d60a7d862e2654a
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 581a31bad4069523699fbbac63862c9dff12034d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754565"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054214"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Didacticiel : implémenter l’héritage-ASP.NET MVC avec EF Core
 
@@ -87,17 +88,17 @@ Dans le dossier Models, créez Person.cs et remplacez le code du modèle par le 
 
 ## <a name="update-instructor-and-student"></a>Mettre à jour Student et Instructor
 
-Dans *Instructor.cs*, dérivez la classe Instructor de la classe Person et supprimez les champs de clé et de nom. Le code ressemblera à l’exemple suivant :
+Dans *Instructor.cs* , dérivez la classe Instructor de la classe Person et supprimez les champs de clé et de nom. Le code ressemblera à l’exemple suivant :
 
 [!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_AfterInheritance&highlight=8)]
 
-Apportez les mêmes modifications dans *Student.cs*.
+Apportez les mêmes modifications dans *Student.cs* .
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
 
 ## <a name="add-person-to-the-model"></a>Ajouter la classe Person au modèle
 
-Ajoutez le type d’entité Person à *SchoolContext.cs*. Les nouvelles lignes apparaissent en surbrillance.
+Ajoutez le type d’entité Person à *SchoolContext.cs* . Les nouvelles lignes apparaissent en surbrillance.
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_AfterInheritance&highlight=19,30)]
 
@@ -154,7 +155,7 @@ dotnet ef database update
 
 Exécutez l’application et essayez différentes pages. Tout fonctionne comme avant.
 
-Dans l’**Explorateur d’objets SQL Server**, développez **Data Connections/SchoolContext** puis **Tables**, et vous constatez que les tables Student et Instructor ont été remplacées par une table Person. Ouvrez le concepteur de la table Person et vous constatez qu’elle possède toutes les colonnes qui existaient dans les tables Student et Instructor.
+Dans l’ **Explorateur d’objets SQL Server** , développez **Data Connections/SchoolContext** puis **Tables** , et vous constatez que les tables Student et Instructor ont été remplacées par une table Person. Ouvrez le concepteur de la table Person et vous constatez qu’elle possède toutes les colonnes qui existaient dans les tables Student et Instructor.
 
 ![Table Person dans SSOX](inheritance/_static/ssox-person-table.png)
 

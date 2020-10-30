@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/25/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/integrate-components-into-razor-pages-and-mvc-apps
-ms.openlocfilehash: e2045d7d169e81c85f4c7dbd97357455ecd70ea3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e56a08be082cef4ba3a0a58fdfa9d3800d244f75
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628480"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056255"
 ---
 # <a name="integrate-aspnet-core-no-locrazor-components-into-no-locrazor-pages-and-mvc-apps"></a>Intégrer Razor des composants de ASP.net core dans Razor des pages et des applications MVC
 
@@ -50,7 +51,7 @@ Une Razor application de pages ou MVC existante peut intégrer Razor des composa
      <base href="~/" />
      ```
 
-     La `href` valeur (le *chemin d’accès de base*de l’application) dans l’exemple précédent suppose que l’application se trouve dans le chemin d’URL racine ( `/` ). Si l’application est une sous-application, suivez les instructions de la section *chemin d’accès de base* de l’application de l' <xref:blazor/host-and-deploy/index#app-base-path> article.
+     La `href` valeur (le *chemin d’accès de base* de l’application) dans l’exemple précédent suppose que l’application se trouve dans le chemin d’URL racine ( `/` ). Si l’application est une sous-application, suivez les instructions de la section *chemin d’accès de base* de l’application de l' <xref:blazor/host-and-deploy/index#app-base-path> article.
 
      Le `_Layout.cshtml` fichier se trouve dans le dossier *pages/Shared* dans une Razor application pages ou un dossier *Views/Shared* dans une application MVC.
 
@@ -152,7 +153,7 @@ Pour prendre en charge les composants routables Razor dans les Razor application
    });
    ```
 
-1. Ajoutez des composants routables à l’application. Par exemple :
+1. Ajoutez des composants routables à l’application. Exemple :
 
    ```razor
    @page "/counter"
@@ -235,7 +236,7 @@ Pour prendre en charge les composants routables Razor dans les applications MVC�
    });
    ```
 
-1. Créez un `Pages` dossier et ajoutez des composants routables à l’application. Par exemple :
+1. Créez un `Pages` dossier et ajoutez des composants routables à l’application. Exemple :
 
    ```razor
    @page "/counter"

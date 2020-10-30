@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/22/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: fd337a6fb54c418ff08af18014073a6b3f07bb8c
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: f1730ed366fc81444ffe54e88bcd33147efb0aa7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491460"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056294"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>BlazorLiaison de données ASP.net Core
 
@@ -331,8 +332,8 @@ Pour plus d'informations sur le <xref:Microsoft.AspNetCore.Components.EventCallb
 
 Vous pouvez lier n’importe quel nombre de composants imbriqués, mais vous devez respecter le déroulement unidirectionnel des données :
 
-* Les notifications de modifications sont *transmises dans la hiérarchie*.
-* Les nouvelles valeurs de paramètre *circulent dans la hiérarchie*.
+* Les notifications de modifications sont *transmises dans la hiérarchie* .
+* Les nouvelles valeurs de paramètre *circulent dans la hiérarchie* .
 
 Une approche courante et recommandée consiste à stocker uniquement les données sous-jacentes dans le composant parent afin d’éviter toute confusion quant à l’État qui doit être mis à jour.
 

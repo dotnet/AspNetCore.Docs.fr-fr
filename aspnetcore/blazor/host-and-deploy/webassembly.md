@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: c3f537ff3b55f295db478cb097bc99023cc71a87
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: 0912b3fbcd0b891deb4985eaa18841c22f4f3264
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326511"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055748"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Héberger et déployer des ASP.NET Core Blazor WebAssembly
 
@@ -124,7 +125,7 @@ Lors du déploiement sur un serveur IIS, vous pouvez utiliser le module de réé
 
 Un *déploiement hébergé* sert l' Blazor WebAssembly application aux navigateurs à partir d’une [application ASP.net Core](xref:index) qui s’exécute sur un serveur Web.
 
-L’application cliente Blazor WebAssembly est publiée dans le `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` dossier de l’application serveur, ainsi que les autres ressources Web statiques de l’application serveur. Les deux applications sont déployées ensemble. Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Pour un déploiement hébergé, Visual Studio comprend le modèle de projet d' ** Blazor WebAssembly application** ( `blazorwasm` modèle lors de l’utilisation de la [`dotnet new`](/dotnet/core/tools/dotnet-new) commande) avec l' **`Hosted`** option sélectionnée (lors de l' `-ho|--hosted` utilisation de la `dotnet new` commande).
+L’application cliente Blazor WebAssembly est publiée dans le `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` dossier de l’application serveur, ainsi que les autres ressources Web statiques de l’application serveur. Les deux applications sont déployées ensemble. Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Pour un déploiement hébergé, Visual Studio comprend le modèle de projet d' **Blazor WebAssembly application** ( `blazorwasm` modèle lors de l’utilisation de la [`dotnet new`](/dotnet/core/tools/dotnet-new) commande) avec l' **`Hosted`** option sélectionnée (lors de l' `-ho|--hosted` utilisation de la `dotnet new` commande).
 
 Pour plus d’informations sur l’hébergement et le déploiement d’applications ASP.NET Core, consultez <xref:host-and-deploy/index>.
 
@@ -289,22 +290,30 @@ Utilisez les approches suivantes pour les ressources statiques :
   <img alt="..." src="_content/{LIBRARY NAME}/{ASSET FILE NAME}" />
   ```
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker range=">= aspnetcore-5.0"
 
-Les composants fournis à une application cliente par une bibliothèque de classes sont référencés normalement. Si des composants requièrent des feuilles de style ou des fichiers JavaScript, utilisez l’une des approches suivantes pour obtenir les ressources statiques :
+Components provided to a client app by a class library are referenced normally. If any components require stylesheets or JavaScript files, use either of the following approaches to obtain the static assets:
 
-* Le fichier de l’application cliente `wwwroot/index.html` peut lier ( `<link>` ) aux ressources statiques.
-* Le composant peut utiliser le [ `Link` composant](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) de l’infrastructure pour obtenir les ressources statiques.
+* The client app's `wwwroot/index.html` file can link (`<link>`) to the static assets.
+* The component can use the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) to obtain the static assets.
 
-Les approches précédentes sont illustrées dans les exemples suivants.
+The preceding approaches are demonstrated in the following examples.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
+-->
+
 Les composants fournis à une application cliente par une bibliothèque de classes sont référencés normalement. Si des composants requièrent des feuilles de style ou des fichiers JavaScript, le fichier de l’application cliente `wwwroot/index.html` doit inclure les liens d’éléments statiques appropriés. Ces approches sont illustrées dans les exemples suivants.
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker-end
+
+-->
 
 Ajoutez le `Jeep` composant suivant à l’une des applications clientes. Le `Jeep` composant utilise :
 
@@ -338,9 +347,11 @@ Ajoutez le `Jeep` composant suivant à l’une des applications clientes. Le `Je
 > [!WARNING]
 > Ne publiez **pas** d’images de véhicules publiquement, sauf si vous possédez les images. Dans le cas contraire, vous risquez de violation des droits d’auteur.
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker range=">= aspnetcore-5.0"
 
-L’image de la bibliothèque `jeep-yj.png` peut également être ajoutée au composant de la bibliothèque `Component1` ( `Component1.razor` ). Pour fournir la `my-component` classe CSS à la page de l’application cliente, liez-la à la feuille de style de la bibliothèque à l’aide du [ `Link` composant](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements)de l’infrastructure :
+The library's `jeep-yj.png` image can also be added to the library's `Component1` component (`Component1.razor`). To provide the `my-component` CSS class to the client app's page, link to the library's stylesheet using the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements):
 
 ```razor
 <div class="my-component">
@@ -358,7 +369,7 @@ L’image de la bibliothèque `jeep-yj.png` peut également être ajoutée au co
 </div>
 ```
 
-Une alternative à l’utilisation du [ `Link` composant](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) consiste à charger la feuille de style à partir du fichier de l’application cliente `wwwroot/index.html` . Cette approche rend la feuille de style disponible pour tous les composants de l’application cliente :
+An alternative to using the [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) is to load the stylesheet from the client app's `wwwroot/index.html` file. This approach makes the stylesheet available to all of the components in the client app:
 
 ```html
 <head>
@@ -370,6 +381,8 @@ Une alternative à l’utilisation du [ `Link` composant](xref:blazor/fundamenta
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
+
+-->
 
 L’image de la bibliothèque `jeep-yj.png` peut également être ajoutée au composant de la bibliothèque `Component1` ( `Component1.razor` ) :
 
@@ -396,7 +409,11 @@ Le fichier de l’application cliente `wwwroot/index.html` demande la feuille de
 </head>
 ```
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker-end
+
+-->
 
 Ajoutez la navigation au `Jeep` composant dans le composant de l’application cliente `NavMenu` ( `Shared/NavMenu.razor` ) :
 
@@ -521,7 +538,7 @@ L’hébergement de fichiers statiques [Azure Storage](/azure/storage/) permet l
 Lorsque le service blob est activé pour l’hébergement de site Web statique sur un compte de stockage :
 
 * Définissez le **nom du document d’index** sur `index.html`.
-* Définissez le **chemin d’accès au document d’erreur** sur `index.html`. Razor les composants et autres points de terminaison non-fichier ne résident pas sur des chemins d’accès physiques dans le contenu statique stocké par le service BLOB. Lorsqu’une demande pour l’une de ces ressources est reçue que le Blazor routeur doit gérer, l’erreur *404-introuvable* générée par le service BLOB achemine la requête vers le **chemin du document d’erreur**. L' `index.html` objet blob est retourné et le Blazor routeur charge et traite le chemin d’accès.
+* Définissez le **chemin d’accès au document d’erreur** sur `index.html`. Razor les composants et autres points de terminaison non-fichier ne résident pas sur des chemins d’accès physiques dans le contenu statique stocké par le service BLOB. Lorsqu’une demande pour l’une de ces ressources est reçue que le Blazor routeur doit gérer, l’erreur *404-introuvable* générée par le service BLOB achemine la requête vers le **chemin du document d’erreur** . L' `index.html` objet blob est retourné et le Blazor routeur charge et traite le chemin d’accès.
 
 Si les fichiers ne sont pas chargés au moment de l’exécution en raison de types MIME inappropriés dans les `Content-Type` en-têtes des fichiers, effectuez l’une des actions suivantes :
 
@@ -530,7 +547,7 @@ Si les fichiers ne sont pas chargés au moment de l’exécution en raison de ty
 
   En Explorateur Stockage (Portail Azure) pour chaque fichier :
   
-  1. Cliquez avec le bouton droit sur le fichier et sélectionnez **Propriétés**.
+  1. Cliquez avec le bouton droit sur le fichier et sélectionnez **Propriétés** .
   1. Définissez le **ContentType** et sélectionnez le bouton **Enregistrer** .
 
 Pour plus d’informations, consultez [Hébergement de sites web statiques dans le service Stockage Azure](/azure/storage/blobs/storage-blob-static-website).
@@ -665,7 +682,7 @@ L' `--contentroot` argument définit le chemin d’accès absolu au répertoire 
   "commandLineArgs": "--contentroot=/content-root-path"
   ```
 
-* Dans Visual Studio, spécifiez l’argument dans **Propriétés**  >  **Déboguer**les arguments de l'  >  **application**. La définition de l’argument dans la page de propriétés de Visual Studio ajoute l’argument au `launchSettings.json` fichier.
+* Dans Visual Studio, spécifiez l’argument dans **Propriétés**  >  **Déboguer** les arguments de l'  >  **application** . La définition de l’argument dans la page de propriétés de Visual Studio ajoute l’argument au `launchSettings.json` fichier.
 
   ```console
   --contentroot=/content-root-path
@@ -690,7 +707,7 @@ L' `--pathbase` argument définit le chemin d’accès de base d’application p
   "commandLineArgs": "--pathbase=/relative-URL-path"
   ```
 
-* Dans Visual Studio, spécifiez l’argument dans **Propriétés**  >  **Déboguer**les arguments de l'  >  **application**. La définition de l’argument dans la page de propriétés de Visual Studio ajoute l’argument au `launchSettings.json` fichier.
+* Dans Visual Studio, spécifiez l’argument dans **Propriétés**  >  **Déboguer** les arguments de l'  >  **application** . La définition de l’argument dans la page de propriétés de Visual Studio ajoute l’argument au `launchSettings.json` fichier.
 
   ```console
   --pathbase=/relative-URL-path
@@ -712,7 +729,7 @@ L’argument `--urls` définit les adresses IP ou les adresses d’hôtes avec 
   "commandLineArgs": "--urls=http://127.0.0.1:0"
   ```
 
-* Dans Visual Studio, spécifiez l’argument dans **Propriétés**  >  **Déboguer**les arguments de l'  >  **application**. La définition de l’argument dans la page de propriétés de Visual Studio ajoute l’argument au `launchSettings.json` fichier.
+* Dans Visual Studio, spécifiez l’argument dans **Propriétés**  >  **Déboguer** les arguments de l'  >  **application** . La définition de l’argument dans la page de propriétés de Visual Studio ajoute l’argument au `launchSettings.json` fichier.
 
   ```console
   --urls=http://127.0.0.1:0
@@ -896,7 +913,7 @@ Quand une application est générée, le `blazor.boot.json` manifeste généré 
 
 Causes courantes de cet échec :
 
- * La réponse du serveur Web est une erreur (par exemple, *404-introuvable* ou une *erreur de serveur 500-Internal*) au lieu du fichier demandé par le navigateur. Cela est signalé par le navigateur comme un échec de vérification de l’intégrité et non comme un échec de réponse.
+ * La réponse du serveur Web est une erreur (par exemple, *404-introuvable* ou une *erreur de serveur 500-Internal* ) au lieu du fichier demandé par le navigateur. Cela est signalé par le navigateur comme un échec de vérification de l’intégrité et non comme un échec de réponse.
  * Une modification a été apportée au contenu des fichiers entre la génération et la remise des fichiers dans le navigateur. Cela peut se produire :
    * Si vous ou les outils de génération modifiez manuellement la sortie de la génération.
    * Si certains aspects du processus de déploiement ont modifié les fichiers. Par exemple, si vous utilisez un mécanisme de déploiement basé sur git, gardez à l’esprit que git convertit en toute transparence les fins de ligne de style Windows en terminaisons de ligne de style UNIX si vous validez des fichiers sur Windows et que vous les consultez sur Linux. La modification des fins de ligne de fichier modifie les hachages SHA-256. Pour éviter ce problème, envisagez [ `.gitattributes` d’utiliser pour traiter les artefacts de build comme des `binary` fichiers](https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes).

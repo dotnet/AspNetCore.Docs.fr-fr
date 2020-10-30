@@ -5,8 +5,8 @@ description: Découvrez comment charger des fichiers dans à Blazor l’aide du 
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/29/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,13 +17,14 @@ no-loc:
 - Let's Encrypt
 - Razor
 - SignalR
+ms.date: 10/27/2020
 uid: blazor/file-uploads
-ms.openlocfilehash: 06d1464cb731a8008362fc911f463e4ff8a37b6b
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: c0806c3a68a4d9e698925f6ec955dd2f53d7818f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606651"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056125"
 ---
 # <a name="aspnet-core-no-locblazor-file-uploads"></a>BlazorChargements de fichiers ASP.net Core
 
@@ -44,8 +45,9 @@ Par défaut, l’utilisateur sélectionne des fichiers uniques. Ajoutez l' `mult
 
 Pour lire des données à partir d’un fichier sélectionné par l’utilisateur :
 
-* Appelez `OpenReadStream` sur le fichier et lisez à partir du flux retourné. Pour plus d’informations, consultez la section [flux de fichier](#file-streams) .
-* Utilisez `ReadAsync`. Par défaut, `ReadAsync` autorise uniquement la lecture d’un fichier d’une taille inférieure à 524 288 Ko (512 Ko). Cette limite est présente pour empêcher les développeurs de lire accidentellement des fichiers volumineux dans la mémoire. Spécifiez une approximation raisonnable pour la taille de fichier maximale attendue si les fichiers plus volumineux doivent être pris en charge. Évitez de lire le flux de fichier entrant directement dans la mémoire. Par exemple, ne copiez pas les octets du fichier dans un <xref:System.IO.MemoryStream> ou lisez-le en tant que tableau d’octets. Ces approches peuvent entraîner des problèmes de performances et de sécurité, en particulier dans Blazor Server . Au lieu de cela, envisagez de copier les octets de fichier dans un magasin externe, tel qu’un objet BLOB ou un fichier sur le disque.
+* Appelez `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream` sur le fichier et lisez à partir du flux retourné. Pour plus d’informations, consultez la section [flux de fichier](#file-streams) .
+* Le <xref:System.IO.Stream> retourné par `OpenReadStream` applique une taille maximale en octets du en cours de `Stream` lecture. Par défaut, seuls les fichiers dont la taille est inférieure à 524 288 Ko (512 Ko) peuvent être lus avant que toute autre lecture n’entraîne une exception. Cette limite est présente pour empêcher les développeurs de lire accidentellement des fichiers volumineux dans la mémoire. Le `maxAllowedSize` paramètre sur `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream` peut être utilisé pour spécifier une taille supérieure si nécessaire.
+* Évitez de lire le flux de fichier entrant directement dans la mémoire. Par exemple, ne copiez pas les octets du fichier dans un <xref:System.IO.MemoryStream> ou lisez-le en tant que tableau d’octets. Ces approches peuvent entraîner des problèmes de performances et de sécurité, en particulier dans Blazor Server . Au lieu de cela, envisagez de copier les octets de fichier dans un magasin externe, tel qu’un objet BLOB ou un fichier sur le disque.
 
 Un composant qui reçoit un fichier image peut appeler la `RequestImageFileAsync` méthode pratique sur le fichier pour redimensionner les données de l’image dans le runtime JavaScript du navigateur avant que l’image ne soit diffusée dans l’application.
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/request-features
-ms.openlocfilehash: 879b775ba2998ee803708ebf231b5fcd363b811c
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: d906474b0fd291cc4a68390f390b2bf538e21eff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326440"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053707"
 ---
 # <a name="request-features-in-aspnet-core"></a>Fonctionnalités de requête dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
-L' `HttpContext` API utilisée par les applications et les intergiciels pour traiter les demandes a une couche d’abstraction undernieth appelée « *interfaces de fonctionnalités*». Chaque interface de fonctionnalité fournit un sous-ensemble granulaire des fonctionnalités exposées par `HttpContext` . Ces interfaces peuvent être ajoutées, modifiées, encapsulées, remplacées ou même supprimées par le serveur ou l’intergiciel (middleware) lors du traitement de la demande sans avoir à réimplémenter l’ensemble du `HttpContext` . Elles peuvent également être utilisées pour simuler des fonctionnalités lors des tests.
+L' `HttpContext` API utilisée par les applications et les intergiciels pour traiter les demandes a une couche d’abstraction undernieth appelée « *interfaces de fonctionnalités* ». Chaque interface de fonctionnalité fournit un sous-ensemble granulaire des fonctionnalités exposées par `HttpContext` . Ces interfaces peuvent être ajoutées, modifiées, encapsulées, remplacées ou même supprimées par le serveur ou l’intergiciel (middleware) lors du traitement de la demande sans avoir à réimplémenter l’ensemble du `HttpContext` . Elles peuvent également être utilisées pour simuler des fonctionnalités lors des tests.
 
 ## <a name="feature-collections"></a>Collections de fonctionnalités
 

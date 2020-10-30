@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017, devx-track-js
 ms.date: 09/06/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/spa-services
-ms.openlocfilehash: 33ae16c033142aa1c0f4cea53ca746e8a6aaf052
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 1b9f5b4b4e066cdd3dd5fbfa666c7a087949979f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690664"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054643"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Utilisez les services JavaScript pour créer des applications à page unique dans ASP.NET Core
 
@@ -236,7 +237,7 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 La liste des modèles SPA disponibles s’affiche :
 
-| Modèles                                 | Nom court | Langage | Balises        |
+| Modèles                                 | Nom court | Langage | Étiquettes        |
 | ------------------------------------------| :--------: | :------: | :---------: |
 | ASP.NET Core MVC avec angle             | angular    | [C#]     | Web/MVC/SPA |
 | ASP.NET Core MVC avec React.js            | react      | [C#]     | Web/MVC/SPA |
@@ -289,7 +290,7 @@ Les modèles SpaServices sont préconfigurés pour exécuter des tests côté cl
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Ouvrez l’invite de commandes dans le répertoire *ClientApp* . Exécutez la commande suivante :
+Ouvrez l’invite de commandes dans le répertoire *ClientApp* . Exécutez la commande suivante :
 
 ```console
 npm test

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 09f4cb5ba11feb7d81a410dd3869f9863d104d0e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 66fd41abe4f85071797bacc0a5531bbab35bd227
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627843"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055592"
 ---
 # <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>Appliquer une stratégie de sécurité de contenu pour ASP.NET Core Blazor
 
@@ -164,7 +165,7 @@ Testez et mettez à jour la stratégie d’une application chaque version.
   * Comment modifier la stratégie pour autoriser un élément bloqué.
 * Une stratégie est entièrement efficace lorsque le navigateur du client prend en charge toutes les directives incluses. Pour obtenir une matrice de prise en charge actuelle du navigateur, consultez Comment [utiliser : Content-Security-Policy](https://caniuse.com/#search=Content-Security-Policy).
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [MDN Web docs : Content-Security-Policy](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy)
 * [Niveau de stratégie de sécurité du contenu 2](https://www.w3.org/TR/CSP2/)

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: afbaad2f27359a4a1cac5c5fe1da16d3e80d038f
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: 74473eb5c0efcd8798d260b765c848d7e621e534
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102651"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055761"
 ---
 # <a name="host-and-deploy-no-locblazor-server"></a>Héberger et déployer Blazor Server
 
@@ -37,7 +38,7 @@ les [ Blazor Server applications](xref:blazor/hosting-models#blazor-server) peuv
 
 À l’aide du [ Blazor Server modèle d’hébergement](xref:blazor/hosting-models#blazor-server), Blazor est exécuté sur le serveur à partir d’une application ASP.net core. Les mises à jour de l’interface utilisateur, la gestion des événements et les appels JavaScript sont gérés sur une [SignalR](xref:signalr/introduction) connexion.
 
-Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Visual Studio comprend le modèle de projet d' ** Blazor Server application** ( `blazorserverside` modèle lors de l’utilisation de la [`dotnet new`](/dotnet/core/tools/dotnet-new) commande).
+Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Visual Studio comprend le modèle de projet d' **Blazor Server application** ( `blazorserverside` modèle lors de l’utilisation de la [`dotnet new`](/dotnet/core/tools/dotnet-new) commande).
 
 ## <a name="scalability"></a>Extensibilité
 
@@ -55,7 +56,7 @@ Lorsque vous envisagez l’évolutivité d’un serveur unique (montée en puiss
 
 Pour obtenir des conseils sur la création d’applications serveur sécurisées et évolutives Blazor , consultez <xref:blazor/security/server/threat-mitigation> .
 
-Chaque circuit utilise environ 250 Ko de mémoire pour une application de type *Hello World*minimale. La taille d’un circuit dépend du code de l’application et des exigences de maintenance d’état associées à chaque composant. Nous vous recommandons de mesurer les demandes de ressources pendant le développement de votre application et de votre infrastructure, mais la ligne de base suivante peut être un point de départ pour la planification de votre cible de déploiement : Si vous pensez que votre application prend en charge 5 000 utilisateurs simultanés, envisagez de budgétiser au moins 1,3 Go de mémoire serveur vers l’application (ou ~ 273 Ko par utilisateur)
+Chaque circuit utilise environ 250 Ko de mémoire pour une application de type *Hello World* minimale. La taille d’un circuit dépend du code de l’application et des exigences de maintenance d’état associées à chaque composant. Nous vous recommandons de mesurer les demandes de ressources pendant le développement de votre application et de votre infrastructure, mais la ligne de base suivante peut être un point de départ pour la planification de votre cible de déploiement : Si vous pensez que votre application prend en charge 5 000 utilisateurs simultanés, envisagez de budgétiser au moins 1,3 Go de mémoire serveur vers l’application (ou ~ 273 Ko par utilisateur)
 
 ### <a name="no-locsignalr-configuration"></a>SignalR configuré
 
@@ -79,7 +80,7 @@ Nous vous recommandons d’utiliser le [ SignalR service Azure](xref:signalr/sca
 
 Pour configurer une application (et éventuellement approvisionner) le SignalR service Azure :
 
-1. Activez le service pour prendre en charge les *sessions rémanentes*, où les clients sont [redirigés vers le même serveur lors du prérendu](xref:blazor/hosting-models#connection-to-the-server). Définissez l' `ServerStickyMode` option ou la valeur de configuration sur `Required` . En règle générale, une application crée la configuration à l’aide de l' **une** des approches suivantes :
+1. Activez le service pour prendre en charge les *sessions rémanentes* , où les clients sont [redirigés vers le même serveur lors du prérendu](xref:blazor/hosting-models#connection-to-the-server). Définissez l' `ServerStickyMode` option ou la valeur de configuration sur `Required` . En règle générale, une application crée la configuration à l’aide de l' **une** des approches suivantes :
 
    * `Startup.ConfigureServices`:
   
@@ -99,10 +100,10 @@ Pour configurer une application (et éventuellement approvisionner) le SignalR s
        "Azure:SignalR:ServerStickyMode": "Required"
        ```
 
-     * Les paramètres d’application de **configuration**de l’app service  >  **Application settings** dans le portail Azure (**nom**: `Azure:SignalR:ServerStickyMode` , **valeur**: `Required` ).
+     * Les paramètres d’application de **configuration** de l’app service  >  **Application settings** dans le portail Azure ( **nom** : `Azure:SignalR:ServerStickyMode` , **valeur** : `Required` ).
 
 1. Créez un profil de publication Azure Apps dans Visual Studio pour l' Blazor Server application.
-1. Ajoutez la dépendance du ** SignalR service Azure** au profil. Si l’abonnement Azure n’a pas d’instance de service Azure préexistante SignalR à attribuer à l’application, sélectionnez **créer une nouvelle instance de SignalR service Azure** pour approvisionner une nouvelle instance de service.
+1. Ajoutez la dépendance du **SignalR service Azure** au profil. Si l’abonnement Azure n’a pas d’instance de service Azure préexistante SignalR à attribuer à l’application, sélectionnez **créer une nouvelle instance de SignalR service Azure** pour approvisionner une nouvelle instance de service.
 1. Publiez l’application dans Azure.
 
 #### <a name="iis"></a>IIS

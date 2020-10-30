@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/01/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/supported-platforms
-ms.openlocfilehash: 1ffe98636ed200adbf00e89c2c3499eb69792d3f
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: fe0734dbf6eb2647fa6c9b6f336063b9ec091139
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754539"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054955"
 ---
 # <a name="aspnet-core-no-locblazor-supported-platforms"></a>BlazorPlateformes prises en charge ASP.net Core
 
@@ -33,12 +34,12 @@ Par [Luke Latham](https://github.com/guardrex)
 
 Blazor WebAssembly et Blazor Server sont pris en charge dans les navigateurs présentés dans le tableau suivant.
 
-| Navigateur                          | Version         |
+| Browser                          | Version         |
 | -------------------------------- | --------------- |
-| Apple Safari, y compris iOS      | Actif&dagger; |
-| Google Chrome, y compris Android | Actif&dagger; |
-| Microsoft Edge                   | Actif&dagger; |
-| Mozilla Firefox                  | Actif&dagger; |  
+| Apple Safari, y compris iOS      | Actuel&dagger; |
+| Google Chrome, y compris Android | Actuel&dagger; |
+| Microsoft Edge                   | Actuel&dagger; |
+| Mozilla Firefox                  | Actuel&dagger; |  
 
 &dagger;*Current* fait référence à la dernière version du navigateur.  
 
@@ -48,26 +49,26 @@ Blazor WebAssembly et Blazor Server sont pris en charge dans les navigateurs pr�
 
 ## Blazor WebAssembly
 
-| Navigateur                          | Version               |
+| Browser                          | Version               |
 | -------------------------------- | --------------------- |
-| Apple Safari, y compris iOS      | Actif&dagger;       |
-| Google Chrome, y compris Android | Actif&dagger;       |
-| Microsoft Edge                   | Actif&dagger;       |
+| Apple Safari, y compris iOS      | Actuel&dagger;       |
+| Google Chrome, y compris Android | Actuel&dagger;       |
+| Microsoft Edge                   | Actuel&dagger;       |
 | Microsoft Internet Explorer      | Non pris en charge&Dagger; |
-| Mozilla Firefox                  | Actif&dagger;       |  
+| Mozilla Firefox                  | Actuel&dagger;       |  
 
 &dagger;*Current* fait référence à la dernière version du navigateur.  
 &Dagger;Microsoft Internet Explorer ne prend pas en charge [Webassembly](https://webassembly.org).
 
 ## Blazor Server
 
-| Navigateur                          | Version         |
+| Browser                          | Version         |
 | -------------------------------- | --------------- |
-| Apple Safari, y compris iOS      | Actif&dagger; |
-| Google Chrome, y compris Android | Actif&dagger; |
-| Microsoft Edge                   | Actif&dagger; |
+| Apple Safari, y compris iOS      | Actuel&dagger; |
+| Google Chrome, y compris Android | Actuel&dagger; |
+| Microsoft Edge                   | Actuel&dagger; |
 | Microsoft Internet Explorer      | 11&Dagger;      |
-| Mozilla Firefox                  | Actif&dagger; |
+| Mozilla Firefox                  | Actuel&dagger; |
 
 &dagger;*Current* fait référence à la dernière version du navigateur.  
 &Dagger;Des polyremplissages supplémentaires sont nécessaires. Par exemple, les promesses peuvent être ajoutées via un [`Polyfill.io`](https://polyfill.io/v3/) bundle.

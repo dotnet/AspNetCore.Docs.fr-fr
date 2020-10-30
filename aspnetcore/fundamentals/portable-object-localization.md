@@ -5,6 +5,7 @@ description: Cet article présente les fichiers d’objets portables et décrit 
 ms.author: scaddie
 ms.date: 09/26/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: f471c5b7511434cf42717e52ef271663c2e36647
-ms.sourcegitcommit: 6ecdc481d5b9a10d2c6e091217f017b36bdba957
+ms.openlocfilehash: 2e28ebaf1962ebd834c43f1cfbc28929b1937c40
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90456047"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053720"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurer la localisation d’objets portables dans ASP.NET Core
 
@@ -38,11 +39,11 @@ Cet article présente les étapes d’utilisation d’objets portables (PO, Port
 ## <a name="what-is-a-po-file"></a>Qu’est-ce qu’un fichier PO ?
 
 Les fichiers PO sont distribués sous forme de fichiers texte contenant les chaînes traduites pour une langue donnée. L’utilisation de fichiers PO plutôt que des fichiers *.resx* présente certains avantages, notamment les suivants :
-- Les fichiers PO prennent en charge la pluralisation, contrairement aux fichiers *.resx*.
-- Les fichiers PO ne sont pas compilés comme les fichiers *.resx*. De ce fait, il n’est pas nécessaire d’effectuer les étapes relatives aux outils et à la génération.
+- Les fichiers PO prennent en charge la pluralisation, contrairement aux fichiers *.resx* .
+- Les fichiers PO ne sont pas compilés comme les fichiers *.resx* . De ce fait, il n’est pas nécessaire d’effectuer les étapes relatives aux outils et à la génération.
 - Les fichiers PO fonctionnent correctement avec les outils d’édition collaboratifs en ligne.
 
-### <a name="example"></a> Exemple
+### <a name="example"></a>Exemple
 
 Voici un exemple de fichier PO contenant la traduction de deux chaînes en français, dont une avec sa forme au pluriel :
 
@@ -104,7 +105,7 @@ Une instance `IViewLocalizer` est injectée et utilisée pour traduire le texte 
 
 ### <a name="creating-a-po-file"></a>Création d’un fichier PO
 
-Créez un fichier nommé * \<culture code> . po* dans le dossier racine de votre application. Dans cet exemple, le nom de fichier est *fr.po*, car le français est utilisé :
+Créez un fichier nommé *\<culture code> . po* dans le dossier racine de votre application. Dans cet exemple, le nom de fichier est *fr.po* , car le français est utilisé :
 
 [!code-text[](localization/sample/3.x/POLocalization/fr.po)]
 
@@ -214,7 +215,7 @@ msgstr "Bonjour le monde!"
 
 Avec `msgctxt` ainsi définie, la traduction de texte se produit lors de la navigation vers `/Home/About?culture=fr-FR`. La traduction ne se produit pas lors de la navigation vers `/Home/Contact?culture=fr-FR`.
 
-Quand aucune entrée spécifique ne correspond à un contexte de fichier donné, le mécanisme de secours d’Orchard Core recherche un fichier PO approprié sans contexte. En supposant qu’aucun contexte de fichier spécifique n’est défini pour *Views/Home/Contact.cshtml*, la navigation vers `/Home/Contact?culture=fr-FR` charge un fichier PO tel que le suivant :
+Quand aucune entrée spécifique ne correspond à un contexte de fichier donné, le mécanisme de secours d’Orchard Core recherche un fichier PO approprié sans contexte. En supposant qu’aucun contexte de fichier spécifique n’est défini pour *Views/Home/Contact.cshtml* , la navigation vers `/Home/Contact?culture=fr-FR` charge un fichier PO tel que le suivant :
 
 [!code-text[](localization/sample/3.x/POLocalization/fr.po)]
 
@@ -226,7 +227,7 @@ L’emplacement par défaut des fichiers PO peut être changé dans `ConfigureSe
 services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization");
 ```
 
-Dans cet exemple, les fichiers PO sont chargés à partir du dossier *Localisation*.
+Dans cet exemple, les fichiers PO sont chargés à partir du dossier *Localisation* .
 
 ### <a name="implementing-a-custom-logic-for-finding-localization-files"></a>Implémentation d’une logique personnalisée pour la recherche de fichiers de localisation
 
@@ -253,11 +254,11 @@ Cet article présente les étapes d’utilisation d’objets portables (PO, Port
 ## <a name="what-is-a-po-file"></a>Qu’est-ce qu’un fichier PO ?
 
 Les fichiers PO sont distribués sous forme de fichiers texte contenant les chaînes traduites pour une langue donnée. L’utilisation de fichiers PO plutôt que des fichiers *.resx* présente certains avantages, notamment les suivants :
-- Les fichiers PO prennent en charge la pluralisation, contrairement aux fichiers *.resx*.
-- Les fichiers PO ne sont pas compilés comme les fichiers *.resx*. De ce fait, il n’est pas nécessaire d’effectuer les étapes relatives aux outils et à la génération.
+- Les fichiers PO prennent en charge la pluralisation, contrairement aux fichiers *.resx* .
+- Les fichiers PO ne sont pas compilés comme les fichiers *.resx* . De ce fait, il n’est pas nécessaire d’effectuer les étapes relatives aux outils et à la génération.
 - Les fichiers PO fonctionnent correctement avec les outils d’édition collaboratifs en ligne.
 
-### <a name="example"></a> Exemple
+### <a name="example"></a>Exemple
 
 Voici un exemple de fichier PO contenant la traduction de deux chaînes en français, dont une avec sa forme au pluriel :
 
@@ -319,7 +320,7 @@ Une instance `IViewLocalizer` est injectée et utilisée pour traduire le texte 
 
 ### <a name="creating-a-po-file"></a>Création d’un fichier PO
 
-Créez un fichier nommé * \<culture code> . po* dans le dossier racine de votre application. Dans cet exemple, le nom de fichier est *fr.po*, car le français est utilisé :
+Créez un fichier nommé *\<culture code> . po* dans le dossier racine de votre application. Dans cet exemple, le nom de fichier est *fr.po* , car le français est utilisé :
 
 [!code-text[](localization/sample/2.x/POLocalization/fr.po)]
 
@@ -429,7 +430,7 @@ msgstr "Bonjour le monde!"
 
 Avec `msgctxt` ainsi définie, la traduction de texte se produit lors de la navigation vers `/Home/About?culture=fr-FR`. La traduction ne se produit pas lors de la navigation vers `/Home/Contact?culture=fr-FR`.
 
-Quand aucune entrée spécifique ne correspond à un contexte de fichier donné, le mécanisme de secours d’Orchard Core recherche un fichier PO approprié sans contexte. En supposant qu’aucun contexte de fichier spécifique n’est défini pour *Views/Home/Contact.cshtml*, la navigation vers `/Home/Contact?culture=fr-FR` charge un fichier PO tel que le suivant :
+Quand aucune entrée spécifique ne correspond à un contexte de fichier donné, le mécanisme de secours d’Orchard Core recherche un fichier PO approprié sans contexte. En supposant qu’aucun contexte de fichier spécifique n’est défini pour *Views/Home/Contact.cshtml* , la navigation vers `/Home/Contact?culture=fr-FR` charge un fichier PO tel que le suivant :
 
 [!code-text[](localization/sample/2.x/POLocalization/fr.po)]
 
@@ -441,7 +442,7 @@ L’emplacement par défaut des fichiers PO peut être changé dans `ConfigureSe
 services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization");
 ```
 
-Dans cet exemple, les fichiers PO sont chargés à partir du dossier *Localisation*.
+Dans cet exemple, les fichiers PO sont chargés à partir du dossier *Localisation* .
 
 ### <a name="implementing-a-custom-logic-for-finding-localization-files"></a>Implémentation d’une logique personnalisée pour la recherche de fichiers de localisation
 

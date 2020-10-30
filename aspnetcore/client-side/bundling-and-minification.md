@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/02/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: f696df0b421e5aab6f50cfaec3ca8edac894cea9
-ms.sourcegitcommit: c9b03d8a6a4dcc59e4aacb30a691f349235a74c8
+ms.openlocfilehash: 7dd11ceb7a7c01ce1042f50595013b7fe7f1cd5c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379391"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054838"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Regrouper et réduire les ressources statiques dans ASP.NET Core
 
@@ -64,7 +65,7 @@ Original | Affectation d'un nouveau nom
 
 Le tableau suivant présente les différences entre le chargement individuel des ressources et l’utilisation du regroupement et de la minimisation :
 
-Action | Avec B/M | Sans B/M | Changement
+Action | Avec B/M | Sans B/M | Modifier
 --- | :---: | :---: | :---:
 Demandes de fichier  | 7   | 18     | 157%
 Ko transférés | 156 | 264,68 | 70 %
@@ -89,25 +90,25 @@ Dans ASP.NET Core 2,0 ou version antérieure, les modèles de projet MVC et Razo
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Dans ASP.NET Core 2,1 ou version ultérieure, ajoutez un nouveau fichier JSON, nommé *bundleconfig.jssur*, à la racine du projet MVC ou Razor pages. Incluez le code JSON suivant dans ce fichier comme point de départ :
+Dans ASP.NET Core 2,1 ou version ultérieure, ajoutez un nouveau fichier JSON, nommé *bundleconfig.jssur* , à la racine du projet MVC ou Razor pages. Incluez le code JSON suivant dans ce fichier comme point de départ :
 
 ::: moniker-end
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig.json)]
 
-Le *bundleconfig.jssur* le fichier définit les options pour chaque bundle. Dans l’exemple précédent, une configuration de regroupement unique est définie pour les fichiers JavaScript personnalisés (*wwwroot/js/site.js*) et StyleSheet (*wwwroot/CSS/site. CSS*).
+Le *bundleconfig.jssur* le fichier définit les options pour chaque bundle. Dans l’exemple précédent, une configuration de regroupement unique est définie pour les fichiers JavaScript personnalisés ( *wwwroot/js/site.js* ) et StyleSheet ( *wwwroot/CSS/site. CSS* ).
 
 Les options de configuration comprennent ce qui suit :
 
 * `outputFileName`: Nom du fichier de Bundle à générer. Peut contenir un chemin d’accès relatif à partir de l' *bundleconfig.jssur* le fichier. **Obligatoire**
-* `inputFiles`: Tableau de fichiers à regrouper. Il s’agit de chemins d’accès relatifs au fichier de configuration. **facultatif**, * une valeur vide génère un fichier de sortie vide. les modèles [globbing](https://www.tldp.org/LDP/abs/html/globbingref.html) sont pris en charge.
-* `minify`: Options de minimisation pour le type de sortie. **facultatif**, *par défaut `minify: { enabled: true }` :*
+* `inputFiles`: Tableau de fichiers à regrouper. Il s’agit de chemins d’accès relatifs au fichier de configuration. **facultatif** , * une valeur vide génère un fichier de sortie vide. les modèles [globbing](https://www.tldp.org/LDP/abs/html/globbingref.html) sont pris en charge.
+* `minify`: Options de minimisation pour le type de sortie. **facultatif** , *par défaut `minify: { enabled: true }` :*
   * Les options de configuration sont disponibles pour chaque type de fichier de sortie.
     * [Minifier CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [Minifier JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [Minifier HTML](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`: Indicateur précisant s’il faut ajouter les fichiers générés au fichier projet. **facultatif**, *valeur par défaut-false*
-* `sourceMap`: Indicateur précisant s’il faut générer un mappage source pour le fichier groupé. **facultatif**, *valeur par défaut-false*
+* `includeInProject`: Indicateur précisant s’il faut ajouter les fichiers générés au fichier projet. **facultatif** , *valeur par défaut-false*
+* `sourceMap`: Indicateur précisant s’il faut générer un mappage source pour le fichier groupé. **facultatif** , *valeur par défaut-false*
 * `sourceMapRootPath`: Chemin d’accès racine pour le stockage du fichier de mappage source généré.
 
 ## <a name="add-files-to-workflow"></a>Ajouter des fichiers au flux de travail
@@ -116,7 +117,7 @@ Prenons l’exemple d’un fichier *. CSS personnalisé* supplémentaire qui res
 
 [!code-css[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/wwwroot/css/custom.css)]
 
-Pour réduire *Custom. CSS* et le regrouper avec *site. CSS* dans un fichier *site. min. CSS* , ajoutez le chemin d’accès relatif à *bundleconfig.jssur*:
+Pour réduire *Custom. CSS* et le regrouper avec *site. CSS* dans un fichier *site. min. CSS* , ajoutez le chemin d’accès relatif à *bundleconfig.jssur* :
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig2.json?highlight=6)]
 
@@ -178,7 +179,7 @@ Ajoutez un *package.jssur* le fichier, avec les éléments suivants `devDependen
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/package.json?range=5-13)]
 
-Installez les dépendances en exécutant la commande suivante au même niveau que *package.jssur*:
+Installez les dépendances en exécutant la commande suivante au même niveau que *package.jssur* :
 
 ```bash
 npm i
@@ -217,7 +218,7 @@ Dans cet exemple, toutes les tâches définies dans la `MyPreCompileTarget` cibl
 ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 ```
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Utiliser Grunt](xref:client-side/using-grunt)
 * [Utiliser plusieurs environnements](xref:fundamentals/environments)

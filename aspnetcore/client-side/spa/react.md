@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: spa/react
-ms.openlocfilehash: 0ace8f358b509634c86dfa29c3f943626797ed69
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6c3539d96329489189f49a3af0c718791824be6b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628746"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054448"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Utiliser le modèle de projet React avec ASP.NET Core
 
@@ -46,7 +47,7 @@ cd my-new-app
 
 Exécutez l’application à partir de Visual Studio ou de CLI .NET Core :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ouvrez le fichier *.csproj* généré, puis exécutez l’application normalement à partir de là.
 
@@ -62,7 +63,7 @@ Exécutez [dotnet run](/dotnet/core/tools/dotnet-run) pour démarrer l’applica
 
 ---
 
-Le modèle de projet crée une application ASP.NET Core et une application React. L’application ASP.NET Core est destinée à être utilisée pour tous les aspects liés au serveur, tels que l’accès aux données et l’autorisation. L’application React, qui réside dans le sous-répertoire *ClientApp*, est destinée à être utilisée pour tout ce qui touche l’interface utilisateur.
+Le modèle de projet crée une application ASP.NET Core et une application React. L’application ASP.NET Core est destinée à être utilisée pour tous les aspects liés au serveur, tels que l’accès aux données et l’autorisation. L’application React, qui réside dans le sous-répertoire *ClientApp* , est destinée à être utilisée pour tout ce qui touche l’interface utilisateur.
 
 ## <a name="add-pages-images-styles-modules-etc"></a>Ajouter des pages, des images, des styles, des modules, etc.
 
@@ -72,7 +73,7 @@ Il existe de légères différences entre l’application React créée par ce m
 
 ## <a name="install-npm-packages"></a>Installer les packages npm
 
-Pour installer des packages npm tiers, utilisez une invite de commandes dans le sous-répertoire *ClientApp*. Par exemple :
+Pour installer des packages npm tiers, utilisez une invite de commandes dans le sous-répertoire *ClientApp* . Exemple :
 
 ```console
 cd ClientApp
@@ -108,7 +109,7 @@ Cette configuration par défaut présente un inconvénient. Chaque fois que vous
     npm start
     ```
 
-3. Modifiez votre application ASP.NET Core afin qu’elle utilise l’instance de serveur CRA externe au lieu de lancer une instance propre. Dans votre classe *Startup*, remplacez l’appel `spa.UseReactDevelopmentServer` par ce qui suit :
+3. Modifiez votre application ASP.NET Core afin qu’elle utilise l’instance de serveur CRA externe au lieu de lancer une instance propre. Dans votre classe *Startup* , remplacez l’appel `spa.UseReactDevelopmentServer` par ce qui suit :
 
     ```csharp
     spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");

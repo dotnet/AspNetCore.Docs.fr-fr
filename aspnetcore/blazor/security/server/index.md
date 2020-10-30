@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: d6d0f6f859dbaef98c6c8a9c53fe9858705cdc0a
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: 108fb3a8a24295cad43fd8c83303abd95a7ecd33
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805503"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055475"
 ---
 # <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Sécuriser les Blazor Server applications ASP.net Core
 
@@ -35,16 +36,16 @@ Blazor Server les applications sont configurées pour la sécurité de la même 
 
 Le Blazor Server modèle de projet peut être configuré pour l’authentification lors de la création du projet.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Suivez les instructions de Visual Studio dans <xref:blazor/tooling> pour créer un nouveau Blazor Server projet avec un mécanisme d’authentification.
 
-Après avoir choisi le modèle d' ** Blazor Server application** dans la boîte de dialogue **créer une application Web ASP.net Core** , sélectionnez **modifier** sous **authentification**.
+Après avoir choisi le modèle d' **Blazor Server application** dans la boîte de dialogue **créer une application Web ASP.net Core** , sélectionnez **modifier** sous **authentification** .
 
 Une boîte de dialogue s’ouvre pour offrir le même ensemble de mécanismes d’authentification que ceux disponibles pour les autres projets ASP.NET Core :
 
 * **Aucune authentification**
-* **Comptes d’utilisateur individuels : les**comptes d’utilisateur peuvent être stockés :
+* **Comptes d’utilisateur individuels : les** comptes d’utilisateur peuvent être stockés :
   * Au sein de l’application à l’aide du système de ASP.NET Core [Identity](xref:security/authentication/identity) .
   * Avec [Azure ad B2C](xref:security/authentication/azure-ad-b2c).
 * **Comptes professionnels ou scolaires**

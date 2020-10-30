@@ -5,8 +5,9 @@ description: Découvrez comment rendre l’état persistant dans les Blazor Serv
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/22/2020
+ms.date: 10/29/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -19,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: a74f056447839c4cf057948f26a9ece9b5799656
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 1769ddbb95c9ffe373e916c885e411adc3d4c65b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606714"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054994"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>Gestion de l’état des ASP.NET Core Blazor
 
@@ -54,7 +55,7 @@ La persistance des données est généralement requise uniquement pour l’état
 * Web Forms à plusieurs étapes : il est fastidieux pour un utilisateur de saisir à nouveau des données pour plusieurs étapes terminées d’un formulaire Web à plusieurs étapes si leur état est perdu. Un utilisateur perd l’État dans ce scénario s’il quitte le formulaire et le retourne plus tard.
 * Paniers d’achat : tout composant commercialement important d’une application qui représente un chiffre d’affaires potentiel peut être maintenu. Un utilisateur qui perd son état et, par conséquent, son panier, peut acheter moins de produits ou de services lorsqu’ils reviennent sur le site ultérieurement.
 
-Une application peut conserver uniquement l’état de l' *application*. Les interfaces utilisateur ne peuvent pas être rendues persistantes, telles que les instances de composant et leurs arborescences de rendu. Les composants et les arborescences de rendu ne sont généralement pas sérialisables. Pour conserver l’état de l’interface utilisateur, tel que les nœuds développés d’un contrôle Tree View, l’application doit utiliser du code personnalisé pour modéliser le comportement de l’état de l’interface utilisateur en tant qu’État de l’application sérialisable.
+Une application peut conserver uniquement l’état de l' *application* . Les interfaces utilisateur ne peuvent pas être rendues persistantes, telles que les instances de composant et leurs arborescences de rendu. Les composants et les arborescences de rendu ne sont généralement pas sérialisables. Pour conserver l’état de l’interface utilisateur, tel que les nœuds développés d’un contrôle Tree View, l’application doit utiliser du code personnalisé pour modéliser le comportement de l’état de l’interface utilisateur en tant qu’État de l’application sérialisable.
 
 ## <a name="where-to-persist-state"></a>Emplacement de conservation de l’État
 
@@ -67,9 +68,9 @@ Les emplacements communs existent pour l’état de persistance :
 
 ### <a name="server-side-storage"></a>Stockage côté serveur
 
-Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser un stockage indépendant côté serveur accessible via une API Web. Options disponibles :
+Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser un stockage indépendant côté serveur accessible via une API Web. Les options sont les suivantes :
 
-* Stockage d’objets blob
+* Stockage d'objets blob
 * Stockage clé-valeur
 * Base de données relationnelle
 * Stockage de tables
@@ -82,7 +83,7 @@ Pour plus d’informations, consultez les ressources suivantes :
 
 * <xref:blazor/call-web-api>
 * <xref:blazor/security/webassembly/index>
-* Blazor*Sécurité et Identity * traitant
+* Blazor*Sécurité et Identity* traitant
 
 Pour plus d’informations sur les options de stockage de données Azure, consultez les rubriques suivantes :
 
@@ -134,7 +135,7 @@ En règle générale, `sessionStorage` il est plus sûr d’utiliser. `sessionSt
 
 ::: zone pivot="server"
 
-Blazor Server est une infrastructure d’application avec état. La plupart du temps, l’application maintient une connexion au serveur. L’état de l’utilisateur est conservé dans la mémoire du serveur dans un *circuit*. 
+Blazor Server est une infrastructure d’application avec état. La plupart du temps, l’application maintient une connexion au serveur. L’état de l’utilisateur est conservé dans la mémoire du serveur dans un *circuit* . 
 
 Voici des exemples d’état utilisateur contenu dans un circuit :
 
@@ -163,7 +164,7 @@ La persistance des données est généralement requise uniquement pour l’état
 * Web Forms à plusieurs étapes : il est fastidieux pour un utilisateur de saisir à nouveau des données pour plusieurs étapes terminées d’un formulaire Web à plusieurs étapes si leur état est perdu. Un utilisateur perd l’État dans ce scénario s’il quitte le formulaire et le retourne plus tard.
 * Paniers d’achat : tout composant commercialement important d’une application qui représente un chiffre d’affaires potentiel peut être maintenu. Un utilisateur qui perd son état et, par conséquent, son panier, peut acheter moins de produits ou de services lorsqu’ils reviennent sur le site ultérieurement.
 
-Une application peut conserver uniquement l’état de l' *application*. Les interfaces utilisateur ne peuvent pas être rendues persistantes, telles que les instances de composant et leurs arborescences de rendu. Les composants et les arborescences de rendu ne sont généralement pas sérialisables. Pour conserver l’état de l’interface utilisateur, tel que les nœuds développés d’un contrôle Tree View, l’application doit utiliser du code personnalisé pour modéliser le comportement de l’état de l’interface utilisateur en tant qu’État de l’application sérialisable.
+Une application peut conserver uniquement l’état de l' *application* . Les interfaces utilisateur ne peuvent pas être rendues persistantes, telles que les instances de composant et leurs arborescences de rendu. Les composants et les arborescences de rendu ne sont généralement pas sérialisables. Pour conserver l’état de l’interface utilisateur, tel que les nœuds développés d’un contrôle Tree View, l’application doit utiliser du code personnalisé pour modéliser le comportement de l’état de l’interface utilisateur en tant qu’État de l’application sérialisable.
 
 ## <a name="where-to-persist-state"></a>Emplacement de conservation de l’État
 
@@ -176,9 +177,9 @@ Les emplacements communs existent pour l’état de persistance :
 
 ### <a name="server-side-storage"></a>Stockage côté serveur
 
-Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser le stockage côté serveur. Options disponibles :
+Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser le stockage côté serveur. Les options sont les suivantes :
 
-* Stockage d’objets blob
+* Stockage d'objets blob
 * Stockage clé-valeur
 * Base de données relationnelle
 * Stockage de tables
@@ -225,7 +226,7 @@ Avertissements relatifs à l’utilisation du stockage du navigateur :
 * Le stockage de quelques kilo-octets de données est raisonnable à conserver pour les Blazor Server applications. Au-delà de quelques kilo-octets, vous devez prendre en compte les implications en termes de performances, car les données sont chargées et enregistrées sur le réseau.
 * Les utilisateurs peuvent afficher ou altérer les données. La [protection des données ASP.net Core](xref:security/data-protection/introduction) peut atténuer le risque. Par exemple, [ASP.net Core stockage du navigateur protégé](#aspnet-core-protected-browser-storage) utilise la protection des données ASP.net core.
 
-Les packages NuGet tiers fournissent des API pour travailler avec `localStorage` et `sessionStorage` . Il est préférable de choisir un package qui utilise en toute transparence [ASP.net Core la protection des données](xref:security/data-protection/introduction). La protection des données chiffre les données stockées et réduit le risque potentiel de falsification des données stockées. Si les données sérialisées JSON sont stockées en texte brut, les utilisateurs peuvent consulter les données à l’aide des outils de développement du navigateur et modifier également les données stockées. La sécurisation des données n’est pas toujours un problème, car les données peuvent être de nature insignifiante. Par exemple, la lecture ou la modification de la couleur stockée d’un élément d’interface utilisateur n’est pas un risque de sécurité significatif pour l’utilisateur ou l’organisation. Évitez d’autoriser les utilisateurs à inspecter ou altérer des *données sensibles*.
+Les packages NuGet tiers fournissent des API pour travailler avec `localStorage` et `sessionStorage` . Il est préférable de choisir un package qui utilise en toute transparence [ASP.net Core la protection des données](xref:security/data-protection/introduction). La protection des données chiffre les données stockées et réduit le risque potentiel de falsification des données stockées. Si les données sérialisées JSON sont stockées en texte brut, les utilisateurs peuvent consulter les données à l’aide des outils de développement du navigateur et modifier également les données stockées. La sécurisation des données n’est pas toujours un problème, car les données peuvent être de nature insignifiante. Par exemple, la lecture ou la modification de la couleur stockée d’un élément d’interface utilisateur n’est pas un risque de sécurité significatif pour l’utilisateur ou l’organisation. Évitez d’autoriser les utilisateurs à inspecter ou altérer des *données sensibles* .
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -235,15 +236,6 @@ ASP.NET Core le stockage protégé du navigateur tire parti de [ASP.net Core pro
 
 > [!NOTE]
 > Le stockage du navigateur protégé s’appuie sur la protection des données ASP.NET Core et n’est pris en charge que pour les Blazor Server applications.
-
-### <a name="configuration"></a>Configuration
-
-1. Ajoutez une référence de package à [`Microsoft.AspNetCore.Components.Web.Extensions`](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions) .
-1. Dans `Startup.ConfigureServices` , appelez `AddProtectedBrowserStorage` pour ajouter `localStorage` des `sessionStorage` services à la collection de services :
-
-   ```csharp
-   services.AddProtectedBrowserStorage();
-   ```
 
 ### <a name="save-and-load-data-within-a-component"></a>Enregistrer et charger des données dans un composant
 
@@ -255,7 +247,7 @@ Dans tout composant qui requiert le chargement ou l’enregistrement de données
 Le choix dépend de l’emplacement de stockage du navigateur que vous souhaitez utiliser. Dans l’exemple suivant, `sessionStorage` est utilisé :
 
 ```razor
-@using Microsoft.AspNetCore.Components.Web.Extensions
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 ```
 
@@ -336,7 +328,7 @@ Pour désactiver le prérendu, ouvrez le `Pages/_Host.cshtml` fichier et remplac
 Le prérendu peut être utile pour d’autres pages qui n’utilisent pas `localStorage` ou `sessionStorage` . Pour conserver le prérendu, différez l’opération de chargement jusqu’à ce que le navigateur soit connecté au circuit. Voici un exemple de stockage d’une valeur de compteur :
 
 ```razor
-@using Microsoft.AspNetCore.Components.Web.Extensions
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedLocalStorage ProtectedLocalStore
 
 @if (isConnected)
@@ -384,7 +376,7 @@ Si de nombreux composants reposent sur un stockage basé sur un navigateur, la r
 Dans l’exemple suivant d’un `CounterStateProvider` composant, les données de compteur sont conservées dans `sessionStorage` :
 
 ```razor
-@using Microsoft.AspNetCore.Components.Web.Extensions
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 
 @if (isLoaded)

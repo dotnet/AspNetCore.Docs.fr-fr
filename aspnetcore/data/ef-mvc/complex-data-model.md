@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 07f5e910236f78105c039e462ab51d6e62b09439
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cee9e9eb4c5435f3f63f7d1d04f131d88effe9f6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626933"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054474"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Didacticiel : créer un modèle de données complexe-ASP.NET MVC avec EF Core
 
@@ -61,7 +62,7 @@ Dans cette section, vous allez apprendre à personnaliser le modèle de données
 
 Pour les dates d’inscription des étudiants, toutes les pages web affichent l’heure avec la date, alors que seule la date vous intéresse dans ce champ. Vous pouvez avoir recours aux attributs d’annotation de données pour apporter une modification au code, permettant de corriger le format d’affichage dans chaque vue qui affiche ces données. Pour voir un exemple de la procédure à suivre, vous allez ajouter un attribut à la propriété `EnrollmentDate` dans la classe `Student`.
 
-Dans *Models/Student.cs*, ajoutez une instruction `using` pour l’espace de noms `System.ComponentModel.DataAnnotations` et ajoutez les attributs `DataType` et `DisplayFormat` à la propriété `EnrollmentDate`, comme indiqué dans l’exemple suivant :
+Dans *Models/Student.cs* , ajoutez une instruction `using` pour l’espace de noms `System.ComponentModel.DataAnnotations` et ajoutez les attributs `DataType` et `DisplayFormat` à la propriété `EnrollmentDate`, comme indiqué dans l’exemple suivant :
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
@@ -117,11 +118,11 @@ dotnet ef migrations add MaxLengthOnNames
 dotnet ef database update
 ```
 
-La commande `migrations add` vous avertit qu’une perte de données peut se produire, car la modification raccourcit la longueur maximale de deux colonnes.  Les migrations créent un fichier nommé * \<timeStamp> _MaxLengthOnNames. cs*. Ce fichier contient du code dans la méthode `Up` qui met à jour la base de données pour qu’elle corresponde au modèle de données actuel. La commande `database update` a exécuté ce code.
+La commande `migrations add` vous avertit qu’une perte de données peut se produire, car la modification raccourcit la longueur maximale de deux colonnes.  Les migrations créent un fichier nommé *\<timeStamp> _MaxLengthOnNames. cs* . Ce fichier contient du code dans la méthode `Up` qui met à jour la base de données pour qu’elle corresponde au modèle de données actuel. La commande `database update` a exécuté ce code.
 
 L’horodatage utilisé comme préfixe du nom de fichier migrations est utilisé par Entity Framework pour ordonner les migrations. Vous pouvez créer plusieurs migrations avant d’exécuter la commande de mise à jour de base de données, puis toutes les migrations sont appliquées dans l’ordre où elles ont été créées.
 
-Exécutez l’application, sélectionnez l’onglet **Students**, cliquez sur **Create New** et essayez d’entrer un nom de plus de 50 caractères. L’application doit empêcher cette opération. 
+Exécutez l’application, sélectionnez l’onglet **Students** , cliquez sur **Create New** et essayez d’entrer un nom de plus de 50 caractères. L’application doit empêcher cette opération. 
 
 ### <a name="the-column-attribute"></a>Attribut Column
 
@@ -129,7 +130,7 @@ Vous pouvez également utiliser des attributs pour contrôler la façon dont les
 
 L’attribut `Column` spécifie que lorsque la base de données sera créée, la colonne de la table `Student` qui est mappée sur la propriété `FirstMidName` sera nommée `FirstName`. En d’autres termes, lorsque votre code fait référence à `Student.FirstMidName`, les données proviennent de la colonne `FirstName` de la table `Student` ou y sont mises à jour. Si vous ne nommez pas les colonnes, elles obtiennent le nom de la propriété.
 
-Dans le fichier *Student.cs*, ajoutez une instruction `using` pour `System.ComponentModel.DataAnnotations.Schema` et ajoutez l’attribut de nom de colonne à la propriété `FirstMidName`, comme indiqué dans le code en surbrillance suivant :
+Dans le fichier *Student.cs* , ajoutez une instruction `using` pour `System.ComponentModel.DataAnnotations.Schema` et ajoutez l’attribut de nom de colonne à la propriété `FirstMidName`, comme indiqué dans le code en surbrillance suivant :
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
@@ -145,7 +146,7 @@ dotnet ef migrations add ColumnFirstName
 dotnet ef database update
 ```
 
-Dans l’**Explorateur d’objets SQL Server**, ouvrez le concepteur de tables Student en double-cliquant sur la table **Student**.
+Dans l’ **Explorateur d’objets SQL Server** , ouvrez le concepteur de tables Student en double-cliquant sur la table **Student** .
 
 ![Table Students dans SSOX après les migrations](complex-data-model/_static/ssox-after-migration.png)
 
@@ -158,7 +159,7 @@ Avant d’appliquer les deux premières migrations, les colonnes de nom étaient
 
 ![Entité Student](complex-data-model/_static/student-entity.png)
 
-Dans *Models/Student.cs*, remplacez le code que vous avez ajouté précédemment par le code suivant. Les modifications sont mises en surbrillance.
+Dans *Models/Student.cs* , remplacez le code que vous avez ajouté précédemment par le code suivant. Les modifications sont mises en surbrillance.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
@@ -187,7 +188,7 @@ L’attribut `Display` spécifie que la légende pour les zones de texte doit ê
 
 ![Entité Instructor](complex-data-model/_static/instructor-entity.png)
 
-Créez *Models/Instructor.cs*, en remplaçant le code du modèle par le code suivant :
+Créez *Models/Instructor.cs* , en remplaçant le code du modèle par le code suivant :
 
 [!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
 
@@ -250,7 +251,7 @@ Vous pouvez placer un attribut `[Required]` sur la propriété de navigation du 
 
 ![Entité Course](complex-data-model/_static/course-entity.png)
 
-Dans *Models/Course.cs*, remplacez le code que vous avez ajouté précédemment par le code suivant. Les modifications sont mises en surbrillance.
+Dans *Models/Course.cs* , remplacez le code que vous avez ajouté précédemment par le code suivant. Les modifications sont mises en surbrillance.
 
 [!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
@@ -345,7 +346,7 @@ public ICollection<Course> Courses { get; set; }
 
 ![Entité Enrollment](complex-data-model/_static/enrollment-entity.png)
 
-Dans *Models/Enrollment.cs*, remplacez le code que vous avez ajouté précédemment par le code suivant :
+Dans *Models/Enrollment.cs* , remplacez le code que vous avez ajouté précédemment par le code suivant :
 
 [!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
@@ -395,7 +396,7 @@ Une table de jointure est requise dans la base de données pour la relation plus
 
 ### <a name="composite-key"></a>Clé composite
 
-Étant donné que les clés étrangères ne sont pas nullables et qu’elles identifient ensemble de façon unique chaque ligne de la table, une clé primaire distincte n’est pas requise. Les propriétés *InstructorID* et *CourseID* doivent fonctionner comme une clé primaire composite. La seule façon d’identifier des clés primaires composites pour EF consiste à utiliser l’*API Fluent* (ce n’est pas possible à l’aide d’attributs). Vous allez voir comment configurer la clé primaire composite dans la section suivante.
+Étant donné que les clés étrangères ne sont pas nullables et qu’elles identifient ensemble de façon unique chaque ligne de la table, une clé primaire distincte n’est pas requise. Les propriétés *InstructorID* et *CourseID* doivent fonctionner comme une clé primaire composite. La seule façon d’identifier des clés primaires composites pour EF consiste à utiliser l’ *API Fluent* (ce n’est pas possible à l’aide d’attributs). Vous allez voir comment configurer la clé primaire composite dans la section suivante.
 
 La clé composite garantit qu’en ayant plusieurs lignes pour un cours et plusieurs lignes pour un formateur, vous ne puissiez pas avoir plusieurs lignes pour les mêmes formateur et cours. L’entité de jointure `Enrollment` définit sa propre clé primaire, si bien que les doublons de ce type sont possibles. Pour éviter ces doublons, vous pourriez ajouter un index unique sur les champs de clé étrangère ou configurer `Enrollment` avec une clé composite primaire similaire à `CourseAssignment`. Pour plus d’informations, consultez [Index](/ef/core/modeling/indexes).
 
@@ -409,7 +410,7 @@ Ce code ajoute les nouvelles entités et configure la clé primaire composite de
 
 ## <a name="about-a-fluent-api-alternative"></a>À propos de l’alternative d’API Fluent
 
-Le code dans la méthode `OnModelCreating` de la classe `DbContext` utilise l’*API Fluent* pour configurer le comportement EF. L’API est appelée « fluent », car elle est souvent utilisée pour enchaîner une série d’appels de méthode en une seule instruction, comme dans cet exemple tiré de la [documentation d’EF Core](/ef/core/modeling/#use-fluent-api-to-configure-a-model) :
+Le code dans la méthode `OnModelCreating` de la classe `DbContext` utilise l’ *API Fluent* pour configurer le comportement EF. L’API est appelée « fluent », car elle est souvent utilisée pour enchaîner une série d’appels de méthode en une seule instruction, comme dans cet exemple tiré de la [documentation d’EF Core](/ef/core/modeling/#use-fluent-api-to-configure-a-model) :
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -465,7 +466,7 @@ Parfois, lorsque vous exécutez des migrations avec des données existantes, vou
 
 Pour faire en sorte que cette migration fonctionne avec les données existantes, vous devez modifier le code pour attribuer à la nouvelle colonne une valeur par défaut et créer un département stub nommé « Temp » qui agira en tant que département par défaut. Par conséquent, les lignes Course existantes seront toutes associées au département « Temp » après l’exécution de la méthode `Up`.
 
-* Ouvrez le fichier *{timestamp}_ComplexDataModel.cs*.
+* Ouvrez le fichier *{timestamp}_ComplexDataModel.cs* .
 
 * Commentez la ligne de code qui ajoute la colonne DepartmentID à la table Course.
 
@@ -481,7 +482,7 @@ Enregistrez vos modifications et générez le projet.
 
 ## <a name="change-the-connection-string"></a>Changer la chaîne de connexion
 
-Vous avez maintenant un nouveau code dans la classe `DbInitializer` qui ajoute des données initiales pour les nouvelles entités à une base de données vide. Pour faire en sorte qu’EF crée une nouvelle base de données vide, remplacez le nom de la base de données dans la chaîne de connexion ,dans *appsettings.json*, par ContosoUniversity3 ou un autre nom que vous n’avez pas utilisé sur l’ordinateur que vous utilisez.
+Vous avez maintenant un nouveau code dans la classe `DbInitializer` qui ajoute des données initiales pour les nouvelles entités à une base de données vide. Pour rendre EF créer une nouvelle base de données vide, modifiez le nom de la base de données dans la chaîne de connexion dans *appsettings.json* par contosouniversity3 ou un autre nom que vous n’avez pas utilisé sur l’ordinateur que vous utilisez.
 
 ```json
 {
@@ -490,7 +491,7 @@ Vous avez maintenant un nouveau code dans la classe `DbInitializer` qui ajoute d
   },
 ```
 
-Enregistrez les modifications dans *appsettings.json*.
+Enregistrez vos modifications dans *appsettings.json* .
 
 > [!NOTE]
 > Comme alternative au changement de nom de la base de données, vous pouvez supprimer la base de données. Utilisez **SQL Server Object Explorer** (SSOX) ou la commande CLI `database drop` :
@@ -509,7 +510,7 @@ dotnet ef database update
 
 Exécutez l’application pour que la méthode `DbInitializer.Initialize` exécute la nouvelle base de données et la remplisse.
 
-Ouvrez la base de données dans SSOX comme vous l’avez fait précédemment, puis développez le nœud **Tables** pour voir que toutes les tables ont été créées. (Si SSOX est resté ouvert, cliquez sur le bouton **Actualiser**.)
+Ouvrez la base de données dans SSOX comme vous l’avez fait précédemment, puis développez le nœud **Tables** pour voir que toutes les tables ont été créées. (Si SSOX est resté ouvert, cliquez sur le bouton **Actualiser** .)
 
 ![Tables dans SSOX](complex-data-model/_static/ssox-tables.png)
 

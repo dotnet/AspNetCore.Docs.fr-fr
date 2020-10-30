@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: da025cb8dced8ac8a6ecf559d4de7795c9797f71
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1f7c8cd0716f1ada3517add0d37a09e419f38774
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634278"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053304"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 
@@ -41,14 +42,14 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 
 ## <a name="create-a-new-aspnet-core-project"></a>Créer un projet ASP.NET Core
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Créez un projet.
-* Sélectionnez **Nouvelle application web ASP.NET Core** et **Suivant**.
-* Fournissez un **Nom de projet** et confirmez ou changez l’**Emplacement**. Sélectionnez **Create** (Créer).
-* Sélectionnez la dernière version de ASP.NET Core dans la liste déroulante (**ASP.net Core {X. Y}**), puis sélectionnez **application Web**.
-* Sous **Authentification**, sélectionnez **Changer** et définissez l’authentification sur **Comptes d’utilisateur individuels**. Sélectionnez **OK**.
-* Dans la fenêtre **Créer une application web ASP.NET Core**, sélectionnez **Créer**.
+* Sélectionnez **Nouvelle application web ASP.NET Core** et **Suivant** .
+* Fournissez un **Nom de projet** et confirmez ou changez l’ **Emplacement** . Sélectionnez **Create** (Créer).
+* Sélectionnez la dernière version de ASP.NET Core dans la liste déroulante ( **ASP.net Core {X. Y}** ), puis sélectionnez **application Web** .
+* Sous **Authentification** , sélectionnez **Changer** et définissez l’authentification sur **Comptes d’utilisateur individuels** . Sélectionnez **OK** .
+* Dans la fenêtre **Créer une application web ASP.NET Core** , sélectionnez **Créer** .
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -77,15 +78,15 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 
 ## <a name="apply-migrations"></a>Appliquer des migrations
 
-* Exécutez l’application et sélectionnez le lien **S’inscrire**.
-* Entrez l’adresse e-mail et le mot de passe du nouveau compte, puis sélectionnez **S’inscrire**.
+* Exécutez l’application et sélectionnez le lien **S’inscrire** .
+* Entrez l’adresse e-mail et le mot de passe du nouveau compte, puis sélectionnez **S’inscrire** .
 * Suivez les instructions pour appliquer des migrations.
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>Utilisez SecretManager pour stocker les jetons affectés par les fournisseurs de connexion
 
-Les fournisseurs de connexion de réseaux sociaux affectent des jetons **ID d’application** et **Secret de l’application** lors du processus d’inscription. Les noms de jeton exacts varient selon le fournisseur. Ces jetons représentent les informations d’identification que votre application utilise pour accéder à son API. Les jetons constituent les « secrets » qui peuvent être liés à la configuration de votre application à l’aide de [Secret Manager](xref:security/app-secrets#secret-manager). Secret Manager est une alternative plus sécurisée pour stocker les jetons dans un fichier de configuration, tel que *appsettings.json*.
+Les fournisseurs de connexion de réseaux sociaux affectent des jetons **ID d’application** et **Secret de l’application** lors du processus d’inscription. Les noms de jeton exacts varient selon le fournisseur. Ces jetons représentent les informations d’identification que votre application utilise pour accéder à son API. Les jetons constituent les « secrets » qui peuvent être liés à la configuration de votre application à l’aide de [Secret Manager](xref:security/app-secrets#secret-manager). Le gestionnaire de secret est une alternative plus sécurisée au stockage des jetons dans un fichier de configuration, tel que *appsettings.json* .
 
 > [!IMPORTANT]
 > Secret Manager est uniquement réservé au développement. Vous pouvez stocker et protéger les secrets de test et de production Azure avec le [fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration).
@@ -110,7 +111,7 @@ Quand vous vous inscrivez auprès d’un fournisseur de connexion externe, vous 
 
 Pour créer un mot de passe et vous connecter à l’aide de l’e-mail que vous avez défini lors du processus de connexion avec des fournisseurs externes :
 
-* Sélectionnez le lien **Bonjour &lt;alias d’e-mail&gt;** en haut à droite pour accéder à la vue **Gérer**.
+* Sélectionnez le lien **Bonjour &lt;alias d’e-mail&gt;** en haut à droite pour accéder à la vue **Gérer** .
 
 ![Vue Gérer de l’application web](index/_static/pass1a.png)
 
