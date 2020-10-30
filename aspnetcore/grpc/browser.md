@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 06/30/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/browser
-ms.openlocfilehash: 5c9501b3e7cbdcbb02e3d78d67185a0a75ccba7c
-ms.sourcegitcommit: c9b03d8a6a4dcc59e4aacb30a691f349235a74c8
+ms.openlocfilehash: 6456707620ae1c1f4d23f3562c78d1bf05d4844f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379404"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058907"
 ---
 # <a name="use-grpc-in-browser-apps"></a>Utiliser gRPC dans les applications de navigateur
 
@@ -51,7 +52,7 @@ les services gRPC hébergés dans ASP.NET Core peuvent être configurés pour pr
 Pour activer gRPC-Web avec un service ASP.NET Core gRPC :
 
 * Ajoutez une référence au package [GRPC. AspNetCore. Web](https://www.nuget.org/packages/Grpc.AspNetCore.Web) .
-* Configurez l’application pour utiliser gRPC-Web en ajoutant `UseGrpcWeb` et `EnableGrpcWeb` à *Startup.cs*:
+* Configurez l’application pour utiliser gRPC-Web en ajoutant `UseGrpcWeb` et `EnableGrpcWeb` à *Startup.cs* :
 
 [!code-csharp[](~/grpc/browser/sample/Startup.cs?name=snippet_1&highlight=10,14)]
 
@@ -123,11 +124,11 @@ Le code précédent :
 
 `GrpcWebHandler` possède les options de configuration suivantes :
 
-* **InnerHandler**: sous-jacent <xref:System.Net.Http.HttpMessageHandler> qui effectue la requête http gRPC, par exemple, `HttpClientHandler` .
-* **GrpcWebMode**: type énumération qui spécifie si la requête http gRPC `Content-Type` est `application/grpc-web` ou `application/grpc-web-text` .
+* **InnerHandler** : sous-jacent <xref:System.Net.Http.HttpMessageHandler> qui effectue la requête http gRPC, par exemple, `HttpClientHandler` .
+* **GrpcWebMode** : type énumération qui spécifie si la requête http gRPC `Content-Type` est `application/grpc-web` ou `application/grpc-web-text` .
     * `GrpcWebMode.GrpcWeb` configure le contenu à envoyer sans encodage. Valeur par défaut.
     * `GrpcWebMode.GrpcWebText` configure le contenu pour qu’il soit encodé en base64. Requis pour les appels de diffusion en continu du serveur dans les navigateurs.
-* **HttpVersion**: protocole http `Version` utilisé pour définir [HttpRequestMessage. version](xref:System.Net.Http.HttpRequestMessage.Version) sur la requête http gRPC sous-jacente. gRPC-Web n’a pas besoin d’une version spécifique et ne remplace pas la valeur par défaut, sauf indication contraire.
+* **HttpVersion** : protocole http `Version` utilisé pour définir [HttpRequestMessage. version](xref:System.Net.Http.HttpRequestMessage.Version) sur la requête http gRPC sous-jacente. gRPC-Web n’a pas besoin d’une version spécifique et ne remplace pas la valeur par défaut, sauf indication contraire.
 
 > [!IMPORTANT]
 > Les clients gRPC générés ont des méthodes synchrones et asynchrones pour appeler des méthodes unaires. Par exemple, `SayHello` est Sync et `SayHelloAsync` est Async. L’appel d’une méthode de synchronisation dans une Blazor WebAssembly application entraîne le blocage de l’application. Les méthodes Async doivent toujours être utilisées dans Blazor WebAssembly .
@@ -156,7 +157,7 @@ builder.Services
 
 Pour plus d'informations, consultez <xref:grpc/clientfactory>.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [gRPC pour le projet GitHub des clients Web](https://github.com/grpc/grpc-web)
 * <xref:security/cors>

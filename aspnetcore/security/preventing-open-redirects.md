@@ -5,6 +5,7 @@ description: Montre comment empêcher les attaques de redirection ouvertes contr
 ms.author: riande
 ms.date: 07/07/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/preventing-open-redirects
-ms.openlocfilehash: 5226e301960a56145b94b6128d0034c40b86bffd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e546cd852367921c7c694db3639f7a233f606e75
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633459"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058387"
 ---
 # <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>Empêcher les attaques par redirection ouverte dans ASP.NET Core
 
@@ -39,7 +40,7 @@ Les applications Web redirigent fréquemment les utilisateurs vers une page de c
 
 Un utilisateur malveillant peut développer une attaque destinée à autoriser l’utilisateur malveillant à accéder aux informations d’identification d’un utilisateur ou à des informations sensibles. Pour lancer l’attaque, l’utilisateur malveillant persuade l’utilisateur de cliquer sur un lien vers la page de connexion de votre site avec une `returnUrl` valeur QueryString ajoutée à l’URL. Par exemple, considérez une application sur `contoso.com` qui comprend une page de connexion à l’adresse `http://contoso.com/Account/LogOn?returnUrl=/Home/About` . L’attaque suit les étapes suivantes :
 
-1. L’utilisateur clique sur un lien malveillant vers `http://contoso.com/Account/LogOn?returnUrl=http://contoso1.com/Account/LogOn` (la deuxième URL est « contoso**1**. com », et non pas « contoso.com »).
+1. L’utilisateur clique sur un lien malveillant vers `http://contoso.com/Account/LogOn?returnUrl=http://contoso1.com/Account/LogOn` (la deuxième URL est « contoso **1** . com », et non pas « contoso.com »).
 2. L’utilisateur se connecte avec succès.
 3. L’utilisateur est redirigé (par le site) vers `http://contoso1.com/Account/LogOn` (un site malveillant qui ressemble exactement à un site réel).
 4. L’utilisateur se reconnecte (ce qui donne des informations d’identification au site malveillant) et est redirigé vers le site réel.

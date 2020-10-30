@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/index
-ms.openlocfilehash: f8271d71f34487062484581ba6b3b8445a62439c
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: 19e888859cea35624491a516404c57e30aa9db05
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113789"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057217"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Héberger et déployer ASP.NET Core
 
@@ -37,15 +38,15 @@ En général, pour déployer une application ASP.NET Core sur un environnement d
 
 ## <a name="publish-to-a-folder"></a>Publier dans un dossier
 
-La commande [dotnet publish](/dotnet/core/tools/dotnet-publish) compile le code d’application et copie les fichiers nécessaires pour exécuter l’application dans un dossier *publish*. Dans le cadre d’un déploiement à partir de Visual Studio, l’étape `dotnet publish` est effectuée automatiquement avant que les fichiers ne soient copiés vers la destination du déploiement.
+La commande [dotnet publish](/dotnet/core/tools/dotnet-publish) compile le code d’application et copie les fichiers nécessaires pour exécuter l’application dans un dossier *publish* . Dans le cadre d’un déploiement à partir de Visual Studio, l’étape `dotnet publish` est effectuée automatiquement avant que les fichiers ne soient copiés vers la destination du déploiement.
 
 ### <a name="folder-contents"></a>Contenu du dossier
 
 Le dossier *publish* contient un ou plusieurs fichiers d’assembly d’application, ses dépendances et éventuellement le runtime .NET.
 
-Une application .NET Core peut être publiée en tant que *déploiement autonome* ou *déploiement dépendant du framework*. Si l’application est autonome, les fichiers d’assembly qui contiennent le runtime .NET sont inclus dans le dossier *publish*. Si l’application dépend du framework, les fichiers du runtime .NET ne sont pas inclus, car l’application a une référence à une version de .NET installée sur le serveur. Le modèle de déploiement par défaut est « dépendante du framework ». Pour plus d’informations, consultez [Déploiement d’applications .NET Core](/dotnet/core/deploying/).
+Une application .NET Core peut être publiée en tant que *déploiement autonome* ou *déploiement dépendant du framework* . Si l’application est autonome, les fichiers d’assembly qui contiennent le runtime .NET sont inclus dans le dossier *publish* . Si l’application dépend du framework, les fichiers du runtime .NET ne sont pas inclus, car l’application a une référence à une version de .NET installée sur le serveur. Le modèle de déploiement par défaut est « dépendante du framework ». Pour plus d’informations, consultez [Déploiement d’applications .NET Core](/dotnet/core/deploying/).
 
-En plus des fichiers *.exe* et *.dll*, le dossier *publish* d’une application ASP.NET Core contient généralement des fichiers de configuration, des ressources statiques et des vues MVC. Pour plus d'informations, consultez <xref:host-and-deploy/directory-structure>.
+En plus des fichiers *.exe* et *.dll* , le dossier *publish* d’une application ASP.NET Core contient généralement des fichiers de configuration, des ressources statiques et des vues MVC. Pour plus d'informations, consultez <xref:host-and-deploy/directory-structure>.
 
 ## <a name="set-up-a-process-manager"></a>Configurer un gestionnaire de processus
 
@@ -70,7 +71,7 @@ Une configuration supplémentaire peut être nécessaire pour les applications h
 
 ## <a name="use-visual-studio-and-msbuild-to-automate-deployments"></a>Utiliser Visual Studio et MSBuild pour automatiser les déploiements
 
-Le déploiement nécessite souvent des tâches supplémentaires en plus de la copie de la sortie de [dotnet publish](/dotnet/core/tools/dotnet-publish) vers un serveur. Par exemple, des fichiers supplémentaires peuvent être requis ou exclus du dossier *publish*. Visual Studio utilise [MSBuild](/visualstudio/msbuild/msbuild) pour le déploiement Web et MSBuild peut être personnalisé pour effectuer de nombreuses autres tâches pendant le déploiement. Pour plus d’informations, consultez <xref:host-and-deploy/visual-studio-publish-profiles> et l’ouvrage [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Utilisation de MSBuild et Team Foundation Build).
+Le déploiement nécessite souvent des tâches supplémentaires en plus de la copie de la sortie de [dotnet publish](/dotnet/core/tools/dotnet-publish) vers un serveur. Par exemple, des fichiers supplémentaires peuvent être requis ou exclus du dossier *publish* . Visual Studio utilise [MSBuild](/visualstudio/msbuild/msbuild) pour le déploiement Web et MSBuild peut être personnalisé pour effectuer de nombreuses autres tâches pendant le déploiement. Pour plus d’informations, consultez <xref:host-and-deploy/visual-studio-publish-profiles> et l’ouvrage [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Utilisation de MSBuild et Team Foundation Build).
 
 Les applications peuvent être déployées directement à partir de Visual Studio sur Azure App Service à l’aide de la [fonctionnalité de publication web](xref:tutorials/publish-to-azure-webapp-using-vs) ou de la [prise en charge intégrée de Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment). Azure DevOps Services prend en charge le [déploiement continu sur Azure App Service](/azure/devops/pipelines/targets/webapp). Pour plus d’informations, consultez [DevOps avec ASP.NET Core et Azure](xref:azure/devops/index).
 
@@ -115,15 +116,15 @@ En général, pour déployer une application ASP.NET Core sur un environnement d
 
 ## <a name="publish-to-a-folder"></a>Publier dans un dossier
 
-La commande [dotnet publish](/dotnet/core/tools/dotnet-publish) compile le code d’application et copie les fichiers nécessaires pour exécuter l’application dans un dossier *publish*. Dans le cadre d’un déploiement à partir de Visual Studio, l’étape `dotnet publish` est effectuée automatiquement avant que les fichiers ne soient copiés vers la destination du déploiement.
+La commande [dotnet publish](/dotnet/core/tools/dotnet-publish) compile le code d’application et copie les fichiers nécessaires pour exécuter l’application dans un dossier *publish* . Dans le cadre d’un déploiement à partir de Visual Studio, l’étape `dotnet publish` est effectuée automatiquement avant que les fichiers ne soient copiés vers la destination du déploiement.
 
 ### <a name="folder-contents"></a>Contenu du dossier
 
 Le dossier *publish* contient un ou plusieurs fichiers d’assembly d’application, ses dépendances et éventuellement le runtime .NET.
 
-Une application .NET Core peut être publiée en tant que *déploiement autonome* ou *déploiement dépendant du framework*. Si l’application est autonome, les fichiers d’assembly qui contiennent le runtime .NET sont inclus dans le dossier *publish*. Si l’application dépend du framework, les fichiers du runtime .NET ne sont pas inclus, car l’application a une référence à une version de .NET installée sur le serveur. Le modèle de déploiement par défaut est « dépendante du framework ». Pour plus d’informations, consultez [Déploiement d’applications .NET Core](/dotnet/core/deploying/).
+Une application .NET Core peut être publiée en tant que *déploiement autonome* ou *déploiement dépendant du framework* . Si l’application est autonome, les fichiers d’assembly qui contiennent le runtime .NET sont inclus dans le dossier *publish* . Si l’application dépend du framework, les fichiers du runtime .NET ne sont pas inclus, car l’application a une référence à une version de .NET installée sur le serveur. Le modèle de déploiement par défaut est « dépendante du framework ». Pour plus d’informations, consultez [Déploiement d’applications .NET Core](/dotnet/core/deploying/).
 
-En plus des fichiers *.exe* et *.dll*, le dossier *publish* d’une application ASP.NET Core contient généralement des fichiers de configuration, des ressources statiques et des vues MVC. Pour plus d'informations, consultez <xref:host-and-deploy/directory-structure>.
+En plus des fichiers *.exe* et *.dll* , le dossier *publish* d’une application ASP.NET Core contient généralement des fichiers de configuration, des ressources statiques et des vues MVC. Pour plus d'informations, consultez <xref:host-and-deploy/directory-structure>.
 
 ## <a name="set-up-a-process-manager"></a>Configurer un gestionnaire de processus
 
@@ -148,7 +149,7 @@ Une configuration supplémentaire peut être nécessaire pour les applications h
 
 ## <a name="use-visual-studio-and-msbuild-to-automate-deployments"></a>Utiliser Visual Studio et MSBuild pour automatiser les déploiements
 
-Le déploiement nécessite souvent des tâches supplémentaires en plus de la copie de la sortie de [dotnet publish](/dotnet/core/tools/dotnet-publish) vers un serveur. Par exemple, des fichiers supplémentaires peuvent être requis ou exclus du dossier *publish*. Visual Studio utilise MSBuild pour le déploiement web, et MSBuild peut être personnalisé pour effectuer de nombreuses autres tâches pendant le déploiement. Pour plus d’informations, consultez <xref:host-and-deploy/visual-studio-publish-profiles> et l’ouvrage [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Utilisation de MSBuild et Team Foundation Build).
+Le déploiement nécessite souvent des tâches supplémentaires en plus de la copie de la sortie de [dotnet publish](/dotnet/core/tools/dotnet-publish) vers un serveur. Par exemple, des fichiers supplémentaires peuvent être requis ou exclus du dossier *publish* . Visual Studio utilise MSBuild pour le déploiement web, et MSBuild peut être personnalisé pour effectuer de nombreuses autres tâches pendant le déploiement. Pour plus d’informations, consultez <xref:host-and-deploy/visual-studio-publish-profiles> et l’ouvrage [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Utilisation de MSBuild et Team Foundation Build).
 
 Les applications peuvent être déployées directement à partir de Visual Studio sur Azure App Service à l’aide de la [fonctionnalité de publication web](xref:tutorials/publish-to-azure-webapp-using-vs) ou de la [prise en charge intégrée de Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment). Azure DevOps Services prend en charge le [déploiement continu sur Azure App Service](/azure/devops/pipelines/targets/webapp). Pour plus d’informations, consultez [DevOps avec ASP.NET Core et Azure](xref:azure/devops/index).
 

@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 2/18/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/filter
-ms.openlocfilehash: 436d640130b378e2c770322186020c6e252872ef
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: a6d25c1b88e09560c1aad9aefd9148f7fe293909
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722512"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056827"
 ---
 # <a name="filter-methods-for-no-locrazor-pages-in-aspnet-core"></a>Méthodes de filtre pour les Razor pages dans ASP.net Core
 
@@ -72,7 +73,7 @@ Le code suivant active le filtre `SampleAsyncPageFilter` dans la classe `Startup
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Startup.cs?name=snippet2)]
 
-Le code suivant appelle <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderApplicationModelConvention*> pour appliquer `SampleAsyncPageFilter` à uniquement les pages dans */movies*:
+Le code suivant appelle <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderApplicationModelConvention*> pour appliquer `SampleAsyncPageFilter` à uniquement les pages dans */movies* :
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Startup2.cs?name=snippet2)]
 
@@ -102,7 +103,7 @@ Le code suivant applique l’attribut `AddHeader` :
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Pages/Movies/Test.cshtml.cs)]
 
-Utilisez un outil tel que les outils de développement du navigateur pour examiner les en-têtes. Sous **en-têtes de réponse**, `author: Rick` est affiché.
+Utilisez un outil tel que les outils de développement du navigateur pour examiner les en-têtes. Sous **en-têtes de réponse** , `author: Rick` est affiché.
 
 Pour obtenir des instructions sur le remplacement de l’ordre, consultez [Remplacement de l’ordre par défaut](xref:mvc/controllers/filters#overriding-the-default-order).
 

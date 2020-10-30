@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubcontext
-ms.openlocfilehash: c6a4926be008feb2c9b708c56597070b96d8bd3f
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 91d02ea9e15a2c3910c3b10159bf5b1523c8e271
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633017"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058179"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>Envoyer des messages provenant de l’extérieur d’un concentrateur
 
@@ -107,15 +108,17 @@ public class ChatController : Controller
         _strongChatHubContext = chatHubContext;
     }
 
-    public async Task SendMessage(string message)
+    public async Task SendMessage(string user, string message)
     {
-        await _strongChatHubContext.Clients.All.ReceiveMessage(message);
+        await _strongChatHubContext.Clients.All.ReceiveMessage(user, message);
     }
 }
 ```
+
+Pour plus d’informations, consultez [hubs fortement typés](xref:signalr/hubs#strongly-typed-hubs) .
 
 ## <a name="related-resources"></a>Ressources associées
 
 * [Prise en main](xref:tutorials/signalr)
 * [Hubs](xref:signalr/hubs)
-* [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
+* [Publication dans Azure](xref:signalr/publish-to-azure-web-app)

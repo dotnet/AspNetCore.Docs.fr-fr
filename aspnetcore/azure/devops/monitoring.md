@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc, seodec18
 ms.date: 07/10/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/monitor
-ms.openlocfilehash: d5d5189563760cb8a61c188436caa3838e75a31e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 74e789828bf5d54e3457f235657f8ed7086df80d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626907"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056749"
 ---
 # <a name="monitor-and-debug"></a>Surveiller et déboguer
 
@@ -34,7 +35,7 @@ Dans cette section, vous allez effectuer les tâches suivantes :
 * Découvrez comment Azure Monitor fournit un examen plus approfondi des métriques dans tous les services Azure
 * Connecter l’application Web avec Application Insights pour le profilage d’application
 * Activer la journalisation et savoir où télécharger les journaux
-* Diffuser les journaux en temps réel
+* Effectuer le streaming des journaux en temps réel
 * En savoir plus sur la configuration des alertes
 * En savoir plus sur le débogage à distance Azure App Service Web Apps.
 
@@ -42,17 +43,17 @@ Dans cette section, vous allez effectuer les tâches suivantes :
 
 App Service applications Web sont facilement surveillées en temps réel. Le Portail Azure restitue des métriques dans des graphiques et des graphiques faciles à comprendre.
 
-1. Ouvrez le [portail Azure](https://portal.azure.com), puis accédez au App service *myWebApp \<unique_number\> * .
+1. Ouvrez le [portail Azure](https://portal.azure.com), puis accédez au App service *myWebApp \<unique_number\>* .
 
 1. L’onglet **vue d’ensemble** affiche des informations utiles « en un clin d’œil », y compris des graphiques qui affichent les métriques récentes.
 
     ![Capture d’écran montrant le panneau vue d’ensemble](./media/monitoring/overview.png)
 
-    * **Http 5xx**: nombre d’erreurs côté serveur, généralement les exceptions dans ASP.net Core code.
-    * **Données dans**: entrée de données entrant dans votre application Web.
-    * **Données sortantes**: sortie de données de votre application Web vers les clients.
-    * **Demandes**: nombre de requêtes http.
-    * **Temps de réponse moyen**: temps moyen pour que l’application Web réponde aux requêtes http.
+    * **Http 5xx** : nombre d’erreurs côté serveur, généralement les exceptions dans ASP.net Core code.
+    * **Données dans** : entrée de données entrant dans votre application Web.
+    * **Données sortantes** : sortie de données de votre application Web vers les clients.
+    * **Demandes** : nombre de requêtes http.
+    * **Temps de réponse moyen** : temps moyen pour que l’application Web réponde aux requêtes http.
 
     Plusieurs outils libre-service pour le dépannage et l’optimisation sont également disponibles sur cette page.
 
@@ -70,7 +71,7 @@ App Service applications Web sont facilement surveillées en temps réel. Le Por
 
 [Application Insights](/azure/application-insights/app-insights-overview) est un service Azure qui permet d’analyser les performances et la stabilité des applications Web, ainsi que la manière dont les utilisateurs les utilisent. Les données de Application Insights sont plus larges et plus profondes que celles de Azure Monitor. Les données peuvent fournir aux développeurs et aux administrateurs des informations clés pour améliorer les applications. Application Insights peuvent être ajoutés à une ressource Azure App Service sans modification du code.
 
-1. Ouvrez le [portail Azure](https://portal.azure.com), puis accédez au App service *myWebApp \<unique_number\> * .
+1. Ouvrez le [portail Azure](https://portal.azure.com), puis accédez au App service *myWebApp \<unique_number\>* .
 1. Dans l’onglet **vue d’ensemble** , cliquez sur la vignette **application Insights** .
 
     ![Vignette Application Insights](./media/monitoring/app-insights.png)
@@ -79,8 +80,8 @@ App Service applications Web sont facilement surveillées en temps réel. Le Por
 
     ![Configuration de Application Insights](./media/monitoring/new-app-insights.png)
 
-1. Pour **Runtime/Framework**, sélectionnez **ASP.net Core**. Acceptez les paramètres par défaut.
-1. Sélectionnez **OK**. Si vous êtes invité à confirmer, sélectionnez **Continuer**.
+1. Pour **Runtime/Framework** , sélectionnez **ASP.net Core** . Acceptez les paramètres par défaut.
+1. Sélectionnez **OK** . Si vous êtes invité à confirmer, sélectionnez **Continuer** .
 1. Une fois la ressource créée, cliquez sur le nom de Application Insights ressource pour accéder directement à la page de Application Insights.
 
     ![La nouvelle ressource de Application Insights est prête](./media/monitoring/new-app-insights-done.png)
@@ -95,15 +96,15 @@ Application Insights fournit des informations utiles côté serveur, sans config
 
 Les journaux de serveur Web et d’application sont désactivés par défaut dans Azure App Service. Activez les journaux en procédant comme suit :
 
-1. Ouvrez le [portail Azure](https://portal.azure.com), puis accédez au App service *myWebApp \<unique_number\> * .
-1. Dans le menu de gauche, faites défiler jusqu’à la section **surveillance** . Sélectionnez **journaux de diagnostic**.
+1. Ouvrez le [portail Azure](https://portal.azure.com), puis accédez au App service *myWebApp \<unique_number\>* .
+1. Dans le menu de gauche, faites défiler jusqu’à la section **surveillance** . Sélectionnez **journaux de diagnostic** .
 
     ![Lien des journaux de diagnostic](./media/monitoring/logging.png)
 
-1. Activez la **journalisation des applications (système de fichiers)**. Si vous y êtes invité, cliquez sur la case pour installer les extensions afin d’activer la journalisation de l’application dans l’application Web.
-1. Définissez la **journalisation du serveur Web** dans le **système de fichiers**.
+1. Activez la **journalisation des applications (système de fichiers)** . Si vous y êtes invité, cliquez sur la case pour installer les extensions afin d’activer la journalisation de l’application dans l’application Web.
+1. Définissez la **journalisation du serveur Web** dans le **système de fichiers** .
 1. Entrez la **période de rétention** en jours. Par exemple, 30.
-1. Cliquez sur **Enregistrer**.
+1. Cliquez sur **Enregistrer** .
 
 Les journaux de ASP.NET Core et de serveur Web (App Service) sont générés pour l’application Web. Ils peuvent être téléchargés à l’aide des informations FTP/FTPS affichées. Le mot de passe est le même que celui des informations d’identification de déploiement créées précédemment dans ce guide. Les journaux peuvent être [transmis en continu directement sur votre machine locale avec PowerShell ou Azure CLI](/azure/app-service/web-sites-enable-diagnostic-log#download). Vous pouvez également consulter les journaux [dans application Insights](/azure/app-service/web-sites-enable-diagnostic-log#how-to-view-logs-in-application-insights).
 
@@ -111,8 +112,8 @@ Les journaux de ASP.NET Core et de serveur Web (App Service) sont générés pou
 
 Les journaux des applications et des serveurs Web peuvent être diffusés en temps réel via le portail.
 
-1. Ouvrez le [portail Azure](https://portal.azure.com), puis accédez au App service *myWebApp \<unique_number\> * .
-1. Dans le menu de gauche, faites défiler jusqu’à la section **surveillance** , puis sélectionnez **flux de journal**.
+1. Ouvrez le [portail Azure](https://portal.azure.com), puis accédez au App service *myWebApp \<unique_number\>* .
+1. Dans le menu de gauche, faites défiler jusqu’à la section **surveillance** , puis sélectionnez **flux de journal** .
 
     ![Capture d’écran montrant le lien du flux de journal](./media/monitoring/log-stream.png)
 
@@ -140,7 +141,7 @@ Dans cette section, vous avez effectué les tâches suivantes :
 * Découvrez comment Azure Monitor fournit un examen plus approfondi des métriques dans tous les services Azure
 * Connecter l’application Web avec Application Insights pour le profilage d’application
 * Activer la journalisation et savoir où télécharger les journaux
-* Diffuser les journaux en temps réel
+* Effectuer le streaming des journaux en temps réel
 * En savoir plus sur la configuration des alertes
 * En savoir plus sur le débogage à distance Azure App Service Web Apps.
 

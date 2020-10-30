@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc, devx-track-azurecli
 ms.date: 05/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: b12f4b10230f2631392011a6e443156bf9a2d843
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: efd2208044ad6392131216266afc34187d738b78
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491442"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058972"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Tester des API web avec la boucle REPL HTTP
 
@@ -145,7 +146,7 @@ Connectez-vous à une API web en exécutant la commande suivante :
 httprepl <ROOT URI>
 ```
 
-`<ROOT URI>` est l’URI de base pour l’API web. Par exemple :
+`<ROOT URI>` est l’URI de base pour l’API web. Exemple :
 
 ```console
 httprepl https://localhost:5001
@@ -157,7 +158,7 @@ Vous pouvez également exécuter la commande suivante à tout moment pendant l�
 connect <ROOT URI>
 ```
 
-Par exemple :
+Exemple :
 
 ```console
 (Disconnected)~ connect https://localhost:5001
@@ -171,7 +172,7 @@ La commande connect ci-dessus tente de trouver automatiquement le document Swagg
 connect <ROOT URI> --swagger <SWAGGER URI>
 ```
 
-Par exemple :
+Exemple :
 
 ```console
 (Disconnected)~ connect https://localhost:5001 --swagger /swagger/v1/swagger.json
@@ -210,7 +211,7 @@ https://localhost:5001/fruits~ ls
 https://localhost:5001/fruits~
 ```
 
-Vous pouvez également exécuter la commande `ui` pour ouvrir la page de l’interface utilisateur Swagger de l’API web dans un navigateur. Par exemple :
+Vous pouvez également exécuter la commande `ui` pour ouvrir la page de l’interface utilisateur Swagger de l’API web dans un navigateur. Exemple :
 
 ```console
 https://localhost:5001/~ ui
@@ -254,7 +255,7 @@ Le fichier *.httpreplprefs* est chargé au démarrage et ses modifications ne so
 
 ### <a name="view-the-settings"></a>Voir les paramètres
 
-Pour voir les paramètres disponibles, exécutez la commande `pref get`. Par exemple :
+Pour voir les paramètres disponibles, exécutez la commande `pref get`. Exemple :
 
 ```console
 https://localhost:5001/~ pref get
@@ -292,7 +293,7 @@ Quand des clés d’une couleur spécifique ne sont pas définies, des clés plu
 
 ### <a name="set-indentation-size"></a>Définir la taille de la mise en retrait
 
-La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement. La taille par défaut est de deux espaces. Par exemple :
+La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement. La taille par défaut est de deux espaces. Exemple :
 
 ```json
 [
@@ -381,7 +382,7 @@ Par défaut, HTTP REPL possède un ensemble de chemins relatifs qu’il utilise 
 - */swagger.jssur*
 - */swagger/v1/swagger.json*
 
-Pour utiliser un autre ensemble de chemins de recherche dans votre environnement, définissez la préférence `swagger.searchPaths`. La valeur doit être une liste de chemins relatifs délimités par des barres verticales. Par exemple :
+Pour utiliser un autre ensemble de chemins de recherche dans votre environnement, définissez la préférence `swagger.searchPaths`. La valeur doit être une liste de chemins relatifs délimités par des barres verticales. Exemple :
 
 ```console
 pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
@@ -501,7 +502,7 @@ Pour émettre une requête HTTP POST :
     https://localhost:5001/people~ post -h Content-Type=application/json
     ```
 
-    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Par exemple :
+    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Exemple :
 
     ```json
     {
@@ -565,7 +566,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 Pour émettre une requête HTTP PUT :
 
-1. *Facultatif*: exécutez la `get` commande pour afficher les données avant de les modifier :
+1. *Facultatif* : exécutez la `get` commande pour afficher les données avant de les modifier :
 
     ```console
     https://localhost:5001/fruits~ get
@@ -597,7 +598,7 @@ Pour émettre une requête HTTP PUT :
     https://localhost:5001/fruits~ put 2 -h Content-Type=application/json
     ```
 
-    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Par exemple :
+    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Exemple :
 
     ```json
     {
@@ -627,7 +628,7 @@ Pour émettre une requête HTTP PUT :
     Server: Kestrel
     ```
 
-1. *Facultatif*: émettez une `get` commande pour voir les modifications. Par exemple, si vous avez tapé « Cherry » dans l’éditeur de texte, une commande `get` retourne ce qui suit :
+1. *Facultatif* : émettez une `get` commande pour voir les modifications. Par exemple, si vous avez tapé « Cherry » dans l’éditeur de texte, une commande `get` retourne ce qui suit :
 
     ```console
     https://localhost:5001/fruits~ get
@@ -678,7 +679,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 Pour émettre une requête HTTP DELETE :
 
-1. *Facultatif*: exécutez la `get` commande pour afficher les données avant de les modifier :
+1. *Facultatif* : exécutez la `get` commande pour afficher les données avant de les modifier :
 
     ```console
     https://localhost:5001/fruits~ get
@@ -718,7 +719,7 @@ Pour émettre une requête HTTP DELETE :
     Server: Kestrel
     ```
 
-1. *Facultatif*: émettez une `get` commande pour voir les modifications. Dans cet exemple, une commande `get` retourne ce qui suit :
+1. *Facultatif* : émettez une `get` commande pour voir les modifications. Dans cet exemple, une commande `get` retourne ce qui suit :
 
     ```console
     https://localhost:5001/fruits~ get
@@ -803,7 +804,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes :
 
-* Définir inline avec la requête HTTP. Par exemple :
+* Définir inline avec la requête HTTP. Exemple :
 
     ```console
     https://localhost:5001/people~ post -h Content-Type=application/json
@@ -811,13 +812,13 @@ Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes
     
     Avec l’approche précédente, chaque en-tête de requête HTTP distinct nécessite sa propre option `-h`.
 
-* Définir avant l’envoi de la requête HTTP. Par exemple :
+* Définir avant l’envoi de la requête HTTP. Exemple :
 
     ```console
     https://localhost:5001/people~ set header Content-Type application/json
     ```
     
-    Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes. Pour effacer l’en-tête, spécifiez une valeur vide. Par exemple :
+    Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes. Pour effacer l’en-tête, spécifiez une valeur vide. Exemple :
     
     ```console
     https://localhost:5001/people~ set header Content-Type
@@ -927,14 +928,14 @@ Par défaut, l’affichage de la requête HTTP envoyée est supprimé. Il est po
 
 ### <a name="enable-request-display"></a>Activer l’affichage des requêtes
 
-Affichez la requête HTTP envoyée en exécutant la commande `echo on`. Par exemple :
+Affichez la requête HTTP envoyée en exécutant la commande `echo on`. Exemple :
 
 ```console
 https://localhost:5001/people~ echo on
 Request echoing is on
 ```
 
-Les requêtes HTTP suivantes dans la session active affichent les en-têtes de requête. Par exemple :
+Les requêtes HTTP suivantes dans la session active affichent les en-têtes de requête. Exemple :
 
 ```console
 https://localhost:5001/people~ post
@@ -972,7 +973,7 @@ https://localhost:5001/people~
 
 ### <a name="disable-request-display"></a>Désactiver l’affichage des requêtes
 
-Supprimez l’affichage de la requête HTTP envoyée en exécutant la commande `echo off`. Par exemple :
+Supprimez l’affichage de la requête HTTP envoyée en exécutant la commande `echo off`. Exemple :
 
 ```console
 https://localhost:5001/people~ echo off
@@ -981,7 +982,7 @@ Request echoing is off
 
 ## <a name="run-a-script"></a>Exécuter un script
 
-Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de les stocker dans un fichier texte. Les commandes placées dans le fichier sont de la même forme que celles exécutées manuellement sur la ligne de commande. Les commandes peuvent être exécutées de façon groupée avec la commande `run`. Par exemple :
+Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de les stocker dans un fichier texte. Les commandes placées dans le fichier sont de la même forme que celles exécutées manuellement sur la ligne de commande. Les commandes peuvent être exécutées de façon groupée avec la commande `run`. Exemple :
 
 1. Créez un fichier texte contenant un ensemble de commandes délimitées par des sauts de ligne. Pour illustrer ceci, considérez un fichier *people-script.txt* contenant les commandes suivantes :
 
@@ -993,7 +994,7 @@ Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de
     get 1
     ```
 
-1. Exécutez la commande `run`, en passant le chemin du fichier texte. Par exemple :
+1. Exécutez la commande `run`, en passant le chemin du fichier texte. Exemple :
 
     ```console
     https://localhost:5001/~ run C:\http-repl-scripts\people-script.txt

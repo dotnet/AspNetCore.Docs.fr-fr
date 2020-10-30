@@ -5,6 +5,7 @@ description: Partie 4 de la série de didacticiels sur les Razor pages.
 ms.author: riande
 ms.date: 7/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: d2e18782411b1801c74fa33ba1b31bad9662f3b2
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d592cf7d8a96a7e4ec2e53418843a186488951be
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627115"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058153"
 ---
 # <a name="part-4-with-a-database-and-aspnet-core"></a>Partie 4, avec une base de données et une ASP.NET Core
 
@@ -31,9 +32,9 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://tw
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` de *Startup.cs* :
+L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` de *Startup.cs*  :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
@@ -43,9 +44,9 @@ L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de do
 
 ---
 
-Le système de [configuration](xref:fundamentals/configuration/index) d’ASP.NET Core lit `ConnectionString`. Pour le développement local, elle obtient la chaîne de connexion à partir de l' *appsettings.jssur* le fichier.
+Le système de [configuration](xref:fundamentals/configuration/index) d’ASP.NET Core lit `ConnectionString`. Pour le développement local, elle obtient la chaîne de connexion à partir du *appsettings.json* fichier.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 La valeur du nom de la base de données (`Database={Database name}`) est différent pour votre code généré. La valeur du nom est arbitraire.
 
@@ -59,14 +60,14 @@ La valeur du nom de la base de données (`Database={Database name}`) est différ
 
 Quand l’application est déployée sur un serveur de test ou de production, une variable d’environnement peut être utilisée pour définir la chaîne de connexion à un serveur de base de données réel. Pour plus d’informations, consultez [Configuration](xref:fundamentals/configuration/index).
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ## <a name="sql-server-express-localdb"></a>Base de données locale SQL Server Express
 
 LocalDB est une version allégée du moteur de base de données SQL Server Express, qui est ciblée pour le développement de programmes. LocalDB démarre à la demande et s’exécute en mode utilisateur, ce qui n’implique aucune configuration complexe. Par défaut, la base de données LocalDB crée des fichiers `*.mdf` dans le répertoire `C:\Users\<user>\`.
 
 <a name="ssox"></a>
-* Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
+* Dans le menu **Affichage** , ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
   ![Menu Affichage](sql/_static/ssox.png)
 
@@ -108,7 +109,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>Ajouter l’initialiseur de valeur initiale
 
-Dans *Program.cs*, modifiez la méthode `Main` pour effectuer les opérations suivantes :
+Dans *Program.cs* , modifiez la méthode `Main` pour effectuer les opérations suivantes :
 
 * Obtenir une instance de contexte de base de données à partir du conteneur d’injection de dépendances.
 * Appeler la méthode de remplissage initial, en lui transmettant le contexte.
@@ -123,14 +124,14 @@ L’exception suivante se produit lorsque `Update-Database` n’a pas été exé
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Supprimez tous les enregistrements de la base de données. Vous pouvez le faire avec les liens supprimer dans le navigateur ou à partir de [SSOX](xref:tutorials/razor-pages/new-field#ssox)
 * Forcez l’application à s’initialiser (appelez les méthodes de la classe `Startup`) pour que la méthode seed s’exécute. Pour forcer l’initialisation, IIS Express doit être arrêté et redémarré. Pour cela, adoptez l’une des approches suivantes :
 
-  * Cliquez avec le bouton droit sur l’icône IIS Express de la barre d’état système dans la zone de notification, puis appuyez sur **quitter** ou sur **arrêter le site**:
+  * Cliquez avec le bouton droit sur l’icône IIS Express de la barre d’état système dans la zone de notification, puis appuyez sur **quitter** ou sur **arrêter le site** :
 
     ![Icône de la barre d’état système IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
@@ -149,7 +150,7 @@ L’application affiche les données de départ.
 
 Le tutoriel suivant sert à améliorer la présentation des données.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 > [!div class="step-by-step"]
 > [Précédent : génération de modèles Razor automatique Pages](xref:tutorials/razor-pages/page)suivantes 
@@ -161,9 +162,9 @@ Le tutoriel suivant sert à améliorer la présentation des données.
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` de *Startup.cs* :
+L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` de *Startup.cs*  :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
@@ -178,9 +179,9 @@ Pour plus d’informations sur les méthodes utilisées dans `ConfigureServices`
 * [Prise en charge du règlement général sur la protection des données (RGPD) de l’Union Européenne dans ASP.NET Core](xref:security/gdpr) pour `CookiePolicyOptions`.
 * [SetCompatibilityVersion](xref:mvc/compatibility-version)
 
-Le système de [configuration](xref:fundamentals/configuration/index) d’ASP.NET Core lit `ConnectionString`. Pour le développement local, elle obtient la chaîne de connexion à partir de l' *appsettings.jssur* le fichier.
+Le système de [configuration](xref:fundamentals/configuration/index) d’ASP.NET Core lit `ConnectionString`. Pour le développement local, elle obtient la chaîne de connexion à partir du *appsettings.json* fichier.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 La valeur du nom de la base de données (`Database={Database name}`) est différent pour votre code généré. La valeur du nom est arbitraire.
 
@@ -198,14 +199,14 @@ La valeur du nom de la base de données (`Database={Database name}`) est différ
 
 Quand l’application est déployée sur un serveur de test ou de production, une variable d’environnement peut être utilisée pour définir la chaîne de connexion à un serveur de base de données réel. Pour plus d’informations, consultez [Configuration](xref:fundamentals/configuration/index).
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ## <a name="sql-server-express-localdb"></a>Base de données locale SQL Server Express
 
 LocalDB est une version allégée du moteur de base de données SQL Server Express, qui est ciblée pour le développement de programmes. LocalDB démarre à la demande et s’exécute en mode utilisateur, ce qui n’implique aucune configuration complexe. Par défaut, la base de données LocalDB crée des fichiers `*.mdf` dans le répertoire `C:/Users/<user/>`.
 
 <a name="ssox"></a>
-* Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
+* Dans le menu **Affichage** , ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
   ![Menu Affichage](sql/_static/ssox.png)
 
@@ -252,7 +253,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>Ajouter l’initialiseur de valeur initiale
 
-Dans *Program.cs*, modifiez la méthode `Main` pour effectuer les opérations suivantes :
+Dans *Program.cs* , modifiez la méthode `Main` pour effectuer les opérations suivantes :
 
 * Obtenir une instance de contexte de base de données à partir du conteneur d’injection de dépendances.
 * Appeler la méthode de remplissage initial, en lui transmettant le contexte.
@@ -267,9 +268,9 @@ Une application de production n’appelle pas `Database.Migrate`. Il est ajouté
 SqlException : impossible d’ouvrir la base de données « Razor PagesMovieContext-21 » demandée par la connexion. La connexion a échoué.
 Échec de la connexion de l’utilisateur 'nom utilisateur'.
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Supprimez tous les enregistrements de la base de données. Vous pouvez le faire avec les liens supprimer dans le navigateur ou à partir de [SSOX](xref:tutorials/razor-pages/new-field#ssox)
 * Forcez l’application à s’initialiser (appelez les méthodes de la classe `Startup`) pour que la méthode seed s’exécute. Pour forcer l’initialisation, IIS Express doit être arrêté et redémarré. Pour cela, adoptez l’une des approches suivantes :
@@ -303,7 +304,7 @@ L’application affiche les données de départ :
 
 Le didacticiel suivant nettoie la présentation des données.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Version YouTube de ce tutoriel](https://youtu.be/A_5ff11sDHY)
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: eeae167286e793ecd5a547cea0142cf7d8014ece
-ms.sourcegitcommit: c0a15ab8549cb729731a0fdf1d7da0b7feaa11ff
+ms.openlocfilehash: ecb4de3439656eb56507b920db704048d8f96759
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671780"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058504"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -48,7 +49,7 @@ Ce document s’applique aux Razor pages, aux contrôleurs d’API et aux contr�
 
 ## <a name="how-filters-work"></a>Fonctionnement des filtres
 
-Les filtres s’exécutent dans le *pipeline des appels d’action ASP.NET Core*, parfois appelé *pipeline de filtres*. Le pipeline de filtres s’exécute après la sélection par ASP.NET Core de l’action à exécuter.
+Les filtres s’exécutent dans le *pipeline des appels d’action ASP.NET Core* , parfois appelé *pipeline de filtres* . Le pipeline de filtres s’exécute après la sélection par ASP.NET Core de l’action à exécuter.
 
 ![La demande est traitée par un autre intergiciel, un intergiciel (middleware) de routage, une sélection d’action et le pipeline d’appel d’action. Le traitement de la requête se poursuit via une sélection d’action, un intergiciel de routage et différents autres intergiciels avant de devenir une réponse envoyée au client.](filters/_static/filter-pipeline-1.png)
 
@@ -117,7 +118,7 @@ Les attributs autorisent les filtres à accepter des arguments, comme indiqué d
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]
 
-Utilisez un outil tel que les [outils de développement du navigateur](https://developer.mozilla.org/docs/Learn/Common_questions/What_are_browser_developer_tools) pour examiner les en-têtes. Sous **en-têtes de réponse**, `author: Rick Anderson` est affiché.
+Utilisez un outil tel que les [outils de développement du navigateur](https://developer.mozilla.org/docs/Learn/Common_questions/What_are_browser_developer_tools) pour examiner les en-têtes. Sous **en-têtes de réponse** , `author: Rick Anderson` est affiché.
 
 Le code suivant implémente un `ActionFilterAttribute` qui :
 
@@ -126,7 +127,7 @@ Le code suivant implémente un `ActionFilterAttribute` qui :
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/MyActionFilterAttribute.cs?name=snippet)]
 
-Les options de configuration sont fournies par le [système de configuration](xref:fundamentals/configuration/index) à l’aide du modèle d' [options](xref:fundamentals/configuration/options). Par exemple, à partir de l' *appsettings.jssur* le fichier :
+Les options de configuration sont fournies par le [système de configuration](xref:fundamentals/configuration/index) à l’aide du modèle d' [options](xref:fundamentals/configuration/options). Par exemple, à partir du *appsettings.json* fichier :
 
 [!code-json[](filters/3.1sample/FiltersSample/appsettings.json)]
 
@@ -145,7 +146,7 @@ Le code suivant applique `MyActionFilterAttribute` à la `Index2` méthode :
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet2&highlight=9)]
 
-Sous **les en-têtes de réponse**, `author: Rick Anderson` et `Editor: Joe Smith` s’affiche lorsque le `Sample/Index2` point de terminaison est appelé.
+Sous **les en-têtes de réponse** , `author: Rick Anderson` et `Editor: Joe Smith` s’affiche lorsque le `Sample/Index2` point de terminaison est appelé.
 
 Le code suivant applique le `MyActionFilterAttribute` et le `AddHeaderAttribute` à la Razor page :
 
@@ -166,7 +167,7 @@ Les attributs de filtre :
 
 ## <a name="filter-scopes-and-order-of-execution"></a>Étendues de filtre et ordre d’exécution
 
-Un filtre peut être ajouté au pipeline à l’une des trois *étendues*suivantes :
+Un filtre peut être ajouté au pipeline à l’une des trois *étendues* suivantes :
 
 * Utilisation d’un attribut sur une action de contrôleur. Les attributs de filtre ne peuvent pas être appliqués aux Razor méthodes de gestionnaire de pages.
 * Utilisation d’un attribut sur un contrôleur ou une Razor page.
@@ -178,7 +179,7 @@ Un filtre peut être ajouté au pipeline à l’une des trois *étendues*suivant
 
 Quand il existe plusieurs filtres pour une étape particulière du pipeline, l’étendue détermine l’ordre par défaut de l’exécution du filtre.  Les filtres globaux entourent les filtres de classe, qui à leur tour entourent les filtres de méthode.
 
-En raison de l’imbrication de filtres, le code *après* des filtres s’exécute dans l’ordre inverse du code *avant*. La séquence de filtre :
+En raison de l’imbrication de filtres, le code *après* des filtres s’exécute dans l’ordre inverse du code *avant* . La séquence de filtre :
 
 * Le code *avant* des filtres globaux.
   * *Avant* le code du contrôleur et des Razor filtres de page.
@@ -637,7 +638,7 @@ Ce document s’applique aux Razor pages, aux contrôleurs d’API et aux contr�
 
 ## <a name="how-filters-work"></a>Fonctionnement des filtres
 
-Les filtres s’exécutent dans le *pipeline des appels d’action ASP.NET Core*, parfois appelé *pipeline de filtres*.  Le pipeline de filtres s’exécute après la sélection par ASP.NET Core de l’action à exécuter.
+Les filtres s’exécutent dans le *pipeline des appels d’action ASP.NET Core* , parfois appelé *pipeline de filtres* .  Le pipeline de filtres s’exécute après la sélection par ASP.NET Core de l’action à exécuter.
 
 ![La requête est traitée via un autre intergiciel, un intergiciel de routage, une sélection d’action et le pipeline d’appels d’action ASP.NET Core. Le traitement de la requête se poursuit via une sélection d’action, un intergiciel de routage et différents autres intergiciels avant de devenir une réponse envoyée au client.](filters/_static/filter-pipeline-1.png)
 
@@ -710,7 +711,7 @@ Les attributs de filtre :
 
 ## <a name="filter-scopes-and-order-of-execution"></a>Étendues de filtre et ordre d’exécution
 
-Un filtre peut être ajouté au pipeline à l’une des trois *étendues*suivantes :
+Un filtre peut être ajouté au pipeline à l’une des trois *étendues* suivantes :
 
 * À l’aide d’un attribut sur une action.
 * À l’aide d’un attribut sur un contrôleur.
@@ -722,9 +723,9 @@ Le code précédent ajoute trois filtres globalement à l’aide de la collectio
 
 ### <a name="default-order-of-execution"></a>Ordre d’exécution par défaut
 
-Lorsqu’il existe plusieurs filtres *du même type*, l’étendue détermine l’ordre par défaut de l’exécution du filtre.  Filtres globaux-filtres de classe surround. Les filtres de classe entourent les filtres de méthode.
+Lorsqu’il existe plusieurs filtres *du même type* , l’étendue détermine l’ordre par défaut de l’exécution du filtre.  Filtres globaux-filtres de classe surround. Les filtres de classe entourent les filtres de méthode.
 
-En raison de l’imbrication de filtres, le code *après* des filtres s’exécute dans l’ordre inverse du code *avant*. La séquence de filtre :
+En raison de l’imbrication de filtres, le code *après* des filtres s’exécute dans l’ordre inverse du code *avant* . La séquence de filtre :
 
 * Le code *avant* des filtres globaux.
   * Le code *avant* des filtres du contrôleur.

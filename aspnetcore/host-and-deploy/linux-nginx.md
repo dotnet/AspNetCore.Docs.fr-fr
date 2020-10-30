@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 63227f068926c4158ac8162fdc1ac11399fd65cb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 916bb1f761ce99b2296c84e1653e55fffa04f83c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633784"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057685"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Héberger ASP.NET Core sur Linux avec Nginx
 
@@ -49,7 +50,7 @@ Ce guide montre comment effectuer les opérations suivantes :
 1. Installez le runtime .NET Core sur le serveur.
    1. Visitez la [page Télécharger .net Core](https://dotnet.microsoft.com/download/dotnet-core).
    1. Sélectionnez la dernière version non préliminaire de .NET Core.
-   1. Téléchargez le dernier Runtime non Preview dans le tableau sous **exécuter des applications-Runtime**.
+   1. Téléchargez le dernier Runtime non Preview dans le tableau sous **exécuter des applications-Runtime** .
    1. Sélectionnez le lien **des instructions du gestionnaire de package** Linux et suivez les instructions Ubuntu pour votre version d’Ubuntu.
 1. Une application ASP.NET Core existante.
 
@@ -62,9 +63,9 @@ Configurez l’application pour un [déploiement dépendant du framework](/dotne
 Si l’application est exécutée localement et n’est pas configurée pour établir des connexions sécurisées (HTTPS), adoptez l’une des approches suivantes :
 
 * Configurez l’application pour gérer les connexions locales sécurisées. Pour plus d’informations, consultez la section [Configuration HTTPS](#https-configuration).
-* Supprimez `https://localhost:5001` (le cas échéant) de la propriété `applicationUrl` dans le fichier *Properties/launchSettings.json*.
+* Supprimez `https://localhost:5001` (le cas échéant) de la propriété `applicationUrl` dans le fichier *Properties/launchSettings.json* .
 
-Exécutez [dotnet publish](/dotnet/core/tools/dotnet-publish) à partir de l’environnement de développement pour empaqueter une application dans un répertoire (par exemple, *bin/Release/&lt;moniker_framework_target&gt;/publish*) exécutable sur le serveur :
+Exécutez [dotnet publish](/dotnet/core/tools/dotnet-publish) à partir de l’environnement de développement pour empaqueter une application dans un répertoire (par exemple, *bin/Release/&lt;moniker_framework_target&gt;/publish* ) exécutable sur le serveur :
 
 ```dotnetcli
 dotnet publish --configuration Release
@@ -72,7 +73,7 @@ dotnet publish --configuration Release
 
 L’application peut également être publiée en tant que [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) si vous préférez ne pas gérer le runtime .NET Core sur le serveur.
 
-Copiez l’application ASP.NET Core sur le serveur à l’aide d’un outil qui s’intègre au flux de travail de l’organisation (par exemple, SCP ou SFTP). Il est courant de placer les applications web sous le répertoire *var* (par exemple, *var/www/helloapp*).
+Copiez l’application ASP.NET Core sur le serveur à l’aide d’un outil qui s’intègre au flux de travail de l’organisation (par exemple, SCP ou SFTP). Il est courant de placer les applications web sous le répertoire *var* (par exemple, *var/www/helloapp* ).
 
 > [!NOTE]
 > Dans un scénario de déploiement en production, un workflow d’intégration continue effectue le travail de publication de l’application et de copie des composants sur le serveur.
@@ -142,7 +143,7 @@ Vérifiez qu’un navigateur affiche la page d’accueil par défaut de Nginx. L
 
 ### <a name="configure-nginx"></a>Configurer Nginx
 
-Pour configurer Nginx en tant que proxy inverse pour transférer les requêtes à votre application ASP.NET Core, modifiez le fichier */etc/nginx/sites-available/default*. Ouvrez-le dans un éditeur de texte et remplacez le contenu par ce qui suit :
+Pour configurer Nginx en tant que proxy inverse pour transférer les requêtes à votre application ASP.NET Core, modifiez le fichier */etc/nginx/sites-available/default* . Ouvrez-le dans un éditeur de texte et remplacez le contenu par ce qui suit :
 
 ```nginx
 server {
@@ -161,7 +162,7 @@ server {
 }
 ```
 
-Si l’application est une Blazor Server application qui s’appuie sur SignalR WebSockets, consultez <xref:blazor/host-and-deploy/server#linux-with-nginx> pour plus d’informations sur la façon de définir l' `Connection` en-tête.
+Si l’application est une SignalR Blazor Server application ou <xref:signalr/scale#linux-with-nginx> , consultez et, <xref:blazor/host-and-deploy/server#linux-with-nginx> respectivement, pour plus d’informations.
 
 Si aucun `server_name` ne correspond, Nginx utilise le serveur par défaut. Si aucun serveur par défaut n’est défini, le premier serveur dans le fichier de configuration est le serveur par défaut. En guise de bonne pratique, ajoutez un serveur par défaut spécifique qui retourne un code d’état 444 dans votre fichier de configuration. Voici un exemple de configuration de serveur par défaut :
 
@@ -225,14 +226,14 @@ WantedBy=multi-user.target
 
 Dans l’exemple précédent, l’utilisateur qui gère le service est spécifié par l' `User` option. L’utilisateur ( `www-data` ) doit exister et avoir la propriété correcte des fichiers de l’application.
 
-Utilisez `TimeoutStopSec` pour configurer la durée d’attente de l’arrêt de l’application après la réception du signal d’interruption initial. Si l’application ne s’arrête pas pendant cette période, le signal SIGKILL est émis pour mettre fin à l’application. Indiquez la valeur en secondes sans unité (par exemple, `150`), une valeur d’intervalle de temps (par exemple, `2min 30s`) ou `infinity` pour désactiver le délai d’attente. `TimeoutStopSec` prend la valeur par défaut de `DefaultTimeoutStopSec` dans le fichier de configuration du gestionnaire (*systemd-system.conf*, *system.conf.d*, *systemd-user.conf*, * user.conf.d*). Le délai d’expiration par défaut pour la plupart des distributions est de 90 secondes.
+Utilisez `TimeoutStopSec` pour configurer la durée d’attente de l’arrêt de l’application après la réception du signal d’interruption initial. Si l’application ne s’arrête pas pendant cette période, le signal SIGKILL est émis pour mettre fin à l’application. Indiquez la valeur en secondes sans unité (par exemple, `150`), une valeur d’intervalle de temps (par exemple, `2min 30s`) ou `infinity` pour désactiver le délai d’attente. `TimeoutStopSec` prend la valeur par défaut de `DefaultTimeoutStopSec` dans le fichier de configuration du gestionnaire ( *systemd-system.conf* , *system.conf.d* , *systemd-user.conf* , *user.conf.d* ). Le délai d’expiration par défaut pour la plupart des distributions est de 90 secondes.
 
 ```
 # The default value is 90 seconds for most distributions.
 TimeoutStopSec=90
 ```
 
-Linux possède un système de fichiers respectant la casse. Si vous définissez ASPNETCORE_ENVIRONMENT sur « Production », c’est le fichier de configuration*appsettings.Production.json* qui est recherché, pas le fichier *appsettings.production.json*.
+Linux possède un système de fichiers respectant la casse. Si vous définissez ASPNETCORE_ENVIRONMENT sur « Production », c’est le fichier de configuration *appsettings.Production.json* qui est recherché, pas le fichier *appsettings.production.json* .
 
 Certaines valeurs (par exemple, les chaînes de connexion SQL) doivent être placées dans une séquence d’échappement afin que les fournisseurs de configuration puissent lire les variables d’environnement. Utilisez la commande suivante pour générer une valeur correctement placée dans une séquence d’échappement en vue de son utilisation dans le fichier de configuration :
 
@@ -375,7 +376,7 @@ La commande [dotnet run](/dotnet/core/tools/dotnet-run) utilise le fichier *Prop
 
 Configurez l’application pour utiliser un certificat en développement pour la commande `dotnet run` ou l’environnement de développement (F5 ou Ctrl+F5 dans Visual Studio Code) en adoptant l’une de ces approches :
 
-* [Remplacer le certificat par défaut dans la configuration](xref:fundamentals/servers/kestrel#configuration) (*recommandé*)
+* [Remplacer le certificat par défaut dans la configuration](xref:fundamentals/servers/kestrel#configuration) ( *recommandé* )
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **Configurer le proxy inverse pour les connexions clientes sécurisées (HTTPS)**
@@ -395,7 +396,7 @@ Ajoutez le fichier de configuration */etc/nginx/proxy.conf* :
 
 [!code-nginx[](linux-nginx/proxy.conf)]
 
-Modifiez le fichier de configuration */etc/nginx/nginx.conf*. Dans l’exemple, les sections `http` et `server` figurent dans un même fichier de configuration.
+Modifiez le fichier de configuration */etc/nginx/nginx.conf* . Dans l’exemple, les sections `http` et `server` figurent dans un même fichier de configuration.
 
 [!code-nginx[](linux-nginx/nginx.conf?highlight=2)]
 
@@ -404,7 +405,7 @@ Modifiez le fichier de configuration */etc/nginx/nginx.conf*. Dans l’exemple, 
 
 #### <a name="secure-nginx-from-clickjacking"></a>Sécuriser Nginx contre le détournement de clic
 
-Le [détournement de clic](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), également appelé *UI redress attack*, est une attaque malveillante qui amène le visiteur d’un site web à cliquer sur un lien ou un bouton sur une page différente de celle qu’il est en train de visiter. Utilisez `X-FRAME-OPTIONS` pour sécuriser le site.
+Le [détournement de clic](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), également appelé *UI redress attack* , est une attaque malveillante qui amène le visiteur d’un site web à cliquer sur un lien ou un bouton sur une page différente de celle qu’il est en train de visiter. Utilisez `X-FRAME-OPTIONS` pour sécuriser le site.
 
 Pour atténuer les attaques par détournement de clic :
 
@@ -415,7 +416,7 @@ Pour atténuer les attaques par détournement de clic :
    ```
 
    Ajoutez la ligne `add_header X-Frame-Options "SAMEORIGIN";`.
-1. Enregistrez le fichier .
+1. Enregistrez le fichier.
 1. Redémarrez Nginx.
 
 #### <a name="mime-type-sniffing"></a>Détection de type MIME
@@ -434,7 +435,7 @@ Ajoutez la ligne `add_header X-Content-Type-Options "nosniff";` et enregistrez l
 
 Après la mise à niveau de l’infrastructure partagée sur le serveur, redémarrez le ASP.NET Core les applications hébergées par le serveur.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Prérequis pour .NET Core sur Linux](/dotnet/core/linux-prerequisites)
 * [Nginx: Binary Releases: Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (Nginx : versions binaires : packages Debian/Ubuntu officiels).

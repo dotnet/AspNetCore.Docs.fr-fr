@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 6160dfd117235065ba4b990b95bbc1f4abdf1626
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6d67924d87cdbe72cb08c5305dfe45c5b22b31bc
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634343"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057113"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Migrer d’ASP.NET Core 1.x vers la version 2.0
 
@@ -85,7 +86,7 @@ Par exemple, voici la liste des nœuds `<PackageReference />` utilisés dans un 
 
 ## <a name="update-net-core-cli-tools"></a>Mettre à jour les outils CLI .NET Core
 
-Dans le fichier *.csproj*, mettez à jour l’attribut `Version` de chaque nœud `<DotNetCliToolReference />` vers la version 2.0.0.
+Dans le fichier *.csproj* , mettez à jour l’attribut `Version` de chaque nœud `<DotNetCliToolReference />` vers la version 2.0.0.
 
 Par exemple, voici la liste des outils CLI utilisés dans un projet ASP.NET Core 2.0 standard qui cible .NET Core 2.0 :
 
@@ -129,13 +130,13 @@ Dans les projets 1.x, l’ajout de fournisseurs de configuration à une applicat
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_1xStartup)]
 
-L’exemple précédent charge le `Configuration` membre avec les paramètres de configuration de *appsettings.js* , ainsi que tout *appSettings. \<EnvironmentName\> fichier JSON* correspondant à la `IHostingEnvironment.EnvironmentName` propriété. L’emplacement de ces fichiers est sur le même chemin que *Startup.cs*.
+L’exemple précédent charge le `Configuration` membre avec les paramètres de configuration de *appsettings.json* et tout *appSettings. \<EnvironmentName\> fichier JSON* correspondant à la `IHostingEnvironment.EnvironmentName` propriété. L’emplacement de ces fichiers est sur le même chemin que *Startup.cs* .
 
 Dans les projets 2.0, le code de configuration réutilisable inhérent aux projets 1.x s’exécute en arrière-plan. Par exemple, les variables d’environnement et les paramètres de l’application sont chargés au démarrage. Le code équivalent *Startup.cs* est réduit à l’initialisation de `IConfiguration` avec l’instance injectée :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Startup.cs?name=snippet_2xStartup)]
 
-Pour supprimer les fournisseurs par défaut ajoutés par `WebHostBuilder.CreateDefaultBuilder`, appelez la méthode `Clear` sur la propriété `IConfigurationBuilder.Sources` dans `ConfigureAppConfiguration`. Pour rajouter fournisseurs, utilisez la méthode `ConfigureAppConfiguration` dans *Program.cs* :
+Pour supprimer les fournisseurs par défaut ajoutés par `WebHostBuilder.CreateDefaultBuilder`, appelez la méthode `Clear` sur la propriété `IConfigurationBuilder.Sources` dans `ConfigureAppConfiguration`. Pour rajouter fournisseurs, utilisez la méthode `ConfigureAppConfiguration` dans *Program.cs*  :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Program.cs?name=snippet_ProgramMainConfigProviders&highlight=9-14)]
 
@@ -155,15 +156,15 @@ Dans les projets 1.x utilisant EF Core 1.x, une commande telle que `dotnet ef mi
 
 Dans les projets 2.0 utilisant EF Core 2.0, `Program.BuildWebHost` est appelé pour obtenir les services d’application. Contrairement à 1.x, cela a pour autre effet secondaire d’appeler `Startup.Configure`. Si votre application 1.x a appelé le code d’initialisation de base de données dans sa méthode `Configure`, des problèmes inattendus peuvent se produire. Par exemple, si la base de données n’existe pas encore, le code d’amorçage s’exécute avant l’exécution de la commande EF Core Migrations. Ce problème entraîne l’échec de la commande `dotnet ef migrations list` si la base de données n’existe pas encore.
 
-Envisagez le code d’initialisation d’amorçage 1.x suivant dans la méthode `Configure` de *Startup.cs* :
+Envisagez le code d’initialisation d’amorçage 1.x suivant dans la méthode `Configure` de *Startup.cs*  :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_ConfigureSeedData&highlight=8)]
 
-Dans les projets 2.0, déplacez l’appel de `SeedData.Initialize` vers la méthode `Main` de *Program.cs* :
+Dans les projets 2.0, déplacez l’appel de `SeedData.Initialize` vers la méthode `Main` de *Program.cs*  :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Program2.cs?name=snippet_Main2Code&highlight=10)]
 
-À compter de la version 2.0, il est déconseillé de faire quoi que ce soit dans `BuildWebHost`, sauf de créer et de configurer l’hôte web. Tout ce qui concerne l’exécution de l’application doit être géré en dehors de `BuildWebHost` &mdash; généralement dans la méthode `Main` de *Program.cs*.
+À compter de la version 2.0, il est déconseillé de faire quoi que ce soit dans `BuildWebHost`, sauf de créer et de configurer l’hôte web. Tout ce qui concerne l’exécution de l’application doit être géré en dehors de `BuildWebHost` &mdash; généralement dans la méthode `Main` de *Program.cs* .
 
 <a name="view-compilation"></a>
 
@@ -171,9 +172,9 @@ Dans les projets 2.0, déplacez l’appel de `SeedData.Initialize` vers la méth
 
 La vitesse de démarrage d’application et la taille des bundles publiés ont une importance capitale pour vous. Pour ces raisons, la compilation de l' [ Razor affichage](xref:mvc/views/view-compilation) est activée par défaut dans ASP.net Core 2,0.
 
-L’affectation de la valeur true à la propriété `MvcRazorCompileOnPublish` n’est plus nécessaire. Vous pouvez supprimer la propriété du fichier *.csproj*, sauf si vous désactivez la compilation des vues.
+L’affectation de la valeur true à la propriété `MvcRazorCompileOnPublish` n’est plus nécessaire. Vous pouvez supprimer la propriété du fichier *.csproj* , sauf si vous désactivez la compilation des vues.
 
-Quand vous ciblez .NET Framework, vous devez toujours faire référence explicitement à [Microsoft. AspNetCore. Mvc. Razor ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation) Package NuGet ViewCompilation dans votre fichier *. csproj* :
+Quand vous ciblez .NET Framework, vous devez toujours faire référence explicitement à [Microsoft. AspNetCore. Mvc. Razor](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation) Package NuGet ViewCompilation dans votre fichier *. csproj* :
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App.csproj?range=15)]
 
@@ -183,7 +184,7 @@ Quand vous ciblez .NET Framework, vous devez toujours faire référence explicit
 
 La configuration sans effort de l’instrumentation des performances d’application est importante. Vous pouvez maintenant vous appuyer sur les nouvelles fonctionnalités de mise en évidence [d’Application Insights](/azure/application-insights/app-insights-overview) disponibles dans les outils Visual Studio 2017.
 
-Par défaut, les projets ASP.NET Core 1.1 créés dans Visual Studio 2017 ajoutaient Application Insights. Si vous n’utilisez pas le SDK Application Insights directement, en dehors de *Program.cs* et *Startup.cs*, effectuez les étapes suivantes :
+Par défaut, les projets ASP.NET Core 1.1 créés dans Visual Studio 2017 ajoutaient Application Insights. Si vous n’utilisez pas le SDK Application Insights directement, en dehors de *Program.cs* et *Startup.cs* , effectuez les étapes suivantes :
 
 1. Si vous ciblez .NET Core, supprimez le nœud `<PackageReference />` suivant dans le fichier *.csproj* :
 
@@ -193,7 +194,7 @@ Par défaut, les projets ASP.NET Core 1.1 créés dans Visual Studio 2017 ajouta
 
     [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCsMain&highlight=8)]
 
-3. Supprimez l’appel d’API côté client Application Insights du fichier *_Layout.cshtml*. Il comprend les deux lignes de code suivantes :
+3. Supprimez l’appel d’API côté client Application Insights du fichier *_Layout.cshtml* . Il comprend les deux lignes de code suivantes :
 
     [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Shared/_Layout.cshtml?range=1,19&dedent=4)]
 
@@ -205,6 +206,6 @@ Si vous utilisez le SDK Application Insights directement, continuez à le faire.
 
 ASP.NET Core 2,0 dispose d’un nouveau modèle d’authentification et d’un certain nombre de modifications significatives apportées à ASP.NET Core Identity . Si vous avez créé votre projet avec des comptes d’utilisateur individuels activés, ou si vous avez ajouté manuellement l’authentification ou Identity , consultez [migrer l’authentification et Identity vers ASP.net Core 2,0](xref:migration/1x-to-2x/identity-2x).
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Changements importants dans ASP.NET Core 2.0](https://github.com/aspnet/announcements/issues?page=1&q=is%3Aissue+is%3Aopen+label%3A2.0.0+label%3A%22Breaking+change%22&utf8=%E2%9C%93)

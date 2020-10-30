@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/18/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/write
-ms.openlocfilehash: 52985917c34ebf007c0d205625956c772456ee2b
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5f33691cbcc00f407fff907ca62547fd80f2aa3c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635253"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057464"
 ---
 # <a name="write-custom-aspnet-core-middleware"></a>Écrire un intergiciel (middleware) ASP.NET Core personnalisé
 
@@ -59,7 +60,7 @@ Les paramètres supplémentaires pour le constructeur et `Invoke`/`InvokeAsync` 
 
 ## <a name="middleware-dependencies"></a>Dépendances de l’intergiciel (middleware)
 
-L’intergiciel doit suivre le [principe de dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies) en exposant ses dépendances dans son constructeur. L’intergiciel est construit une fois par *durée de vie d’application*. Consultez la section [Dépendances des middlewares par requête](#per-request-middleware-dependencies) si vous avez besoin de partager des services avec un middleware au sein d’une requête.
+L’intergiciel doit suivre le [principe de dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies) en exposant ses dépendances dans son constructeur. L’intergiciel est construit une fois par *durée de vie d’application* . Consultez la section [Dépendances des middlewares par requête](#per-request-middleware-dependencies) si vous avez besoin de partager des services avec un middleware au sein d’une requête.
 
 Les composants de middleware peuvent résoudre leurs dépendances à partir de l’[injection de dépendances](xref:fundamentals/dependency-injection) à l’aide des paramètres du constructeur. [UseMiddleware&lt;T&gt;](/dotnet/api/microsoft.aspnetcore.builder.usemiddlewareextensions.usemiddleware#Microsoft_AspNetCore_Builder_UseMiddlewareExtensions_UseMiddleware_Microsoft_AspNetCore_Builder_IApplicationBuilder_System_Type_System_Object___) peut également accepter des paramètres supplémentaires directement.
 
@@ -98,9 +99,9 @@ Le code suivant appelle l’intergiciel à partir de `Startup.Configure` :
 
 [!code-csharp[](write/snapshot/Startup.cs?highlight=5)]
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
-* Les [options de durée de vie et d’inscription](xref:fundamentals/dependency-injection#lifetime-and-registration-options) contiennent un exemple complet d’intergiciel (middleware) avec des services de durée de vie *délimités*, *transitoires*et *singletons* .
+* Les [options de durée de vie et d’inscription](xref:fundamentals/dependency-injection#lifetime-and-registration-options) contiennent un exemple complet d’intergiciel (middleware) avec des services de durée de vie *délimités* , *transitoires* et *singletons* .
 * <xref:fundamentals/middleware/index>
 * <xref:test/middleware>
 * <xref:migration/http-modules>

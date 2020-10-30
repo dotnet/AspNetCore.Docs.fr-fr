@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, devx-track-js
 ms.date: 08/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 17f04dc9a0bdcf8ff016d83b915c017ff485cb36
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: fc41dd13e7d027d9630cd596162f9b5fd2ef9e2b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690700"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058491"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Didacticiel : créer une API Web avec ASP.NET Core
 
@@ -44,16 +45,16 @@ Dans ce tutoriel, vous allez apprendre à :
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données.
 
-## <a name="overview"></a>Vue d’ensemble
+## <a name="overview"></a>Vue d'ensemble
 
 Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obtenir toutes les tâches | None | Tableau de tâches|
-|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | None | Tâche|
+|`GET /api/TodoItems` | Obtenir toutes les tâches | Aucun | Tableau de tâches|
+|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | Aucun | Tâche|
 |`POST /api/TodoItems` | Ajouter un nouvel élément | Tâche | Tâche |
-|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | None |
+|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -78,7 +79,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 ## <a name="create-a-web-project"></a>Créer un projet web
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans le menu **fichier** , sélectionnez **nouveau** > **projet** .
 * Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant** .
@@ -139,7 +140,7 @@ Ouvrez un terminal de commande dans le dossier de projet, puis exécutez les com
 
 Le modèle de projet crée une `WeatherForecast` API avec prise en charge de [Swagger](xref:tutorials/web-api-help-pages-using-swagger).
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Appuyez sur Ctrl+F5 pour exécuter sans le débogueur.
 
@@ -226,7 +227,7 @@ Comme Swagger a été supprimé, le balisage précédent modifie l’URL qui est
 
 Un *modèle* est un ensemble de classes qui représentent les données gérées par l’application. Le modèle pour cette application est une classe `TodoItem` unique.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans l’ **Explorateur de solutions** , cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter**  >  **un nouveau dossier** . Nommez le dossier *Models* .
 
@@ -264,7 +265,7 @@ Les classes de modèle peuvent se trouver n’importe où dans le projet, mais l
 
 Le *contexte de base de données* est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données. Cette classe est créée en dérivant de la classe <xref:Microsoft.EntityFrameworkCore.DbContext?displayProperty=fullName>.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="add-nuget-packages"></a>Ajouter des packages NuGet
 
@@ -311,7 +312,7 @@ Le code précédent :
 
 ## <a name="scaffold-a-controller"></a>Générer automatiquement des modèles pour un contrôleur
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Contrôleurs* .
 * Sélectionnez **Ajouter** > **Nouvel élément généré automatiquement** .
@@ -427,7 +428,7 @@ Deux points de terminaison d’extraction sont implémentés :
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Par exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Exemple :
 
 * `https://localhost:5001/api/TodoItems`
 * `https://localhost:5001/api/TodoItems/1`
@@ -570,16 +571,16 @@ Dans ce tutoriel, vous allez apprendre à :
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données.
 
-## <a name="overview"></a>Vue d’ensemble
+## <a name="overview"></a>Vue d'ensemble
 
 Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obtenir toutes les tâches | None | Tableau de tâches|
-|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | None | Tâche|
+|`GET /api/TodoItems` | Obtenir toutes les tâches | Aucun | Tableau de tâches|
+|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | Aucun | Tâche|
 |`POST /api/TodoItems` | Ajouter un nouvel élément | Tâche | Tâche |
-|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | None |
+|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -604,7 +605,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 ## <a name="create-a-web-project"></a>Créer un projet web
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans le menu **fichier** , sélectionnez **nouveau** > **projet** .
 * Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant** .
@@ -665,7 +666,7 @@ Ouvrez un terminal de commande dans le dossier de projet, puis exécutez les com
 
 Le modèle de projet crée une API `WeatherForecast`. Appelez la méthode `Get` à partir d’un navigateur pour tester l’application.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Appuyez sur Ctrl+F5 pour exécuter l’application. Visual Studio lance un navigateur et accède à `https://localhost:<port>/WeatherForecast`, où `<port>` est un numéro de port choisi de manière aléatoire.
 
@@ -722,7 +723,7 @@ Un code JSON similaire au suivant est retourné :
 
 Un *modèle* est un ensemble de classes qui représentent les données gérées par l’application. Le modèle pour cette application est une classe `TodoItem` unique.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans l’ **Explorateur de solutions** , cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter**  >  **un nouveau dossier** . Nommez le dossier *Models* .
 
@@ -760,7 +761,7 @@ Les classes de modèle peuvent se trouver n’importe où dans le projet, mais l
 
 Le *contexte de base de données* est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données. Cette classe est créée en dérivant de la classe `Microsoft.EntityFrameworkCore.DbContext`.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="add-nuget-packages"></a>Ajouter des packages NuGet
 
@@ -802,7 +803,7 @@ Le code précédent :
 
 ## <a name="scaffold-a-controller"></a>Générer automatiquement des modèles pour un contrôleur
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Contrôleurs* .
 * Sélectionnez **Ajouter** > **Nouvel élément généré automatiquement** .
@@ -914,7 +915,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Par exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Exemple :
 
 * `https://localhost:5001/api/TodoItems`
 * `https://localhost:5001/api/TodoItems/1`
@@ -1067,10 +1068,10 @@ Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obtenir toutes les tâches | None | Tableau de tâches|
-|GET /api/TodoItems/{id} | Obtenir un élément par ID | None | Tâche|
+|GET /api/TodoItems | Obtenir toutes les tâches | Aucun | Tableau de tâches|
+|GET /api/TodoItems/{id} | Obtenir un élément par ID | Aucun | Tâche|
 |POST /api/TodoItems | Ajouter un nouvel élément | Tâche | Tâche |
-|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | None |
+|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
 |SUPPRIMER/api/TodoItems/{id} &nbsp;&nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -1079,7 +1080,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 ## <a name="prerequisites-21"></a>Conditions préalables 2,1
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
@@ -1095,7 +1096,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 ## <a name="create-a-web-project-21"></a>Créer un projet Web 2,1
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans le menu **fichier** , sélectionnez **nouveau** > **projet** .
 * Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant** .
@@ -1139,7 +1140,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 Le modèle de projet crée une API `values`. Appelez la méthode `Get` à partir d’un navigateur pour tester l’application.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Appuyez sur Ctrl+F5 pour exécuter l’application. Visual Studio lance un navigateur et accède à `https://localhost:<port>/api/values`, où `<port>` est un numéro de port choisi de manière aléatoire.
 
@@ -1165,7 +1166,7 @@ Le code JSON suivant est retourné :
 
 Un *modèle* est un ensemble de classes qui représentent les données gérées par l’application. Le modèle pour cette application est une classe `TodoItem` unique.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans l’ **Explorateur de solutions** , cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter**  >  **un nouveau dossier** . Nommez le dossier *Models* .
 
@@ -1203,7 +1204,7 @@ Les classes de modèle peuvent se trouver n’importe où dans le projet, mais l
 
 Le *contexte de base de données* est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données. Cette classe est créée en dérivant de la classe `Microsoft.EntityFrameworkCore.DbContext`.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le *Models* dossier et sélectionnez **Ajouter** une  >  **classe** . Nommez la classe *TodoContext* et cliquez sur **Ajouter** .
 
@@ -1233,7 +1234,7 @@ Le code précédent :
 
 ## <a name="add-a-controller-21"></a>Ajouter un contrôleur 2,1
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Contrôleurs* .
 * Sélectionnez **Ajouter** > **un nouvel élément** .
@@ -1272,7 +1273,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 
 Arrêtez l’application si elle est toujours en cours d’exécution. Ensuite, réexécutez-la pour inclure les dernières modifications.
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Par exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Exemple :
 
 * `https://localhost:<port>/api/todo`
 * `https://localhost:<port>/api/todo/1`
@@ -1322,7 +1323,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 * Démarrez Postman.
 * Désactivez la **vérification du certificat SSL** .
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * À partir de **Fichier** > **Paramètres** (onglet **Général** ), désactivez **Vérification du certificat SSL** .
 

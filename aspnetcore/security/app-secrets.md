@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 4/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/app-secrets
-ms.openlocfilehash: 74c9ae63ffbe39d6ba6e77aee8f6adcc8c8a157a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 174f831583c2ef6cb7f122a22fe855acc8fe3047
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634902"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056866"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Stockage sécurisé des secrets d’application en développement dans ASP.NET Core
 
@@ -38,7 +39,7 @@ Ce document décrit les techniques de stockage et de récupération des données
 
 Les variables d’environnement sont utilisées pour éviter le stockage des secrets d’application dans le code ou dans des fichiers de configuration locaux. Les variables d’environnement remplacent les valeurs de configuration pour toutes les sources de configuration spécifiées précédemment.
 
-Prenons l’exemple d’une application Web ASP.NET Core dans laquelle la sécurité **des comptes d’utilisateur individuels** est activée. Une chaîne de connexion de base de données par défaut est incluse dans le fichier *appsettings.js* du projet avec la clé `DefaultConnection` . La chaîne de connexion par défaut est pour la base de données locale, qui s’exécute en mode utilisateur et ne nécessite pas de mot de passe. Pendant le déploiement de l’application, la `DefaultConnection` valeur de clé peut être remplacée par la valeur d’une variable d’environnement. La variable d’environnement peut stocker la chaîne de connexion complète avec des informations d’identification sensibles.
+Prenons l’exemple d’une application Web ASP.NET Core dans laquelle la sécurité **des comptes d’utilisateur individuels** est activée. Une chaîne de connexion de base de données par défaut est incluse dans le fichier du projet *appsettings.json* avec la clé `DefaultConnection` . La chaîne de connexion par défaut est pour la base de données locale, qui s’exécute en mode utilisateur et ne nécessite pas de mot de passe. Pendant le déploiement de l’application, la `DefaultConnection` valeur de clé peut être remplacée par la valeur d’une variable d’environnement. La variable d’environnement peut stocker la chaîne de connexion complète avec des informations d’identification sensibles.
 
 > [!WARNING]
 > Les variables d’environnement sont généralement stockées en texte brut et non chiffré. Si l’ordinateur ou le processus est compromis, les variables d’environnement sont accessibles aux parties non fiables. Des mesures supplémentaires pour empêcher la divulgation de secrets d’utilisateur peuvent être nécessaires.
@@ -100,7 +101,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 
 Dans l’exemple précédent, le signe deux-points indique qu' `Movies` il s’agit d’un littéral d’objet avec une `ServiceApiKey` propriété.
 
-L’outil Gestionnaire de secret peut également être utilisé à partir d’autres annuaires. Utilisez l' `--project` option pour fournir le chemin d’accès au système de fichiers où se trouve le fichier *. csproj* . Par exemple :
+L’outil Gestionnaire de secret peut également être utilisé à partir d’autres annuaires. Utilisez l' `--project` option pour fournir le chemin d’accès au système de fichiers où se trouve le fichier *. csproj* . Exemple :
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -108,7 +109,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ### <a name="json-structure-flattening-in-visual-studio"></a>Aplatissement de la structure JSON dans Visual Studio
 
-Le geste **gérer les secrets** de l’utilisateur de Visual Studio ouvre un *secrets.jssur* le fichier dans l’éditeur de texte. Remplacez le contenu de *secrets.js* par les paires clé-valeur à stocker. Par exemple :
+Le geste **gérer les secrets** de l’utilisateur de Visual Studio ouvre un *secrets.jssur* le fichier dans l’éditeur de texte. Remplacez le contenu de *secrets.js* par les paires clé-valeur à stocker. Exemple :
 
 ```json
 {
@@ -181,17 +182,17 @@ Les `Movies:ConnectionString` `Movies:ServiceApiKey` secrets et sont mappés aux
 
 ## <a name="string-replacement-with-secrets"></a>Remplacement de chaîne par des secrets
 
-Le stockage des mots de passe en texte brut n’est pas sécurisé. Par exemple, une chaîne de connexion de base de données stockée dans *appsettings.jssur* peut inclure un mot de passe pour l’utilisateur spécifié :
+Le stockage des mots de passe en texte brut n’est pas sécurisé. Par exemple, une chaîne de connexion de base de données stockée dans *appsettings.json* peut inclure un mot de passe pour l’utilisateur spécifié :
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
-Une approche plus sécurisée consiste à stocker le mot de passe en tant que secret. Par exemple :
+Une approche plus sécurisée consiste à stocker le mot de passe en tant que secret. Exemple :
 
 ```dotnetcli
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-Supprimez la `Password` paire clé-valeur de la chaîne de connexion dans *appsettings.jssur*. Par exemple :
+Supprimez la `Password` paire clé-valeur de la chaîne de connexion dans *appsettings.json* . Exemple :
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings.json?highlight=3)]
 
@@ -216,7 +217,7 @@ Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted
 Movies:ServiceApiKey = 12345
 ```
 
-Dans l’exemple précédent, un signe deux-points dans les noms de clé désigne la hiérarchie d’objets dans *secrets.jssur*.
+Dans l’exemple précédent, un signe deux-points dans les noms de clé désigne la hiérarchie d’objets dans *secrets.jssur* .
 
 ## <a name="remove-a-single-secret"></a>Supprimer une seule clé secrète
 
@@ -228,7 +229,7 @@ Exécutez la commande suivante à partir du répertoire dans lequel se trouve le
 dotnet user-secrets remove "Movies:ConnectionString"
 ```
 
-L'secrets.jsde l’application * sur* le fichier a été modifiée pour supprimer la paire clé-valeur associée à la `MoviesConnectionString` clé :
+L'secrets.jsde l’application *sur* le fichier a été modifiée pour supprimer la paire clé-valeur associée à la `MoviesConnectionString` clé :
 
 ```json
 {
@@ -266,7 +267,7 @@ Tous les secrets d’utilisateur de l’application ont été supprimés de l' *
 No secrets configured for this application.
 ```
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * Pour plus d’informations sur l’accès au gestionnaire de secret à partir d’IIS, consultez [ce problème](https://github.com/dotnet/AspNetCore.Docs/issues/16328) .
 * <xref:fundamentals/configuration/index>
@@ -286,7 +287,7 @@ Ce document décrit les techniques de stockage et de récupération des données
 
 Les variables d’environnement sont utilisées pour éviter le stockage des secrets d’application dans le code ou dans des fichiers de configuration locaux. Les variables d’environnement remplacent les valeurs de configuration pour toutes les sources de configuration spécifiées précédemment.
 
-Prenons l’exemple d’une application Web ASP.NET Core dans laquelle la sécurité **des comptes d’utilisateur individuels** est activée. Une chaîne de connexion de base de données par défaut est incluse dans le fichier *appsettings.js* du projet avec la clé `DefaultConnection` . La chaîne de connexion par défaut est pour la base de données locale, qui s’exécute en mode utilisateur et ne nécessite pas de mot de passe. Pendant le déploiement de l’application, la `DefaultConnection` valeur de clé peut être remplacée par la valeur d’une variable d’environnement. La variable d’environnement peut stocker la chaîne de connexion complète avec des informations d’identification sensibles.
+Prenons l’exemple d’une application Web ASP.NET Core dans laquelle la sécurité **des comptes d’utilisateur individuels** est activée. Une chaîne de connexion de base de données par défaut est incluse dans le fichier du projet *appsettings.json* avec la clé `DefaultConnection` . La chaîne de connexion par défaut est pour la base de données locale, qui s’exécute en mode utilisateur et ne nécessite pas de mot de passe. Pendant le déploiement de l’application, la `DefaultConnection` valeur de clé peut être remplacée par la valeur d’une variable d’environnement. La variable d’environnement peut stocker la chaîne de connexion complète avec des informations d’identification sensibles.
 
 > [!WARNING]
 > Les variables d’environnement sont généralement stockées en texte brut et non chiffré. Si l’ordinateur ou le processus est compromis, les variables d’environnement sont accessibles aux parties non fiables. Des mesures supplémentaires pour empêcher la divulgation de secrets d’utilisateur peuvent être nécessaires.
@@ -343,7 +344,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 
 Dans l’exemple précédent, le signe deux-points indique qu' `Movies` il s’agit d’un littéral d’objet avec une `ServiceApiKey` propriété.
 
-L’outil Gestionnaire de secret peut également être utilisé à partir d’autres annuaires. Utilisez l' `--project` option pour fournir le chemin d’accès au système de fichiers où se trouve le fichier *. csproj* . Par exemple :
+L’outil Gestionnaire de secret peut également être utilisé à partir d’autres annuaires. Utilisez l' `--project` option pour fournir le chemin d’accès au système de fichiers où se trouve le fichier *. csproj* . Exemple :
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -351,7 +352,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ### <a name="json-structure-flattening-in-visual-studio"></a>Aplatissement de la structure JSON dans Visual Studio
 
-Le geste **gérer les secrets** de l’utilisateur de Visual Studio ouvre un *secrets.jssur* le fichier dans l’éditeur de texte. Remplacez le contenu de *secrets.js* par les paires clé-valeur à stocker. Par exemple :
+Le geste **gérer les secrets** de l’utilisateur de Visual Studio ouvre un *secrets.jssur* le fichier dans l’éditeur de texte. Remplacez le contenu de *secrets.js* par les paires clé-valeur à stocker. Exemple :
 
 ```json
 {
@@ -426,17 +427,17 @@ Les `Movies:ConnectionString` `Movies:ServiceApiKey` secrets et sont mappés aux
 
 ## <a name="string-replacement-with-secrets"></a>Remplacement de chaîne par des secrets
 
-Le stockage des mots de passe en texte brut n’est pas sécurisé. Par exemple, une chaîne de connexion de base de données stockée dans *appsettings.jssur* peut inclure un mot de passe pour l’utilisateur spécifié :
+Le stockage des mots de passe en texte brut n’est pas sécurisé. Par exemple, une chaîne de connexion de base de données stockée dans *appsettings.json* peut inclure un mot de passe pour l’utilisateur spécifié :
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
-Une approche plus sécurisée consiste à stocker le mot de passe en tant que secret. Par exemple :
+Une approche plus sécurisée consiste à stocker le mot de passe en tant que secret. Exemple :
 
 ```dotnetcli
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-Supprimez la `Password` paire clé-valeur de la chaîne de connexion dans *appsettings.jssur*. Par exemple :
+Supprimez la `Password` paire clé-valeur de la chaîne de connexion dans *appsettings.json* . Exemple :
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
@@ -461,7 +462,7 @@ Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted
 Movies:ServiceApiKey = 12345
 ```
 
-Dans l’exemple précédent, un signe deux-points dans les noms de clé désigne la hiérarchie d’objets dans *secrets.jssur*.
+Dans l’exemple précédent, un signe deux-points dans les noms de clé désigne la hiérarchie d’objets dans *secrets.jssur* .
 
 ## <a name="remove-a-single-secret"></a>Supprimer une seule clé secrète
 
@@ -473,7 +474,7 @@ Exécutez la commande suivante à partir du répertoire dans lequel se trouve le
 dotnet user-secrets remove "Movies:ConnectionString"
 ```
 
-L'secrets.jsde l’application * sur* le fichier a été modifiée pour supprimer la paire clé-valeur associée à la `MoviesConnectionString` clé :
+L'secrets.jsde l’application *sur* le fichier a été modifiée pour supprimer la paire clé-valeur associée à la `MoviesConnectionString` clé :
 
 ```json
 {
@@ -511,7 +512,7 @@ Tous les secrets d’utilisateur de l’application ont été supprimés de l' *
 No secrets configured for this application.
 ```
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * Pour plus d’informations sur l’accès au gestionnaire de secret à partir d’IIS, consultez [ce problème](https://github.com/dotnet/AspNetCore.Docs/issues/16328) .
 * <xref:fundamentals/configuration/index>

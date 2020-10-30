@@ -5,6 +5,7 @@ description: En savoir plus sur la Razor syntaxe de balisage pour incorporer du 
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 9c2bbd2d463af8a2ea7db716d01bf1436338ea77
-ms.sourcegitcommit: cd861463faf44956855e3c4b3669483bbc4a7463
+ms.openlocfilehash: c1278b0cd3e58814b1c06dca81efd662c3de0c54
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89101359"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059193"
 ---
 # <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor Référence de syntaxe pour ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Taylor Mullen](https://twitter.com/ntaylormullen)et [Dan Vicarel](https://github.com/Rabadash8820)
 
-Razor est une syntaxe de balisage pour incorporer du code basé sur le serveur dans des pages Web. La Razor syntaxe se compose du Razor balisage, de C# et du code html. Les fichiers contenant Razor ont généralement une extension de fichier *. cshtml* . Razorse trouve également dans les fichiers de [ Razor composants](xref:blazor/components/index) (*. Razor*).
+Razor est une syntaxe de balisage pour incorporer du code basé sur le serveur dans des pages Web. La Razor syntaxe se compose du Razor balisage, de C# et du code html. Les fichiers contenant Razor ont généralement une extension de fichier *. cshtml* . Razorse trouve également dans les fichiers de [ Razor composants](xref:blazor/components/index) ( *. Razor* ).
 
 ## <a name="rendering-html"></a>Rendu HTML
 
@@ -117,7 +118,7 @@ Les expressions explicites peuvent servir à concaténer du texte avec un résul
 
 Sans l’expression explicite, `<p>Age@joe.Age</p>` est traité comme une adresse e-mail, et `<p>Age@joe.Age</p>` est affiché. Avec une expression explicite, `<p>Age33</p>` est affiché.
 
-Les expressions explicites peuvent être utilisées pour afficher la sortie de méthodes génériques dans les fichiers *.cshtml*. Le balisage suivant montre comment corriger l’erreur affichée précédemment provoquée par les crochets d’un générique C#. Le code est écrit sous forme d’expression explicite :
+Les expressions explicites peuvent être utilisées pour afficher la sortie de méthodes génériques dans les fichiers *.cshtml* . Le balisage suivant montre comment corriger l’erreur affichée précédemment provoquée par les crochets d’un générique C#. Le code est écrit sous forme d’expression explicite :
 
 ```cshtml
 <p>@(GenericMethod<int>())</p>
@@ -496,7 +497,7 @@ Dans [ Razor composants](xref:blazor/components/index), utilisez `@code` sur `@f
 
 ::: moniker-end
 
-Par exemple :
+Exemple :
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -657,7 +658,7 @@ La directive `@namespace` :
 
 Pour l' Razor exemple de pages illustré dans le tableau suivant :
 
-* Chaque page importe *Pages/_ViewImports.cshtml*.
+* Chaque page importe *Pages/_ViewImports.cshtml* .
 * *Pages/_ViewImports.cshtml* contient `@namespace Hello.World`.
 * Chaque page a `Hello.World` comme racine de son espace de noms.
 
@@ -930,7 +931,7 @@ Les Razor Mots clés C# doivent être double-échappés par `@(@C# Razor Keyword
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Avec kit SDK .NET Core 2,1 ou version ultérieure, le [ Razor Kit de développement logiciel (SDK)](xref:razor-pages/sdk) gère la compilation des Razor fichiers. Lors de la génération d’un projet, le Razor Kit de développement logiciel (SDK) génère un répertoire *obj/<build_configuration>/<target_framework_moniker>/ Razor * dans la racine du projet. La structure de répertoires dans le *Razor* répertoire reflète la structure de répertoire du projet.
+Avec kit SDK .NET Core 2,1 ou version ultérieure, le [ Razor Kit de développement logiciel (SDK)](xref:razor-pages/sdk) gère la compilation des Razor fichiers. Lors de la génération d’un projet, le Razor Kit de développement logiciel (SDK) génère un répertoire *obj/<build_configuration>/<target_framework_moniker>/ Razor* dans la racine du projet. La structure de répertoires dans le *Razor* répertoire reflète la structure de répertoire du projet.
 
 Considérez la structure de répertoires suivante dans un projet ASP.NET Core 2,1 Razor pages ciblant .net Core 2,1 :
 
@@ -968,7 +969,7 @@ La création du projet dans la configuration *Debug* génère le répertoire *ob
            Index.g.cshtml.cs
 ```
 
-Pour afficher la classe générée pour *pages/index. cshtml*, ouvrez *obj/Debug/netcoreapp 2.1/ Razor /pages/index.g.cshtml.cs*.
+Pour afficher la classe générée pour *pages/index. cshtml* , ouvrez *obj/Debug/netcoreapp 2.1/ Razor /pages/index.g.cshtml.cs* .
 
 ::: moniker-end
 
@@ -993,8 +994,8 @@ Définissez un point d’arrêt sur l’instruction `return csharpDocument;` de 
 Le Razor moteur d’affichage effectue des recherches respectant la casse pour les vues. Toutefois, la recherche réellement effectuée est déterminée par le système de fichiers sous-jacent :
 
 * Source basé sur un fichier :
-  * Sur les systèmes d’exploitation avec des systèmes de fichiers qui ne respectent pas la casse (par exemple, Windows), les recherches de fournisseurs de fichiers physiques ne respectent pas la casse. Par exemple, `return View("Test")` trouve les correspondances */Views/Home/Test.cshtml*, */Views/home/test.cshtml* et toutes les autres variantes de casse.
-  * Sur des systèmes de fichiers respectant la casse (par exemple, Linux, OSX, et avec `EmbeddedFileProvider`), les recherches respectent la casse. Par exemple, `return View("Test")` trouve uniquement la correspondance */Views/Home/Test.cshtml*.
+  * Sur les systèmes d’exploitation avec des systèmes de fichiers qui ne respectent pas la casse (par exemple, Windows), les recherches de fournisseurs de fichiers physiques ne respectent pas la casse. Par exemple, `return View("Test")` trouve les correspondances */Views/Home/Test.cshtml* , */Views/home/test.cshtml* et toutes les autres variantes de casse.
+  * Sur des systèmes de fichiers respectant la casse (par exemple, Linux, OSX, et avec `EmbeddedFileProvider`), les recherches respectent la casse. Par exemple, `return View("Test")` trouve uniquement la correspondance */Views/Home/Test.cshtml* .
 * Vues précompilées : Avec ASP.NET Core 2.0 et les versions ultérieures, les recherches de vues précompilées ne respectent pas la casse, quels que soient les systèmes d’exploitation. Le comportement est le même que celui du fournisseur de fichiers physiques sur Windows. Si deux vues précompilées diffèrent seulement par leur casse, le résultat de la recherche est non déterministe.
 
 Les développeurs doivent s’efforcer d’utiliser la même casse pour les noms de fichiers et de répertoires que pour les noms des éléments suivants :

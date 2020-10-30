@@ -5,6 +5,7 @@ description: Cet article décrit les étapes les plus courantes pour la migratio
 ms.author: scaddie
 ms.date: 06/21/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 63f2fadc328650063078339467e65c6b0e97a08e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cad7582670013661f5fcbfbebad923f0f092462e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634317"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057178"
 ---
 # <a name="migrate-authentication-and-no-locidentity-to-aspnet-core-20"></a>Migrer l’authentification et Identity vers ASP.NET Core 2,0
 
@@ -41,7 +42,7 @@ Dans 2,0, l' <xref:Microsoft.AspNetCore.Identity> espace de noms est devenu la n
 
 Dans les projets 1. x, l’authentification est configurée à l’aide d’un intergiciel (middleware). Une méthode d’intergiciel est appelée pour chaque schéma d’authentification que vous souhaitez prendre en charge.
 
-L’exemple 1. x suivant configure l’authentification Facebook avec Identity dans *Startup.cs*:
+L’exemple 1. x suivant configure l’authentification Facebook avec Identity dans *Startup.cs* :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -60,9 +61,9 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory)
 }
 ```
 
-Dans les projets 2,0, l’authentification est configurée via les services. Chaque schéma d’authentification est inscrit dans la `ConfigureServices` méthode de *Startup.cs*. La `UseIdentity` méthode est remplacée par `UseAuthentication` .
+Dans les projets 2,0, l’authentification est configurée via les services. Chaque schéma d’authentification est inscrit dans la `ConfigureServices` méthode de *Startup.cs* . La `UseIdentity` méthode est remplacée par `UseAuthentication` .
 
-L’exemple 2,0 suivant configure l’authentification Facebook avec Identity dans *Startup.cs*:
+L’exemple 2,0 suivant configure l’authentification Facebook avec Identity dans *Startup.cs* :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -91,7 +92,7 @@ Vous trouverez ci-dessous des instructions de migration de 2,0 pour chaque sché
 
 ### <a name="no-loccookie-based-authentication"></a>Cookieauthentification basée sur
 
-Sélectionnez l’une des deux options ci-dessous et apportez les modifications nécessaires dans *Startup.cs*:
+Sélectionnez l’une des deux options ci-dessous et apportez les modifications nécessaires dans *Startup.cs* :
 
 1. Utiliser cookie s avec Identity
     - Remplacez `UseIdentity` par `UseAuthentication` dans la `Configure` méthode :
@@ -133,7 +134,7 @@ Sélectionnez l’une des deux options ci-dessous et apportez les modifications 
 
 ### <a name="jwt-bearer-authentication"></a>Authentification du porteur JWT
 
-Apportez les modifications suivantes dans *Startup.cs*:
+Apportez les modifications suivantes dans *Startup.cs* :
 - Remplacez l' `UseJwtBearerAuthentication` appel de méthode dans la `Configure` méthode par `UseAuthentication` :
 
     ```csharp
@@ -155,7 +156,7 @@ Apportez les modifications suivantes dans *Startup.cs*:
 
 ### <a name="openid-connect-oidc-authentication"></a>Authentification OpenID Connect (OIDC)
 
-Apportez les modifications suivantes dans *Startup.cs*:
+Apportez les modifications suivantes dans *Startup.cs* :
 
 - Remplacez l' `UseOpenIdConnectAuthentication` appel de méthode dans la `Configure` méthode par `UseAuthentication` :
 
@@ -190,7 +191,7 @@ Apportez les modifications suivantes dans *Startup.cs*:
     
 ### <a name="facebook-authentication"></a>Authentification Facebook
 
-Apportez les modifications suivantes dans *Startup.cs*:
+Apportez les modifications suivantes dans *Startup.cs* :
 - Remplacez l' `UseFacebookAuthentication` appel de méthode dans la `Configure` méthode par `UseAuthentication` :
 
     ```csharp
@@ -210,7 +211,7 @@ Apportez les modifications suivantes dans *Startup.cs*:
 
 ### <a name="google-authentication"></a>Authentification Google
 
-Apportez les modifications suivantes dans *Startup.cs*:
+Apportez les modifications suivantes dans *Startup.cs* :
 - Remplacez l' `UseGoogleAuthentication` appel de méthode dans la `Configure` méthode par `UseAuthentication` :
 
     ```csharp
@@ -232,7 +233,7 @@ Apportez les modifications suivantes dans *Startup.cs*:
 
 Pour plus d’informations sur l’authentification compte Microsoft, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/14455).
 
-Apportez les modifications suivantes dans *Startup.cs*:
+Apportez les modifications suivantes dans *Startup.cs* :
 - Remplacez l' `UseMicrosoftAccountAuthentication` appel de méthode dans la `Configure` méthode par `UseAuthentication` :
 
     ```csharp
@@ -252,7 +253,7 @@ Apportez les modifications suivantes dans *Startup.cs*:
 
 ### <a name="twitter-authentication"></a>Authentification Twitter
 
-Apportez les modifications suivantes dans *Startup.cs*:
+Apportez les modifications suivantes dans *Startup.cs* :
 - Remplacez l' `UseTwitterAuthentication` appel de méthode dans la `Configure` méthode par `UseAuthentication` :
 
     ```csharp
@@ -274,7 +275,7 @@ Apportez les modifications suivantes dans *Startup.cs*:
 
 Dans 1. x, les `AutomaticAuthenticate` `AutomaticChallenge` Propriétés et de la classe de base [AuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) étaient destinées à être définies sur un seul schéma d’authentification. Il n’existait pas de bonne méthode pour l’appliquer.
 
-Dans 2,0, ces deux propriétés ont été supprimées en tant que propriétés sur l' `AuthenticationOptions` instance individuelle. Ils peuvent être configurés dans l' `AddAuthentication` appel de méthode au sein `ConfigureServices` de la méthode de *Startup.cs*:
+Dans 2,0, ces deux propriétés ont été supprimées en tant que propriétés sur l' `AuthenticationOptions` instance individuelle. Ils peuvent être configurés dans l' `AddAuthentication` appel de méthode au sein `ConfigureServices` de la méthode de *Startup.cs* :
 
 ```csharp
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -349,7 +350,7 @@ Pour plus d'informations, consultez <xref:security/authentication/windowsauth>.
 
 Un effet secondaire des modifications 2,0 est le passage à l’utilisation des options nommées à la place des cookie instances d’options. La possibilité de personnaliser les Identity cookie noms de schéma est supprimée.
 
-Par exemple, les projets 1. x utilisent l' [injection de constructeur](xref:mvc/controllers/dependency-injection#constructor-injection) pour passer un `IdentityCookieOptions` paramètre dans *AccountController.cs* et *ManageController.cs*. Le cookie schéma d’authentification externe est accessible à partir de l’instance fournie :
+Par exemple, les projets 1. x utilisent l' [injection de constructeur](xref:mvc/controllers/dependency-injection#constructor-injection) pour passer un `IdentityCookieOptions` paramètre dans *AccountController.cs* et *ManageController.cs* . Le cookie schéma d’authentification externe est accessible à partir de l’instance fournie :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor&highlight=4,11)]
 
@@ -429,7 +430,7 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 ## <a name="replace-getexternalauthenticationschemes"></a>Remplacer GetExternalAuthenticationSchemes
 
-La méthode synchrone `GetExternalAuthenticationSchemes` a été supprimée en faveur d’une version asynchrone. les projets 1. x ont le code suivant dans *Controllers/ManageController. cs*:
+La méthode synchrone `GetExternalAuthenticationSchemes` a été supprimée en faveur d’une version asynchrone. les projets 1. x ont le code suivant dans *Controllers/ManageController. cs* :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemes)]
 
@@ -441,7 +442,7 @@ Dans les projets 2,0, utilisez la <xref:Microsoft.AspNetCore.Identity.SignInMana
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemesAsync)]
 
-Dans *login. cshtml*, la `AuthenticationScheme` propriété accessible dans la `foreach` boucle devient `Name` :
+Dans *login. cshtml* , la `AuthenticationScheme` propriété accessible dans la `foreach` boucle devient `Name` :
 
 [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Views/Account/Login.cshtml?name=snippet_GetExtAuthNSchemesAsync&highlight=2,19)]
 
@@ -449,7 +450,7 @@ Dans *login. cshtml*, la `AuthenticationScheme` propriété accessible dans la `
 
 ## <a name="manageloginsviewmodel-property-change"></a>Modification de la propriété ManageLoginsViewModel
 
-Un `ManageLoginsViewModel` objet est utilisé dans l' `ManageLogins` action de *ManageController.cs*. Dans les projets 1. x, le type de retour de la propriété de l’objet `OtherLogins` est `IList<AuthenticationDescription>` . Ce type de retour nécessite une importation de `Microsoft.AspNetCore.Http.Authentication` :
+Un `ManageLoginsViewModel` objet est utilisé dans l' `ManageLogins` action de *ManageController.cs* . Dans les projets 1. x, le type de retour de la propriété de l’objet `OtherLogins` est `IList<AuthenticationDescription>` . Ce type de retour nécessite une importation de `Microsoft.AspNetCore.Http.Authentication` :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Models/ManageViewModels/ManageLoginsViewModel.cs?name=snippet_ManageLoginsViewModel&highlight=2,11)]
 
@@ -459,6 +460,6 @@ Dans les projets 2,0, le type de retour devient `IList<AuthenticationScheme>` . 
 
 <a name="additional-resources"></a>
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 Pour plus d’informations, consultez la discussion sur le problème [Auth 2,0](https://github.com/aspnet/Security/issues/1338) sur GitHub.

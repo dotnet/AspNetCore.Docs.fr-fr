@@ -7,6 +7,7 @@ ms.author: jamesnk
 ms.custom: mvc
 ms.date: 07/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/troubleshoot
-ms.openlocfilehash: 0c897c8c640f8713fc7d3b6cad0e6c571131d7a5
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: cbce85caf7ba792253ba62c6be084c8905acd00f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113840"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058712"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>Résoudre les problèmes de gRPC sur .NET Core
 
@@ -108,7 +109,7 @@ Kestrel ne prend pas en charge HTTP/2 avec TLS sur macOS et les anciennes versio
 
 Pour contourner ce problème, configurez Kestrel et le client gRPC pour utiliser HTTP/2 *sans* TLS. Vous ne devez effectuer cette opération qu’au cours du développement. Si vous n’utilisez pas TLS, les messages gRPC sont envoyés sans chiffrement.
 
-Kestrel doit configurer un point de terminaison HTTP/2 sans TLS dans *Program.cs*:
+Kestrel doit configurer un point de terminaison HTTP/2 sans TLS dans *Program.cs* :
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -166,9 +167,9 @@ Les projets WPF présentent un [problème connu](https://github.com/dotnet/wpf/i
 Vous pouvez contourner ce problème en :
 
 1. Créez un projet de bibliothèque de classes .NET Core.
-2. Dans le nouveau projet, ajoutez des références pour activer la [génération de code C# à partir des fichiers * \* . proto* ](xref:grpc/basics#generated-c-assets):
+2. Dans le nouveau projet, ajoutez des références pour activer la [génération de code C# à partir des fichiers *\* . proto*](xref:grpc/basics#generated-c-assets):
     * Ajoutez une référence de package au package [GRPC. Tools](https://www.nuget.org/packages/Grpc.Tools/) .
-    * Ajoutez des fichiers * \* . proto* au `<Protobuf>` groupe d’éléments.
+    * Ajoutez des fichiers *\* . proto* au `<Protobuf>` groupe d’éléments.
 3. Dans l’application WPF, ajoutez une référence au nouveau projet.
 
 L’application WPF peut utiliser les types générés par gRPC à partir du nouveau projet de bibliothèque de classes.

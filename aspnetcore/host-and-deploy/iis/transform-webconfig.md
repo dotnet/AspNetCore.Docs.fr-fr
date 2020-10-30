@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: a2f26f32d2a282189b391aa9bb8c4637723dc60a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 259b5bf9bf2a6de987494b5771897355e3ea67db
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634629"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057310"
 ---
 # <a name="transform-webconfig"></a>Transformer web.config
 
@@ -45,7 +46,7 @@ Ces transformations se produisent pour l’un des scénarios de génération *we
 
 Les transformations de la configuration de build sont exécutées en premier.
 
-Incluez un fichier *web.{CONFIGURATION}.config* pour chaque [configuration de build (Déboguer|Mettre en production)](/dotnet/core/tools/dotnet-publish#options) nécessitant une transformation *web.config*.
+Incluez un fichier *web.{CONFIGURATION}.config* pour chaque [configuration de build (Déboguer|Mettre en production)](/dotnet/core/tools/dotnet-publish#options) nécessitant une transformation *web.config* .
 
 Dans l’exemple suivant, une variable d’environnement propre à la configuration est définie dans *web.Release.config* :
 
@@ -79,7 +80,7 @@ La propriété MSBuild pour la configuration est `$(Configuration)`.
 
 Les transformations du profil sont exécutées ensuite, après les transformations de la [configuration de build](#build-configuration).
 
-Incluez un fichier *web.{PROFILE}.config* pour chaque configuration de profil nécessitant une transformation *web.config*.
+Incluez un fichier *web.{PROFILE}.config* pour chaque configuration de profil nécessitant une transformation *web.config* .
 
 Dans l’exemple suivant, une variable d’environnement propre au profil est définie dans *web.FolderProfile.config* pour un profil de publication de dossier :
 
@@ -115,7 +116,7 @@ Si aucun profil n’est passé, le nom du profil par défaut est **FileSystem** 
 
 Les transformations de l’environnement sont exécutées en troisième place, après les transformations de la [configuration de build](#build-configuration) et du [profil](#profile).
 
-Incluez un fichier *web.{ENVIRONMENT}.config* pour chaque [environnement](xref:fundamentals/environments) nécessitant une transformation *web.config*.
+Incluez un fichier *web.{ENVIRONMENT}.config* pour chaque [environnement](xref:fundamentals/environments) nécessitant une transformation *web.config* .
 
 Dans l’exemple suivant, une variable d’environnement propre à l’environnement est définie dans *web.Production.config* pour l’environnement de production :
 
@@ -153,7 +154,7 @@ La variable d’environnement `ASPNETCORE_ENVIRONMENT` est automatiquement ajout
 
 Les transformations personnalisées sont exécutées en dernier, après les transformations de la [configuration de build](#build-configuration), du [profil](#profile) et de [l’environnement](#environment).
 
-Incluez un fichier *{CUSTOM_NAME}.transform* pour chaque configuration personnalisée nécessitant une transformation *web.config*.
+Incluez un fichier *{CUSTOM_NAME}.transform* pour chaque configuration personnalisée nécessitant une transformation *web.config* .
 
 Dans l’exemple suivant, une variable d’environnement de transformation personnalisée est définie dans *custom.transform* :
 
@@ -185,7 +186,7 @@ La propriété MSBuild pour le nom du profil est `$(CustomTransformFileName)`.
 
 ## <a name="prevent-webconfig-transformation"></a>Empêcher la transformation web.config
 
-Pour empêcher les transformations du fichier *web.config*, définissez la propriété MSBuild `$(IsWebConfigTransformDisabled)` :
+Pour empêcher les transformations du fichier *web.config* , définissez la propriété MSBuild `$(IsWebConfigTransformDisabled)` :
 
 ```dotnetcli
 dotnet publish /p:IsWebConfigTransformDisabled=true

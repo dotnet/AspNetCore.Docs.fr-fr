@@ -5,6 +5,7 @@ description: Partie 9 de la série de didacticiels sur ASP.NET Core MVC.
 ms.author: riande
 ms.date: 04/13/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: c6904606cfe82a6c3a375667b2b2fcae0ab31d26
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 340a66c4a561c6e00bf6f38bcf51abc795aa649c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628636"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059089"
 ---
 # <a name="part-9-add-validation-to-an-aspnet-core-mvc-app"></a>Partie 9, ajouter une validation à une application ASP.NET Core MVC
 
@@ -130,7 +131,7 @@ Le code suivant illustre la combinaison d’attributs sur une seule ligne :
 
 Dans la partie suivante de la série, nous examinons l’application et nous apportons des améliorations aux méthodes `Details` et `Delete` générées automatiquement.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Utilisation des formulaires](xref:mvc/views/working-with-forms)
 * [Globalisation et localisation](xref:fundamentals/localization)

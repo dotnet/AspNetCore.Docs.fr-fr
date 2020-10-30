@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/response-compression
-ms.openlocfilehash: b8947e3c3c4f634fbd838c22ff60799257143480
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9327c98c22a4d42d31ea8ba1eb8337153040b5b5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634993"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056970"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compression des réponses en ASP.NET Core
 
@@ -56,12 +57,12 @@ Lorsqu’un client peut traiter du contenu compressé, le client doit informer l
 | `Accept-Encoding` valeurs d’en-tête | Intergiciel pris en charge | Description |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Oui (valeur par défaut)        | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | Non                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | Non                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
-| `gzip`                          | Oui                  | [Format de fichier gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Oui                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
-| `pack200-gzip`                  | Non                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Oui                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
+| `deflate`                       | No                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | No                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `gzip`                          | Yes                  | [Format de fichier gzip](https://tools.ietf.org/html/rfc1952) |
+| `identity`                      | Yes                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
+| `pack200-gzip`                  | No                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Yes                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
 
 Pour plus d’informations, consultez la [liste de codage de contenu officielle IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -73,7 +74,7 @@ Les algorithmes de compression sont soumis à un compromis entre la vitesse de c
 
 Les en-têtes impliqués dans la demande, l’envoi, la mise en cache et la réception de contenu compressé sont décrits dans le tableau ci-dessous.
 
-| En-tête             | Role |
+| En-tête             | Rôle |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Envoyée du client au serveur pour indiquer les schémas de codage de contenu acceptables pour le client. |
 | `Content-Encoding` | Envoyé du serveur au client pour indiquer l’encodage du contenu dans la charge utile. |
@@ -87,7 +88,7 @@ Explorez les fonctionnalités de l’intergiciel de compression des réponses av
 * La compression des réponses de l’application à l’aide de gzip et des fournisseurs de compression personnalisés.
 * Comment ajouter un type MIME à la liste par défaut des types MIME pour la compression.
 
-## <a name="package"></a>Package
+## <a name="package"></a>Paquet
 
 L’intergiciel (middleware) de compression des réponses est fourni par le package [Microsoft. AspNetCore. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) , qui est implicitement inclus dans les applications ASP.net core.
 
@@ -117,7 +118,7 @@ Remarques :
 
 Envoyez une demande à l’exemple d’application sans l' `Accept-Encoding` en-tête et observez que la réponse n’est pas compressée. Les `Content-Encoding` `Vary` en-têtes et ne sont pas présents dans la réponse.
 
-![Fenêtre Fiddler qui indique le résultat d’une demande sans l’en-tête d’encodage Accept. La réponse n’est pas compressée.](response-compression/_static/request-uncompressed.png)
+![Fenêtre Fiddler présentant le résultat d’une demande sans l’en-tête Accept-Encoding. La réponse n’est pas compressée.](response-compression/_static/request-uncompressed.png)
 
 Envoyez une demande à l’exemple d’application avec l' `Accept-Encoding: br` en-tête (compression Brotli) et observez que la réponse est compressée. Les `Content-Encoding` `Vary` en-têtes et sont présents dans la réponse.
 
@@ -218,7 +219,7 @@ Créer des implémentations de compression personnalisées avec <xref:Microsoft.
 
 Envoyez une demande à l’exemple d’application avec l' `Accept-Encoding: mycustomcompression` en-tête et observez les en-têtes de réponse. Les `Vary` `Content-Encoding` en-têtes et sont présents dans la réponse. Le corps de la réponse (non affiché) n’est pas compressé par l’exemple. Il n’existe pas d’implémentation de compression dans la `CustomCompressionProvider` classe de l’exemple. Toutefois, l’exemple illustre l’emplacement où vous implémentez un tel algorithme de compression.
 
-![Fenêtre Fiddler présentant le résultat d’une demande avec l’en-tête Accept-Encoding et une valeur de mycustomcompression. Les en-têtes Vary et encodage de contenu sont ajoutés à la réponse.](response-compression/_static/request-custom-compression.png)
+![Fenêtre Fiddler présentant le résultat d’une demande avec l’en-tête Accept-Encoding et la valeur mycustomcompression. Les en-têtes Vary et encodage de contenu sont ajoutés à la réponse.](response-compression/_static/request-custom-compression.png)
 
 ## <a name="mime-types"></a>types MIME
 
@@ -233,7 +234,7 @@ L’intergiciel (middleware) spécifie un ensemble de types MIME par défaut pou
 * `text/plain`
 * `text/xml`
 
-Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière (*Banner. svg*).
+Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière ( *Banner. svg* ).
 
 [!code-csharp[](response-compression/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -262,7 +263,7 @@ Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](
 * La requête ne doit pas inclure l' `Content-Range` en-tête.
 * La demande doit utiliser le protocole http, sauf si le protocole sécurisé (https) est configuré dans les options de l’intergiciel (middleware) de compression des réponses. *Notez le danger [décrit ci-dessus](#compression-with-secure-protocol) lors de l’activation de la compression de contenu sécurisé.*
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/index>
@@ -302,12 +303,12 @@ Lorsqu’un client peut traiter du contenu compressé, le client doit informer l
 | `Accept-Encoding` valeurs d’en-tête | Intergiciel pris en charge | Description |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Oui (valeur par défaut)        | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | Non                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | Non                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
-| `gzip`                          | Oui                  | [Format de fichier gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Oui                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
-| `pack200-gzip`                  | Non                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Oui                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
+| `deflate`                       | No                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | No                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `gzip`                          | Yes                  | [Format de fichier gzip](https://tools.ietf.org/html/rfc1952) |
+| `identity`                      | Yes                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
+| `pack200-gzip`                  | No                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Yes                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
 
 Pour plus d’informations, consultez la [liste de codage de contenu officielle IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -319,7 +320,7 @@ Les algorithmes de compression sont soumis à un compromis entre la vitesse de c
 
 Les en-têtes impliqués dans la demande, l’envoi, la mise en cache et la réception de contenu compressé sont décrits dans le tableau ci-dessous.
 
-| En-tête             | Role |
+| En-tête             | Rôle |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Envoyée du client au serveur pour indiquer les schémas de codage de contenu acceptables pour le client. |
 | `Content-Encoding` | Envoyé du serveur au client pour indiquer l’encodage du contenu dans la charge utile. |
@@ -333,7 +334,7 @@ Explorez les fonctionnalités de l’intergiciel de compression des réponses av
 * La compression des réponses de l’application à l’aide de gzip et des fournisseurs de compression personnalisés.
 * Comment ajouter un type MIME à la liste par défaut des types MIME pour la compression.
 
-## <a name="package"></a>Package
+## <a name="package"></a>Paquet
 
 Pour inclure l’intergiciel (middleware) dans un projet, ajoutez une référence au AspNetCore [Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), qui inclut le package [Microsoft.. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) .
 
@@ -363,7 +364,7 @@ Remarques :
 
 Envoyez une demande à l’exemple d’application sans l' `Accept-Encoding` en-tête et observez que la réponse n’est pas compressée. Les `Content-Encoding` `Vary` en-têtes et ne sont pas présents dans la réponse.
 
-![Fenêtre Fiddler qui indique le résultat d’une demande sans l’en-tête d’encodage Accept. La réponse n’est pas compressée.](response-compression/_static/request-uncompressed.png)
+![Fenêtre Fiddler présentant le résultat d’une demande sans l’en-tête Accept-Encoding. La réponse n’est pas compressée.](response-compression/_static/request-uncompressed.png)
 
 Envoyez une demande à l’exemple d’application avec l' `Accept-Encoding: br` en-tête (compression Brotli) et observez que la réponse est compressée. Les `Content-Encoding` `Vary` en-têtes et sont présents dans la réponse.
 
@@ -463,7 +464,7 @@ Créer des implémentations de compression personnalisées avec <xref:Microsoft.
 
 Envoyez une demande à l’exemple d’application avec l' `Accept-Encoding: mycustomcompression` en-tête et observez les en-têtes de réponse. Les `Vary` `Content-Encoding` en-têtes et sont présents dans la réponse. Le corps de la réponse (non affiché) n’est pas compressé par l’exemple. Il n’existe pas d’implémentation de compression dans la `CustomCompressionProvider` classe de l’exemple. Toutefois, l’exemple illustre l’emplacement où vous implémentez un tel algorithme de compression.
 
-![Fenêtre Fiddler présentant le résultat d’une demande avec l’en-tête Accept-Encoding et une valeur de mycustomcompression. Les en-têtes Vary et encodage de contenu sont ajoutés à la réponse.](response-compression/_static/request-custom-compression.png)
+![Fenêtre Fiddler présentant le résultat d’une demande avec l’en-tête Accept-Encoding et la valeur mycustomcompression. Les en-têtes Vary et encodage de contenu sont ajoutés à la réponse.](response-compression/_static/request-custom-compression.png)
 
 ## <a name="mime-types"></a>types MIME
 
@@ -478,7 +479,7 @@ L’intergiciel (middleware) spécifie un ensemble de types MIME par défaut pou
 * `text/plain`
 * `text/xml`
 
-Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière (*Banner. svg*).
+Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière ( *Banner. svg* ).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -507,7 +508,7 @@ Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](
 * La requête ne doit pas inclure l' `Content-Range` en-tête.
 * La demande doit utiliser le protocole http, sauf si le protocole sécurisé (https) est configuré dans les options de l’intergiciel (middleware) de compression des réponses. *Notez le danger [décrit ci-dessus](#compression-with-secure-protocol) lors de l’activation de la compression de contenu sécurisé.*
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/index>
@@ -547,12 +548,12 @@ Lorsqu’un client peut traiter du contenu compressé, le client doit informer l
 | `Accept-Encoding` valeurs d’en-tête | Intergiciel pris en charge | Description |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Non                   | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | Non                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | Non                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `deflate`                       | No                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | No                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Oui (valeur par défaut)        | [Format de fichier gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Oui                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
-| `pack200-gzip`                  | Non                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Oui                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
+| `identity`                      | Yes                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
+| `pack200-gzip`                  | No                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Yes                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
 
 Pour plus d’informations, consultez la [liste de codage de contenu officielle IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -564,7 +565,7 @@ Les algorithmes de compression sont soumis à un compromis entre la vitesse de c
 
 Les en-têtes impliqués dans la demande, l’envoi, la mise en cache et la réception de contenu compressé sont décrits dans le tableau ci-dessous.
 
-| En-tête             | Role |
+| En-tête             | Rôle |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Envoyée du client au serveur pour indiquer les schémas de codage de contenu acceptables pour le client. |
 | `Content-Encoding` | Envoyé du serveur au client pour indiquer l’encodage du contenu dans la charge utile. |
@@ -578,7 +579,7 @@ Explorez les fonctionnalités de l’intergiciel de compression des réponses av
 * La compression des réponses de l’application à l’aide de gzip et des fournisseurs de compression personnalisés.
 * Comment ajouter un type MIME à la liste par défaut des types MIME pour la compression.
 
-## <a name="package"></a>Package
+## <a name="package"></a>Paquet
 
 Pour inclure l’intergiciel (middleware) dans un projet, ajoutez une référence au AspNetCore [Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), qui inclut le package [Microsoft.. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) .
 
@@ -608,7 +609,7 @@ Remarques :
 
 Envoyez une demande à l’exemple d’application sans l' `Accept-Encoding` en-tête et observez que la réponse n’est pas compressée. Les `Content-Encoding` `Vary` en-têtes et ne sont pas présents dans la réponse.
 
-![Fenêtre Fiddler qui indique le résultat d’une demande sans l’en-tête d’encodage Accept. La réponse n’est pas compressée.](response-compression/_static/request-uncompressed.png)
+![Fenêtre Fiddler présentant le résultat d’une demande sans l’en-tête Accept-Encoding. La réponse n’est pas compressée.](response-compression/_static/request-uncompressed.png)
 
 Envoyez une demande à l’exemple d’application avec l' `Accept-Encoding: gzip` en-tête et observez que la réponse est compressée. Les `Content-Encoding` `Vary` en-têtes et sont présents dans la réponse.
 
@@ -668,7 +669,7 @@ Créer des implémentations de compression personnalisées avec <xref:Microsoft.
 
 Envoyez une demande à l’exemple d’application avec l' `Accept-Encoding: mycustomcompression` en-tête et observez les en-têtes de réponse. Les `Vary` `Content-Encoding` en-têtes et sont présents dans la réponse. Le corps de la réponse (non affiché) n’est pas compressé par l’exemple. Il n’existe pas d’implémentation de compression dans la `CustomCompressionProvider` classe de l’exemple. Toutefois, l’exemple illustre l’emplacement où vous implémentez un tel algorithme de compression.
 
-![Fenêtre Fiddler présentant le résultat d’une demande avec l’en-tête Accept-Encoding et une valeur de mycustomcompression. Les en-têtes Vary et encodage de contenu sont ajoutés à la réponse.](response-compression/_static/request-custom-compression.png)
+![Fenêtre Fiddler présentant le résultat d’une demande avec l’en-tête Accept-Encoding et la valeur mycustomcompression. Les en-têtes Vary et encodage de contenu sont ajoutés à la réponse.](response-compression/_static/request-custom-compression.png)
 
 ## <a name="mime-types"></a>types MIME
 
@@ -683,7 +684,7 @@ L’intergiciel (middleware) spécifie un ensemble de types MIME par défaut pou
 * `text/plain`
 * `text/xml`
 
-Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière (*Banner. svg*).
+Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière ( *Banner. svg* ).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -712,7 +713,7 @@ Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](
 * La requête ne doit pas inclure l' `Content-Range` en-tête.
 * La demande doit utiliser le protocole http, sauf si le protocole sécurisé (https) est configuré dans les options de l’intergiciel (middleware) de compression des réponses. *Notez le danger [décrit ci-dessus](#compression-with-secure-protocol) lors de l’activation de la compression de contenu sécurisé.*
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/index>

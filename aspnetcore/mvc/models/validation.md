@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: e911512c1dce892c670659f04959be89cea067bb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 77d49710b9d69f6fbbe92970f1c455de32489444
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630105"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056957"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a>Validation de modèle dans ASP.NET Core MVC et les Razor pages
 
@@ -75,13 +76,13 @@ Vous trouverez la liste complète des attributs de validation dans l’espace de
 
 ### <a name="error-messages"></a>Messages d’erreur
 
-Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
+Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Par exemple :
+En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -175,7 +176,7 @@ Si vous avez besoin d’une validation non fournie par les attributs prédéfini
 
 Pour les scénarios non gérés par les attributs de validation prédéfinis, vous pouvez créer des attributs de validation personnalisés. Créez une classe qui hérite de <xref:System.ComponentModel.DataAnnotations.ValidationAttribute> et substituez la méthode <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
 
-La méthode `IsValid` accepte un objet nommé *value*, qui est l’entrée à valider. Une surcharge accepte également un objet `ValidationContext`, qui fournit des informations supplémentaires telles que l’instance de modèle créée par la liaison de modèle.
+La méthode `IsValid` accepte un objet nommé *value* , qui est l’entrée à valider. Une surcharge accepte également un objet `ValidationContext`, qui fournit des informations supplémentaires telles que l’instance de modèle créée par la liaison de modèle.
 
 L’exemple suivant vérifie que la date de sortie d’un film appartenant au genre *Classic* n’est pas ultérieure à une année spécifiée. L' `[ClassicMovie]` attribut :
 
@@ -209,7 +210,7 @@ Les nœuds de niveau supérieur peuvent utiliser <xref:Microsoft.AspNetCore.Mvc.
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAgeSignature)]
 
-Dans la page de vérification de l’âge (*CheckAge.cshtml*), il existe deux formulaires. Le premier formulaire envoie une `Age` valeur sous la `99` forme d’un paramètre de chaîne de requête : `https://localhost:5001/Users/CheckAge?Age=99` .
+Dans la page de vérification de l’âge ( *CheckAge.cshtml* ), il existe deux formulaires. Le premier formulaire envoie une `Age` valeur sous la `99` forme d’un paramètre de chaîne de requête : `https://localhost:5001/Users/CheckAge?Age=99` .
 
 Quand un paramètre `age` au format approprié est envoyé à partir de la chaîne de requête, le formulaire est validé.
 
@@ -389,7 +390,7 @@ Autres options pour désactiver la validation côté client :
 
 L’approche précédente n’empêchera pas la validation côté client de la ASP.NET Core Identity Razor bibliothèque de classes. Pour plus d'informations, consultez <xref:security/authentication/scaffold-identity>.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Espace de noms System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations)
 * [Liaison de modèle](model-binding.md)
@@ -445,13 +446,13 @@ Vous trouverez la liste complète des attributs de validation dans l’espace de
 
 ### <a name="error-messages"></a>Messages d’erreur
 
-Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
+Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Par exemple :
+En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -541,9 +542,9 @@ Si vous avez besoin d’une validation non fournie par les attributs prédéfini
 
 Pour les scénarios non gérés par les attributs de validation prédéfinis, vous pouvez créer des attributs de validation personnalisés. Créez une classe qui hérite de <xref:System.ComponentModel.DataAnnotations.ValidationAttribute> et substituez la méthode <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
 
-La méthode `IsValid` accepte un objet nommé *value*, qui est l’entrée à valider. Une surcharge accepte également un objet `ValidationContext`, qui fournit des informations supplémentaires telles que l’instance de modèle créée par la liaison de modèle.
+La méthode `IsValid` accepte un objet nommé *value* , qui est l’entrée à valider. Une surcharge accepte également un objet `ValidationContext`, qui fournit des informations supplémentaires telles que l’instance de modèle créée par la liaison de modèle.
 
-L’exemple suivant vérifie que la date de sortie d’un film appartenant au genre *Classic* n’est pas ultérieure à une année spécifiée. L’attribut `[ClassicMovie2]` vérifie d’abord le genre, et continue uniquement s’il s’agit de *Classic*. Pour les films identifiés comme des classiques, il vérifie si la date de sortie n’est pas ultérieure à la limite passée au constructeur d’attribut.
+L’exemple suivant vérifie que la date de sortie d’un film appartenant au genre *Classic* n’est pas ultérieure à une année spécifiée. L’attribut `[ClassicMovie2]` vérifie d’abord le genre, et continue uniquement s’il s’agit de *Classic* . Pour les films identifiés comme des classiques, il vérifie si la date de sortie n’est pas ultérieure à la limite passée au constructeur d’attribut.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
 
@@ -572,7 +573,7 @@ Les nœuds de niveau supérieur peuvent utiliser <xref:Microsoft.AspNetCore.Mvc.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAge)]
 
-Dans la page de vérification de l’âge (*CheckAge.cshtml*), il existe deux formulaires. Le premier formulaire envoie une valeur `Age` égale à `99` en tant que chaîne de requête : `https://localhost:5001/Users/CheckAge?Age=99`.
+Dans la page de vérification de l’âge ( *CheckAge.cshtml* ), il existe deux formulaires. Le premier formulaire envoie une valeur `Age` égale à `99` en tant que chaîne de requête : `https://localhost:5001/Users/CheckAge?Age=99`.
 
 Quand un paramètre `age` au format approprié est envoyé à partir de la chaîne de requête, le formulaire est validé.
 
@@ -757,9 +758,9 @@ Et dans les Razor pages :
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup3.cs?name=snippet_DisableClientValidation)]
 
-Une autre option permettant de désactiver la validation côté client consiste à commenter la référence à `_ValidationScriptsPartial` dans votre fichier *.cshtml*.
+Une autre option permettant de désactiver la validation côté client consiste à commenter la référence à `_ValidationScriptsPartial` dans votre fichier *.cshtml* .
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Espace de noms System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations)
 * [Liaison de modèle](model-binding.md)

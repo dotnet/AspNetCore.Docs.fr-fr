@@ -5,6 +5,7 @@ description: Partie 6 de la série de didacticiels sur les Razor pages.
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 5e899929372697f7a381cd493655309fa3f70f79
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 960f60198f5e65ed05d0374fd0704537376d27d6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633849"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058088"
 ---
 # <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>Partie 6, ajouter une recherche aux Razor Pages ASP.net Core
 
@@ -85,7 +86,7 @@ Le runtime ASP.NET Core utilise la [liaison de modèle](xref:mvc/models/model-bi
 
 Cependant, vous ne pouvez pas attendre des utilisateurs qu’ils modifient l’URL pour rechercher un film. Dans cette étape, une interface utilisateur est ajoutée pour filtrer les films. Si vous avez ajouté la contrainte d’itinéraire `"{searchString?}"`, supprimez-la.
 
-Ouvrez le fichier *Pages/Movies/Index.cshtml*, puis ajoutez la balise `<form>` mise en surbrillance dans le code suivant :
+Ouvrez le fichier *Pages/Movies/Index.cshtml* , puis ajoutez la balise `<form>` mise en surbrillance dans le code suivant :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/Index2.cshtml?highlight=14-19&range=1-22)]
 
@@ -120,7 +121,7 @@ Mettez à jour *Index.cshtml* comme suit :
 
 Testez l’application en effectuant une recherche par genre, par titre de film et selon ces deux critères.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Version YouTube de ce tutoriel](https://youtu.be/4B6pHtdyo08)
 
@@ -187,7 +188,7 @@ Le runtime ASP.NET Core utilise la [liaison de modèle](xref:mvc/models/model-bi
 
 Cependant, vous ne pouvez pas attendre des utilisateurs qu’ils modifient l’URL pour rechercher un film. Dans cette étape, une interface utilisateur est ajoutée pour filtrer les films. Si vous avez ajouté la contrainte d’itinéraire `"{searchString?}"`, supprimez-la.
 
-Ouvrez le fichier *Pages/Movies/Index.cshtml*, puis ajoutez la balise `<form>` mise en surbrillance dans le code suivant :
+Ouvrez le fichier *Pages/Movies/Index.cshtml* , puis ajoutez la balise `<form>` mise en surbrillance dans le code suivant :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index2.cshtml?highlight=14-19&range=1-22)]
 
@@ -223,7 +224,7 @@ Mettez à jour *Index.cshtml* comme suit :
 Testez l’application en effectuant une recherche par genre, par titre de film et selon ces deux critères.
 Le code précédent utilise le [tag Helper Select](xref:mvc/views/working-with-forms#the-select-tag-helper) et option tag Helper.
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Version YouTube de ce tutoriel](https://youtu.be/4B6pHtdyo08)
 

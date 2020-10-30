@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 04/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/ObjectPool
-ms.openlocfilehash: 6997dbfdd5c654e4a8b15a026fd3ec61d024f02d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 3bbfde6f68a238131149e67ce72f0ddc68a9ea0f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632367"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056905"
 ---
 # <a name="object-reuse-with-objectpool-in-aspnet-core"></a>Réutilisation d’objets avec ObjectPool dans ASP.NET Core
 
@@ -73,8 +74,8 @@ Appelez <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1.Get*> pour obtenir un
 ::: moniker range=">= aspnetcore-3.0"
 Lorsque <xref:Microsoft.Extensions.ObjectPool.DefaultObjectPoolProvider> est utilisé et `T` implémente `IDisposable` :
 
-* Les éléments qui ne sont ***pas*** retournés au pool seront supprimés.
-* Lorsque le pool est supprimé par DI, tous les éléments du pool sont supprimés.
+* Les éléments qui ne sont **pas** _ retournés au pool seront supprimés.
+_ Lorsque le pool est supprimé par DI, tous les éléments du pool sont supprimés.
 
 Remarque : une fois le pool supprimé :
 

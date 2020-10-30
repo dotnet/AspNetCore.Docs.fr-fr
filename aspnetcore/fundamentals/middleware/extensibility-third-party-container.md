@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/extensibility-third-party-container
-ms.openlocfilehash: e0ebcd46e6b506b7b2172f087f12773910ea4d9c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d322b1b3dda161c9948359253c3f7fee64a1f9ce
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634863"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057763"
 ---
 # <a name="middleware-activation-with-a-third-party-container-in-aspnet-core"></a>Activation d’un intergiciel (middleware) avec un conteneur tiers dans ASP.NET Core
 
@@ -52,11 +53,11 @@ Dans l’exemple d’application, une fabrique de middleware est implémentée p
 
 <xref:Microsoft.AspNetCore.Http.IMiddleware> définit le middleware pour le pipeline des requêtes de l’application.
 
-Middleware activé par une implémentation de `IMiddlewareFactory` (*Middleware/SimpleInjectorActivatedMiddleware.css*) :
+Middleware activé par une implémentation de `IMiddlewareFactory` ( *Middleware/SimpleInjectorActivatedMiddleware.css* ) :
 
 [!code-csharp[](extensibility-third-party-container/samples/3.x/SampleApp/Middleware/SimpleInjectorActivatedMiddleware.cs?name=snippet1)]
 
-Une extension est créée pour le middleware (*Middleware/MiddlewareExtensions.cs*) :
+Une extension est créée pour le middleware ( *Middleware/MiddlewareExtensions.cs* ) :
 
 [!code-csharp[](extensibility-third-party-container/samples/3.x/SampleApp/Middleware/MiddlewareExtensions.cs?name=snippet1)]
 
@@ -99,11 +100,11 @@ Dans l’exemple d’application, une fabrique de middleware est implémentée p
 
 <xref:Microsoft.AspNetCore.Http.IMiddleware> définit le middleware pour le pipeline des requêtes de l’application.
 
-Middleware activé par une implémentation de `IMiddlewareFactory` (*Middleware/SimpleInjectorActivatedMiddleware.css*) :
+Middleware activé par une implémentation de `IMiddlewareFactory` ( *Middleware/SimpleInjectorActivatedMiddleware.css* ) :
 
 [!code-csharp[](extensibility-third-party-container/samples/2.x/SampleApp/Middleware/SimpleInjectorActivatedMiddleware.cs?name=snippet1)]
 
-Une extension est créée pour le middleware (*Middleware/MiddlewareExtensions.cs*) :
+Une extension est créée pour le middleware ( *Middleware/MiddlewareExtensions.cs* ) :
 
 [!code-csharp[](extensibility-third-party-container/samples/2.x/SampleApp/Middleware/MiddlewareExtensions.cs?name=snippet1)]
 
@@ -121,7 +122,7 @@ Le middleware est inscrit dans le pipeline de traitement des requêtes, dans `St
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>Ressources complémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Middleware](xref:fundamentals/middleware/index)
 * [Activation d’intergiciel (middleware) basée sur une fabrique](xref:fundamentals/middleware/extensibility)

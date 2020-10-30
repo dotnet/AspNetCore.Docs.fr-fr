@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: ea46e04bc4aa6269efbf8917d5f32194402a66ef
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: b70a5ee00405eecfce900b86dc631a54682dce1a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722694"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058894"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Créer des messages Protobuf pour les applications .NET
 
@@ -89,13 +90,13 @@ Les valeurs scalaires ont toujours une valeur par défaut et ne peuvent pas êtr
 
 Les [types Wrapper Nullable](#nullable-types) peuvent être utilisés pour prendre en charge les valeurs NULL.
 
-### <a name="dates-and-times"></a>Dates et heures
+### <a name="dates-and-times"></a>Des dates et heures
 
 Les types scalaires natifs ne fournissent pas de valeurs de date et d’heure équivalentes à. Les, <xref:System.DateTimeOffset> <xref:System.DateTime> et <xref:System.TimeSpan> . Ces types peuvent être spécifiés à l’aide d’extensions de *types connus* de Protobuf. Ces extensions fournissent la génération de code et la prise en charge du runtime pour les types de champs complexes sur les plateformes prises en charge.
 
 Le tableau suivant indique les types de date et d’heure :
 
-| Type .NET        | Protobuf, type connu    |
+| Type .NET        | Type de Well-Known Protobuf    |
 | ---------------- | --------------------------- |
 | `DateTimeOffset` | `google.protobuf.Timestamp` |
 | `DateTime`       | `google.protobuf.Timestamp` |
@@ -136,7 +137,7 @@ var duration = meeting.Duration?.ToTimeSpan();
 
 La génération de code Protobuf pour C# utilise les types natifs, tels que `int` pour `int32` . Par conséquent, les valeurs sont toujours incluses et ne peuvent pas être `null` .
 
-Pour les valeurs qui requièrent explicite `null` , telles que l’utilisation `int?` de dans le code c#, les types connus de Protobuf incluent des wrappers qui sont compilés en types C# Nullable. Pour les utiliser, importez `wrappers.proto` dans votre `.proto` fichier, comme le code suivant :
+Pour les valeurs qui requièrent explicite `null` , telles que l’utilisation `int?` de dans le code c#, les types de Well-Known de Protobuf incluent des wrappers qui sont compilés en types C# Nullable. Pour les utiliser, importez `wrappers.proto` dans votre `.proto` fichier, comme le code suivant :
 
 ```protobuf  
 syntax = "proto3"
@@ -153,7 +154,7 @@ message Person {
 
 Le tableau suivant présente la liste complète des types de wrappers avec leur type C# équivalent :
 
-| Type C#      | Wrapper de type connu       |
+| Type C#      | Wrapper de type Well-Known       |
 | ------------ | ----------------------------- |
 | `bool?`      | `google.protobuf.BoolValue`   |
 | `double?`    | `google.protobuf.DoubleValue` |
@@ -188,7 +189,7 @@ await File.WriteAllBytesAsync(path, payload.Data.ToByteArray());
 
 ### <a name="decimals"></a>Décimales
 
-Protobuf ne prend pas en charge en mode natif le `decimal` type .net, juste `double` et `float` . Il existe une discussion continue dans le projet Protobuf sur la possibilité d’ajouter un type décimal standard aux types connus, avec la prise en charge de plateforme pour les langages et les infrastructures qui le prennent en charge. Rien n’a encore été implémenté.
+Protobuf ne prend pas en charge en mode natif le `decimal` type .net, juste `double` et `float` . Il existe une discussion continue dans le projet Protobuf sur la possibilité d’ajouter un type décimal standard aux types de Well-Known, avec la prise en charge de la plateforme pour les langages et les infrastructures qui le prennent en charge. Rien n’a encore été implémenté.
 
 Il est possible de créer une définition de message pour représenter le `decimal` type qui fonctionne pour la sérialisation sécurisée entre les clients et les serveurs .net. Toutefois, les développeurs sur d’autres plateformes doivent comprendre le format utilisé et implémenter leur propre gestion.
 
@@ -388,7 +389,7 @@ switch (response.ResultCase)
 
 ### <a name="value"></a>Valeur
 
-Le `Value` type représente une valeur typée dynamiquement. Il peut s’agir d' `null` un nombre, d’une chaîne, d’une valeur booléenne, d’un dictionnaire de valeurs ( `Struct` ) ou d’une liste de valeurs ( `ValueList` ). `Value` est un type Protobuf bien connu qui utilise la fonctionnalité décrite précédemment `oneof` . Pour utiliser le `Value` type, importez `struct.proto` .
+Le `Value` type représente une valeur typée dynamiquement. Il peut s’agir d' `null` un nombre, d’une chaîne, d’une valeur booléenne, d’un dictionnaire de valeurs ( `Struct` ) ou d’une liste de valeurs ( `ValueList` ). `Value` est un type de Well-Known Protobuf qui utilise la fonctionnalité décrite précédemment `oneof` . Pour utiliser le `Value` type, importez `struct.proto` .
 
 ```protobuf
 import "google/protobuf/struct.proto";

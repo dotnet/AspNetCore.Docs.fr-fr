@@ -6,6 +6,7 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 12/18/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: ca2f071ccb84fdb2eb06f533fc4d088ad1b1c785
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: a3be22134246c76b0a809ddb97b33ff97ace9a5b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393884"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057503"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -41,7 +42,7 @@ Les contrôleurs et les Razor pages fonctionnent avec des données provenant de 
 * Convertit les données de chaîne en types .NET
 * Met à jour les propriétés des types complexes
 
-## <a name="example"></a> Exemple
+## <a name="example"></a>Exemple
 
 Supposons que vous ayez la méthode d’action suivante :
 
@@ -80,7 +81,7 @@ Peut être appliqué à une propriété publique d’un contrôleur ou à une cl
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=3-4)]
 
-### <a name="bindpropertiesattribute"></a>Attribut [BindProperties]
+### <a name="bindproperties-attribute"></a>Attribut [BindProperties]
 
 Disponible avec ASP.NET Core 2.1 et les versions ultérieures.  Peut être appliqué à un contrôleur ou à une classe `PageModel` pour indiquer à la liaison de modèle de cibler toutes les propriétés publiques de la classe :
 
@@ -158,7 +159,7 @@ N’appliquez pas `[FromBody]` à plus d’un paramètre par méthode d’action
 
 ### <a name="additional-sources"></a>Sources supplémentaires
 
-Les données sources sont fournies au système de liaison de modèle par les *fournisseurs de valeurs*. Vous pouvez écrire et inscrire des fournisseurs de valeurs personnalisés qui obtiennent des données de liaison de modèle à partir d’autres sources. Par exemple, vous pouvez obtenir des données à partir de ou de l' cookie État de session. Pour obtenir des données provenant d’une nouvelle source :
+Les données sources sont fournies au système de liaison de modèle par les *fournisseurs de valeurs* . Vous pouvez écrire et inscrire des fournisseurs de valeurs personnalisés qui obtiennent des données de liaison de modèle à partir d’autres sources. Par exemple, vous pouvez obtenir des données à partir de ou de l' cookie État de session. Pour obtenir des données provenant d’une nouvelle source :
 
 * Créez une classe qui implémente `IValueProvider`.
 * Créez une classe qui implémente `IValueProviderFactory`.
@@ -223,7 +224,7 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 
 Un type complexe doit avoir un constructeur public par défaut et des propriétés publiques accessibles en écriture à lier. Quand la liaison de modèle se produit, la classe est instanciée à l’aide du constructeur public par défaut. 
 
-Pour chaque propriété du type complexe, la liaison de modèle recherche dans les sources le modèle de nom *préfixe.nom_propriété*. Si rien n’est trouvé, elle recherche uniquement *nom_propriété* sans le préfixe.
+Pour chaque propriété du type complexe, la liaison de modèle recherche dans les sources le modèle de nom *préfixe.nom_propriété* . Si rien n’est trouvé, elle recherche uniquement *nom_propriété* sans le préfixe.
 
 Dans le cas d’une liaison à un paramètre, le préfixe représente le nom du paramètre. Dans le cas d’une liaison à une propriété publique `PageModel`, le préfixe représente le nom de la propriété publique. Certains attributs ont une propriété `Prefix` qui vous permet de remplacer l’utilisation par défaut du nom de paramètre ou de propriété.
 
@@ -279,11 +280,11 @@ Plusieurs attributs intégrés sont disponibles pour contrôler la liaison de mo
 * `[BindNever]`
 
 > [!WARNING]
-> Ces attributs affectent la liaison de modèle quand les données de formulaire postées représentent la source des valeurs. Ils n’affectent ***pas*** les formateurs d’entrée qui traitent les corps de requête JSON et XML publiés. Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).
+> Ces attributs affectent la liaison de modèle quand les données de formulaire postées représentent la source des valeurs. Ils ne * **pas** _ affectent les formateurs d’entrée qui traitent les corps de requête JSON et XML publiés. Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).
 
 ### <a name="bind-attribute"></a>Attribut [Bind]
 
-Il peut être appliqué à une classe ou à un paramètre de méthode. Il spécifie les propriétés d’un modèle à inclure dans la liaison de modèle. `[Bind]` n’affecte ***pas*** les formateurs d’entrée.
+Il peut être appliqué à une classe ou à un paramètre de méthode. Il spécifie les propriétés d’un modèle à inclure dans la liaison de modèle. `[Bind]` n’affecte _*_pas_*_ les formateurs d’entrée.
 
 Dans l’exemple suivant, seules les propriétés spécifiées du modèle `Instructor` sont liées quand une méthode de gestionnaire ou une méthode d’action est appelée :
 
@@ -299,7 +300,7 @@ Dans l’exemple suivant, seules les propriétés spécifiées du modèle `Instr
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-Vous pouvez utiliser l’attribut `[Bind]` pour éviter le surpostage dans les scénarios de *création*. Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées. Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`. Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).
+L' `[Bind]` attribut peut être utilisé pour empêcher la survalidation dans les scénarios _create *. Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées. Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`. Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).
 
 ### <a name="bindrequired-attribute"></a>Attribut [BindRequired]
 
@@ -317,7 +318,7 @@ Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de m
 
 ## <a name="collections"></a>Collections
 
-Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
+Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété* . Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Exemple :
 
 * Supposons que le paramètre à lier soit un tableau nommé `selectedCourses` :
 
@@ -362,7 +363,7 @@ Pour les cibles qui sont des collections de types simples, la liaison de modèle
 
 ## <a name="dictionaries"></a>Dictionnaires
 
-Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
+Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété* . Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Exemple :
 
 * Supposons que le paramètre cible soit un `Dictionary<int, string>` nommé `selectedCourses` :
 
@@ -569,7 +570,7 @@ Les contrôleurs et les Razor pages fonctionnent avec des données provenant de 
 * Convertit les données de chaîne en types .NET
 * Met à jour les propriétés des types complexes
 
-## <a name="example"></a> Exemple
+## <a name="example"></a>Exemple
 
 Supposons que vous ayez la méthode d’action suivante :
 
@@ -608,7 +609,7 @@ Peut être appliqué à une propriété publique d’un contrôleur ou à une cl
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=3-4)]
 
-### <a name="bindpropertiesattribute"></a>Attribut [BindProperties]
+### <a name="bindproperties-attribute"></a>Attribut [BindProperties]
 
 Disponible avec ASP.NET Core 2.1 et les versions ultérieures.  Peut être appliqué à un contrôleur ou à une classe `PageModel` pour indiquer à la liaison de modèle de cibler toutes les propriétés publiques de la classe :
 
@@ -686,7 +687,7 @@ N’appliquez pas `[FromBody]` à plus d’un paramètre par méthode d’action
 
 ### <a name="additional-sources"></a>Sources supplémentaires
 
-Les données sources sont fournies au système de liaison de modèle par les *fournisseurs de valeurs*. Vous pouvez écrire et inscrire des fournisseurs de valeurs personnalisés qui obtiennent des données de liaison de modèle à partir d’autres sources. Par exemple, vous pouvez obtenir des données à partir de ou de l' cookie État de session. Pour obtenir des données provenant d’une nouvelle source :
+Les données sources sont fournies au système de liaison de modèle par les *fournisseurs de valeurs* . Vous pouvez écrire et inscrire des fournisseurs de valeurs personnalisés qui obtiennent des données de liaison de modèle à partir d’autres sources. Par exemple, vous pouvez obtenir des données à partir de ou de l' cookie État de session. Pour obtenir des données provenant d’une nouvelle source :
 
 * Créez une classe qui implémente `IValueProvider`.
 * Créez une classe qui implémente `IValueProviderFactory`.
@@ -751,7 +752,7 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 
 Un type complexe doit avoir un constructeur public par défaut et des propriétés publiques accessibles en écriture à lier. Quand la liaison de modèle se produit, la classe est instanciée à l’aide du constructeur public par défaut. 
 
-Pour chaque propriété du type complexe, la liaison de modèle recherche dans les sources le modèle de nom *préfixe.nom_propriété*. Si rien n’est trouvé, elle recherche uniquement *nom_propriété* sans le préfixe.
+Pour chaque propriété du type complexe, la liaison de modèle recherche dans les sources le modèle de nom *préfixe.nom_propriété* . Si rien n’est trouvé, elle recherche uniquement *nom_propriété* sans le préfixe.
 
 Dans le cas d’une liaison à un paramètre, le préfixe représente le nom du paramètre. Dans le cas d’une liaison à une propriété publique `PageModel`, le préfixe représente le nom de la propriété publique. Certains attributs ont une propriété `Prefix` qui vous permet de remplacer l’utilisation par défaut du nom de paramètre ou de propriété.
 
@@ -841,11 +842,11 @@ Dans l’exemple suivant, seules les propriétés spécifiées du modèle `Instr
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-Vous pouvez utiliser l’attribut `[Bind]` pour éviter le surpostage dans les scénarios de *création*. Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées. Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`. Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).
+Vous pouvez utiliser l’attribut `[Bind]` pour éviter le surpostage dans les scénarios de *création* . Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées. Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`. Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).
 
 ## <a name="collections"></a>Collections
 
-Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
+Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété* . Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Exemple :
 
 * Supposons que le paramètre à lier soit un tableau nommé `selectedCourses` :
 
@@ -890,7 +891,7 @@ Pour les cibles qui sont des collections de types simples, la liaison de modèle
 
 ## <a name="dictionaries"></a>Dictionnaires
 
-Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
+Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété* . Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Exemple :
 
 * Supposons que le paramètre cible soit un `Dictionary<int, string>` nommé `selectedCourses` :
 

@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 84094dce306e10470ec7b7be3efe6da024470330
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9fbd4bc5e91d8f05afc99a4f04c706399f83a518
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628844"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057607"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Bien démarrer avec Swashbuckle et ASP.NET Core
 
@@ -42,11 +43,11 @@ Swashbuckle repose sur trois composants principaux :
 
 Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
 
-### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * À partir de la fenêtre **Console du Gestionnaire de package** :
-  * Accéder à **la**  >  console du gestionnaire de**Other Windows**  >  **package** Windows
-  * Accédez au répertoire où se trouve le fichier *TodoApi.csproj*.
+  * Accéder à **la**  >  console du gestionnaire de **Other Windows**  >  **package** Windows
+  * Accédez au répertoire où se trouve le fichier *TodoApi.csproj* .
   * Exécutez la commande suivante :
 
     ```powershell
@@ -55,18 +56,18 @@ Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
 
 * À partir de la boîte de dialogue **Gérer les packages NuGet** :
   * Cliquez avec le bouton droit sur le projet dans **Explorateur de solutions**  >  **gérer les packages NuGet**
-  * Affectez la valeur « nuget.org » à **Source du package**.
+  * Affectez la valeur « nuget.org » à **Source du package** .
   * Vérifiez que l’option « Inclure la version préliminaire » est activée
   * Entrez « Swashbuckle.AspNetCore » dans la zone de recherche.
-  * Sélectionnez le package « Swashbuckle.AspNetCore » le plus récent sous l’onglet **Parcourir** et cliquez sur **Installer**.
+  * Sélectionnez le package « Swashbuckle.AspNetCore » le plus récent sous l’onglet **Parcourir** et cliquez sur **Installer** .
 
 ### <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Cliquez avec le bouton droit sur le dossier *Packages* dans **Panneau Solutions** > **Ajouter des packages**.
-* Dans la fenêtre **Ajouter des packages**, sélectionnez « nuget.org » dans la liste déroulante **Source**.
+* Cliquez avec le bouton droit sur le dossier *Packages* dans **Panneau Solutions** > **Ajouter des packages** .
+* Dans la fenêtre **Ajouter des packages** , sélectionnez « nuget.org » dans la liste déroulante **Source** .
 * Vérifiez que l’option « Afficher les packages en version préliminaire » est activée.
 * Entrez « Swashbuckle.AspNetCore » dans la zone de recherche.
-* Sélectionnez le package « Swashbuckle.AspNetCore » le plus récent dans le volet de résultats, puis cliquez sur **Ajouter un package**.
+* Sélectionnez le package « Swashbuckle.AspNetCore » le plus récent dans le volet de résultats, puis cliquez sur **Ajouter un package** .
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -175,11 +176,11 @@ L’IU Swagger affiche les informations de la version :
 
 Vous pouvez activer les commentaires XML en adoptant l’une des approches suivantes :
 
-#### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+#### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* Cliquez avec le bouton droit sur le projet dans **l’Explorateur de solutions**, puis sélectionnez **Modifier <nom_projet>.csproj**.
+* Cliquez avec le bouton droit sur le projet dans **l’Explorateur de solutions** , puis sélectionnez **Modifier <nom_projet>.csproj** .
 * Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
@@ -188,7 +189,7 @@ Vous pouvez activer les commentaires XML en adoptant l’une des approches suiva
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* Dans **Explorateur de solutions** , cliquez avec le bouton droit sur le projet, puis sélectionnez **Propriétés**.
+* Dans **Explorateur de solutions** , cliquez avec le bouton droit sur le projet, puis sélectionnez **Propriétés** .
 * Cochez la case **fichier de documentation XML** sous la section **sortie** de l’onglet **générer** .
 
 ::: moniker-end
@@ -197,7 +198,7 @@ Vous pouvez activer les commentaires XML en adoptant l’une des approches suiva
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* Dans le *Panneau Solutions*, appuyez sur **contrôle** et cliquez sur le nom du projet. Accédez à **Outils**  >  **modifier le fichier**.
+* Dans le *Panneau Solutions* , appuyez sur **contrôle** et cliquez sur le nom du projet. Accédez à **Outils**  >  **modifier le fichier** .
 * Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]

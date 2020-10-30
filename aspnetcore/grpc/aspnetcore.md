@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/aspnetcore
-ms.openlocfilehash: 11237c93832e095abb03d761773d213dfa336052
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b120aa4ab6922445f2c53f3b1cb3bd5c159d8a84
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633888"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057828"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Services gRPC avec ASP.NET Core
 
@@ -50,7 +51,7 @@ Ce document montre comment prendre en main les services gRPC à l’aide de ASP.
 
 [Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/grpc/grpc-start/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Pour obtenir des instructions détaillées sur la création d’un projet gRPC, consultez [prise en main des services gRPC](xref:tutorials/grpc/grpc-start) .
 
@@ -66,7 +67,7 @@ gRPC requiert le package [gRPC. AspNetCore](https://www.nuget.org/packages/Grpc.
 
 ### <a name="configure-grpc"></a>Configurer gRPC
 
-Dans *Startup.cs* :
+Dans *Startup.cs*  :
 
 * gRPC est activé avec la `AddGrpc` méthode.
 * Chaque service gRPC est ajouté au pipeline de routage via la `MapGrpcService` méthode.
@@ -93,11 +94,11 @@ Kestrel [prend en charge http/2](xref:fundamentals/servers/kestrel#http2-support
 
 Les points de terminaison Kestrel utilisés pour gRPC doivent être sécurisés avec TLS. En cours de développement, un point de terminaison sécurisé avec TLS est automatiquement créé `https://localhost:5001` lorsque le certificat de développement ASP.net Core est présent. Aucune configuration n'est requise. Un `https` préfixe vérifie que le point de terminaison Kestrel utilise TLS.
 
-En production, TLS doit être configuré de manière explicite. Dans l'appsettings.jssuivant, un point * de* terminaison http/2 sécurisé avec TLS est fourni :
+En production, TLS doit être configuré de manière explicite. Dans l' *appsettings.json* exemple suivant, un point de terminaison http/2 sécurisé avec TLS est fourni :
 
 [!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 
-Vous pouvez également configurer les points de terminaison Kestrel dans *Program.cs*:
+Vous pouvez également configurer les points de terminaison Kestrel dans *Program.cs* :
 
 [!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 

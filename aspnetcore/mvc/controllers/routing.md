@@ -5,6 +5,7 @@ description: Découvrez comment ASP.NET Core MVC utilise le middleware (intergic
 ms.author: riande
 ms.date: 3/25/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: e451d511ab7791a05024d88635d8005132ad4edd
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 9f64dd8f0ca026cec4b7ee4b5ea02523139eed4f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393923"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057152"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Routage vers les actions du contrôleur dans ASP.NET Core
 
@@ -119,7 +120,7 @@ Le routage conventionnel est utilisé avec les contrôleurs et les vues. La rout
 
 [!code-csharp[](routing/samples/3.x/main/StartupDefaultMVC.cs?name=snippet2)]
 
-est un exemple de *routage conventionnel*. Il s’agit du *routage conventionnel* , car il établit une *Convention* pour les chemins d’URL :
+est un exemple de *routage conventionnel* . Il s’agit du *routage conventionnel* , car il établit une *Convention* pour les chemins d’URL :
 
 * Le premier segment de chemin d’accès, `{controller=Home}` , correspond au nom du contrôleur.
 * Le deuxième segment, `{action=Index}` , correspond au nom de l' [action](#action) .
@@ -132,7 +133,7 @@ est un exemple de *routage conventionnel*. Il s’agit du *routage conventionnel
 
 Ce mappage :
 
-* Est basé **uniquement**sur les noms de contrôleur et d' [action](#action) .
+* Est basé **uniquement** sur les noms de contrôleur et d' [action](#action) .
 * N’est pas basé sur des espaces de noms, des emplacements de fichiers sources ou des paramètres de méthode.
 
 L’utilisation du routage conventionnel avec l’itinéraire par défaut permet de créer l’application sans avoir à trouver un nouveau modèle d’URL pour chaque action. Pour une application avec des actions de style [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) , avec cohérence des URL entre les contrôleurs :
@@ -177,7 +178,7 @@ Vous pouvez ajouter plusieurs [itinéraires conventionnels](#cr) dans `UseEndpoi
 
 <a name="dcr"></a>
 
-L' `blog` itinéraire dans le code précédent est un **itinéraire conventionnel dédié**. Il s’agit d’un itinéraire conventionnel dédié, car :
+L' `blog` itinéraire dans le code précédent est un **itinéraire conventionnel dédié** . Il s’agit d’un itinéraire conventionnel dédié, car :
 
 * Il utilise le [routage conventionnel](#cr).
 * Elle est dédiée à une [action](#action)spécifique.
@@ -196,7 +197,7 @@ L’exemple précédent :
 
 > [!WARNING]
 > Dans ASP.NET Core 3,0 et versions ultérieures, le routage ne suit pas :
-> * Définissez un concept appelé *itinéraire*. `UseRouting` Ajoute la correspondance d’itinéraire au pipeline de l’intergiciel (middleware). L' `UseRouting` intergiciel examine l’ensemble des points de terminaison définis dans l’application et sélectionne la meilleure correspondance de point de terminaison en fonction de la demande.
+> * Définissez un concept appelé *itinéraire* . `UseRouting` Ajoute la correspondance d’itinéraire au pipeline de l’intergiciel (middleware). L' `UseRouting` intergiciel examine l’ensemble des points de terminaison définis dans l’application et sélectionne la meilleure correspondance de point de terminaison en fonction de la demande.
 > * Fournir des garanties sur l’ordre d’exécution de l’extensibilité comme <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> ou <xref:Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint> .
 >
 >Consultez [routage](xref:fundamentals/routing) pour obtenir des documents de référence sur le routage.
@@ -219,7 +220,7 @@ Lorsque deux points de terminaison correspondent au routage, le routage doit eff
 * Choisissez le meilleur candidat.
 * Levée d'une exception.
 
-Par exemple :
+Exemple :
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet9)]
 
@@ -259,7 +260,7 @@ Noms des itinéraires :
 * N’ont aucun impact sur la correspondance d’URL ou la gestion des demandes.
 * Sont utilisés uniquement pour la génération d’URL.
 
-Le concept de nom d’itinéraire est représenté dans le routage en tant que [IEndpointNameMetadata](xref:Microsoft.AspNetCore.Routing.IEndpointNameMetadata). Nom de l' **itinéraire** et **nom du point de terminaison**:
+Le concept de nom d’itinéraire est représenté dans le routage en tant que [IEndpointNameMetadata](xref:Microsoft.AspNetCore.Routing.IEndpointNameMetadata). Nom de l' **itinéraire** et **nom du point de terminaison** :
 
 * Sont interchangeables.
 * Celui qui est utilisé dans la documentation et le code dépend de l’API qui est décrite.
@@ -434,7 +435,7 @@ Le tableau suivant décrit les `[Route]` attributs dans le code précédent :
 | `[Route("")]` | Oui | `"Home"` |
 | `[Route("Index")]` | Oui | `"Home/Index"` |
 | `[Route("/")]` | **Non** | `""` |
-| `[Route("About")]` | Oui | `"Home/About"` |
+| `[Route("About")]` | Yes | `"Home/About"` |
 
 <a name="routing-ordering-ref-label"></a>
 <a name="oar"></a>
@@ -471,7 +472,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/MyDemo3Controller.cs?name=snippet3& highlight=2)]
 
-Avec le code précédent, `/home` exécute le `HomeController.Index` point de terminaison. Pour accéder à la `MyDemoController.MyIndex` requête, `/home/MyIndex` . **Remarque** :
+Avec le code précédent, `/home` exécute le `HomeController.Index` point de terminaison. Pour accéder à la `MyDemoController.MyIndex` requête, `/home/MyIndex` . **Remarque**  :
 
 * Le code précédent est un exemple ou une conception de routage médiocre. Il a été utilisé pour illustrer la `Order` propriété.
 * La `Order` propriété ne résout que l’ambiguïté, ce modèle ne peut pas être mis en correspondance. Il serait préférable de supprimer le `[Route("Home")]` modèle.
@@ -667,7 +668,7 @@ Dans l’exemple suivant, l' `IUrlHelper` interface est utilisée par le biais d
 
 Si l’application utilise l’itinéraire conventionnel par défaut, la valeur de la `url` variable est la chaîne de chemin d’URL `/UrlGeneration/Destination` . Ce chemin d’URL est créé par le routage en combinant :
 
-* Valeurs d’itinéraire de la requête actuelle, qui sont appelées **valeurs ambiantes**.
+* Valeurs d’itinéraire de la requête actuelle, qui sont appelées **valeurs ambiantes** .
 * Valeurs passées à `Url.Action` et substituant ces valeurs dans le modèle de routage :
 
 ``` text
@@ -716,7 +717,7 @@ Si la valeur `{ d = Donovan }` est ajoutée :
 * La valeur `{ d = David }` est ignorée.
 * Le chemin d’URL généré est `Alice/Bob/Carol/Donovan` .
 
-**Avertissement**: les chemins d’accès d’URL sont hiérarchiques. Dans l’exemple précédent, si la valeur `{ c = Cheryl }` est ajoutée :
+**Avertissement** : les chemins d’accès d’URL sont hiérarchiques. Dans l’exemple précédent, si la valeur `{ c = Cheryl }` est ajoutée :
 
 * Les deux valeurs `{ c = Carol, d = David }` sont ignorées.
 * Il n’y a plus de valeur pour `d` et la génération d’URL échoue.
@@ -836,7 +837,7 @@ Les deux premiers contrôleurs sont membres de zones, et ils sont trouvés en co
 
 <a name="aa"></a>
 
-En termes de mise en correspondance avec *aucune valeur*, l’absence de la valeur `area` est identique à une valeur null ou de chaîne vide pour `area`.
+En termes de mise en correspondance avec *aucune valeur* , l’absence de la valeur `area` est identique à une valeur null ou de chaîne vide pour `area`.
 
 Lors de l’exécution d’une action à l’intérieur d’une zone, la valeur de route pour `area` est disponible en tant que [valeur ambiante](#ambient) pour le routage à utiliser pour la génération d’URL. Cela signifie que par défaut, les zones agissent *par attraction* pour la génération d’URL, comme le montre l’exemple suivant.
 
@@ -873,7 +874,7 @@ Ce document explique les interactions entre MVC et le routage, et comment les ap
 
 ## <a name="setting-up-routing-middleware"></a>Configuration de l’intergiciel de routage
 
-Dans votre méthode *Configure*, vous pouvez voir un code similaire à celui-ci :
+Dans votre méthode *Configure* , vous pouvez voir un code similaire à celui-ci :
 
 ```csharp
 app.UseMvc(routes =>
@@ -999,7 +1000,7 @@ app.UseMvc(routes =>
 });
 ```
 
-La route `blog` est ici une *route conventionnelle dédiée*, ce qui signifie qu’elle utilise le système de routage conventionnel, mais qu’elle est dédiée à une action spécifique. Comme `controller` et `action` n’apparaissent pas dans le modèle de route en tant que paramètres, ils peuvent seulement avoir les valeurs par défaut et par conséquent, cette route sera toujours mappée à l’action `BlogController.Article`.
+La route `blog` est ici une *route conventionnelle dédiée* , ce qui signifie qu’elle utilise le système de routage conventionnel, mais qu’elle est dédiée à une action spécifique. Comme `controller` et `action` n’apparaissent pas dans le modèle de route en tant que paramètres, ils peuvent seulement avoir les valeurs par défaut et par conséquent, cette route sera toujours mappée à l’action `BlogController.Article`.
 
 Les routes de la collection de routes sont ordonnées et elles sont traitées dans l’ordre où elles sont ajoutées. Ainsi, dans cet exemple, la route `blog` est essayée avant la route `default`.
 
@@ -1012,7 +1013,7 @@ Dans le cadre du traitement des requêtes, MVC vérifie que les valeurs de route
 
 ### <a name="disambiguating-actions"></a>Résolution des ambiguïtés pour les actions
 
-Quand deux actions correspondent via le routage, MVC doit résoudre l’ambiguïté pour choisir le « meilleur » candidat ou sinon lever une exception. Par exemple :
+Quand deux actions correspondent via le routage, MVC doit résoudre l’ambiguïté pour choisir le « meilleur » candidat ou sinon lever une exception. Exemple :
 
 ```csharp
 public class ProductsController : Controller
@@ -1185,7 +1186,7 @@ public class ProductsApiController : Controller
 
 Dans cet exemple, le chemin d’URL `/products` peut être mis en correspondance avec `ProductsApi.ListProducts` et le chemin d’URL `/products/5` peut être mis en correspondance avec `ProductsApi.GetProduct(int)`. Ces deux actions correspondent uniquement à HTTP `GET` , car elles sont marquées avec le `HttpGetAttribute` .
 
-Les modèles de routes appliqués à une action qui commencent par `/` ou `~/` ne sont pas combinés avec les modèles de routes appliqués au contrôleur. Cet exemple met en correspondance avec un ensemble de chemins d’URL similaires à la *route par défaut*.
+Les modèles de routes appliqués à une action qui commencent par `/` ou `~/` ne sont pas combinés avec les modèles de routes appliqués au contrôleur. Cet exemple met en correspondance avec un ensemble de chemins d’URL similaires à la *route par défaut* .
 
 ```csharp
 [Route("Home")]
@@ -1312,7 +1313,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 ### <a name="multiple-routes"></a>Routes multiples
 
-Le routage par attributs prend en charge la définition de plusieurs routes pour atteindre la même action. L’utilisation la plus courante de ceci est d’imiter le comportement de la *route conventionnelle par défaut*, comme le montre l’exemple suivant :
+Le routage par attributs prend en charge la définition de plusieurs routes pour atteindre la même action. L’utilisation la plus courante de ceci est d’imiter le comportement de la *route conventionnelle par défaut* , comme le montre l’exemple suivant :
 
 ```csharp
 [Route("[controller]")]
@@ -1436,7 +1437,7 @@ result: /UrlGeneration/Destination
 
 La valeur de chaque paramètre de route du modèle de route est remplacée en établissant une correspondance avec les valeurs et les valeurs ambiantes. Un paramètre de route qui n’a pas de valeur peut utiliser une valeur par défaut s’il en a une, ou il peut être ignoré s’il est facultatif (comme dans le cas de `id` dans cet exemple). La génération d’URL échoue si un paramètre de route obligatoire n’a pas de valeur correspondante. Si la génération d’URL échoue pour une route, la route suivante est essayée, ceci jusqu’à ce que toutes les routes aient été essayées ou qu’une correspondance soit trouvée.
 
-L’exemple de `Url.Action` ci-dessus suppose un routage conventionnel, mais la génération d’URL fonctionne de façon similaire avec le routage par attributs, même si les concepts sont différents. Avec le routage conventionnel, les valeurs de route sont utilisées pour développer un modèle, et les valeurs de route pour `controller` et `action` apparaissent généralement dans ce modèle : ceci fonctionne car les URL mises en correspondance par le routage adhèrent à une *convention*. Dans le routage par attributs, les valeurs de route pour `controller` et `action` ne sont pas autorisées à apparaître dans le modèle : au lieu de cela, elles sont utilisées pour rechercher le modèle à utiliser.
+L’exemple de `Url.Action` ci-dessus suppose un routage conventionnel, mais la génération d’URL fonctionne de façon similaire avec le routage par attributs, même si les concepts sont différents. Avec le routage conventionnel, les valeurs de route sont utilisées pour développer un modèle, et les valeurs de route pour `controller` et `action` apparaissent généralement dans ce modèle : ceci fonctionne car les URL mises en correspondance par le routage adhèrent à une *convention* . Dans le routage par attributs, les valeurs de route pour `controller` et `action` ne sont pas autorisées à apparaître dans le modèle : au lieu de cela, elles sont utilisées pour rechercher le modèle à utiliser.
 
 Cet exemple utilise le routage par attributs :
 
@@ -1451,14 +1452,14 @@ MVC génère une table de recherche de toutes les actions routées par attributs
 `Url.Action` (`IUrlHelper` . `Action`) et toutes les surcharges associées sont tous basés sur cette idée que vous voulez spécifier ce à quoi vous liez en spécifiant un nom de contrôleur et un nom d’action.
 
 > [!NOTE]
-> Quand vous utilisez `Url.Action`, les valeurs de route actuelles pour `controller` et `action` sont spécifiées pour vous : la valeur de `controller` et de `action` font partie des *valeurs ambiantes* ** et des ** *valeurs*. La méthode `Url.Action` utilise toujours les valeurs actuelles de `action` et de `controller`, et génère un chemin d’URL qui route vers l’action actuelle.
+> Quand vous utilisez `Url.Action`, les valeurs de route actuelles pour `controller` et `action` sont spécifiées pour vous : la valeur de `controller` et de `action` font partie des *valeurs ambiantes* **et des** *valeurs* . La méthode `Url.Action` utilise toujours les valeurs actuelles de `action` et de `controller`, et génère un chemin d’URL qui route vers l’action actuelle.
 
 Le routage essaye d’utiliser les valeurs dans les valeurs ambiantes pour renseigner les informations que vous n’avez pas fournies lors de la génération d’une URL. En utilisant une route comme `{a}/{b}/{c}/{d}` et les valeurs ambiantes `{ a = Alice, b = Bob, c = Carol, d = David }`, le routage a suffisamment d’informations pour générer une URL sans aucune autre valeur supplémentaire, car tous les paramètres de route ont une valeur. Si vous avez ajouté la valeur `{ d = Donovan }`, la valeur `{ d = David }` est ignorée, et le chemin d’URL généré est `Alice/Bob/Carol/Donovan`.
 
 > [!WARNING]
 > Les chemins d’URL sont hiérarchiques. Dans l’exemple ci-dessus, si vous avez ajouté la valeur `{ c = Cheryl }`, les deux valeurs `{ c = Carol, d = David }` sont ignorées. Dans ce cas nous n’avons plus de valeur pour `d` et la génération d’URL échoue. Vous devez spécifier la valeur souhaitée de `c` et de `d`.  Vous vous attendez peut-être à rencontrer ce problème avec la route par défaut (`{controller}/{action}/{id?}`), mais vous rencontrerez rarement ce comportement en pratique, car `Url.Action` spécifie toujours explicitement une valeur pour `controller` et pour `action`.
 
-Les surcharges plus longues de `Url.Action` prennent également un objet supplémentaire de *valeurs de route * pour fournir des valeurs pour les paramètres de route autres que `controller` et `action`. Vous verrez ceci plus couramment utilisé avec un `id` comme `Url.Action("Buy", "Products", new { id = 17 })`. Par convention, l’objet de *valeurs de route* objet est généralement un objet de type anonyme, mais il peut également être un `IDictionary<>` ou un *objet .NET traditionnel*. Toutes les valeurs de route supplémentaires qui ne correspondent pas aux paramètres de route sont placées dans la chaîne de requête.
+Les surcharges plus longues de `Url.Action` prennent également un objet supplémentaire de *valeurs de route* pour fournir des valeurs pour les paramètres de route autres que `controller` et `action`. Vous verrez ceci plus couramment utilisé avec un `id` comme `Url.Action("Buy", "Products", new { id = 17 })`. Par convention, l’objet de *valeurs de route* objet est généralement un objet de type anonyme, mais il peut également être un `IDictionary<>` ou un *objet .NET traditionnel* . Toutes les valeurs de route supplémentaires qui ne correspondent pas aux paramètres de route sont placées dans la chaîne de requête.
 
 [!code-csharp[](routing/samples/2.x/main/Controllers/TestController.cs)]
 
@@ -1509,7 +1510,7 @@ Les méthodes de fabrique de résultats d’action suivent un modèle similaire 
 
 ### <a name="special-case-for-dedicated-conventional-routes"></a>Cas spécial pour les routes conventionnelles dédiées
 
-Le routage conventionnel peut utiliser un type spécial de définition de route appelé *route conventionnelle dédiée*. Dans l’exemple ci-dessous, la route nommée `blog` est une route conventionnelle dédiée.
+Le routage conventionnel peut utiliser un type spécial de définition de route appelé *route conventionnelle dédiée* . Dans l’exemple ci-dessous, la route nommée `blog` est une route conventionnelle dédiée.
 
 ```csharp
 app.UseMvc(routes =>
@@ -1561,9 +1562,9 @@ Avec l’exemple ci-dessus, les valeurs de route seraient mises en correspondanc
 Les deux premiers contrôleurs sont membres de zones, et ils sont trouvés en correspondance seulement quand le nom de leur zone respective est fourni par la valeur de route `area`. Le troisième contrôleur n’est membre d’aucune zone et peut être trouvé en correspondance seulement quand aucune valeur pour `area` n’est fournie par le routage.
 
 > [!NOTE]
-> En termes de mise en correspondance avec *aucune valeur*, l’absence de la valeur `area` est identique à une valeur null ou de chaîne vide pour `area`.
+> En termes de mise en correspondance avec *aucune valeur* , l’absence de la valeur `area` est identique à une valeur null ou de chaîne vide pour `area`.
 
-Lors de l’exécution d’une action à l’intérieur d’une zone, la valeur de route pour `area` est disponible en tant que *valeur ambiante*, que le routage peut utiliser pour la génération d’URL. Cela signifie que par défaut, les zones agissent *par attraction* pour la génération d’URL, comme le montre l’exemple suivant.
+Lors de l’exécution d’une action à l’intérieur d’une zone, la valeur de route pour `area` est disponible en tant que *valeur ambiante* , que le routage peut utiliser pour la génération d’URL. Cela signifie que par défaut, les zones agissent *par attraction* pour la génération d’URL, comme le montre l’exemple suivant.
 [!code-csharp[](routing/samples/3.x/AreasRouting/Startup.cs?name=snippet3)]
 
 [!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Duck/Controllers/UsersController.cs)]
@@ -1589,9 +1590,9 @@ public class ProductsController : Controller
 
 Dans l’hypothèse d’une route conventionnelle par défaut, le chemin d’URL `/Products/Edit` produirait les valeurs `{ controller = Products, action = Edit }`, qui seraient en correspondance avec **les deux** actions montrées ici. Dans la terminologie `IActionConstraint`, nous pouvons dire que ces deux actions sont considérées comme candidates, car elles correspondent toutes deux aux données de la route.
 
-Quand `HttpGetAttribute` s’exécute, il indique que *Edit()* est une correspondance pour *GET* et qu’il n’est une correspondance pour aucun des autres verbes HTTP. L’action `Edit(...)` n’a aucune contrainte définie et elle ne correspond donc à aucun verbe HTTP. Par conséquent, dans l’hypothèse d’un `POST`, seul `Edit(...)` est en correspondance. Cependant, pour un `GET`, les deux actions peuvent néanmoins être en correspondance, mais une action avec `IActionConstraint` est toujours considérée comme étant *meilleure * qu’une action sans. Par conséquent, comme `Edit()` a `[HttpGet]`, elle est considérée comme étant plus spécifique et est sélectionnée si les deux actions peuvent correspondre.
+Quand `HttpGetAttribute` s’exécute, il indique que *Edit()* est une correspondance pour *GET* et qu’il n’est une correspondance pour aucun des autres verbes HTTP. L’action `Edit(...)` n’a aucune contrainte définie et elle ne correspond donc à aucun verbe HTTP. Par conséquent, dans l’hypothèse d’un `POST`, seul `Edit(...)` est en correspondance. Cependant, pour un `GET`, les deux actions peuvent néanmoins être en correspondance, mais une action avec `IActionConstraint` est toujours considérée comme étant *meilleure* qu’une action sans. Par conséquent, comme `Edit()` a `[HttpGet]`, elle est considérée comme étant plus spécifique et est sélectionnée si les deux actions peuvent correspondre.
 
-D’un point de vue conceptuel, `IActionConstraint` est une forme de *surcharge*, mais au lieu de surcharger des méthodes portant le même nom, elle surcharge entre des actions qui correspondent à la même URL. Le routage par attributs utilise également `IActionConstraint` et peut aboutir à des actions de différents contrôleurs, toutes considérées comme candidates.
+D’un point de vue conceptuel, `IActionConstraint` est une forme de *surcharge* , mais au lieu de surcharger des méthodes portant le même nom, elle surcharge entre des actions qui correspondent à la même URL. Le routage par attributs utilise également `IActionConstraint` et peut aboutir à des actions de différents contrôleurs, toutes considérées comme candidates.
 
 <a name="iactionconstraint-impl-ref-label"></a>
 

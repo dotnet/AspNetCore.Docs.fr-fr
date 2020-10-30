@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: getting-started
-ms.openlocfilehash: afded8890afe3b8f7b1d0b5634fc7764906bc9d7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: fef5ae525a7c01d0ea7733e990233f413aac61a7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635006"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057789"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Tutoriel : Bien démarrer avec ASP.NET Core
 
@@ -33,7 +34,7 @@ Vous découvrirez comment effectuer les actions suivantes :
 > [!div class="checklist"]
 > * Créer un projet application web.
 > * Approuver le certificat de développement.
-> * Exécutez l'application.
+> * Exécutez l’application.
 > * Modifiez une Razor page.
 
 À la fin du tutoriel, vous disposerez d’une application web qui fonctionne et s’exécute sur votre machine locale.
