@@ -5,7 +5,7 @@ description: Découvrez comment créer des revendications et des jetons supplém
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 10/30/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: 733afec8d3253ec58a7edf6d7fcf35e303a7fe57
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4503291ff887f79b1ad6eacd4e56943ce23335bc
+ms.sourcegitcommit: 5156eab2118584405eb663e1fcd82f8bd7764504
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060324"
+ms.lasthandoff: 10/31/2020
+ms.locfileid: "93141506"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Conserver des revendications et des jetons supplémentaires à partir de fournisseurs externes dans ASP.NET Core
 
@@ -60,11 +60,11 @@ Spécifiez la liste des autorisations à récupérer du fournisseur en spécifia
 | Fournisseur  | Étendue                                                            |
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
-| Google    | `https://www.googleapis.com/auth/userinfo.profile`               |
+| Google    | `profile`, `email`, `openid`                                     |
 | Microsoft | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
 | Twitter   | `https://api.twitter.com/oauth/authenticate`                     |
 
-Dans l’exemple d’application, `userinfo.profile` la portée de Google est automatiquement ajoutée par le Framework quand <xref:Microsoft.Extensions.DependencyInjection.GoogleExtensions.AddGoogle*> est appelé sur le <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder> . Si l’application requiert des étendues supplémentaires, ajoutez-les aux options. Dans l’exemple suivant, l' `https://www.googleapis.com/auth/user.birthday.read` étendue Google est ajoutée afin de récupérer l’anniversaire d’un utilisateur :
+Dans l’exemple d’application, les `profile` `email` portées Google, et `openid` sont automatiquement ajoutées par le Framework quand <xref:Microsoft.Extensions.DependencyInjection.GoogleExtensions.AddGoogle%2A> est appelé sur le <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder> . Si l’application requiert des étendues supplémentaires, ajoutez-les aux options. Dans l’exemple suivant, l' `https://www.googleapis.com/auth/user.birthday.read` étendue Google est ajoutée pour récupérer l’anniversaire d’un utilisateur :
 
 ```csharp
 options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
