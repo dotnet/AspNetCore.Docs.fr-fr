@@ -12,8 +12,10 @@
       href: /dotnet/standard/choosing-core-framework-server?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
 - name: Prise en main
   uid: getting-started
-- name: Notes de publication
+- name: Nouveautés
   items:
+    - name: "Nouveautés de la version\_5.0"
+      uid: aspnetcore-5.0
     - name: "Nouveautés de la version\_3.1"
       uid: aspnetcore-3.1
     - name: Nouveautés de la version 3.0
@@ -357,20 +359,14 @@
                   href: blazor/forms-validation.md#built-in-forms-components
                 - name: InputTextArea
                   href: blazor/forms-validation.md#built-in-forms-components
-                - name: Lien
-                  href: blazor/fundamentals/additional-scenarios.md#influence-html-head-tag-elements
                 - name: MainLayout
                   href: blazor/layouts.md#mainlayout-component
-                - name: Meta
-                  href: blazor/fundamentals/additional-scenarios.md#influence-html-head-tag-elements
                 - name: NavLink
                   href: blazor/fundamentals/routing.md#navlink-component
                 - name: NavMenu
                   href: blazor/fundamentals/routing.md#navlink-component
                 - name: Routeur
                   href: blazor/fundamentals/routing.md#route-templates
-                - name: Intitulé
-                  href: blazor/fundamentals/additional-scenarios.md#influence-html-head-tag-elements
                 - name: Virtualiser
                   uid: blazor/components/virtualization
             - name: Valeurs et paramètres en cascade
@@ -1141,7 +1137,7 @@
     - name: Protection des données
       displayName: encryption
       items:
-        - name: Vue d'ensemble
+        - name: Vue d’ensemble
           uid: security/data-protection/introduction
         - name: API de protection des données
           uid: security/data-protection/using-data-protection
