@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 3020734917fbf4d093420ad99114633d04e2a31b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 3e44932c302713132a37534b97fffdd91acce2c7
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060493"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234554"
 ---
 # <a name="net-generic-host-in-aspnet-core"></a>Hôte générique .NET dans ASP.NET Core
 
@@ -126,7 +126,7 @@ La méthode <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> :
   * EventLog (uniquement en cas d’exécution sur Windows)
 * Active la [validation de l’étendue](xref:fundamentals/dependency-injection#scope-validation) et la [validation de dépendances](xref:Microsoft.Extensions.DependencyInjection.ServiceProviderOptions.ValidateOnBuild) dans un environnement de développement.
 
-La méthode `ConfigureWebHostDefaults` :
+La méthode <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> :
 
 * Charge la configuration de l’hôte à partir de variables d’environnement précédées de `ASPNETCORE_` .
 * Définit le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et le configure en utilisant les fournisseurs de configuration d’hébergement de l’application. Pour connaître les options par défaut du serveur Kestrel, consultez <xref:fundamentals/servers/kestrel#kestrel-options>.
@@ -197,7 +197,7 @@ Pour plus d’informations, consultez [Configuration dans ASP.NET Core](xref:fun
 
 ## <a name="settings-for-all-app-types"></a>Paramètres pour tous les types d’applications
 
-Cette section liste les paramètres d’hôte qui s’appliquent aux charges de travail HTTP et non-HTTP. Par défaut, les variables d’environnement utilisées pour configurer ces paramètres peuvent avoir un préfixe `DOTNET_` ou `ASPNETCORE_`.
+Cette section liste les paramètres d’hôte qui s’appliquent aux charges de travail HTTP et non-HTTP. Par défaut, les variables d’environnement utilisées pour configurer ces paramètres peuvent avoir un préfixe `DOTNET_` ou `ASPNETCORE_`. Pour plus d’informations, consultez la section [paramètres par défaut du générateur](#default-builder-settings) .
 
 <!-- In the following sections, two spaces at end of line are used to force line breaks in the rendered page. -->
 
