@@ -19,30 +19,28 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: 2d9960f6dac6c13a65b30229c3154d217136209e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4ad4a70c92ce8dd61b676dd7d35ecb4f3b4fa99f
+ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055098"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93343687"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-microsoft-accounts"></a>Sécuriser une Blazor WebAssembly application ASP.net Core autonome avec des comptes Microsoft
 
 Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)
 
-Pour créer une [ Blazor WebAssembly application autonome](xref:blazor/hosting-models#blazor-webassembly) qui utilise [des comptes Microsoft avec Azure Active Directory (AAD)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal) pour l’authentification :
-
-[Créer un locataire AAD et une application Web](/azure/active-directory/develop/v2-overview)
+Cet article explique comment créer une [ Blazor WebAssembly application autonome](xref:blazor/hosting-models#blazor-webassembly) qui utilise [des comptes Microsoft avec Azure Active Directory (AAD)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal) pour l’authentification.
 
 Inscrire une application AAD dans la **Azure Active Directory**  >  zone de **inscriptions d’applications** Azure Active Directory de l’portail Azure :
 
 ::: moniker range=">= aspnetcore-5.0"
 
 1. Fournissez un **nom** pour l’application (par exemple, **Blazor comptes Microsoft AAD autonomes** ).
-1. Dans **types de comptes pris en charge** , sélectionnez **comptes dans n’importe quel annuaire d’organisation** .
+1. Dans **types de comptes pris en charge** , sélectionnez **comptes dans n’importe quel annuaire d’organisation**.
 1. Définissez la liste déroulante **URI de redirection** sur **une application à page unique (Spa)** et fournissez l’URI de redirection suivante : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque s’affiche plus loin dans cette rubrique pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Inscription** .
+1. Sélectionnez **Inscription**.
 
 Enregistrez l’ID de l’application (client) (par exemple, `41451fa7-82d9-4673-8fa5-69eff5a761fd` ).
 
@@ -51,26 +49,26 @@ Dans configurations de plateforme **d’authentification** , > **Platform config
 1. Confirmez que l' **URI de redirection** de `https://localhost:{PORT}/authentication/login-callback` est présent.
 1. Pour **octroi implicite** , assurez-vous que les cases à cocher pour les **jetons d’accès** et les **jetons d’ID** ne sont **pas** sélectionnées.
 1. Les valeurs par défaut restantes pour l’application sont acceptables pour cette expérience.
-1. Sélectionnez le bouton **Enregistrer** .
+1. Sélectionnez le bouton **Enregistrer**.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
 1. Fournissez un **nom** pour l’application (par exemple, **Blazor comptes Microsoft AAD autonomes** ).
-1. Dans **types de comptes pris en charge** , sélectionnez **comptes dans n’importe quel annuaire d’organisation** .
+1. Dans **types de comptes pris en charge** , sélectionnez **comptes dans n’importe quel annuaire d’organisation**.
 1. Laissez la liste déroulante **URI de redirection** définie sur **Web** et indiquez l’URI de redirection suivant : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque s’affiche plus loin dans cette rubrique pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Inscription** .
+1. Sélectionnez **Inscription**.
 
 Enregistrez l’ID de l’application (client) (par exemple, `41451fa7-82d9-4673-8fa5-69eff5a761fd` ).
 
 Dans **Authentication** le > **Platform configurations** > **site Web** configurations de la plateforme d’authentification :
 
 1. Confirmez que l' **URI de redirection** de `https://localhost:{PORT}/authentication/login-callback` est présent.
-1. Pour **octroi implicite** , activez les cases à cocher pour les **jetons d’accès** et les **jetons d’ID** .
+1. Pour **octroi implicite** , activez les cases à cocher pour les **jetons d’accès** et les **jetons d’ID**.
 1. Les valeurs par défaut restantes pour l’application sont acceptables pour cette expérience.
-1. Sélectionnez le bouton **Enregistrer** .
+1. Sélectionnez le bouton **Enregistrer**.
 
 ::: moniker-end
 
@@ -149,7 +147,7 @@ La configuration est fournie par le `wwwroot/appsettings.json` fichier :
 }
 ```
 
-Exemple :
+Exemple :
 
 ```json
 {
