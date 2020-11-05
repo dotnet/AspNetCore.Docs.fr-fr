@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: a3be22134246c76b0a809ddb97b33ff97ace9a5b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 49300d32096e577db9b13a0510cc310b91ddb51d
+ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057503"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93365351"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -159,7 +159,7 @@ N’appliquez pas `[FromBody]` à plus d’un paramètre par méthode d’action
 
 ### <a name="additional-sources"></a>Sources supplémentaires
 
-Les données sources sont fournies au système de liaison de modèle par les *fournisseurs de valeurs* . Vous pouvez écrire et inscrire des fournisseurs de valeurs personnalisés qui obtiennent des données de liaison de modèle à partir d’autres sources. Par exemple, vous pouvez obtenir des données à partir de ou de l' cookie État de session. Pour obtenir des données provenant d’une nouvelle source :
+Les données sources sont fournies au système de liaison de modèle par les *fournisseurs de valeurs*. Vous pouvez écrire et inscrire des fournisseurs de valeurs personnalisés qui obtiennent des données de liaison de modèle à partir d’autres sources. Par exemple, vous pouvez obtenir des données à partir de ou de l' cookie État de session. Pour obtenir des données provenant d’une nouvelle source :
 
 * Créez une classe qui implémente `IValueProvider`.
 * Créez une classe qui implémente `IValueProviderFactory`.
@@ -211,8 +211,8 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Décimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Énumération](xref:System.ComponentModel.EnumConverter)
-* [Uniques](xref:System.ComponentModel.GuidConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
+* [GUID](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Unique](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
@@ -224,7 +224,7 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 
 Un type complexe doit avoir un constructeur public par défaut et des propriétés publiques accessibles en écriture à lier. Quand la liaison de modèle se produit, la classe est instanciée à l’aide du constructeur public par défaut. 
 
-Pour chaque propriété du type complexe, la liaison de modèle recherche dans les sources le modèle de nom *préfixe.nom_propriété* . Si rien n’est trouvé, elle recherche uniquement *nom_propriété* sans le préfixe.
+Pour chaque propriété du type complexe, la liaison de modèle recherche dans les sources le modèle de nom *préfixe.nom_propriété*. Si rien n’est trouvé, elle recherche uniquement *nom_propriété* sans le préfixe.
 
 Dans le cas d’une liaison à un paramètre, le préfixe représente le nom du paramètre. Dans le cas d’une liaison à une propriété publique `PageModel`, le préfixe représente le nom de la propriété publique. Certains attributs ont une propriété `Prefix` qui vous permet de remplacer l’utilisation par défaut du nom de paramètre ou de propriété.
 
@@ -302,6 +302,27 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 L' `[Bind]` attribut peut être utilisé pour empêcher la survalidation dans les scénarios _create *. Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées. Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`. Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).
 
+### <a name="modelbinder-attribute"></a>Attribut [ModelBinder]
+
+<xref:Microsoft.AspNetCore.Mvc.ModelBinderAttribute> peut être appliqué à des types, des propriétés ou des paramètres. Il permet de spécifier le type de classeur de modèles utilisé pour lier l’instance ou le type spécifique. Par exemple :
+
+```C#
+[HttpPost]
+public IActionResult OnPost([ModelBinder(typeof(MyInstructorModelBinder))] Instructor instructor)
+```
+
+L' `[ModelBinder]` attribut peut également être utilisé pour modifier le nom d’une propriété ou d’un paramètre lorsqu’il est lié à un modèle :
+
+```C#
+public class Instructor
+{
+    [ModelBinder(Name = "instructor_id")]
+    public string Id { get; set; }
+    
+    public string Name { get; set; }
+}
+```
+
 ### <a name="bindrequired-attribute"></a>Attribut [BindRequired]
 
 Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il oblige la liaison de modèle à ajouter une erreur d’état de modèle si la liaison est impossible pour la propriété d’un modèle. Voici un exemple :
@@ -318,7 +339,7 @@ Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de m
 
 ## <a name="collections"></a>Collections
 
-Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété* . Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Exemple :
+Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
 
 * Supposons que le paramètre à lier soit un tableau nommé `selectedCourses` :
 
@@ -363,7 +384,7 @@ Pour les cibles qui sont des collections de types simples, la liaison de modèle
 
 ## <a name="dictionaries"></a>Dictionnaires
 
-Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété* . Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Exemple :
+Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
 
 * Supposons que le paramètre cible soit un `Dictionary<int, string>` nommé `selectedCourses` :
 
@@ -687,7 +708,7 @@ N’appliquez pas `[FromBody]` à plus d’un paramètre par méthode d’action
 
 ### <a name="additional-sources"></a>Sources supplémentaires
 
-Les données sources sont fournies au système de liaison de modèle par les *fournisseurs de valeurs* . Vous pouvez écrire et inscrire des fournisseurs de valeurs personnalisés qui obtiennent des données de liaison de modèle à partir d’autres sources. Par exemple, vous pouvez obtenir des données à partir de ou de l' cookie État de session. Pour obtenir des données provenant d’une nouvelle source :
+Les données sources sont fournies au système de liaison de modèle par les *fournisseurs de valeurs*. Vous pouvez écrire et inscrire des fournisseurs de valeurs personnalisés qui obtiennent des données de liaison de modèle à partir d’autres sources. Par exemple, vous pouvez obtenir des données à partir de ou de l' cookie État de session. Pour obtenir des données provenant d’une nouvelle source :
 
 * Créez une classe qui implémente `IValueProvider`.
 * Créez une classe qui implémente `IValueProviderFactory`.
@@ -739,8 +760,8 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Décimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Énumération](xref:System.ComponentModel.EnumConverter)
-* [Uniques](xref:System.ComponentModel.GuidConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
+* [GUID](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Unique](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
@@ -752,7 +773,7 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 
 Un type complexe doit avoir un constructeur public par défaut et des propriétés publiques accessibles en écriture à lier. Quand la liaison de modèle se produit, la classe est instanciée à l’aide du constructeur public par défaut. 
 
-Pour chaque propriété du type complexe, la liaison de modèle recherche dans les sources le modèle de nom *préfixe.nom_propriété* . Si rien n’est trouvé, elle recherche uniquement *nom_propriété* sans le préfixe.
+Pour chaque propriété du type complexe, la liaison de modèle recherche dans les sources le modèle de nom *préfixe.nom_propriété*. Si rien n’est trouvé, elle recherche uniquement *nom_propriété* sans le préfixe.
 
 Dans le cas d’une liaison à un paramètre, le préfixe représente le nom du paramètre. Dans le cas d’une liaison à une propriété publique `PageModel`, le préfixe représente le nom de la propriété publique. Certains attributs ont une propriété `Prefix` qui vous permet de remplacer l’utilisation par défaut du nom de paramètre ou de propriété.
 
@@ -842,11 +863,11 @@ Dans l’exemple suivant, seules les propriétés spécifiées du modèle `Instr
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-Vous pouvez utiliser l’attribut `[Bind]` pour éviter le surpostage dans les scénarios de *création* . Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées. Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`. Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).
+Vous pouvez utiliser l’attribut `[Bind]` pour éviter le surpostage dans les scénarios de *création*. Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées. Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`. Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).
 
 ## <a name="collections"></a>Collections
 
-Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété* . Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Exemple :
+Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
 
 * Supposons que le paramètre à lier soit un tableau nommé `selectedCourses` :
 
@@ -891,7 +912,7 @@ Pour les cibles qui sont des collections de types simples, la liaison de modèle
 
 ## <a name="dictionaries"></a>Dictionnaires
 
-Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété* . Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Exemple :
+Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
 
 * Supposons que le paramètre cible soit un `Dictionary<int, string>` nommé `selectedCourses` :
 
