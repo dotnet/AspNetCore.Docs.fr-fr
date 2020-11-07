@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 74f65b916c2d5b7de61ec29f4259a51584ee5989
-ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
+ms.openlocfilehash: 5849f4bfb9d0355177ceb5c2f4236c6d39dd9e92
+ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93365416"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94340034"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages avec Entity Framework Core dans ASP.NET Core-didacticiel 1 sur 8
 
@@ -57,7 +57,7 @@ Les instructions Visual Studio Code utilisent [SQLite](https://www.sqlite.org/),
 
 Si vous choisissez d’utiliser SQLite, téléchargez et installez un outil tiers pour la gestion et l’affichage d’une base de données SQLite, comme [Browser for SQLite](https://sqlitebrowser.org/).
 
-## <a name="troubleshooting"></a>Résolution des problèmes
+## <a name="troubleshooting"></a>Dépannage
 
 Si vous rencontrez un problème que vous ne pouvez pas résoudre, comparez votre code au [projet terminé](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Un bon moyen d’obtenir de l’aide est de poster une question sur StackOverflow.com en utilisant le [mot-clé ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) ou le [mot-clé EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
@@ -119,12 +119,16 @@ To run the app after downloading the completed project:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Démarrez Visual Studio et sélectionnez **Créer un projet**.
-* Sélectionnez **ASP.net Core application Web** > **suivant**.
-* Nommez le projet *ContosoUniversity*. Il est important d’utiliser ce nom exact, en respectant l’utilisation des majuscules, de sorte que les espaces de noms correspondent au moment où le code est copié et collé.
-* Sélectionnez **Créer**.
-* Sélectionnez **.net Core** et **ASP.net Core 5,0** dans les listes déroulantes, puis sélectionnez **application Web**.
-
+1. Démarrez Visual Studio et sélectionnez **Créer un projet**.
+1. Dans la boîte de dialogue **créer un nouveau projet** , sélectionnez **ASP.net Core application Web** > **suivant**.
+1. Dans la boîte de dialogue **configurer votre nouveau projet** , entrez `ContosoUniversity` pour **nom du projet**. Il est important d’utiliser ce nom exact, y compris la mise en majuscules, donc chaque correspond à la `namespace` copie du code.
+1. Sélectionnez **Create** (Créer).
+1. Dans la boîte de dialogue **créer une application web ASP.net Core** , sélectionnez :
+    1. **.Net Core** et **ASP.net Core 5,0** dans les listes déroulantes.
+    1. **ASP.net Core application Web (Model-View-Controller)**.
+    1. **Create** 
+       Créer ![ Boîte de dialogue Nouveau projet de ASP.NET Core](~/data/ef-mvc/intro/_static/new-aspnet5.png)
+    
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Dans un terminal, accédez au dossier dans lequel le dossier de projet doit être créé.
@@ -407,7 +411,7 @@ Ce workflow fonctionne bien à un stade précoce du développement, quand le sch
 
 Plus tard dans cette série de tutoriels, vous supprimerez la base de données créée par `EnsureCreated` et procéderez à des migrations. Une base de données créée par `EnsureCreated` ne peut pas être mise à jour via des migrations.
 
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a>Tester l'application
 
 * Exécutez l’application.
 * Sélectionnez le lien **Students** , puis **Créer nouveau**.
@@ -547,7 +551,7 @@ Les instructions Visual Studio Code utilisent [SQLite](https://www.sqlite.org/),
 
 Si vous choisissez d’utiliser SQLite, téléchargez et installez un outil tiers pour la gestion et l’affichage d’une base de données SQLite, comme [Browser for SQLite](https://sqlitebrowser.org/).
 
-## <a name="troubleshooting"></a>Résolution des problèmes
+## <a name="troubleshooting"></a>Dépannage
 
 Si vous rencontrez un problème que vous ne pouvez pas résoudre, comparez votre code au [projet terminé](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Un bon moyen d’obtenir de l’aide est de poster une question sur StackOverflow.com en utilisant le [mot-clé ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) ou le [mot-clé EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
@@ -858,7 +862,7 @@ Ce workflow fonctionne bien à un stade précoce du développement, quand le sch
 
 Plus tard dans cette série de tutoriels, vous supprimerez la base de données créée par `EnsureCreated` et procéderez à des migrations. Une base de données créée par `EnsureCreated` ne peut pas être mise à jour via des migrations.
 
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a>Tester l'application
 
 * Exécutez l’application.
 * Sélectionnez le lien **Students** , puis **Créer nouveau**.
@@ -976,7 +980,7 @@ L’exemple d’application est un site web pour une université Contoso fictive
 
 Vous êtes familiarisé avec les [ Razor pages](xref:razor-pages/index). Les nouveaux programmeurs doivent effectuer la [prise en main des Razor pages avant de](xref:tutorials/razor-pages/razor-pages-start) commencer cette série.
 
-## <a name="troubleshooting"></a>Résolution des problèmes
+## <a name="troubleshooting"></a>Dépannage
 
 Si vous rencontrez un problème que vous ne pouvez pas résoudre, vous pouvez généralement trouver la solution en comparant votre code au [projet terminé](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Un bon moyen d’obtenir de l’aide est de publier une question sur [StackOverflow.com](https://stackoverflow.com/questions/tagged/asp.net-core) pour [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) ou [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
@@ -1165,7 +1169,7 @@ Le code suivant montre le fichier *Program.cs* mis à jour.
 
 `EnsureCreated` est pratique au début du développement quand le schéma évolue rapidement. Plus loin dans le tutoriel, la base de données est supprimée et les migrations sont utilisées.
 
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a>Tester l'application
 
 Exécutez l’application et acceptez la cookie stratégie. Cette application ne conserve pas les informations personnelles. Pour en savoir plus sur la cookie stratégie au niveau de la [prise en charge de l’union européenne règlement général sur la protection des données (RGPD)](xref:security/gdpr).
 

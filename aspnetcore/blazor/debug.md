@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 669ebaf6dcd05561340aefda4a75b6fe1068d207
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: b7e246c20bf12f8ddf07cff54864836cb535aa60
+ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056190"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94339995"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de débogage Blazor WebAssembly
 
@@ -57,6 +57,8 @@ Le débogage requiert l’un des navigateurs suivants :
 * Google Chrome (version 70 ou ultérieure) (par défaut)
 * Microsoft Edge (version 80 ou ultérieure)
 
+Assurez-vous que les pare-feu ou les proxys ne bloquent pas la communication avec le proxy de débogage ( `NodeJS` processus). Pour plus d’informations, consultez la section [configuration du pare-feu](#firewall-configuration) .
+
 Visual Studio pour Mac nécessite la version 8,8 (Build 1532) ou version ultérieure :
 
 1. Installez la dernière version de Visual Studio pour Mac en sélectionnant le bouton **télécharger Visual Studio pour Mac** sur [Microsoft : Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/).
@@ -84,7 +86,7 @@ La `inspectUri` propriété :
 
 Les valeurs d’espace réservé pour le protocole WebSockets ( `wsProtocol` ), l’hôte ( `url.hostname` ), le port ( `url.port` ) et l’URI de l’inspecteur sur le navigateur lancé ( `browserInspectUri` ) sont fournies par l’infrastructure.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Pour déboguer une Blazor WebAssembly application dans Visual Studio :
 
@@ -192,7 +194,7 @@ Pour plus d’informations sur l’utilisation d’un chemin d’accès de base 
 
 1. Ouvrez le Blazor WebAssembly dossier de solution de l’application hébergée dans vs code.
 
-1. Si aucune configuration de lancement n’est définie pour le projet, la notification suivante s’affiche. Sélectionnez **Oui** .
+1. Si aucune configuration de lancement n’est définie pour le projet, la notification suivante s’affiche. Sélectionnez **Oui**.
 
    > Les ressources requises pour la génération et le débogage sont manquantes dans « {nom de l’APPLICATION} ». Faut-il les ajouter ?  »
 
@@ -339,16 +341,34 @@ Blazor fournit un proxy de débogage qui implémente le [protocole chrome devtoo
 
 Les mappages de source de navigateur permettent au navigateur de mapper les fichiers compilés à leurs fichiers sources d’origine et sont couramment utilisés pour le débogage côté client. Toutefois, Blazor ne mappe actuellement pas C# directement à JavaScript/WASM. Au lieu de cela, Blazor fait l’interprétation du langage intermédiaire dans le navigateur, les mappages de source ne sont donc pas pertinents.
 
+## <a name="firewall-configuration"></a>Configuration du pare-feu
+
+Si un pare-feu bloque la communication avec le proxy de débogage, créez une règle d’exception de pare-feu qui autorise la communication entre le navigateur et le `NodeJS` processus.
+
+> [!WARNING]
+> La modification d’une configuration de pare-feu doit être effectuée avec précaution pour éviter de créer des vulnerablities de sécurité. Appliquez avec prudence des conseils de sécurité, suivez les meilleures pratiques de sécurité et respectez les avertissements émis par le fabricant du pare-feu.
+>
+> Autorisation de la communication ouverte avec le `NodeJS` processus :
+>
+> * Ouvre le serveur de nœud à toute connexion, en fonction des capacités et de la configuration du pare-feu.
+> * Peut être risqué en fonction de votre réseau.
+> * **Est recommandé uniquement sur les ordinateurs de développement.**
+>
+> Si possible, autorisez uniquement la communication ouverte avec le `NodeJS` processus **sur des réseaux approuvés ou privés**.
+
+Pour obtenir des instructions de configuration du [pare-feu Windows](/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) , consultez [créer une règle de service ou de programme entrant](/windows/security/threat-protection/windows-firewall/create-an-inbound-program-or-service-rule). Pour plus d’informations, consultez [pare-feu Windows Defender avec fonctions avancées de sécurité](/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) et Articles connexes dans la documentation du pare-feu Windows.
+
 ## <a name="troubleshoot"></a>Dépanner
 
 Si vous rencontrez des erreurs, les conseils suivants peuvent vous aider :
 
 * Dans l’onglet **débogueur** , ouvrez les outils de développement de votre navigateur. Dans la console, exécutez `localStorage.clear()` pour supprimer tous les points d’arrêt.
 * Confirmez que vous avez installé et approuvé le certificat de développement ASP.NET Core HTTPs. Pour plus d'informations, consultez <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
-* Visual Studio requiert l’option **activer le débogage JavaScript pour ASP.net (chrome, Edge et IE)** dans **Outils**  >  **options**  >  **débogage**  >  **général** . Il s’agit du paramètre par défaut pour Visual Studio. Si le débogage ne fonctionne pas, vérifiez que l’option est sélectionnée.
+* Visual Studio requiert l’option **activer le débogage JavaScript pour ASP.net (chrome, Edge et IE)** dans **Outils**  >  **options**  >  **débogage**  >  **général**. Il s’agit du paramètre par défaut pour Visual Studio. Si le débogage ne fonctionne pas, vérifiez que l’option est sélectionnée.
 * Si votre environnement utilise un proxy HTTP, assurez-vous qu' `localhost` il est inclus dans les paramètres de contournement du proxy. Pour ce faire, vous pouvez définir la `NO_PROXY` variable d’environnement dans l’un ou l’autre des éléments suivants :
   * `launchSettings.json`Fichier pour le projet.
   * Au niveau des variables d’environnement système ou utilisateur pour qu’il s’applique à toutes les applications. Quand vous utilisez une variable d’environnement, redémarrez Visual Studio pour que la modification prenne effet.
+* Assurez-vous que les pare-feu ou les proxys ne bloquent pas la communication avec le proxy de débogage ( `NodeJS` processus). Pour plus d’informations, consultez la section [configuration du pare-feu](#firewall-configuration) .
 
 ### <a name="breakpoints-in-oninitializedasync-not-hit"></a>Points d’arrêt `OnInitialized{Async}` non atteints
 
