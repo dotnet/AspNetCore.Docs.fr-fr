@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 09/23/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: grpc/diagnostics
 ms.openlocfilehash: 1f25ae76e5a480e5e6f247e4ac78d06dd4e778e9
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -46,7 +46,7 @@ ms.locfileid: "93060441"
 
 <span data-ttu-id="704d9-119">Étant donné que les services gRPC sont hébergés sur ASP.NET Core, ils utilisent le système de journalisation ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="704d9-119">Since gRPC services are hosted on ASP.NET Core, it uses the ASP.NET Core logging system.</span></span> <span data-ttu-id="704d9-120">Dans la configuration par défaut, gRPC enregistre très peu d’informations, mais cela peut être configuré.</span><span class="sxs-lookup"><span data-stu-id="704d9-120">In the default configuration, gRPC logs very little information, but this can configured.</span></span> <span data-ttu-id="704d9-121">Pour plus d’informations sur la configuration de la journalisation des ASP.NET Core, consultez la documentation sur [ASP.net Core Logging](xref:fundamentals/logging/index#configuration) .</span><span class="sxs-lookup"><span data-stu-id="704d9-121">See the documentation on [ASP.NET Core logging](xref:fundamentals/logging/index#configuration) for details on configuring ASP.NET Core logging.</span></span>
 
-<span data-ttu-id="704d9-122">gRPC ajoute des journaux sous la `Grpc` catégorie.</span><span class="sxs-lookup"><span data-stu-id="704d9-122">gRPC adds logs under the `Grpc` category.</span></span> <span data-ttu-id="704d9-123">Pour activer les journaux détaillés à partir de gRPC, configurez les `Grpc` préfixes sur le `Debug` niveau de votre *:::no-loc(appsettings.json):::* fichier en ajoutant les éléments suivants à la `LogLevel` sous-section dans `Logging` :</span><span class="sxs-lookup"><span data-stu-id="704d9-123">To enable detailed logs from gRPC, configure the `Grpc` prefixes to the `Debug` level in your *:::no-loc(appsettings.json):::* file by adding the following items to the `LogLevel` sub-section in `Logging`:</span></span>
+<span data-ttu-id="704d9-122">gRPC ajoute des journaux sous la `Grpc` catégorie.</span><span class="sxs-lookup"><span data-stu-id="704d9-122">gRPC adds logs under the `Grpc` category.</span></span> <span data-ttu-id="704d9-123">Pour activer les journaux détaillés à partir de gRPC, configurez les `Grpc` préfixes sur le `Debug` niveau de votre *appsettings.json* fichier en ajoutant les éléments suivants à la `LogLevel` sous-section dans `Logging` :</span><span class="sxs-lookup"><span data-stu-id="704d9-123">To enable detailed logs from gRPC, configure the `Grpc` prefixes to the `Debug` level in your *appsettings.json* file by adding the following items to the `LogLevel` sub-section in `Logging`:</span></span>
 
 [!code-json[](diagnostics/sample/logging-config.json?highlight=7)]
 

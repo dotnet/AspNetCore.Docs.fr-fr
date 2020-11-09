@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/enforcing-ssl
 ms.openlocfilehash: e473da9a7cbd91a601ad4af0c7c02c7f576f348c
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -114,9 +114,9 @@ ms.locfileid: "93051120"
 
   * <span data-ttu-id="62fdb-155">Dans la configuration de l’hôte.</span><span class="sxs-lookup"><span data-stu-id="62fdb-155">In host configuration.</span></span>
   * <span data-ttu-id="62fdb-156">En définissant la `ASPNETCORE_HTTPS_PORT` variable d’environnement.</span><span class="sxs-lookup"><span data-stu-id="62fdb-156">By setting the `ASPNETCORE_HTTPS_PORT` environment variable.</span></span>
-  * <span data-ttu-id="62fdb-157">En ajoutant une entrée de niveau supérieur dans *:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="62fdb-157">By adding a top-level entry in *:::no-loc(appsettings.json):::* :</span></span>
+  * <span data-ttu-id="62fdb-157">En ajoutant une entrée de niveau supérieur dans *appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="62fdb-157">By adding a top-level entry in *appsettings.json* :</span></span>
 
-    [!code-json[](enforcing-ssl/sample-snapshot/3.x/:::no-loc(appsettings.json):::?highlight=2)]
+    [!code-json[](enforcing-ssl/sample-snapshot/3.x/appsettings.json?highlight=2)]
 
 * <span data-ttu-id="62fdb-158">Indiquez un port avec le schéma sécurisé à l’aide de la [variable d’environnement ASPNETCORE_URLS](../fundamentals/host/generic-host.md?view=aspnetcore-3.0#urls).</span><span class="sxs-lookup"><span data-stu-id="62fdb-158">Indicate a port with the secure scheme using the [ASPNETCORE_URLS environment variable](../fundamentals/host/generic-host.md?view=aspnetcore-3.0#urls).</span></span> <span data-ttu-id="62fdb-159">La variable d’environnement configure le serveur.</span><span class="sxs-lookup"><span data-stu-id="62fdb-159">The environment variable configures the server.</span></span> <span data-ttu-id="62fdb-160">L’intergiciel Découvre indirectement le port HTTPs via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> .</span><span class="sxs-lookup"><span data-stu-id="62fdb-160">The middleware indirectly discovers the HTTPS port via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.</span></span> <span data-ttu-id="62fdb-161">Cette approche ne fonctionne pas dans les déploiements de proxy inverse.</span><span class="sxs-lookup"><span data-stu-id="62fdb-161">This approach doesn't work in reverse proxy deployments.</span></span>
 
@@ -128,9 +128,9 @@ ms.locfileid: "93051120"
 
   * <span data-ttu-id="62fdb-163">Dans la configuration de l’hôte.</span><span class="sxs-lookup"><span data-stu-id="62fdb-163">In host configuration.</span></span>
   * <span data-ttu-id="62fdb-164">En définissant la `ASPNETCORE_HTTPS_PORT` variable d’environnement.</span><span class="sxs-lookup"><span data-stu-id="62fdb-164">By setting the `ASPNETCORE_HTTPS_PORT` environment variable.</span></span>
-  * <span data-ttu-id="62fdb-165">En ajoutant une entrée de niveau supérieur dans *:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="62fdb-165">By adding a top-level entry in *:::no-loc(appsettings.json):::* :</span></span>
+  * <span data-ttu-id="62fdb-165">En ajoutant une entrée de niveau supérieur dans *appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="62fdb-165">By adding a top-level entry in *appsettings.json* :</span></span>
 
-    [!code-json[](enforcing-ssl/sample-snapshot/2.x/:::no-loc(appsettings.json):::?highlight=2)]
+    [!code-json[](enforcing-ssl/sample-snapshot/2.x/appsettings.json?highlight=2)]
 
 * <span data-ttu-id="62fdb-166">Indiquez un port avec le schéma sécurisé à l’aide de la [variable d’environnement ASPNETCORE_URLS](xref:fundamentals/host/web-host#server-urls).</span><span class="sxs-lookup"><span data-stu-id="62fdb-166">Indicate a port with the secure scheme using the [ASPNETCORE_URLS environment variable](xref:fundamentals/host/web-host#server-urls).</span></span> <span data-ttu-id="62fdb-167">La variable d’environnement configure le serveur.</span><span class="sxs-lookup"><span data-stu-id="62fdb-167">The environment variable configures the server.</span></span> <span data-ttu-id="62fdb-168">L’intergiciel Découvre indirectement le port HTTPs via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> .</span><span class="sxs-lookup"><span data-stu-id="62fdb-168">The middleware indirectly discovers the HTTPS port via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.</span></span> <span data-ttu-id="62fdb-169">Cette approche ne fonctionne pas dans les déploiements de proxy inverse.</span><span class="sxs-lookup"><span data-stu-id="62fdb-169">This approach doesn't work in reverse proxy deployments.</span></span>
 

@@ -1,25 +1,25 @@
 ---
 title: Partie 7, ajouter un nouveau champ
 author: rick-anderson
-description: 'Partie 7 de la série de didacticiels sur les :::no-loc(Razor)::: pages.'
+description: 'Partie 7 de la série de didacticiels sur les Razor pages.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2020
 no-loc:
-- ':::no-loc(Index):::'
-- ':::no-loc(Create):::'
-- ':::no-loc(Delete):::'
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'Index'
+- 'Create'
+- 'Delete'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/razor-pages/new-field
 ms.openlocfilehash: 2dca5a9552dd2800212f8cd78ace0578b3d38cdb
 ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
@@ -28,13 +28,13 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 11/07/2020
 ms.locfileid: "94360877"
 ---
-# <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a><span data-ttu-id="a7fc8-103">Partie 7, ajouter un nouveau champ à une :::no-loc(Razor)::: page dans ASP.net Core</span><span class="sxs-lookup"><span data-stu-id="a7fc8-103">Part 7, add a new field to a :::no-loc(Razor)::: Page in ASP.NET Core</span></span>
+# <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a><span data-ttu-id="a7fc8-103">Partie 7, ajouter un nouveau champ à une Razor page dans ASP.net Core</span><span class="sxs-lookup"><span data-stu-id="a7fc8-103">Part 7, add a new field to a Razor Page in ASP.NET Core</span></span>
 
 <span data-ttu-id="a7fc8-104">Par [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="a7fc8-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-<span data-ttu-id="a7fc8-105">[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
+<span data-ttu-id="a7fc8-105">[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
 <span data-ttu-id="a7fc8-106">Dans cette section, Migrations [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First est utilisé pour :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-106">In this section [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First Migrations is used to:</span></span>
 
@@ -52,19 +52,19 @@ ms.locfileid: "94360877"
 
 1. <span data-ttu-id="a7fc8-114">Ouvrez le fichier *Models/Movie.cs* et ajoutez une propriété `Rating` :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-114">Open the *Models/Movie.cs* file and add a `Rating` property:</span></span>
 
-   [!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50/Models/MovieDateRating.cs?highlight=13&name=snippet)]
+   [!code-csharp[](razor-pages-start/sample/RazorPagesMovie50/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
 1. <span data-ttu-id="a7fc8-115">Générez l'application.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-115">Build the app.</span></span>
 
-1. <span data-ttu-id="a7fc8-116">Modifiez *pages/movies/ :::no-loc(Index)::: . cshtml* et ajoutez un `Rating` champ :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-116">Edit *Pages/Movies/:::no-loc(Index):::.cshtml* , and add a `Rating` field:</span></span>
+1. <span data-ttu-id="a7fc8-116">Modifiez *pages/movies/ Index . cshtml* et ajoutez un `Rating` champ :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-116">Edit *Pages/Movies/Index.cshtml* , and add a `Rating` field:</span></span>
 
    <a name="addrat"></a>
 
-   [!code-cshtml[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50/SnapShots/:::no-loc(Index):::Rating.cshtml?highlight=40-42,62-64)]
+   [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie50/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 1. <span data-ttu-id="a7fc8-117">Mettez à jour les pages suivantes :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-117">Update the following pages:</span></span>
-   1. <span data-ttu-id="a7fc8-118">Ajoutez le `Rating` champ aux :::no-loc(Delete)::: pages détails et.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-118">Add the `Rating` field to the :::no-loc(Delete)::: and Details pages.</span></span>
-   1. <span data-ttu-id="a7fc8-119">Mettez à jour [ :::no-loc(Create)::: . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50/Pages/Movies/:::no-loc(Create):::.cshtml) avec un `Rating` champ.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-119">Update [:::no-loc(Create):::.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50/Pages/Movies/:::no-loc(Create):::.cshtml) with a `Rating` field.</span></span>
+   1. <span data-ttu-id="a7fc8-118">Ajoutez le `Rating` champ aux Delete pages détails et.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-118">Add the `Rating` field to the Delete and Details pages.</span></span>
+   1. <span data-ttu-id="a7fc8-119">Mettez à jour [ Create . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml) avec un `Rating` champ.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-119">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
    1. <span data-ttu-id="a7fc8-120">Ajoutez le champ `Rating` à la Page Edit.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-120">Add the `Rating` field to the Edit Page.</span></span>
 
 <span data-ttu-id="a7fc8-121">L’application ne fonctionne pas tant que la base de données n’a pas été mise à jour pour inclure le nouveau champ.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-121">The app won't work until the database is updated to include the new field.</span></span> <span data-ttu-id="a7fc8-122">L’exécution de l’application sans mise à jour de la base de données lève une exception `SqlException` :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-122">Running the app without an update to the database throws a `SqlException`:</span></span>
@@ -85,9 +85,9 @@ ms.locfileid: "94360877"
 
 <span data-ttu-id="a7fc8-136">Mettez à jour la classe `SeedData` pour qu’elle fournisse une valeur pour la nouvelle colonne.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-136">Update the `SeedData` class so that it provides a value for the new column.</span></span> <span data-ttu-id="a7fc8-137">Un exemple de modification est présenté ci-dessous, mais apporte cette modification pour chaque `new Movie` bloc.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-137">A sample change is shown below, but make this change for each `new Movie` block.</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-<span data-ttu-id="a7fc8-138">Consultez le [fichier SeedData.cs complet](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-138">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50/Models/SeedDataRating.cs).</span></span>
+<span data-ttu-id="a7fc8-138">Consultez le [fichier SeedData.cs complet](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-138">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs).</span></span>
 
 <span data-ttu-id="a7fc8-139">Générez la solution.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-139">Build the solution.</span></span>
 
@@ -108,7 +108,7 @@ ms.locfileid: "94360877"
 <span data-ttu-id="a7fc8-144">La commande `Add-Migration` indique au framework qu’il doit :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-144">The `Add-Migration` command tells the framework to:</span></span>
 
 * <span data-ttu-id="a7fc8-145">Comparez le `Movie` modèle au `Movie` schéma de la base de données.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-145">Compare the `Movie` model with the `Movie` database schema.</span></span>
-* <span data-ttu-id="a7fc8-146">:::no-loc(Create)::: code pour migrer le schéma de base de données vers le nouveau modèle.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-146">:::no-loc(Create)::: code to migrate the database schema to the new model.</span></span>
+* <span data-ttu-id="a7fc8-146">Create code pour migrer le schéma de base de données vers le nouveau modèle.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-146">Create code to migrate the database schema to the new model.</span></span>
 
 <span data-ttu-id="a7fc8-147">Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-147">The name "Rating" is arbitrary and is used to name the migration file.</span></span> <span data-ttu-id="a7fc8-148">Il est utile d’utiliser un nom explicite pour le fichier de migration.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-148">It's helpful to use a meaningful name for the migration file.</span></span>
 
@@ -121,7 +121,7 @@ ms.locfileid: "94360877"
 <span data-ttu-id="a7fc8-152">Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-152">Another option is to delete the database and use migrations to re-create the database.</span></span> <span data-ttu-id="a7fc8-153">Pour supprimer la base de données dans SSOX :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-153">To delete the database in SSOX:</span></span>
 
 1. <span data-ttu-id="a7fc8-154">Sélectionnez la base de données dans SSOX.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-154">Select the database in SSOX.</span></span>
-1. <span data-ttu-id="a7fc8-155">Cliquez avec le bouton droit sur la base de données, puis sélectionnez **:::no-loc(Delete):::** .</span><span class="sxs-lookup"><span data-stu-id="a7fc8-155">Right-click on the database, and select **:::no-loc(Delete):::**.</span></span>
+1. <span data-ttu-id="a7fc8-155">Cliquez avec le bouton droit sur la base de données, puis sélectionnez **Delete** .</span><span class="sxs-lookup"><span data-stu-id="a7fc8-155">Right-click on the database, and select **Delete**.</span></span>
 1. <span data-ttu-id="a7fc8-156">Cochez **Fermer les connexions existantes**.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-156">Check **Close existing connections**.</span></span>
 1. <span data-ttu-id="a7fc8-157">Sélectionnez **OK**.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-157">Select **OK**.</span></span>
 1. <span data-ttu-id="a7fc8-158">Dans le [PMC](xref:tutorials/razor-pages/new-field#pmc), mettez à jour la base de données :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-158">In the [PMC](xref:tutorials/razor-pages/new-field#pmc), update the database:</span></span>
@@ -151,13 +151,13 @@ ms.locfileid: "94360877"
 > * [<span data-ttu-id="a7fc8-177">Amorçage des données</span><span class="sxs-lookup"><span data-stu-id="a7fc8-177">Data seeding</span></span>](/ef/core/modeling/data-seeding)
 > * [<span data-ttu-id="a7fc8-178">Instruction SQLite ALTER TABLE</span><span class="sxs-lookup"><span data-stu-id="a7fc8-178">SQLite ALTER TABLE statement</span></span>](https://sqlite.org/lang_altertable.html)
 
-1. <span data-ttu-id="a7fc8-179">:::no-loc(Delete)::: dossier de migration.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-179">:::no-loc(Delete)::: the migration folder.</span></span>  
+1. <span data-ttu-id="a7fc8-179">Delete dossier de migration.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-179">Delete the migration folder.</span></span>  
 
 1. <span data-ttu-id="a7fc8-180">Utilisez les commandes suivantes pour recréer la base de données.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-180">Use the following commands to recreate the database.</span></span>
 
    ```dotnetcli
    dotnet ef database drop
-   dotnet ef migrations add Initial:::no-loc(Create):::
+   dotnet ef migrations add InitialCreate
    dotnet ef database update
    ```
 
@@ -176,7 +176,7 @@ ms.locfileid: "94360877"
 
 ::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
 
-<span data-ttu-id="a7fc8-185">[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-185">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
+<span data-ttu-id="a7fc8-185">[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-185">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
 <span data-ttu-id="a7fc8-186">Dans cette section, Migrations [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First est utilisé pour :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-186">In this section [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First Migrations is used to:</span></span>
 
@@ -194,19 +194,19 @@ ms.locfileid: "94360877"
 
 1. <span data-ttu-id="a7fc8-194">Ouvrez le fichier *Models/Movie.cs* et ajoutez une propriété `Rating` :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-194">Open the *Models/Movie.cs* file and add a `Rating` property:</span></span>
 
-   [!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/MovieDateRating.cs?highlight=13&name=snippet)]
+   [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
 1. <span data-ttu-id="a7fc8-195">Générez l'application.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-195">Build the app.</span></span>
 
-1. <span data-ttu-id="a7fc8-196">Modifiez *pages/movies/ :::no-loc(Index)::: . cshtml* et ajoutez un `Rating` champ :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-196">Edit *Pages/Movies/:::no-loc(Index):::.cshtml* , and add a `Rating` field:</span></span>
+1. <span data-ttu-id="a7fc8-196">Modifiez *pages/movies/ Index . cshtml* et ajoutez un `Rating` champ :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-196">Edit *Pages/Movies/Index.cshtml* , and add a `Rating` field:</span></span>
 
    <a name="addrat"></a>
 
-   [!code-cshtml[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/SnapShots/:::no-loc(Index):::Rating.cshtml?highlight=40-42,62-64)]
+   [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 1. <span data-ttu-id="a7fc8-197">Mettez à jour les pages suivantes :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-197">Update the following pages:</span></span>
-   1. <span data-ttu-id="a7fc8-198">Ajoutez le `Rating` champ aux :::no-loc(Delete)::: pages détails et.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-198">Add the `Rating` field to the :::no-loc(Delete)::: and Details pages.</span></span>
-   1. <span data-ttu-id="a7fc8-199">Mettez à jour [ :::no-loc(Create)::: . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Pages/Movies/:::no-loc(Create):::.cshtml) avec un `Rating` champ.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-199">Update [:::no-loc(Create):::.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Pages/Movies/:::no-loc(Create):::.cshtml) with a `Rating` field.</span></span>
+   1. <span data-ttu-id="a7fc8-198">Ajoutez le `Rating` champ aux Delete pages détails et.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-198">Add the `Rating` field to the Delete and Details pages.</span></span>
+   1. <span data-ttu-id="a7fc8-199">Mettez à jour [ Create . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) avec un `Rating` champ.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-199">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
    1. <span data-ttu-id="a7fc8-200">Ajoutez le champ `Rating` à la Page Edit.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-200">Add the `Rating` field to the Edit Page.</span></span>
 
 <span data-ttu-id="a7fc8-201">L’application ne fonctionne pas tant que la base de données n’a pas été mise à jour pour inclure le nouveau champ.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-201">The app won't work until the database is updated to include the new field.</span></span> <span data-ttu-id="a7fc8-202">L’exécution de l’application sans mise à jour de la base de données lève une exception `SqlException` :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-202">Running the app without an update to the database throws a `SqlException`:</span></span>
@@ -227,9 +227,9 @@ ms.locfileid: "94360877"
 
 <span data-ttu-id="a7fc8-216">Mettez à jour la classe `SeedData` pour qu’elle fournisse une valeur pour la nouvelle colonne.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-216">Update the `SeedData` class so that it provides a value for the new column.</span></span> <span data-ttu-id="a7fc8-217">Un exemple de modification est présenté ci-dessous, mais apporte cette modification pour chaque `new Movie` bloc.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-217">A sample change is shown below, but make this change for each `new Movie` block.</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-<span data-ttu-id="a7fc8-218">Consultez le [fichier SeedData.cs complet](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-218">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie50/Models/SeedDataRating.cs).</span></span>
+<span data-ttu-id="a7fc8-218">Consultez le [fichier SeedData.cs complet](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-218">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs).</span></span>
 
 <span data-ttu-id="a7fc8-219">Générez la solution.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-219">Build the solution.</span></span>
 
@@ -250,7 +250,7 @@ ms.locfileid: "94360877"
 <span data-ttu-id="a7fc8-224">La commande `Add-Migration` indique au framework qu’il doit :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-224">The `Add-Migration` command tells the framework to:</span></span>
 
 * <span data-ttu-id="a7fc8-225">Comparez le `Movie` modèle au `Movie` schéma de la base de données.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-225">Compare the `Movie` model with the `Movie` database schema.</span></span>
-* <span data-ttu-id="a7fc8-226">:::no-loc(Create)::: code pour migrer le schéma de base de données vers le nouveau modèle.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-226">:::no-loc(Create)::: code to migrate the database schema to the new model.</span></span>
+* <span data-ttu-id="a7fc8-226">Create code pour migrer le schéma de base de données vers le nouveau modèle.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-226">Create code to migrate the database schema to the new model.</span></span>
 
 <span data-ttu-id="a7fc8-227">Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-227">The name "Rating" is arbitrary and is used to name the migration file.</span></span> <span data-ttu-id="a7fc8-228">Il est utile d’utiliser un nom explicite pour le fichier de migration.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-228">It's helpful to use a meaningful name for the migration file.</span></span>
 
@@ -263,7 +263,7 @@ ms.locfileid: "94360877"
 <span data-ttu-id="a7fc8-232">Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-232">Another option is to delete the database and use migrations to re-create the database.</span></span> <span data-ttu-id="a7fc8-233">Pour supprimer la base de données dans SSOX :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-233">To delete the database in SSOX:</span></span>
 
 * <span data-ttu-id="a7fc8-234">Sélectionnez la base de données dans SSOX.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-234">Select the database in SSOX.</span></span>
-* <span data-ttu-id="a7fc8-235">Cliquez avec le bouton droit sur la base de données, puis sélectionnez **:::no-loc(Delete):::** .</span><span class="sxs-lookup"><span data-stu-id="a7fc8-235">Right-click on the database, and select **:::no-loc(Delete):::**.</span></span>
+* <span data-ttu-id="a7fc8-235">Cliquez avec le bouton droit sur la base de données, puis sélectionnez **Delete** .</span><span class="sxs-lookup"><span data-stu-id="a7fc8-235">Right-click on the database, and select **Delete**.</span></span>
 * <span data-ttu-id="a7fc8-236">Cochez **Fermer les connexions existantes**.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-236">Check **Close existing connections**.</span></span>
 * <span data-ttu-id="a7fc8-237">Sélectionnez **OK**.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-237">Select **OK**.</span></span>
 * <span data-ttu-id="a7fc8-238">Dans le [PMC](xref:tutorials/razor-pages/new-field#pmc), mettez à jour la base de données :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-238">In the [PMC](xref:tutorials/razor-pages/new-field#pmc), update the database:</span></span>
@@ -293,13 +293,13 @@ ms.locfileid: "94360877"
 > * [<span data-ttu-id="a7fc8-257">Amorçage des données</span><span class="sxs-lookup"><span data-stu-id="a7fc8-257">Data seeding</span></span>](/ef/core/modeling/data-seeding)
 > * [<span data-ttu-id="a7fc8-258">Instruction SQLite ALTER TABLE</span><span class="sxs-lookup"><span data-stu-id="a7fc8-258">SQLite ALTER TABLE statement</span></span>](https://sqlite.org/lang_altertable.html)
 
-1. <span data-ttu-id="a7fc8-259">:::no-loc(Delete)::: dossier de migration.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-259">:::no-loc(Delete)::: the migration folder.</span></span>  
+1. <span data-ttu-id="a7fc8-259">Delete dossier de migration.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-259">Delete the migration folder.</span></span>  
 
 1. <span data-ttu-id="a7fc8-260">Utilisez les commandes suivantes pour recréer la base de données.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-260">Use the following commands to recreate the database.</span></span>
 
    ```dotnetcli
    dotnet ef database drop
-   dotnet ef migrations add Initial:::no-loc(Create):::
+   dotnet ef migrations add InitialCreate
    dotnet ef database update
    ```
 
@@ -336,18 +336,18 @@ ms.locfileid: "94360877"
 
 <span data-ttu-id="a7fc8-274">Ouvrez le fichier *Models/Movie.cs* et ajoutez une propriété `Rating` :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-274">Open the *Models/Movie.cs* file and add a `Rating` property:</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
 <span data-ttu-id="a7fc8-275">Générez l'application.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-275">Build the app.</span></span>
 
-<span data-ttu-id="a7fc8-276">Modifiez *pages/movies/ :::no-loc(Index)::: . cshtml* et ajoutez un `Rating` champ :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-276">Edit *Pages/Movies/:::no-loc(Index):::.cshtml* , and add a `Rating` field:</span></span>
+<span data-ttu-id="a7fc8-276">Modifiez *pages/movies/ Index . cshtml* et ajoutez un `Rating` champ :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-276">Edit *Pages/Movies/Index.cshtml* , and add a `Rating` field:</span></span>
 
-[!code-cshtml[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Pages/Movies/:::no-loc(Index):::Rating.cshtml?highlight=40-42,61-63)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/IndexRating.cshtml?highlight=40-42,61-63)]
 
 <span data-ttu-id="a7fc8-277">Mettez à jour les pages suivantes :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-277">Update the following pages:</span></span>
 
-* <span data-ttu-id="a7fc8-278">Ajoutez le `Rating` champ aux :::no-loc(Delete)::: pages détails et.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-278">Add the `Rating` field to the :::no-loc(Delete)::: and Details pages.</span></span>
-* <span data-ttu-id="a7fc8-279">Mettez à jour [ :::no-loc(Create)::: . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Pages/Movies/:::no-loc(Create):::.cshtml) avec un `Rating` champ.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-279">Update [:::no-loc(Create):::.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Pages/Movies/:::no-loc(Create):::.cshtml) with a `Rating` field.</span></span>
+* <span data-ttu-id="a7fc8-278">Ajoutez le `Rating` champ aux Delete pages détails et.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-278">Add the `Rating` field to the Delete and Details pages.</span></span>
+* <span data-ttu-id="a7fc8-279">Mettez à jour [ Create . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) avec un `Rating` champ.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-279">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
 * <span data-ttu-id="a7fc8-280">Ajoutez le champ `Rating` à la Page Edit.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-280">Add the `Rating` field to the Edit Page.</span></span>
 
 <span data-ttu-id="a7fc8-281">L’application ne fonctionne pas tant que la base de données n’a pas été mise à jour pour inclure le nouveau champ.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-281">The app won't work until the database is updated to include the new field.</span></span> <span data-ttu-id="a7fc8-282">Si l’application est exécutée maintenant, l’application lève une exception `SqlException` :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-282">If the app is run now, the app throws a `SqlException`:</span></span>
@@ -368,9 +368,9 @@ ms.locfileid: "94360877"
 
 <span data-ttu-id="a7fc8-296">Mettez à jour la classe `SeedData` pour qu’elle fournisse une valeur pour la nouvelle colonne.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-296">Update the `SeedData` class so that it provides a value for the new column.</span></span> <span data-ttu-id="a7fc8-297">Un exemple de modification est présenté ci-dessous, mais apporte cette modification pour chaque `new Movie` bloc.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-297">A sample change is shown below, but make this change for each `new Movie` block.</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-<span data-ttu-id="a7fc8-298">Consultez le [fichier SeedData.cs complet](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-298">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/SeedDataRating.cs).</span></span>
+<span data-ttu-id="a7fc8-298">Consultez le [fichier SeedData.cs complet](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-298">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs).</span></span>
 
 <span data-ttu-id="a7fc8-299">Générez la solution.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-299">Build the solution.</span></span>
 
@@ -391,7 +391,7 @@ Update-Database
 <span data-ttu-id="a7fc8-304">La commande `Add-Migration` indique au framework qu’il doit :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-304">The `Add-Migration` command tells the framework to:</span></span>
 
 * <span data-ttu-id="a7fc8-305">Comparez le `Movie` modèle au `Movie` schéma de la base de données.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-305">Compare the `Movie` model with the `Movie` database schema.</span></span>
-* <span data-ttu-id="a7fc8-306">:::no-loc(Create)::: code pour migrer le schéma de base de données vers le nouveau modèle.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-306">:::no-loc(Create)::: code to migrate the database schema to the new model.</span></span>
+* <span data-ttu-id="a7fc8-306">Create code pour migrer le schéma de base de données vers le nouveau modèle.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-306">Create code to migrate the database schema to the new model.</span></span>
 
 <span data-ttu-id="a7fc8-307">Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-307">The name "Rating" is arbitrary and is used to name the migration file.</span></span> <span data-ttu-id="a7fc8-308">Il est utile d’utiliser un nom explicite pour le fichier de migration.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-308">It's helpful to use a meaningful name for the migration file.</span></span>
 
@@ -404,7 +404,7 @@ Update-Database
 <span data-ttu-id="a7fc8-312">Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-312">Another option is to delete the database and use migrations to re-create the database.</span></span> <span data-ttu-id="a7fc8-313">Pour supprimer la base de données dans SSOX :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-313">To delete the database in SSOX:</span></span>
 
 * <span data-ttu-id="a7fc8-314">Sélectionnez la base de données dans SSOX.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-314">Select the database in SSOX.</span></span>
-* <span data-ttu-id="a7fc8-315">Cliquez avec le bouton droit sur la base de données, puis sélectionnez **:::no-loc(Delete):::** .</span><span class="sxs-lookup"><span data-stu-id="a7fc8-315">Right-click on the database, and select **:::no-loc(Delete):::**.</span></span>
+* <span data-ttu-id="a7fc8-315">Cliquez avec le bouton droit sur la base de données, puis sélectionnez **Delete** .</span><span class="sxs-lookup"><span data-stu-id="a7fc8-315">Right-click on the database, and select **Delete**.</span></span>
 * <span data-ttu-id="a7fc8-316">Cochez **Fermer les connexions existantes**.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-316">Check **Close existing connections**.</span></span>
 * <span data-ttu-id="a7fc8-317">Sélectionnez **OK**.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-317">Select **OK**.</span></span>
 * <span data-ttu-id="a7fc8-318">Dans le [PMC](xref:tutorials/razor-pages/new-field#pmc), mettez à jour la base de données :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-318">In the [PMC](xref:tutorials/razor-pages/new-field#pmc), update the database:</span></span>
@@ -434,7 +434,7 @@ Update-Database
 > * [<span data-ttu-id="a7fc8-337">Amorçage des données</span><span class="sxs-lookup"><span data-stu-id="a7fc8-337">Data seeding</span></span>](/ef/core/modeling/data-seeding)
 > * [<span data-ttu-id="a7fc8-338">Instruction SQLite ALTER TABLE</span><span class="sxs-lookup"><span data-stu-id="a7fc8-338">SQLite ALTER TABLE statement</span></span>](https://sqlite.org/lang_altertable.html)
 
-<span data-ttu-id="a7fc8-339">:::no-loc(Delete)::: la base de données et utilisent des migrations pour recréer la base de données.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-339">:::no-loc(Delete)::: the database and use migrations to re-create the database.</span></span> <span data-ttu-id="a7fc8-340">Pour supprimer la base de données, supprimez le fichier de base de données ( *MvcMovie.db* ).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-340">To delete the database, delete the database file ( *MvcMovie.db* ).</span></span> <span data-ttu-id="a7fc8-341">Ensuite, exécutez la commande `ef database update` :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-341">Then run the `ef database update` command:</span></span>
+<span data-ttu-id="a7fc8-339">Delete la base de données et utilisent des migrations pour recréer la base de données.</span><span class="sxs-lookup"><span data-stu-id="a7fc8-339">Delete the database and use migrations to re-create the database.</span></span> <span data-ttu-id="a7fc8-340">Pour supprimer la base de données, supprimez le fichier de base de données ( *MvcMovie.db* ).</span><span class="sxs-lookup"><span data-stu-id="a7fc8-340">To delete the database, delete the database file ( *MvcMovie.db* ).</span></span> <span data-ttu-id="a7fc8-341">Ensuite, exécutez la commande `ef database update` :</span><span class="sxs-lookup"><span data-stu-id="a7fc8-341">Then run the `ef database update` command:</span></span>
 
 ```dotnetcli
 dotnet ef database update

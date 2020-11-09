@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/04/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/servers/kestrel
 ms.openlocfilehash: 56ac6635639eed93a84f47fc915c7013c6ed2381
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -128,7 +128,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-<span data-ttu-id="c6e3c-159">Dans les exemples présentés plus loin dans cet article, les options Kestrel sont configurées dans le code C#.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-159">In examples shown later in this article, Kestrel options are configured in C# code.</span></span> <span data-ttu-id="c6e3c-160">Les options Kestrel peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-160">Kestrel options can also be set using a [configuration provider](xref:fundamentals/configuration/index).</span></span> <span data-ttu-id="c6e3c-161">Par exemple, le [fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider) peut charger la configuration Kestrel à partir d’un *:::no-loc(appsettings.json):::* ou *appSettings. { Fichier Environment}. JSON* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-161">For example, the [File Configuration Provider](xref:fundamentals/configuration/index#file-configuration-provider) can load Kestrel configuration from an *:::no-loc(appsettings.json):::* or *appsettings.{Environment}.json* file:</span></span>
+<span data-ttu-id="c6e3c-159">Dans les exemples présentés plus loin dans cet article, les options Kestrel sont configurées dans le code C#.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-159">In examples shown later in this article, Kestrel options are configured in C# code.</span></span> <span data-ttu-id="c6e3c-160">Les options Kestrel peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-160">Kestrel options can also be set using a [configuration provider](xref:fundamentals/configuration/index).</span></span> <span data-ttu-id="c6e3c-161">Par exemple, le [fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider) peut charger la configuration Kestrel à partir d’un *appsettings.json* ou *appSettings. { Fichier Environment}. JSON* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-161">For example, the [File Configuration Provider](xref:fundamentals/configuration/index#file-configuration-provider) can load Kestrel configuration from an *appsettings.json* or *appsettings.{Environment}.json* file:</span></span>
 
 ```json
 {
@@ -528,7 +528,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 <span data-ttu-id="c6e3c-312">Par défaut, `CreateDefaultBuilder` appelle `Configure(context.Configuration.GetSection("Kestrel"))` pour charger la configuration de Kestrel.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-312">`CreateDefaultBuilder` calls `Configure(context.Configuration.GetSection("Kestrel"))` by default to load Kestrel configuration.</span></span> <span data-ttu-id="c6e3c-313">Un schéma de configuration des paramètres d’application HTTPS par défaut est disponible pour Kestrel.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-313">A default HTTPS app settings configuration schema is available for Kestrel.</span></span> <span data-ttu-id="c6e3c-314">Configurez plusieurs points de terminaison, notamment les URL et les certificats à utiliser, à partir d’un fichier sur disque ou d’un magasin de certificats.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-314">Configure multiple endpoints, including the URLs and the certificates to use, either from a file on disk or from a certificate store.</span></span>
 
-<span data-ttu-id="c6e3c-315">Dans l' *:::no-loc(appsettings.json):::* exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-315">In the following *:::no-loc(appsettings.json):::* example:</span></span>
+<span data-ttu-id="c6e3c-315">Dans l' *appsettings.json* exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-315">In the following *appsettings.json* example:</span></span>
 
 * <span data-ttu-id="c6e3c-316">Définissez **AllowInvalid** sur `true` pour permettre l’utilisation de certificats non valides (par exemple des certificats auto-signés).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-316">Set **AllowInvalid** to `true` to permit the use of invalid certificates (for example, self-signed certificates).</span></span>
 * <span data-ttu-id="c6e3c-317">Tout point de terminaison HTTPS qui ne spécifie pas de certificat ( **HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut** ou au certificat de développement.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-317">Any HTTPS endpoint that doesn't specify a certificate ( **HttpsDefaultCert** in the example that follows) falls back to the cert defined under **Certificates** > **Default** or the development certificate.</span></span>
@@ -890,7 +890,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 <span data-ttu-id="c6e3c-415">Par défaut, `CreateDefaultBuilder` appelle `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` pour charger la configuration de Kestrel.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-415">`CreateDefaultBuilder` calls `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` by default to load Kestrel configuration.</span></span>
 
-<span data-ttu-id="c6e3c-416">L' *:::no-loc(appsettings.json):::* exemple suivant établit http/1.1 comme protocole de connexion par défaut pour tous les points de terminaison :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-416">The following *:::no-loc(appsettings.json):::* example establishes HTTP/1.1 as the default connection protocol for all endpoints:</span></span>
+<span data-ttu-id="c6e3c-416">L' *appsettings.json* exemple suivant établit http/1.1 comme protocole de connexion par défaut pour tous les points de terminaison :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-416">The following *appsettings.json* example establishes HTTP/1.1 as the default connection protocol for all endpoints:</span></span>
 
 ```json
 {
@@ -902,7 +902,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 }
 ```
 
-<span data-ttu-id="c6e3c-417">L' *:::no-loc(appsettings.json):::* exemple suivant établit le protocole de connexion http/1.1 pour un point de terminaison spécifique :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-417">The following *:::no-loc(appsettings.json):::* example establishes the HTTP/1.1 connection protocol for a specific endpoint:</span></span>
+<span data-ttu-id="c6e3c-417">L' *appsettings.json* exemple suivant établit le protocole de connexion http/1.1 pour un point de terminaison spécifique :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-417">The following *appsettings.json* example establishes the HTTP/1.1 connection protocol for a specific endpoint:</span></span>
 
 ```json
 {
@@ -1002,9 +1002,9 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-<span data-ttu-id="c6e3c-448">Le middleware de filtrage d’hôtes est désactivé par défaut.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-448">Host Filtering Middleware is disabled by default.</span></span> <span data-ttu-id="c6e3c-449">Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *:::no-loc(appsettings.json):::* / *appSettings. \<EnvironmentName> JSON* .</span><span class="sxs-lookup"><span data-stu-id="c6e3c-449">To enable the middleware, define an `AllowedHosts` key in *:::no-loc(appsettings.json):::*/*appsettings.\<EnvironmentName>.json* .</span></span> <span data-ttu-id="c6e3c-450">La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-450">The value is a semicolon-delimited list of host names without port numbers:</span></span>
+<span data-ttu-id="c6e3c-448">Le middleware de filtrage d’hôtes est désactivé par défaut.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-448">Host Filtering Middleware is disabled by default.</span></span> <span data-ttu-id="c6e3c-449">Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *appsettings.json* / *appSettings. \<EnvironmentName> JSON* .</span><span class="sxs-lookup"><span data-stu-id="c6e3c-449">To enable the middleware, define an `AllowedHosts` key in *appsettings.json*/*appsettings.\<EnvironmentName>.json* .</span></span> <span data-ttu-id="c6e3c-450">La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-450">The value is a semicolon-delimited list of host names without port numbers:</span></span>
 
-<span data-ttu-id="c6e3c-451">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-451">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="c6e3c-451">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-451">*appsettings.json* :</span></span>
 
 ```json
 {
@@ -1136,7 +1136,7 @@ public static void Main(string[] args)
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-<span data-ttu-id="c6e3c-513">Les options Kestrel, qui sont configurées dans le code C# dans les exemples suivants, peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-513">Kestrel options, which are configured in C# code in the following examples, can also be set using a [configuration provider](xref:fundamentals/configuration/index).</span></span> <span data-ttu-id="c6e3c-514">Par exemple, le fournisseur de configuration de fichier peut charger la configuration Kestrel à partir d’un *:::no-loc(appsettings.json):::* ou *appSettings. { Fichier Environment}. JSON* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-514">For example, the File Configuration Provider can load Kestrel configuration from an *:::no-loc(appsettings.json):::* or *appsettings.{Environment}.json* file:</span></span>
+<span data-ttu-id="c6e3c-513">Les options Kestrel, qui sont configurées dans le code C# dans les exemples suivants, peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-513">Kestrel options, which are configured in C# code in the following examples, can also be set using a [configuration provider](xref:fundamentals/configuration/index).</span></span> <span data-ttu-id="c6e3c-514">Par exemple, le fournisseur de configuration de fichier peut charger la configuration Kestrel à partir d’un *appsettings.json* ou *appSettings. { Fichier Environment}. JSON* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-514">For example, the File Configuration Provider can load Kestrel configuration from an *appsettings.json* or *appsettings.{Environment}.json* file:</span></span>
 
 ```json
 {
@@ -1516,7 +1516,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 <span data-ttu-id="c6e3c-642">Par défaut, `CreateDefaultBuilder` appelle `Configure(context.Configuration.GetSection("Kestrel"))` pour charger la configuration de Kestrel.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-642">`CreateDefaultBuilder` calls `Configure(context.Configuration.GetSection("Kestrel"))` by default to load Kestrel configuration.</span></span> <span data-ttu-id="c6e3c-643">Un schéma de configuration des paramètres d’application HTTPS par défaut est disponible pour Kestrel.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-643">A default HTTPS app settings configuration schema is available for Kestrel.</span></span> <span data-ttu-id="c6e3c-644">Configurez plusieurs points de terminaison, notamment les URL et les certificats à utiliser, à partir d’un fichier sur disque ou d’un magasin de certificats.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-644">Configure multiple endpoints, including the URLs and the certificates to use, either from a file on disk or from a certificate store.</span></span>
 
-<span data-ttu-id="c6e3c-645">Dans l' *:::no-loc(appsettings.json):::* exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-645">In the following *:::no-loc(appsettings.json):::* example:</span></span>
+<span data-ttu-id="c6e3c-645">Dans l' *appsettings.json* exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-645">In the following *appsettings.json* example:</span></span>
 
 * <span data-ttu-id="c6e3c-646">Définissez **AllowInvalid** sur `true` pour permettre l’utilisation de certificats non valides (par exemple des certificats auto-signés).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-646">Set **AllowInvalid** to `true` to permit the use of invalid certificates (for example, self-signed certificates).</span></span>
 * <span data-ttu-id="c6e3c-647">Tout point de terminaison HTTPS qui ne spécifie pas de certificat ( **HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut** ou au certificat de développement.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-647">Any HTTPS endpoint that doesn't specify a certificate ( **HttpsDefaultCert** in the example that follows) falls back to the cert defined under **Certificates** > **Default** or the development certificate.</span></span>
@@ -1839,7 +1839,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 <span data-ttu-id="c6e3c-740">Par défaut, <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> appelle `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` pour charger la configuration de Kestrel.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-740"><xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> calls `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` by default to load Kestrel configuration.</span></span>
 
-<span data-ttu-id="c6e3c-741">Dans l' *:::no-loc(appsettings.json):::* exemple suivant, un protocole de connexion par défaut (http/1.1 et http/2) est établi pour tous les points de terminaison de Kestrel :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-741">In the following *:::no-loc(appsettings.json):::* example, a default connection protocol (HTTP/1.1 and HTTP/2) is established for all of Kestrel's endpoints:</span></span>
+<span data-ttu-id="c6e3c-741">Dans l' *appsettings.json* exemple suivant, un protocole de connexion par défaut (http/1.1 et http/2) est établi pour tous les points de terminaison de Kestrel :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-741">In the following *appsettings.json* example, a default connection protocol (HTTP/1.1 and HTTP/2) is established for all of Kestrel's endpoints:</span></span>
 
 ```json
 {
@@ -1953,9 +1953,9 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-<span data-ttu-id="c6e3c-777">Le middleware de filtrage d’hôtes est désactivé par défaut.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-777">Host Filtering Middleware is disabled by default.</span></span> <span data-ttu-id="c6e3c-778">Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *:::no-loc(appsettings.json):::* / *appSettings. \<EnvironmentName> JSON* .</span><span class="sxs-lookup"><span data-stu-id="c6e3c-778">To enable the middleware, define an `AllowedHosts` key in *:::no-loc(appsettings.json):::*/*appsettings.\<EnvironmentName>.json* .</span></span> <span data-ttu-id="c6e3c-779">La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-779">The value is a semicolon-delimited list of host names without port numbers:</span></span>
+<span data-ttu-id="c6e3c-777">Le middleware de filtrage d’hôtes est désactivé par défaut.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-777">Host Filtering Middleware is disabled by default.</span></span> <span data-ttu-id="c6e3c-778">Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *appsettings.json* / *appSettings. \<EnvironmentName> JSON* .</span><span class="sxs-lookup"><span data-stu-id="c6e3c-778">To enable the middleware, define an `AllowedHosts` key in *appsettings.json*/*appsettings.\<EnvironmentName>.json* .</span></span> <span data-ttu-id="c6e3c-779">La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-779">The value is a semicolon-delimited list of host names without port numbers:</span></span>
 
-<span data-ttu-id="c6e3c-780">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-780">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="c6e3c-780">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-780">*appsettings.json* :</span></span>
 
 ```json
 {
@@ -2044,7 +2044,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-<span data-ttu-id="c6e3c-824">Les options Kestrel, qui sont configurées dans le code C# dans les exemples suivants, peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-824">Kestrel options, which are configured in C# code in the following examples, can also be set using a [configuration provider](xref:fundamentals/configuration/index).</span></span> <span data-ttu-id="c6e3c-825">Par exemple, le fournisseur de configuration de fichier peut charger la configuration Kestrel à partir d’un *:::no-loc(appsettings.json):::* ou *appSettings. { Fichier Environment}. JSON* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-825">For example, the File Configuration Provider can load Kestrel configuration from an *:::no-loc(appsettings.json):::* or *appsettings.{Environment}.json* file:</span></span>
+<span data-ttu-id="c6e3c-824">Les options Kestrel, qui sont configurées dans le code C# dans les exemples suivants, peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-824">Kestrel options, which are configured in C# code in the following examples, can also be set using a [configuration provider](xref:fundamentals/configuration/index).</span></span> <span data-ttu-id="c6e3c-825">Par exemple, le fournisseur de configuration de fichier peut charger la configuration Kestrel à partir d’un *appsettings.json* ou *appSettings. { Fichier Environment}. JSON* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-825">For example, the File Configuration Provider can load Kestrel configuration from an *appsettings.json* or *appsettings.{Environment}.json* file:</span></span>
 
 ```json
 {
@@ -2380,7 +2380,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 <span data-ttu-id="c6e3c-922">Par défaut, `CreateDefaultBuilder` appelle `Configure(context.Configuration.GetSection("Kestrel"))` pour charger la configuration de Kestrel.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-922">`CreateDefaultBuilder` calls `Configure(context.Configuration.GetSection("Kestrel"))` by default to load Kestrel configuration.</span></span> <span data-ttu-id="c6e3c-923">Un schéma de configuration des paramètres d’application HTTPS par défaut est disponible pour Kestrel.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-923">A default HTTPS app settings configuration schema is available for Kestrel.</span></span> <span data-ttu-id="c6e3c-924">Configurez plusieurs points de terminaison, notamment les URL et les certificats à utiliser, à partir d’un fichier sur disque ou d’un magasin de certificats.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-924">Configure multiple endpoints, including the URLs and the certificates to use, either from a file on disk or from a certificate store.</span></span>
 
-<span data-ttu-id="c6e3c-925">Dans l' *:::no-loc(appsettings.json):::* exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-925">In the following *:::no-loc(appsettings.json):::* example:</span></span>
+<span data-ttu-id="c6e3c-925">Dans l' *appsettings.json* exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-925">In the following *appsettings.json* example:</span></span>
 
 * <span data-ttu-id="c6e3c-926">Définissez **AllowInvalid** sur `true` pour permettre l’utilisation de certificats non valides (par exemple des certificats auto-signés).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-926">Set **AllowInvalid** to `true` to permit the use of invalid certificates (for example, self-signed certificates).</span></span>
 * <span data-ttu-id="c6e3c-927">Tout point de terminaison HTTPS qui ne spécifie pas de certificat ( **HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut** ou au certificat de développement.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-927">Any HTTPS endpoint that doesn't specify a certificate ( **HttpsDefaultCert** in the example that follows) falls back to the cert defined under **Certificates** > **Default** or the development certificate.</span></span>
@@ -2743,9 +2743,9 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-<span data-ttu-id="c6e3c-1028">Le middleware de filtrage d’hôtes est désactivé par défaut.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1028">Host Filtering Middleware is disabled by default.</span></span> <span data-ttu-id="c6e3c-1029">Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *:::no-loc(appsettings.json):::* / *appSettings. \<EnvironmentName> JSON* .</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1029">To enable the middleware, define an `AllowedHosts` key in *:::no-loc(appsettings.json):::*/*appsettings.\<EnvironmentName>.json* .</span></span> <span data-ttu-id="c6e3c-1030">La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1030">The value is a semicolon-delimited list of host names without port numbers:</span></span>
+<span data-ttu-id="c6e3c-1028">Le middleware de filtrage d’hôtes est désactivé par défaut.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1028">Host Filtering Middleware is disabled by default.</span></span> <span data-ttu-id="c6e3c-1029">Pour activer l’intergiciel (middleware), définissez une `AllowedHosts` clé dans *appsettings.json* / *appSettings. \<EnvironmentName> JSON* .</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1029">To enable the middleware, define an `AllowedHosts` key in *appsettings.json*/*appsettings.\<EnvironmentName>.json* .</span></span> <span data-ttu-id="c6e3c-1030">La valeur est une liste délimitée par des points-virgules des noms d’hôte sans numéros de port :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1030">The value is a semicolon-delimited list of host names without port numbers:</span></span>
 
-<span data-ttu-id="c6e3c-1031">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1031">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="c6e3c-1031">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1031">*appsettings.json* :</span></span>
 
 ```json
 {
@@ -2774,7 +2774,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 * <span data-ttu-id="c6e3c-1050">La vidange a un délai d’expiration de cinq secondes, ce qui n’est pas configurable.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1050">Draining has a timeout of five seconds, which isn't configurable.</span></span>
 * <span data-ttu-id="c6e3c-1051">Si toutes les données spécifiées par l' `Content-Length` `Transfer-Encoding` en-tête ou n’ont pas été lues avant le délai d’attente, la connexion est fermée.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1051">If all of the data specified by the `Content-Length` or `Transfer-Encoding` header hasn't been read before the timeout, the connection is closed.</span></span>
 
-<span data-ttu-id="c6e3c-1052">Il peut arriver que vous souhaitiez mettre fin à la demande immédiatement, avant ou après l’écriture de la réponse.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1052">Sometimes you may want to terminate the request immediately, before or after writing the response.</span></span> <span data-ttu-id="c6e3c-1053">Par exemple, les clients peuvent avoir des limites de données restrictives, de sorte que la limitation des données chargées peut être une priorité.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1053">For example, clients may have restrictive data caps, so limiting uploaded data might be a priority.</span></span> <span data-ttu-id="c6e3c-1054">Dans ce cas, pour mettre fin à une demande, appelez [HttpContext. Abort](xref:Microsoft.AspNetCore.Http.HttpContext.Abort%2A) à partir d’un contrôleur, d’une :::no-loc(Razor)::: page ou d’un intergiciel (middleware).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1054">In such cases to terminate a request, call [HttpContext.Abort](xref:Microsoft.AspNetCore.Http.HttpContext.Abort%2A) from a controller, :::no-loc(Razor)::: Page, or middleware.</span></span>
+<span data-ttu-id="c6e3c-1052">Il peut arriver que vous souhaitiez mettre fin à la demande immédiatement, avant ou après l’écriture de la réponse.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1052">Sometimes you may want to terminate the request immediately, before or after writing the response.</span></span> <span data-ttu-id="c6e3c-1053">Par exemple, les clients peuvent avoir des limites de données restrictives, de sorte que la limitation des données chargées peut être une priorité.</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1053">For example, clients may have restrictive data caps, so limiting uploaded data might be a priority.</span></span> <span data-ttu-id="c6e3c-1054">Dans ce cas, pour mettre fin à une demande, appelez [HttpContext. Abort](xref:Microsoft.AspNetCore.Http.HttpContext.Abort%2A) à partir d’un contrôleur, d’une Razor page ou d’un intergiciel (middleware).</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1054">In such cases to terminate a request, call [HttpContext.Abort](xref:Microsoft.AspNetCore.Http.HttpContext.Abort%2A) from a controller, Razor Page, or middleware.</span></span>
 
 <span data-ttu-id="c6e3c-1055">Il existe des inconvénients à l’appel de `Abort` :</span><span class="sxs-lookup"><span data-stu-id="c6e3c-1055">There are caveats to calling `Abort`:</span></span>
 

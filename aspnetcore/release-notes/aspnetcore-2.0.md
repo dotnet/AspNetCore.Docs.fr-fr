@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: aspnetcore-2.0
 ms.openlocfilehash: f9fad5a63c76a3b21341a12fd40baafcdf2c9dac
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -29,14 +29,14 @@ ms.locfileid: "93059726"
 
 <span data-ttu-id="97018-104">Cet article met en évidence les modifications les plus importantes dans ASP.NET 2.0 Core et fournit des liens vers la documentation appropriée.</span><span class="sxs-lookup"><span data-stu-id="97018-104">This article highlights the most significant changes in ASP.NET Core 2.0, with links to relevant documentation.</span></span>
 
-## <a name="no-locrazor-pages"></a><span data-ttu-id="97018-105">:::no-loc(Razor)::: Pages</span><span class="sxs-lookup"><span data-stu-id="97018-105">:::no-loc(Razor)::: Pages</span></span>
+## <a name="no-locrazor-pages"></a><span data-ttu-id="97018-105">Razor Pages</span><span class="sxs-lookup"><span data-stu-id="97018-105">Razor Pages</span></span>
 
-<span data-ttu-id="97018-106">:::no-loc(Razor)::: Pages est une nouvelle fonctionnalité de ASP.NET Core MVC qui rend le codage des scénarios orientés page plus facile et plus productif.</span><span class="sxs-lookup"><span data-stu-id="97018-106">:::no-loc(Razor)::: Pages is a new feature of ASP.NET Core MVC that makes coding page-focused scenarios easier and more productive.</span></span>
+<span data-ttu-id="97018-106">Razor Pages est une nouvelle fonctionnalité de ASP.NET Core MVC qui rend le codage des scénarios orientés page plus facile et plus productif.</span><span class="sxs-lookup"><span data-stu-id="97018-106">Razor Pages is a new feature of ASP.NET Core MVC that makes coding page-focused scenarios easier and more productive.</span></span>
 
 <span data-ttu-id="97018-107">Pour plus d’informations, consultez l’introduction et le didacticiel :</span><span class="sxs-lookup"><span data-stu-id="97018-107">For more information, see the introduction and tutorial:</span></span>
 
-* [<span data-ttu-id="97018-108">Présentation des :::no-loc(Razor)::: pages</span><span class="sxs-lookup"><span data-stu-id="97018-108">Introduction to :::no-loc(Razor)::: Pages</span></span>](xref:razor-pages/index)
-* [<span data-ttu-id="97018-109">Prise en main des :::no-loc(Razor)::: pages</span><span class="sxs-lookup"><span data-stu-id="97018-109">Get started with :::no-loc(Razor)::: Pages</span></span>](xref:tutorials/razor-pages/razor-pages-start)
+* [<span data-ttu-id="97018-108">Présentation des Razor pages</span><span class="sxs-lookup"><span data-stu-id="97018-108">Introduction to Razor Pages</span></span>](xref:razor-pages/index)
+* [<span data-ttu-id="97018-109">Prise en main des Razor pages</span><span class="sxs-lookup"><span data-stu-id="97018-109">Get started with Razor Pages</span></span>](xref:tutorials/razor-pages/razor-pages-start)
 
 ## <a name="aspnet-core-metapackage"></a><span data-ttu-id="97018-110">Métapackage ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="97018-110">ASP.NET Core metapackage</span></span>
 
@@ -76,15 +76,15 @@ ms.locfileid: "93059726"
 
 <span data-ttu-id="97018-138">Pour plus d’informations sur l’état de la documentation planifiée, consultez le [problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/3054).</span><span class="sxs-lookup"><span data-stu-id="97018-138">For information about the status of planned documentation, see the [GitHub issue](https://github.com/dotnet/AspNetCore.Docs/issues/3054).</span></span>
 
-## <a name="no-locidentity-update"></a><span data-ttu-id="97018-139">:::no-loc(Identity)::: update</span><span class="sxs-lookup"><span data-stu-id="97018-139">:::no-loc(Identity)::: update</span></span>
+## <a name="no-locidentity-update"></a><span data-ttu-id="97018-139">Identity update</span><span class="sxs-lookup"><span data-stu-id="97018-139">Identity update</span></span>
 
-<span data-ttu-id="97018-140">Nous avons simplifié la création d’API Web sécurisées à l’aide :::no-loc(Identity)::: de dans ASP.NET Core 2,0.</span><span class="sxs-lookup"><span data-stu-id="97018-140">We've made it easier to build secure web APIs using :::no-loc(Identity)::: in ASP.NET Core 2.0.</span></span> <span data-ttu-id="97018-141">Vous pouvez acquérir des jetons d’accès pour accéder à vos API web à l’aide de la [bibliothèque d’authentification Microsoft (MSAL, Microsoft Authentication Library)](https://www.nuget.org/packages/Microsoft.:::no-loc(Identity):::.Client).</span><span class="sxs-lookup"><span data-stu-id="97018-141">You can acquire access tokens for accessing your web APIs using the [Microsoft Authentication Library (MSAL)](https://www.nuget.org/packages/Microsoft.:::no-loc(Identity):::.Client).</span></span>
+<span data-ttu-id="97018-140">Nous avons simplifié la création d’API Web sécurisées à l’aide Identity de dans ASP.NET Core 2,0.</span><span class="sxs-lookup"><span data-stu-id="97018-140">We've made it easier to build secure web APIs using Identity in ASP.NET Core 2.0.</span></span> <span data-ttu-id="97018-141">Vous pouvez acquérir des jetons d’accès pour accéder à vos API web à l’aide de la [bibliothèque d’authentification Microsoft (MSAL, Microsoft Authentication Library)](https://www.nuget.org/packages/Microsoft.Identity.Client).</span><span class="sxs-lookup"><span data-stu-id="97018-141">You can acquire access tokens for accessing your web APIs using the [Microsoft Authentication Library (MSAL)](https://www.nuget.org/packages/Microsoft.Identity.Client).</span></span>
 
 <span data-ttu-id="97018-142">Pour plus d’informations sur les modifications apportées à l’authentification dans la version 2.0, consultez les ressources suivantes :</span><span class="sxs-lookup"><span data-stu-id="97018-142">For more information on authentication changes in 2.0, see the following resources:</span></span>
 
 * [<span data-ttu-id="97018-143">Account confirmation and password recovery in ASP.NET Core (Confirmation de compte et récupération de mot de passe dans ASP.NET Core)</span><span class="sxs-lookup"><span data-stu-id="97018-143">Account confirmation and password recovery in ASP.NET Core</span></span>](xref:security/authentication/accconfirm)
 * [<span data-ttu-id="97018-144">Activer la génération de code QR pour les applications d’authentification dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="97018-144">Enable QR Code generation for authenticator apps in ASP.NET Core</span></span>](xref:security/authentication/identity-enable-qrcodes)
-* [<span data-ttu-id="97018-145">Migrer l’authentification et :::no-loc(Identity)::: vers ASP.NET Core 2,0</span><span class="sxs-lookup"><span data-stu-id="97018-145">Migrate Authentication and :::no-loc(Identity)::: to ASP.NET Core 2.0</span></span>](xref:migration/1x-to-2x/identity-2x)
+* [<span data-ttu-id="97018-145">Migrer l’authentification et Identity vers ASP.NET Core 2,0</span><span class="sxs-lookup"><span data-stu-id="97018-145">Migrate Authentication and Identity to ASP.NET Core 2.0</span></span>](xref:migration/1x-to-2x/identity-2x)
 
 ## <a name="spa-templates"></a><span data-ttu-id="97018-146">Modèles SPA</span><span class="sxs-lookup"><span data-stu-id="97018-146">SPA templates</span></span>
 
@@ -136,13 +136,13 @@ return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNo
 
 ## <a name="automatic-precompilation"></a><span data-ttu-id="97018-180">Précompilation automatique</span><span class="sxs-lookup"><span data-stu-id="97018-180">Automatic precompilation</span></span>
 
-<span data-ttu-id="97018-181">:::no-loc(Razor)::: la précompilation de la vue est activée lors de la publication par défaut, ce qui réduit la taille de sortie de publication et le temps de démarrage de l’application.</span><span class="sxs-lookup"><span data-stu-id="97018-181">:::no-loc(Razor)::: view pre-compilation is enabled during publish by default, reducing the publish output size and application startup time.</span></span>
+<span data-ttu-id="97018-181">Razor la précompilation de la vue est activée lors de la publication par défaut, ce qui réduit la taille de sortie de publication et le temps de démarrage de l’application.</span><span class="sxs-lookup"><span data-stu-id="97018-181">Razor view pre-compilation is enabled during publish by default, reducing the publish output size and application startup time.</span></span>
 
-<span data-ttu-id="97018-182">Pour plus d’informations, consultez [ :::no-loc(Razor)::: afficher la compilation et la précompilation dans ASP.net Core](xref:mvc/views/view-compilation).</span><span class="sxs-lookup"><span data-stu-id="97018-182">For more information, see [:::no-loc(Razor)::: view compilation and precompilation in ASP.NET Core](xref:mvc/views/view-compilation).</span></span>
+<span data-ttu-id="97018-182">Pour plus d’informations, consultez [ Razor afficher la compilation et la précompilation dans ASP.net Core](xref:mvc/views/view-compilation).</span><span class="sxs-lookup"><span data-stu-id="97018-182">For more information, see [Razor view compilation and precompilation in ASP.NET Core](xref:mvc/views/view-compilation).</span></span>
 
-## <a name="no-locrazor-support-for-c-71"></a><span data-ttu-id="97018-183">:::no-loc(Razor)::: prise en charge de C# 7,1</span><span class="sxs-lookup"><span data-stu-id="97018-183">:::no-loc(Razor)::: support for C# 7.1</span></span>
+## <a name="no-locrazor-support-for-c-71"></a><span data-ttu-id="97018-183">Razor prise en charge de C# 7,1</span><span class="sxs-lookup"><span data-stu-id="97018-183">Razor support for C# 7.1</span></span>
 
-<span data-ttu-id="97018-184">Le :::no-loc(Razor)::: moteur d’affichage a été mis à jour pour fonctionner avec le nouveau compilateur Roslyn.</span><span class="sxs-lookup"><span data-stu-id="97018-184">The :::no-loc(Razor)::: view engine has been updated to work with the new Roslyn compiler.</span></span> <span data-ttu-id="97018-185">Cela comprend la prise en charge des fonctionnalités de C# 7.1 telles que les expressions par défaut, la déduction des noms de tuples et les critères spéciaux avec les génériques.</span><span class="sxs-lookup"><span data-stu-id="97018-185">That includes support for C# 7.1 features like Default Expressions, Inferred Tuple Names, and Pattern-Matching with Generics.</span></span> <span data-ttu-id="97018-186">Pour utiliser C# 7.1 dans votre projet, ajoutez la propriété suivante dans votre fichier projet, puis rechargez la solution :</span><span class="sxs-lookup"><span data-stu-id="97018-186">To use C# 7.1 in your project, add the following property in your project file and then reload the solution:</span></span>
+<span data-ttu-id="97018-184">Le Razor moteur d’affichage a été mis à jour pour fonctionner avec le nouveau compilateur Roslyn.</span><span class="sxs-lookup"><span data-stu-id="97018-184">The Razor view engine has been updated to work with the new Roslyn compiler.</span></span> <span data-ttu-id="97018-185">Cela comprend la prise en charge des fonctionnalités de C# 7.1 telles que les expressions par défaut, la déduction des noms de tuples et les critères spéciaux avec les génériques.</span><span class="sxs-lookup"><span data-stu-id="97018-185">That includes support for C# 7.1 features like Default Expressions, Inferred Tuple Names, and Pattern-Matching with Generics.</span></span> <span data-ttu-id="97018-186">Pour utiliser C# 7.1 dans votre projet, ajoutez la propriété suivante dans votre fichier projet, puis rechargez la solution :</span><span class="sxs-lookup"><span data-stu-id="97018-186">To use C# 7.1 in your project, add the following property in your project file and then reload the solution:</span></span>
 
 ```xml
 <LangVersion>latest</LangVersion>
@@ -164,7 +164,7 @@ return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNo
 <span data-ttu-id="97018-196">Pour obtenir des conseils sur la migration d’applications ASP.NET Core 1.x vers ASP.NET Core 2.0, consultez les ressources suivantes :</span><span class="sxs-lookup"><span data-stu-id="97018-196">For guidance on how to migrate ASP.NET Core 1.x applications to ASP.NET Core 2.0, see the following resources:</span></span>
 
 * [<span data-ttu-id="97018-197">Migrer d’ASP.NET Core 1.x vers ASP.NET Core 2.0</span><span class="sxs-lookup"><span data-stu-id="97018-197">Migrate from ASP.NET Core 1.x to ASP.NET Core 2.0</span></span>](xref:migration/1x-to-2x/index)
-* [<span data-ttu-id="97018-198">Migrer l’authentification et :::no-loc(Identity)::: vers ASP.NET Core 2,0</span><span class="sxs-lookup"><span data-stu-id="97018-198">Migrate Authentication and :::no-loc(Identity)::: to ASP.NET Core 2.0</span></span>](xref:migration/1x-to-2x/identity-2x)
+* [<span data-ttu-id="97018-198">Migrer l’authentification et Identity vers ASP.NET Core 2,0</span><span class="sxs-lookup"><span data-stu-id="97018-198">Migrate Authentication and Identity to ASP.NET Core 2.0</span></span>](xref:migration/1x-to-2x/identity-2x)
 
 ## <a name="additional-information"></a><span data-ttu-id="97018-199">Informations supplémentaires</span><span class="sxs-lookup"><span data-stu-id="97018-199">Additional Information</span></span>
 

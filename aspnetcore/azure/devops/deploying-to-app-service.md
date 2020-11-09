@@ -6,17 +6,17 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-azurecli
 ms.date: 10/24/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: azure/devops/deploy-to-app-service
 ms.openlocfilehash: 52c4905ecb3a76f1dd10629f834b2b541b698774
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -41,7 +41,7 @@ ms.locfileid: "93052355"
 
 ## <a name="download-and-test-the-app"></a><span data-ttu-id="aaeb6-115">Télécharger et tester l’application</span><span class="sxs-lookup"><span data-stu-id="aaeb6-115">Download and test the app</span></span>
 
-<span data-ttu-id="aaeb6-116">L’application utilisée dans ce guide est une application ASP.NET Core pré-générée, un [lecteur de flux simple](https://github.com/Azure-Samples/simple-feed-reader/).</span><span class="sxs-lookup"><span data-stu-id="aaeb6-116">The app used in this guide is a pre-built ASP.NET Core app, [Simple Feed Reader](https://github.com/Azure-Samples/simple-feed-reader/).</span></span> <span data-ttu-id="aaeb6-117">Il s’agit d’une :::no-loc(Razor)::: application pages qui utilise l' `Microsoft.SyndicationFeed.ReaderWriter` API pour récupérer un flux RSS/Atom et afficher les éléments d’actualité dans une liste.</span><span class="sxs-lookup"><span data-stu-id="aaeb6-117">It's a :::no-loc(Razor)::: Pages app that uses the `Microsoft.SyndicationFeed.ReaderWriter` API to retrieve an RSS/Atom feed and display the news items in a list.</span></span>
+<span data-ttu-id="aaeb6-116">L’application utilisée dans ce guide est une application ASP.NET Core pré-générée, un [lecteur de flux simple](https://github.com/Azure-Samples/simple-feed-reader/).</span><span class="sxs-lookup"><span data-stu-id="aaeb6-116">The app used in this guide is a pre-built ASP.NET Core app, [Simple Feed Reader](https://github.com/Azure-Samples/simple-feed-reader/).</span></span> <span data-ttu-id="aaeb6-117">Il s’agit d’une Razor application pages qui utilise l' `Microsoft.SyndicationFeed.ReaderWriter` API pour récupérer un flux RSS/Atom et afficher les éléments d’actualité dans une liste.</span><span class="sxs-lookup"><span data-stu-id="aaeb6-117">It's a Razor Pages app that uses the `Microsoft.SyndicationFeed.ReaderWriter` API to retrieve an RSS/Atom feed and display the news items in a list.</span></span>
 
 <span data-ttu-id="aaeb6-118">N’hésitez pas à examiner le code, mais il est important de comprendre qu’il n’y a rien de spécial sur cette application.</span><span class="sxs-lookup"><span data-stu-id="aaeb6-118">Feel free to review the code, but it's important to understand that there's nothing special about this app.</span></span> <span data-ttu-id="aaeb6-119">Il s’agit simplement d’une simple ASP.NET Core application à des fins d’illustration.</span><span class="sxs-lookup"><span data-stu-id="aaeb6-119">It's just a simple ASP.NET Core app for illustrative purposes.</span></span>
 

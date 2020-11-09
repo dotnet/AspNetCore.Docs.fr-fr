@@ -5,17 +5,17 @@ description: Découvrez comment diagnostiquer les problèmes liés à la localis
 ms.author: riande
 ms.date: 01/24/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/troubleshoot-aspnet-core-localization
 ms.openlocfilehash: 995db4c8c9d0c0f1f77b1fd3665e707975406a7f
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -62,7 +62,7 @@ public void ConfigureServices(IServiceCollection services)
 - <span data-ttu-id="c35c8-118">La ressource est manquante dans le `resx` pour certaines langues, mais elle existe dans d’autres.</span><span class="sxs-lookup"><span data-stu-id="c35c8-118">The resource is missing from the `resx` for some languages, but exists in others.</span></span>
 - <span data-ttu-id="c35c8-119">Si le problème persiste, vérifiez les messages du journal de localisation (qui se trouvent au niveau du journal `Debug`) pour obtenir plus de détails sur les ressources manquantes.</span><span class="sxs-lookup"><span data-stu-id="c35c8-119">If you're still having trouble, check the localization log messages (which are at `Debug` log level) for more details about the missing resources.</span></span>
 
-<span data-ttu-id="c35c8-120">_**Indicateur :** Lorsque `:::no-loc(Cookie):::RequestCultureProvider` vous utilisez, vérifiez que les guillemets simples ne sont pas utilisés avec les cultures à l’intérieur de la valeur de localisation :::no-loc(cookie)::: . Par exemple, `c='en-UK'|uic='en-US'` est une valeur non valide :::no-loc(cookie)::: , tandis que `c=en-UK|uic=en-US` est un valide._</span><span class="sxs-lookup"><span data-stu-id="c35c8-120">_**Hint:** When using `:::no-loc(Cookie):::RequestCultureProvider`, verify single quotes are not used with the cultures inside the localization :::no-loc(cookie)::: value. For example, `c='en-UK'|uic='en-US'` is an invalid :::no-loc(cookie)::: value, while `c=en-UK|uic=en-US` is a valid._</span></span>
+<span data-ttu-id="c35c8-120">_**Indicateur :** Lorsque `CookieRequestCultureProvider` vous utilisez, vérifiez que les guillemets simples ne sont pas utilisés avec les cultures à l’intérieur de la valeur de localisation cookie . Par exemple, `c='en-UK'|uic='en-US'` est une valeur non valide cookie , tandis que `c=en-UK|uic=en-US` est un valide._</span><span class="sxs-lookup"><span data-stu-id="c35c8-120">_**Hint:** When using `CookieRequestCultureProvider`, verify single quotes are not used with the cultures inside the localization cookie value. For example, `c='en-UK'|uic='en-US'` is an invalid cookie value, while `c=en-UK|uic=en-US` is a valid._</span></span>
 
 ## <a name="resources--class-libraries-issues"></a><span data-ttu-id="c35c8-121">Problèmes liés aux ressources et aux bibliothèques de classes</span><span class="sxs-lookup"><span data-stu-id="c35c8-121">Resources & Class Libraries issues</span></span>
 
@@ -78,7 +78,7 @@ public void ConfigureServices(IServiceCollection services)
 <span data-ttu-id="c35c8-130">La classe `RequestLocalizationOptions` possède trois fournisseurs par défaut :</span><span class="sxs-lookup"><span data-stu-id="c35c8-130">The `RequestLocalizationOptions` class has three default providers:</span></span>
 
 1. `QueryStringRequestCultureProvider`
-2. `:::no-loc(Cookie):::RequestCultureProvider`
+2. `CookieRequestCultureProvider`
 3. `AcceptLanguageHeaderRequestCultureProvider`
 
 <span data-ttu-id="c35c8-131">[CustomRequestCultureProvider](/dotnet/api/microsoft.aspnetcore.localization.customrequestcultureprovider?view=aspnetcore-2.1) vous permet de personnaliser la façon dont la culture de localisation est fournie dans votre application.</span><span class="sxs-lookup"><span data-stu-id="c35c8-131">The [CustomRequestCultureProvider](/dotnet/api/microsoft.aspnetcore.localization.customrequestcultureprovider?view=aspnetcore-2.1) allows you to customize how the localization culture is provided in your app.</span></span> <span data-ttu-id="c35c8-132">`CustomRequestCultureProvider` est utilisé quand les fournisseurs par défaut ne répondent pas à vos besoins.</span><span class="sxs-lookup"><span data-stu-id="c35c8-132">The `CustomRequestCultureProvider` is used when the default providers don't meet your requirements.</span></span>

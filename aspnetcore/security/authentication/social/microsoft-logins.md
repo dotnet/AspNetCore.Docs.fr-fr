@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/microsoft-logins
 ms.openlocfilehash: 3161e4f0f735294d69dd51634b424d1ed573e615
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -100,7 +100,7 @@ ms.locfileid: "93060298"
 * <span data-ttu-id="52705-145">Si le fournisseur de comptes Microsoft vous redirige vers une page d’erreur de connexion, notez le titre d’erreur et la description paramètres de chaîne de requête qui suivent directement le `#` (mot-dièse) dans l’URI.</span><span class="sxs-lookup"><span data-stu-id="52705-145">If the Microsoft Account provider redirects you to a sign in error page, note the error title and description query string parameters directly following the `#` (hashtag) in the Uri.</span></span>
 
   <span data-ttu-id="52705-146">Bien que le message d’erreur semble indiquer un problème avec l’authentification Microsoft, la cause la plus courante est que l’URI de votre application ne correspond à aucun des **URI de redirection** spécifiés pour la plateforme **Web** .</span><span class="sxs-lookup"><span data-stu-id="52705-146">Although the error message seems to indicate a problem with Microsoft authentication, the most common cause is your application Uri not matching any of the **Redirect URIs** specified for the **Web** platform.</span></span>
-* <span data-ttu-id="52705-147">Si :::no-loc(Identity)::: n’est pas configuré en appelant `services.Add:::no-loc(Identity):::` dans `ConfigureServices` , toute tentative d’authentification entraîne une *exception ArgumentException : l’option « SignInScheme » doit être fournie* .</span><span class="sxs-lookup"><span data-stu-id="52705-147">If :::no-loc(Identity)::: isn't configured by calling `services.Add:::no-loc(Identity):::` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided* .</span></span> <span data-ttu-id="52705-148">Le modèle de projet utilisé dans cet exemple permet de s’assurer que cette opération est effectuée.</span><span class="sxs-lookup"><span data-stu-id="52705-148">The project template used in this sample ensures that this is done.</span></span>
+* <span data-ttu-id="52705-147">Si Identity n’est pas configuré en appelant `services.AddIdentity` dans `ConfigureServices` , toute tentative d’authentification entraîne une *exception ArgumentException : l’option « SignInScheme » doit être fournie* .</span><span class="sxs-lookup"><span data-stu-id="52705-147">If Identity isn't configured by calling `services.AddIdentity` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided* .</span></span> <span data-ttu-id="52705-148">Le modèle de projet utilisé dans cet exemple permet de s’assurer que cette opération est effectuée.</span><span class="sxs-lookup"><span data-stu-id="52705-148">The project template used in this sample ensures that this is done.</span></span>
 * <span data-ttu-id="52705-149">Si la base de données de site n’a pas été créée en appliquant la migration initiale, vous obtiendrez *une opération de base de données qui a échoué lors du traitement de l’erreur de demande* .</span><span class="sxs-lookup"><span data-stu-id="52705-149">If the site database has not been created by applying the initial migration, you will get *A database operation failed while processing the request* error.</span></span> <span data-ttu-id="52705-150">Appuyez sur **appliquer des migrations** pour créer la base de données, puis sur Actualiser pour poursuivre l’erreur.</span><span class="sxs-lookup"><span data-stu-id="52705-150">Tap **Apply Migrations** to create the database and refresh to continue past the error.</span></span>
 
 ## <a name="next-steps"></a><span data-ttu-id="52705-151">Étapes suivantes</span><span class="sxs-lookup"><span data-stu-id="52705-151">Next steps</span></span>

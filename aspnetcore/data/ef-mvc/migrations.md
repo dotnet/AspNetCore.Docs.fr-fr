@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-mvc/migrations
 ms.openlocfilehash: 070c18db55956d79560904f53395b5001c7bce6d
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -54,7 +54,7 @@ ms.locfileid: "93054032"
 
 ## <a name="change-the-connection-string"></a><span data-ttu-id="68ef7-125">Changer la chaîne de connexion</span><span class="sxs-lookup"><span data-stu-id="68ef7-125">Change the connection string</span></span>
 
-<span data-ttu-id="68ef7-126">Dans le *:::no-loc(appsettings.json):::* fichier, remplacez le nom de la base de données dans la chaîne de connexion par par contosouniversity2 ou un autre nom que vous n’avez pas utilisé sur l’ordinateur que vous utilisez.</span><span class="sxs-lookup"><span data-stu-id="68ef7-126">In the *:::no-loc(appsettings.json):::* file, change the name of the database in the connection string to ContosoUniversity2 or some other name that you haven't used on the computer you're using.</span></span>
+<span data-ttu-id="68ef7-126">Dans le *appsettings.json* fichier, remplacez le nom de la base de données dans la chaîne de connexion par par contosouniversity2 ou un autre nom que vous n’avez pas utilisé sur l’ordinateur que vous utilisez.</span><span class="sxs-lookup"><span data-stu-id="68ef7-126">In the *appsettings.json* file, change the name of the database in the connection string to ContosoUniversity2 or some other name that you haven't used on the computer you're using.</span></span>
 
 [!code-json[](intro/samples/cu/appsettings2.json?range=1-4)]
 

@@ -5,17 +5,17 @@ description: Cet article présente les fichiers d’objets portables et décrit 
 ms.author: scaddie
 ms.date: 09/26/2017
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/portable-object-localization
 ms.openlocfilehash: 2e28ebaf1962ebd834c43f1cfbc28929b1937c40
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -97,7 +97,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 [!code-csharp[](localization/sample/3.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
-<span data-ttu-id="2c067-138">Ajoutez le code suivant à votre :::no-loc(Razor)::: vue de votre choix.</span><span class="sxs-lookup"><span data-stu-id="2c067-138">Add the following code to your :::no-loc(Razor)::: view of choice.</span></span> <span data-ttu-id="2c067-139">*About.cshtml* est utilisé dans cet exemple.</span><span class="sxs-lookup"><span data-stu-id="2c067-139">*About.cshtml* is used in this example.</span></span>
+<span data-ttu-id="2c067-138">Ajoutez le code suivant à votre Razor vue de votre choix.</span><span class="sxs-lookup"><span data-stu-id="2c067-138">Add the following code to your Razor view of choice.</span></span> <span data-ttu-id="2c067-139">*About.cshtml* est utilisé dans cet exemple.</span><span class="sxs-lookup"><span data-stu-id="2c067-139">*About.cshtml* is used in this example.</span></span>
 
 [!code-cshtml[](localization/sample/3.x/POLocalization/Views/Home/About.cshtml)]
 
@@ -201,11 +201,11 @@ Existuje 5 položek.
 
 ### <a name="contextualizing-strings"></a><span data-ttu-id="2c067-179">Contextualisation de chaînes</span><span class="sxs-lookup"><span data-stu-id="2c067-179">Contextualizing strings</span></span>
 
-<span data-ttu-id="2c067-180">Les applications contiennent souvent les chaînes à traduire dans plusieurs emplacements.</span><span class="sxs-lookup"><span data-stu-id="2c067-180">Applications often contain the strings to be translated in several places.</span></span> <span data-ttu-id="2c067-181">La même chaîne peut avoir une traduction différente dans certains emplacements d’une application ( :::no-loc(Razor)::: vues ou fichiers de classe).</span><span class="sxs-lookup"><span data-stu-id="2c067-181">The same string may have a different translation in certain locations within an app (:::no-loc(Razor)::: views or class files).</span></span> <span data-ttu-id="2c067-182">Un fichier PO prend en charge la notion d’un contexte de fichier, qui peut être utilisé pour catégoriser la chaîne représentée.</span><span class="sxs-lookup"><span data-stu-id="2c067-182">A PO file supports the notion of a file context, which can be used to categorize the string being represented.</span></span> <span data-ttu-id="2c067-183">L’utilisation d’un contexte de fichier permet de traduire une chaîne différemment en fonction du contexte du fichier (ou de l’absence de contexte de fichier).</span><span class="sxs-lookup"><span data-stu-id="2c067-183">Using a file context, a string can be translated differently, depending on the file context (or lack of a file context).</span></span>
+<span data-ttu-id="2c067-180">Les applications contiennent souvent les chaînes à traduire dans plusieurs emplacements.</span><span class="sxs-lookup"><span data-stu-id="2c067-180">Applications often contain the strings to be translated in several places.</span></span> <span data-ttu-id="2c067-181">La même chaîne peut avoir une traduction différente dans certains emplacements d’une application ( Razor vues ou fichiers de classe).</span><span class="sxs-lookup"><span data-stu-id="2c067-181">The same string may have a different translation in certain locations within an app (Razor views or class files).</span></span> <span data-ttu-id="2c067-182">Un fichier PO prend en charge la notion d’un contexte de fichier, qui peut être utilisé pour catégoriser la chaîne représentée.</span><span class="sxs-lookup"><span data-stu-id="2c067-182">A PO file supports the notion of a file context, which can be used to categorize the string being represented.</span></span> <span data-ttu-id="2c067-183">L’utilisation d’un contexte de fichier permet de traduire une chaîne différemment en fonction du contexte du fichier (ou de l’absence de contexte de fichier).</span><span class="sxs-lookup"><span data-stu-id="2c067-183">Using a file context, a string can be translated differently, depending on the file context (or lack of a file context).</span></span>
 
 <span data-ttu-id="2c067-184">Les services de localisation de PO utilisent le nom de la classe complète ou de la vue utilisée lors de la traduction d’une chaîne.</span><span class="sxs-lookup"><span data-stu-id="2c067-184">The PO localization services use the name of the full class or the view that's used when translating a string.</span></span> <span data-ttu-id="2c067-185">Pour ce faire, il vous suffit de définir la valeur sur l’entrée `msgctxt`.</span><span class="sxs-lookup"><span data-stu-id="2c067-185">This is accomplished by setting the value on the `msgctxt` entry.</span></span>
 
-<span data-ttu-id="2c067-186">Examinons un ajout mineur à l’exemple *fr.po* précédent.</span><span class="sxs-lookup"><span data-stu-id="2c067-186">Consider a minor addition to the previous *fr.po* example.</span></span> <span data-ttu-id="2c067-187">Vous :::no-loc(Razor)::: pouvez définir une vue située dans *views/orig/about. cshtml* comme contexte de fichier en définissant la `msgctxt` valeur de l’entrée réservée :</span><span class="sxs-lookup"><span data-stu-id="2c067-187">A :::no-loc(Razor)::: view located at *Views/Home/About.cshtml* can be defined as the file context by setting the reserved `msgctxt` entry's value:</span></span>
+<span data-ttu-id="2c067-186">Examinons un ajout mineur à l’exemple *fr.po* précédent.</span><span class="sxs-lookup"><span data-stu-id="2c067-186">Consider a minor addition to the previous *fr.po* example.</span></span> <span data-ttu-id="2c067-187">Vous Razor pouvez définir une vue située dans *views/orig/about. cshtml* comme contexte de fichier en définissant la `msgctxt` valeur de l’entrée réservée :</span><span class="sxs-lookup"><span data-stu-id="2c067-187">A Razor view located at *Views/Home/About.cshtml* can be defined as the file context by setting the reserved `msgctxt` entry's value:</span></span>
 
 ```text
 msgctxt "Views.Home.About"
@@ -312,7 +312,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 [!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
-<span data-ttu-id="2c067-237">Ajoutez le code suivant à votre :::no-loc(Razor)::: vue de votre choix.</span><span class="sxs-lookup"><span data-stu-id="2c067-237">Add the following code to your :::no-loc(Razor)::: view of choice.</span></span> <span data-ttu-id="2c067-238">*About.cshtml* est utilisé dans cet exemple.</span><span class="sxs-lookup"><span data-stu-id="2c067-238">*About.cshtml* is used in this example.</span></span>
+<span data-ttu-id="2c067-237">Ajoutez le code suivant à votre Razor vue de votre choix.</span><span class="sxs-lookup"><span data-stu-id="2c067-237">Add the following code to your Razor view of choice.</span></span> <span data-ttu-id="2c067-238">*About.cshtml* est utilisé dans cet exemple.</span><span class="sxs-lookup"><span data-stu-id="2c067-238">*About.cshtml* is used in this example.</span></span>
 
 [!code-cshtml[](localization/sample/2.x/POLocalization/Views/Home/About.cshtml)]
 
@@ -416,11 +416,11 @@ Existuje 5 položek.
 
 ### <a name="contextualizing-strings"></a><span data-ttu-id="2c067-278">Contextualisation de chaînes</span><span class="sxs-lookup"><span data-stu-id="2c067-278">Contextualizing strings</span></span>
 
-<span data-ttu-id="2c067-279">Les applications contiennent souvent les chaînes à traduire dans plusieurs emplacements.</span><span class="sxs-lookup"><span data-stu-id="2c067-279">Applications often contain the strings to be translated in several places.</span></span> <span data-ttu-id="2c067-280">La même chaîne peut avoir une traduction différente dans certains emplacements d’une application ( :::no-loc(Razor)::: vues ou fichiers de classe).</span><span class="sxs-lookup"><span data-stu-id="2c067-280">The same string may have a different translation in certain locations within an app (:::no-loc(Razor)::: views or class files).</span></span> <span data-ttu-id="2c067-281">Un fichier PO prend en charge la notion d’un contexte de fichier, qui peut être utilisé pour catégoriser la chaîne représentée.</span><span class="sxs-lookup"><span data-stu-id="2c067-281">A PO file supports the notion of a file context, which can be used to categorize the string being represented.</span></span> <span data-ttu-id="2c067-282">L’utilisation d’un contexte de fichier permet de traduire une chaîne différemment en fonction du contexte du fichier (ou de l’absence de contexte de fichier).</span><span class="sxs-lookup"><span data-stu-id="2c067-282">Using a file context, a string can be translated differently, depending on the file context (or lack of a file context).</span></span>
+<span data-ttu-id="2c067-279">Les applications contiennent souvent les chaînes à traduire dans plusieurs emplacements.</span><span class="sxs-lookup"><span data-stu-id="2c067-279">Applications often contain the strings to be translated in several places.</span></span> <span data-ttu-id="2c067-280">La même chaîne peut avoir une traduction différente dans certains emplacements d’une application ( Razor vues ou fichiers de classe).</span><span class="sxs-lookup"><span data-stu-id="2c067-280">The same string may have a different translation in certain locations within an app (Razor views or class files).</span></span> <span data-ttu-id="2c067-281">Un fichier PO prend en charge la notion d’un contexte de fichier, qui peut être utilisé pour catégoriser la chaîne représentée.</span><span class="sxs-lookup"><span data-stu-id="2c067-281">A PO file supports the notion of a file context, which can be used to categorize the string being represented.</span></span> <span data-ttu-id="2c067-282">L’utilisation d’un contexte de fichier permet de traduire une chaîne différemment en fonction du contexte du fichier (ou de l’absence de contexte de fichier).</span><span class="sxs-lookup"><span data-stu-id="2c067-282">Using a file context, a string can be translated differently, depending on the file context (or lack of a file context).</span></span>
 
 <span data-ttu-id="2c067-283">Les services de localisation de PO utilisent le nom de la classe complète ou de la vue utilisée lors de la traduction d’une chaîne.</span><span class="sxs-lookup"><span data-stu-id="2c067-283">The PO localization services use the name of the full class or the view that's used when translating a string.</span></span> <span data-ttu-id="2c067-284">Pour ce faire, il vous suffit de définir la valeur sur l’entrée `msgctxt`.</span><span class="sxs-lookup"><span data-stu-id="2c067-284">This is accomplished by setting the value on the `msgctxt` entry.</span></span>
 
-<span data-ttu-id="2c067-285">Examinons un ajout mineur à l’exemple *fr.po* précédent.</span><span class="sxs-lookup"><span data-stu-id="2c067-285">Consider a minor addition to the previous *fr.po* example.</span></span> <span data-ttu-id="2c067-286">Vous :::no-loc(Razor)::: pouvez définir une vue située dans *views/orig/about. cshtml* comme contexte de fichier en définissant la `msgctxt` valeur de l’entrée réservée :</span><span class="sxs-lookup"><span data-stu-id="2c067-286">A :::no-loc(Razor)::: view located at *Views/Home/About.cshtml* can be defined as the file context by setting the reserved `msgctxt` entry's value:</span></span>
+<span data-ttu-id="2c067-285">Examinons un ajout mineur à l’exemple *fr.po* précédent.</span><span class="sxs-lookup"><span data-stu-id="2c067-285">Consider a minor addition to the previous *fr.po* example.</span></span> <span data-ttu-id="2c067-286">Vous Razor pouvez définir une vue située dans *views/orig/about. cshtml* comme contexte de fichier en définissant la `msgctxt` valeur de l’entrée réservée :</span><span class="sxs-lookup"><span data-stu-id="2c067-286">A Razor view located at *Views/Home/About.cshtml* can be defined as the file context by setting the reserved `msgctxt` entry's value:</span></span>
 
 ```text
 msgctxt "Views.Home.About"

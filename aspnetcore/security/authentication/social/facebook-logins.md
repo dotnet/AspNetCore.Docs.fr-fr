@@ -7,17 +7,17 @@ ms.custom: seoapril2019, mvc, seodec18
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/facebook-logins
 ms.openlocfilehash: be0b655645fd2bd0eab9f9c30a65485f386cead3
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -147,7 +147,7 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 ## <a name="troubleshooting"></a><span data-ttu-id="f9130-164">Dépannage</span><span class="sxs-lookup"><span data-stu-id="f9130-164">Troubleshooting</span></span>
 
-* <span data-ttu-id="f9130-165">**ASP.net Core 2. x uniquement :** Si :::no-loc(Identity)::: n’est pas configuré en appelant `services.Add:::no-loc(Identity):::` dans `ConfigureServices` , toute tentative d’authentification entraîne une *exception ArgumentException : l’option « SignInScheme » doit être fournie* .</span><span class="sxs-lookup"><span data-stu-id="f9130-165">**ASP.NET Core 2.x only:** If :::no-loc(Identity)::: isn't configured by calling `services.Add:::no-loc(Identity):::` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided* .</span></span> <span data-ttu-id="f9130-166">Le modèle de projet utilisé dans ce didacticiel permet d’effectuer cette opération.</span><span class="sxs-lookup"><span data-stu-id="f9130-166">The project template used in this tutorial ensures that this is done.</span></span>
+* <span data-ttu-id="f9130-165">**ASP.net Core 2. x uniquement :** Si Identity n’est pas configuré en appelant `services.AddIdentity` dans `ConfigureServices` , toute tentative d’authentification entraîne une *exception ArgumentException : l’option « SignInScheme » doit être fournie* .</span><span class="sxs-lookup"><span data-stu-id="f9130-165">**ASP.NET Core 2.x only:** If Identity isn't configured by calling `services.AddIdentity` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided* .</span></span> <span data-ttu-id="f9130-166">Le modèle de projet utilisé dans ce didacticiel permet d’effectuer cette opération.</span><span class="sxs-lookup"><span data-stu-id="f9130-166">The project template used in this tutorial ensures that this is done.</span></span>
 * <span data-ttu-id="f9130-167">Si la base de données de site n’a pas été créée en appliquant la migration initiale, vous recevez *une opération de base de données qui a échoué lors du traitement de l’erreur de demande* .</span><span class="sxs-lookup"><span data-stu-id="f9130-167">If the site database has not been created by applying the initial migration, you get *A database operation failed while processing the request* error.</span></span> <span data-ttu-id="f9130-168">Appuyez sur **appliquer des migrations** pour créer la base de données, puis sur Actualiser pour poursuivre l’erreur.</span><span class="sxs-lookup"><span data-stu-id="f9130-168">Tap **Apply Migrations** to create the database and refresh to continue past the error.</span></span>
 
 ## <a name="next-steps"></a><span data-ttu-id="f9130-169">Étapes suivantes</span><span class="sxs-lookup"><span data-stu-id="f9130-169">Next steps</span></span>

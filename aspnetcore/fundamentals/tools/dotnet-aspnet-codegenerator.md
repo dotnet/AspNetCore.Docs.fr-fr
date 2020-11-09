@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 07/04/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
 ms.openlocfilehash: 88d761b09833a14de5af9f9610753174867aa09a
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -68,8 +68,8 @@ dotnet aspnet-codegenerator [-h|--help]
 | ---------- | -------------------------------------------------------------------- |
 | <span data-ttu-id="62d08-120">superficie</span><span class="sxs-lookup"><span data-stu-id="62d08-120">area</span></span>       | [<span data-ttu-id="62d08-121">Génération de modèles automatique pour une zone</span><span class="sxs-lookup"><span data-stu-id="62d08-121">Scaffolds an Area</span></span>](xref:mvc/controllers/areas)                      |
 | <span data-ttu-id="62d08-122">contrôleur</span><span class="sxs-lookup"><span data-stu-id="62d08-122">controller</span></span> | [<span data-ttu-id="62d08-123">Génération de modèles automatique pour un contrôleur</span><span class="sxs-lookup"><span data-stu-id="62d08-123">Scaffolds a controller</span></span>](xref:tutorials/first-mvc-app/adding-model)  |
-| <span data-ttu-id="62d08-124">identité</span><span class="sxs-lookup"><span data-stu-id="62d08-124">identity</span></span>   | [<span data-ttu-id="62d08-125">Structure :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="62d08-125">Scaffolds :::no-loc(Identity):::</span></span>](xref:security/authentication/scaffold-identity) |
-| <span data-ttu-id="62d08-126">razorpage</span><span class="sxs-lookup"><span data-stu-id="62d08-126">razorpage</span></span>  | [<span data-ttu-id="62d08-127">Pages de modèles :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="62d08-127">Scaffolds :::no-loc(Razor)::: Pages</span></span>](xref:tutorials/razor-pages/model)            |
+| <span data-ttu-id="62d08-124">identité</span><span class="sxs-lookup"><span data-stu-id="62d08-124">identity</span></span>   | [<span data-ttu-id="62d08-125">Structure Identity</span><span class="sxs-lookup"><span data-stu-id="62d08-125">Scaffolds Identity</span></span>](xref:security/authentication/scaffold-identity) |
+| <span data-ttu-id="62d08-126">razorpage</span><span class="sxs-lookup"><span data-stu-id="62d08-126">razorpage</span></span>  | [<span data-ttu-id="62d08-127">Pages de modèles Razor</span><span class="sxs-lookup"><span data-stu-id="62d08-127">Scaffolds Razor Pages</span></span>](xref:tutorials/razor-pages/model)            |
 | <span data-ttu-id="62d08-128">vue</span><span class="sxs-lookup"><span data-stu-id="62d08-128">view</span></span>       | [<span data-ttu-id="62d08-129">Génération de modèles automatique pour une vue</span><span class="sxs-lookup"><span data-stu-id="62d08-129">Scaffolds a view</span></span>](xref:mvc/views/overview)                          |
 
 ## <a name="options"></a><span data-ttu-id="62d08-130">Options</span><span class="sxs-lookup"><span data-stu-id="62d08-130">Options</span></span>
@@ -108,15 +108,15 @@ dotnet aspnet-codegenerator [-h|--help]
 
 * <span data-ttu-id="62d08-144">Domaine</span><span class="sxs-lookup"><span data-stu-id="62d08-144">Area</span></span>
 * <span data-ttu-id="62d08-145">Contrôleur</span><span class="sxs-lookup"><span data-stu-id="62d08-145">Controller</span></span>
-* :::no-loc(Identity):::  
-* <span data-ttu-id="62d08-146">:::no-loc(Razor):::page</span><span class="sxs-lookup"><span data-stu-id="62d08-146">:::no-loc(Razor):::page</span></span>
+* Identity  
+* <span data-ttu-id="62d08-146">Razorpage</span><span class="sxs-lookup"><span data-stu-id="62d08-146">Razorpage</span></span>
 * <span data-ttu-id="62d08-147">Affichage</span><span class="sxs-lookup"><span data-stu-id="62d08-147">View</span></span>
 
 <a name="area"></a>
 
 ### <a name="area-options"></a><span data-ttu-id="62d08-148">Options de zone</span><span class="sxs-lookup"><span data-stu-id="62d08-148">Area options</span></span>
 
-<span data-ttu-id="62d08-149">Cet outil est conçu pour les projets web ASP.NET Core avec des contrôleurs et des vues.</span><span class="sxs-lookup"><span data-stu-id="62d08-149">This tool is intended for ASP.NET Core web projects with controllers and views.</span></span> <span data-ttu-id="62d08-150">Elle n’est pas destinée aux :::no-loc(Razor)::: applications pages.</span><span class="sxs-lookup"><span data-stu-id="62d08-150">It's not intended for :::no-loc(Razor)::: Pages apps.</span></span>
+<span data-ttu-id="62d08-149">Cet outil est conçu pour les projets web ASP.NET Core avec des contrôleurs et des vues.</span><span class="sxs-lookup"><span data-stu-id="62d08-149">This tool is intended for ASP.NET Core web projects with controllers and views.</span></span> <span data-ttu-id="62d08-150">Elle n’est pas destinée aux Razor applications pages.</span><span class="sxs-lookup"><span data-stu-id="62d08-150">It's not intended for Razor Pages apps.</span></span>
 
 <span data-ttu-id="62d08-151">Utilisation : `dotnet aspnet-codegenerator area AreaNameToGenerate`</span><span class="sxs-lookup"><span data-stu-id="62d08-151">Usage: `dotnet aspnet-codegenerator area AreaNameToGenerate`</span></span>
 
@@ -155,11 +155,11 @@ dotnet aspnet-codegenerator controller -h
 
 <span data-ttu-id="62d08-176">Consultez [Générer automatiquement le modèle de film](xref:tutorials/first-mvc-app/adding-model) pour obtenir un exemple de `dotnet aspnet-codegenerator controller`.</span><span class="sxs-lookup"><span data-stu-id="62d08-176">See [Scaffold the movie model](xref:tutorials/first-mvc-app/adding-model) for an example of `dotnet aspnet-codegenerator controller`.</span></span>
 
-### <a name="no-locrazorpage"></a><span data-ttu-id="62d08-177">:::no-loc(Razor):::page</span><span class="sxs-lookup"><span data-stu-id="62d08-177">:::no-loc(Razor):::page</span></span>
+### <a name="no-locrazorpage"></a><span data-ttu-id="62d08-177">Razorpage</span><span class="sxs-lookup"><span data-stu-id="62d08-177">Razorpage</span></span>
 
 <a name="rp"></a>
 
-<span data-ttu-id="62d08-178">:::no-loc(Razor)::: Les pages peuvent être structurées individuellement en spécifiant le nom de la nouvelle page et le modèle à utiliser.</span><span class="sxs-lookup"><span data-stu-id="62d08-178">:::no-loc(Razor)::: Pages can be individually scaffolded by specifying the name of the new page and the template to use.</span></span> <span data-ttu-id="62d08-179">Les modèles pris en charge sont :</span><span class="sxs-lookup"><span data-stu-id="62d08-179">The supported templates are:</span></span>
+<span data-ttu-id="62d08-178">Razor Les pages peuvent être structurées individuellement en spécifiant le nom de la nouvelle page et le modèle à utiliser.</span><span class="sxs-lookup"><span data-stu-id="62d08-178">Razor Pages can be individually scaffolded by specifying the name of the new page and the template to use.</span></span> <span data-ttu-id="62d08-179">Les modèles pris en charge sont :</span><span class="sxs-lookup"><span data-stu-id="62d08-179">The supported templates are:</span></span>
 
 * `Empty`
 * `Create`
@@ -171,7 +171,7 @@ dotnet aspnet-codegenerator controller -h
 <span data-ttu-id="62d08-180">Par exemple, la commande suivante utilise le modèle de modification pour générer *MyEdit.cshtml* et *MyEdit.cshtml.cs* :</span><span class="sxs-lookup"><span data-stu-id="62d08-180">For example, the following command uses the Edit template to generate *MyEdit.cshtml* and *MyEdit.cshtml.cs* :</span></span>
 
 ```dotnetcli
-dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc :::no-loc(Razor):::PagesMovieContext -outDir Pages/Movies
+dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc RazorPagesMovieContext -outDir Pages/Movies
 ```
 
 <span data-ttu-id="62d08-181">En règle générale, le modèle et le nom de fichier générés ne sont pas spécifiés, et les modèles suivants sont créés :</span><span class="sxs-lookup"><span data-stu-id="62d08-181">Typically, the template and generated file name is not specified, and the following templates are created:</span></span>
@@ -202,6 +202,6 @@ dotnet aspnet-codegenerator razorpage -h
 
 <span data-ttu-id="62d08-194">Consultez [Générer automatiquement le modèle de film](xref:tutorials/razor-pages/model) pour obtenir un exemple de `dotnet aspnet-codegenerator razorpage`.</span><span class="sxs-lookup"><span data-stu-id="62d08-194">See [Scaffold the movie model](xref:tutorials/razor-pages/model) for an example of `dotnet aspnet-codegenerator razorpage`.</span></span>
 
-### :::no-loc(Identity):::
+### Identity
 
-<span data-ttu-id="62d08-195">Voir [l' :::no-loc(Identity)::: échafaudage](xref:security/authentication/scaffold-identity)</span><span class="sxs-lookup"><span data-stu-id="62d08-195">See [Scaffold :::no-loc(Identity):::](xref:security/authentication/scaffold-identity)</span></span>
+<span data-ttu-id="62d08-195">Voir [l' Identity échafaudage](xref:security/authentication/scaffold-identity)</span><span class="sxs-lookup"><span data-stu-id="62d08-195">See [Scaffold Identity](xref:security/authentication/scaffold-identity)</span></span>

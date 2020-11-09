@@ -5,17 +5,17 @@ description: En savoir plus sur les fournisseurs de stockage de clés dans ASP.N
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/data-protection/implementation/key-storage-providers
 ms.openlocfilehash: 36e8bc494125d0770347ddf32390365d83a91d27
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -47,7 +47,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="azure-storage"></a><span data-ttu-id="df171-114">Stockage Azure</span><span class="sxs-lookup"><span data-stu-id="df171-114">Azure Storage</span></span>
 
-<span data-ttu-id="df171-115">Le package [Microsoft. AspNetCore. dataprotection. AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) permet de stocker les clés de protection des données dans le stockage d’objets BLOB Azure.</span><span class="sxs-lookup"><span data-stu-id="df171-115">The [Microsoft.AspNetCore.DataProtection.AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) package allows storing data protection keys in Azure Blob Storage.</span></span> <span data-ttu-id="df171-116">Les clés peuvent être partagées entre plusieurs instances d’une application Web.</span><span class="sxs-lookup"><span data-stu-id="df171-116">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="df171-117">Les applications peuvent partager l’authentification :::no-loc(cookie)::: ou la protection CSRF sur plusieurs serveurs.</span><span class="sxs-lookup"><span data-stu-id="df171-117">Apps can share authentication :::no-loc(cookie):::s or CSRF protection across multiple servers.</span></span>
+<span data-ttu-id="df171-115">Le package [Microsoft. AspNetCore. dataprotection. AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) permet de stocker les clés de protection des données dans le stockage d’objets BLOB Azure.</span><span class="sxs-lookup"><span data-stu-id="df171-115">The [Microsoft.AspNetCore.DataProtection.AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) package allows storing data protection keys in Azure Blob Storage.</span></span> <span data-ttu-id="df171-116">Les clés peuvent être partagées entre plusieurs instances d’une application Web.</span><span class="sxs-lookup"><span data-stu-id="df171-116">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="df171-117">Les applications peuvent partager l’authentification cookie ou la protection CSRF sur plusieurs serveurs.</span><span class="sxs-lookup"><span data-stu-id="df171-117">Apps can share authentication cookies or CSRF protection across multiple servers.</span></span>
 
 <span data-ttu-id="df171-118">Pour configurer le fournisseur de stockage d’objets BLOB Azure, appelez l’une des surcharges [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage) .</span><span class="sxs-lookup"><span data-stu-id="df171-118">To configure the Azure Blob Storage provider, call one of the [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage) overloads.</span></span>
 
@@ -82,13 +82,13 @@ services.AddDataProtection()
 
 ::: moniker range=">= aspnetcore-2.2"
 
-<span data-ttu-id="df171-122">Le package [Microsoft. AspNetCore. dataprotection. StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) permet de stocker les clés de protection des données dans un cache ReDim.</span><span class="sxs-lookup"><span data-stu-id="df171-122">The [Microsoft.AspNetCore.DataProtection.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="df171-123">Les clés peuvent être partagées entre plusieurs instances d’une application Web.</span><span class="sxs-lookup"><span data-stu-id="df171-123">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="df171-124">Les applications peuvent partager l’authentification :::no-loc(cookie)::: ou la protection CSRF sur plusieurs serveurs.</span><span class="sxs-lookup"><span data-stu-id="df171-124">Apps can share authentication :::no-loc(cookie):::s or CSRF protection across multiple servers.</span></span>
+<span data-ttu-id="df171-122">Le package [Microsoft. AspNetCore. dataprotection. StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) permet de stocker les clés de protection des données dans un cache ReDim.</span><span class="sxs-lookup"><span data-stu-id="df171-122">The [Microsoft.AspNetCore.DataProtection.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="df171-123">Les clés peuvent être partagées entre plusieurs instances d’une application Web.</span><span class="sxs-lookup"><span data-stu-id="df171-123">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="df171-124">Les applications peuvent partager l’authentification cookie ou la protection CSRF sur plusieurs serveurs.</span><span class="sxs-lookup"><span data-stu-id="df171-124">Apps can share authentication cookies or CSRF protection across multiple servers.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-<span data-ttu-id="df171-125">Le package [Microsoft. AspNetCore. dataprotection. redims](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) permet de stocker les clés de protection des données dans un cache ReDim.</span><span class="sxs-lookup"><span data-stu-id="df171-125">The [Microsoft.AspNetCore.DataProtection.Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="df171-126">Les clés peuvent être partagées entre plusieurs instances d’une application Web.</span><span class="sxs-lookup"><span data-stu-id="df171-126">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="df171-127">Les applications peuvent partager l’authentification :::no-loc(cookie)::: ou la protection CSRF sur plusieurs serveurs.</span><span class="sxs-lookup"><span data-stu-id="df171-127">Apps can share authentication :::no-loc(cookie):::s or CSRF protection across multiple servers.</span></span>
+<span data-ttu-id="df171-125">Le package [Microsoft. AspNetCore. dataprotection. redims](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) permet de stocker les clés de protection des données dans un cache ReDim.</span><span class="sxs-lookup"><span data-stu-id="df171-125">The [Microsoft.AspNetCore.DataProtection.Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="df171-126">Les clés peuvent être partagées entre plusieurs instances d’une application Web.</span><span class="sxs-lookup"><span data-stu-id="df171-126">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="df171-127">Les applications peuvent partager l’authentification cookie ou la protection CSRF sur plusieurs serveurs.</span><span class="sxs-lookup"><span data-stu-id="df171-127">Apps can share authentication cookies or CSRF protection across multiple servers.</span></span>
 
 ::: moniker-end
 

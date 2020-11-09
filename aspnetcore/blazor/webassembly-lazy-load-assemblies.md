@@ -1,23 +1,23 @@
 ---
-title: 'Chargement différé d’assemblys dans ASP.NET Core :::no-loc(Blazor WebAssembly):::'
+title: 'Chargement différé d’assemblys dans ASP.NET Core Blazor WebAssembly'
 author: guardrex
-description: 'Découvrez comment charger en différé des assemblys dans des :::no-loc(Blazor WebAssembly)::: applications ASP.net core.'
+description: 'Découvrez comment charger en différé des assemblys dans des Blazor WebAssembly applications ASP.net core.'
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/09/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/webassembly-lazy-load-assemblies
 ms.openlocfilehash: 6a1feffb5341d432d6d1949a9e26b9537b85ba03
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,30 +26,30 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93054786"
 ---
-# <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a><span data-ttu-id="75e55-103">Chargement différé d’assemblys dans ASP.NET Core :::no-loc(Blazor WebAssembly):::</span><span class="sxs-lookup"><span data-stu-id="75e55-103">Lazy load assemblies in ASP.NET Core :::no-loc(Blazor WebAssembly):::</span></span>
+# <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a><span data-ttu-id="75e55-103">Chargement différé d’assemblys dans ASP.NET Core Blazor WebAssembly</span><span class="sxs-lookup"><span data-stu-id="75e55-103">Lazy load assemblies in ASP.NET Core Blazor WebAssembly</span></span>
 
 <span data-ttu-id="75e55-104">Par [safia Abdalla](https://safia.rocks) et [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="75e55-104">By [Safia Abdalla](https://safia.rocks) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="75e55-105">:::no-loc(Blazor WebAssembly)::: les performances de démarrage de l’application peuvent être améliorées en différant le chargement de certains assemblys d’application jusqu’à ce qu’ils soient nécessaires, ce qui s’appelle le *chargement différé* .</span><span class="sxs-lookup"><span data-stu-id="75e55-105">:::no-loc(Blazor WebAssembly)::: app startup performance can be improved by deferring the loading of some application assemblies until they are required, which is called *lazy loading* .</span></span> <span data-ttu-id="75e55-106">Par exemple, les assemblys qui sont utilisés uniquement pour le rendu d’un seul composant peuvent être configurés pour être chargés uniquement si l’utilisateur accède à ce composant.</span><span class="sxs-lookup"><span data-stu-id="75e55-106">For example, assemblies that are only used to render a single component can be set up to load only if the user navigates to that component.</span></span> <span data-ttu-id="75e55-107">Après le chargement, les assemblys sont mis en cache côté client et sont disponibles pour toutes les navigations ultérieures.</span><span class="sxs-lookup"><span data-stu-id="75e55-107">After loading, the assemblies are cached client-side and are available for all future navigations.</span></span>
+<span data-ttu-id="75e55-105">Blazor WebAssembly les performances de démarrage de l’application peuvent être améliorées en différant le chargement de certains assemblys d’application jusqu’à ce qu’ils soient nécessaires, ce qui s’appelle le *chargement différé* .</span><span class="sxs-lookup"><span data-stu-id="75e55-105">Blazor WebAssembly app startup performance can be improved by deferring the loading of some application assemblies until they are required, which is called *lazy loading* .</span></span> <span data-ttu-id="75e55-106">Par exemple, les assemblys qui sont utilisés uniquement pour le rendu d’un seul composant peuvent être configurés pour être chargés uniquement si l’utilisateur accède à ce composant.</span><span class="sxs-lookup"><span data-stu-id="75e55-106">For example, assemblies that are only used to render a single component can be set up to load only if the user navigates to that component.</span></span> <span data-ttu-id="75e55-107">Après le chargement, les assemblys sont mis en cache côté client et sont disponibles pour toutes les navigations ultérieures.</span><span class="sxs-lookup"><span data-stu-id="75e55-107">After loading, the assemblies are cached client-side and are available for all future navigations.</span></span>
 
-<span data-ttu-id="75e55-108">:::no-loc(Blazor):::la fonctionnalité de chargement différé de vous permet de marquer des assemblys d’application pour le chargement différé, qui charge les assemblys lors de l’exécution lorsque l’utilisateur accède à un itinéraire particulier.</span><span class="sxs-lookup"><span data-stu-id="75e55-108">:::no-loc(Blazor):::'s lazy loading feature allows you to mark app assemblies for lazy loading, which loads the assemblies during runtime when the user navigates to a particular route.</span></span> <span data-ttu-id="75e55-109">La fonctionnalité est constituée de modifications apportées au fichier projet et des modifications apportées au routeur de l’application.</span><span class="sxs-lookup"><span data-stu-id="75e55-109">The feature consists of changes to the project file and changes to the application's router.</span></span>
+<span data-ttu-id="75e55-108">Blazorla fonctionnalité de chargement différé de vous permet de marquer des assemblys d’application pour le chargement différé, qui charge les assemblys lors de l’exécution lorsque l’utilisateur accède à un itinéraire particulier.</span><span class="sxs-lookup"><span data-stu-id="75e55-108">Blazor's lazy loading feature allows you to mark app assemblies for lazy loading, which loads the assemblies during runtime when the user navigates to a particular route.</span></span> <span data-ttu-id="75e55-109">La fonctionnalité est constituée de modifications apportées au fichier projet et des modifications apportées au routeur de l’application.</span><span class="sxs-lookup"><span data-stu-id="75e55-109">The feature consists of changes to the project file and changes to the application's router.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="75e55-110">Le chargement différé d’un assembly n’avantage pas :::no-loc(Blazor Server)::: les applications, car les assemblys ne sont pas téléchargés vers le client dans une :::no-loc(Blazor Server)::: application.</span><span class="sxs-lookup"><span data-stu-id="75e55-110">Assembly lazy loading doesn't benefit :::no-loc(Blazor Server)::: apps because assemblies aren't downloaded to the client in a :::no-loc(Blazor Server)::: app.</span></span>
+> <span data-ttu-id="75e55-110">Le chargement différé d’un assembly n’avantage pas Blazor Server les applications, car les assemblys ne sont pas téléchargés vers le client dans une Blazor Server application.</span><span class="sxs-lookup"><span data-stu-id="75e55-110">Assembly lazy loading doesn't benefit Blazor Server apps because assemblies aren't downloaded to the client in a Blazor Server app.</span></span>
 
 ## <a name="project-file"></a><span data-ttu-id="75e55-111">Fichier projet</span><span class="sxs-lookup"><span data-stu-id="75e55-111">Project file</span></span>
 
-<span data-ttu-id="75e55-112">Marquez les assemblys pour le chargement différé dans le fichier projet de l’application ( `.csproj` ) à l’aide de l' `:::no-loc(Blazor):::WebAssemblyLazyLoad` élément.</span><span class="sxs-lookup"><span data-stu-id="75e55-112">Mark assemblies for lazy loading in the app's project file (`.csproj`) using the `:::no-loc(Blazor):::WebAssemblyLazyLoad` item.</span></span> <span data-ttu-id="75e55-113">Utilisez le nom de l’assembly avec l' `.dll` extension.</span><span class="sxs-lookup"><span data-stu-id="75e55-113">Use the assembly name with the `.dll` extension.</span></span> <span data-ttu-id="75e55-114">L' :::no-loc(Blazor)::: infrastructure empêche le chargement des assemblys spécifiés par ce groupe d’éléments au lancement de l’application.</span><span class="sxs-lookup"><span data-stu-id="75e55-114">The :::no-loc(Blazor)::: framework prevents the assemblies specified by this item group from loading at app launch.</span></span> <span data-ttu-id="75e55-115">L’exemple suivant marque un grand assembly personnalisé ( `GrantImaharaRobotControls.dll` ) pour le chargement différé.</span><span class="sxs-lookup"><span data-stu-id="75e55-115">The following example marks a large custom assembly (`GrantImaharaRobotControls.dll`) for lazy loading.</span></span> <span data-ttu-id="75e55-116">Si un assembly marqué pour le chargement différé a des dépendances, il doit également être marqué pour le chargement différé dans le fichier projet.</span><span class="sxs-lookup"><span data-stu-id="75e55-116">If an assembly that's marked for lazy loading has dependencies, they must also be marked for lazy loading in the project file.</span></span>
+<span data-ttu-id="75e55-112">Marquez les assemblys pour le chargement différé dans le fichier projet de l’application ( `.csproj` ) à l’aide de l' `BlazorWebAssemblyLazyLoad` élément.</span><span class="sxs-lookup"><span data-stu-id="75e55-112">Mark assemblies for lazy loading in the app's project file (`.csproj`) using the `BlazorWebAssemblyLazyLoad` item.</span></span> <span data-ttu-id="75e55-113">Utilisez le nom de l’assembly avec l' `.dll` extension.</span><span class="sxs-lookup"><span data-stu-id="75e55-113">Use the assembly name with the `.dll` extension.</span></span> <span data-ttu-id="75e55-114">L' Blazor infrastructure empêche le chargement des assemblys spécifiés par ce groupe d’éléments au lancement de l’application.</span><span class="sxs-lookup"><span data-stu-id="75e55-114">The Blazor framework prevents the assemblies specified by this item group from loading at app launch.</span></span> <span data-ttu-id="75e55-115">L’exemple suivant marque un grand assembly personnalisé ( `GrantImaharaRobotControls.dll` ) pour le chargement différé.</span><span class="sxs-lookup"><span data-stu-id="75e55-115">The following example marks a large custom assembly (`GrantImaharaRobotControls.dll`) for lazy loading.</span></span> <span data-ttu-id="75e55-116">Si un assembly marqué pour le chargement différé a des dépendances, il doit également être marqué pour le chargement différé dans le fichier projet.</span><span class="sxs-lookup"><span data-stu-id="75e55-116">If an assembly that's marked for lazy loading has dependencies, they must also be marked for lazy loading in the project file.</span></span>
 
 ```xml
 <ItemGroup>
-  <:::no-loc(Blazor):::WebAssemblyLazyLoad Include="GrantImaharaRobotControls.dll" />
+  <BlazorWebAssemblyLazyLoad Include="GrantImaharaRobotControls.dll" />
 </ItemGroup>
 ```
 
 ## <a name="router-component"></a><span data-ttu-id="75e55-117">Composant `Router`</span><span class="sxs-lookup"><span data-stu-id="75e55-117">`Router` component</span></span>
 
-<span data-ttu-id="75e55-118">:::no-loc(Blazor):::`Router`le composant de désigne les assemblys qui :::no-loc(Blazor)::: recherchent les composants routables.</span><span class="sxs-lookup"><span data-stu-id="75e55-118">:::no-loc(Blazor):::'s `Router` component designates which assemblies :::no-loc(Blazor)::: searches for routable components.</span></span> <span data-ttu-id="75e55-119">Le `Router` composant est également responsable du rendu du composant pour l’itinéraire à partir duquel l’utilisateur navigue.</span><span class="sxs-lookup"><span data-stu-id="75e55-119">The `Router` component is also responsible for rendering the component for the route where the user navigates.</span></span> <span data-ttu-id="75e55-120">Le `Router` composant prend en charge une `OnNavigateAsync` fonctionnalité qui peut être utilisée conjointement avec le chargement différé.</span><span class="sxs-lookup"><span data-stu-id="75e55-120">The `Router` component supports an `OnNavigateAsync` feature that can be used in conjunction with lazy loading.</span></span>
+<span data-ttu-id="75e55-118">Blazor`Router`le composant de désigne les assemblys qui Blazor recherchent les composants routables.</span><span class="sxs-lookup"><span data-stu-id="75e55-118">Blazor's `Router` component designates which assemblies Blazor searches for routable components.</span></span> <span data-ttu-id="75e55-119">Le `Router` composant est également responsable du rendu du composant pour l’itinéraire à partir duquel l’utilisateur navigue.</span><span class="sxs-lookup"><span data-stu-id="75e55-119">The `Router` component is also responsible for rendering the component for the route where the user navigates.</span></span> <span data-ttu-id="75e55-120">Le `Router` composant prend en charge une `OnNavigateAsync` fonctionnalité qui peut être utilisée conjointement avec le chargement différé.</span><span class="sxs-lookup"><span data-stu-id="75e55-120">The `Router` component supports an `OnNavigateAsync` feature that can be used in conjunction with lazy loading.</span></span>
 
 <span data-ttu-id="75e55-121">Dans le composant de l’application `Router` ( `App.razor` ) :</span><span class="sxs-lookup"><span data-stu-id="75e55-121">In the app's `Router` component (`App.razor`):</span></span>
 
@@ -75,7 +75,7 @@ ms.locfileid: "93054786"
 }
 ```
 
-<span data-ttu-id="75e55-129">Si le `OnNavigateAsync` rappel lève une exception non gérée, l' [ :::no-loc(Blazor)::: interface utilisateur d’erreur](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development) est appelée.</span><span class="sxs-lookup"><span data-stu-id="75e55-129">If the `OnNavigateAsync` callback throws an unhandled exception, the [:::no-loc(Blazor)::: error UI](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development) is invoked.</span></span>
+<span data-ttu-id="75e55-129">Si le `OnNavigateAsync` rappel lève une exception non gérée, l' [ Blazor interface utilisateur d’erreur](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development) est appelée.</span><span class="sxs-lookup"><span data-stu-id="75e55-129">If the `OnNavigateAsync` callback throws an unhandled exception, the [Blazor error UI](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development) is invoked.</span></span>
 
 ### <a name="assembly-load-logic-in-onnavigateasync"></a><span data-ttu-id="75e55-130">Logique de chargement d’assembly dans `OnNavigateAsync`</span><span class="sxs-lookup"><span data-stu-id="75e55-130">Assembly load logic in `OnNavigateAsync`</span></span>
 
@@ -104,7 +104,7 @@ ms.locfileid: "93054786"
 * <span data-ttu-id="75e55-142">Utilise l’interopérabilité JS pour extraire des assemblys via un appel réseau.</span><span class="sxs-lookup"><span data-stu-id="75e55-142">Uses JS interop to fetch assemblies via a network call.</span></span>
 * <span data-ttu-id="75e55-143">Charge les assemblys dans le runtime s’exécutant sur webassembly dans le navigateur.</span><span class="sxs-lookup"><span data-stu-id="75e55-143">Loads assemblies into the runtime executing on WebAssembly in the browser.</span></span>
 
-<span data-ttu-id="75e55-144">L’implémentation du chargement différé de l’infrastructure prend en charge le chargement différé avec prérendu dans une solution hébergée :::no-loc(Blazor)::: .</span><span class="sxs-lookup"><span data-stu-id="75e55-144">The framework's lazy loading implementation supports lazy loading with prerendering in a hosted :::no-loc(Blazor)::: solution.</span></span> <span data-ttu-id="75e55-145">Lors du prérendu, tous les assemblys, y compris ceux marqués pour le chargement différé, sont supposés être chargés.</span><span class="sxs-lookup"><span data-stu-id="75e55-145">During prerendering, all assemblies, including those marked for lazy loading, are assumed to be loaded.</span></span> <span data-ttu-id="75e55-146">Inscrivez-vous manuellement `LazyAssemblyLoader` dans la méthode du projet *serveur* `Startup.ConfigureServices` ( `Startup.cs` ) :</span><span class="sxs-lookup"><span data-stu-id="75e55-146">Manually register `LazyAssemblyLoader` in the *Server* project's `Startup.ConfigureServices` method (`Startup.cs`):</span></span>
+<span data-ttu-id="75e55-144">L’implémentation du chargement différé de l’infrastructure prend en charge le chargement différé avec prérendu dans une solution hébergée Blazor .</span><span class="sxs-lookup"><span data-stu-id="75e55-144">The framework's lazy loading implementation supports lazy loading with prerendering in a hosted Blazor solution.</span></span> <span data-ttu-id="75e55-145">Lors du prérendu, tous les assemblys, y compris ceux marqués pour le chargement différé, sont supposés être chargés.</span><span class="sxs-lookup"><span data-stu-id="75e55-145">During prerendering, all assemblies, including those marked for lazy loading, are assumed to be loaded.</span></span> <span data-ttu-id="75e55-146">Inscrivez-vous manuellement `LazyAssemblyLoader` dans la méthode du projet *serveur* `Startup.ConfigureServices` ( `Startup.cs` ) :</span><span class="sxs-lookup"><span data-stu-id="75e55-146">Manually register `LazyAssemblyLoader` in the *Server* project's `Startup.ConfigureServices` method (`Startup.cs`):</span></span>
 
 ```csharp
 services.AddScoped<LazyAssemblyLoader>();

@@ -5,17 +5,17 @@ description: Découvrez les scripts inter-sites (XSS) et les techniques permetta
 ms.author: riande
 ms.date: 10/02/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/cross-site-scripting
 ms.openlocfilehash: 1c90a786efe8c3c205a729a2da9d3a99d0222012
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -28,7 +28,7 @@ ms.locfileid: "93053083"
 
 <span data-ttu-id="4c5d4-104">Par [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="4c5d4-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="4c5d4-105">XSS (cross-site scripting) est une faille de sécurité qui permet à une personne malveillante de placer des scripts côté client (généralement JavaScript) dans des pages Web.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-105">Cross-Site Scripting (XSS) is a security vulnerability which enables an attacker to place client side scripts (usually JavaScript) into web pages.</span></span> <span data-ttu-id="4c5d4-106">Quand d’autres utilisateurs chargent des pages affectées, les scripts de l’attaquant s’exécutent, ce qui permet à l’attaquant de voler des :::no-loc(cookie)::: jetons de session et de session, de modifier le contenu de la page Web par le biais de la manipulation DOM ou de rediriger le navigateur vers une autre page.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-106">When other users load affected pages the attacker's scripts will run, enabling the attacker to steal :::no-loc(cookie):::s and session tokens, change the contents of the web page through DOM manipulation or redirect the browser to another page.</span></span> <span data-ttu-id="4c5d4-107">Les vulnérabilités XSS se produisent généralement quand une application prend une entrée d’utilisateur et la renvoie à une page sans la valider, l’encoder ou la placer dans une séquence d’échappement.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-107">XSS vulnerabilities generally occur when an application takes user input and outputs it to a page without validating, encoding or escaping it.</span></span>
+<span data-ttu-id="4c5d4-105">XSS (cross-site scripting) est une faille de sécurité qui permet à une personne malveillante de placer des scripts côté client (généralement JavaScript) dans des pages Web.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-105">Cross-Site Scripting (XSS) is a security vulnerability which enables an attacker to place client side scripts (usually JavaScript) into web pages.</span></span> <span data-ttu-id="4c5d4-106">Quand d’autres utilisateurs chargent des pages affectées, les scripts de l’attaquant s’exécutent, ce qui permet à l’attaquant de voler des cookie jetons de session et de session, de modifier le contenu de la page Web par le biais de la manipulation DOM ou de rediriger le navigateur vers une autre page.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-106">When other users load affected pages the attacker's scripts will run, enabling the attacker to steal cookies and session tokens, change the contents of the web page through DOM manipulation or redirect the browser to another page.</span></span> <span data-ttu-id="4c5d4-107">Les vulnérabilités XSS se produisent généralement quand une application prend une entrée d’utilisateur et la renvoie à une page sans la valider, l’encoder ou la placer dans une séquence d’échappement.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-107">XSS vulnerabilities generally occur when an application takes user input and outputs it to a page without validating, encoding or escaping it.</span></span>
 
 ## <a name="protecting-your-application-against-xss"></a><span data-ttu-id="4c5d4-108">Protection de votre application contre XSS</span><span class="sxs-lookup"><span data-stu-id="4c5d4-108">Protecting your application against XSS</span></span>
 
@@ -44,11 +44,11 @@ ms.locfileid: "93053083"
 
 5. <span data-ttu-id="4c5d4-120">Avant de placer des données non fiables dans une chaîne de requête d’URL, assurez-vous qu’elles sont encodées dans l’URL.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-120">Before putting untrusted data into a URL query string ensure it's URL encoded.</span></span>
 
-## <a name="html-encoding-using-no-locrazor"></a><span data-ttu-id="4c5d4-121">Encodage HTML à l’aide de :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="4c5d4-121">HTML Encoding using :::no-loc(Razor):::</span></span>
+## <a name="html-encoding-using-no-locrazor"></a><span data-ttu-id="4c5d4-121">Encodage HTML à l’aide de Razor</span><span class="sxs-lookup"><span data-stu-id="4c5d4-121">HTML Encoding using Razor</span></span>
 
-<span data-ttu-id="4c5d4-122">Le :::no-loc(Razor)::: moteur utilisé dans MVC encode automatiquement toute la sortie source à partir de variables, sauf si vous travaillez vraiment difficile pour l’empêcher.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-122">The :::no-loc(Razor)::: engine used in MVC automatically encodes all output sourced from variables, unless you work really hard to prevent it doing so.</span></span> <span data-ttu-id="4c5d4-123">Elle utilise des règles d’encodage d’attribut HTML chaque fois que vous utilisez la *@* directive.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-123">It uses HTML attribute encoding rules whenever you use the *@* directive.</span></span> <span data-ttu-id="4c5d4-124">Comme l’encodage d’attribut HTML est un sur-ensemble de l’encodage HTML, vous n’avez pas à vous soucier de savoir si vous devez utiliser l’encodage HTML ou l’encodage d’attribut HTML.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-124">As HTML attribute encoding is a superset of HTML encoding this means you don't have to concern yourself with whether you should use HTML encoding or HTML attribute encoding.</span></span> <span data-ttu-id="4c5d4-125">Vous devez vous assurer que vous utilisez uniquement @ dans un contexte HTML, et non pas lors d’une tentative d’insertion d’une entrée non approuvée directement dans JavaScript.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-125">You must ensure that you only use @ in an HTML context, not when attempting to insert untrusted input directly into JavaScript.</span></span> <span data-ttu-id="4c5d4-126">Les tag helpers encodent également l’entrée que vous utilisez dans les paramètres de balise.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-126">Tag helpers will also encode input you use in tag parameters.</span></span>
+<span data-ttu-id="4c5d4-122">Le Razor moteur utilisé dans MVC encode automatiquement toute la sortie source à partir de variables, sauf si vous travaillez vraiment difficile pour l’empêcher.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-122">The Razor engine used in MVC automatically encodes all output sourced from variables, unless you work really hard to prevent it doing so.</span></span> <span data-ttu-id="4c5d4-123">Elle utilise des règles d’encodage d’attribut HTML chaque fois que vous utilisez la *@* directive.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-123">It uses HTML attribute encoding rules whenever you use the *@* directive.</span></span> <span data-ttu-id="4c5d4-124">Comme l’encodage d’attribut HTML est un sur-ensemble de l’encodage HTML, vous n’avez pas à vous soucier de savoir si vous devez utiliser l’encodage HTML ou l’encodage d’attribut HTML.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-124">As HTML attribute encoding is a superset of HTML encoding this means you don't have to concern yourself with whether you should use HTML encoding or HTML attribute encoding.</span></span> <span data-ttu-id="4c5d4-125">Vous devez vous assurer que vous utilisez uniquement @ dans un contexte HTML, et non pas lors d’une tentative d’insertion d’une entrée non approuvée directement dans JavaScript.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-125">You must ensure that you only use @ in an HTML context, not when attempting to insert untrusted input directly into JavaScript.</span></span> <span data-ttu-id="4c5d4-126">Les tag helpers encodent également l’entrée que vous utilisez dans les paramètres de balise.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-126">Tag helpers will also encode input you use in tag parameters.</span></span>
 
-<span data-ttu-id="4c5d4-127">Prenez la :::no-loc(Razor)::: vue suivante :</span><span class="sxs-lookup"><span data-stu-id="4c5d4-127">Take the following :::no-loc(Razor)::: view:</span></span>
+<span data-ttu-id="4c5d4-127">Prenez la Razor vue suivante :</span><span class="sxs-lookup"><span data-stu-id="4c5d4-127">Take the following Razor view:</span></span>
 
 ```cshtml
 @{
@@ -67,7 +67,7 @@ ms.locfileid: "93053083"
 >[!WARNING]
 > <span data-ttu-id="4c5d4-131">ASP.NET Core MVC fournit une `HtmlString` classe qui n’est pas automatiquement encodée au moment de la sortie.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-131">ASP.NET Core MVC provides an `HtmlString` class which isn't automatically encoded upon output.</span></span> <span data-ttu-id="4c5d4-132">Cela ne doit jamais être utilisé en combinaison avec une entrée non fiable, car cela expose une vulnérabilité XSS.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-132">This should never be used in combination with untrusted input as this will expose an XSS vulnerability.</span></span>
 
-## <a name="javascript-encoding-using-no-locrazor"></a><span data-ttu-id="4c5d4-133">Encodage JavaScript à l’aide de :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="4c5d4-133">JavaScript Encoding using :::no-loc(Razor):::</span></span>
+## <a name="javascript-encoding-using-no-locrazor"></a><span data-ttu-id="4c5d4-133">Encodage JavaScript à l’aide de Razor</span><span class="sxs-lookup"><span data-stu-id="4c5d4-133">JavaScript Encoding using Razor</span></span>
 
 <span data-ttu-id="4c5d4-134">Il peut arriver que vous souhaitiez insérer une valeur dans JavaScript à traiter dans votre vue.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-134">There may be times you want to insert a value into JavaScript to process in your view.</span></span> <span data-ttu-id="4c5d4-135">Il existe deux façons d'effectuer cette opération.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-135">There are two ways to do this.</span></span> <span data-ttu-id="4c5d4-136">Le moyen le plus sûr d’insérer des valeurs consiste à placer la valeur dans un attribut de données d’une balise et à la récupérer dans votre code JavaScript.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-136">The safest way to insert values is to place the value in a data attribute of a tag and retrieve it in your JavaScript.</span></span> <span data-ttu-id="4c5d4-137">Exemple :</span><span class="sxs-lookup"><span data-stu-id="4c5d4-137">For example:</span></span>
 
@@ -211,13 +211,13 @@ var example = "\"Quoted Value with spaces and &\"";
 
 ## <a name="customizing-the-encoders"></a><span data-ttu-id="4c5d4-155">Personnalisation des encodeurs</span><span class="sxs-lookup"><span data-stu-id="4c5d4-155">Customizing the Encoders</span></span>
 
-<span data-ttu-id="4c5d4-156">Par défaut, les encodeurs utilisent une liste sécurisée limitée à la plage Unicode latin de base et encodent tous les caractères en dehors de cette plage comme équivalents de code de caractère.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-156">By default encoders use a safe list limited to the Basic Latin Unicode range and encode all characters outside of that range as their character code equivalents.</span></span> <span data-ttu-id="4c5d4-157">Ce comportement affecte également :::no-loc(Razor)::: le rendu TagHelper et HtmlHelper, car il utilise les encodeurs pour générer vos chaînes.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-157">This behavior also affects :::no-loc(Razor)::: TagHelper and HtmlHelper rendering as it will use the encoders to output your strings.</span></span>
+<span data-ttu-id="4c5d4-156">Par défaut, les encodeurs utilisent une liste sécurisée limitée à la plage Unicode latin de base et encodent tous les caractères en dehors de cette plage comme équivalents de code de caractère.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-156">By default encoders use a safe list limited to the Basic Latin Unicode range and encode all characters outside of that range as their character code equivalents.</span></span> <span data-ttu-id="4c5d4-157">Ce comportement affecte également Razor le rendu TagHelper et HtmlHelper, car il utilise les encodeurs pour générer vos chaînes.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-157">This behavior also affects Razor TagHelper and HtmlHelper rendering as it will use the encoders to output your strings.</span></span>
 
 <span data-ttu-id="4c5d4-158">Le raisonnement derrière cela est de se protéger contre les bogues de navigateurs inconnus ou futurs (les bogues de navigateur précédents ont dépassé l’analyse en fonction du traitement de caractères non anglais).</span><span class="sxs-lookup"><span data-stu-id="4c5d4-158">The reasoning behind this is to protect against unknown or future browser bugs (previous browser bugs have tripped up parsing based on the processing of non-English characters).</span></span> <span data-ttu-id="4c5d4-159">Si votre site Web utilise beaucoup de caractères non latins, tels que le chinois, le cyrillique ou d’autres, il ne s’agit probablement pas du comportement que vous souhaitez.</span><span class="sxs-lookup"><span data-stu-id="4c5d4-159">If your web site makes heavy use of non-Latin characters, such as Chinese, Cyrillic or others this is probably not the behavior you want.</span></span>
 
 <span data-ttu-id="4c5d4-160">Vous pouvez personnaliser les listes sécurisées de l’encodeur pour inclure les plages Unicode appropriées à votre application au démarrage, dans `ConfigureServices()` .</span><span class="sxs-lookup"><span data-stu-id="4c5d4-160">You can customize the encoder safe lists to include Unicode ranges appropriate to your application during startup, in `ConfigureServices()`.</span></span>
 
-<span data-ttu-id="4c5d4-161">Par exemple, en utilisant la configuration par défaut, vous pouvez utiliser une HtmlHelper telle que celle-ci :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="4c5d4-161">For example, using the default configuration you might use a :::no-loc(Razor)::: HtmlHelper like so;</span></span>
+<span data-ttu-id="4c5d4-161">Par exemple, en utilisant la configuration par défaut, vous pouvez utiliser une HtmlHelper telle que celle-ci Razor .</span><span class="sxs-lookup"><span data-stu-id="4c5d4-161">For example, using the default configuration you might use a Razor HtmlHelper like so;</span></span>
 
 ```html
 <p>This link text is in Chinese: @Html.ActionLink("汉语/漢語", "Index")</p>

@@ -1,23 +1,23 @@
 ---
-title: :::no-loc(SignalR):::Client .net ASP.net Core
+title: SignalRClient .net ASP.net Core
 author: bradygaster
-description: 'Informations sur le :::no-loc(SignalR)::: Client ASP.net core .net'
+description: 'Informations sur le SignalR Client ASP.net core .net'
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/14/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/dotnet-client
 ms.openlocfilehash: 7849322e50aeceda0850d94f9c9bcda79a6051c8
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,24 +26,24 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93061221"
 ---
-# <a name="aspnet-core-no-locsignalr-net-client"></a><span data-ttu-id="800bb-103">:::no-loc(SignalR):::Client .net ASP.net Core</span><span class="sxs-lookup"><span data-stu-id="800bb-103">ASP.NET Core :::no-loc(SignalR)::: .NET Client</span></span>
+# <a name="aspnet-core-no-locsignalr-net-client"></a><span data-ttu-id="800bb-103">SignalRClient .net ASP.net Core</span><span class="sxs-lookup"><span data-stu-id="800bb-103">ASP.NET Core SignalR .NET Client</span></span>
 
-<span data-ttu-id="800bb-104">La :::no-loc(SignalR)::: bibliothèque cliente .net ASP.net Core vous permet de communiquer avec des :::no-loc(SignalR)::: hubs à partir d’applications .net.</span><span class="sxs-lookup"><span data-stu-id="800bb-104">The ASP.NET Core :::no-loc(SignalR)::: .NET client library lets you communicate with :::no-loc(SignalR)::: hubs from .NET apps.</span></span>
+<span data-ttu-id="800bb-104">La SignalR bibliothèque cliente .net ASP.net Core vous permet de communiquer avec des SignalR hubs à partir d’applications .net.</span><span class="sxs-lookup"><span data-stu-id="800bb-104">The ASP.NET Core SignalR .NET client library lets you communicate with SignalR hubs from .NET apps.</span></span>
 
 <span data-ttu-id="800bb-105">[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="800bb-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="800bb-106">L’exemple de code dans cet article est une application WPF qui utilise le :::no-loc(SignalR)::: client ASP.net core .net.</span><span class="sxs-lookup"><span data-stu-id="800bb-106">The code sample in this article is a WPF app that uses the ASP.NET Core :::no-loc(SignalR)::: .NET client.</span></span>
+<span data-ttu-id="800bb-106">L’exemple de code dans cet article est une application WPF qui utilise le SignalR client ASP.net core .net.</span><span class="sxs-lookup"><span data-stu-id="800bb-106">The code sample in this article is a WPF app that uses the ASP.NET Core SignalR .NET client.</span></span>
 
-## <a name="install-the-no-locsignalr-net-client-package"></a><span data-ttu-id="800bb-107">Installer le :::no-loc(SignalR)::: package client .net</span><span class="sxs-lookup"><span data-stu-id="800bb-107">Install the :::no-loc(SignalR)::: .NET client package</span></span>
+## <a name="install-the-no-locsignalr-net-client-package"></a><span data-ttu-id="800bb-107">Installer le SignalR package client .net</span><span class="sxs-lookup"><span data-stu-id="800bb-107">Install the SignalR .NET client package</span></span>
 
-<span data-ttu-id="800bb-108">[Microsoft. AspNetCore. :::no-loc(SignalR)::: . ](https://www.nuget.org/packages/Microsoft.AspNetCore.:::no-loc(SignalR):::.Client)Le package client est requis pour que les clients .net se connectent aux :::no-loc(SignalR)::: hubs.</span><span class="sxs-lookup"><span data-stu-id="800bb-108">The [Microsoft.AspNetCore.:::no-loc(SignalR):::.Client](https://www.nuget.org/packages/Microsoft.AspNetCore.:::no-loc(SignalR):::.Client) package is required for .NET clients to connect to :::no-loc(SignalR)::: hubs.</span></span>
+<span data-ttu-id="800bb-108">[Microsoft. AspNetCore. SignalR . ](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)Le package client est requis pour que les clients .net se connectent aux SignalR hubs.</span><span class="sxs-lookup"><span data-stu-id="800bb-108">The [Microsoft.AspNetCore.SignalR.Client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) package is required for .NET clients to connect to SignalR hubs.</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="800bb-109">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="800bb-109">Visual Studio</span></span>](#tab/visual-studio)
 
 <span data-ttu-id="800bb-110">Pour installer la bibliothèque cliente, exécutez la commande suivante dans la fenêtre **console du gestionnaire de package** :</span><span class="sxs-lookup"><span data-stu-id="800bb-110">To install the client library, run the following command in the **Package Manager Console** window:</span></span>
 
 ```powershell
-Install-Package Microsoft.AspNetCore.:::no-loc(SignalR):::.Client
+Install-Package Microsoft.AspNetCore.SignalR.Client
 ```
 
 # <a name="net-core-cli"></a>[<span data-ttu-id="800bb-111">CLI .NET Core</span><span class="sxs-lookup"><span data-stu-id="800bb-111">.NET Core CLI</span></span>](#tab/netcore-cli)
@@ -51,7 +51,7 @@ Install-Package Microsoft.AspNetCore.:::no-loc(SignalR):::.Client
 <span data-ttu-id="800bb-112">Pour installer la bibliothèque cliente, exécutez la commande suivante dans une interface de commande :</span><span class="sxs-lookup"><span data-stu-id="800bb-112">To install the client library, run the following command in a command shell:</span></span>
 
 ```dotnetcli
-dotnet add package Microsoft.AspNetCore.:::no-loc(SignalR):::.Client
+dotnet add package Microsoft.AspNetCore.SignalR.Client
 ```
 
 ---
@@ -68,7 +68,7 @@ dotnet add package Microsoft.AspNetCore.:::no-loc(SignalR):::.Client
 
 ### <a name="automatically-reconnect"></a><span data-ttu-id="800bb-119">Se reconnecter automatiquement</span><span class="sxs-lookup"><span data-stu-id="800bb-119">Automatically reconnect</span></span>
 
-<span data-ttu-id="800bb-120"><xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection>Peut être configuré pour se reconnecter automatiquement à l’aide de la `WithAutomaticReconnect` méthode sur le <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnectionBuilder> .</span><span class="sxs-lookup"><span data-stu-id="800bb-120">The <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection> can be configured to automatically reconnect using the `WithAutomaticReconnect` method on the <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnectionBuilder>.</span></span> <span data-ttu-id="800bb-121">Par défaut, il ne se reconnectera pas automatiquement.</span><span class="sxs-lookup"><span data-stu-id="800bb-121">It won't automatically reconnect by default.</span></span>
+<span data-ttu-id="800bb-120"><xref:Microsoft.AspNetCore.SignalR.Client.HubConnection>Peut être configuré pour se reconnecter automatiquement à l’aide de la `WithAutomaticReconnect` méthode sur le <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder> .</span><span class="sxs-lookup"><span data-stu-id="800bb-120">The <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection> can be configured to automatically reconnect using the `WithAutomaticReconnect` method on the <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>.</span></span> <span data-ttu-id="800bb-121">Par défaut, il ne se reconnectera pas automatiquement.</span><span class="sxs-lookup"><span data-stu-id="800bb-121">It won't automatically reconnect by default.</span></span>
 
 ```csharp
 HubConnection connection= new HubConnectionBuilder()
@@ -140,7 +140,7 @@ public static async Task<bool> ConnectWithRetryAsync(HubConnection connection, C
 }
 ```
 
-<span data-ttu-id="800bb-131">Si le client ne se reconnecte pas correctement dans les quatre premières tentatives, le `HubConnection` passe à l' `Disconnected` État et déclenche l' <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection.Closed> événement.</span><span class="sxs-lookup"><span data-stu-id="800bb-131">If the client doesn't successfully reconnect within its first four attempts, the `HubConnection` will transition to the `Disconnected` state and fire the <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection.Closed> event.</span></span> <span data-ttu-id="800bb-132">Cela offre la possibilité de tenter de redémarrer manuellement la connexion ou d’informer les utilisateurs que la connexion a été définitivement perdue.</span><span class="sxs-lookup"><span data-stu-id="800bb-132">This provides an opportunity to attempt to restart the connection manually or inform users the connection has been permanently lost.</span></span>
+<span data-ttu-id="800bb-131">Si le client ne se reconnecte pas correctement dans les quatre premières tentatives, le `HubConnection` passe à l' `Disconnected` État et déclenche l' <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> événement.</span><span class="sxs-lookup"><span data-stu-id="800bb-131">If the client doesn't successfully reconnect within its first four attempts, the `HubConnection` will transition to the `Disconnected` state and fire the <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> event.</span></span> <span data-ttu-id="800bb-132">Cela offre la possibilité de tenter de redémarrer manuellement la connexion ou d’informer les utilisateurs que la connexion a été définitivement perdue.</span><span class="sxs-lookup"><span data-stu-id="800bb-132">This provides an opportunity to attempt to restart the connection manually or inform users the connection has been permanently lost.</span></span>
 
 ```csharp
 connection.Closed += error =>
@@ -216,11 +216,11 @@ HubConnection connection = new HubConnectionBuilder()
 ::: moniker range="< aspnetcore-3.0"
 
 > [!WARNING]
-> <span data-ttu-id="800bb-148">Avant le 3,0, le client .NET pour :::no-loc(SignalR)::: ne se reconnecte pas automatiquement.</span><span class="sxs-lookup"><span data-stu-id="800bb-148">Prior to 3.0, the .NET client for :::no-loc(SignalR)::: doesn't automatically reconnect.</span></span> <span data-ttu-id="800bb-149">Vous devez écrire du code qui reconnectera votre client manuellement.</span><span class="sxs-lookup"><span data-stu-id="800bb-149">You must write code that will reconnect your client manually.</span></span>
+> <span data-ttu-id="800bb-148">Avant le 3,0, le client .NET pour SignalR ne se reconnecte pas automatiquement.</span><span class="sxs-lookup"><span data-stu-id="800bb-148">Prior to 3.0, the .NET client for SignalR doesn't automatically reconnect.</span></span> <span data-ttu-id="800bb-149">Vous devez écrire du code qui reconnectera votre client manuellement.</span><span class="sxs-lookup"><span data-stu-id="800bb-149">You must write code that will reconnect your client manually.</span></span>
 
 ::: moniker-end
 
-<span data-ttu-id="800bb-150">Utilisez l' <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection.Closed> événement pour répondre à une connexion perdue.</span><span class="sxs-lookup"><span data-stu-id="800bb-150">Use the <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection.Closed> event to respond to a lost connection.</span></span> <span data-ttu-id="800bb-151">Par exemple, vous souhaiterez peut-être automatiser la reconnexion.</span><span class="sxs-lookup"><span data-stu-id="800bb-151">For example, you might want to automate reconnection.</span></span>
+<span data-ttu-id="800bb-150">Utilisez l' <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> événement pour répondre à une connexion perdue.</span><span class="sxs-lookup"><span data-stu-id="800bb-150">Use the <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> event to respond to a lost connection.</span></span> <span data-ttu-id="800bb-151">Par exemple, vous souhaiterez peut-être automatiser la reconnexion.</span><span class="sxs-lookup"><span data-stu-id="800bb-151">For example, you might want to automate reconnection.</span></span>
 
 <span data-ttu-id="800bb-152">L' `Closed` événement requiert un délégué qui retourne un `Task` , ce qui permet au code Async de s’exécuter sans utiliser `async void` .</span><span class="sxs-lookup"><span data-stu-id="800bb-152">The `Closed` event requires a delegate that returns a `Task`, which allows async code to run without using `async void`.</span></span> <span data-ttu-id="800bb-153">Pour satisfaire la signature du délégué dans un `Closed` Gestionnaire d’événements qui s’exécute de façon synchrone, retournez `Task.CompletedTask` :</span><span class="sxs-lookup"><span data-stu-id="800bb-153">To satisfy the delegate signature in a `Closed` event handler that runs synchronously, return `Task.CompletedTask`:</span></span>
 
@@ -239,7 +239,7 @@ connection.Closed += (error) => {
 
 ## <a name="call-hub-methods-from-client"></a><span data-ttu-id="800bb-157">Appeler les méthodes de concentrateur à partir du client</span><span class="sxs-lookup"><span data-stu-id="800bb-157">Call hub methods from client</span></span>
 
-<span data-ttu-id="800bb-158">`InvokeAsync` appelle des méthodes sur le concentrateur.</span><span class="sxs-lookup"><span data-stu-id="800bb-158">`InvokeAsync` calls methods on the hub.</span></span> <span data-ttu-id="800bb-159">Transmettez le nom de la méthode de concentrateur et les arguments définis dans la méthode de concentrateur à `InvokeAsync` .</span><span class="sxs-lookup"><span data-stu-id="800bb-159">Pass the hub method name and any arguments defined in the hub method to `InvokeAsync`.</span></span> <span data-ttu-id="800bb-160">:::no-loc(SignalR)::: est asynchrone. Utilisez donc `async` et `await` lorsque vous effectuez les appels.</span><span class="sxs-lookup"><span data-stu-id="800bb-160">:::no-loc(SignalR)::: is asynchronous, so use `async` and `await` when making the calls.</span></span>
+<span data-ttu-id="800bb-158">`InvokeAsync` appelle des méthodes sur le concentrateur.</span><span class="sxs-lookup"><span data-stu-id="800bb-158">`InvokeAsync` calls methods on the hub.</span></span> <span data-ttu-id="800bb-159">Transmettez le nom de la méthode de concentrateur et les arguments définis dans la méthode de concentrateur à `InvokeAsync` .</span><span class="sxs-lookup"><span data-stu-id="800bb-159">Pass the hub method name and any arguments defined in the hub method to `InvokeAsync`.</span></span> <span data-ttu-id="800bb-160">SignalR est asynchrone. Utilisez donc `async` et `await` lorsque vous effectuez les appels.</span><span class="sxs-lookup"><span data-stu-id="800bb-160">SignalR is asynchronous, so use `async` and `await` when making the calls.</span></span>
 
 [!code-csharp[InvokeAsync method](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_InvokeAsync)]
 
@@ -248,7 +248,7 @@ connection.Closed += (error) => {
 <span data-ttu-id="800bb-165">La `SendAsync` méthode retourne un `Task` qui se termine lorsque le message a été envoyé au serveur.</span><span class="sxs-lookup"><span data-stu-id="800bb-165">The `SendAsync` method returns a `Task` which completes when the message has been sent to the server.</span></span> <span data-ttu-id="800bb-166">Aucune valeur de retour n’est fournie `Task` , car cela n’attend pas la fin de la méthode serveur.</span><span class="sxs-lookup"><span data-stu-id="800bb-166">No return value is provided since this `Task` doesn't wait until the server method completes.</span></span> <span data-ttu-id="800bb-167">Toutes les exceptions levées sur le client lors de l’envoi du message génèrent une erreur `Task` .</span><span class="sxs-lookup"><span data-stu-id="800bb-167">Any exceptions thrown on the client while sending the message produce a faulted `Task`.</span></span> <span data-ttu-id="800bb-168">Utilisez `await` la `try...catch` syntaxe et pour gérer les erreurs d’envoi.</span><span class="sxs-lookup"><span data-stu-id="800bb-168">Use `await` and `try...catch` syntax to handle send errors.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="800bb-169">L’appel de méthodes de Hub à partir d’un client est pris en charge uniquement lors de l’utilisation du :::no-loc(SignalR)::: service Azure en mode *par défaut* .</span><span class="sxs-lookup"><span data-stu-id="800bb-169">Calling hub methods from a client is only supported when using the Azure :::no-loc(SignalR)::: Service in *Default* mode.</span></span> <span data-ttu-id="800bb-170">Pour plus d’informations, consultez [Forum aux questions (référentiel GitHub Azure-signalr)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span><span class="sxs-lookup"><span data-stu-id="800bb-170">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
+> <span data-ttu-id="800bb-169">L’appel de méthodes de Hub à partir d’un client est pris en charge uniquement lors de l’utilisation du SignalR service Azure en mode *par défaut* .</span><span class="sxs-lookup"><span data-stu-id="800bb-169">Calling hub methods from a client is only supported when using the Azure SignalR Service in *Default* mode.</span></span> <span data-ttu-id="800bb-170">Pour plus d’informations, consultez [Forum aux questions (référentiel GitHub Azure-signalr)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span><span class="sxs-lookup"><span data-stu-id="800bb-170">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
 
 ## <a name="call-client-methods-from-hub"></a><span data-ttu-id="800bb-171">Appeler des méthodes clientes à partir du Hub</span><span class="sxs-lookup"><span data-stu-id="800bb-171">Call client methods from hub</span></span>
 
@@ -271,4 +271,4 @@ connection.Closed += (error) => {
 * [<span data-ttu-id="800bb-178">Hubs</span><span class="sxs-lookup"><span data-stu-id="800bb-178">Hubs</span></span>](xref:signalr/hubs)
 * [<span data-ttu-id="800bb-179">Client JavaScript</span><span class="sxs-lookup"><span data-stu-id="800bb-179">JavaScript client</span></span>](xref:signalr/javascript-client)
 * [<span data-ttu-id="800bb-180">Publication dans Azure</span><span class="sxs-lookup"><span data-stu-id="800bb-180">Publish to Azure</span></span>](xref:signalr/publish-to-azure-web-app)
-* [<span data-ttu-id="800bb-181">:::no-loc(SignalR):::Documentation sans serveur de service Azure</span><span class="sxs-lookup"><span data-stu-id="800bb-181">Azure :::no-loc(SignalR)::: Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [<span data-ttu-id="800bb-181">SignalRDocumentation sans serveur de service Azure</span><span class="sxs-lookup"><span data-stu-id="800bb-181">Azure SignalR Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)

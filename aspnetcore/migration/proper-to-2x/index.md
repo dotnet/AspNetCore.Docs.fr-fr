@@ -5,17 +5,17 @@ description: Recevoir des conseils de migration d’applications ASP.NET MVC ou 
 ms.author: scaddie
 ms.date: 10/18/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: migration/proper-to-2x/index
 ms.openlocfilehash: 059ddc18d0c531efaba8aab916ddbb27b42b5e2c
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -100,7 +100,7 @@ ms.locfileid: "93053551"
 
 [!code-csharp[](samples/read-webconfig.cs)]
 
-<span data-ttu-id="8430f-158">ASP.NET Core peut stocker les données de configuration de l’application dans un fichier et les charger dans le cadre du démarrage d’un intergiciel (middleware).</span><span class="sxs-lookup"><span data-stu-id="8430f-158">ASP.NET Core can store configuration data for the application in any file and load them as part of middleware bootstrapping.</span></span> <span data-ttu-id="8430f-159">Le fichier par défaut utilisé dans les modèles de projet est le *:::no-loc(appsettings.json):::* suivant :</span><span class="sxs-lookup"><span data-stu-id="8430f-159">The default file used in the project templates is *:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="8430f-158">ASP.NET Core peut stocker les données de configuration de l’application dans un fichier et les charger dans le cadre du démarrage d’un intergiciel (middleware).</span><span class="sxs-lookup"><span data-stu-id="8430f-158">ASP.NET Core can store configuration data for the application in any file and load them as part of middleware bootstrapping.</span></span> <span data-ttu-id="8430f-159">Le fichier par défaut utilisé dans les modèles de projet est le *appsettings.json* suivant :</span><span class="sxs-lookup"><span data-stu-id="8430f-159">The default file used in the project templates is *appsettings.json* :</span></span>
 
 [!code-json[](samples/appsettings-sample.json)]
 
@@ -167,9 +167,9 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 > [!NOTE]
 > <span data-ttu-id="8430f-186">Pour obtenir des informations de référence plus approfondies sur le traitement des fichiers statiques dans ASP.NET Core, consultez [Fichiers statiques](xref:fundamentals/static-files).</span><span class="sxs-lookup"><span data-stu-id="8430f-186">For a more in-depth reference to serving static files in ASP.NET Core, see [Static files](xref:fundamentals/static-files).</span></span>
 
-## <a name="multi-value-no-loccookies"></a><span data-ttu-id="8430f-187">:::no-loc(cookie):::Valeurs multiples</span><span class="sxs-lookup"><span data-stu-id="8430f-187">Multi-value :::no-loc(cookie):::s</span></span>
+## <a name="multi-value-no-loccookies"></a><span data-ttu-id="8430f-187">cookieValeurs multiples</span><span class="sxs-lookup"><span data-stu-id="8430f-187">Multi-value cookies</span></span>
 
-<span data-ttu-id="8430f-188">[Les valeurs à :::no-loc(cookie)::: valeurs multiples](xref:System.Web.Http:::no-loc(Cookie):::.Values) ne sont pas prises en charge dans ASP.net core.</span><span class="sxs-lookup"><span data-stu-id="8430f-188">[Multi-value :::no-loc(cookie):::s](xref:System.Web.Http:::no-loc(Cookie):::.Values) aren't supported in ASP.NET Core.</span></span> <span data-ttu-id="8430f-189">Créez un :::no-loc(cookie)::: par valeur.</span><span class="sxs-lookup"><span data-stu-id="8430f-189">Create one :::no-loc(cookie)::: per value.</span></span>
+<span data-ttu-id="8430f-188">[Les valeurs à cookie valeurs multiples](xref:System.Web.HttpCookie.Values) ne sont pas prises en charge dans ASP.net core.</span><span class="sxs-lookup"><span data-stu-id="8430f-188">[Multi-value cookies](xref:System.Web.HttpCookie.Values) aren't supported in ASP.NET Core.</span></span> <span data-ttu-id="8430f-189">Créez un cookie par valeur.</span><span class="sxs-lookup"><span data-stu-id="8430f-189">Create one cookie per value.</span></span>
 
 ## <a name="partial-app-migration"></a><span data-ttu-id="8430f-190">Migration d’application partielle</span><span class="sxs-lookup"><span data-stu-id="8430f-190">Partial app migration</span></span>
 

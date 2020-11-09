@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/03/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: grpc/aspnetcore
 ms.openlocfilehash: b120aa4ab6922445f2c53f3b1cb3bd5c159d8a84
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -94,9 +94,9 @@ ms.locfileid: "93057828"
 
 <span data-ttu-id="218fe-133">Les points de terminaison Kestrel utilisés pour gRPC doivent être sécurisés avec TLS.</span><span class="sxs-lookup"><span data-stu-id="218fe-133">Kestrel endpoints used for gRPC should be secured with TLS.</span></span> <span data-ttu-id="218fe-134">En cours de développement, un point de terminaison sécurisé avec TLS est automatiquement créé `https://localhost:5001` lorsque le certificat de développement ASP.net Core est présent.</span><span class="sxs-lookup"><span data-stu-id="218fe-134">In development, an endpoint secured with TLS is automatically created at `https://localhost:5001` when the ASP.NET Core development certificate is present.</span></span> <span data-ttu-id="218fe-135">Aucune configuration n'est requise.</span><span class="sxs-lookup"><span data-stu-id="218fe-135">No configuration is required.</span></span> <span data-ttu-id="218fe-136">Un `https` préfixe vérifie que le point de terminaison Kestrel utilise TLS.</span><span class="sxs-lookup"><span data-stu-id="218fe-136">An `https` prefix verifies the Kestrel endpoint is using TLS.</span></span>
 
-<span data-ttu-id="218fe-137">En production, TLS doit être configuré de manière explicite.</span><span class="sxs-lookup"><span data-stu-id="218fe-137">In production, TLS must be explicitly configured.</span></span> <span data-ttu-id="218fe-138">Dans l' *:::no-loc(appsettings.json):::* exemple suivant, un point de terminaison http/2 sécurisé avec TLS est fourni :</span><span class="sxs-lookup"><span data-stu-id="218fe-138">In the following *:::no-loc(appsettings.json):::* example, an HTTP/2 endpoint secured with TLS is provided:</span></span>
+<span data-ttu-id="218fe-137">En production, TLS doit être configuré de manière explicite.</span><span class="sxs-lookup"><span data-stu-id="218fe-137">In production, TLS must be explicitly configured.</span></span> <span data-ttu-id="218fe-138">Dans l' *appsettings.json* exemple suivant, un point de terminaison http/2 sécurisé avec TLS est fourni :</span><span class="sxs-lookup"><span data-stu-id="218fe-138">In the following *appsettings.json* example, an HTTP/2 endpoint secured with TLS is provided:</span></span>
 
-[!code-json[](~/grpc/aspnetcore/sample/:::no-loc(appsettings.json):::?highlight=4)]
+[!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 
 <span data-ttu-id="218fe-139">Vous pouvez également configurer les points de terminaison Kestrel dans *Program.cs* :</span><span class="sxs-lookup"><span data-stu-id="218fe-139">Alternatively, Kestrel endpoints can be configured in *Program.cs* :</span></span>
 

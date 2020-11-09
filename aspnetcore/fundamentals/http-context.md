@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/5/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/httpcontext
 ms.openlocfilehash: f51814d25d4e87d166c7b587306da6c77dbf047e
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -30,9 +30,9 @@ ms.locfileid: "93059973"
 
 <span data-ttu-id="5c385-104">ASP.NET Core les applications accessibles par `HttpContext` le biais de l' <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> interface et de son implémentation par défaut <xref:Microsoft.AspNetCore.Http.HttpContextAccessor> .</span><span class="sxs-lookup"><span data-stu-id="5c385-104">ASP.NET Core apps access `HttpContext` through the <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> interface and its default implementation <xref:Microsoft.AspNetCore.Http.HttpContextAccessor>.</span></span> <span data-ttu-id="5c385-105">Il est seulement nécessaire d’utiliser `IHttpContextAccessor` quand vous avez besoin d’accéder à `HttpContext` à l’intérieur d’un service.</span><span class="sxs-lookup"><span data-stu-id="5c385-105">It's only necessary to use `IHttpContextAccessor` when you need access to the `HttpContext` inside a service.</span></span>
 
-## <a name="use-httpcontext-from-no-locrazor-pages"></a><span data-ttu-id="5c385-106">Utiliser HttpContext à partir de :::no-loc(Razor)::: pages</span><span class="sxs-lookup"><span data-stu-id="5c385-106">Use HttpContext from :::no-loc(Razor)::: Pages</span></span>
+## <a name="use-httpcontext-from-no-locrazor-pages"></a><span data-ttu-id="5c385-106">Utiliser HttpContext à partir de Razor pages</span><span class="sxs-lookup"><span data-stu-id="5c385-106">Use HttpContext from Razor Pages</span></span>
 
-<span data-ttu-id="5c385-107">Les :::no-loc(Razor)::: pages <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.PageModel> exposent la <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.PageModel.HttpContext> propriété :</span><span class="sxs-lookup"><span data-stu-id="5c385-107">The :::no-loc(Razor)::: Pages <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.PageModel> exposes the <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.PageModel.HttpContext> property:</span></span>
+<span data-ttu-id="5c385-107">Les Razor pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> exposent la <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext> propriété :</span><span class="sxs-lookup"><span data-stu-id="5c385-107">The Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> exposes the <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext> property:</span></span>
 
 ```csharp
 public class AboutModel : PageModel
@@ -46,13 +46,13 @@ public class AboutModel : PageModel
 }
 ```
 
-## <a name="use-httpcontext-from-a-no-locrazor-view"></a><span data-ttu-id="5c385-108">Utiliser HttpContext à partir d’une :::no-loc(Razor)::: vue</span><span class="sxs-lookup"><span data-stu-id="5c385-108">Use HttpContext from a :::no-loc(Razor)::: view</span></span>
+## <a name="use-httpcontext-from-a-no-locrazor-view"></a><span data-ttu-id="5c385-108">Utiliser HttpContext à partir d’une Razor vue</span><span class="sxs-lookup"><span data-stu-id="5c385-108">Use HttpContext from a Razor view</span></span>
 
-<span data-ttu-id="5c385-109">:::no-loc(Razor):::les vues exposent `HttpContext` directement le via une propriété [ :::no-loc(Razor)::: page. Context](xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::.:::no-loc(Razor):::Page.Context) sur la vue.</span><span class="sxs-lookup"><span data-stu-id="5c385-109">:::no-loc(Razor)::: views expose the `HttpContext` directly via a [:::no-loc(Razor):::Page.Context](xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::.:::no-loc(Razor):::Page.Context) property on the view.</span></span> <span data-ttu-id="5c385-110">L’exemple suivant récupère le nom d’utilisateur actuel dans une application intranet à l’aide de l’authentification Windows :</span><span class="sxs-lookup"><span data-stu-id="5c385-110">The following example retrieves the current username in an intranet app using Windows Authentication:</span></span>
+<span data-ttu-id="5c385-109">Razorles vues exposent `HttpContext` directement le via une propriété [ Razor page. Context](xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context) sur la vue.</span><span class="sxs-lookup"><span data-stu-id="5c385-109">Razor views expose the `HttpContext` directly via a [RazorPage.Context](xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context) property on the view.</span></span> <span data-ttu-id="5c385-110">L’exemple suivant récupère le nom d’utilisateur actuel dans une application intranet à l’aide de l’authentification Windows :</span><span class="sxs-lookup"><span data-stu-id="5c385-110">The following example retrieves the current username in an intranet app using Windows Authentication:</span></span>
 
 ```cshtml
 @{
-    var username = Context.User.:::no-loc(Identity):::.Name;
+    var username = Context.User.Identity.Name;
     
     ...
 }
@@ -138,7 +138,7 @@ public class UserRepository : IUserRepository
 
     public void LogCurrentUser()
     {
-        var username = _httpContextAccessor.HttpContext.User.:::no-loc(Identity):::.Name;
+        var username = _httpContextAccessor.HttpContext.User.Identity.Name;
         service.LogAccessRequest(username);
     }
 }
@@ -177,6 +177,6 @@ public class EmailController : Controller
 }
 ```
 
-## <a name="no-locblazor-and-shared-state"></a><span data-ttu-id="5c385-134">:::no-loc(Blazor)::: et état partagé</span><span class="sxs-lookup"><span data-stu-id="5c385-134">:::no-loc(Blazor)::: and shared state</span></span>
+## <a name="no-locblazor-and-shared-state"></a><span data-ttu-id="5c385-134">Blazor et état partagé</span><span class="sxs-lookup"><span data-stu-id="5c385-134">Blazor and shared state</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/blazor-shared-state.md)]

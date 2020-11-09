@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/06/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: performance/performance-best-practices
 ms.openlocfilehash: a3fc398569fafefc0b4634e80433a5d4e0e1b4ff
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -55,7 +55,7 @@ ms.locfileid: "93061000"
 
 * <span data-ttu-id="c8a2b-126">Rendez les [chemins de code à chaud](#understand-hot-code-paths) asynchrones.</span><span class="sxs-lookup"><span data-stu-id="c8a2b-126">Make [hot code paths](#understand-hot-code-paths) asynchronous.</span></span>
 * <span data-ttu-id="c8a2b-127">Appeler l’accès aux données, les e/s et les API d’opérations de longue durée de manière asynchrone si une API asynchrone est disponible.</span><span class="sxs-lookup"><span data-stu-id="c8a2b-127">Call data access, I/O, and long-running operations APIs asynchronously if an asynchronous API is available.</span></span> <span data-ttu-id="c8a2b-128">N' **not** utilisez pas [Task. Run](/dotnet/api/system.threading.tasks.task.run) pour rendre une API synchrone asynchrone.</span><span class="sxs-lookup"><span data-stu-id="c8a2b-128">Do **not** use [Task.Run](/dotnet/api/system.threading.tasks.task.run) to make a synchronous API asynchronous.</span></span>
-* <span data-ttu-id="c8a2b-129">Rendez les actions de contrôleur/ :::no-loc(Razor)::: page asynchrones.</span><span class="sxs-lookup"><span data-stu-id="c8a2b-129">Make controller/:::no-loc(Razor)::: Page actions asynchronous.</span></span> <span data-ttu-id="c8a2b-130">L’ensemble de la pile des appels est asynchrone afin de tirer parti des modèles [Async/await](/dotnet/csharp/programming-guide/concepts/async/) .</span><span class="sxs-lookup"><span data-stu-id="c8a2b-130">The entire call stack is asynchronous in order to benefit from [async/await](/dotnet/csharp/programming-guide/concepts/async/) patterns.</span></span>
+* <span data-ttu-id="c8a2b-129">Rendez les actions de contrôleur/ Razor page asynchrones.</span><span class="sxs-lookup"><span data-stu-id="c8a2b-129">Make controller/Razor Page actions asynchronous.</span></span> <span data-ttu-id="c8a2b-130">L’ensemble de la pile des appels est asynchrone afin de tirer parti des modèles [Async/await](/dotnet/csharp/programming-guide/concepts/async/) .</span><span class="sxs-lookup"><span data-stu-id="c8a2b-130">The entire call stack is asynchronous in order to benefit from [async/await](/dotnet/csharp/programming-guide/concepts/async/) patterns.</span></span>
 
 <span data-ttu-id="c8a2b-131">Un profileur, tel que [PerfView](https://github.com/Microsoft/perfview), peut être utilisé pour rechercher les threads ajoutés fréquemment au [pool de threads](/windows/desktop/procthread/thread-pools).</span><span class="sxs-lookup"><span data-stu-id="c8a2b-131">A profiler, such as [PerfView](https://github.com/Microsoft/perfview), can be used to find threads frequently added to the [Thread Pool](/windows/desktop/procthread/thread-pools).</span></span> <span data-ttu-id="c8a2b-132">L' `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` événement indique qu’un thread a été ajouté au pool de threads.</span><span class="sxs-lookup"><span data-stu-id="c8a2b-132">The `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` event indicates a thread added to the thread pool.</span></span> <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc)  -->
 
@@ -136,7 +136,7 @@ ms.locfileid: "93061000"
 
 * <span data-ttu-id="c8a2b-208">**N’attendez pas** la fin des tâches de longue durée dans le cadre du traitement de requête http ordinaire.</span><span class="sxs-lookup"><span data-stu-id="c8a2b-208">**Do not** wait for long-running tasks to complete as part of ordinary HTTP request processing.</span></span>
 * <span data-ttu-id="c8a2b-209">**Envisagez** de gérer les demandes de longue durée avec des [services en arrière-plan](xref:fundamentals/host/hosted-services) ou hors processus avec une [fonction Azure](/azure/azure-functions/).</span><span class="sxs-lookup"><span data-stu-id="c8a2b-209">**Do** consider handling long-running requests with [background services](xref:fundamentals/host/hosted-services) or out of process with an [Azure Function](/azure/azure-functions/).</span></span> <span data-ttu-id="c8a2b-210">L’exécution d’un travail hors processus est particulièrement avantageuse pour les tâches nécessitant beaucoup de ressources processeur.</span><span class="sxs-lookup"><span data-stu-id="c8a2b-210">Completing work out-of-process is especially beneficial for CPU-intensive tasks.</span></span>
-* <span data-ttu-id="c8a2b-211">**Utilisez des** options de communication en temps réel, telles que [:::no-loc(SignalR):::](xref:signalr/introduction) , pour communiquer de façon asynchrone avec les clients.</span><span class="sxs-lookup"><span data-stu-id="c8a2b-211">**Do** use real-time communication options, such as [:::no-loc(SignalR):::](xref:signalr/introduction), to communicate with clients asynchronously.</span></span>
+* <span data-ttu-id="c8a2b-211">**Utilisez des** options de communication en temps réel, telles que [SignalR](xref:signalr/introduction) , pour communiquer de façon asynchrone avec les clients.</span><span class="sxs-lookup"><span data-stu-id="c8a2b-211">**Do** use real-time communication options, such as [SignalR](xref:signalr/introduction), to communicate with clients asynchronously.</span></span>
 
 ## <a name="minify-client-assets"></a><span data-ttu-id="c8a2b-212">Ressources du client réduire</span><span class="sxs-lookup"><span data-stu-id="c8a2b-212">Minify client assets</span></span>
 

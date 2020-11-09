@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: client-side/libman/libman-vs
 ms.openlocfilehash: 1c97f5d7fbf64c5043e6d2277091b9a477833bf1
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -72,7 +72,7 @@ ms.locfileid: "93054708"
     * <span data-ttu-id="60a92-139">*lib* est utilisé si *wwwroot* n’existe pas.</span><span class="sxs-lookup"><span data-stu-id="60a92-139">*lib* is used if *wwwroot* doesn't exist.</span></span>
   * <span data-ttu-id="60a92-140">S’il est lancé à partir d’un dossier de projet, le nom de dossier correspondant est utilisé.</span><span class="sxs-lookup"><span data-stu-id="60a92-140">If launched from a project folder, the corresponding folder name is used.</span></span>
 
-  <span data-ttu-id="60a92-141">La suggestion de dossier est suivie du suffixe du nom de la bibliothèque.</span><span class="sxs-lookup"><span data-stu-id="60a92-141">The folder suggestion is suffixed with the library name.</span></span> <span data-ttu-id="60a92-142">Le tableau suivant illustre les suggestions de dossiers lors de l’installation de jQuery dans un :::no-loc(Razor)::: projet pages.</span><span class="sxs-lookup"><span data-stu-id="60a92-142">The following table illustrates folder suggestions when installing jQuery in a :::no-loc(Razor)::: Pages project.</span></span>
+  <span data-ttu-id="60a92-141">La suggestion de dossier est suivie du suffixe du nom de la bibliothèque.</span><span class="sxs-lookup"><span data-stu-id="60a92-141">The folder suggestion is suffixed with the library name.</span></span> <span data-ttu-id="60a92-142">Le tableau suivant illustre les suggestions de dossiers lors de l’installation de jQuery dans un Razor projet pages.</span><span class="sxs-lookup"><span data-stu-id="60a92-142">The following table illustrates folder suggestions when installing jQuery in a Razor Pages project.</span></span>
   
   |<span data-ttu-id="60a92-143">Emplacement de lancement</span><span class="sxs-lookup"><span data-stu-id="60a92-143">Launch location</span></span>                           |<span data-ttu-id="60a92-144">Dossier suggéré</span><span class="sxs-lookup"><span data-stu-id="60a92-144">Suggested folder</span></span>      |
   |------------------------------------------|----------------------|

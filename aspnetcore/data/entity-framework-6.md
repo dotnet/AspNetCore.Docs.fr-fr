@@ -6,15 +6,15 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/14/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/entity-framework-6
 ms.openlocfilehash: 086418c161677f585b08ed360555c93d8575e701
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -107,7 +107,7 @@ ms.locfileid: "93059453"
 
 * <span data-ttu-id="e5e5a-154">Dans le projet Core, dans *Startup.cs* , inscrivez le contexte pour l’injection de dépendances.</span><span class="sxs-lookup"><span data-stu-id="e5e5a-154">In the Core project, in *Startup.cs* , register the context for DI.</span></span>    
 
-* <span data-ttu-id="e5e5a-155">Dans le projet de base, dans *:::no-loc(appsettings.json):::* , ajoutez la chaîne de connexion.</span><span class="sxs-lookup"><span data-stu-id="e5e5a-155">In the Core project, in *:::no-loc(appsettings.json):::* , add the connection string.</span></span>  
+* <span data-ttu-id="e5e5a-155">Dans le projet de base, dans *appsettings.json* , ajoutez la chaîne de connexion.</span><span class="sxs-lookup"><span data-stu-id="e5e5a-155">In the Core project, in *appsettings.json* , add the connection string.</span></span>  
 
 * <span data-ttu-id="e5e5a-156">Dans le projet Core, ajoutez un contrôleur et une ou plusieurs vues pour vérifier que vous pouvez lire et écrire des données.</span><span class="sxs-lookup"><span data-stu-id="e5e5a-156">In the Core project, add a controller and view(s) to verify that you can read and write data.</span></span> <span data-ttu-id="e5e5a-157">(Notez que la génération de modèles automatique d’ASP.NET Core MVC ne fonctionne pas avec le contexte EF6 référencé depuis la bibliothèque de classes.)</span><span class="sxs-lookup"><span data-stu-id="e5e5a-157">(Note that ASP.NET Core MVC scaffolding won't work with the EF6 context referenced from the class library.)</span></span>
 

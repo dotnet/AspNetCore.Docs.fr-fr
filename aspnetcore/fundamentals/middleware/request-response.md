@@ -7,17 +7,17 @@ ms.author: jukotali
 ms.custom: mvc
 ms.date: 5/29/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/middleware/request-response
 ms.openlocfilehash: cc701343cb3859f0f76ebc62bd54aa2e4431d522
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -30,7 +30,7 @@ ms.locfileid: "93061026"
 
 <span data-ttu-id="4228f-104">Par [Justin Kotalik](https://github.com/jkotalik)</span><span class="sxs-lookup"><span data-stu-id="4228f-104">By [Justin Kotalik](https://github.com/jkotalik)</span></span>
 
-<span data-ttu-id="4228f-105">Cet article explique comment lire à partir du corps de la demande et écrire dans le corps de la réponse.</span><span class="sxs-lookup"><span data-stu-id="4228f-105">This article explains how to read from the request body and write to the response body.</span></span> <span data-ttu-id="4228f-106">Le code de ces opérations peut être nécessaire lors de l’écriture d’un intergiciel (middleware).</span><span class="sxs-lookup"><span data-stu-id="4228f-106">Code for these operations might be required when writing middleware.</span></span> <span data-ttu-id="4228f-107">En dehors de l’intergiciel d’écriture, le code personnalisé n’est généralement pas obligatoire, car les opérations sont gérées par MVC et les :::no-loc(Razor)::: pages.</span><span class="sxs-lookup"><span data-stu-id="4228f-107">Outside of writing middleware, custom code isn't generally required because the operations are handled by MVC and :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="4228f-105">Cet article explique comment lire à partir du corps de la demande et écrire dans le corps de la réponse.</span><span class="sxs-lookup"><span data-stu-id="4228f-105">This article explains how to read from the request body and write to the response body.</span></span> <span data-ttu-id="4228f-106">Le code de ces opérations peut être nécessaire lors de l’écriture d’un intergiciel (middleware).</span><span class="sxs-lookup"><span data-stu-id="4228f-106">Code for these operations might be required when writing middleware.</span></span> <span data-ttu-id="4228f-107">En dehors de l’intergiciel d’écriture, le code personnalisé n’est généralement pas obligatoire, car les opérations sont gérées par MVC et les Razor pages.</span><span class="sxs-lookup"><span data-stu-id="4228f-107">Outside of writing middleware, custom code isn't generally required because the operations are handled by MVC and Razor Pages.</span></span>
 
 <span data-ttu-id="4228f-108">Il existe deux abstractions pour les corps de demande et de réponse : <xref:System.IO.Stream> et <xref:System.IO.Pipelines.Pipe> .</span><span class="sxs-lookup"><span data-stu-id="4228f-108">There are two abstractions for the request and response bodies: <xref:System.IO.Stream> and <xref:System.IO.Pipelines.Pipe>.</span></span> <span data-ttu-id="4228f-109">Pour la lecture de <xref:Microsoft.AspNetCore.Http.HttpRequest.Body?displayProperty=nameWithType> la demande, est un <xref:System.IO.Stream> , et `HttpRequest.BodyReader` est un <xref:System.IO.Pipelines.PipeReader> .</span><span class="sxs-lookup"><span data-stu-id="4228f-109">For request reading, <xref:Microsoft.AspNetCore.Http.HttpRequest.Body?displayProperty=nameWithType> is a <xref:System.IO.Stream>, and `HttpRequest.BodyReader` is a <xref:System.IO.Pipelines.PipeReader>.</span></span> <span data-ttu-id="4228f-110">Pour l’écriture de réponse, <xref:Microsoft.AspNetCore.Http.HttpResponse.Body?displayProperty=nameWithType> est un <xref:System.IO.Stream> , et `HttpResponse.BodyWriter` est un <xref:System.IO.Pipelines.PipeWriter> .</span><span class="sxs-lookup"><span data-stu-id="4228f-110">For response writing, <xref:Microsoft.AspNetCore.Http.HttpResponse.Body?displayProperty=nameWithType> is a <xref:System.IO.Stream>, and `HttpResponse.BodyWriter` is a <xref:System.IO.Pipelines.PipeWriter>.</span></span>
 

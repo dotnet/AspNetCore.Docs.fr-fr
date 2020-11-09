@@ -1,23 +1,23 @@
 ---
-title: 'Journalisation et diagnostics dans ASP.NET Core :::no-loc(SignalR):::'
+title: 'Journalisation et diagnostics dans ASP.NET Core SignalR'
 author: anurse
-description: 'Découvrez Comment collecter des diagnostics à partir de votre :::no-loc(SignalR)::: application ASP.net core.'
+description: 'Découvrez Comment collecter des diagnostics à partir de votre SignalR application ASP.net core.'
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: devx-track-csharp, signalr, devx-track-js
 ms.date: 06/12/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/diagnostics
 ms.openlocfilehash: 6e5e9d866a1e03e69856cc63dcfe30284048dd6d
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,25 +26,25 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93061312"
 ---
-# <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a><span data-ttu-id="adfa1-103">Journalisation et diagnostics dans ASP.NET Core :::no-loc(SignalR):::</span><span class="sxs-lookup"><span data-stu-id="adfa1-103">Logging and diagnostics in ASP.NET Core :::no-loc(SignalR):::</span></span>
+# <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a><span data-ttu-id="adfa1-103">Journalisation et diagnostics dans ASP.NET Core SignalR</span><span class="sxs-lookup"><span data-stu-id="adfa1-103">Logging and diagnostics in ASP.NET Core SignalR</span></span>
 
 <span data-ttu-id="adfa1-104">Par [Andrew Stanton-infirmière](https://twitter.com/anurse)</span><span class="sxs-lookup"><span data-stu-id="adfa1-104">By [Andrew Stanton-Nurse](https://twitter.com/anurse)</span></span>
 
-<span data-ttu-id="adfa1-105">Cet article fournit des conseils pour la collecte de diagnostics à partir de votre :::no-loc(SignalR)::: application ASP.net Core pour aider à résoudre les problèmes.</span><span class="sxs-lookup"><span data-stu-id="adfa1-105">This article provides guidance for gathering diagnostics from your ASP.NET Core :::no-loc(SignalR)::: app to help troubleshoot issues.</span></span>
+<span data-ttu-id="adfa1-105">Cet article fournit des conseils pour la collecte de diagnostics à partir de votre SignalR application ASP.net Core pour aider à résoudre les problèmes.</span><span class="sxs-lookup"><span data-stu-id="adfa1-105">This article provides guidance for gathering diagnostics from your ASP.NET Core SignalR app to help troubleshoot issues.</span></span>
 
 ## <a name="server-side-logging"></a><span data-ttu-id="adfa1-106">Journalisation côté serveur</span><span class="sxs-lookup"><span data-stu-id="adfa1-106">Server-side logging</span></span>
 
 > [!WARNING]
 > <span data-ttu-id="adfa1-107">Les journaux côté serveur peuvent contenir des informations sensibles de votre application.</span><span class="sxs-lookup"><span data-stu-id="adfa1-107">Server-side logs may contain sensitive information from your app.</span></span> <span data-ttu-id="adfa1-108">**Ne jamais** poster des journaux bruts à partir d’applications de production vers des forums publics tels que github.</span><span class="sxs-lookup"><span data-stu-id="adfa1-108">**Never** post raw logs from production apps to public forums like GitHub.</span></span>
 
-<span data-ttu-id="adfa1-109">Étant donné que :::no-loc(SignalR)::: fait partie de ASP.net Core, il utilise le système de journalisation ASP.net core.</span><span class="sxs-lookup"><span data-stu-id="adfa1-109">Since :::no-loc(SignalR)::: is part of ASP.NET Core, it uses the ASP.NET Core logging system.</span></span> <span data-ttu-id="adfa1-110">Dans la configuration par défaut, :::no-loc(SignalR)::: enregistre très peu d’informations, mais cela peut être configuré.</span><span class="sxs-lookup"><span data-stu-id="adfa1-110">In the default configuration, :::no-loc(SignalR)::: logs very little information, but this can configured.</span></span> <span data-ttu-id="adfa1-111">Pour plus d’informations sur la configuration de la journalisation des ASP.NET Core, consultez la documentation sur [ASP.net Core Logging](xref:fundamentals/logging/index#configuration) .</span><span class="sxs-lookup"><span data-stu-id="adfa1-111">See the documentation on [ASP.NET Core logging](xref:fundamentals/logging/index#configuration) for details on configuring ASP.NET Core logging.</span></span>
+<span data-ttu-id="adfa1-109">Étant donné que SignalR fait partie de ASP.net Core, il utilise le système de journalisation ASP.net core.</span><span class="sxs-lookup"><span data-stu-id="adfa1-109">Since SignalR is part of ASP.NET Core, it uses the ASP.NET Core logging system.</span></span> <span data-ttu-id="adfa1-110">Dans la configuration par défaut, SignalR enregistre très peu d’informations, mais cela peut être configuré.</span><span class="sxs-lookup"><span data-stu-id="adfa1-110">In the default configuration, SignalR logs very little information, but this can configured.</span></span> <span data-ttu-id="adfa1-111">Pour plus d’informations sur la configuration de la journalisation des ASP.NET Core, consultez la documentation sur [ASP.net Core Logging](xref:fundamentals/logging/index#configuration) .</span><span class="sxs-lookup"><span data-stu-id="adfa1-111">See the documentation on [ASP.NET Core logging](xref:fundamentals/logging/index#configuration) for details on configuring ASP.NET Core logging.</span></span>
 
-<span data-ttu-id="adfa1-112">:::no-loc(SignalR)::: utilise deux catégories d’enregistreur d’événements :</span><span class="sxs-lookup"><span data-stu-id="adfa1-112">:::no-loc(SignalR)::: uses two logger categories:</span></span>
+<span data-ttu-id="adfa1-112">SignalR utilise deux catégories d’enregistreur d’événements :</span><span class="sxs-lookup"><span data-stu-id="adfa1-112">SignalR uses two logger categories:</span></span>
 
-* <span data-ttu-id="adfa1-113">`Microsoft.AspNetCore.:::no-loc(SignalR):::`: Pour les journaux liés aux protocoles de concentrateur, l’activation de hubs, l’appel de méthodes et d’autres activités liées au Hub.</span><span class="sxs-lookup"><span data-stu-id="adfa1-113">`Microsoft.AspNetCore.:::no-loc(SignalR):::`: For logs related to Hub Protocols, activating Hubs, invoking methods, and other Hub-related activities.</span></span>
-* <span data-ttu-id="adfa1-114">`Microsoft.AspNetCore.Http.Connections`: Pour les journaux liés aux transports, tels que les WebSockets, l’interrogation longue, les événements de Server-Sent et l’infrastructure de bas niveau :::no-loc(SignalR)::: .</span><span class="sxs-lookup"><span data-stu-id="adfa1-114">`Microsoft.AspNetCore.Http.Connections`: For logs related to transports, such as WebSockets, Long Polling, Server-Sent Events, and low-level :::no-loc(SignalR)::: infrastructure.</span></span>
+* <span data-ttu-id="adfa1-113">`Microsoft.AspNetCore.SignalR`: Pour les journaux liés aux protocoles de concentrateur, l’activation de hubs, l’appel de méthodes et d’autres activités liées au Hub.</span><span class="sxs-lookup"><span data-stu-id="adfa1-113">`Microsoft.AspNetCore.SignalR`: For logs related to Hub Protocols, activating Hubs, invoking methods, and other Hub-related activities.</span></span>
+* <span data-ttu-id="adfa1-114">`Microsoft.AspNetCore.Http.Connections`: Pour les journaux liés aux transports, tels que les WebSockets, l’interrogation longue, les événements de Server-Sent et l’infrastructure de bas niveau SignalR .</span><span class="sxs-lookup"><span data-stu-id="adfa1-114">`Microsoft.AspNetCore.Http.Connections`: For logs related to transports, such as WebSockets, Long Polling, Server-Sent Events, and low-level SignalR infrastructure.</span></span>
 
-<span data-ttu-id="adfa1-115">Pour activer les journaux détaillés à partir de :::no-loc(SignalR)::: , configurez les deux préfixes précédents au `Debug` niveau de votre *:::no-loc(appsettings.json):::* fichier en ajoutant les éléments suivants à la `LogLevel` sous-section dans `Logging` :</span><span class="sxs-lookup"><span data-stu-id="adfa1-115">To enable detailed logs from :::no-loc(SignalR):::, configure both of the preceding prefixes to the `Debug` level in your *:::no-loc(appsettings.json):::* file by adding the following items to the `LogLevel` sub-section in `Logging`:</span></span>
+<span data-ttu-id="adfa1-115">Pour activer les journaux détaillés à partir de SignalR , configurez les deux préfixes précédents au `Debug` niveau de votre *appsettings.json* fichier en ajoutant les éléments suivants à la `LogLevel` sous-section dans `Logging` :</span><span class="sxs-lookup"><span data-stu-id="adfa1-115">To enable detailed logs from SignalR, configure both of the preceding prefixes to the `Debug` level in your *appsettings.json* file by adding the following items to the `LogLevel` sub-section in `Logging`:</span></span>
 
 [!code-json[](diagnostics/logging-config.json?highlight=7-8)]
 
@@ -54,10 +54,10 @@ ms.locfileid: "93061312"
 
 <span data-ttu-id="adfa1-117">Si vous n’utilisez pas la configuration basée sur JSON, définissez les valeurs de configuration suivantes dans votre système de configuration :</span><span class="sxs-lookup"><span data-stu-id="adfa1-117">If you aren't using JSON-based configuration, set the following configuration values in your configuration system:</span></span>
 
-* `Logging:LogLevel:Microsoft.AspNetCore.:::no-loc(SignalR):::` = `Debug`
+* `Logging:LogLevel:Microsoft.AspNetCore.SignalR` = `Debug`
 * `Logging:LogLevel:Microsoft.AspNetCore.Http.Connections` = `Debug`
 
-<span data-ttu-id="adfa1-118">Consultez la documentation de votre système de configuration pour déterminer comment spécifier les valeurs de configuration imbriquées.</span><span class="sxs-lookup"><span data-stu-id="adfa1-118">Check the documentation for your configuration system to determine how to specify nested configuration values.</span></span> <span data-ttu-id="adfa1-119">Par exemple, lors de l’utilisation de variables d’environnement, deux `_` caractères sont utilisés à la place de `:` (par exemple, `Logging__LogLevel__Microsoft.AspNetCore.:::no-loc(SignalR):::` ).</span><span class="sxs-lookup"><span data-stu-id="adfa1-119">For example, when using environment variables, two `_` characters are used instead of the `:` (for example, `Logging__LogLevel__Microsoft.AspNetCore.:::no-loc(SignalR):::`).</span></span>
+<span data-ttu-id="adfa1-118">Consultez la documentation de votre système de configuration pour déterminer comment spécifier les valeurs de configuration imbriquées.</span><span class="sxs-lookup"><span data-stu-id="adfa1-118">Check the documentation for your configuration system to determine how to specify nested configuration values.</span></span> <span data-ttu-id="adfa1-119">Par exemple, lors de l’utilisation de variables d’environnement, deux `_` caractères sont utilisés à la place de `:` (par exemple, `Logging__LogLevel__Microsoft.AspNetCore.SignalR` ).</span><span class="sxs-lookup"><span data-stu-id="adfa1-119">For example, when using environment variables, two `_` characters are used instead of the `:` (for example, `Logging__LogLevel__Microsoft.AspNetCore.SignalR`).</span></span>
 
 <span data-ttu-id="adfa1-120">Nous vous recommandons d’utiliser le `Debug` niveau lorsque vous collectez des diagnostics plus détaillés pour votre application.</span><span class="sxs-lookup"><span data-stu-id="adfa1-120">We recommend using the `Debug` level when gathering more detailed diagnostics for your app.</span></span> <span data-ttu-id="adfa1-121">Le `Trace` niveau produit des diagnostics de bas niveau et est rarement nécessaire pour diagnostiquer les problèmes dans votre application.</span><span class="sxs-lookup"><span data-stu-id="adfa1-121">The `Trace` level produces very low-level diagnostics and is rarely needed to diagnose issues in your app.</span></span>
 
@@ -67,7 +67,7 @@ ms.locfileid: "93061312"
 
 ### <a name="as-a-console-app-outside-iis"></a><span data-ttu-id="adfa1-124">En tant qu’application console en dehors d’IIS</span><span class="sxs-lookup"><span data-stu-id="adfa1-124">As a console app outside IIS</span></span>
 
-<span data-ttu-id="adfa1-125">Si vous exécutez dans une application console, l’enregistreur d’événements de [console](xref:fundamentals/logging/index#console) doit être activé par défaut.</span><span class="sxs-lookup"><span data-stu-id="adfa1-125">If you're running in a console app, the [Console logger](xref:fundamentals/logging/index#console) should be enabled by default.</span></span> <span data-ttu-id="adfa1-126">:::no-loc(SignalR)::: les journaux s’affichent dans la console.</span><span class="sxs-lookup"><span data-stu-id="adfa1-126">:::no-loc(SignalR)::: logs will appear in the console.</span></span>
+<span data-ttu-id="adfa1-125">Si vous exécutez dans une application console, l’enregistreur d’événements de [console](xref:fundamentals/logging/index#console) doit être activé par défaut.</span><span class="sxs-lookup"><span data-stu-id="adfa1-125">If you're running in a console app, the [Console logger](xref:fundamentals/logging/index#console) should be enabled by default.</span></span> <span data-ttu-id="adfa1-126">SignalR les journaux s’affichent dans la console.</span><span class="sxs-lookup"><span data-stu-id="adfa1-126">SignalR logs will appear in the console.</span></span>
 
 ### <a name="within-iis-express-from-visual-studio"></a><span data-ttu-id="adfa1-127">Dans IIS Express à partir de Visual Studio</span><span class="sxs-lookup"><span data-stu-id="adfa1-127">Within IIS Express from Visual Studio</span></span>
 
@@ -117,7 +117,7 @@ ms.locfileid: "93061312"
 
 <span data-ttu-id="adfa1-159">Pour récupérer des journaux à partir du client .NET, vous pouvez utiliser la `ConfigureLogging` méthode sur `HubConnectionBuilder` .</span><span class="sxs-lookup"><span data-stu-id="adfa1-159">To get logs from the .NET client, you can use the `ConfigureLogging` method on `HubConnectionBuilder`.</span></span> <span data-ttu-id="adfa1-160">Cela fonctionne de la même façon que la `ConfigureLogging` méthode sur `WebHostBuilder` et `HostBuilder` .</span><span class="sxs-lookup"><span data-stu-id="adfa1-160">This works the same way as the `ConfigureLogging` method on `WebHostBuilder` and `HostBuilder`.</span></span> <span data-ttu-id="adfa1-161">Vous pouvez configurer les mêmes fournisseurs de journalisation que ceux que vous utilisez dans ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="adfa1-161">You can configure the same logging providers you use in ASP.NET Core.</span></span> <span data-ttu-id="adfa1-162">Toutefois, vous devez installer et activer manuellement les packages NuGet pour les différents fournisseurs de journalisation.</span><span class="sxs-lookup"><span data-stu-id="adfa1-162">However, you have to manually install and enable the NuGet packages for the individual logging providers.</span></span>
 
-<span data-ttu-id="adfa1-163">Pour ajouter la journalisation du client .NET à une :::no-loc(Blazor WebAssembly)::: application, consultez <xref:blazor/fundamentals/logging#blazor-webassembly-signalr-net-client-logging> .</span><span class="sxs-lookup"><span data-stu-id="adfa1-163">To add .NET client logging to a :::no-loc(Blazor WebAssembly)::: app, see <xref:blazor/fundamentals/logging#blazor-webassembly-signalr-net-client-logging>.</span></span>
+<span data-ttu-id="adfa1-163">Pour ajouter la journalisation du client .NET à une Blazor WebAssembly application, consultez <xref:blazor/fundamentals/logging#blazor-webassembly-signalr-net-client-logging> .</span><span class="sxs-lookup"><span data-stu-id="adfa1-163">To add .NET client logging to a Blazor WebAssembly app, see <xref:blazor/fundamentals/logging#blazor-webassembly-signalr-net-client-logging>.</span></span>
 
 ### <a name="console-logging"></a><span data-ttu-id="adfa1-164">Écriture dans le journal de la console</span><span class="sxs-lookup"><span data-stu-id="adfa1-164">Console logging</span></span>
 
@@ -133,13 +133,13 @@ ms.locfileid: "93061312"
 
 ### <a name="other-logging-providers"></a><span data-ttu-id="adfa1-170">Autres fournisseurs de journalisation</span><span class="sxs-lookup"><span data-stu-id="adfa1-170">Other logging providers</span></span>
 
-<span data-ttu-id="adfa1-171">:::no-loc(SignalR)::: prend en charge d’autres fournisseurs de journalisation tels que Serilog, Seq, NLog ou tout autre système de journalisation qui s’intègre à `Microsoft.Extensions.Logging` .</span><span class="sxs-lookup"><span data-stu-id="adfa1-171">:::no-loc(SignalR)::: supports other logging providers such as Serilog, Seq, NLog, or any other logging system that integrates with `Microsoft.Extensions.Logging`.</span></span> <span data-ttu-id="adfa1-172">Si votre système de journalisation fournit un `ILoggerProvider` , vous pouvez l’inscrire auprès des `AddProvider` éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="adfa1-172">If your logging system provides an `ILoggerProvider`, you can register it with `AddProvider`:</span></span>
+<span data-ttu-id="adfa1-171">SignalR prend en charge d’autres fournisseurs de journalisation tels que Serilog, Seq, NLog ou tout autre système de journalisation qui s’intègre à `Microsoft.Extensions.Logging` .</span><span class="sxs-lookup"><span data-stu-id="adfa1-171">SignalR supports other logging providers such as Serilog, Seq, NLog, or any other logging system that integrates with `Microsoft.Extensions.Logging`.</span></span> <span data-ttu-id="adfa1-172">Si votre système de journalisation fournit un `ILoggerProvider` , vous pouvez l’inscrire auprès des `AddProvider` éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="adfa1-172">If your logging system provides an `ILoggerProvider`, you can register it with `AddProvider`:</span></span>
 
 [!code-csharp[](diagnostics/net-client-custom-log.cs?highlight=6)]
 
 ### <a name="control-verbosity"></a><span data-ttu-id="adfa1-173">Commentaires du contrôle</span><span class="sxs-lookup"><span data-stu-id="adfa1-173">Control verbosity</span></span>
 
-<span data-ttu-id="adfa1-174">Si vous vous connectez à partir d’autres emplacements dans votre application, le fait de modifier le niveau par défaut en `Debug` peut être trop détaillé.</span><span class="sxs-lookup"><span data-stu-id="adfa1-174">If you are logging from other places in your app, changing the default level to `Debug` may be too verbose.</span></span> <span data-ttu-id="adfa1-175">Vous pouvez utiliser un filtre pour configurer le niveau de journalisation des :::no-loc(SignalR)::: journaux.</span><span class="sxs-lookup"><span data-stu-id="adfa1-175">You can use a Filter to configure the logging level for :::no-loc(SignalR)::: logs.</span></span> <span data-ttu-id="adfa1-176">Cela peut être fait dans le code, à peu près de la même façon que sur le serveur :</span><span class="sxs-lookup"><span data-stu-id="adfa1-176">This can be done in code, in much the same way as on the server:</span></span>
+<span data-ttu-id="adfa1-174">Si vous vous connectez à partir d’autres emplacements dans votre application, le fait de modifier le niveau par défaut en `Debug` peut être trop détaillé.</span><span class="sxs-lookup"><span data-stu-id="adfa1-174">If you are logging from other places in your app, changing the default level to `Debug` may be too verbose.</span></span> <span data-ttu-id="adfa1-175">Vous pouvez utiliser un filtre pour configurer le niveau de journalisation des SignalR journaux.</span><span class="sxs-lookup"><span data-stu-id="adfa1-175">You can use a Filter to configure the logging level for SignalR logs.</span></span> <span data-ttu-id="adfa1-176">Cela peut être fait dans le code, à peu près de la même façon que sur le serveur :</span><span class="sxs-lookup"><span data-stu-id="adfa1-176">This can be done in code, in much the same way as on the server:</span></span>
 
 [!code-csharp[Controlling verbosity in .NET client](diagnostics/logging-config-client-code.cs?highlight=9-10)]
 
@@ -222,9 +222,9 @@ tcpdump -i [interface] -w trace.pcap
 
 <span data-ttu-id="adfa1-228">Les métriques sont une représentation de mesures de données sur des intervalles de temps.</span><span class="sxs-lookup"><span data-stu-id="adfa1-228">Metrics is a representation of data measures over intervals of time.</span></span> <span data-ttu-id="adfa1-229">Par exemple, les demandes par seconde.</span><span class="sxs-lookup"><span data-stu-id="adfa1-229">For example, requests per second.</span></span> <span data-ttu-id="adfa1-230">Les données de métriques permettent l’observation de l’état d’une application à un niveau élevé.</span><span class="sxs-lookup"><span data-stu-id="adfa1-230">Metrics data allows observation of the state of an app at a high level.</span></span> <span data-ttu-id="adfa1-231">Les métriques .NET gRPC sont émises à l’aide de <xref:System.Diagnostics.Tracing.EventCounter> .</span><span class="sxs-lookup"><span data-stu-id="adfa1-231">.NET gRPC metrics are emitted using <xref:System.Diagnostics.Tracing.EventCounter>.</span></span>
 
-### <a name="no-locsignalr-server-metrics"></a><span data-ttu-id="adfa1-232">:::no-loc(SignalR)::: métriques du serveur</span><span class="sxs-lookup"><span data-stu-id="adfa1-232">:::no-loc(SignalR)::: server metrics</span></span>
+### <a name="no-locsignalr-server-metrics"></a><span data-ttu-id="adfa1-232">SignalR métriques du serveur</span><span class="sxs-lookup"><span data-stu-id="adfa1-232">SignalR server metrics</span></span>
 
-<span data-ttu-id="adfa1-233">:::no-loc(SignalR)::: les métriques du serveur sont signalées sur la source de l' <xref:Microsoft.AspNetCore.Http.Connections> événement.</span><span class="sxs-lookup"><span data-stu-id="adfa1-233">:::no-loc(SignalR)::: server metrics are reported on the <xref:Microsoft.AspNetCore.Http.Connections> event source.</span></span>
+<span data-ttu-id="adfa1-233">SignalR les métriques du serveur sont signalées sur la source de l' <xref:Microsoft.AspNetCore.Http.Connections> événement.</span><span class="sxs-lookup"><span data-stu-id="adfa1-233">SignalR server metrics are reported on the <xref:Microsoft.AspNetCore.Http.Connections> event source.</span></span>
 
 | <span data-ttu-id="adfa1-234">Nom</span><span class="sxs-lookup"><span data-stu-id="adfa1-234">Name</span></span>                    | <span data-ttu-id="adfa1-235">Description</span><span class="sxs-lookup"><span data-stu-id="adfa1-235">Description</span></span>                 |
 |-------------------------|-----------------------------|

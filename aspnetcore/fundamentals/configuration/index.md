@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 3/29/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/configuration/index
 ms.openlocfilehash: 9e744ec6d0f0dd72bded8284e98fd9ce53056b84
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -34,7 +34,7 @@ ms.locfileid: "93057971"
 
 <span data-ttu-id="b1f97-105">La configuration dans ASP.NET Core est effectuée à l’aide d’un ou de plusieurs [fournisseurs de configuration](#cp).</span><span class="sxs-lookup"><span data-stu-id="b1f97-105">Configuration in ASP.NET Core is performed using one or more [configuration providers](#cp).</span></span> <span data-ttu-id="b1f97-106">Les fournisseurs de configuration lisent les données de configuration des paires clé-valeur à l’aide d’une variété de sources de configuration :</span><span class="sxs-lookup"><span data-stu-id="b1f97-106">Configuration providers read configuration data from key-value pairs using a variety of configuration sources:</span></span>
 
-* <span data-ttu-id="b1f97-107">Les fichiers de paramètres, tels que *:::no-loc(appsettings.json):::*</span><span class="sxs-lookup"><span data-stu-id="b1f97-107">Settings files, such as *:::no-loc(appsettings.json):::*</span></span>
+* <span data-ttu-id="b1f97-107">Les fichiers de paramètres, tels que *appsettings.json*</span><span class="sxs-lookup"><span data-stu-id="b1f97-107">Settings files, such as *appsettings.json*</span></span>
 * <span data-ttu-id="b1f97-108">Variables d'environnement</span><span class="sxs-lookup"><span data-stu-id="b1f97-108">Environment variables</span></span>
 * <span data-ttu-id="b1f97-109">Azure Key Vault</span><span class="sxs-lookup"><span data-stu-id="b1f97-109">Azure Key Vault</span></span>
 * <span data-ttu-id="b1f97-110">Azure App Configuration</span><span class="sxs-lookup"><span data-stu-id="b1f97-110">Azure App Configuration</span></span>
@@ -58,13 +58,13 @@ ms.locfileid: "93057971"
  <span data-ttu-id="b1f97-120"><xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> fournit la configuration par défaut de l’application dans l’ordre suivant :</span><span class="sxs-lookup"><span data-stu-id="b1f97-120"><xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> provides default configuration for the app in the following order:</span></span>
 
 1. <span data-ttu-id="b1f97-121">[ChainedConfigurationProvider](xref:Microsoft.Extensions.Configuration.ChainedConfigurationSource) : ajoute un existant `IConfiguration` en tant que source.</span><span class="sxs-lookup"><span data-stu-id="b1f97-121">[ChainedConfigurationProvider](xref:Microsoft.Extensions.Configuration.ChainedConfigurationSource) :  Adds an existing `IConfiguration` as a source.</span></span> <span data-ttu-id="b1f97-122">Dans le cas de configuration par défaut, ajoute la configuration d' [hôte](#hvac) et la définit en tant que première source de la configuration de l' _application_ .</span><span class="sxs-lookup"><span data-stu-id="b1f97-122">In the default configuration case, adds the [host](#hvac) configuration and setting it as the first source for the _app_ configuration.</span></span>
-1. <span data-ttu-id="b1f97-123">[:::no-loc(appsettings.json):::](#appsettingsjson) utilisation du [fournisseur de configuration JSON](#file-configuration-provider).</span><span class="sxs-lookup"><span data-stu-id="b1f97-123">[:::no-loc(appsettings.json):::](#appsettingsjson) using the [JSON configuration provider](#file-configuration-provider).</span></span>
+1. <span data-ttu-id="b1f97-123">[appsettings.json](#appsettingsjson) utilisation du [fournisseur de configuration JSON](#file-configuration-provider).</span><span class="sxs-lookup"><span data-stu-id="b1f97-123">[appsettings.json](#appsettingsjson) using the [JSON configuration provider](#file-configuration-provider).</span></span>
 1. <span data-ttu-id="b1f97-124">*appSettings.* `Environment` *. JSON* à l’aide du [fournisseur de configuration JSON](#file-configuration-provider).</span><span class="sxs-lookup"><span data-stu-id="b1f97-124">*appsettings.*`Environment`*.json* using the [JSON configuration provider](#file-configuration-provider).</span></span> <span data-ttu-id="b1f97-125">Par exemple, *appSettings* . ***Production \* \* _._json* et *appSettings* . \* \* \* développement** _._json \*.</span><span class="sxs-lookup"><span data-stu-id="b1f97-125">For example, *appsettings* . ***Production\*\*_._json* and *appsettings* .\*\*\*Development** _._json\*.</span></span>
 1. <span data-ttu-id="b1f97-126">[Secrets d’application](xref:security/app-secrets) lorsque l’application s’exécute dans l' `Development` environnement.</span><span class="sxs-lookup"><span data-stu-id="b1f97-126">[App secrets](xref:security/app-secrets) when the app runs in the `Development` environment.</span></span>
 1. <span data-ttu-id="b1f97-127">Variables d’environnement à l’aide du [fournisseur de configuration des variables d’environnement](#evcp).</span><span class="sxs-lookup"><span data-stu-id="b1f97-127">Environment variables using the [Environment Variables configuration provider](#evcp).</span></span>
 1. <span data-ttu-id="b1f97-128">Arguments de ligne de commande à l’aide du [fournisseur de configuration de ligne de commande](#command-line).</span><span class="sxs-lookup"><span data-stu-id="b1f97-128">Command-line arguments using the [Command-line configuration provider](#command-line).</span></span>
 
-<span data-ttu-id="b1f97-129">Les fournisseurs de configuration ajoutés ultérieurement remplacent les paramètres de clé précédents.</span><span class="sxs-lookup"><span data-stu-id="b1f97-129">Configuration providers that are added later override previous key settings.</span></span> <span data-ttu-id="b1f97-130">Par exemple, si `MyKey` est défini à la fois dans *:::no-loc(appsettings.json):::* et dans l’environnement, la valeur d’environnement est utilisée.</span><span class="sxs-lookup"><span data-stu-id="b1f97-130">For example, if `MyKey` is set in both *:::no-loc(appsettings.json):::* and the environment, the environment value is used.</span></span> <span data-ttu-id="b1f97-131">À l’aide des fournisseurs de configuration par défaut, le  [fournisseur de configuration de ligne de commande](#clcp) remplace tous les autres fournisseurs.</span><span class="sxs-lookup"><span data-stu-id="b1f97-131">Using the default configuration providers, the  [Command-line configuration provider](#clcp) overrides all other providers.</span></span>
+<span data-ttu-id="b1f97-129">Les fournisseurs de configuration ajoutés ultérieurement remplacent les paramètres de clé précédents.</span><span class="sxs-lookup"><span data-stu-id="b1f97-129">Configuration providers that are added later override previous key settings.</span></span> <span data-ttu-id="b1f97-130">Par exemple, si `MyKey` est défini à la fois dans *appsettings.json* et dans l’environnement, la valeur d’environnement est utilisée.</span><span class="sxs-lookup"><span data-stu-id="b1f97-130">For example, if `MyKey` is set in both *appsettings.json* and the environment, the environment value is used.</span></span> <span data-ttu-id="b1f97-131">À l’aide des fournisseurs de configuration par défaut, le  [fournisseur de configuration de ligne de commande](#clcp) remplace tous les autres fournisseurs.</span><span class="sxs-lookup"><span data-stu-id="b1f97-131">Using the default configuration providers, the  [Command-line configuration provider](#clcp) overrides all other providers.</span></span>
 
 <span data-ttu-id="b1f97-132">Pour plus d’informations sur `CreateDefaultBuilder` , consultez [paramètres par défaut du générateur](xref:fundamentals/host/generic-host#default-builder-settings).</span><span class="sxs-lookup"><span data-stu-id="b1f97-132">For more information on `CreateDefaultBuilder`, see [Default builder settings](xref:fundamentals/host/generic-host#default-builder-settings).</span></span>
 
@@ -72,11 +72,11 @@ ms.locfileid: "93057971"
 
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Index2.cshtml.cs?name=snippet)]
 
-### :::no-loc(appsettings.json):::
+### appsettings.json
 
-<span data-ttu-id="b1f97-134">Prenons le *:::no-loc(appsettings.json):::* fichier suivant :</span><span class="sxs-lookup"><span data-stu-id="b1f97-134">Consider the following *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="b1f97-134">Prenons le *appsettings.json* fichier suivant :</span><span class="sxs-lookup"><span data-stu-id="b1f97-134">Consider the following *appsettings.json* file:</span></span>
 
-[!code-json[](index/samples/3.x/ConfigSample/:::no-loc(appsettings.json):::)]
+[!code-json[](index/samples/3.x/ConfigSample/appsettings.json)]
 
 <span data-ttu-id="b1f97-135">Le code suivant de l' [exemple de téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) affiche plusieurs des paramètres de configuration précédents :</span><span class="sxs-lookup"><span data-stu-id="b1f97-135">The following code from the [sample download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) displays several of the preceding configurations settings:</span></span>
 
@@ -84,13 +84,13 @@ ms.locfileid: "93057971"
 
 <span data-ttu-id="b1f97-136">La configuration par défaut <xref:Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider> charge dans l’ordre suivant :</span><span class="sxs-lookup"><span data-stu-id="b1f97-136">The default <xref:Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider> loads configuration in the following order:</span></span>
 
-1. *:::no-loc(appsettings.json):::*
+1. *appsettings.json*
 1. <span data-ttu-id="b1f97-137">*appSettings.* `Environment` *. JSON* : par exemple, *appSettings* . **Les fichiers de *production \* \* _._json* et *appSettings* . \* \* \* Development** _._json \*.</span><span class="sxs-lookup"><span data-stu-id="b1f97-137">*appsettings.*`Environment`*.json* : For example, the *appsettings* . ***Production\*\*_._json* and *appsettings* .\*\*\*Development** _._json\* files.</span></span> <span data-ttu-id="b1f97-138">La version de l’environnement du fichier est chargée à partir de [IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).</span><span class="sxs-lookup"><span data-stu-id="b1f97-138">The environment version of the file is loaded based on the [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).</span></span> <span data-ttu-id="b1f97-139">Pour plus d'informations, consultez <xref:fundamentals/environments>.</span><span class="sxs-lookup"><span data-stu-id="b1f97-139">For more information, see <xref:fundamentals/environments>.</span></span>
 
-<span data-ttu-id="b1f97-140">*appSettings* . `Environment` . les valeurs *JSON* remplacent les clés dans *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-140">*appsettings* .`Environment`. *json* values override keys in *:::no-loc(appsettings.json):::* .</span></span> <span data-ttu-id="b1f97-141">Par exemple, par défaut :</span><span class="sxs-lookup"><span data-stu-id="b1f97-141">For example, by default:</span></span>
+<span data-ttu-id="b1f97-140">*appSettings* . `Environment` . les valeurs *JSON* remplacent les clés dans *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-140">*appsettings* .`Environment`. *json* values override keys in *appsettings.json* .</span></span> <span data-ttu-id="b1f97-141">Par exemple, par défaut :</span><span class="sxs-lookup"><span data-stu-id="b1f97-141">For example, by default:</span></span>
 
-* <span data-ttu-id="b1f97-142">Dans le développement, *appSettings* . \* **Development** _._json \* configuration remplace les valeurs trouvées dans *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-142">In development, *appsettings* .\* **Development** _._json\* configuration overwrites values found in *:::no-loc(appsettings.json):::* .</span></span>
-* <span data-ttu-id="b1f97-143">En production, *appSettings* . \* **production** _._json \* configuration remplace les valeurs trouvées dans *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-143">In production, *appsettings* .\* **Production** _._json\* configuration overwrites values found in *:::no-loc(appsettings.json):::* .</span></span> <span data-ttu-id="b1f97-144">Par exemple, lors du déploiement de l’application sur Azure.</span><span class="sxs-lookup"><span data-stu-id="b1f97-144">For example, when deploying the app to Azure.</span></span>
+* <span data-ttu-id="b1f97-142">Dans le développement, *appSettings* . \* **Development** _._json \* configuration remplace les valeurs trouvées dans *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-142">In development, *appsettings* .\* **Development** _._json\* configuration overwrites values found in *appsettings.json* .</span></span>
+* <span data-ttu-id="b1f97-143">En production, *appSettings* . \* **production** _._json \* configuration remplace les valeurs trouvées dans *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-143">In production, *appsettings* .\* **Production** _._json\* configuration overwrites values found in *appsettings.json* .</span></span> <span data-ttu-id="b1f97-144">Par exemple, lors du déploiement de l’application sur Azure.</span><span class="sxs-lookup"><span data-stu-id="b1f97-144">For example, when deploying the app to Azure.</span></span>
 
 <a name="optpat"></a>
 
@@ -98,7 +98,7 @@ ms.locfileid: "93057971"
 
 [!INCLUDE[](~/includes/bind.md)]
 
-<span data-ttu-id="b1f97-146">À l’aide de la configuration [par défaut](#default) , de *:::no-loc(appsettings.json):::* et de *appSettings.* `Environment` les fichiers *. JSON* sont activés avec [reloadOnChange : true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75).</span><span class="sxs-lookup"><span data-stu-id="b1f97-146">Using the [default](#default) configuration, the *:::no-loc(appsettings.json):::* and *appsettings.*`Environment`*.json* files are enabled with [reloadOnChange: true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75).</span></span> <span data-ttu-id="b1f97-147">Modifications apportées *:::no-loc(appsettings.json):::* aux *appSettings et.* `Environment` fichier *. JSON* \* **après** _ le démarrage de l’application est lu par le [fournisseur de configuration JSON](#jcp).</span><span class="sxs-lookup"><span data-stu-id="b1f97-147">Changes made to the *:::no-loc(appsettings.json):::* and *appsettings.*`Environment`*.json* file \* **after** _ the app starts are read by the [JSON configuration provider](#jcp).</span></span>
+<span data-ttu-id="b1f97-146">À l’aide de la configuration [par défaut](#default) , de *appsettings.json* et de *appSettings.* `Environment` les fichiers *. JSON* sont activés avec [reloadOnChange : true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75).</span><span class="sxs-lookup"><span data-stu-id="b1f97-146">Using the [default](#default) configuration, the *appsettings.json* and *appsettings.*`Environment`*.json* files are enabled with [reloadOnChange: true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75).</span></span> <span data-ttu-id="b1f97-147">Modifications apportées *appsettings.json* aux *appSettings et.* `Environment` fichier *. JSON* \* **après** _ le démarrage de l’application est lu par le [fournisseur de configuration JSON](#jcp).</span><span class="sxs-lookup"><span data-stu-id="b1f97-147">Changes made to the *appsettings.json* and *appsettings.*`Environment`*.json* file \* **after** _ the app starts are read by the [JSON configuration provider](#jcp).</span></span>
 
 <span data-ttu-id="b1f97-148">Pour plus d’informations sur l’ajout de fichiers de configuration JSON supplémentaires, consultez [fournisseur de configuration JSON](#jcp) dans ce document.</span><span class="sxs-lookup"><span data-stu-id="b1f97-148">See [JSON configuration provider](#jcp) in this document for information on adding additional JSON configuration files.</span></span>
 
@@ -116,7 +116,7 @@ ms.locfileid: "93057971"
 * <span data-ttu-id="b1f97-154">N’utilisez aucun secret de production dans les environnements de développement ou de test.</span><span class="sxs-lookup"><span data-stu-id="b1f97-154">Don't use production secrets in development or test environments.</span></span>
 * <span data-ttu-id="b1f97-155">Spécifiez les secrets en dehors du projet afin qu’ils ne puissent pas être validés par inadvertance dans un référentiel de code source.</span><span class="sxs-lookup"><span data-stu-id="b1f97-155">Specify secrets outside of the project so that they can't be accidentally committed to a source code repository.</span></span>
 
-<span data-ttu-id="b1f97-156">Par [défaut](#default), le [Gestionnaire de secret](xref:security/app-secrets) lit les paramètres de configuration après *:::no-loc(appsettings.json):::* et *appSettings.* `Environment` *. JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-156">By [default](#default), [Secret manager](xref:security/app-secrets) reads configuration settings after *:::no-loc(appsettings.json):::* and *appsettings.*`Environment`*.json* .</span></span>
+<span data-ttu-id="b1f97-156">Par [défaut](#default), le [Gestionnaire de secret](xref:security/app-secrets) lit les paramètres de configuration après *appsettings.json* et *appSettings.* `Environment` *. JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-156">By [default](#default), [Secret manager](xref:security/app-secrets) reads configuration settings after *appsettings.json* and *appsettings.*`Environment`*.json* .</span></span>
 
 <span data-ttu-id="b1f97-157">Pour plus d’informations sur le stockage des mots de passe ou d’autres données sensibles :</span><span class="sxs-lookup"><span data-stu-id="b1f97-157">For more information on storing passwords or other sensitive data:</span></span>
 
@@ -129,7 +129,7 @@ ms.locfileid: "93057971"
 
 ## <a name="environment-variables"></a><span data-ttu-id="b1f97-162">Variables d'environnement</span><span class="sxs-lookup"><span data-stu-id="b1f97-162">Environment variables</span></span>
 
-<span data-ttu-id="b1f97-163">À l’aide de la configuration [par défaut](#default) , le <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> charge la configuration à partir des paires clé-valeur de variable d’environnement après la lecture *:::no-loc(appsettings.json):::* , *appSettings.* `Environment` *. JSON* et le [Gestionnaire de secret](xref:security/app-secrets).</span><span class="sxs-lookup"><span data-stu-id="b1f97-163">Using the [default](#default) configuration, the <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> loads configuration from environment variable key-value pairs after reading *:::no-loc(appsettings.json):::* , *appsettings.*`Environment`*.json* , and [Secret manager](xref:security/app-secrets).</span></span> <span data-ttu-id="b1f97-164">Par conséquent, les valeurs de clés lues à partir de l’environnement remplacent les valeurs lues à partir de *:::no-loc(appsettings.json):::* *appSettings.* `Environment` *. JSON* et le gestionnaire de secret.</span><span class="sxs-lookup"><span data-stu-id="b1f97-164">Therefore, key values read from the environment override values read from *:::no-loc(appsettings.json):::* , *appsettings.*`Environment`*.json* , and Secret manager.</span></span>
+<span data-ttu-id="b1f97-163">À l’aide de la configuration [par défaut](#default) , le <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> charge la configuration à partir des paires clé-valeur de variable d’environnement après la lecture *appsettings.json* , *appSettings.* `Environment` *. JSON* et le [Gestionnaire de secret](xref:security/app-secrets).</span><span class="sxs-lookup"><span data-stu-id="b1f97-163">Using the [default](#default) configuration, the <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> loads configuration from environment variable key-value pairs after reading *appsettings.json* , *appsettings.*`Environment`*.json* , and [Secret manager](xref:security/app-secrets).</span></span> <span data-ttu-id="b1f97-164">Par conséquent, les valeurs de clés lues à partir de l’environnement remplacent les valeurs lues à partir de *appsettings.json* *appSettings.* `Environment` *. JSON* et le gestionnaire de secret.</span><span class="sxs-lookup"><span data-stu-id="b1f97-164">Therefore, key values read from the environment override values read from *appsettings.json* , *appsettings.*`Environment`*.json* , and Secret manager.</span></span>
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
@@ -158,7 +158,7 @@ setx Position__Title Setx_Environment_Editor /M
 setx Position__Name Environment_Rick /M
 ```
 
-<span data-ttu-id="b1f97-176">Pour vérifier que les commandes précédentes remplacent *:::no-loc(appsettings.json):::* et *appSettings.* `Environment` *. JSON* :</span><span class="sxs-lookup"><span data-stu-id="b1f97-176">To test that the preceding commands override *:::no-loc(appsettings.json):::* and *appsettings.*`Environment`*.json* :</span></span>
+<span data-ttu-id="b1f97-176">Pour vérifier que les commandes précédentes remplacent *appsettings.json* et *appSettings.* `Environment` *. JSON* :</span><span class="sxs-lookup"><span data-stu-id="b1f97-176">To test that the preceding commands override *appsettings.json* and *appsettings.*`Environment`*.json* :</span></span>
 
 * <span data-ttu-id="b1f97-177">Avec Visual Studio : quittez et redémarrez Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="b1f97-177">With Visual Studio: Exit and restart Visual Studio.</span></span>
 * <span data-ttu-id="b1f97-178">Avec l’interface CLI : démarrez une nouvelle fenêtre de commande et entrez `dotnet run` .</span><span class="sxs-lookup"><span data-stu-id="b1f97-178">With the CLI: Start a new command window and enter `dotnet run`.</span></span>
@@ -204,7 +204,7 @@ dotnet run
 
 <span data-ttu-id="b1f97-199">À l’aide de la configuration [par défaut](#default) , le <xref:Microsoft.Extensions.Configuration.CommandLine.CommandLineConfigurationProvider> charge la configuration à partir de paires clé-valeur d’argument de ligne de commande après les sources de configuration suivantes :</span><span class="sxs-lookup"><span data-stu-id="b1f97-199">Using the [default](#default) configuration, the <xref:Microsoft.Extensions.Configuration.CommandLine.CommandLineConfigurationProvider> loads configuration from command-line argument key-value pairs after the following configuration sources:</span></span>
 
-* <span data-ttu-id="b1f97-200">*:::no-loc(appsettings.json):::* et *appSettings* . `Environment` . fichiers *JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-200">*:::no-loc(appsettings.json):::* and *appsettings* .`Environment`. *json* files.</span></span>
+* <span data-ttu-id="b1f97-200">*appsettings.json* et *appSettings* . `Environment` . fichiers *JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-200">*appsettings.json* and *appsettings* .`Environment`. *json* files.</span></span>
 * <span data-ttu-id="b1f97-201">[Secrets d’application (gestionnaire de secret)](xref:security/app-secrets) dans l’environnement de développement.</span><span class="sxs-lookup"><span data-stu-id="b1f97-201">[App secrets (Secret Manager)](xref:security/app-secrets) in the Development environment.</span></span>
 * <span data-ttu-id="b1f97-202">Variables d'environnement.</span><span class="sxs-lookup"><span data-stu-id="b1f97-202">Environment variables.</span></span>
 
@@ -268,9 +268,9 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 <span data-ttu-id="b1f97-229">L’API de configuration lit les données de configuration hiérarchiques en aplatit les données hiérarchiques à l’aide d’un délimiteur dans les clés de configuration.</span><span class="sxs-lookup"><span data-stu-id="b1f97-229">The Configuration API reads hierarchical configuration data by flattening the hierarchical data with the use of a delimiter in the configuration keys.</span></span>
 
-<span data-ttu-id="b1f97-230">L' [exemple de téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contient le  *:::no-loc(appsettings.json):::* fichier suivant :</span><span class="sxs-lookup"><span data-stu-id="b1f97-230">The [sample download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contains the following  *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="b1f97-230">L' [exemple de téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contient le  *appsettings.json* fichier suivant :</span><span class="sxs-lookup"><span data-stu-id="b1f97-230">The [sample download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contains the following  *appsettings.json* file:</span></span>
 
-[!code-json[](index/samples/3.x/ConfigSample/:::no-loc(appsettings.json):::)]
+[!code-json[](index/samples/3.x/ConfigSample/appsettings.json)]
 
 <span data-ttu-id="b1f97-231">Le code suivant de l' [exemple de téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) affiche plusieurs des paramètres de configuration :</span><span class="sxs-lookup"><span data-stu-id="b1f97-231">The following code from the [sample download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) displays several of the configurations settings:</span></span>
 
@@ -323,7 +323,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 <span data-ttu-id="b1f97-277">Une séquence type des fournisseurs de configuration est la suivante :</span><span class="sxs-lookup"><span data-stu-id="b1f97-277">A typical sequence of configuration providers is:</span></span>
 
-1. *:::no-loc(appsettings.json):::*
+1. *appsettings.json*
 1. <span data-ttu-id="b1f97-278">*appSettings* . `Environment` . *JSON*</span><span class="sxs-lookup"><span data-stu-id="b1f97-278">*appsettings* .`Environment`. *json*</span></span>
 1. [<span data-ttu-id="b1f97-279">Gestionnaire de secret</span><span class="sxs-lookup"><span data-stu-id="b1f97-279">Secret Manager</span></span>](xref:security/app-secrets)
 1. <span data-ttu-id="b1f97-280">Variables d’environnement à l’aide du [fournisseur de configuration des variables d’environnement](#evcp).</span><span class="sxs-lookup"><span data-stu-id="b1f97-280">Environment variables using the [Environment Variables configuration provider](#evcp).</span></span>
@@ -419,7 +419,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 <span data-ttu-id="b1f97-335">Dans le code précédent, les paramètres de la _MyConfig.jssur \* et  *MyConfig* . `Environment` . fichiers *JSON* :</span><span class="sxs-lookup"><span data-stu-id="b1f97-335">In the preceding code, settings in the _MyConfig.json\* and  *MyConfig* .`Environment`. *json* files:</span></span>
 
-* <span data-ttu-id="b1f97-336">Substituez les paramètres dans *:::no-loc(appsettings.json):::* et *appSettings* . `Environment` fichiers *JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-336">Override settings in the *:::no-loc(appsettings.json):::* and *appsettings* .`Environment`. *json* files.</span></span>
+* <span data-ttu-id="b1f97-336">Substituez les paramètres dans *appsettings.json* et *appSettings* . `Environment` fichiers *JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-336">Override settings in the *appsettings.json* and *appsettings* .`Environment`. *json* files.</span></span>
 * <span data-ttu-id="b1f97-337">Sont remplacées par les paramètres dans le [fournisseur de configuration des variables d’environnement](#evcp) et le fournisseur de configuration de ligne de [commande](#clcp).</span><span class="sxs-lookup"><span data-stu-id="b1f97-337">Are overridden by settings in the [Environment variables configuration provider](#evcp) and the [Command-line configuration provider](#clcp).</span></span>
 
 <span data-ttu-id="b1f97-338">L' [exemple de téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contient les  *MyConfig.jssuivantes sur* le fichier :</span><span class="sxs-lookup"><span data-stu-id="b1f97-338">The [sample download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contains the following  *MyConfig.json* file:</span></span>
@@ -689,9 +689,9 @@ Index: 5  Value: value5
 
 <span data-ttu-id="b1f97-436">Pour obtenir un exemple d’accès à la configuration à l’aide des méthodes pratiques de démarrage, consultez [Démarrage de l’application : méthodes pratiques](xref:fundamentals/startup#convenience-methods).</span><span class="sxs-lookup"><span data-stu-id="b1f97-436">For an example of accessing configuration using startup convenience methods, see [App startup: Convenience methods](xref:fundamentals/startup#convenience-methods).</span></span>
 
-## <a name="access-configuration-in-no-locrazor-pages"></a><span data-ttu-id="b1f97-437">Configuration de l’accès dans les :::no-loc(Razor)::: pages</span><span class="sxs-lookup"><span data-stu-id="b1f97-437">Access configuration in :::no-loc(Razor)::: Pages</span></span>
+## <a name="access-configuration-in-no-locrazor-pages"></a><span data-ttu-id="b1f97-437">Configuration de l’accès dans les Razor pages</span><span class="sxs-lookup"><span data-stu-id="b1f97-437">Access configuration in Razor Pages</span></span>
 
-<span data-ttu-id="b1f97-438">Le code suivant affiche les données de configuration dans une :::no-loc(Razor)::: page :</span><span class="sxs-lookup"><span data-stu-id="b1f97-438">The following code displays configuration data in a :::no-loc(Razor)::: Page:</span></span>
+<span data-ttu-id="b1f97-438">Le code suivant affiche les données de configuration dans une Razor page :</span><span class="sxs-lookup"><span data-stu-id="b1f97-438">The following code displays configuration data in a Razor Page:</span></span>
 
 [!code-cshtml[](index/samples/3.x/ConfigSample/Pages/Test5.cshtml)]
 
@@ -699,7 +699,7 @@ Index: 5  Value: value5
 
 [!code-csharp[](~/fundamentals/configuration/options/samples/3.x/OptionsSample/Startup3.cs?name=snippet_Example2)]
 
-<span data-ttu-id="b1f97-440">La balise suivante utilise la [`@inject`](xref:mvc/views/razor#inject) :::no-loc(Razor)::: directive pour résoudre et afficher les valeurs des options :</span><span class="sxs-lookup"><span data-stu-id="b1f97-440">The following markup uses the [`@inject`](xref:mvc/views/razor#inject) :::no-loc(Razor)::: directive to resolve and display the options values:</span></span>
+<span data-ttu-id="b1f97-440">La balise suivante utilise la [`@inject`](xref:mvc/views/razor#inject) Razor directive pour résoudre et afficher les valeurs des options :</span><span class="sxs-lookup"><span data-stu-id="b1f97-440">The following markup uses the [`@inject`](xref:mvc/views/razor#inject) Razor directive to resolve and display the options values:</span></span>
 
 [!code-cshtml[](~/fundamentals/configuration/options/samples/3.x/OptionsSample/Pages/Test3.cshtml)]
 
@@ -723,7 +723,7 @@ Index: 5  Value: value5
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Pages/Test2.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="b1f97-449">Dans l’exemple précédent, les valeurs de `Option1` et `Option2` sont spécifiées dans, *:::no-loc(appsettings.json):::* puis remplacées par le délégué configuré.</span><span class="sxs-lookup"><span data-stu-id="b1f97-449">In the preceding example, the values of `Option1` and `Option2` are specified in *:::no-loc(appsettings.json):::* and then overridden by the configured delegate.</span></span>
+<span data-ttu-id="b1f97-449">Dans l’exemple précédent, les valeurs de `Option1` et `Option2` sont spécifiées dans, *appsettings.json* puis remplacées par le délégué configuré.</span><span class="sxs-lookup"><span data-stu-id="b1f97-449">In the preceding example, the values of `Option1` and `Option2` are specified in *appsettings.json* and then overridden by the configured delegate.</span></span>
 
 <a name="hvac"></a>
 
@@ -825,7 +825,7 @@ using Microsoft.Extensions.Configuration;
   * <span data-ttu-id="b1f97-517">Des variables d’environnement préfixées avec `ASPNETCORE_` (par exemple, `ASPNETCORE_ENVIRONMENT`) à l’aide du [Fournisseur de configuration des variables d’environnement](#environment-variables-configuration-provider).</span><span class="sxs-lookup"><span data-stu-id="b1f97-517">Environment variables prefixed with `ASPNETCORE_` (for example, `ASPNETCORE_ENVIRONMENT`) using the [Environment Variables Configuration Provider](#environment-variables-configuration-provider).</span></span> <span data-ttu-id="b1f97-518">Le préfixe (`ASPNETCORE_`) est supprimé lorsque les paires clé-valeur de la configuration sont chargées.</span><span class="sxs-lookup"><span data-stu-id="b1f97-518">The prefix (`ASPNETCORE_`) is stripped when the configuration key-value pairs are loaded.</span></span>
   * <span data-ttu-id="b1f97-519">Des arguments de ligne de commande à l’aide du [Fournisseur de configuration de ligne de commande](#command-line-configuration-provider).</span><span class="sxs-lookup"><span data-stu-id="b1f97-519">Command-line arguments using the [Command-line Configuration Provider](#command-line-configuration-provider).</span></span>
 * <span data-ttu-id="b1f97-520">La configuration de l’application est fournie à partir des éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="b1f97-520">App configuration is provided from:</span></span>
-  * <span data-ttu-id="b1f97-521">*:::no-loc(appsettings.json):::* utilisation du [fournisseur de configuration de fichier](#file-configuration-provider).</span><span class="sxs-lookup"><span data-stu-id="b1f97-521">*:::no-loc(appsettings.json):::* using the [File Configuration Provider](#file-configuration-provider).</span></span>
+  * <span data-ttu-id="b1f97-521">*appsettings.json* utilisation du [fournisseur de configuration de fichier](#file-configuration-provider).</span><span class="sxs-lookup"><span data-stu-id="b1f97-521">*appsettings.json* using the [File Configuration Provider](#file-configuration-provider).</span></span>
   * <span data-ttu-id="b1f97-522">*appsettings.{Environment}.json* à l’aide du [Fournisseur de configuration de fichier](#file-configuration-provider).</span><span class="sxs-lookup"><span data-stu-id="b1f97-522">*appsettings.{Environment}.json* using the [File Configuration Provider](#file-configuration-provider).</span></span>
   * <span data-ttu-id="b1f97-523">L’outil [Secret Manager (Gestionnaire de secrets)](xref:security/app-secrets) quand l’application s’exécute dans l’environnement `Development` à l’aide de l’assembly d’entrée.</span><span class="sxs-lookup"><span data-stu-id="b1f97-523">[Secret Manager](xref:security/app-secrets) when the app runs in the `Development` environment using the entry assembly.</span></span>
   * <span data-ttu-id="b1f97-524">Des variables d’environnement à l’aide du [Fournisseur de configuration des variables d’environnement](#environment-variables-configuration-provider).</span><span class="sxs-lookup"><span data-stu-id="b1f97-524">Environment variables using the [Environment Variables Configuration Provider](#environment-variables-configuration-provider).</span></span>
@@ -882,7 +882,7 @@ using Microsoft.Extensions.Configuration;
 
 <span data-ttu-id="b1f97-551">Les fournisseurs de configuration qui implémentent la détection des modifications peuvent recharger la configuration lorsqu’un paramètre sous-jacent est modifié.</span><span class="sxs-lookup"><span data-stu-id="b1f97-551">Configuration providers that implement change detection have the ability to reload configuration when an underlying setting is changed.</span></span> <span data-ttu-id="b1f97-552">Par exemple, le fournisseur de configuration de fichier (décrit plus loin dans cette rubrique) et le [fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration) implémentent la détection des modifications.</span><span class="sxs-lookup"><span data-stu-id="b1f97-552">For example, the File Configuration Provider (described later in this topic) and the [Azure Key Vault Configuration Provider](xref:security/key-vault-configuration) implement change detection.</span></span>
 
-<span data-ttu-id="b1f97-553"><xref:Microsoft.Extensions.Configuration.IConfiguration> est disponible dans le conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) de l’application.</span><span class="sxs-lookup"><span data-stu-id="b1f97-553"><xref:Microsoft.Extensions.Configuration.IConfiguration> is available in the app's [dependency injection (DI)](xref:fundamentals/dependency-injection) container.</span></span> <span data-ttu-id="b1f97-554"><xref:Microsoft.Extensions.Configuration.IConfiguration> peut être injecté dans une :::no-loc(Razor)::: page <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.PageModel> ou un MVC <xref:Microsoft.AspNetCore.Mvc.Controller> pour obtenir la configuration de la classe.</span><span class="sxs-lookup"><span data-stu-id="b1f97-554"><xref:Microsoft.Extensions.Configuration.IConfiguration> can be injected into a :::no-loc(Razor)::: Pages <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.PageModel> or MVC <xref:Microsoft.AspNetCore.Mvc.Controller> to obtain configuration for the class.</span></span>
+<span data-ttu-id="b1f97-553"><xref:Microsoft.Extensions.Configuration.IConfiguration> est disponible dans le conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) de l’application.</span><span class="sxs-lookup"><span data-stu-id="b1f97-553"><xref:Microsoft.Extensions.Configuration.IConfiguration> is available in the app's [dependency injection (DI)](xref:fundamentals/dependency-injection) container.</span></span> <span data-ttu-id="b1f97-554"><xref:Microsoft.Extensions.Configuration.IConfiguration> peut être injecté dans une Razor page <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> ou un MVC <xref:Microsoft.AspNetCore.Mvc.Controller> pour obtenir la configuration de la classe.</span><span class="sxs-lookup"><span data-stu-id="b1f97-554"><xref:Microsoft.Extensions.Configuration.IConfiguration> can be injected into a Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> or MVC <xref:Microsoft.AspNetCore.Mvc.Controller> to obtain configuration for the class.</span></span>
 
 <span data-ttu-id="b1f97-555">Dans les exemples suivants, le `_config` champ est utilisé pour accéder aux valeurs de configuration :</span><span class="sxs-lookup"><span data-stu-id="b1f97-555">In the following examples, the `_config` field is used to access configuration values:</span></span>
 
@@ -951,7 +951,7 @@ public class HomeController : Controller
 
 <span data-ttu-id="b1f97-600">Une séquence type des fournisseurs de configuration est la suivante :</span><span class="sxs-lookup"><span data-stu-id="b1f97-600">A typical sequence of configuration providers is:</span></span>
 
-1. <span data-ttu-id="b1f97-601">Fichiers ( *:::no-loc(appsettings.json):::* , *appSettings. { Environment}. JSON* , où `{Environment}` est l’environnement d’hébergement actuel de l’application)</span><span class="sxs-lookup"><span data-stu-id="b1f97-601">Files ( *:::no-loc(appsettings.json):::* , *appsettings.{Environment}.json* , where `{Environment}` is the app's current hosting environment)</span></span>
+1. <span data-ttu-id="b1f97-601">Fichiers ( *appsettings.json* , *appSettings. { Environment}. JSON* , où `{Environment}` est l’environnement d’hébergement actuel de l’application)</span><span class="sxs-lookup"><span data-stu-id="b1f97-601">Files ( *appsettings.json* , *appsettings.{Environment}.json* , where `{Environment}` is the app's current hosting environment)</span></span>
 1. [<span data-ttu-id="b1f97-602">Azure Key Vault</span><span class="sxs-lookup"><span data-stu-id="b1f97-602">Azure Key Vault</span></span>](xref:security/key-vault-configuration)
 1. <span data-ttu-id="b1f97-603">[Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (dans l’environnement de développement uniquement)</span><span class="sxs-lookup"><span data-stu-id="b1f97-603">[User secrets (Secret Manager)](xref:security/app-secrets) (Development environment only)</span></span>
 1. <span data-ttu-id="b1f97-604">Variables d'environnement</span><span class="sxs-lookup"><span data-stu-id="b1f97-604">Environment variables</span></span>
@@ -1028,7 +1028,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 
 <span data-ttu-id="b1f97-625">`CreateDefaultBuilder` charge également :</span><span class="sxs-lookup"><span data-stu-id="b1f97-625">`CreateDefaultBuilder` also loads:</span></span>
 
-* <span data-ttu-id="b1f97-626">Configuration facultative à partir de *:::no-loc(appsettings.json):::* et *appSettings. { Fichiers Environment}. JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-626">Optional configuration from *:::no-loc(appsettings.json):::* and *appsettings.{Environment}.json* files.</span></span>
+* <span data-ttu-id="b1f97-626">Configuration facultative à partir de *appsettings.json* et *appSettings. { Fichiers Environment}. JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-626">Optional configuration from *appsettings.json* and *appsettings.{Environment}.json* files.</span></span>
 * <span data-ttu-id="b1f97-627">[Secrets utilisateur (Secret Manager)](xref:security/app-secrets) dans l’environnement de développement.</span><span class="sxs-lookup"><span data-stu-id="b1f97-627">[User secrets (Secret Manager)](xref:security/app-secrets) in the Development environment.</span></span>
 * <span data-ttu-id="b1f97-628">Variables d'environnement.</span><span class="sxs-lookup"><span data-stu-id="b1f97-628">Environment variables.</span></span>
 
@@ -1143,7 +1143,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 <span data-ttu-id="b1f97-682">`CreateDefaultBuilder` charge également :</span><span class="sxs-lookup"><span data-stu-id="b1f97-682">`CreateDefaultBuilder` also loads:</span></span>
 
 * <span data-ttu-id="b1f97-683">Configuration de l’application à partir de variables d’environnement sans préfixe en appelant `AddEnvironmentVariables` sans préfixe.</span><span class="sxs-lookup"><span data-stu-id="b1f97-683">App configuration from unprefixed environment variables by calling `AddEnvironmentVariables` without a prefix.</span></span>
-* <span data-ttu-id="b1f97-684">Configuration facultative à partir de *:::no-loc(appsettings.json):::* et *appSettings. { Fichiers Environment}. JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-684">Optional configuration from *:::no-loc(appsettings.json):::* and *appsettings.{Environment}.json* files.</span></span>
+* <span data-ttu-id="b1f97-684">Configuration facultative à partir de *appsettings.json* et *appSettings. { Fichiers Environment}. JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-684">Optional configuration from *appsettings.json* and *appsettings.{Environment}.json* files.</span></span>
 * <span data-ttu-id="b1f97-685">[Secrets utilisateur (Secret Manager)](xref:security/app-secrets) dans l’environnement de développement.</span><span class="sxs-lookup"><span data-stu-id="b1f97-685">[User secrets (Secret Manager)](xref:security/app-secrets) in the Development environment.</span></span>
 * <span data-ttu-id="b1f97-686">Arguments de ligne de commande</span><span class="sxs-lookup"><span data-stu-id="b1f97-686">Command-line arguments.</span></span>
 
@@ -1296,7 +1296,7 @@ key=value
 
 <span data-ttu-id="b1f97-762">`AddJsonFile` est appelé automatiquement deux fois lors de l’initialisation d’un nouveau générateur d’hôte `CreateDefaultBuilder` .</span><span class="sxs-lookup"><span data-stu-id="b1f97-762">`AddJsonFile` is automatically called twice when a new host builder is initialized with `CreateDefaultBuilder`.</span></span> <span data-ttu-id="b1f97-763">La méthode est appelée pour charger la configuration à partir de :</span><span class="sxs-lookup"><span data-stu-id="b1f97-763">The method is called to load configuration from:</span></span>
 
-* <span data-ttu-id="b1f97-764">*:::no-loc(appsettings.json):::* : Ce fichier est lu en premier.</span><span class="sxs-lookup"><span data-stu-id="b1f97-764">*:::no-loc(appsettings.json):::* : This file is read first.</span></span> <span data-ttu-id="b1f97-765">La version de l’environnement du fichier peut remplacer les valeurs fournies par le *:::no-loc(appsettings.json):::* fichier.</span><span class="sxs-lookup"><span data-stu-id="b1f97-765">The environment version of the file can override the values provided by the *:::no-loc(appsettings.json):::* file.</span></span>
+* <span data-ttu-id="b1f97-764">*appsettings.json* : Ce fichier est lu en premier.</span><span class="sxs-lookup"><span data-stu-id="b1f97-764">*appsettings.json* : This file is read first.</span></span> <span data-ttu-id="b1f97-765">La version de l’environnement du fichier peut remplacer les valeurs fournies par le *appsettings.json* fichier.</span><span class="sxs-lookup"><span data-stu-id="b1f97-765">The environment version of the file can override the values provided by the *appsettings.json* file.</span></span>
 * <span data-ttu-id="b1f97-766">*appSettings. {Environment}. JSON* : la version de l’environnement du fichier est chargée à partir de [IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).</span><span class="sxs-lookup"><span data-stu-id="b1f97-766">*appsettings.{Environment}.json* : The environment version of the file is loaded based on the [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).</span></span>
 
 <span data-ttu-id="b1f97-767">Pour plus d’informations, consultez la section [Configuration par défaut](#default-configuration).</span><span class="sxs-lookup"><span data-stu-id="b1f97-767">For more information, see the [Default configuration](#default-configuration) section.</span></span>
@@ -1309,7 +1309,7 @@ key=value
 
 <span data-ttu-id="b1f97-772">Le Fournisseur de configuration JSON est établi en premier.</span><span class="sxs-lookup"><span data-stu-id="b1f97-772">The JSON Configuration Provider is established first.</span></span> <span data-ttu-id="b1f97-773">Par conséquent, les secrets utilisateur, les variables d’environnement et les arguments de ligne de commande remplacent la configuration définie par les fichiers *appsettings* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-773">Therefore, user secrets, environment variables, and command-line arguments override configuration set by the *appsettings* files.</span></span>
 
-<span data-ttu-id="b1f97-774">Appelez `ConfigureAppConfiguration` lors de la génération de l’hôte pour spécifier la configuration de l’application pour les fichiers autres que *:::no-loc(appsettings.json):::* et *appSettings. { Environnement}. JSON* :</span><span class="sxs-lookup"><span data-stu-id="b1f97-774">Call `ConfigureAppConfiguration` when building the host to specify the app's configuration for files other than *:::no-loc(appsettings.json):::* and *appsettings.{Environment}.json* :</span></span>
+<span data-ttu-id="b1f97-774">Appelez `ConfigureAppConfiguration` lors de la génération de l’hôte pour spécifier la configuration de l’application pour les fichiers autres que *appsettings.json* et *appSettings. { Environnement}. JSON* :</span><span class="sxs-lookup"><span data-stu-id="b1f97-774">Call `ConfigureAppConfiguration` when building the host to specify the app's configuration for files other than *appsettings.json* and *appsettings.{Environment}.json* :</span></span>
 
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
@@ -1323,9 +1323,9 @@ key=value
 
 <span data-ttu-id="b1f97-776">L’exemple d’application tire parti de la méthode de commodité statique `CreateDefaultBuilder` pour créer l’hôte, ce qui comprend deux appels à `AddJsonFile` :</span><span class="sxs-lookup"><span data-stu-id="b1f97-776">The sample app takes advantage of the static convenience method `CreateDefaultBuilder` to build the host, which includes two calls to `AddJsonFile`:</span></span>
 
-* <span data-ttu-id="b1f97-777">Le premier appel à `AddJsonFile` charge la configuration à partir de *:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="b1f97-777">The first call to `AddJsonFile` loads configuration from *:::no-loc(appsettings.json):::* :</span></span>
+* <span data-ttu-id="b1f97-777">Le premier appel à `AddJsonFile` charge la configuration à partir de *appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="b1f97-777">The first call to `AddJsonFile` loads configuration from *appsettings.json* :</span></span>
 
-  [!code-json[](index/samples/2.x/ConfigurationSample/:::no-loc(appsettings.json):::)]
+  [!code-json[](index/samples/2.x/ConfigurationSample/appsettings.json)]
 
 * <span data-ttu-id="b1f97-778">Le deuxième appel à `AddJsonFile` charge la configuration à partir de *appSettings. { Environnement}. JSON* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-778">The second call to `AddJsonFile` loads configuration from *appsettings.{Environment}.json* .</span></span> <span data-ttu-id="b1f97-779">Pour *appsettings.Development.js* dans l’exemple d’application, le fichier suivant est chargé :</span><span class="sxs-lookup"><span data-stu-id="b1f97-779">For *appsettings.Development.json* in the sample app, the following file is loaded:</span></span>
 
@@ -1337,7 +1337,7 @@ key=value
    1. <span data-ttu-id="b1f97-785">Ouvrez le fichier *Properties/launchSettings.js* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-785">Open the *Properties/launchSettings.json* file.</span></span>
    1. <span data-ttu-id="b1f97-786">Dans le `ConfigurationSample` profil, remplacez la valeur de la `ASPNETCORE_ENVIRONMENT` variable d’environnement par `Production` .</span><span class="sxs-lookup"><span data-stu-id="b1f97-786">In the `ConfigurationSample` profile, change the value of the `ASPNETCORE_ENVIRONMENT` environment variable to `Production`.</span></span>
    1. <span data-ttu-id="b1f97-787">Enregistrez le fichier et exécutez l’application avec `dotnet run` dans un interpréteur de commandes.</span><span class="sxs-lookup"><span data-stu-id="b1f97-787">Save the file and run the app with `dotnet run` in a command shell.</span></span>
-1. <span data-ttu-id="b1f97-788">Les paramètres de la *appsettings.Development.js* qui ne se substituent plus aux paramètres dans *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-788">The settings in the *appsettings.Development.json* no longer override the settings in *:::no-loc(appsettings.json):::* .</span></span> <span data-ttu-id="b1f97-789">Le niveau de journalisation de la clé `Logging:LogLevel:Default` est `Warning` .</span><span class="sxs-lookup"><span data-stu-id="b1f97-789">The log level for the key `Logging:LogLevel:Default` is `Warning`.</span></span>
+1. <span data-ttu-id="b1f97-788">Les paramètres de la *appsettings.Development.js* qui ne se substituent plus aux paramètres dans *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="b1f97-788">The settings in the *appsettings.Development.json* no longer override the settings in *appsettings.json* .</span></span> <span data-ttu-id="b1f97-789">Le niveau de journalisation de la clé `Logging:LogLevel:Default` est `Warning` .</span><span class="sxs-lookup"><span data-stu-id="b1f97-789">The log level for the key `Logging:LogLevel:Default` is `Warning`.</span></span>
 
 ### <a name="xml-configuration-provider"></a><span data-ttu-id="b1f97-790">Fournisseur de configuration XML</span><span class="sxs-lookup"><span data-stu-id="b1f97-790">XML Configuration Provider</span></span>
 
@@ -1801,11 +1801,11 @@ public class Startup
 
 <span data-ttu-id="b1f97-994">Pour obtenir un exemple d’accès à la configuration à l’aide des méthodes pratiques de démarrage, consultez [Démarrage de l’application : méthodes pratiques](xref:fundamentals/startup#convenience-methods).</span><span class="sxs-lookup"><span data-stu-id="b1f97-994">For an example of accessing configuration using startup convenience methods, see [App startup: Convenience methods](xref:fundamentals/startup#convenience-methods).</span></span>
 
-## <a name="access-configuration-in-a-no-locrazor-pages-page-or-mvc-view"></a><span data-ttu-id="b1f97-995">Configuration de l’accès dans une :::no-loc(Razor)::: page pages ou une vue MVC</span><span class="sxs-lookup"><span data-stu-id="b1f97-995">Access configuration in a :::no-loc(Razor)::: Pages page or MVC view</span></span>
+## <a name="access-configuration-in-a-no-locrazor-pages-page-or-mvc-view"></a><span data-ttu-id="b1f97-995">Configuration de l’accès dans une Razor page pages ou une vue MVC</span><span class="sxs-lookup"><span data-stu-id="b1f97-995">Access configuration in a Razor Pages page or MVC view</span></span>
 
-<span data-ttu-id="b1f97-996">Pour accéder aux paramètres de configuration dans une :::no-loc(Razor)::: page pages ou une vue MVC, ajoutez une [directive using](xref:mvc/views/razor#using) ([référence C# : directive using](/dotnet/csharp/language-reference/keywords/using-directive)) pour l' [ espace de nomsMicrosoft.Extensions.Configfiguration](xref:Microsoft.Extensions.Configuration) et injectez <xref:Microsoft.Extensions.Configuration.IConfiguration> dans la page ou la vue.</span><span class="sxs-lookup"><span data-stu-id="b1f97-996">To access configuration settings in a :::no-loc(Razor)::: Pages page or an MVC view, add a [using directive](xref:mvc/views/razor#using) ([C# reference: using directive](/dotnet/csharp/language-reference/keywords/using-directive)) for the [Microsoft.Extensions.Configuration namespace](xref:Microsoft.Extensions.Configuration) and inject <xref:Microsoft.Extensions.Configuration.IConfiguration> into the page or view.</span></span>
+<span data-ttu-id="b1f97-996">Pour accéder aux paramètres de configuration dans une Razor page pages ou une vue MVC, ajoutez une [directive using](xref:mvc/views/razor#using) ([référence C# : directive using](/dotnet/csharp/language-reference/keywords/using-directive)) pour l' [ espace de nomsMicrosoft.Extensions.Configfiguration](xref:Microsoft.Extensions.Configuration) et injectez <xref:Microsoft.Extensions.Configuration.IConfiguration> dans la page ou la vue.</span><span class="sxs-lookup"><span data-stu-id="b1f97-996">To access configuration settings in a Razor Pages page or an MVC view, add a [using directive](xref:mvc/views/razor#using) ([C# reference: using directive](/dotnet/csharp/language-reference/keywords/using-directive)) for the [Microsoft.Extensions.Configuration namespace](xref:Microsoft.Extensions.Configuration) and inject <xref:Microsoft.Extensions.Configuration.IConfiguration> into the page or view.</span></span>
 
-<span data-ttu-id="b1f97-997">Dans une :::no-loc(Razor)::: page pages :</span><span class="sxs-lookup"><span data-stu-id="b1f97-997">In a :::no-loc(Razor)::: Pages page:</span></span>
+<span data-ttu-id="b1f97-997">Dans une Razor page pages :</span><span class="sxs-lookup"><span data-stu-id="b1f97-997">In a Razor Pages page:</span></span>
 
 ```cshtml
 @page
@@ -1819,7 +1819,7 @@ public class Startup
     <title>Index Page</title>
 </head>
 <body>
-    <h1>Access configuration in a :::no-loc(Razor)::: Pages page</h1>
+    <h1>Access configuration in a Razor Pages page</h1>
     <p>Configuration value for 'key': @Configuration["key"]</p>
 </body>
 </html>

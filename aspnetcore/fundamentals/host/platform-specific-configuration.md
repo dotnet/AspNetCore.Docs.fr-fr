@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/configuration/platform-specific-configuration
 ms.openlocfilehash: c12487875db69472ee328dfc7a611ee99974c770
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -106,7 +106,7 @@ ms.locfileid: "93061052"
 
 <span data-ttu-id="638cf-135">Une amélioration de l’hébergement au démarrage peut être fournie dans une bibliothèque de classes.</span><span class="sxs-lookup"><span data-stu-id="638cf-135">A hosting startup enhancement can be provided in a class library.</span></span> <span data-ttu-id="638cf-136">La bibliothèque contient un attribut `HostingStartup`.</span><span class="sxs-lookup"><span data-stu-id="638cf-136">The library contains a `HostingStartup` attribute.</span></span>
 
-<span data-ttu-id="638cf-137">L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une :::no-loc(Razor)::: application pages, *HostingStartupApp* et une bibliothèque de classes, *HostingStartupLibrary* .</span><span class="sxs-lookup"><span data-stu-id="638cf-137">The [sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) includes a :::no-loc(Razor)::: Pages app, *HostingStartupApp* , and a class library, *HostingStartupLibrary* .</span></span> <span data-ttu-id="638cf-138">La bibliothèque de classes :</span><span class="sxs-lookup"><span data-stu-id="638cf-138">The class library:</span></span>
+<span data-ttu-id="638cf-137">L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une Razor application pages, *HostingStartupApp* et une bibliothèque de classes, *HostingStartupLibrary* .</span><span class="sxs-lookup"><span data-stu-id="638cf-137">The [sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) includes a Razor Pages app, *HostingStartupApp* , and a class library, *HostingStartupLibrary* .</span></span> <span data-ttu-id="638cf-138">La bibliothèque de classes :</span><span class="sxs-lookup"><span data-stu-id="638cf-138">The class library:</span></span>
 
 * <span data-ttu-id="638cf-139">Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`.</span><span class="sxs-lookup"><span data-stu-id="638cf-139">Contains a hosting startup class, `ServiceKeyInjection`, which implements `IHostingStartup`.</span></span> <span data-ttu-id="638cf-140">`ServiceKeyInjection` Ajoute une paire de chaînes de service à la configuration de l’application à l’aide du fournisseur de configuration en mémoire ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).</span><span class="sxs-lookup"><span data-stu-id="638cf-140">`ServiceKeyInjection` adds a pair of service strings to the app's configuration using the in-memory configuration provider ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).</span></span>
 * <span data-ttu-id="638cf-141">Inclut un attribut `HostingStartup` qui identifie l’espace de noms et la classe d’hébergement au démarrage.</span><span class="sxs-lookup"><span data-stu-id="638cf-141">Includes a `HostingStartup` attribute that identifies the hosting startup's namespace and class.</span></span>
@@ -504,7 +504,7 @@ dotnet nuget locals all --clear
 
 <span data-ttu-id="638cf-343">Une amélioration de l’hébergement au démarrage peut être fournie dans une bibliothèque de classes.</span><span class="sxs-lookup"><span data-stu-id="638cf-343">A hosting startup enhancement can be provided in a class library.</span></span> <span data-ttu-id="638cf-344">La bibliothèque contient un attribut `HostingStartup`.</span><span class="sxs-lookup"><span data-stu-id="638cf-344">The library contains a `HostingStartup` attribute.</span></span>
 
-<span data-ttu-id="638cf-345">L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une :::no-loc(Razor)::: application pages, *HostingStartupApp* et une bibliothèque de classes, *HostingStartupLibrary* .</span><span class="sxs-lookup"><span data-stu-id="638cf-345">The [sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) includes a :::no-loc(Razor)::: Pages app, *HostingStartupApp* , and a class library, *HostingStartupLibrary* .</span></span> <span data-ttu-id="638cf-346">La bibliothèque de classes :</span><span class="sxs-lookup"><span data-stu-id="638cf-346">The class library:</span></span>
+<span data-ttu-id="638cf-345">L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une Razor application pages, *HostingStartupApp* et une bibliothèque de classes, *HostingStartupLibrary* .</span><span class="sxs-lookup"><span data-stu-id="638cf-345">The [sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) includes a Razor Pages app, *HostingStartupApp* , and a class library, *HostingStartupLibrary* .</span></span> <span data-ttu-id="638cf-346">La bibliothèque de classes :</span><span class="sxs-lookup"><span data-stu-id="638cf-346">The class library:</span></span>
 
 * <span data-ttu-id="638cf-347">Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`.</span><span class="sxs-lookup"><span data-stu-id="638cf-347">Contains a hosting startup class, `ServiceKeyInjection`, which implements `IHostingStartup`.</span></span> <span data-ttu-id="638cf-348">`ServiceKeyInjection` Ajoute une paire de chaînes de service à la configuration de l’application à l’aide du fournisseur de configuration en mémoire ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).</span><span class="sxs-lookup"><span data-stu-id="638cf-348">`ServiceKeyInjection` adds a pair of service strings to the app's configuration using the in-memory configuration provider ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).</span></span>
 * <span data-ttu-id="638cf-349">Inclut un attribut `HostingStartup` qui identifie l’espace de noms et la classe d’hébergement au démarrage.</span><span class="sxs-lookup"><span data-stu-id="638cf-349">Includes a `HostingStartup` attribute that identifies the hosting startup's namespace and class.</span></span>

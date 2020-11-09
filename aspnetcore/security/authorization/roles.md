@@ -5,17 +5,17 @@ description: Découvrez comment restreindre l’accès au contrôleur et à l’
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authorization/roles
 ms.openlocfilehash: 0a2e62afebbcda9710ef82857c87cae8af0375fe
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -102,7 +102,7 @@ public class ControlPanelController : Controller
 
 ::: moniker range=">= aspnetcore-2.0"
 
-<span data-ttu-id="432da-117">Pour :::no-loc(Razor)::: les pages, le `AuthorizeAttribute` peut être appliqué par :</span><span class="sxs-lookup"><span data-stu-id="432da-117">For :::no-loc(Razor)::: Pages, the `AuthorizeAttribute` can be applied by either:</span></span>
+<span data-ttu-id="432da-117">Pour Razor les pages, le `AuthorizeAttribute` peut être appliqué par :</span><span class="sxs-lookup"><span data-stu-id="432da-117">For Razor Pages, the `AuthorizeAttribute` can be applied by either:</span></span>
 
 * <span data-ttu-id="432da-118">À l’aide d’une [Convention](xref:razor-pages/razor-pages-conventions#page-model-action-conventions), ou</span><span class="sxs-lookup"><span data-stu-id="432da-118">Using a [convention](xref:razor-pages/razor-pages-conventions#page-model-action-conventions), or</span></span>
 * <span data-ttu-id="432da-119">Application `AuthorizeAttribute` de à l' `PageModel` instance :</span><span class="sxs-lookup"><span data-stu-id="432da-119">Applying the `AuthorizeAttribute` to the `PageModel` instance:</span></span>
@@ -132,7 +132,7 @@ public class UpdateModel : PageModel
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddControllersWithViews();
-    services.Add:::no-loc(Razor):::Pages();
+    services.AddRazorPages();
 
     services.AddAuthorization(options =>
     {
@@ -177,9 +177,9 @@ options.AddPolicy("ElevatedRights", policy =>
 
 <span data-ttu-id="432da-126">Cet exemple autorise les utilisateurs qui appartiennent aux `Administrator` `PowerUser` `BackupAdministrator` rôles ou.</span><span class="sxs-lookup"><span data-stu-id="432da-126">This example authorizes users who belong to the `Administrator`, `PowerUser` or `BackupAdministrator` roles.</span></span>
 
-### <a name="add-role-services-to-no-locidentity"></a><span data-ttu-id="432da-127">Ajouter des services de rôle à :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="432da-127">Add Role services to :::no-loc(Identity):::</span></span>
+### <a name="add-role-services-to-no-locidentity"></a><span data-ttu-id="432da-127">Ajouter des services de rôle à Identity</span><span class="sxs-lookup"><span data-stu-id="432da-127">Add Role services to Identity</span></span>
 
-<span data-ttu-id="432da-128">Ajoutez [rôles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_:::no-loc(Identity):::_:::no-loc(Identity):::Builder_AddRoles__1) pour ajouter des services de rôle :</span><span class="sxs-lookup"><span data-stu-id="432da-128">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_:::no-loc(Identity):::_:::no-loc(Identity):::Builder_AddRoles__1) to add Role services:</span></span>
+<span data-ttu-id="432da-128">Ajoutez [rôles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) pour ajouter des services de rôle :</span><span class="sxs-lookup"><span data-stu-id="432da-128">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) to add Role services:</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 [!code-csharp[](roles/samples/3_0/Startup.cs?name=snippet&highlight=7)]

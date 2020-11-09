@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/host/web-host
 ms.openlocfilehash: 09383cb9067d7fdc2d7b69213b741e7ae823e9ea
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -72,12 +72,12 @@ public class Program
   * <span data-ttu-id="35cc8-127">Variables d’environnement comportant le préfixe `ASPNETCORE_` (par exemple, `ASPNETCORE_ENVIRONMENT`).</span><span class="sxs-lookup"><span data-stu-id="35cc8-127">Environment variables prefixed with `ASPNETCORE_` (for example, `ASPNETCORE_ENVIRONMENT`).</span></span>
   * <span data-ttu-id="35cc8-128">Arguments de ligne de commande</span><span class="sxs-lookup"><span data-stu-id="35cc8-128">Command-line arguments.</span></span>
 * <span data-ttu-id="35cc8-129">Charge la configuration de l’application dans l’ordre suivant à partir des éléments ci-après :</span><span class="sxs-lookup"><span data-stu-id="35cc8-129">Loads app configuration in the following order from:</span></span>
-  * <span data-ttu-id="35cc8-130">*:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="35cc8-130">*:::no-loc(appsettings.json):::* .</span></span>
+  * <span data-ttu-id="35cc8-130">*appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="35cc8-130">*appsettings.json* .</span></span>
   * <span data-ttu-id="35cc8-131">*appsettings.{Environment}.json*</span><span class="sxs-lookup"><span data-stu-id="35cc8-131">*appsettings.{Environment}.json* .</span></span>
   * <span data-ttu-id="35cc8-132">L’outil [Secret Manager (Gestionnaire de secrets)](xref:security/app-secrets) quand l’application s’exécute dans l’environnement `Development` à l’aide de l’assembly d’entrée.</span><span class="sxs-lookup"><span data-stu-id="35cc8-132">[Secret Manager](xref:security/app-secrets) when the app runs in the `Development` environment using the entry assembly.</span></span>
   * <span data-ttu-id="35cc8-133">Variables d'environnement.</span><span class="sxs-lookup"><span data-stu-id="35cc8-133">Environment variables.</span></span>
   * <span data-ttu-id="35cc8-134">Arguments de ligne de commande</span><span class="sxs-lookup"><span data-stu-id="35cc8-134">Command-line arguments.</span></span>
-* <span data-ttu-id="35cc8-135">Configure la [journalisation](xref:fundamentals/logging/index) des sorties de la console et du débogage.</span><span class="sxs-lookup"><span data-stu-id="35cc8-135">Configures [logging](xref:fundamentals/logging/index) for console and debug output.</span></span> <span data-ttu-id="35cc8-136">La journalisation comprend les règles de [filtrage de journal](xref:fundamentals/logging/index#log-filtering) spécifiées dans une section de configuration de journalisation d’un *:::no-loc(appsettings.json):::* ou *appSettings. { Fichier Environment}. JSON* .</span><span class="sxs-lookup"><span data-stu-id="35cc8-136">Logging includes [log filtering](xref:fundamentals/logging/index#log-filtering) rules specified in a Logging configuration section of an *:::no-loc(appsettings.json):::* or *appsettings.{Environment}.json* file.</span></span>
+* <span data-ttu-id="35cc8-135">Configure la [journalisation](xref:fundamentals/logging/index) des sorties de la console et du débogage.</span><span class="sxs-lookup"><span data-stu-id="35cc8-135">Configures [logging](xref:fundamentals/logging/index) for console and debug output.</span></span> <span data-ttu-id="35cc8-136">La journalisation comprend les règles de [filtrage de journal](xref:fundamentals/logging/index#log-filtering) spécifiées dans une section de configuration de journalisation d’un *appsettings.json* ou *appSettings. { Fichier Environment}. JSON* .</span><span class="sxs-lookup"><span data-stu-id="35cc8-136">Logging includes [log filtering](xref:fundamentals/logging/index#log-filtering) rules specified in a Logging configuration section of an *appsettings.json* or *appsettings.{Environment}.json* file.</span></span>
 * <span data-ttu-id="35cc8-137">Lors de l’exécution derrière IIS avec le [Module ASP.net Core](xref:host-and-deploy/aspnet-core-module), `CreateDefaultBuilder` active l' [intégration IIS](xref:host-and-deploy/iis/index), qui configure l’adresse et le port de base de l’application.</span><span class="sxs-lookup"><span data-stu-id="35cc8-137">When running behind IIS with the [ASP.NET Core Module](xref:host-and-deploy/aspnet-core-module), `CreateDefaultBuilder` enables [IIS Integration](xref:host-and-deploy/iis/index), which configures the app's base address and port.</span></span> <span data-ttu-id="35cc8-138">L’intégration IIS configure également l’application pour la [capture des erreurs de démarrage](#capture-startup-errors).</span><span class="sxs-lookup"><span data-stu-id="35cc8-138">IIS Integration also configures the app to [capture startup errors](#capture-startup-errors).</span></span> <span data-ttu-id="35cc8-139">Pour connaître les options par défaut d’IIS, consultez <xref:host-and-deploy/iis/index#iis-options>.</span><span class="sxs-lookup"><span data-stu-id="35cc8-139">For the IIS default options, see <xref:host-and-deploy/iis/index#iis-options>.</span></span>
 * <span data-ttu-id="35cc8-140">Définissez [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) sur `true` si l’environnement de l’application est Développement.</span><span class="sxs-lookup"><span data-stu-id="35cc8-140">Sets [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) to `true` if the app's environment is Development.</span></span> <span data-ttu-id="35cc8-141">Pour plus d’informations, consultez [Validation de l’étendue](#scope-validation).</span><span class="sxs-lookup"><span data-stu-id="35cc8-141">For more information, see [Scope validation](#scope-validation).</span></span>
 

@@ -6,17 +6,17 @@ description: Découvrez les attributs d’assistance de balise de lien ASP.NET C
 ms.custom: mvc
 ms.date: 09/24/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
 ms.openlocfilehash: 7998cec94ebb56cbe6dbc321f7cb499260d6fe74
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -35,7 +35,7 @@ ms.locfileid: "93059115"
 
 <span data-ttu-id="d7c8b-107">Le tag Helper Link vous permet de spécifier un CDN pour le fichier CSS et une solution de secours lorsque le CDN n’est pas disponible.</span><span class="sxs-lookup"><span data-stu-id="d7c8b-107">The Link Tag Helper allows you to specify a CDN for the CSS file and a fallback when the CDN is not available.</span></span> <span data-ttu-id="d7c8b-108">Le tag Helper Link offre l’avantage en termes de performances d’un CDN avec la robustesse de l’hébergement local.</span><span class="sxs-lookup"><span data-stu-id="d7c8b-108">The Link Tag Helper provides the performance advantage of a CDN with the robustness of local hosting.</span></span>
 
-<span data-ttu-id="d7c8b-109">Le :::no-loc(Razor)::: balisage suivant montre l' `head` élément d’un fichier de disposition créé avec le modèle d’application Web ASP.net Core :</span><span class="sxs-lookup"><span data-stu-id="d7c8b-109">The following :::no-loc(Razor)::: markup shows the `head` element of a layout file created with the ASP.NET Core web app template:</span></span>
+<span data-ttu-id="d7c8b-109">Le Razor balisage suivant montre l' `head` élément d’un fichier de disposition créé avec le modèle d’application Web ASP.net Core :</span><span class="sxs-lookup"><span data-stu-id="d7c8b-109">The following Razor markup shows the `head` element of a layout file created with the ASP.NET Core web app template:</span></span>
 
 [!code-cshtml[](link-tag-helper/sample/_Layout.cshtml?name=snippet)]
 
