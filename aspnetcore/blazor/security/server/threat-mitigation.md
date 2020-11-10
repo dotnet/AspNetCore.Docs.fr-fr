@@ -5,7 +5,7 @@ description: Découvrez comment limiter les menaces de sécurité pour les Blazo
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/05/2020
+ms.date: 11/09/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: 5c3a002a8e3df030d53c8625597342a68ca0d4b5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0e8b26110a970526b5f6306da236a92f52e64604
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055410"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430951"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>Guide d’atténuation des menaces pour ASP.NET Core Blazor Server
 
@@ -61,7 +61,7 @@ Les ressources externes à l' Blazor infrastructure, telles que les bases de don
 
 L’épuisement du processeur peut se produire lorsqu’un ou plusieurs clients forcent le serveur à effectuer des tâches intensives du processeur.
 
-Par exemple, considérez une Blazor Server application qui calcule un *numéro Fibonnacci* . Un numéro Fibonnacci est généré à partir d’une séquence Fibonnacci, où chaque nombre de la séquence est la somme des deux nombres précédents. La quantité de travail nécessaire pour atteindre la réponse dépend de la longueur de la séquence et de la taille de la valeur initiale. Si l’application ne place pas de limites sur la demande d’un client, les calculs gourmands en ressources processeur peuvent dominer le temps de l’UC et réduire les performances des autres tâches. Une consommation excessive des ressources est un problème de sécurité qui a un impact sur la disponibilité.
+Par exemple, considérez une Blazor Server application qui calcule un *numéro Fibonnacci*. Un numéro Fibonnacci est généré à partir d’une séquence Fibonnacci, où chaque nombre de la séquence est la somme des deux nombres précédents. La quantité de travail nécessaire pour atteindre la réponse dépend de la longueur de la séquence et de la taille de la valeur initiale. Si l’application ne place pas de limites sur la demande d’un client, les calculs gourmands en ressources processeur peuvent dominer le temps de l’UC et réduire les performances des autres tâches. Une consommation excessive des ressources est un problème de sécurité qui a un impact sur la disponibilité.
 
 L’épuisement de l’UC est un problème pour toutes les applications accessibles au public. Dans les applications Web standard, les demandes et les connexions expirent comme protection, mais Blazor Server les applications ne fournissent pas les mêmes protections. Blazor Server les applications doivent inclure les vérifications et les limites appropriées avant d’effectuer des tâches potentiellement gourmandes en ressources processeur.
 
@@ -77,7 +77,7 @@ Tenez compte du scénario suivant pour gérer et afficher une liste d’élémen
 * Si un schéma de pagination n’est pas utilisé pour le rendu, le serveur utilise de la mémoire supplémentaire pour les objets qui ne sont pas visibles dans l’interface utilisateur. Sans limite du nombre d’éléments, les demandes de mémoire peuvent épuiser la mémoire disponible du serveur. Pour éviter ce scénario, utilisez l’une des approches suivantes :
   * Utilisez des listes paginées lors du rendu.
   * Affiche uniquement les premiers 100 à 1 000 éléments et oblige l’utilisateur à entrer des critères de recherche pour rechercher des éléments au-delà des éléments affichés.
-  * Pour un scénario de rendu plus avancé, implémentez des listes ou des grilles qui prennent en charge *la virtualisation* . À l’aide de la virtualisation, les listes affichent uniquement un sous-ensemble d’éléments actuellement visibles par l’utilisateur. Lorsque l’utilisateur interagit avec la barre de défilement dans l’interface utilisateur, le composant affiche uniquement les éléments requis pour l’affichage. Les éléments qui ne sont pas actuellement requis pour l’affichage peuvent être stockés dans le stockage secondaire, qui est l’approche idéale. Les éléments non affichés peuvent également être conservés en mémoire, ce qui est moins idéal.
+  * Pour un scénario de rendu plus avancé, implémentez des listes ou des grilles qui prennent en charge *la virtualisation*. À l’aide de la virtualisation, les listes affichent uniquement un sous-ensemble d’éléments actuellement visibles par l’utilisateur. Lorsque l’utilisateur interagit avec la barre de défilement dans l’interface utilisateur, le composant affiche uniquement les éléments requis pour l’affichage. Les éléments qui ne sont pas actuellement requis pour l’affichage peuvent être stockés dans le stockage secondaire, qui est l’approche idéale. Les éléments non affichés peuvent également être conservés en mémoire, ce qui est moins idéal.
 
 Blazor Server les applications offrent un modèle de programmation similaire à d’autres infrastructures d’interface utilisateur pour les applications avec état, telles que WPF, Windows Forms ou Blazor WebAssembly . La principale différence réside dans le fait que dans plusieurs infrastructures d’interface utilisateur, la mémoire consommée par l’application appartient au client et affecte uniquement ce client individuel. Par exemple, une Blazor WebAssembly application s’exécute entièrement sur le client et utilise uniquement les ressources de mémoire du client. Dans le Blazor Server scénario, la mémoire consommée par l’application appartient au serveur et est partagée entre les clients sur l’instance de serveur.
 
@@ -101,7 +101,10 @@ Par défaut, le nombre de connexions par utilisateur n’est pas limité pour un
     * Exiger une authentification pour se connecter à l’application et suivre les sessions actives par utilisateur.
     * Rejeter les nouvelles sessions après avoir atteint une limite.
     * Connexions proxy WebSocket à une application via l’utilisation d’un proxy, tel que le [ SignalR service Azure](/azure/azure-signalr/signalr-overview) qui multiplexe les connexions entre les clients et une application. Cela permet à une application avec une capacité de connexion supérieure à celle qu’un client unique peut établir, ce qui empêche un client d’épuiser les connexions au serveur.
-  * Au niveau du serveur : utilisez un proxy/une passerelle devant l’application. Par exemple, la [porte frontale Azure](/azure/frontdoor/front-door-overview) vous permet de définir, gérer et surveiller le routage global du trafic Web vers une application.
+  * Au niveau du serveur : utilisez un proxy/une passerelle devant l’application. Par exemple, la [porte frontale Azure](/azure/frontdoor/front-door-overview) vous permet de définir, gérer et surveiller le routage global du trafic Web vers une application et fonctionne lorsque les Blazor Server applications sont configurées pour utiliser une interrogation longue.
+  
+    > [!NOTE]
+    > Bien que l’interrogation longue soit prise en charge pour Blazor Server les applications, [WebSocket est le protocole de transport recommandé](xref:blazor/host-and-deploy/server#azure-signalr-service). La [porte frontale Azure](/azure/frontdoor/front-door-overview) ne prend pas en charge WebSocket pour l’instant, mais la prise en charge de WebSockets est en cours d’examen pour une version ultérieure du service.
 
 ## <a name="denial-of-service-dos-attacks"></a>Attaques par déni de service (DoS)
 
@@ -162,7 +165,7 @@ N’approuvez pas les appels de JavaScript aux méthodes .NET. Quand une méthod
 
 Les événements fournissent un point d’entrée à une Blazor Server application. Les mêmes règles de protection des points de terminaison dans les applications Web s’appliquent à la gestion des événements dans les Blazor Server applications. Un client malveillant peut envoyer toutes les données qu’il souhaite envoyer en tant que charge utile d’un événement.
 
-Exemple :
+Par exemple :
 
 * Un événement de modification pour un `<select>` peut envoyer une valeur qui ne se trouve pas dans les options que l’application a présentées au client.
 * Un `<input>` peut envoyer des données texte au serveur, en ignorant la validation côté client.

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: c55421efa1fd559f462549bfaceb794d4a9c35b8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4f0e98057c03769a672ef350cc3ec724a4f7e721
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059310"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94431055"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Vue d’ensemble du modèle MVC d’ASP.NET Core
 
@@ -76,7 +76,7 @@ ASP.NET Core MVC inclut les éléments suivants :
 * [Validation du modèle](#model-validation)
 * [Injection de dépendances](../fundamentals/dependency-injection.md)
 * [Filtres](#filters)
-* [Zones (Areas)](#areas)
+* [Régions](#areas)
 * [API web](#web-apis)
 * [Testabilité](#testability)
 * [Razor moteur d’affichage](#razor-view-engine)
@@ -182,7 +182,7 @@ Les [filtres](controllers/filters.md) permettent aux développeurs d’intégrer
 public class AccountController : Controller
 ```
 
-### <a name="areas"></a>Zones (Areas)
+### <a name="areas"></a>Régions
 
 Les [zones](controllers/areas.md) permettent de partitionner une grande ASP.net Core application Web MVC en regroupements fonctionnels plus petits. Une zone est en réalité une structure MVC à l’intérieur d’une application. Dans un projet MVC, les composants logiques tels que les modèles, les contrôleurs et les vues sont conservés dans des dossiers différents et MVC utilise les conventions de nommage pour créer la relation entre ces composants. Pour une application volumineuse, il peut être avantageux de partitionner l’application en différentes zones de fonctionnalités de premier niveau. Par exemple, une application de commerce électronique avec plusieurs unités commerciales, telles que l’extraction, la facturation et la recherche, etc. Chacune de ces unités a ses propres affichages de composants logiques, contrôleurs et modèles.
 
@@ -270,4 +270,4 @@ Pour plus d'informations, consultez <xref:mvc/compatibility-version>.
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Bibliothèque de tests MyTested. AspNetCore. Mvc-Fluent pour ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): bibliothèque de tests unitaires fortement typés, fournissant une interface Fluent pour tester les applications MVC et API Web. ( *Non géré ou pris en charge par Microsoft.* )
-* <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps>
+* <xref:blazor/components/prerendering-and-integration>

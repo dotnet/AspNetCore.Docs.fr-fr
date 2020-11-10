@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: e61c76b5d53ad7646961632d00b047ecd2d9e477
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 13b5c9db04cf23377aadc4e4f61f23855c2fd492
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055605"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430937"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>Dispositions de ASP.NET Core Blazor
 
@@ -110,7 +110,7 @@ Enfin, `MasterLayout` dans `MasterLayout.razor` contient les éléments de dispo
 
 ## <a name="share-a-no-locrazor-pages-layout-with-integrated-components"></a>Partager une Razor disposition de pages avec des composants intégrés
 
-Lorsque des composants routables sont intégrés à une Razor application pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d'informations, consultez <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps>.
+Lorsque des composants routables sont intégrés à une Razor application pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d'informations, consultez <xref:blazor/components/prerendering-and-integration>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 5898059d83576cd0d2af15ad61bc399cbfbe0e99
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8f0aa80d092b6678131a2b7152f21ecb8e168257
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055852"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430989"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Routage de ASP.NET Core Blazor
 
@@ -148,14 +148,14 @@ Les contraintes de routage indiquées dans le tableau suivant sont disponibles. 
 
 | Contrainte | Exemple           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
-| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | No                               |
-| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Yes                              |
-| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Yes                              |
-| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Yes                              |
-| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Yes                              |
-| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | No                               |
-| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Yes                              |
-| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Yes                              |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Non                               |
+| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Oui                              |
+| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Oui                              |
+| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Oui                              |
+| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Oui                              |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Non                               |
+| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Oui                              |
+| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Oui                              |
 
 > [!WARNING]
 > Les contraintes de routage qui vérifient que l’URL peut être convertie en type CLR (comme `int` ou <xref:System.DateTime>) utilisent toujours la culture invariant. ces contraintes partent du principe que l’URL n’est pas localisable.
@@ -223,7 +223,7 @@ Les barres obliques et les segments du chemin capturé sont décodés. Pour un m
 
 ::: moniker range="< aspnetcore-5.0"
 
-Les paramètres d’itinéraire Catch-All sont pris en charge dans ASP.NET Core dans .NET 5 Release Candidate 1 (RC1) ou version ultérieure. *
+Les paramètres d’itinéraire Catch-All sont pris en charge dans ASP.NET Core 5,0 ou version ultérieure.
 
 ::: moniker-end
 

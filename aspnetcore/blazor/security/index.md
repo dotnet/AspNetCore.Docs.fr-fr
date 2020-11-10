@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 6110f51eb5d5ee40d6ce5a5d49ddda3329d1f033
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a333c189e81a9f44e94deb6b37097f1a8b19a0f9
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055540"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430924"
 ---
 # <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>BlazorAuthentification et autorisation ASP.net Core
 
@@ -39,7 +39,7 @@ Les scénarios de sécurité diffèrent entre Blazor Server les Blazor WebAssemb
 
 Blazor WebAssembly les applications s’exécutent sur le client. L’autorisation est *uniquement* utilisée pour déterminer les options de l’interface utilisateur à afficher. Étant donné que les contrôles côté client peuvent être modifiés ou ignorés par un utilisateur, une Blazor WebAssembly application ne peut pas appliquer les règles d’accès d’autorisation.
 
-Les [ Razor conventions d’autorisation des pages](xref:security/authorization/razor-pages-authorization) ne s’appliquent pas aux composants routables Razor . Si un composant non routable Razor est [incorporé dans une page](xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps#render-components-from-a-page-or-view), les conventions d’autorisation de la page affectent indirectement le Razor composant ainsi que le reste du contenu de la page.
+Les [ Razor conventions d’autorisation des pages](xref:security/authorization/razor-pages-authorization) ne s’appliquent pas aux composants routables Razor . Si un composant non routable Razor est [incorporé dans une page](xref:blazor/components/prerendering-and-integration), les conventions d’autorisation de la page affectent indirectement le Razor composant ainsi que le reste du contenu de la page.
 
 > [!NOTE]
 > <xref:Microsoft.AspNetCore.Identity.SignInManager%601> et <xref:Microsoft.AspNetCore.Identity.UserManager%601> ne sont pas pris en charge dans les Razor composants.
@@ -247,8 +247,8 @@ Une fois qu’un utilisateur est authentifié, les règles *d’autorisation* so
 L’accès est généralement accordé ou refusé selon les conditions suivantes :
 
 * Un utilisateur est authentifié (connecté).
-* Un utilisateur appartient à un *rôle* .
-* Un utilisateur a une *revendication* .
+* Un utilisateur appartient à un *rôle*.
+* Un utilisateur a une *revendication*.
 * Une *stratégie* est satisfaite.
 
 Chacun de ces concepts est identique à celui d’une application ASP.NET Core MVC ou Razor pages. Pour plus d’informations sur la sécurité de ASP.NET Core, consultez les articles sous [ASP.net Core sécurité et Identity ](xref:security/index).
@@ -294,7 +294,7 @@ Si les conditions d’autorisation ne sont pas spécifiées, <xref:Microsoft.Asp
 
 ### <a name="role-based-and-policy-based-authorization"></a>Autorisation en fonction du rôle et de la stratégie
 
-Le composant <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> prend en charge l’autorisation *basée sur le rôle* et *basée sur les stratégies* .
+Le composant <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> prend en charge l’autorisation *basée sur le rôle* et *basée sur les stratégies*.
 
 Pour l’autorisation en fonction du rôle, utilisez le paramètre <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> :
 
@@ -322,7 +322,7 @@ Si ni <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> n
 
 ### <a name="content-displayed-during-asynchronous-authentication"></a>Contenu affiché lors de l’authentification asynchrone
 
-Blazor permet de déterminer l’état d’authentification de *manière asynchrone* . Le scénario principal de cette approche se trouve dans les Blazor WebAssembly applications qui effectuent une demande à un point de terminaison externe pour l’authentification.
+Blazor permet de déterminer l’état d’authentification de *manière asynchrone*. Le scénario principal de cette approche se trouve dans les Blazor WebAssembly applications qui effectuent une demande à un point de terminaison externe pour l’authentification.
 
 Lorsque l’authentification est en cours, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> n’affiche aucun contenu par défaut. Pour afficher le contenu pendant que l’authentification se produit, utilisez la `<Authorizing>` balise :
 

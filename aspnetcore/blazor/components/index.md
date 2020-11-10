@@ -5,7 +5,7 @@ description: Découvrez comment créer et utiliser des Razor composants, notamme
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/19/2020
+ms.date: 11/09/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d30f40945a3b2799dfc2d9391bba37eee1bfdc18
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0f02bc3a92b9f62eb0e3efea0cd780ad6d09bef5
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056268"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94431002"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Créer et utiliser des Razor composants ASP.net Core
 
@@ -32,11 +32,11 @@ Par [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-Blazor les applications sont générées à l’aide de *composants* . Un composant est un bloc d’interface utilisateur (IU) autonome, tel qu’une page, une boîte de dialogue ou un formulaire. Un composant comprend le balisage HTML et la logique de traitement requise pour injecter des données ou répondre à des événements d’interface utilisateur. Les composants sont flexibles et légers. Elles peuvent être imbriquées, réutilisées et partagées entre les projets.
+Blazor les applications sont générées à l’aide de *composants*. Un composant est un bloc d’interface utilisateur (IU) autonome, tel qu’une page, une boîte de dialogue ou un formulaire. Un composant comprend le balisage HTML et la logique de traitement requise pour injecter des données ou répondre à des événements d’interface utilisateur. Les composants sont flexibles et légers. Elles peuvent être imbriquées, réutilisées et partagées entre les projets.
 
 ## <a name="component-classes"></a>Classes de composant
 
-Les composants sont implémentés dans des [Razor](xref:mvc/views/razor) fichiers composants ( `.razor` ) à l’aide d’une combinaison de balisage C# et html. Un composant dans Blazor est officiellement désigné sous le terme de *Razor composant* .
+Les composants sont implémentés dans des [Razor](xref:mvc/views/razor) fichiers composants ( `.razor` ) à l’aide d’une combinaison de balisage C# et html. Un composant dans Blazor est officiellement désigné sous le terme de *Razor composant*.
 
 ### <a name="no-locrazor-syntax"></a>Syntaxe de Razor
 
@@ -628,12 +628,26 @@ Vérifiez que les valeurs utilisées pour [`@key`][5] ne sont pas en conflit. Si
 
 ## <a name="overwritten-parameters"></a>Paramètres remplacés
 
-Les nouvelles valeurs de paramètre sont fournies, en remplaçant en général celles existantes, lors du rerendu du composant parent.
+L' Blazor infrastructure impose généralement une attribution de paramètres parent-enfant sécurisée :
 
-Prenons le `Expander` composant suivant :
+* Les paramètres ne sont pas remplacés de manière inattendue.
+* Les effets secondaires sont réduits. Par exemple, les rendus supplémentaires sont évités, car ils peuvent créer des boucles de rendu infinies.
+
+Un composant enfant reçoit de nouvelles valeurs de paramètre qui, éventuellement, remplacent les valeurs existantes lors du rerendu du composant parent. Accidentially remplacement des valeurs de paramètre dans un composant enfant se produit souvent lors du développement du composant avec un ou plusieurs paramètres liés aux données et le développeur écrit directement dans un paramètre de l’enfant :
+
+* Le composant enfant est restitué avec une ou plusieurs valeurs de paramètre à partir du composant parent.
+* L’enfant écrit directement dans la valeur d’un paramètre.
+* Le composant parent effectue un rerendu et remplace la valeur du paramètre de l’enfant.
+
+Le potentiel de remplacement des valeurs de paramètre s’étend également dans les accesseurs set de propriété du composant enfant.
+
+**Nos conseils généraux ne permettent pas de créer des composants qui écrivent directement dans leurs propres paramètres.**
+
+Prenons l’exemple du composant défaillant suivant `Expander` :
 
 * Restitue le contenu enfant.
-* Active ou désactive l’indication du contenu enfant avec un paramètre de composant.
+* Active ou désactive l’indication du contenu enfant avec un paramètre de composant ( `Expanded` ).
+* Le composant écrit directement dans le `Expanded` paramètre, qui illustre le problème avec les paramètres remplacés et doit être évité.
 
 ```razor
 <div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
@@ -685,7 +699,7 @@ Le composant révisé suivant `Expander` :
 
 * Accepte la `Expanded` valeur de paramètre du composant à partir du parent.
 * Affecte la valeur du paramètre de composant à un *champ privé* ( `expanded` ) dans l' [événement OnInitialized](xref:blazor/components/lifecycle#component-initialization-methods).
-* Utilise le champ privé pour conserver son état bascule interne.
+* Utilise le champ privé pour conserver son état bascule interne, qui montre comment éviter d’écrire directement dans un paramètre.
 
 ```razor
 <div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
@@ -719,6 +733,8 @@ Le composant révisé suivant `Expander` :
     }
 }
 ```
+
+Pour plus d’informations, consultez [ Blazor erreur de liaison bidirectionnelle (dotnet/aspnetcore #24599)](https://github.com/dotnet/aspnetcore/issues/24599). 
 
 ## <a name="apply-an-attribute"></a>Appliquer un attribut
 
