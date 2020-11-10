@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 5b07a2839daf190d99b2787db70998373d34cd44
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e134832ad00b10bb01239afa06acc74d86707af1
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059999"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422559"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -36,7 +36,7 @@ Le routage est responsable de la mise en correspondance des demandes HTTP entran
 
 Les applications peuvent configurer le routage à l’aide de :
 
-- Contrôleurs
+- Controllers
 - Razor Pages
 - SignalR
 - Services gRPC
@@ -81,7 +81,7 @@ L’exemple précédent comprend un seul *itinéraire vers le point de terminais
 
 <a name="endpoint"></a>
 
-La `MapGet` méthode est utilisée pour définir un **point de terminaison** . Un point de terminaison est un point qui peut être :
+La `MapGet` méthode est utilisée pour définir un **point de terminaison**. Un point de terminaison est un point qui peut être :
 
 * Sélectionné en faisant correspondre l’URL et la méthode HTTP.
 * Exécuté, en exécutant le délégué.
@@ -97,7 +97,7 @@ L’exemple suivant illustre le routage avec un modèle d’itinéraire plus sop
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/RouteTemplateStartup.cs?name=snippet)]
 
-La chaîne `/hello/{name:alpha}` est un **modèle de routage** . Il permet de configurer la mise en correspondance du point de terminaison. Dans ce cas, le modèle correspond à :
+La chaîne `/hello/{name:alpha}` est un **modèle de routage**. Il permet de configurer la mise en correspondance du point de terminaison. Dans ce cas, le modèle correspond à :
 
 * Une URL telle que `/hello/Ryan`
 * Tout chemin d’accès d’URL qui commence par `/hello/` , suivi d’une séquence de caractères alphabétiques.  `:alpha` applique une contrainte d’itinéraire qui correspond uniquement aux caractères alphabétiques. Les [contraintes de routage](#route-constraint-reference) sont expliquées plus loin dans ce document.
@@ -210,7 +210,7 @@ L’exemple précédent illustre deux concepts importants :
 
 Le code précédent montre un exemple d’un intergiciel (middleware) personnalisé qui prend en charge les stratégies par point de terminaison. L’intergiciel écrit un *Journal d’audit* de l’accès aux données sensibles sur la console. L’intergiciel peut être configuré pour *auditer* un point de terminaison avec les `AuditPolicyAttribute` métadonnées. Cet exemple illustre un modèle d' *abonnement* dans lequel seuls les points de terminaison marqués comme sensibles sont audités. Il est possible de définir cette logique en sens inverse, en auditant tout ce qui n’est pas marqué comme sécurisé, par exemple. Le système de métadonnées du point de terminaison est flexible. Cette logique peut être conçue de la manière qui convient le mieux au cas d’usage.
 
-L’exemple de code précédent est destiné à illustrer les concepts de base des points de terminaison. **L’exemple n’est pas destiné à une utilisation en production** . Une version plus complète d’un intergiciel (middleware) de *journaux d’audit* :
+L’exemple de code précédent est destiné à illustrer les concepts de base des points de terminaison. **L’exemple n’est pas destiné à une utilisation en production**. Une version plus complète d’un intergiciel (middleware) de *journaux d’audit* :
 
 * Connectez-vous à un fichier ou à une base de données.
 * Incluez des détails tels que l’utilisateur, l’adresse IP, le nom du point de terminaison sensible, et bien plus encore.
@@ -230,7 +230,7 @@ L’exemple de code suivant compare l’utilisation de l’intergiciel avec le r
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/TerminalMiddlewareStartup.cs?name=snippet)]
 
-Le style d’intergiciel (middleware) présenté avec est l’intergiciel (middleware) de `Approach 1:` **Terminal** . Il s’agit de l’intergiciel (middleware) Terminal Server, car il effectue une opération de correspondance :
+Le style d’intergiciel (middleware) présenté avec est l’intergiciel (middleware) de `Approach 1:` **Terminal**. Il s’agit de l’intergiciel (middleware) Terminal Server, car il effectue une opération de correspondance :
 
 * L’opération de correspondance dans l’exemple précédent concerne `Path == "/"` l’intergiciel et le `Path == "/Movie"` routage.
 * Lorsqu’une correspondance est réussie, elle exécute certaines fonctionnalités et retourne, plutôt que d’appeler l' `next` intergiciel (middleware).
@@ -350,7 +350,7 @@ La [priorité des modèles de routage](https://github.com/dotnet/aspnetcore/blob
 * Évite d’avoir à ajuster l’ordre des points de terminaison dans les cas courants.
 * Tente de faire correspondre les attentes de sens commun du comportement de routage.
 
-Par exemple, considérez les modèles `/Products/List` et `/Products/{id}` . Il serait raisonnable de supposer que `/Products/List` est une meilleure correspondance que `/Products/{id}` pour le chemin d’accès de l’URL `/Products/List` . Le fonctionne car le segment littéral `/List` est considéré comme ayant une meilleure priorité que le segment de paramètres `/{id}` .
+Par exemple, considérez les modèles `/Products/List` et `/Products/{id}` . Il serait raisonnable de supposer que `/Products/List` est une meilleure correspondance que `/Products/{id}` pour le chemin d’accès de l’URL `/Products/List` . Cela fonctionne parce que le segment littéral `/List` est considéré comme ayant une meilleure priorité que le segment de paramètres `/{id}` .
 
 Les détails du fonctionnement de la précédence sont associés à la façon dont les modèles de routage sont définis :
 
@@ -373,7 +373,7 @@ Génération d’URL :
 
 Le routage des points de terminaison comprend l' <xref:Microsoft.AspNetCore.Routing.LinkGenerator> API. `LinkGenerator` est un service Singleton disponible à partir de [di](xref:fundamentals/dependency-injection). L' `LinkGenerator` API peut être utilisée en dehors du contexte d’une demande en cours d’exécution. [Mvc. IUrlHelper](xref:Microsoft.AspNetCore.Mvc.IUrlHelper) et les scénarios qui reposent sur <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> , tels que les [balises d’assistance](xref:mvc/views/tag-helpers/intro), les applications auxiliaires html et les [résultats d’action](xref:mvc/controllers/actions), utilisent l' `LinkGenerator` API en interne pour fournir des fonctionnalités de génération de liens.
 
-Le générateur de liens est basé sur le concept d’une **adresse** et de **schémas d’adresse** . Un schéma d’adresse est un moyen de déterminer les points de terminaison à prendre en compte pour la génération de liens. Par exemple, les scénarios nom de l’itinéraire et valeurs de routage de nombreux utilisateurs sont familiarisés avec les contrôleurs et les Razor pages sont implémentées en tant que schéma d’adresse.
+Le générateur de liens est basé sur le concept d’une **adresse** et de **schémas d’adresse**. Un schéma d’adresse est un moyen de déterminer les points de terminaison à prendre en compte pour la génération de liens. Par exemple, les scénarios nom de l’itinéraire et valeurs de routage de nombreux utilisateurs sont familiarisés avec les contrôleurs et les Razor pages sont implémentées en tant que schéma d’adresse.
 
 Le générateur de liens peut établir une liaison avec les contrôleurs et les Razor pages à l’aide des méthodes d’extension suivantes :
 
@@ -437,7 +437,7 @@ Les modèles d’URL qui tentent de capturer un nom de fichier avec une extensio
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Les paramètres de route peuvent avoir des **valeurs par défaut** , désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Les paramètres de routage sont rendus facultatifs en ajoutant un point d’interrogation ( `?` ) à la fin du nom du paramètre. Par exemple : `id?`. La différence entre les valeurs facultatives et les paramètres d’itinéraire par défaut est la suivante :
+Les paramètres de route peuvent avoir des **valeurs par défaut** , désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Les paramètres de routage sont rendus facultatifs en ajoutant un point d’interrogation ( `?` ) à la fin du nom du paramètre. Par exemple, `id?`. La différence entre les valeurs facultatives et les paramètres d’itinéraire par défaut est la suivante :
 
 * Un paramètre d’itinéraire avec une valeur par défaut produit toujours une valeur.
 * Un paramètre facultatif a une valeur uniquement lorsqu’une valeur est fournie par l’URL de la requête.
@@ -569,12 +569,12 @@ Les expressions régulières utilisées dans le routage commencent souvent par l
 
 | Expression   | String    | Correspond | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Yes   | Correspondances de sous-chaînes     |
-| `[a-z]{2}`   | 123abc456 | Yes   | Correspondances de sous-chaînes     |
-| `[a-z]{2}`   | mz        | Yes   | Correspondance avec l’expression    |
-| `[a-z]{2}`   | MZ        | Yes   | Non-respect de la casse    |
-| `^[a-z]{2}$` | hello     | No    | Voir `^` et `$` ci-dessus |
-| `^[a-z]{2}$` | 123abc456 | No    | Voir `^` et `$` ci-dessus |
+| `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
+| `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
+| `[a-z]{2}`   | mz        | Oui   | Correspondance avec l’expression    |
+| `[a-z]{2}`   | MZ        | Oui   | Non-respect de la casse    |
+| `^[a-z]{2}$` | hello     | Non    | Voir `^` et `$` ci-dessus |
+| `^[a-z]{2}$` | 123abc456 | Non    | Voir `^` et `$` ci-dessus |
 
 Pour plus d’informations sur la syntaxe des expressions régulières, consultez [Expressions régulières du .NET Framework](/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
@@ -588,7 +588,7 @@ Les contraintes de routage personnalisées sont rarement nécessaires. Avant d�
 
 Le dossier ASP.NET Core [Constraints](https://github.com/dotnet/aspnetcore/tree/master/src/Http/Routing/src/Constraints) fournit de bons exemples de création de contraintes. Par exemple, [GuidRouteConstraint](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Constraints/GuidRouteConstraint.cs#L18).
 
-Pour utiliser un personnalisé `IRouteConstraint` , le type de contrainte d’itinéraire doit être enregistré avec l’application <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> dans le conteneur de service. Un `ConstraintMap` est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations `IRouteConstraint` qui valident ces contraintes. Le `ConstraintMap` d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
+Pour utiliser un personnalisé `IRouteConstraint` , le type de contrainte d’itinéraire doit être enregistré avec l’application <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> dans le conteneur de service. Un `ConstraintMap` est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations `IRouteConstraint` qui valident ces contraintes. Le `ConstraintMap` d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/StartupConstraint.cs?name=snippet)]
 
@@ -697,7 +697,7 @@ Le rôle du schéma d’adresse consiste à effectuer l’association entre l’
 
 ### <a name="ambient-values-and-explicit-values"></a>Valeurs ambiantes et valeurs explicites
 
-À partir de la requête actuelle, le routage accède aux valeurs d’itinéraire de la requête actuelle `HttpContext.Request.RouteValues` . Les valeurs associées à la requête actuelle sont appelées **valeurs ambiantes** . Pour des raisons de clarté, la documentation fait référence aux valeurs de route transmises aux méthodes en tant que **valeurs explicites** .
+À partir de la requête actuelle, le routage accède aux valeurs d’itinéraire de la requête actuelle `HttpContext.Request.RouteValues` . Les valeurs associées à la requête actuelle sont appelées **valeurs ambiantes**. Pour des raisons de clarté, la documentation fait référence aux valeurs de route transmises aux méthodes en tant que **valeurs explicites**.
 
 L’exemple suivant montre des valeurs ambiantes et des valeurs explicites. Il fournit des valeurs ambiantes de la demande actuelle et des valeurs explicites : `{ id = 17, }` :
 
@@ -808,7 +808,7 @@ Ensuite, les **valeurs acceptées** peuvent être utilisées pour développer le
 
 Les valeurs fournies explicitement qui ne correspondent pas à un segment de l’itinéraire sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat en cas d’utilisation du modèle de routage `{controller}/{action}/{id?}`.
 
-| Valeurs ambiantes                     | Valeurs explicites                        | Résultat                  |
+| Valeurs ambiantes                     | Valeurs explicites                        | Résultats                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controller = "Home"                | action = "About"                       | `/Home/About`           |
 | controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |
@@ -1072,7 +1072,7 @@ Le routage est connecté au pipeline de [l’intergiciel (middleware)](xref:fund
 
 ### <a name="url-matching"></a>Correspondance d’URL
 
-La correspondance d’URL est le processus par lequel le routage distribue une requête entrante à un *point de terminaison* . Ce processus est basé sur des données présentes dans le chemin de l’URL, mais il peut être étendu pour prendre en compte toutes les données de la requête. La possibilité de distribuer des requêtes à des gestionnaires distincts est essentielle pour adapter la taille et la complexité d’une application.
+La correspondance d’URL est le processus par lequel le routage distribue une requête entrante à un *point de terminaison*. Ce processus est basé sur des données présentes dans le chemin de l’URL, mais il peut être étendu pour prendre en compte toutes les données de la requête. La possibilité de distribuer des requêtes à des gestionnaires distincts est essentielle pour adapter la taille et la complexité d’une application.
 
 Le système de routage dans le routage de point de terminaison est responsable de toutes les décisions de distribution. Comme le middleware applique des stratégies basées sur le point de terminaison sélectionné, il est important que les décisions susceptibles d’affecter la distribution ou l’application des stratégies de sécurité soient prises au sein du système de routage.
 
@@ -1092,7 +1092,7 @@ La génération d’URL est le processus par lequel le routage peut créer un ch
 
 Le routage des points de terminaison inclut l’API de générateur de liens (<xref:Microsoft.AspNetCore.Routing.LinkGenerator>). <xref:Microsoft.AspNetCore.Routing.LinkGenerator> est un service singleton qui peut être récupéré à partir de [di](xref:fundamentals/dependency-injection). L’API peut être utilisée en dehors du contexte d’une requête en cours d’exécution. Le <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> de MVC et les scénarios qui s’appuient sur <xref:Microsoft.AspNetCore.Mvc.IUrlHelper>, comme les [Tag Helpers](xref:mvc/views/tag-helpers/intro), les helpers HTML et les [résultats d’action](xref:mvc/controllers/actions), utilisent le générateur de liens pour fournir les fonctionnalités de création de liens.
 
-Le générateur de liens est basé sur le concept d’une *adresse* et de *schémas d’adresse* . Un schéma d’adresse est un moyen de déterminer les points de terminaison à prendre en compte pour la génération de liens. Par exemple, les scénarios nom de l’itinéraire et valeurs de routage de nombreux utilisateurs sont familiarisés avec MVC/les Razor pages sont implémentés en tant que schéma d’adresse.
+Le générateur de liens est basé sur le concept d’une *adresse* et de *schémas d’adresse*. Un schéma d’adresse est un moyen de déterminer les points de terminaison à prendre en compte pour la génération de liens. Par exemple, les scénarios nom de l’itinéraire et valeurs de routage de nombreux utilisateurs sont familiarisés avec MVC/les Razor pages sont implémentés en tant que schéma d’adresse.
 
 Le générateur de liens peut lier des Razor actions et des pages MVC/pages à l’aide des méthodes d’extension suivantes :
 
@@ -1391,7 +1391,7 @@ Les modèles d’URL qui tentent de capturer un nom de fichier avec une extensio
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Vous pouvez utiliser un astérisque (`*`) ou un double astérisque (`**`) comme préfixe d’un paramètre de route à lier au reste de l’URI. Ils sont appelés des paramètres *passe-partout* . Par exemple, `blog/{**slug}` établit une correspondance avec n’importe quel URI commençant par `/blog` et suivi de n’importe quelle valeur, qui est affectée à la valeur de route `slug`. Les paramètres fourre-tout peuvent également établir une correspondance avec la chaîne vide.
+Vous pouvez utiliser un astérisque (`*`) ou un double astérisque (`**`) comme préfixe d’un paramètre de route à lier au reste de l’URI. Ils sont appelés des paramètres *passe-partout*. Par exemple, `blog/{**slug}` établit une correspondance avec n’importe quel URI commençant par `/blog` et suivi de n’importe quelle valeur, qui est affectée à la valeur de route `slug`. Les paramètres fourre-tout peuvent également établir une correspondance avec la chaîne vide.
 
 Le paramètre fourre-tout place les caractères appropriés dans une séquence d’échappement lorsque la route est utilisée pour générer une URL, y compris les caractères de séparation de chemin (`/`). Par exemple, la route `foo/{*path}` avec les valeurs de route `{ path = "my/path" }` génère `foo/my%2Fpath`. Notez la barre oblique d’échappement. Pour les séparateurs de chemin aller-retour, utilisez le préfixe de paramètre de routage `**`. La route `foo/{**path}` avec `{ path = "my/path" }` génère `foo/my/path`.
 
@@ -1434,7 +1434,7 @@ Les mots clés suivants sont des noms réservés qui ne peuvent pas être utilis
 Les contraintes de route s’exécutent quand une correspondance s’est produite pour l’URL entrante, et le chemin de l’URL est tokenisé en valeurs de route. En général, les contraintes de routage inspectent la valeur de route associée par le biais du modèle de routage, et créent une décision oui/non indiquant si la valeur est, ou non, acceptable. Certaines contraintes de routage utilisent des données hors de la valeur de route pour déterminer si la requête peut être routée. Par exemple, <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> peut accepter ou rejeter une requête en fonction de son verbe HTTP. Les contraintes sont utilisées dans le routage des requêtes et la génération des liens.
 
 > [!WARNING]
-> N’utilisez pas de contraintes pour la **validation des entrées** . Si des contraintes sont utilisées pour la **validation des entrées** , une entrée non valide génère une réponse *404 - Introuvable* au lieu d’une réponse *400 - Requête incorrecte* avec un message d’erreur approprié. Les contraintes de route sont utilisées pour **lever l’ambiguïté** entre des routes similaires, et non pas pour valider les entrées d’une route particulière.
+> N’utilisez pas de contraintes pour la **validation des entrées**. Si des contraintes sont utilisées pour la **validation des entrées** , une entrée non valide génère une réponse *404 - Introuvable* au lieu d’une réponse *400 - Requête incorrecte* avec un message d’erreur approprié. Les contraintes de route sont utilisées pour **lever l’ambiguïté** entre des routes similaires, et non pas pour valider les entrées d’une route particulière.
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
@@ -1490,12 +1490,12 @@ Les expressions régulières utilisées dans le routage commencent souvent par l
 
 | Expression   | String    | Correspond | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Yes   | Correspondances de sous-chaînes     |
-| `[a-z]{2}`   | 123abc456 | Yes   | Correspondances de sous-chaînes     |
-| `[a-z]{2}`   | mz        | Yes   | Correspondance avec l’expression    |
-| `[a-z]{2}`   | MZ        | Yes   | Non-respect de la casse    |
-| `^[a-z]{2}$` | hello     | No    | Voir `^` et `$` ci-dessus |
-| `^[a-z]{2}$` | 123abc456 | No    | Voir `^` et `$` ci-dessus |
+| `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
+| `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
+| `[a-z]{2}`   | mz        | Oui   | Correspondance avec l’expression    |
+| `[a-z]{2}`   | MZ        | Oui   | Non-respect de la casse    |
+| `^[a-z]{2}$` | hello     | Non    | Voir `^` et `$` ci-dessus |
+| `^[a-z]{2}$` | 123abc456 | Non    | Voir `^` et `$` ci-dessus |
 
 Pour plus d’informations sur la syntaxe des expressions régulières, consultez [Expressions régulières du .NET Framework](/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
@@ -1505,7 +1505,7 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 Outre les contraintes d’itinéraire intégré, les contraintes d’itinéraire personnalisé peuvent être créées en implémentant l’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. L’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> contient une méthode unique, `Match`, qui retourne `true` si la contrainte est satisfaite et `false` dans le cas contraire.
 
-Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
+Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
 
 ```csharp
 services.AddRouting(options =>
@@ -1514,7 +1514,7 @@ services.AddRouting(options =>
 });
 ```
 
-La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Exemple :
+La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Par exemple :
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -1567,13 +1567,13 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
-Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes* . Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de `Home` est utilisée.
+Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de `Home` est utilisée.
 
 Les valeurs ambiantes qui ne correspondent pas à un paramètre sont ignorées. Les valeurs ambiantes sont également ignorées quand une valeur explicitement fournie remplace la valeur ambiante. La mise en correspondance se produit de gauche à droite dans l’URL.
 
 Les valeurs fournies explicitement mais qui n’ont pas de correspondance avec un segment de la route sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat en cas d’utilisation du modèle de routage `{controller}/{action}/{id?}`.
 
-| Valeurs ambiantes                     | Valeurs explicites                        | Résultat                  |
+| Valeurs ambiantes                     | Valeurs explicites                        | Résultats                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controller = "Home"                | action = "About"                       | `/Home/About`           |
 | controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |
@@ -1630,7 +1630,7 @@ La prise en charge de la génération d’URL permet de développer l’applicat
 
 Le routage utilise des implémentations d’itinéraires de <xref:Microsoft.AspNetCore.Routing.IRouter> à :
 
-* Mapper les requêtes entrantes à des *gestionnaires de routage* .
+* Mapper les requêtes entrantes à des *gestionnaires de routage*.
 * Générer les URL utilisées dans les réponses.
 
 Par défaut, une application a une seule collection de routes. Quand une requête arrive, les routes de la collection sont traitées dans l’ordre où elles se trouvent dans la collection. Le framework tente de mettre en correspondance l’URL d’une requête entrante avec une route de la collection en appelant la méthode <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> sur chaque route de la collection. Une réponse peut utiliser le routage pour générer des URL (par exemple pour la redirection ou pour des liens) en fonction des informations des routes et éviter ainsi les URL codées en dur, ce qui facilite la maintenance.
@@ -1648,7 +1648,7 @@ Le routage est connecté au pipeline de [l’intergiciel (middleware)](xref:fund
 
 ### <a name="url-matching"></a>Correspondance d’URL
 
-La correspondance d’URL est le processus par lequel le routage distribue une requête entrante à un *gestionnaire* . Ce processus est basé sur des données présentes dans le chemin de l’URL, mais il peut être étendu pour prendre en compte toutes les données de la requête. La possibilité de distribuer des requêtes à des gestionnaires distincts est essentielle pour adapter la taille et la complexité d’une application.
+La correspondance d’URL est le processus par lequel le routage distribue une requête entrante à un *gestionnaire*. Ce processus est basé sur des données présentes dans le chemin de l’URL, mais il peut être étendu pour prendre en compte toutes les données de la requête. La possibilité de distribuer des requêtes à des gestionnaires distincts est essentielle pour adapter la taille et la complexité d’une application.
 
 Les requêtes entrantes entrent dans <xref:Microsoft.AspNetCore.Builder.RouterMiddleware>, qui appelle la méthode <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> sur chaque route dans l’ordre. L’instance <xref:Microsoft.AspNetCore.Routing.IRouter> détermine s’il faut *gérer* la requête en affectant à [RouteContext.Handler](xref:Microsoft.AspNetCore.Routing.RouteContext.Handler*) un <xref:Microsoft.AspNetCore.Http.RequestDelegate> non null. Si une route définit un gestionnaire pour la requête, le traitement de la route s’arrête et le gestionnaire est appelé pour traiter la requête. Si aucun gestionnaire de routage n’est trouvé pour traiter la requête, le middleware passe la requête au middleware suivant dans le pipeline de requête.
 
@@ -1853,7 +1853,7 @@ Les modèles d’URL qui tentent de capturer un nom de fichier avec une extensio
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Vous pouvez utiliser l’astérisque (`*`) comme préfixe d’un paramètre de route à lier au reste de l’URI. Cela s’appelle un paramètre *fourre-tout* . Par exemple, `blog/{*slug}` établit une correspondance avec n’importe quel URI commençant par `/blog` et suivi de n’importe quelle valeur, qui est affectée à la valeur de route `slug`. Les paramètres fourre-tout peuvent également établir une correspondance avec la chaîne vide.
+Vous pouvez utiliser l’astérisque (`*`) comme préfixe d’un paramètre de route à lier au reste de l’URI. Cela s’appelle un paramètre *fourre-tout*. Par exemple, `blog/{*slug}` établit une correspondance avec n’importe quel URI commençant par `/blog` et suivi de n’importe quelle valeur, qui est affectée à la valeur de route `slug`. Les paramètres fourre-tout peuvent également établir une correspondance avec la chaîne vide.
 
 Le paramètre fourre-tout place les caractères appropriés dans une séquence d’échappement lorsque la route est utilisée pour générer une URL, y compris les caractères de séparation de chemin (`/`). Par exemple, la route `foo/{*path}` avec les valeurs de route `{ path = "my/path" }` génère `foo/my%2Fpath`. Notez la barre oblique d’échappement.
 
@@ -1884,7 +1884,7 @@ L’utilisation d’un modèle est généralement l’approche la plus simple po
 Les contraintes de route s’exécutent quand une correspondance s’est produite pour l’URL entrante, et le chemin de l’URL est tokenisé en valeurs de route. En général, les contraintes de routage inspectent la valeur de route associée par le biais du modèle de routage, et créent une décision oui/non indiquant si la valeur est, ou non, acceptable. Certaines contraintes de routage utilisent des données hors de la valeur de route pour déterminer si la requête peut être routée. Par exemple, <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> peut accepter ou rejeter une requête en fonction de son verbe HTTP. Les contraintes sont utilisées dans le routage des requêtes et la génération des liens.
 
 > [!WARNING]
-> N’utilisez pas de contraintes pour la **validation des entrées** . Si des contraintes sont utilisées pour la **validation des entrées** , une entrée non valide génère une réponse *404 - Introuvable* au lieu d’une réponse *400 - Requête incorrecte* avec un message d’erreur approprié. Les contraintes de route sont utilisées pour **lever l’ambiguïté** entre des routes similaires, et non pas pour valider les entrées d’une route particulière.
+> N’utilisez pas de contraintes pour la **validation des entrées**. Si des contraintes sont utilisées pour la **validation des entrées** , une entrée non valide génère une réponse *404 - Introuvable* au lieu d’une réponse *400 - Requête incorrecte* avec un message d’erreur approprié. Les contraintes de route sont utilisées pour **lever l’ambiguïté** entre des routes similaires, et non pas pour valider les entrées d’une route particulière.
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
@@ -1934,12 +1934,12 @@ Les expressions régulières utilisées dans le routage commencent souvent par u
 
 | Expression   | String    | Correspond | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Yes   | Correspondances de sous-chaînes     |
-| `[a-z]{2}`   | 123abc456 | Yes   | Correspondances de sous-chaînes     |
-| `[a-z]{2}`   | mz        | Yes   | Correspondance avec l’expression    |
-| `[a-z]{2}`   | MZ        | Yes   | Non-respect de la casse    |
-| `^[a-z]{2}$` | hello     | No    | Voir `^` et `$` ci-dessus |
-| `^[a-z]{2}$` | 123abc456 | No    | Voir `^` et `$` ci-dessus |
+| `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
+| `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
+| `[a-z]{2}`   | mz        | Oui   | Correspondance avec l’expression    |
+| `[a-z]{2}`   | MZ        | Oui   | Non-respect de la casse    |
+| `^[a-z]{2}$` | hello     | Non    | Voir `^` et `$` ci-dessus |
+| `^[a-z]{2}$` | 123abc456 | Non    | Voir `^` et `$` ci-dessus |
 
 Pour plus d’informations sur la syntaxe des expressions régulières, consultez [Expressions régulières du .NET Framework](/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
@@ -1949,7 +1949,7 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 Outre les contraintes d’itinéraire intégré, les contraintes d’itinéraire personnalisé peuvent être créées en implémentant l’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. L’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> contient une méthode unique, `Match`, qui retourne `true` si la contrainte est satisfaite et `false` dans le cas contraire.
 
-Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
+Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
 
 ```csharp
 services.AddRouting(options =>
@@ -1958,7 +1958,7 @@ services.AddRouting(options =>
 });
 ```
 
-La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Exemple :
+La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Par exemple :
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -1973,13 +1973,13 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
-Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes* . Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de `Home` est utilisée.
+Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de `Home` est utilisée.
 
 Les valeurs ambiantes qui ne correspondent pas à un paramètre sont ignorées. Les valeurs ambiantes sont également ignorées quand une valeur explicitement fournie remplace la valeur ambiante. La mise en correspondance se produit de gauche à droite dans l’URL.
 
 Les valeurs fournies explicitement mais qui n’ont pas de correspondance avec un segment de la route sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat en cas d’utilisation du modèle de routage `{controller}/{action}/{id?}`.
 
-| Valeurs ambiantes                     | Valeurs explicites                        | Résultat                  |
+| Valeurs ambiantes                     | Valeurs explicites                        | Résultats                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controller = "Home"                | action = "About"                       | `/Home/About`           |
 | controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |

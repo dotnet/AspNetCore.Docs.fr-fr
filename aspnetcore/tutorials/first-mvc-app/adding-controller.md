@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 11832efa6715f96856665f174d65b094806d2810
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1851a61441ed351442f86939022319ad59d10006
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061286"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422617"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Partie 2 : ajouter un contrôleur à une application ASP.NET Core MVC
 
@@ -40,35 +40,35 @@ Le modèle d’architecture MVC (Model-View-Controller) sépare une application 
 
 Le modèle MVC vous permet de créer des applications qui séparent les différents aspects de l’application (logique d’entrée, logique métier et logique de l’interface utilisateur), tout en assurant un couplage faible entre ces éléments. Le modèle spécifie l’emplacement de chaque type de logique dans l’application. La logique de l’interface utilisateur appartient à la vue. La logique d’entrée appartient au contrôleur. La logique métier appartient au modèle. Cette séparation vous aide à gérer la complexité quand vous créez une application, car elle vous permet de travailler sur un aspect de l’implémentation à la fois, sans impacter le code d’un autre aspect. Par exemple, vous pouvez travailler sur le code des vues de façon indépendante du code de la logique métier.
 
-Nous présentons ces concepts dans cette série de didacticiels et nous vous montrons comment les utiliser pour créer une application de gestion de films. Le projet MVC contient des dossiers pour les *contrôleurs* et pour les *vues* .
+Nous présentons ces concepts dans cette série de didacticiels et nous vous montrons comment les utiliser pour créer une application de gestion de films. Le projet MVC contient des dossiers pour les *contrôleurs* et pour les *vues*.
 
 ## <a name="add-a-controller"></a>Ajouter un contrôleur
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans **Explorateur de solutions** , cliquez avec le bouton droit sur **contrôleurs >** 
-   ![ menu contextuel ajouter un contrôleur de >](adding-controller/_static/add_controller.png)
+* Dans le **Explorateur de solutions** , cliquez avec le bouton droit sur **contrôleurs > ajouter > contrôleur** 
+   ![ Explorateur de solutions, cliquez avec le bouton droit sur contrôleurs > ajouter un contrôleur de >](~/tutorials/first-mvc-app/adding-controller/_static/add_controllerCopy.png)
 
-* Dans la boîte de dialogue **Ajouter une structure** , sélectionnez **contrôleur classe-vide**
+* Dans la boîte de dialogue **Ajouter un modèle automatique** , sélectionnez **Contrôleur MVC - vide**
 
-  ![Ajouter un contrôleur MVC et le nommer](adding-controller/_static/ac.png)
+  ![Ajouter un contrôleur MVC et le nommer](~/tutorials/first-mvc-app/adding-controller/_static/acCopy.png)
 
-* Dans la **boîte de dialogue Ajouter un contrôleur MVC vide** , entrez **HelloWorldController** et sélectionnez **AJOUTER** .
+* Dans la **boîte de dialogue Ajouter un contrôleur MVC vide** , entrez **HelloWorldController** et sélectionnez **AJOUTER**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Sélectionnez l’icône **EXPLORATEUR** et cliquez en maintenant enfoncée la touche Ctrl (ou cliquez avec le bouton droit) sur **Contrôleurs > Nouveau fichier** et nommez le nouveau fichier *HelloWorldController.cs* .
+Sélectionnez l’icône **EXPLORATEUR** et cliquez en maintenant enfoncée la touche Ctrl (ou cliquez avec le bouton droit) sur **Contrôleurs > Nouveau fichier** et nommez le nouveau fichier *HelloWorldController.cs*.
 
   ![Menu contextuel](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-Dans **l’Explorateur de solutions** , cliquez avec le bouton droit sur **Contrôleurs > Ajouter > Nouveau fichier** .
+Dans **l’Explorateur de solutions** , cliquez avec le bouton droit sur **Contrôleurs > Ajouter > Nouveau fichier**.
 ![Menu contextuel](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-Sélectionnez **ASP.net Core** et **classe de contrôleur** .
+Sélectionnez **ASP.net Core** et **classe de contrôleur**.
 
-Nommez le contrôleur **HelloWorldController** .
+Nommez le contrôleur **HelloWorldController**.
 
 ![Ajouter un contrôleur MVC et le nommer](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
@@ -92,19 +92,19 @@ MVC appelle les classes du contrôleur (et les méthodes d’action au sein de c
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-Le format de routage est défini dans la méthode `Configure` du fichier *Startup.cs* .
+Le format de routage est défini dans la méthode `Configure` du fichier *Startup.cs*.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
 Quand vous naviguez jusqu’à l’application et que vous ne fournissez aucun segment d’URL, sa valeur par défaut est le contrôleur « Home » et la méthode « Index » spécifiée dans la ligne du modèle mise en surbrillance ci-dessus.
 
-Le premier segment d’URL détermine la classe du contrôleur à exécuter. `localhost:{PORT}/HelloWorld` mappe donc à la classe de contrôleur **HelloWorld** . La seconde partie du segment d’URL détermine la méthode d’action sur la classe. Ainsi, `localhost:{PORT}/HelloWorld/Index` provoque l’exécution de la méthode `Index` de la classe `HelloWorldController`. Notez que vous n’avez eu qu’à accéder à `localhost:{PORT}/HelloWorld` pour que la méthode `Index` soit appelée par défaut. La raison en est que `Index` est la méthode par défaut qui est appelée sur un contrôleur si un nom de méthode n’est pas explicitement spécifié. La troisième partie du segment d’URL (`id`) concerne les données de routage. Les données d’itinéraire sont expliquées plus loin dans le didacticiel.
+Le premier segment d’URL détermine la classe du contrôleur à exécuter. `localhost:{PORT}/HelloWorld` mappe donc à la classe de contrôleur **HelloWorld**. La seconde partie du segment d’URL détermine la méthode d’action sur la classe. Ainsi, `localhost:{PORT}/HelloWorld/Index` provoque l’exécution de la méthode `Index` de la classe `HelloWorldController`. Notez que vous n’avez eu qu’à accéder à `localhost:{PORT}/HelloWorld` pour que la méthode `Index` soit appelée par défaut. La raison en est que `Index` est la méthode par défaut qui est appelée sur un contrôleur si un nom de méthode n’est pas explicitement spécifié. La troisième partie du segment d’URL (`id`) concerne les données de routage. Les données d’itinéraire sont expliquées plus loin dans le didacticiel.
 
 Accédez à `https://localhost:{PORT}/HelloWorld/Welcome`. La méthode `Welcome` s’exécute et retourne la chaîne `This is the Welcome action method...`. Pour cette URL, le contrôleur est `HelloWorld`, et `Welcome` est la méthode d’action. Vous n’avez pas encore utilisé la partie `[Parameters]` de l’URL.
 
 ![Fenêtre de navigateur montrant une réponse de la méthode d’action « This is the Welcome action »](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 
-Modifiez le code pour passer des informations sur les paramètres de l’URL au contrôleur. Par exemple : `/HelloWorld/Welcome?name=Rick&numtimes=4`. Modifiez la méthode `Welcome` en y incluant les deux paramètres, comme indiqué dans le code suivant.
+Modifiez le code pour passer des informations sur les paramètres de l’URL au contrôleur. Par exemple, `/HelloWorld/Welcome?name=Rick&numtimes=4`. Modifiez la méthode `Welcome` en y incluant les deux paramètres, comme indiqué dans le code suivant.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_2)]
 
@@ -154,35 +154,35 @@ Le modèle d’architecture MVC (Model-View-Controller) sépare une application 
 
 Le modèle MVC vous permet de créer des applications qui séparent les différents aspects de l’application (logique d’entrée, logique métier et logique de l’interface utilisateur), tout en assurant un couplage faible entre ces éléments. Le modèle spécifie l’emplacement de chaque type de logique dans l’application. La logique de l’interface utilisateur appartient à la vue. La logique d’entrée appartient au contrôleur. La logique métier appartient au modèle. Cette séparation vous aide à gérer la complexité quand vous créez une application, car elle vous permet de travailler sur un aspect de l’implémentation à la fois, sans impacter le code d’un autre aspect. Par exemple, vous pouvez travailler sur le code des vues de façon indépendante du code de la logique métier.
 
-Nous présentons ces concepts dans cette série de didacticiels et nous vous montrons comment les utiliser pour créer une application de gestion de films. Le projet MVC contient des dossiers pour les *contrôleurs* et pour les *vues* .
+Nous présentons ces concepts dans cette série de didacticiels et nous vous montrons comment les utiliser pour créer une application de gestion de films. Le projet MVC contient des dossiers pour les *contrôleurs* et pour les *vues*.
 
 ## <a name="add-a-controller"></a>Ajouter un contrôleur
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans **Explorateur de solutions** , cliquez avec le bouton droit sur **contrôleurs >** 
-   ![ menu contextuel ajouter un contrôleur de >](adding-controller/_static/add_controller.png)
+   ![ menu contextuel ajouter un contrôleur de >](~/tutorials/first-mvc-app/adding-controller/_static/add_controller.png)
 
 * Dans la boîte de dialogue **Ajouter un modèle automatique** , sélectionnez **Contrôleur MVC - vide**
 
-  ![Ajouter un contrôleur MVC et le nommer](adding-controller/_static/ac.png)
+  ![Ajouter un contrôleur MVC et le nommer](~/tutorials/first-mvc-app/adding-controller/_static/ac.png)
 
-* Dans la **boîte de dialogue Ajouter un contrôleur MVC vide** , entrez **HelloWorldController** et sélectionnez **AJOUTER** .
+* Dans la **boîte de dialogue Ajouter un contrôleur MVC vide** , entrez **HelloWorldController** et sélectionnez **AJOUTER**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Sélectionnez l’icône **EXPLORATEUR** et cliquez en maintenant enfoncée la touche Ctrl (ou cliquez avec le bouton droit) sur **Contrôleurs > Nouveau fichier** et nommez le nouveau fichier *HelloWorldController.cs* .
+Sélectionnez l’icône **EXPLORATEUR** et cliquez en maintenant enfoncée la touche Ctrl (ou cliquez avec le bouton droit) sur **Contrôleurs > Nouveau fichier** et nommez le nouveau fichier *HelloWorldController.cs*.
 
   ![Menu contextuel](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-Dans **l’Explorateur de solutions** , cliquez avec le bouton droit sur **Contrôleurs > Ajouter > Nouveau fichier** .
+Dans **l’Explorateur de solutions** , cliquez avec le bouton droit sur **Contrôleurs > Ajouter > Nouveau fichier**.
 ![Menu contextuel](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-Sélectionnez **ASP.NET Core** et **Classe de contrôleur MVC** .
+Sélectionnez **ASP.NET Core** et **Classe de contrôleur MVC**.
 
-Nommez le contrôleur **HelloWorldController** .
+Nommez le contrôleur **HelloWorldController**.
 
 ![Ajouter un contrôleur MVC et le nommer](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
@@ -206,7 +206,7 @@ MVC appelle les classes du contrôleur (et les méthodes d’action au sein de c
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-Le format de routage est défini dans la méthode `Configure` du fichier *Startup.cs* .
+Le format de routage est défini dans la méthode `Configure` du fichier *Startup.cs*.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
@@ -223,7 +223,7 @@ Accédez à `https://localhost:{PORT}/HelloWorld/Welcome`. La méthode `Welcome`
 
 ![Fenêtre de navigateur montrant une réponse de la méthode d’action « This is the Welcome action »](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 
-Modifiez le code pour passer des informations sur les paramètres de l’URL au contrôleur. Par exemple : `/HelloWorld/Welcome?name=Rick&numtimes=4`. Modifiez la méthode `Welcome` en y incluant les deux paramètres, comme indiqué dans le code suivant.
+Modifiez le code pour passer des informations sur les paramètres de l’URL au contrôleur. Par exemple, `/HelloWorld/Welcome?name=Rick&numtimes=4`. Modifiez la méthode `Welcome` en y incluant les deux paramètres, comme indiqué dans le code suivant.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_2)]
 
