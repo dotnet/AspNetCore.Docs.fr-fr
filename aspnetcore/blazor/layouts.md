@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 13b5c9db04cf23377aadc4e4f61f23855c2fd492
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 9462b73ad67394e79de08e7d2b13bf6a3145a04e
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430937"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94507965"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>Dispositions de ASP.NET Core Blazor
 
@@ -41,13 +41,23 @@ Pour transformer un *composant* en une *disposition* , le composant :
 
 L’exemple de code suivant montre le Razor modèle d’un composant de disposition, `MainLayout.razor` . La disposition hérite <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> de et définit la `@Body` entre la barre de navigation et le pied de page :
 
-[!code-razor[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
+[!code-razor[](layouts/sample_snapshot/3.x/MainLayout.razor)]
 
 ## <a name="mainlayout-component"></a>Composant `MainLayout`
 
 Dans une application basée sur l’un des Blazor modèles de projet, le `MainLayout` composant ( `MainLayout.razor` ) se trouve dans le dossier de l’application `Shared` :
 
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](./common/samples/5.x/BlazorWebAssemblySample/Shared/MainLayout.razor)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 [!code-razor[](./common/samples/3.x/BlazorWebAssemblySample/Shared/MainLayout.razor)]
+
+::: moniker-end
 
 ## <a name="default-layout"></a>Disposition par défaut
 

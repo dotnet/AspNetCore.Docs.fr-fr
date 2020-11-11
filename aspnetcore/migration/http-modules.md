@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 9664f49bd709d2c9e46130773211c339e391d1f6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4abba1d4304bf537bd96623527c851d9d15774a4
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060701"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508160"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migrer des gestionnaires et des modules HTTP vers ASP.NET Core intergiciel
 
@@ -58,7 +58,7 @@ Avant de passer à ASP.NET Core intergiciel, nous allons tout d’abord récapit
 
 1. <https://docs.microsoft.com/previous-versions/ms227673(v=vs.140)>, Qui est un événement de série déclenché par ASP.net : [beginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest), etc. Chaque module peut créer un gestionnaire pour un ou plusieurs événements.
 
-2. Pour le même événement, ordre dans lequel ils sont configurés dans *Web.config* .
+2. Pour le même événement, ordre dans lequel ils sont configurés dans *Web.config*.
 
 En plus des modules, vous pouvez ajouter des gestionnaires pour les événements de cycle de vie à votre fichier *global.asax.cs* . Ces gestionnaires s’exécutent après les gestionnaires dans les modules configurés.
 
@@ -141,7 +141,7 @@ Convertissez ceci en [ajoutant votre nouvel intergiciel](xref:fundamentals/middl
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=16)]
 
-L’emplacement exact dans le pipeline où vous insérez votre nouvel intergiciel dépend de l’événement qu’il a traité en tant que module ( `BeginRequest` , `EndRequest` , etc.) et de son ordre dans la liste des modules de *Web.config* .
+L’emplacement exact dans le pipeline où vous insérez votre nouvel intergiciel dépend de l’événement qu’il a traité en tant que module ( `BeginRequest` , `EndRequest` , etc.) et de son ordre dans la liste des modules de *Web.config*.
 
 Comme indiqué précédemment, il n’existe aucun cycle de vie d’application dans ASP.NET Core et l’ordre dans lequel les réponses sont traitées par l’intergiciel diffère de l’ordre utilisé par les modules. Cela pourrait rendre votre décision de classement plus complexe.
 
@@ -181,7 +181,7 @@ Intergiciel ajouté au pipeline avant que la branche ne soit appelée sur toutes
 
 ## <a name="loading-middleware-options-using-the-options-pattern"></a>Chargement des options de l’intergiciel (middleware) à l’aide du modèle options
 
-Certains modules et gestionnaires possèdent des options de configuration qui sont stockées dans *Web.config* . Toutefois, dans ASP.NET Core un nouveau modèle de configuration est utilisé à la place de *Web.config* .
+Certains modules et gestionnaires possèdent des options de configuration qui sont stockées dans *Web.config*. Toutefois, dans ASP.NET Core un nouveau modèle de configuration est utilisé à la place de *Web.config*.
 
 Le nouveau [système de configuration](xref:fundamentals/configuration/index) vous offre les options suivantes pour résoudre ce qui suit :
 
@@ -324,7 +324,7 @@ Donne un ID unique pour chaque demande. Très utile pour inclure dans vos journa
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Form)]
 
 > [!WARNING]
-> Lire les valeurs de formulaire uniquement si le sous-type de contenu est *x-www-form-urlencoded* ou *Form-Data* .
+> Lire les valeurs de formulaire uniquement si le sous-type de contenu est *x-www-form-urlencoded* ou *Form-Data*.
 
 **HttpContext. Request. InputStream** se traduit par :
 
@@ -357,7 +357,7 @@ Donne un ID unique pour chaque demande. Très utile pour inclure dans vos journa
 
 **HttpContext. Response. TransmitFile**
 
-Le traitement d’un fichier est abordé dans l’article [middleware et les fonctionnalités de demande](xref:fundamentals/request-features#middleware-and-request-features).
+La mise en service d’un fichier est décrite dans <xref:fundamentals/request-features> .
 
 **HttpContext. Response. en-têtes**
 

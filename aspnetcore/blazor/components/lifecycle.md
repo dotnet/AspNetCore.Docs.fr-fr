@@ -5,7 +5,7 @@ description: Découvrez comment utiliser les Razor méthodes de cycle de vie des
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/14/2020
+ms.date: 11/06/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 30dfd9e821490d016d1d2be5c4cfd56818d46655
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 08fc393160e0a7396963901e2add3b44fc7b02b9
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056372"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508010"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>BlazorCycle de vie ASP.net Core
 
@@ -40,7 +40,7 @@ Les diagrammes suivants illustrent le Blazor cycle de vie. Les méthodes de cycl
    * Créez l’instance du composant.
    * Effectuez l’injection de propriété. Exécutez [`SetParametersAsync`](#before-parameters-are-set) .
    * Appelez [`OnInitialized{Async}`](#component-initialization-methods) . Si un <xref:System.Threading.Tasks.Task> est retourné, <xref:System.Threading.Tasks.Task> est attendu, puis le composant est rendu. Si un <xref:System.Threading.Tasks.Task> n’est pas retourné, restituez le composant.
-1. Appelez [`OnParametersSet{Async}`](#after-parameters-are-set) . Si un <xref:System.Threading.Tasks.Task> est retourné, <xref:System.Threading.Tasks.Task> est attendu, puis le composant est rendu. Si un <xref:System.Threading.Tasks.Task> n’est pas retourné, restituez le composant.
+1. Appelez [`OnParametersSet{Async}`](#after-parameters-are-set) et affichez le composant. Si un <xref:System.Threading.Tasks.Task> est retourné à partir de `OnParametersSetAsync` , <xref:System.Threading.Tasks.Task> est attendu, puis le composant est restitué à un rendu.
 
 ![Événements de cycle de vie d’un composant ::: No-Loc (Razor) ::: Component dans ::: No-Loc (éblouissant) :::](lifecycle/_static/lifecycle1.png)
 
@@ -182,7 +182,7 @@ protected override void OnAfterRender(bool firstRender)
 }
 ```
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> et <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> *ne sont pas appelées pendant le processus de prérendu sur le serveur* . Les méthodes sont appelées lorsque le composant est rendu de manière interactive une fois le prérendu terminé. Lors du prérendu de l’application :
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> et <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> *ne sont pas appelées pendant le processus de prérendu sur le serveur*. Les méthodes sont appelées lorsque le composant est rendu de manière interactive une fois le prérendu terminé. Lors du prérendu de l’application :
 
 1. Le composant s’exécute sur le serveur pour produire un balisage HTML statique dans la réponse HTTP. Pendant cette phase, <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> et <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> ne sont pas appelés.
 1. Quand `blazor.server.js` ou `blazor.webassembly.js` Démarrer dans le navigateur, le composant est redémarré en mode de rendu interactif. Après le redémarrage d’un composant, <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> et <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> **sont** appelés parce que l’application n’est plus à l’intérieur de la phase de prérendu.
@@ -224,7 +224,7 @@ Dans le `FetchData` composant des Blazor modèles, <xref:Microsoft.AspNetCore.Co
 
 [!code-razor[](lifecycle/samples_snapshot/FetchData.razor?highlight=9,21,25)]
 
-## <a name="handle-errors"></a>Gérer les erreurs
+## <a name="handle-errors"></a>des erreurs
 
 Pour plus d’informations sur la gestion des erreurs lors de l’exécution de la méthode de cycle de vie, consultez <xref:blazor/fundamentals/handle-errors#lifecycle-methods> .
 

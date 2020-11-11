@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 1f377f3be54ed8837d2857aed64c2d055ed9f582
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: e25549d557dd971d0f2f4d67a182574f07138acb
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422585"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508121"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Nouveautés de ASP.NET Core 5,0
 
@@ -130,7 +130,7 @@ Avec OpenAPI activé par défaut, l’expérience de lancement d’application (
 
 ## Blazor
 
-### <a name="performance-improvements"></a>Optimisation des performances
+### <a name="performance-improvements"></a>Amélioration des performances
 
 Pour .NET 5, nous avons apporté des améliorations significatives aux Blazor WebAssembly performances de l’exécution avec un focus spécifique sur le rendu de l’interface utilisateur complexe et la SÉRIALISATION JSON. Dans nos tests de performances, Blazor WebAssembly dans .net 5, il s’agit de deux à trois fois plus rapides pour la plupart des scénarios. Pour plus d’informations, consultez le [Blog ASP.net : ASP.net Core des mises à jour dans .net 5 Release Candidate 1](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-5-release-candidate-1/#blazor-webassembly-performance-improvements).
 
@@ -328,7 +328,7 @@ L’exemple suivant montre comment spécifier un point de terminaison spécifiqu
 
 Indication du nom du serveur (SNI) est une extension TLS pour inclure un domaine virtuel dans le cadre de la négociation SSL. Cela signifie que le nom de domaine virtuel, ou un nom d’hôte, peut être utilisé pour identifier le point de terminaison réseau.
 
-## <a name="performance-improvements"></a>Optimisation des performances
+## <a name="performance-improvements"></a>Amélioration des performances
 
 ### <a name="http2"></a>HTTP/2
 
@@ -410,13 +410,14 @@ Le format par défaut pour <xref:System.Diagnostics.Activity?displayProperty=ful
 
 ### <a name="frombodyattribute"></a>FromBodyAttribute
 
-<xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute> prend en charge la configuration d’une option qui permet à ces paramètres ou propriétés d’être considérés comme facultatifs :
+<xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute> prend désormais en charge la configuration d’une option qui permet à ces paramètres ou propriétés d’être considérés comme facultatifs :
 
 ```csharp
 public IActionResult Post([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Allow)]
-                           MyModel model) {
-     ...
-     }
+                          MyModel model)
+{
+    ...
+}
 ```
 
 ## <a name="miscellaneous-improvements"></a>Améliorations diverses
@@ -450,7 +451,7 @@ public class Program
 Dans .NET 5, l’exécution de [dotnet Watch](xref:tutorials/dotnet-watch) sur un projet de ASP.net Core lance le navigateur par défaut et actualise automatiquement le navigateur à mesure que des modifications sont apportées au code. Cela signifie que vous pouvez :
 
 _ Ouvrir un projet de ASP.NET Core dans un éditeur de texte.
-* Exécuter `dotnet watch`.
+* Exécutez `dotnet watch`.
 * Concentrez-vous sur les modifications de code, tandis que les outils gèrent la reconstruction, le redémarrage et le rechargement de l’application.
 
 Nous espérons que la fonctionnalité d’actualisation automatique de Visual Studio est à l’avenir.
