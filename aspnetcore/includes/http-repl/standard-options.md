@@ -9,17 +9,13 @@
   * `{header}={value}`
   * `{header}:{value}`
 
-* `--response`
-
-  Spécifie un fichier où la totalité de la réponse HTTP (notamment les en-têtes et le corps) doit être écrite. Par exemple : `--response "C:\response.txt"`. Le fichier est créé s’il n’existe pas.
-
 * `--response:body`
 
-  Spécifie un fichier dans lequel le corps de la réponse HTTP doit être écrit. Par exemple : `--response:body "C:\response.json"`. Le fichier est créé s’il n’existe pas.
+  Spécifie un fichier dans lequel le corps de la réponse HTTP doit être écrit. Par exemple, `--response:body "C:\response.json"`. Le fichier est créé s’il n’existe pas.
 
 * `--response:headers`
 
-  Spécifie un fichier dans lequel les en-têtes de la réponse HTTP doivent être écrits. Par exemple : `--response:headers "C:\response.txt"`. Le fichier est créé s’il n’existe pas.
+  Spécifie un fichier dans lequel les en-têtes de la réponse HTTP doivent être écrits. Par exemple, `--response:headers "C:\response.txt"`. Le fichier est créé s’il n’existe pas.
 
 * `-s|--streaming`
 
