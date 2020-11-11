@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 36e8bc494125d0770347ddf32390365d83a91d27
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6a70183ce4b1a129ef213300473b233a5ef822f9
+ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051744"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94463884"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>Fournisseurs de stockage de clés dans ASP.NET Core
 
@@ -47,7 +47,7 @@ Le `DirectoryInfo` peut pointer vers un répertoire sur l’ordinateur local, ou
 
 ## <a name="azure-storage"></a>Stockage Azure
 
-Le package [Microsoft. AspNetCore. dataprotection. AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) permet de stocker les clés de protection des données dans le stockage d’objets BLOB Azure. Les clés peuvent être partagées entre plusieurs instances d’une application Web. Les applications peuvent partager l’authentification cookie ou la protection CSRF sur plusieurs serveurs.
+Le package [Azure. extensions. AspNetCore. dataprotection. blobs](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.DataProtection.Blobs) permet le stockage des clés de protection des données dans le stockage d’objets BLOB Azure. Les clés peuvent être partagées entre plusieurs instances d’une application Web. Les applications peuvent partager l’authentification cookie ou la protection CSRF sur plusieurs serveurs.
 
 Pour configurer le fournisseur de stockage d’objets BLOB Azure, appelez l’une des surcharges [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage) .
 
@@ -59,15 +59,12 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Si l’application Web s’exécute en tant que service Azure, les jetons d’authentification peuvent être créés automatiquement à l’aide de [Microsoft. Azure. services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/).
+Si l’application Web s’exécute en tant que service Azure, la chaîne de connexion peut être utilisée pour l’authentification auprès du stockage Azure à l’aide d' [Azure. Storage. blob](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient).
 
 ```csharp
-var tokenProvider = new AzureServiceTokenProvider();
-var token = await tokenProvider.GetAccessTokenAsync("https://storage.azure.com/");
-var credentials = new StorageCredentials(new TokenCredential(token));
-var storageAccount = new CloudStorageAccount(credentials, "mystorageaccount", "core.windows.net", useHttps: true);
-var client = storageAccount.CreateCloudBlobClient();
-var container = client.GetContainerReference("my-key-container");
+string connectionString = "<connection_string>";
+string containerName = "my-key-container";
+BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
 
 // optional - provision the container automatically
 await container.CreateIfNotExistsAsync();
@@ -76,7 +73,11 @@ services.AddDataProtection()
     .PersistKeysToAzureBlobStorage(container, "keys.xml");
 ```
 
-[Pour plus d’informations sur la configuration de l’authentification de service à service](/azure/key-vault/service-to-service-authentication) , consultez.
+> [!NOTE]
+> La chaîne de connexion à votre compte de stockage se trouve dans le portail Azure, sous la section « clés d’accès » ou en exécutant la commande CLI suivante : 
+> ```bash
+> az storage account show-connection-string --name <account_name> --resource-group <resource_group>
+> ```
 
 ## <a name="redis"></a>Redis
 
@@ -165,7 +166,7 @@ Le paramètre générique, `TContext` , doit hériter de [DbContext](/dotnet/api
 
 Créez la table `DataProtectionKeys`.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez les commandes suivantes dans la fenêtre **console du gestionnaire de package** (PMC) :
 

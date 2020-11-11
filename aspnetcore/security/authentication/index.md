@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/index
-ms.openlocfilehash: eb8c5b3c66f9a0d845d6a1d58c69e6fddefa5b0b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e9e4ca11d20557666c75b84e56af825d002df0f1
+ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053382"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94464001"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Vue d’ensemble de l’authentification ASP.NET Core
 
@@ -97,7 +97,7 @@ L’action d’authentification d’un schéma d’authentification est responsa
 * Un cookie schéma d’authentification qui construit l’identité de l’utilisateur à partir de cookie s.
 * Un modèle de porteur JWT qui désérialise et valide un jeton de porteur JWT pour construire l’identité de l’utilisateur.
 
-### <a name="challenge"></a>Problème
+### <a name="challenge"></a>Défi à relever
 
 Une demande d’authentification est appelée par l’autorisation lorsqu’un utilisateur non authentifié demande un point de terminaison qui requiert une authentification. Une demande d’authentification est émise, par exemple, lorsqu’un utilisateur anonyme demande une ressource restreinte ou clique sur un lien de connexion. L’autorisation appelle un défi à l’aide du ou des schémas d’authentification spécifiés, ou la valeur par défaut si aucun n’est spécifié. Consultez <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ChallengeAsync%2A>. Les exemples de demande d’authentification sont les suivants :
 
@@ -141,3 +141,4 @@ Consultez la source [principale du verger](https://github.com/OrchardCMS/Orchard
 * <xref:security/authentication/policyschemes>
 * <xref:security/authorization/secure-data>
 * [Exiger globalement des utilisateurs authentifiés](xref:security/authorization/secure-data#rau)
+* [GitHub problème lié à l’utilisation de plusieurs schémas d’authentification](https://github.com/dotnet/aspnetcore/issues/26002)

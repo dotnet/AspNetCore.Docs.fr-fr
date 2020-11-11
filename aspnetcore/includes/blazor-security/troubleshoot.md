@@ -1,5 +1,25 @@
 ## <a name="troubleshoot"></a>Dépanner
 
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="common-errors"></a>Erreurs courantes
+
+* Client non autorisé pour AAD
+
+  > info : échec de l’autorisation Microsoft. AspNetCore. Authorization. DefaultAuthorizationService [2]. Ces exigences n’ont pas été satisfaites : DenyAnonymousAuthorizationRequirement : requiert un utilisateur authentifié.
+
+  Erreur de rappel de connexion à partir d’AAD :
+
+  * Erreur : `unauthorized_client`
+  * Description : `AADB2C90058: The provided application is not configured to allow public clients.`
+
+  Pour résoudre l’erreur :
+
+  1. Dans le Portail Azure, accédez au [manifeste de l’application](/azure/active-directory/develop/reference-app-manifest).
+  1. Affectez [`allowPublicClient`](/azure/active-directory/develop/reference-app-manifest#allowpublicclient-attribute) à l’attribut la valeur `null` ou `true` .
+
+::: moniker-end
+
 ### <a name="cookies-and-site-data"></a>Cookies et données de site
 
 Les cookies et les données de site peuvent persister sur les mises à jour des applications et perturber les tests et le dépannage. Désactivez les éléments suivants lorsque vous apportez des modifications de code d’application, des modifications de compte d’utilisateur avec le fournisseur ou des modifications de configuration d’application de fournisseur :
@@ -24,7 +44,7 @@ L’une des méthodes permettant d’empêcher les cookies en attente et les don
     * Microsoft Edge : utilisez `-inprivate` .
     * Google Chrome : utilisez `--incognito --new-window {URL}` , où l’espace réservé `{URL}` est l’URL à ouvrir (par exemple, `https://localhost:5001` ).
     * Mozilla Firefox : utilisez `-private -url {URL}` , où l’espace réservé `{URL}` est l’URL à ouvrir (par exemple, `https://localhost:5001` ).
-  * Entrez un nom dans le champ **nom convivial** . Par exemple : `Firefox Auth Testing`.
+  * Entrez un nom dans le champ **nom convivial** . Par exemple, `Firefox Auth Testing`.
   * Cliquez sur le bouton **OK**.
   * Pour éviter d’avoir à sélectionner le profil de navigateur pour chaque itération de test avec une application, définissez le profil par défaut avec le bouton **définir comme valeur par défaut** .
   * Assurez-vous que le navigateur est fermé par l’IDE pour toute modification apportée à l’application, à l’utilisateur de test ou à la configuration du fournisseur.
