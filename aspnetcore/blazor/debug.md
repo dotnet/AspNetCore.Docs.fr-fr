@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: b7e246c20bf12f8ddf07cff54864836cb535aa60
-ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
+ms.openlocfilehash: 990882c03ddc14c664aa8da0518fb36087199aca
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94339995"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550515"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de débogage Blazor WebAssembly
 
@@ -49,6 +49,7 @@ Pour le moment, vous *ne pouvez pas* :
 
 * Arrêt sur les exceptions non gérées.
 * Atteindre les points d’arrêt pendant le démarrage de l’application avant l’exécution du proxy de débogage. Cela comprend les points d’arrêt dans `Program.Main` ( `Program.cs` ) et les points d’arrêt dans les [ `OnInitialized{Async}` méthodes](xref:blazor/components/lifecycle#component-initialization-methods) des composants qui sont chargés par la première page demandée à partir de l’application.
+* Déboguez dans des scénarios non locaux (par exemple, [sous-système Windows pour Linux (WSL)](/windows/wsl/) ou [Visual Studio Codespaces](/visualstudio/codespaces/overview/what-is-vsonline)).
 
 ## <a name="prerequisites"></a>Prérequis
 

@@ -1,11 +1,11 @@
 ---
-title: Tester des API web avec la boucle REPL HTTP
+title: Tester les API Web avec HttpRepl
 author: scottaddie
-description: Découvrez comment utiliser l’outil global REPL HTTP de .NET Core pour parcourir et tester une API web ASP.NET Core.
+description: Découvrez comment utiliser l’outil Global .NET Core HttpRepl pour parcourir et tester une API Web ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc, devx-track-azurecli
-ms.date: 11/10/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: 81174b551c5b6d81e6ac80975f7f77ee6664059d
-ms.sourcegitcommit: fb72e9c1ae5b279817f1fb4b46a52170449b6f30
+ms.openlocfilehash: df2d4e63a18471b4c5f4f1c9434921303bb1da8a
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94502033"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550619"
 ---
-# <a name="test-web-apis-with-the-http-repl"></a>Tester des API web avec la boucle REPL HTTP
+# <a name="test-web-apis-with-the-httprepl"></a>Tester les API Web avec HttpRepl
 
 Par [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -54,7 +54,7 @@ Pour continuer, [consultez ou téléchargez l’exemple d’API web ASP.NET Core
 
 ## <a name="installation"></a>Installation
 
-Pour installer la boucle REPL HTTP, exécutez la commande suivante :
+Pour installer HttpRepl, exécutez la commande suivante :
 
 ```dotnetcli
 dotnet tool install -g Microsoft.dotnet-httprepl
@@ -64,13 +64,13 @@ Un [outil global .NET Core](/dotnet/core/tools/global-tools#install-a-global-too
 
 ## <a name="usage"></a>Usage
 
-Une fois l’installation de l’outil réussie, exécutez la commande suivante pour démarrer la boucle REPL HTTP :
+Une fois l’installation de l’outil réussie, exécutez la commande suivante pour démarrer le HttpRepl :
 
 ```console
 httprepl
 ```
 
-Pour voir les commandes de la boucle REPL HTTP disponibles, exécutez une des commandes suivantes :
+Pour afficher les commandes HttpRepl disponibles, exécutez l’une des commandes suivantes :
 
 ```console
 httprepl -h
@@ -135,7 +135,7 @@ Use `help <COMMAND>` for more detail on an individual command. e.g. `help get`.
 For detailed tool info, see https://aka.ms/http-repl-doc.
 ```
 
-La boucle REPL HTTP offre la complétion des commandes. Un appui sur la touche <kbd>Tab</kbd> itère au sein de la liste des commandes qui complètent les caractères ou le point de terminaison d’API que vous avez tapés. Les sections suivantes décrivent les commandes CLI disponibles.
+HttpRepl offre la saisie semi-automatique des commandes. Un appui sur la touche <kbd>Tab</kbd> itère au sein de la liste des commandes qui complètent les caractères ou le point de terminaison d’API que vous avez tapés. Les sections suivantes décrivent les commandes CLI disponibles.
 
 ## <a name="connect-to-the-web-api"></a>Se connecter à l’API web
 
@@ -145,19 +145,19 @@ Connectez-vous à une API web en exécutant la commande suivante :
 httprepl <ROOT URI>
 ```
 
-`<ROOT URI>` est l’URI de base pour l’API web. Exemple :
+`<ROOT URI>` est l’URI de base pour l’API web. Par exemple :
 
 ```console
 httprepl https://localhost:5001
 ```
 
-Vous pouvez également exécuter la commande suivante à tout moment pendant l’exécution de la boucle REPL HTTP :
+Vous pouvez également exécuter la commande suivante à tout moment pendant l’exécution de HttpRepl :
 
 ```console
 connect <ROOT URI>
 ```
 
-Exemple :
+Par exemple :
 
 ```console
 (Disconnected)> connect https://localhost:5001
@@ -171,7 +171,7 @@ La commande Connect ci-dessus tente de trouver la description OpenAPI automatiqu
 connect <ROOT URI> --openapi <OPENAPI DESCRIPTION ADDRESS>
 ```
 
-Exemple :
+Par exemple :
 
 ```console
 (Disconnected)> connect https://localhost:5001 --openapi /swagger/v1/swagger.json
@@ -185,7 +185,7 @@ Si vous spécifiez l' `--verbose` option avec la `connect` commande, vous obtene
 connect <ROOT URI> --verbose
 ```
 
-Exemple :
+Par exemple :
 
 ```console
 (Disconnected)> connect https://localhost:5001 --verbose
@@ -230,7 +230,7 @@ https://localhost:5001/fruits> ls
 https://localhost:5001/fruits>
 ```
 
-Vous pouvez également exécuter la commande `ui` pour ouvrir la page de l’interface utilisateur Swagger de l’API web dans un navigateur. Exemple :
+Vous pouvez également exécuter la commande `ui` pour ouvrir la page de l’interface utilisateur Swagger de l’API web dans un navigateur. Par exemple :
 
 ```console
 https://localhost:5001/> ui
@@ -252,9 +252,9 @@ Le chemin qui suit la commande `cd` ne respecte pas la casse. Le format de sorti
 https://localhost:5001/people>
 ```
 
-## <a name="customize-the-http-repl"></a>Personnaliser la boucle REPL HTTP
+## <a name="customize-the-httprepl"></a>Personnaliser le HttpRepl
 
-Les [couleurs](#set-color-preferences) de la boucle REPL HTTP peuvent être personnalisées. Vous pouvez aussi définir un [éditeur de texte par défaut](#set-the-default-text-editor). Les préférences de la boucle REPL HTTP sont conservées dans la session active et dans les sessions ultérieures. Une fois modifiées, les préférences sont stockées dans le fichier suivant :
+Les [couleurs](#set-color-preferences) par défaut de HttpRepl peuvent être personnalisées. Vous pouvez aussi définir un [éditeur de texte par défaut](#set-the-default-text-editor). Les préférences HttpRepl sont conservées dans la session active et sont honorées dans les sessions ultérieures. Une fois modifiées, les préférences sont stockées dans le fichier suivant :
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -274,7 +274,7 @@ Le fichier *.httpreplprefs* est chargé au démarrage et ses modifications ne so
 
 ### <a name="view-the-settings"></a>Voir les paramètres
 
-Pour voir les paramètres disponibles, exécutez la commande `pref get`. Exemple :
+Pour voir les paramètres disponibles, exécutez la commande `pref get`. Par exemple :
 
 ```console
 https://localhost:5001/> pref get
@@ -295,7 +295,7 @@ colors.status=BoldYellow
 
 ### <a name="set-color-preferences"></a>Définir les préférences de couleur
 
-La colorisation des réponses est actuellement prise en charge seulement pour JSON. Pour personnaliser les couleurs par défaut de l’outil REPL HTTP, localisez la clé correspondant à la couleur à changer. Pour des instructions sur la façon de trouver les clés, consultez la section [Voir les paramètres](#view-the-settings). Par exemple, remplacez la valeur de la clé `colors.json` de `Green` par `White` :
+La colorisation des réponses est actuellement prise en charge seulement pour JSON. Pour personnaliser les couleurs par défaut de l’outil HttpRepl, localisez la clé correspondant à la couleur à modifier. Pour des instructions sur la façon de trouver les clés, consultez la section [Voir les paramètres](#view-the-settings). Par exemple, remplacez la valeur de la clé `colors.json` de `Green` par `White` :
 
 ```console
 https://localhost:5001/people> pref set colors.json White
@@ -312,7 +312,7 @@ Quand des clés d’une couleur spécifique ne sont pas définies, des clés plu
 
 ### <a name="set-indentation-size"></a>Définir la taille de la mise en retrait
 
-La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement. La taille par défaut est de deux espaces. Exemple :
+La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement. La taille par défaut est de deux espaces. Par exemple :
 
 ```json
 [
@@ -358,7 +358,7 @@ Les réponses suivantes adoptent la valeur correspondant à quatre espaces :
 
 ### <a name="set-the-default-text-editor"></a>Définir l’éditeur de texte par défaut
 
-Par défaut, la boucle REPL HTTP n’a pas d’éditeur de texte configuré pour l’utilisation. Pour tester les méthodes d’API web nécessitant un corps de requête HTTP, vous devez définir un éditeur de texte par défaut. L’outil REPL HTTP lance l’éditeur de texte configuré dans le seul but de permettre la composition du corps de la requête. Exécutez la commande suivante pour définir votre éditeur de texte préféré comme éditeur par défaut :
+Par défaut, le HttpRepl n’a pas d’éditeur de texte configuré pour être utilisé. Pour tester les méthodes d’API web nécessitant un corps de requête HTTP, vous devez définir un éditeur de texte par défaut. L’outil HttpRepl lance l’éditeur de texte configuré dans le seul but de composer le corps de la requête. Exécutez la commande suivante pour définir votre éditeur de texte préféré comme éditeur par défaut :
 
 ```console
 pref set editor.command.default "<EXECUTABLE>"
@@ -386,7 +386,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-Pour lancer l’éditeur de texte par défaut avec des arguments CLI spécifiques, définissez la clé `editor.command.default.arguments`. Par exemple, supposons que Visual Studio Code est l’éditeur de texte par défaut et que vous voulez que la boucle REPL HTTP ouvre toujours Visual Studio Code dans une nouvelle session avec les extensions désactivées. Exécutez la commande suivante :
+Pour lancer l’éditeur de texte par défaut avec des arguments CLI spécifiques, définissez la clé `editor.command.default.arguments`. Par exemple, supposons que Visual Studio Code est l’éditeur de texte par défaut et que vous souhaitez toujours que le HttpRepl ouvre Visual Studio Code dans une nouvelle session avec les extensions désactivées. Exécutez la commande suivante :
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -397,7 +397,7 @@ pref set editor.command.default.arguments "--disable-extensions --new-window"
 
 ### <a name="set-the-openapi-description-search-paths"></a>Définir les chemins de recherche de la description OpenAPI
 
-Par défaut, HTTP REPL possède un ensemble de chemins d’accès relatifs qu’il utilise pour rechercher la description OpenAPI lors de l’exécution de la `connect` commande sans l' `--openapi` option. Ces chemins relatifs sont combinés avec les chemins racine et de base spécifiés dans la commande `connect`. Les chemins relatifs par défaut sont les suivants :
+Par défaut, le HttpRepl possède un ensemble de chemins d’accès relatifs qu’il utilise pour trouver la description de OpenAPI lors de l’exécution de la `connect` commande sans l' `--openapi` option. Ces chemins relatifs sont combinés avec les chemins racine et de base spécifiés dans la commande `connect`. Les chemins relatifs par défaut sont les suivants :
 
 - *swagger.js*
 - *Swagger/v1/swagger.jssur*
@@ -406,7 +406,7 @@ Par défaut, HTTP REPL possède un ensemble de chemins d’accès relatifs qu’
 - *openapi.js*
 - */openapi.jssur*
 
-Pour utiliser un autre ensemble de chemins de recherche dans votre environnement, définissez la préférence `swagger.searchPaths`. La valeur doit être une liste de chemins relatifs délimités par des barres verticales. Exemple :
+Pour utiliser un autre ensemble de chemins de recherche dans votre environnement, définissez la préférence `swagger.searchPaths`. La valeur doit être une liste de chemins relatifs délimités par des barres verticales. Par exemple :
 
 ```console
 pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
@@ -414,13 +414,13 @@ pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
 
 Au lieu de remplacer entièrement la liste par défaut, la liste peut également être modifiée en ajoutant ou en supprimant des chemins.
 
-Pour ajouter un ou plusieurs chemins de recherche à la liste par défaut, définissez la `swagger.addToSearchPaths` préférence. La valeur doit être une liste de chemins relatifs délimités par des barres verticales. Exemple :
+Pour ajouter un ou plusieurs chemins de recherche à la liste par défaut, définissez la `swagger.addToSearchPaths` préférence. La valeur doit être une liste de chemins relatifs délimités par des barres verticales. Par exemple :
 
 ```console
 pref set swagger.addToSearchPaths "openapi/v2/openapi.json|openapi/v3/openapi.json"
 ```
 
-Pour supprimer un ou plusieurs chemins de recherche de la liste par défaut, définissez la `swagger.addToSearchPaths` préférence. La valeur doit être une liste de chemins relatifs délimités par des barres verticales. Exemple :
+Pour supprimer un ou plusieurs chemins de recherche de la liste par défaut, définissez la `swagger.addToSearchPaths` préférence. La valeur doit être une liste de chemins relatifs délimités par des barres verticales. Par exemple :
 
 ```console
 pref set swagger.removeFromSearchPaths "swagger.json|/swagger.json"
@@ -540,7 +540,7 @@ Pour émettre une requête HTTP POST :
     https://localhost:5001/people> post -h Content-Type=application/json
     ```
 
-    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Exemple :
+    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Par exemple :
 
     ```json
     {
@@ -636,7 +636,7 @@ Pour émettre une requête HTTP PUT :
     https://localhost:5001/fruits> put 2 -h Content-Type=application/json
     ```
 
-    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Exemple :
+    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Par exemple :
 
     ```json
     {
@@ -842,7 +842,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes :
 
-* Définir inline avec la requête HTTP. Exemple :
+* Définir inline avec la requête HTTP. Par exemple :
 
     ```console
     https://localhost:5001/people> post -h Content-Type=application/json
@@ -850,13 +850,13 @@ Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes
     
     Avec l’approche précédente, chaque en-tête de requête HTTP distinct nécessite sa propre option `-h`.
 
-* Définir avant l’envoi de la requête HTTP. Exemple :
+* Définir avant l’envoi de la requête HTTP. Par exemple :
 
     ```console
     https://localhost:5001/people> set header Content-Type application/json
     ```
     
-    Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes. Pour effacer l’en-tête, spécifiez une valeur vide. Exemple :
+    Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes. Pour effacer l’en-tête, spécifiez une valeur vide. Par exemple :
     
     ```console
     https://localhost:5001/people> set header Content-Type
@@ -864,7 +864,7 @@ Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes
 
 ## <a name="test-secured-endpoints"></a>Tester les points de terminaison sécurisés
 
-La réplication HTTP prend en charge le test des points de terminaison sécurisés des manières suivantes :
+Le HttpRepl prend en charge le test des points de terminaison sécurisés des manières suivantes :
 
 * Par le biais des informations d’identification par défaut de l’utilisateur connecté.
 * À l’aide des en-têtes de requête HTTP.
@@ -907,7 +907,7 @@ Par exemple, vous pouvez envoyer un jeton de porteur à un point de terminaison 
 set header Authorization "bearer <TOKEN VALUE>"
 ```
 
-Pour accéder à un point de terminaison hébergé par Azure ou pour utiliser l' [API REST Azure](/rest/api/azure/), vous avez besoin d’un jeton de porteur. Procédez comme suit pour obtenir un jeton de porteur pour votre abonnement Azure via le [Azure CLI](/cli/azure/). Le REPL HTTP définit le jeton du porteur dans un en-tête de requête HTTP. Une liste de Azure App Service Web Apps est récupérée.
+Pour accéder à un point de terminaison hébergé par Azure ou pour utiliser l' [API REST Azure](/rest/api/azure/), vous avez besoin d’un jeton de porteur. Procédez comme suit pour obtenir un jeton de porteur pour votre abonnement Azure via le [Azure CLI](/cli/azure/). HttpRepl définit le jeton du porteur dans un en-tête de requête HTTP. Une liste de Azure App Service Web Apps est récupérée.
 
 1. Connectez-vous à Azure :
 
@@ -933,7 +933,7 @@ Pour accéder à un point de terminaison hébergé par Azure ou pour utiliser l'
     az account get-access-token --query accessToken
     ```
 
-1. Connectez-vous à l’API REST Azure via la réplication HTTP :
+1. Connectez-vous à l’API REST Azure via HttpRepl :
 
     ```console
     httprepl https://management.azure.com
@@ -987,14 +987,14 @@ Par défaut, l’affichage de la requête HTTP envoyée est supprimé. Il est po
 
 ### <a name="enable-request-display"></a>Activer l’affichage des requêtes
 
-Affichez la requête HTTP envoyée en exécutant la commande `echo on`. Exemple :
+Affichez la requête HTTP envoyée en exécutant la commande `echo on`. Par exemple :
 
 ```console
 https://localhost:5001/people> echo on
 Request echoing is on
 ```
 
-Les requêtes HTTP suivantes dans la session active affichent les en-têtes de requête. Exemple :
+Les requêtes HTTP suivantes dans la session active affichent les en-têtes de requête. Par exemple :
 
 ```console
 https://localhost:5001/people> post
@@ -1032,7 +1032,7 @@ https://localhost:5001/people>
 
 ### <a name="disable-request-display"></a>Désactiver l’affichage des requêtes
 
-Supprimez l’affichage de la requête HTTP envoyée en exécutant la commande `echo off`. Exemple :
+Supprimez l’affichage de la requête HTTP envoyée en exécutant la commande `echo off`. Par exemple :
 
 ```console
 https://localhost:5001/people> echo off
@@ -1041,7 +1041,7 @@ Request echoing is off
 
 ## <a name="run-a-script"></a>Exécuter un script
 
-Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de les stocker dans un fichier texte. Les commandes du fichier prennent la même forme que les commandes exécutées manuellement sur la ligne de commande. Les commandes peuvent être exécutées de façon groupée avec la commande `run`. Exemple :
+Si vous exécutez fréquemment le même jeu de commandes HttpRepl, envisagez de les stocker dans un fichier texte. Les commandes du fichier prennent la même forme que les commandes exécutées manuellement sur la ligne de commande. Les commandes peuvent être exécutées de façon groupée avec la commande `run`. Par exemple :
 
 1. Créez un fichier texte contenant un ensemble de commandes délimitées par des sauts de ligne. Pour illustrer ceci, considérez un fichier *people-script.txt* contenant les commandes suivantes :
 
@@ -1053,7 +1053,7 @@ Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de
     get 1
     ```
 
-1. Exécutez la commande `run`, en passant le chemin du fichier texte. Exemple :
+1. Exécutez la commande `run`, en passant le chemin du fichier texte. Par exemple :
 
     ```console
     https://localhost:5001/> run C:\http-repl-scripts\people-script.txt
@@ -1096,7 +1096,7 @@ Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de
 
 ## <a name="clear-the-output"></a>Effacer la sortie
 
-Pour supprimer toutes les sorties écrites dans l’interpréteur de commandes par l’outil REPL HTTP, exécutez la commande `clear` ou `cls`. À titre d’illustration, imaginez que l’interpréteur de commandes contient la sortie suivante :
+Pour supprimer toutes les sorties écrites dans l’interface de commande par l’outil HttpRepl, exécutez la `clear` `cls` commande ou. À titre d’illustration, imaginez que l’interpréteur de commandes contient la sortie suivante :
 
 ```console
 httprepl https://localhost:5001
@@ -1126,4 +1126,4 @@ https://localhost:5001/>
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Requêtes de l’API REST](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)
-* [Dépôt GitHub REPL HTTP](https://github.com/dotnet/HttpRepl)
+* [Référentiel GitHub HttpRepl](https://github.com/dotnet/HttpRepl)

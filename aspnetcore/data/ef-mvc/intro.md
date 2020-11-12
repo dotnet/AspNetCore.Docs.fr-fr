@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/intro
-ms.openlocfilehash: a815502bb8aa97c137ea8940c7e5f1dde79e9999
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 428320f9d706b0dd16ced68d183ec4b331451965
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430885"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550645"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Didacticiel : prise en main de EF Core dans une application Web MVC ASP.NET
 
@@ -34,7 +34,7 @@ Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitte
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
-L’exemple de code d’accès Web de l’Université contoso montre comment créer une ASP.NET Core application Web MVC à l’aide d’Entity Framework (EF) Core et de Visual Studio.
+L’exemple d’application Web Contoso University montre comment créer une ASP.NET Core application Web MVC à l’aide d’Entity Framework (EF) Core et de Visual Studio.
 
 L’exemple d’application est un site web pour une université Contoso fictive. Il comprend des fonctionnalités telles que l’admission des étudiants, la création des cours et les affectations des formateurs. Il s’agit de la première d’une série de didacticiels qui expliquent comment créer l’exemple d’application Contoso University.
 
@@ -409,7 +409,7 @@ L’exemple d’application est un site web pour une université Contoso fictive
   * Charge de travail **Développement web et ASP.NET**
   * Charge de travail **Développement multiplateforme .NET Core**
 
-## <a name="troubleshooting"></a>Résolution des problèmes
+## <a name="troubleshooting"></a>Dépannage
 
 Si vous rencontrez un problème que vous ne pouvez pas résoudre, vous pouvez généralement trouver la solution en comparant votre code au [projet terminé](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples). Pour obtenir la liste des erreurs courantes et comment les résoudre, consultez [la section Dépannage du dernier didacticiel de la série](advanced.md#common-errors). Si vous n’y trouvez pas ce dont vous avez besoin, vous pouvez publier une question sur StackOverflow.com pour [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) ou [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 

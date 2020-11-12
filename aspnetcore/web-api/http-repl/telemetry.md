@@ -1,10 +1,10 @@
 ---
-title: Télémétrie HTTP REPL
+title: Télémétrie HttpRepl
 author: scottaddie
-description: En savoir plus sur les données de télémétrie collectées par la REPL HTTP.
+description: En savoir plus sur les données de télémétrie collectées par le HttpRepl.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
-ms.date: 11/10/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,30 +18,32 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl/telemetry
-ms.openlocfilehash: 8590959e43c2dda69090acb358e740b271426a44
-ms.sourcegitcommit: fb72e9c1ae5b279817f1fb4b46a52170449b6f30
+ms.openlocfilehash: 5ff22753f566c494e51dae67c8c4f6371211be78
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94502032"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550606"
 ---
-# <a name="http-repl-telemetry"></a>Télémétrie HTTP REPL
+# <a name="httprepl-telemetry"></a>Télémétrie HttpRepl
 
-La [boucle de lecture-eval-Print (REPL) http](xref:web-api/http-repl) comprend une fonctionnalité de télémétrie qui collecte les données d’utilisation. Il est important que l’équipe de réplication HTTP comprenne comment l’outil est utilisé pour qu’il puisse être amélioré.
+[HttpRepl](xref:web-api/http-repl) comprend une fonctionnalité de télémétrie qui collecte les données d’utilisation. Il est important que l’équipe HttpRepl comprenne comment l’outil est utilisé pour qu’il puisse être amélioré.
 
 ## <a name="how-to-opt-out"></a>Comment désactiver la fonctionnalité
 
-La fonctionnalité de télémétrie HTTP REPL est activée par défaut. Pour désactiver la fonctionnalité de télémétrie, définissez la variable d’environnement `DOTNET_HTTPREPL_TELEMETRY_OPTOUT` sur `1` ou `true`.
+La fonctionnalité de télémétrie HttpRepl est activée par défaut. Pour désactiver la fonctionnalité de télémétrie, définissez la variable d’environnement `DOTNET_HTTPREPL_TELEMETRY_OPTOUT` sur `1` ou `true`.
 
 ## <a name="disclosure"></a>Divulgation d’informations
 
-HttpRepl affiche un texte similaire à ce qui suit lorsque vous exécutez l’outil pour la première fois. Le texte peut varier légèrement en fonction de la version de l’outil que vous exécutez. Lors de cette première exécution, Microsoft vous informe sur la collecte de données.
+Le HttpRepl affiche un texte similaire à ce qui suit lorsque vous exécutez pour la première fois l’outil. Le texte peut varier légèrement en fonction de la version de l’outil que vous exécutez. Lors de cette première exécution, Microsoft vous informe sur la collecte de données.
 
 ```console
 Telemetry
 ---------
-The .NET Core tools collect usage data in order to help us improve your experience. It is collected by Microsoft and shared with the community. You can opt-out of telemetry by setting the DOTNET_HTTPREPL_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
+The .NET tools collect usage data in order to help us improve your experience. It is collected by Microsoft and shared with the community. You can opt-out of telemetry by setting the DOTNET_HTTPREPL_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
 ```
+
+Pour supprimer le texte d’expérience « première exécution », définissez la `DOTNET_HTTPREPL_SKIP_FIRST_TIME_EXPERIENCE` variable d’environnement sur `1` ou `true` .
 
 ## <a name="data-points"></a>Points de données
 
@@ -68,7 +70,7 @@ La fonctionnalité de télémétrie collecte les données suivantes.
 | >= 5,0        | Indique si l’outil s’exécute dans un conteneur. |
 | >= 5,0        | Adresse du Access Control de média haché (MAC) : un ID (SHA256) haché et unique pour un ordinateur. |
 | >= 5,0        | Version du noyau. |
-| >= 5,0        | Version de REPL HTTP. |
+| >= 5,0        | Version de HttpRepl. |
 | >= 5,0        | Si l’outil a été démarré avec les `help` `run` arguments, ou `connect` . Les valeurs d’argument réelles ne sont pas collectées. |
 | >= 5,0        | Commande appelée (par exemple, `get` ) et si elle a réussi. |
 | >= 5,0        | Pour la `connect` commande, si les `root` `base` arguments, ou `openapi` ont été fournis. Les valeurs d’argument réelles ne sont pas collectées. |
