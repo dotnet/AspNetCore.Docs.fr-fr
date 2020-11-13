@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 5d9934c8bebbe994489380faf55140fce6beec95
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: f5373f1905958ee5c51ee76bd07690d079fb50f5
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507796"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570014"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Appeler des fonctions JavaScript à partir de méthodes .NET dans ASP.NET Core Blazor
 
@@ -703,6 +703,10 @@ Tenez compte des conseils suivants lors du développement de code qui transfère
 * Une fois les données reçues par le serveur, les données peuvent être :
   * Stocké temporairement dans une mémoire tampon jusqu’à ce que tous les segments soient collectés.
   * Consommé immédiatement. Par exemple, les données peuvent être stockées immédiatement dans une base de données ou écrites sur le disque à mesure que chaque segment est reçu.
+  
+## <a name="js-modules"></a>Modules JS
+
+Pour l’isolation de JS, l’interopérabilité de JS fonctionne avec la prise en charge par défaut du navigateur pour les [modules ECMAScript (ESM)](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) ([spécification ECMAScript](https://tc39.es/ecma262/#sec-modules)).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

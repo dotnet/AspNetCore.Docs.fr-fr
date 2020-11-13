@@ -383,8 +383,8 @@
               uid: blazor/components/templated-components
             - name: Isolation CSS
               uid: blazor/components/css-isolation
-            - name: Intégrer des composants
-              uid: blazor/components/integrate-components-into-razor-pages-and-mvc-apps
+            - name: Prérendu et intégration de composants
+              uid: blazor/components/prerendering-and-integration
             - name: Bibliothèques de composants
               uid: blazor/components/class-libraries
         - name: Globalisation et localisation
@@ -604,8 +604,12 @@
       uid: web-api/advanced/conventions
     - name: Gérer les erreurs
       uid: web-api/handle-errors
-    - name: Tester les API avec HTTP REPL
-      uid: web-api/http-repl
+    - name: HTTP REPL
+      items:
+        - name: Tester les API
+          uid: web-api/http-repl
+        - name: Télémétrie
+          uid: web-api/http-repl/telemetry
 - name: Applications en temps réel
   displayName: signalr
   items:

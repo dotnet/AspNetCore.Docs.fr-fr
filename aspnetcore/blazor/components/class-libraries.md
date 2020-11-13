@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: f8e36cbe905b5ec2e674123c0f2ab6db99683c7c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 24a5b93a18cfe36c50d9739ba56d12aca41615c0
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056411"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570157"
 ---
 # <a name="aspnet-core-no-locrazor-components-class-libraries"></a>RazorBibliothèques de classes des composants ASP.net Core
 
@@ -40,19 +40,19 @@ Tout comme les composants sont des types .NET standard, les composants fournis p
 
 ## <a name="create-an-rcl"></a>Créer un RCL
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Créez un projet.
-1. Sélectionnez **Razor bibliothèque de classes** . Sélectionnez **Suivant** .
-1. Dans la boîte de dialogue **créer une nouvelle Razor bibliothèque de classes** , sélectionnez **créer** .
+1. Sélectionnez **Razor bibliothèque de classes**. Sélectionnez **Suivant**.
+1. Dans la boîte de dialogue **créer une nouvelle Razor bibliothèque de classes** , sélectionnez **créer**.
 1. Indiquez un nom de projet dans le champ **Nom du projet** , ou acceptez le nom de projet par défaut. Les exemples de cette rubrique utilisent le nom du projet `ComponentLibrary` . Sélectionnez **Create** (Créer).
 1. Ajouter RCL à une solution :
-   1. Cliquez avec le bouton droit sur la solution. Sélectionnez **Ajouter** > **un projet existant** .
+   1. Cliquez avec le bouton droit sur la solution. Sélectionnez **Ajouter** > **un projet existant**.
    1. Accédez au fichier projet de RCL.
    1. Sélectionnez le fichier projet de RCL ( `.csproj` ).
 1. Ajoutez une référence à l’RCL à partir de l’application :
-   1. Cliquez avec le bouton droit sur le projet d’application. Sélectionnez **Ajouter** une  >  **référence** .
-   1. Sélectionnez le projet RCL. Sélectionnez **OK** .
+   1. Cliquez avec le bouton droit sur le projet d’application. Sélectionnez **Ajouter** une  >  **référence**.
+   1. Sélectionnez le projet RCL. Sélectionnez **OK**.
 
 > [!NOTE]
 > Si la case à cocher **pages et vues de support** est activée lors de la génération du RCL à partir du modèle, ajoutez également un `_Imports.razor` fichier à la racine du projet généré avec le contenu suivant pour activer la Razor création de composants :
@@ -233,6 +233,7 @@ Téléchargez le package dans NuGet à l’aide de la [`dotnet nuget push`](/dot
 
 * <xref:razor-pages/ui-class>
 * [Ajouter un fichier de configuration de découpage du langage intermédiaire (IL) XML à une bibliothèque](xref:blazor/host-and-deploy/configure-trimmer)
+* [Prise en charge de l’isolation CSS avec les Razor bibliothèques de classes](xref:blazor/components/css-isolation#razor-class-library-rcl-support)
 
 ::: moniker-end
 

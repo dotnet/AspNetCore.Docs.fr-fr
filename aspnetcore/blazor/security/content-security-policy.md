@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 66fd41abe4f85071797bacc0a5531bbab35bd227
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 744449240fabc3dae317d0d7bc9090311521c224
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055592"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570118"
 ---
 # <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>Appliquer une stratégie de sécurité de contenu pour ASP.NET Core Blazor
 
@@ -57,12 +57,9 @@ Au minimum, spécifiez les directives et les sources suivantes pour les Blazor a
   * Spécifiez la `https://stackpath.bootstrapcdn.com/` source de l’hôte pour les scripts de démarrage.
   * Spécifiez `self` pour indiquer que l’origine de l’application, y compris le schéma et le numéro de port, est une source valide.
   * Dans une Blazor WebAssembly application :
-    * Spécifiez les hachages suivants pour permettre le Blazor WebAssembly chargement des scripts Inline requis :
-      * `sha256-v8ZC9OgMhcnEQ/Me77/R9TlJfzOBqrMTW8e1KuqLaqc=`
-      * `sha256-If//FtbPc03afjLezvWHnC3Nbu4fDM04IIzkPaf3pH0=`
-      * `sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=`
+    * Spécifiez les hachages pour autoriser le chargement des scripts requis.
     * Spécifiez `unsafe-eval` pour utiliser `eval()` les méthodes et afin de créer du code à partir de chaînes.
-  * Dans une Blazor Server application, spécifiez le `sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=` hachage du script inline qui effectue une détection de secours pour les feuilles de style.
+  * Dans une Blazor Server application, spécifiez les hachages pour autoriser le chargement des scripts requis.
 * [style-SRC](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/style-src): indique des sources valides pour les feuilles de style.
   * Spécifiez la `https://stackpath.bootstrapcdn.com/` source de l’hôte pour les feuilles de style de démarrage.
   * Spécifiez `self` pour indiquer que l’origine de l’application, y compris le schéma et le numéro de port, est une source valide.
@@ -93,6 +90,29 @@ Les sections suivantes présentent des exemples de stratégies pour Blazor WebAs
 
 Dans la `<head>` page contenu de l' `wwwroot/index.html` hôte, appliquez les directives décrites dans la section [directives de stratégie](#policy-directives) :
 
+::: moniker range=">= aspnetcore-5.0"
+
+```html
+<meta http-equiv="Content-Security-Policy" 
+      content="base-uri 'self';
+               block-all-mixed-content;
+               default-src 'self';
+               img-src data: https:;
+               object-src 'none';
+               script-src https://stackpath.bootstrapcdn.com/ 
+                          'self' 
+                          'sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=' 
+                          'unsafe-eval';
+               style-src https://stackpath.bootstrapcdn.com/
+                         'self'
+                         'unsafe-inline';
+               upgrade-insecure-requests;">
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 ```html
 <meta http-equiv="Content-Security-Policy" 
       content="base-uri 'self';
@@ -112,9 +132,38 @@ Dans la `<head>` page contenu de l' `wwwroot/index.html` hôte, appliquez les di
                upgrade-insecure-requests;">
 ```
 
+::: moniker-end
+
+Ajoutez `script-src` `style-src` les hachages supplémentaires requis par l’application. Pendant le développement, utilisez un outil en ligne ou des outils de développement de navigateur pour que les hachages soient calculés pour vous. Par exemple, l’erreur de la console outils de navigateur suivante signale le hachage pour un script requis non couvert par la stratégie :
+
+> Refus d’exécuter le script inline, car il viole la directive de stratégie de sécurité de contenu suivante : "... ". Le mot clé unsafe-Inline, un hash ('SHA256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA = ') ou une valeur à usage unique ('nonce-... ') est requis pour permettre l’exécution inline.
+
+Le script particulier associé à l’erreur s’affiche dans la console en regard de l’erreur.
+
 ### Blazor Server
 
 Dans la `<head>` page contenu de l' `Pages/_Host.cshtml` hôte, appliquez les directives décrites dans la section [directives de stratégie](#policy-directives) :
+
+::: moniker range=">= aspnetcore-5.0"
+
+```cshtml
+<meta http-equiv="Content-Security-Policy" 
+      content="base-uri 'self';
+               block-all-mixed-content;
+               default-src 'self';
+               img-src data: https:;
+               object-src 'none';
+               script-src https://stackpath.bootstrapcdn.com/ 
+                          'self';
+               style-src https://stackpath.bootstrapcdn.com/
+                         'self' 
+                         'unsafe-inline';
+               upgrade-insecure-requests;">
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 ```cshtml
 <meta http-equiv="Content-Security-Policy" 
@@ -131,6 +180,14 @@ Dans la `<head>` page contenu de l' `Pages/_Host.cshtml` hôte, appliquez les di
                          'unsafe-inline';
                upgrade-insecure-requests;">
 ```
+
+::: moniker-end
+
+Ajoutez `script-src` `style-src` les hachages supplémentaires requis par l’application. Pendant le développement, utilisez un outil en ligne ou des outils de développement de navigateur pour que les hachages soient calculés pour vous. Par exemple, l’erreur de la console outils de navigateur suivante signale le hachage pour un script requis non couvert par la stratégie :
+
+> Refus d’exécuter le script inline, car il viole la directive de stratégie de sécurité de contenu suivante : "... ". Le mot clé unsafe-Inline, un hash ('SHA256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA = ') ou une valeur à usage unique ('nonce-... ') est requis pour permettre l’exécution inline.
+
+Le script particulier associé à l’erreur s’affiche dans la console en regard de l’erreur.
 
 ## <a name="meta-tag-limitations"></a>Limitations des balises meta
 
