@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 9f9f41f4d25867c43cd49640bc76ef63f9415eb2
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 3f7cce475b5c7b0fcbb93644b2c39acd637a6f9d
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570196"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595478"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -500,7 +500,10 @@ Dans l’exemple d’application, le service `IMyDependency` est inscrit avec le
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
 
 > [!NOTE]
-> Chaque méthode d’extension `services.Add{SERVICE_NAME}` ajoute (et éventuellement configure) des services. Par exemple, `services.AddMvc()` ajoute les pages de services Razor et MVC requièrent. Il est recommandé que les applications suivent cette convention. Placez les méthodes d’extension dans l’espace de noms [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) pour encapsuler des groupes d’inscriptions de service.
+> Chaque `services.Add{SERVICE_NAME}` méthode d’extension ajoute et configure éventuellement des services. Par exemple, `services.AddControllersWithViews` , `services.AddRazorPages` et `services.AddControllers` ajoute les services ASP.net Core les applications requièrent. Il est recommandé que les applications suivent cette convention. Placez les méthodes d’extension dans l’espace de noms <xref:Microsoft.Extensions.DependencyInjection?displayProperty=fullName> pour encapsuler des groupes d’inscriptions de service. L’inclusion de la partie espace `Microsoft.Extensions.DependencyInjection` de noms pour les méthodes d’extension di est également :
+>
+> * Permet de les afficher dans [IntelliSense](/visualstudio/ide/using-intellisense) sans ajouter de `using` blocs supplémentaires.
+> * Empêche des `using` instructions excessives dans la `Startup` classe où ces méthodes d’extension sont généralement appelées à partir de.
 
 Si le constructeur du service exige un [type intégré](/dotnet/csharp/language-reference/keywords/built-in-types-table), comme un `string`, le type peut être injecté à l’aide de la [configuration](xref:fundamentals/configuration/index) ou du [modèle d’options](xref:fundamentals/configuration/options) :
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: 74473eb5c0efcd8798d260b765c848d7e621e534
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a209109210ef5e335734a974ceb0c2af7cb8e1a1
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055761"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595439"
 ---
 # <a name="host-and-deploy-no-locblazor-server"></a>Héberger et déployer Blazor Server
 
@@ -69,7 +69,7 @@ Blazor fonctionne mieux lorsque vous utilisez WebSocket en tant que SignalR tran
 Nous vous recommandons d’utiliser le [ SignalR service Azure](xref:signalr/scale#azure-signalr-service) pour les Blazor Server applications. Le service permet la mise à l’échelle d’une Blazor Server application vers un grand nombre de connexions simultanées SignalR . En outre, la SignalR portée mondiale et les centres de données haute performance du service contribuent de manière significative à réduire la latence en raison de la géographie.
 
 > [!IMPORTANT]
-> Lorsque les [WebSockets](https://wikipedia.org/wiki/WebSocket) sont désactivés, Azure App service simule une connexion en temps réel à l’aide de l’interrogation longue http. L’interrogation longue HTTP est sensiblement plus lente que l’exécution avec WebSockets activé, qui n’utilise pas l’interrogation pour simuler une connexion client-serveur.
+> Lorsque les [WebSockets](https://wikipedia.org/wiki/WebSocket) sont désactivés, Azure App service simule une connexion en temps réel à l’aide d’une longue interrogation http. L’interrogation HTTP longue est sensiblement plus lente que l’exécution avec WebSockets activé, qui n’utilise pas l’interrogation pour simuler une connexion client-serveur.
 >
 > Nous vous recommandons d’utiliser WebSockets pour les Blazor Server applications déployées sur Azure App service. Par défaut, le [ SignalR service Azure](xref:signalr/scale#azure-signalr-service) utilise WebSocket. Si l’application n’utilise pas le SignalR service Azure, consultez <xref:signalr/publish-to-azure-web-app#configure-the-app-in-azure-app-service> .
 >
@@ -78,9 +78,9 @@ Nous vous recommandons d’utiliser le [ SignalR service Azure](xref:signalr/sca
 > * [Qu’est-ce que le SignalR service Azure ?](/azure/azure-signalr/signalr-overview)
 > * [Guide des performances pour le SignalR service Azure](/azure-signalr/signalr-concept-performance#performance-factors)
 
-Pour configurer une application (et éventuellement approvisionner) le SignalR service Azure :
+### <a name="configuration"></a>Configuration
 
-1. Activez le service pour prendre en charge les *sessions rémanentes* , où les clients sont [redirigés vers le même serveur lors du prérendu](xref:blazor/hosting-models#connection-to-the-server). Définissez l' `ServerStickyMode` option ou la valeur de configuration sur `Required` . En règle générale, une application crée la configuration à l’aide de l' **une** des approches suivantes :
+Pour configurer une application pour le SignalR service Azure, l’application doit prendre en charge les *sessions rémanentes* , où les clients sont [redirigés vers le même serveur lors du prérendu](xref:blazor/hosting-models#connection-to-the-server). L' `ServerStickyMode` option ou la valeur de configuration est définie sur `Required` . En règle générale, une application crée la configuration à l’aide de l' **_une_** des approches suivantes :
 
    * `Startup.ConfigureServices`:
   
@@ -92,19 +92,25 @@ Pour configurer une application (et éventuellement approvisionner) le SignalR s
      });
      ```
 
-   * Configuration (utilisez l' **une** des approches suivantes) :
+   * Configuration (utilisez l' **_une_** des approches suivantes) :
   
-     * `appsettings.json`:
+     * Dans `appsettings.json` :
 
        ```json
-       "Azure:SignalR:ServerStickyMode": "Required"
+       "Azure:SignalR:StickyServerMode": "Required"
        ```
 
-     * Les paramètres d’application de **configuration** de l’app service  >  **Application settings** dans le portail Azure ( **nom** : `Azure:SignalR:ServerStickyMode` , **valeur** : `Required` ).
+     * Les paramètres d’application de **configuration** de l’app service  >  **Application settings** dans le portail Azure ( **nom** : `Azure__SignalR__StickyServerMode` , **valeur** : `Required` ). Cette approche est adoptée automatiquement pour l’application si vous [approvisionnez le SignalR service Azure](#provision-the-azure-signalr-service).
+
+### <a name="provision-the-azure-no-locsignalr-service"></a>Approvisionner le SignalR service Azure
+
+Pour approvisionner le SignalR service Azure pour une application dans Visual Studio :
 
 1. Créez un profil de publication Azure Apps dans Visual Studio pour l' Blazor Server application.
 1. Ajoutez la dépendance du **SignalR service Azure** au profil. Si l’abonnement Azure n’a pas d’instance de service Azure préexistante SignalR à attribuer à l’application, sélectionnez **créer une nouvelle instance de SignalR service Azure** pour approvisionner une nouvelle instance de service.
 1. Publiez l’application dans Azure.
+
+L’approvisionnement du service Azure SignalR dans Visual Studio active automatiquement [les *sessions rémanentes*](#configuration) et ajoute SignalR la chaîne de connexion à la configuration de l’app service.
 
 #### <a name="iis"></a>IIS
 

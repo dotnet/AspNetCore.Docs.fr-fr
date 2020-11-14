@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
-ms.openlocfilehash: 8e780de2367f66ad1f5197077d5243e0b85a41dd
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 761c125e3c5f94157cf7bf4524374db2545610b1
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431041"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595452"
 ---
 # <a name="component-tag-helper-in-aspnet-core"></a>Tag Helper Component dans ASP.NET Core
 
@@ -31,10 +31,20 @@ Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.
 
 ## <a name="prerequisites"></a>Prérequis
 
+::: moniker range=">= aspnetcore-5.0"
+
 Suivez les instructions de la section *configuration* pour :
 
 * [Blazor WebAssembly](xref:blazor/components/prerendering-and-integration?pivots=webassembly)
 * [Blazor Server](xref:blazor/components/prerendering-and-integration?pivots=server)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+Suivez les instructions de la section *configuration* de l' <xref:blazor/components/prerendering-and-integration?pivots=server> article.
+
+::: moniker-end
 
 ## <a name="component-tag-helper"></a>Tag Helper Component
 
