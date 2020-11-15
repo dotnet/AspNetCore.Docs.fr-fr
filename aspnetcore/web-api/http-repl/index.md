@@ -5,72 +5,72 @@ description: Découvrez comment utiliser l’outil Global .NET Core HttpRepl pou
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc, devx-track-azurecli
-ms.date: 11/11/2020
+ms.date: 11/12/2020
 no-loc:
-- 'appsettings.json'
-- 'ASP.NET Core Identity'
-- 'cookie'
-- 'Cookie'
-- 'Blazor'
-- 'Blazor Server'
-- 'Blazor WebAssembly'
-- 'Identity'
-- "Let's Encrypt"
-- 'Razor'
-- 'SignalR'
+- ':::no-loc(appsettings.json):::'
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: web-api/http-repl
-ms.openlocfilehash: 8dd763d270a00c9a71913d68d6a039b2d98c3864
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: c661141c1bec93c0f7b6404964dc0bca2319b529
+ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570209"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634611"
 ---
-# <a name="test-web-apis-with-the-httprepl"></a><span data-ttu-id="a64f2-103">Tester les API Web avec HttpRepl</span><span class="sxs-lookup"><span data-stu-id="a64f2-103">Test web APIs with the HttpRepl</span></span>
+# <a name="test-web-apis-with-the-httprepl"></a><span data-ttu-id="7cef4-103">Tester les API Web avec HttpRepl</span><span class="sxs-lookup"><span data-stu-id="7cef4-103">Test web APIs with the HttpRepl</span></span>
 
-<span data-ttu-id="a64f2-104">Par [Scott Addie](https://twitter.com/Scott_Addie)</span><span class="sxs-lookup"><span data-stu-id="a64f2-104">By [Scott Addie](https://twitter.com/Scott_Addie)</span></span>
+<span data-ttu-id="7cef4-104">Par [Scott Addie](https://twitter.com/Scott_Addie)</span><span class="sxs-lookup"><span data-stu-id="7cef4-104">By [Scott Addie](https://twitter.com/Scott_Addie)</span></span>
 
-<span data-ttu-id="a64f2-105">La boucle REPL (Read-Eval-Print Loop) HTTP est :</span><span class="sxs-lookup"><span data-stu-id="a64f2-105">The HTTP Read-Eval-Print Loop (REPL) is:</span></span>
+<span data-ttu-id="7cef4-105">La boucle REPL (Read-Eval-Print Loop) HTTP est :</span><span class="sxs-lookup"><span data-stu-id="7cef4-105">The HTTP Read-Eval-Print Loop (REPL) is:</span></span>
 
-* <span data-ttu-id="a64f2-106">Un outil en ligne de commande léger et multiplateforme qui est pris en charge partout où .NET Core est pris en charge.</span><span class="sxs-lookup"><span data-stu-id="a64f2-106">A lightweight, cross-platform command-line tool that's supported everywhere .NET Core is supported.</span></span>
-* <span data-ttu-id="a64f2-107">Utilisée pour effectuer des requêtes HTTP pour tester des API web ASP.NET Core (et des API web ASP.NET Core non-ASP.NET) et voir leurs résultats.</span><span class="sxs-lookup"><span data-stu-id="a64f2-107">Used for making HTTP requests to test ASP.NET Core web APIs (and non-ASP.NET Core web APIs) and view their results.</span></span>
-* <span data-ttu-id="a64f2-108">Capable de tester les API web hébergées dans n’importe quel environnement, notamment localhost et Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="a64f2-108">Capable of testing web APIs hosted in any environment, including localhost and Azure App Service.</span></span>
+* <span data-ttu-id="7cef4-106">Un outil en ligne de commande léger et multiplateforme qui est pris en charge partout où .NET Core est pris en charge.</span><span class="sxs-lookup"><span data-stu-id="7cef4-106">A lightweight, cross-platform command-line tool that's supported everywhere .NET Core is supported.</span></span>
+* <span data-ttu-id="7cef4-107">Utilisée pour effectuer des requêtes HTTP pour tester des API web ASP.NET Core (et des API web ASP.NET Core non-ASP.NET) et voir leurs résultats.</span><span class="sxs-lookup"><span data-stu-id="7cef4-107">Used for making HTTP requests to test ASP.NET Core web APIs (and non-ASP.NET Core web APIs) and view their results.</span></span>
+* <span data-ttu-id="7cef4-108">Capable de tester les API web hébergées dans n’importe quel environnement, notamment localhost et Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="7cef4-108">Capable of testing web APIs hosted in any environment, including localhost and Azure App Service.</span></span>
 
-<span data-ttu-id="a64f2-109">Les [verbes HTTP](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods) suivants sont pris en charge :</span><span class="sxs-lookup"><span data-stu-id="a64f2-109">The following [HTTP verbs](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods) are supported:</span></span>
+<span data-ttu-id="7cef4-109">Les [verbes HTTP](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods) suivants sont pris en charge :</span><span class="sxs-lookup"><span data-stu-id="7cef4-109">The following [HTTP verbs](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods) are supported:</span></span>
 
-* [<span data-ttu-id="a64f2-110">DELETE</span><span class="sxs-lookup"><span data-stu-id="a64f2-110">DELETE</span></span>](#test-http-delete-requests)
-* [<span data-ttu-id="a64f2-111">GET</span><span class="sxs-lookup"><span data-stu-id="a64f2-111">GET</span></span>](#test-http-get-requests)
-* [<span data-ttu-id="a64f2-112">SIÈGE</span><span class="sxs-lookup"><span data-stu-id="a64f2-112">HEAD</span></span>](#test-http-head-requests)
-* [<span data-ttu-id="a64f2-113">Options</span><span class="sxs-lookup"><span data-stu-id="a64f2-113">OPTIONS</span></span>](#test-http-options-requests)
-* [<span data-ttu-id="a64f2-114">CORRECTIF</span><span class="sxs-lookup"><span data-stu-id="a64f2-114">PATCH</span></span>](#test-http-patch-requests)
-* [<span data-ttu-id="a64f2-115">POST</span><span class="sxs-lookup"><span data-stu-id="a64f2-115">POST</span></span>](#test-http-post-requests)
-* [<span data-ttu-id="a64f2-116">PUT</span><span class="sxs-lookup"><span data-stu-id="a64f2-116">PUT</span></span>](#test-http-put-requests)
+* [<span data-ttu-id="7cef4-110">DELETE</span><span class="sxs-lookup"><span data-stu-id="7cef4-110">DELETE</span></span>](#test-http-delete-requests)
+* [<span data-ttu-id="7cef4-111">GET</span><span class="sxs-lookup"><span data-stu-id="7cef4-111">GET</span></span>](#test-http-get-requests)
+* [<span data-ttu-id="7cef4-112">SIÈGE</span><span class="sxs-lookup"><span data-stu-id="7cef4-112">HEAD</span></span>](#test-http-head-requests)
+* [<span data-ttu-id="7cef4-113">Options</span><span class="sxs-lookup"><span data-stu-id="7cef4-113">OPTIONS</span></span>](#test-http-options-requests)
+* [<span data-ttu-id="7cef4-114">CORRECTIF</span><span class="sxs-lookup"><span data-stu-id="7cef4-114">PATCH</span></span>](#test-http-patch-requests)
+* [<span data-ttu-id="7cef4-115">POST</span><span class="sxs-lookup"><span data-stu-id="7cef4-115">POST</span></span>](#test-http-post-requests)
+* [<span data-ttu-id="7cef4-116">PUT</span><span class="sxs-lookup"><span data-stu-id="7cef4-116">PUT</span></span>](#test-http-put-requests)
 
-<span data-ttu-id="a64f2-117">Pour continuer, [consultez ou téléchargez l’exemple d’API web ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([comment télécharger](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="a64f2-117">To follow along, [view or download the sample ASP.NET Core web API](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
+<span data-ttu-id="7cef4-117">Pour continuer, [consultez ou téléchargez l’exemple d’API web ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([comment télécharger](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="7cef4-117">To follow along, [view or download the sample ASP.NET Core web API](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="a64f2-118">Prérequis</span><span class="sxs-lookup"><span data-stu-id="a64f2-118">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="7cef4-118">Prérequis</span><span class="sxs-lookup"><span data-stu-id="7cef4-118">Prerequisites</span></span>
 
 * [!INCLUDE [2.1-SDK](~/includes/2.1-SDK.md)]
 
-## <a name="installation"></a><span data-ttu-id="a64f2-119">Installation</span><span class="sxs-lookup"><span data-stu-id="a64f2-119">Installation</span></span>
+## <a name="installation"></a><span data-ttu-id="7cef4-119">Installation</span><span class="sxs-lookup"><span data-stu-id="7cef4-119">Installation</span></span>
 
-<span data-ttu-id="a64f2-120">Pour installer HttpRepl, exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-120">To install the HttpRepl, run the following command:</span></span>
+<span data-ttu-id="7cef4-120">Pour installer HttpRepl, exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-120">To install the HttpRepl, run the following command:</span></span>
 
 ```dotnetcli
 dotnet tool install -g Microsoft.dotnet-httprepl
 ```
 
-<span data-ttu-id="a64f2-121">Un [outil global .NET Core](/dotnet/core/tools/global-tools#install-a-global-tool) est installé à partir du package NuGet [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl).</span><span class="sxs-lookup"><span data-stu-id="a64f2-121">A [.NET Core Global Tool](/dotnet/core/tools/global-tools#install-a-global-tool) is installed from the [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) NuGet package.</span></span>
+<span data-ttu-id="7cef4-121">Un [outil global .NET Core](/dotnet/core/tools/global-tools#install-a-global-tool) est installé à partir du package NuGet [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl).</span><span class="sxs-lookup"><span data-stu-id="7cef4-121">A [.NET Core Global Tool](/dotnet/core/tools/global-tools#install-a-global-tool) is installed from the [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) NuGet package.</span></span>
 
-## <a name="usage"></a><span data-ttu-id="a64f2-122">Utilisation</span><span class="sxs-lookup"><span data-stu-id="a64f2-122">Usage</span></span>
+## <a name="usage"></a><span data-ttu-id="7cef4-122">Utilisation</span><span class="sxs-lookup"><span data-stu-id="7cef4-122">Usage</span></span>
 
-<span data-ttu-id="a64f2-123">Une fois l’installation de l’outil réussie, exécutez la commande suivante pour démarrer le HttpRepl :</span><span class="sxs-lookup"><span data-stu-id="a64f2-123">After successful installation of the tool, run the following command to start the HttpRepl:</span></span>
+<span data-ttu-id="7cef4-123">Une fois l’installation de l’outil réussie, exécutez la commande suivante pour démarrer le HttpRepl :</span><span class="sxs-lookup"><span data-stu-id="7cef4-123">After successful installation of the tool, run the following command to start the HttpRepl:</span></span>
 
 ```console
 httprepl
 ```
 
-<span data-ttu-id="a64f2-124">Pour afficher les commandes HttpRepl disponibles, exécutez l’une des commandes suivantes :</span><span class="sxs-lookup"><span data-stu-id="a64f2-124">To view the available HttpRepl commands, run one of the following commands:</span></span>
+<span data-ttu-id="7cef4-124">Pour afficher les commandes HttpRepl disponibles, exécutez l’une des commandes suivantes :</span><span class="sxs-lookup"><span data-stu-id="7cef4-124">To view the available HttpRepl commands, run one of the following commands:</span></span>
 
 ```console
 httprepl -h
@@ -80,7 +80,7 @@ httprepl -h
 httprepl --help
 ```
 
-<span data-ttu-id="a64f2-125">Vous obtenez la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-125">The following output is displayed:</span></span>
+<span data-ttu-id="7cef4-125">Vous obtenez la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-125">The following output is displayed:</span></span>
 
 ```console
 Usage:
@@ -135,57 +135,57 @@ Use `help <COMMAND>` for more detail on an individual command. e.g. `help get`.
 For detailed tool info, see https://aka.ms/http-repl-doc.
 ```
 
-<span data-ttu-id="a64f2-126">HttpRepl offre la saisie semi-automatique des commandes.</span><span class="sxs-lookup"><span data-stu-id="a64f2-126">The HttpRepl offers command completion.</span></span> <span data-ttu-id="a64f2-127">Un appui sur la touche <kbd>Tab</kbd> itère au sein de la liste des commandes qui complètent les caractères ou le point de terminaison d’API que vous avez tapés.</span><span class="sxs-lookup"><span data-stu-id="a64f2-127">Pressing the <kbd>Tab</kbd> key iterates through the list of commands that complete the characters or API endpoint that you typed.</span></span> <span data-ttu-id="a64f2-128">Les sections suivantes décrivent les commandes CLI disponibles.</span><span class="sxs-lookup"><span data-stu-id="a64f2-128">The following sections outline the available CLI commands.</span></span>
+<span data-ttu-id="7cef4-126">HttpRepl offre la saisie semi-automatique des commandes.</span><span class="sxs-lookup"><span data-stu-id="7cef4-126">The HttpRepl offers command completion.</span></span> <span data-ttu-id="7cef4-127">Un appui sur la touche <kbd>Tab</kbd> itère au sein de la liste des commandes qui complètent les caractères ou le point de terminaison d’API que vous avez tapés.</span><span class="sxs-lookup"><span data-stu-id="7cef4-127">Pressing the <kbd>Tab</kbd> key iterates through the list of commands that complete the characters or API endpoint that you typed.</span></span> <span data-ttu-id="7cef4-128">Les sections suivantes décrivent les commandes CLI disponibles.</span><span class="sxs-lookup"><span data-stu-id="7cef4-128">The following sections outline the available CLI commands.</span></span>
 
-## <a name="connect-to-the-web-api"></a><span data-ttu-id="a64f2-129">Se connecter à l’API web</span><span class="sxs-lookup"><span data-stu-id="a64f2-129">Connect to the web API</span></span>
+## <a name="connect-to-the-web-api"></a><span data-ttu-id="7cef4-129">Se connecter à l’API web</span><span class="sxs-lookup"><span data-stu-id="7cef4-129">Connect to the web API</span></span>
 
-<span data-ttu-id="a64f2-130">Connectez-vous à une API web en exécutant la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-130">Connect to a web API by running the following command:</span></span>
+<span data-ttu-id="7cef4-130">Connectez-vous à une API web en exécutant la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-130">Connect to a web API by running the following command:</span></span>
 
 ```console
 httprepl <ROOT URI>
 ```
 
-<span data-ttu-id="a64f2-131">`<ROOT URI>` est l’URI de base pour l’API web.</span><span class="sxs-lookup"><span data-stu-id="a64f2-131">`<ROOT URI>` is the base URI for the web API.</span></span> <span data-ttu-id="a64f2-132">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-132">For example:</span></span>
+<span data-ttu-id="7cef4-131">`<ROOT URI>` est l’URI de base pour l’API web.</span><span class="sxs-lookup"><span data-stu-id="7cef4-131">`<ROOT URI>` is the base URI for the web API.</span></span> <span data-ttu-id="7cef4-132">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-132">For example:</span></span>
 
 ```console
 httprepl https://localhost:5001
 ```
 
-<span data-ttu-id="a64f2-133">Vous pouvez également exécuter la commande suivante à tout moment pendant l’exécution de HttpRepl :</span><span class="sxs-lookup"><span data-stu-id="a64f2-133">Alternatively, run the following command at any time while the HttpRepl is running:</span></span>
+<span data-ttu-id="7cef4-133">Vous pouvez également exécuter la commande suivante à tout moment pendant l’exécution de HttpRepl :</span><span class="sxs-lookup"><span data-stu-id="7cef4-133">Alternatively, run the following command at any time while the HttpRepl is running:</span></span>
 
 ```console
 connect <ROOT URI>
 ```
 
-<span data-ttu-id="a64f2-134">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-134">For example:</span></span>
+<span data-ttu-id="7cef4-134">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-134">For example:</span></span>
 
 ```console
 (Disconnected)> connect https://localhost:5001
 ```
 
-### <a name="manually-point-to-the-openapi-description-for-the-web-api"></a><span data-ttu-id="a64f2-135">Pointer manuellement vers la description OpenAPI pour l’API Web</span><span class="sxs-lookup"><span data-stu-id="a64f2-135">Manually point to the OpenAPI description for the web API</span></span>
+### <a name="manually-point-to-the-openapi-description-for-the-web-api"></a><span data-ttu-id="7cef4-135">Pointer manuellement vers la description OpenAPI pour l’API Web</span><span class="sxs-lookup"><span data-stu-id="7cef4-135">Manually point to the OpenAPI description for the web API</span></span>
 
-<span data-ttu-id="a64f2-136">La commande Connect ci-dessus tente de trouver la description OpenAPI automatiquement.</span><span class="sxs-lookup"><span data-stu-id="a64f2-136">The connect command above will attempt to find the OpenAPI description automatically.</span></span> <span data-ttu-id="a64f2-137">Si, pour une raison quelconque, il n’est pas possible de le faire, vous pouvez spécifier l’URI de la description OpenAPI pour l’API Web à l’aide de l' `--openapi` option :</span><span class="sxs-lookup"><span data-stu-id="a64f2-137">If for some reason it's unable to do so, you can specify the URI of the OpenAPI description for the web API by using the `--openapi` option:</span></span>
+<span data-ttu-id="7cef4-136">La commande Connect ci-dessus tente de trouver la description OpenAPI automatiquement.</span><span class="sxs-lookup"><span data-stu-id="7cef4-136">The connect command above will attempt to find the OpenAPI description automatically.</span></span> <span data-ttu-id="7cef4-137">Si, pour une raison quelconque, il n’est pas possible de le faire, vous pouvez spécifier l’URI de la description OpenAPI pour l’API Web à l’aide de l' `--openapi` option :</span><span class="sxs-lookup"><span data-stu-id="7cef4-137">If for some reason it's unable to do so, you can specify the URI of the OpenAPI description for the web API by using the `--openapi` option:</span></span>
 
 ```console
 connect <ROOT URI> --openapi <OPENAPI DESCRIPTION ADDRESS>
 ```
 
-<span data-ttu-id="a64f2-138">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-138">For example:</span></span>
+<span data-ttu-id="7cef4-138">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-138">For example:</span></span>
 
 ```console
 (Disconnected)> connect https://localhost:5001 --openapi /swagger/v1/swagger.json
 ```
 
-### <a name="enable-verbose-output-for-details-on-openapi-description-searching-parsing-and-validation"></a><span data-ttu-id="a64f2-139">Activer la sortie détaillée pour plus d’informations sur OpenAPI Description de la recherche, de l’analyse et de la validation</span><span class="sxs-lookup"><span data-stu-id="a64f2-139">Enable verbose output for details on OpenAPI description searching, parsing, and validation</span></span>
+### <a name="enable-verbose-output-for-details-on-openapi-description-searching-parsing-and-validation"></a><span data-ttu-id="7cef4-139">Activer la sortie détaillée pour plus d’informations sur OpenAPI Description de la recherche, de l’analyse et de la validation</span><span class="sxs-lookup"><span data-stu-id="7cef4-139">Enable verbose output for details on OpenAPI description searching, parsing, and validation</span></span>
 
-<span data-ttu-id="a64f2-140">Si vous spécifiez l' `--verbose` option avec la `connect` commande, vous obtenez plus de détails lorsque l’outil recherche la description openapi, l’analyse et le valide.</span><span class="sxs-lookup"><span data-stu-id="a64f2-140">Specifying the `--verbose` option with the `connect` command will produce more details when the tool searches for the OpenAPI description, parses, and validates it.</span></span>
+<span data-ttu-id="7cef4-140">Si vous spécifiez l' `--verbose` option avec la `connect` commande, vous obtenez plus de détails lorsque l’outil recherche la description openapi, l’analyse et le valide.</span><span class="sxs-lookup"><span data-stu-id="7cef4-140">Specifying the `--verbose` option with the `connect` command will produce more details when the tool searches for the OpenAPI description, parses, and validates it.</span></span>
 
 ```console
 connect <ROOT URI> --verbose
 ```
 
-<span data-ttu-id="a64f2-141">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-141">For example:</span></span>
+<span data-ttu-id="7cef4-141">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-141">For example:</span></span>
 
 ```console
 (Disconnected)> connect https://localhost:5001 --verbose
@@ -197,17 +197,17 @@ The field 'info' in 'document' object is REQUIRED [#/info]
 The field 'paths' in 'document' object is REQUIRED [#/paths]
 ```
 
-## <a name="navigate-the-web-api"></a><span data-ttu-id="a64f2-142">Accéder à l’API web</span><span class="sxs-lookup"><span data-stu-id="a64f2-142">Navigate the web API</span></span>
+## <a name="navigate-the-web-api"></a><span data-ttu-id="7cef4-142">Accéder à l’API web</span><span class="sxs-lookup"><span data-stu-id="7cef4-142">Navigate the web API</span></span>
 
-### <a name="view-available-endpoints"></a><span data-ttu-id="a64f2-143">Voir les points de terminaison disponibles</span><span class="sxs-lookup"><span data-stu-id="a64f2-143">View available endpoints</span></span>
+### <a name="view-available-endpoints"></a><span data-ttu-id="7cef4-143">Voir les points de terminaison disponibles</span><span class="sxs-lookup"><span data-stu-id="7cef4-143">View available endpoints</span></span>
 
-<span data-ttu-id="a64f2-144">Pour lister les différents points de terminaison (contrôleurs) sur le chemin actuel de l’adresse de l’API web, exécutez la commande `ls` ou `dir` :</span><span class="sxs-lookup"><span data-stu-id="a64f2-144">To list the different endpoints (controllers) at the current path of the web API address, run the `ls` or `dir` command:</span></span>
+<span data-ttu-id="7cef4-144">Pour lister les différents points de terminaison (contrôleurs) sur le chemin actuel de l’adresse de l’API web, exécutez la commande `ls` ou `dir` :</span><span class="sxs-lookup"><span data-stu-id="7cef4-144">To list the different endpoints (controllers) at the current path of the web API address, run the `ls` or `dir` command:</span></span>
 
 ```console
 https://localhost:5001/> ls
 ```
 
-<span data-ttu-id="a64f2-145">Le format de sortie suivant s’affiche :</span><span class="sxs-lookup"><span data-stu-id="a64f2-145">The following output format is displayed:</span></span>
+<span data-ttu-id="7cef4-145">Le format de sortie suivant s’affiche :</span><span class="sxs-lookup"><span data-stu-id="7cef4-145">The following output format is displayed:</span></span>
 
 ```console
 .        []
@@ -217,9 +217,9 @@ People   [get|post]
 https://localhost:5001/>
 ```
 
-<span data-ttu-id="a64f2-146">La sortie précédente indique que deux contrôleurs sont disponibles : `Fruits` et `People`.</span><span class="sxs-lookup"><span data-stu-id="a64f2-146">The preceding output indicates that there are two controllers available: `Fruits` and `People`.</span></span> <span data-ttu-id="a64f2-147">Les deux contrôleurs prennent en charge les opérations HTTP GET et POST sans paramètres.</span><span class="sxs-lookup"><span data-stu-id="a64f2-147">Both controllers support parameterless HTTP GET and POST operations.</span></span>
+<span data-ttu-id="7cef4-146">La sortie précédente indique que deux contrôleurs sont disponibles : `Fruits` et `People`.</span><span class="sxs-lookup"><span data-stu-id="7cef4-146">The preceding output indicates that there are two controllers available: `Fruits` and `People`.</span></span> <span data-ttu-id="7cef4-147">Les deux contrôleurs prennent en charge les opérations HTTP GET et POST sans paramètres.</span><span class="sxs-lookup"><span data-stu-id="7cef4-147">Both controllers support parameterless HTTP GET and POST operations.</span></span>
 
-<span data-ttu-id="a64f2-148">La navigation dans un contrôleur spécifique révèle plus de détails.</span><span class="sxs-lookup"><span data-stu-id="a64f2-148">Navigating into a specific controller reveals more detail.</span></span> <span data-ttu-id="a64f2-149">Par exemple, la sortie de la commande suivante indique que le contrôleur `Fruits` prend également en charge les opérations HTTP GET, PUT et DELETE.</span><span class="sxs-lookup"><span data-stu-id="a64f2-149">For example, the following command's output shows the `Fruits` controller also supports HTTP GET, PUT, and DELETE operations.</span></span> <span data-ttu-id="a64f2-150">Chacune de ces opérations attend un paramètre `id` dans la route :</span><span class="sxs-lookup"><span data-stu-id="a64f2-150">Each of these operations expects an `id` parameter in the route:</span></span>
+<span data-ttu-id="7cef4-148">La navigation dans un contrôleur spécifique révèle plus de détails.</span><span class="sxs-lookup"><span data-stu-id="7cef4-148">Navigating into a specific controller reveals more detail.</span></span> <span data-ttu-id="7cef4-149">Par exemple, la sortie de la commande suivante indique que le contrôleur `Fruits` prend également en charge les opérations HTTP GET, PUT et DELETE.</span><span class="sxs-lookup"><span data-stu-id="7cef4-149">For example, the following command's output shows the `Fruits` controller also supports HTTP GET, PUT, and DELETE operations.</span></span> <span data-ttu-id="7cef4-150">Chacune de ces opérations attend un paramètre `id` dans la route :</span><span class="sxs-lookup"><span data-stu-id="7cef4-150">Each of these operations expects an `id` parameter in the route:</span></span>
 
 ```console
 https://localhost:5001/fruits> ls
@@ -230,21 +230,21 @@ https://localhost:5001/fruits> ls
 https://localhost:5001/fruits>
 ```
 
-<span data-ttu-id="a64f2-151">Vous pouvez également exécuter la commande `ui` pour ouvrir la page de l’interface utilisateur Swagger de l’API web dans un navigateur.</span><span class="sxs-lookup"><span data-stu-id="a64f2-151">Alternatively, run the `ui` command to open the web API's Swagger UI page in a browser.</span></span> <span data-ttu-id="a64f2-152">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-152">For example:</span></span>
+<span data-ttu-id="7cef4-151">Vous pouvez également exécuter la commande `ui` pour ouvrir la page de l’interface utilisateur Swagger de l’API web dans un navigateur.</span><span class="sxs-lookup"><span data-stu-id="7cef4-151">Alternatively, run the `ui` command to open the web API's Swagger UI page in a browser.</span></span> <span data-ttu-id="7cef4-152">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-152">For example:</span></span>
 
 ```console
 https://localhost:5001/> ui
 ```
 
-### <a name="navigate-to-an-endpoint"></a><span data-ttu-id="a64f2-153">Accéder à un point de terminaison</span><span class="sxs-lookup"><span data-stu-id="a64f2-153">Navigate to an endpoint</span></span>
+### <a name="navigate-to-an-endpoint"></a><span data-ttu-id="7cef4-153">Accéder à un point de terminaison</span><span class="sxs-lookup"><span data-stu-id="7cef4-153">Navigate to an endpoint</span></span>
 
-<span data-ttu-id="a64f2-154">Pour accéder à un autre point de terminaison sur l’API web, exécutez la commande `cd` :</span><span class="sxs-lookup"><span data-stu-id="a64f2-154">To navigate to a different endpoint on the web API, run the `cd` command:</span></span>
+<span data-ttu-id="7cef4-154">Pour accéder à un autre point de terminaison sur l’API web, exécutez la commande `cd` :</span><span class="sxs-lookup"><span data-stu-id="7cef4-154">To navigate to a different endpoint on the web API, run the `cd` command:</span></span>
 
 ```console
 https://localhost:5001/> cd people
 ```
 
-<span data-ttu-id="a64f2-155">Le chemin qui suit la commande `cd` ne respecte pas la casse.</span><span class="sxs-lookup"><span data-stu-id="a64f2-155">The path following the `cd` command is case insensitive.</span></span> <span data-ttu-id="a64f2-156">Le format de sortie suivant s’affiche :</span><span class="sxs-lookup"><span data-stu-id="a64f2-156">The following output format is displayed:</span></span>
+<span data-ttu-id="7cef4-155">Le chemin qui suit la commande `cd` ne respecte pas la casse.</span><span class="sxs-lookup"><span data-stu-id="7cef4-155">The path following the `cd` command is case insensitive.</span></span> <span data-ttu-id="7cef4-156">Le format de sortie suivant s’affiche :</span><span class="sxs-lookup"><span data-stu-id="7cef4-156">The following output format is displayed:</span></span>
 
 ```console
 /people    [get|post]
@@ -252,35 +252,35 @@ https://localhost:5001/> cd people
 https://localhost:5001/people>
 ```
 
-## <a name="customize-the-httprepl"></a><span data-ttu-id="a64f2-157">Personnaliser le HttpRepl</span><span class="sxs-lookup"><span data-stu-id="a64f2-157">Customize the HttpRepl</span></span>
+## <a name="customize-the-httprepl"></a><span data-ttu-id="7cef4-157">Personnaliser le HttpRepl</span><span class="sxs-lookup"><span data-stu-id="7cef4-157">Customize the HttpRepl</span></span>
 
-<span data-ttu-id="a64f2-158">Les [couleurs](#set-color-preferences) par défaut de HttpRepl peuvent être personnalisées.</span><span class="sxs-lookup"><span data-stu-id="a64f2-158">The HttpRepl's default [colors](#set-color-preferences) can be customized.</span></span> <span data-ttu-id="a64f2-159">Vous pouvez aussi définir un [éditeur de texte par défaut](#set-the-default-text-editor).</span><span class="sxs-lookup"><span data-stu-id="a64f2-159">Additionally, a [default text editor](#set-the-default-text-editor) can be defined.</span></span> <span data-ttu-id="a64f2-160">Les préférences HttpRepl sont conservées dans la session active et sont honorées dans les sessions ultérieures.</span><span class="sxs-lookup"><span data-stu-id="a64f2-160">The HttpRepl preferences are persisted across the current session and are honored in future sessions.</span></span> <span data-ttu-id="a64f2-161">Une fois modifiées, les préférences sont stockées dans le fichier suivant :</span><span class="sxs-lookup"><span data-stu-id="a64f2-161">Once modified, the preferences are stored in the following file:</span></span>
+<span data-ttu-id="7cef4-158">Les [couleurs](#set-color-preferences) par défaut de HttpRepl peuvent être personnalisées.</span><span class="sxs-lookup"><span data-stu-id="7cef4-158">The HttpRepl's default [colors](#set-color-preferences) can be customized.</span></span> <span data-ttu-id="7cef4-159">Vous pouvez aussi définir un [éditeur de texte par défaut](#set-the-default-text-editor).</span><span class="sxs-lookup"><span data-stu-id="7cef4-159">Additionally, a [default text editor](#set-the-default-text-editor) can be defined.</span></span> <span data-ttu-id="7cef4-160">Les préférences HttpRepl sont conservées dans la session active et sont honorées dans les sessions ultérieures.</span><span class="sxs-lookup"><span data-stu-id="7cef4-160">The HttpRepl preferences are persisted across the current session and are honored in future sessions.</span></span> <span data-ttu-id="7cef4-161">Une fois modifiées, les préférences sont stockées dans le fichier suivant :</span><span class="sxs-lookup"><span data-stu-id="7cef4-161">Once modified, the preferences are stored in the following file:</span></span>
 
-# <a name="linux"></a>[<span data-ttu-id="a64f2-162">Linux</span><span class="sxs-lookup"><span data-stu-id="a64f2-162">Linux</span></span>](#tab/linux)
+# <a name="linux"></a>[<span data-ttu-id="7cef4-162">Linux</span><span class="sxs-lookup"><span data-stu-id="7cef4-162">Linux</span></span>](#tab/linux)
 
-<span data-ttu-id="a64f2-163">*%HOME%/.httpreplprefs*</span><span class="sxs-lookup"><span data-stu-id="a64f2-163">*%HOME%/.httpreplprefs*</span></span>
+<span data-ttu-id="7cef4-163">*%HOME%/.httpreplprefs*</span><span class="sxs-lookup"><span data-stu-id="7cef4-163">*%HOME%/.httpreplprefs*</span></span>
 
-# <a name="macos"></a>[<span data-ttu-id="a64f2-164">macOS</span><span class="sxs-lookup"><span data-stu-id="a64f2-164">macOS</span></span>](#tab/macos)
+# <a name="macos"></a>[<span data-ttu-id="7cef4-164">macOS</span><span class="sxs-lookup"><span data-stu-id="7cef4-164">macOS</span></span>](#tab/macos)
 
-<span data-ttu-id="a64f2-165">*%HOME%/.httpreplprefs*</span><span class="sxs-lookup"><span data-stu-id="a64f2-165">*%HOME%/.httpreplprefs*</span></span>
+<span data-ttu-id="7cef4-165">*%HOME%/.httpreplprefs*</span><span class="sxs-lookup"><span data-stu-id="7cef4-165">*%HOME%/.httpreplprefs*</span></span>
 
-# <a name="windows"></a>[<span data-ttu-id="a64f2-166">Windows</span><span class="sxs-lookup"><span data-stu-id="a64f2-166">Windows</span></span>](#tab/windows)
+# <a name="windows"></a>[<span data-ttu-id="7cef4-166">Windows</span><span class="sxs-lookup"><span data-stu-id="7cef4-166">Windows</span></span>](#tab/windows)
 
-<span data-ttu-id="a64f2-167">*%USERPROFILE%\\.httpreplprefs*</span><span class="sxs-lookup"><span data-stu-id="a64f2-167">*%USERPROFILE%\\.httpreplprefs*</span></span>
+<span data-ttu-id="7cef4-167">*%USERPROFILE%\\.httpreplprefs*</span><span class="sxs-lookup"><span data-stu-id="7cef4-167">*%USERPROFILE%\\.httpreplprefs*</span></span>
 
 ---
 
-<span data-ttu-id="a64f2-168">Le fichier *.httpreplprefs* est chargé au démarrage et ses modifications ne sont pas surveillées pendant l’exécution.</span><span class="sxs-lookup"><span data-stu-id="a64f2-168">The *.httpreplprefs* file is loaded on startup and not monitored for changes at runtime.</span></span> <span data-ttu-id="a64f2-169">Les modifications manuelles apportées au fichier prennent effet seulement après un redémarrage de l’outil.</span><span class="sxs-lookup"><span data-stu-id="a64f2-169">Manual modifications to the file take effect only after restarting the tool.</span></span>
+<span data-ttu-id="7cef4-168">Le fichier *.httpreplprefs* est chargé au démarrage et ses modifications ne sont pas surveillées pendant l’exécution.</span><span class="sxs-lookup"><span data-stu-id="7cef4-168">The *.httpreplprefs* file is loaded on startup and not monitored for changes at runtime.</span></span> <span data-ttu-id="7cef4-169">Les modifications manuelles apportées au fichier prennent effet seulement après un redémarrage de l’outil.</span><span class="sxs-lookup"><span data-stu-id="7cef4-169">Manual modifications to the file take effect only after restarting the tool.</span></span>
 
-### <a name="view-the-settings"></a><span data-ttu-id="a64f2-170">Voir les paramètres</span><span class="sxs-lookup"><span data-stu-id="a64f2-170">View the settings</span></span>
+### <a name="view-the-settings"></a><span data-ttu-id="7cef4-170">Voir les paramètres</span><span class="sxs-lookup"><span data-stu-id="7cef4-170">View the settings</span></span>
 
-<span data-ttu-id="a64f2-171">Pour voir les paramètres disponibles, exécutez la commande `pref get`.</span><span class="sxs-lookup"><span data-stu-id="a64f2-171">To view the available settings, run the `pref get` command.</span></span> <span data-ttu-id="a64f2-172">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-172">For example:</span></span>
+<span data-ttu-id="7cef4-171">Pour voir les paramètres disponibles, exécutez la commande `pref get`.</span><span class="sxs-lookup"><span data-stu-id="7cef4-171">To view the available settings, run the `pref get` command.</span></span> <span data-ttu-id="7cef4-172">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-172">For example:</span></span>
 
 ```console
 https://localhost:5001/> pref get
 ```
 
-<span data-ttu-id="a64f2-173">La commande précédente affiche les paires clé-valeur disponibles :</span><span class="sxs-lookup"><span data-stu-id="a64f2-173">The preceding command displays the available key-value pairs:</span></span>
+<span data-ttu-id="7cef4-173">La commande précédente affiche les paires clé-valeur disponibles :</span><span class="sxs-lookup"><span data-stu-id="7cef4-173">The preceding command displays the available key-value pairs:</span></span>
 
 ```console
 colors.json=Green
@@ -293,26 +293,26 @@ colors.protocol=BoldGreen
 colors.status=BoldYellow
 ```
 
-### <a name="set-color-preferences"></a><span data-ttu-id="a64f2-174">Définir les préférences de couleur</span><span class="sxs-lookup"><span data-stu-id="a64f2-174">Set color preferences</span></span>
+### <a name="set-color-preferences"></a><span data-ttu-id="7cef4-174">Définir les préférences de couleur</span><span class="sxs-lookup"><span data-stu-id="7cef4-174">Set color preferences</span></span>
 
-<span data-ttu-id="a64f2-175">La colorisation des réponses est actuellement prise en charge seulement pour JSON.</span><span class="sxs-lookup"><span data-stu-id="a64f2-175">Response colorization is currently supported for JSON only.</span></span> <span data-ttu-id="a64f2-176">Pour personnaliser les couleurs par défaut de l’outil HttpRepl, localisez la clé correspondant à la couleur à modifier.</span><span class="sxs-lookup"><span data-stu-id="a64f2-176">To customize the default HttpRepl tool coloring, locate the key corresponding to the color to be changed.</span></span> <span data-ttu-id="a64f2-177">Pour des instructions sur la façon de trouver les clés, consultez la section [Voir les paramètres](#view-the-settings).</span><span class="sxs-lookup"><span data-stu-id="a64f2-177">For instructions on how to find the keys, see the [View the settings](#view-the-settings) section.</span></span> <span data-ttu-id="a64f2-178">Par exemple, remplacez la valeur de la clé `colors.json` de `Green` par `White` :</span><span class="sxs-lookup"><span data-stu-id="a64f2-178">For example, change the `colors.json` key value from `Green` to `White` as follows:</span></span>
+<span data-ttu-id="7cef4-175">La colorisation des réponses est actuellement prise en charge seulement pour JSON.</span><span class="sxs-lookup"><span data-stu-id="7cef4-175">Response colorization is currently supported for JSON only.</span></span> <span data-ttu-id="7cef4-176">Pour personnaliser les couleurs par défaut de l’outil HttpRepl, localisez la clé correspondant à la couleur à modifier.</span><span class="sxs-lookup"><span data-stu-id="7cef4-176">To customize the default HttpRepl tool coloring, locate the key corresponding to the color to be changed.</span></span> <span data-ttu-id="7cef4-177">Pour des instructions sur la façon de trouver les clés, consultez la section [Voir les paramètres](#view-the-settings).</span><span class="sxs-lookup"><span data-stu-id="7cef4-177">For instructions on how to find the keys, see the [View the settings](#view-the-settings) section.</span></span> <span data-ttu-id="7cef4-178">Par exemple, remplacez la valeur de la clé `colors.json` de `Green` par `White` :</span><span class="sxs-lookup"><span data-stu-id="7cef4-178">For example, change the `colors.json` key value from `Green` to `White` as follows:</span></span>
 
 ```console
 https://localhost:5001/people> pref set colors.json White
 ```
 
-<span data-ttu-id="a64f2-179">Seules les [couleurs autorisées](https://github.com/dotnet/HttpRepl/blob/01d5c3c3373e98fe566ff5ef8a17c571de880293/src/Microsoft.Repl/ConsoleHandling/AllowedColors.cs) peuvent être utilisées.</span><span class="sxs-lookup"><span data-stu-id="a64f2-179">Only the [allowed colors](https://github.com/dotnet/HttpRepl/blob/01d5c3c3373e98fe566ff5ef8a17c571de880293/src/Microsoft.Repl/ConsoleHandling/AllowedColors.cs) may be used.</span></span> <span data-ttu-id="a64f2-180">Les requêtes HTTP suivantes affichent la sortie avec les nouvelles couleurs.</span><span class="sxs-lookup"><span data-stu-id="a64f2-180">Subsequent HTTP requests display output with the new coloring.</span></span>
+<span data-ttu-id="7cef4-179">Seules les [couleurs autorisées](https://github.com/dotnet/HttpRepl/blob/01d5c3c3373e98fe566ff5ef8a17c571de880293/src/Microsoft.Repl/ConsoleHandling/AllowedColors.cs) peuvent être utilisées.</span><span class="sxs-lookup"><span data-stu-id="7cef4-179">Only the [allowed colors](https://github.com/dotnet/HttpRepl/blob/01d5c3c3373e98fe566ff5ef8a17c571de880293/src/Microsoft.Repl/ConsoleHandling/AllowedColors.cs) may be used.</span></span> <span data-ttu-id="7cef4-180">Les requêtes HTTP suivantes affichent la sortie avec les nouvelles couleurs.</span><span class="sxs-lookup"><span data-stu-id="7cef4-180">Subsequent HTTP requests display output with the new coloring.</span></span>
 
-<span data-ttu-id="a64f2-181">Quand des clés d’une couleur spécifique ne sont pas définies, des clés plus génériques sont prises en compte.</span><span class="sxs-lookup"><span data-stu-id="a64f2-181">When specific color keys aren't set, more generic keys are considered.</span></span> <span data-ttu-id="a64f2-182">Pour illustrer ce comportement de repli, considérez l’exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="a64f2-182">To demonstrate this fallback behavior, consider the following example:</span></span>
+<span data-ttu-id="7cef4-181">Quand des clés d’une couleur spécifique ne sont pas définies, des clés plus génériques sont prises en compte.</span><span class="sxs-lookup"><span data-stu-id="7cef4-181">When specific color keys aren't set, more generic keys are considered.</span></span> <span data-ttu-id="7cef4-182">Pour illustrer ce comportement de repli, considérez l’exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="7cef4-182">To demonstrate this fallback behavior, consider the following example:</span></span>
 
-* <span data-ttu-id="a64f2-183">Si `colors.json.name` n’a pas de valeur, `colors.json.string` est utilisée.</span><span class="sxs-lookup"><span data-stu-id="a64f2-183">If `colors.json.name` doesn't have a value, `colors.json.string` is used.</span></span>
-* <span data-ttu-id="a64f2-184">Si `colors.json.string` n’a pas de valeur, `colors.json.literal` est utilisée.</span><span class="sxs-lookup"><span data-stu-id="a64f2-184">If `colors.json.string` doesn't have a value, `colors.json.literal` is used.</span></span>
-* <span data-ttu-id="a64f2-185">Si `colors.json.literal` n’a pas de valeur, `colors.json` est utilisée.</span><span class="sxs-lookup"><span data-stu-id="a64f2-185">If `colors.json.literal` doesn't have a value, `colors.json` is used.</span></span> 
-* <span data-ttu-id="a64f2-186">Si `colors.json` n’a pas de valeur, la couleur de texte par défaut de l’interpréteur de commandes (`AllowedColors.None`) est utilisée.</span><span class="sxs-lookup"><span data-stu-id="a64f2-186">If `colors.json` doesn't have a value, the command shell's default text color (`AllowedColors.None`) is used.</span></span>
+* <span data-ttu-id="7cef4-183">Si `colors.json.name` n’a pas de valeur, `colors.json.string` est utilisée.</span><span class="sxs-lookup"><span data-stu-id="7cef4-183">If `colors.json.name` doesn't have a value, `colors.json.string` is used.</span></span>
+* <span data-ttu-id="7cef4-184">Si `colors.json.string` n’a pas de valeur, `colors.json.literal` est utilisée.</span><span class="sxs-lookup"><span data-stu-id="7cef4-184">If `colors.json.string` doesn't have a value, `colors.json.literal` is used.</span></span>
+* <span data-ttu-id="7cef4-185">Si `colors.json.literal` n’a pas de valeur, `colors.json` est utilisée.</span><span class="sxs-lookup"><span data-stu-id="7cef4-185">If `colors.json.literal` doesn't have a value, `colors.json` is used.</span></span> 
+* <span data-ttu-id="7cef4-186">Si `colors.json` n’a pas de valeur, la couleur de texte par défaut de l’interpréteur de commandes (`AllowedColors.None`) est utilisée.</span><span class="sxs-lookup"><span data-stu-id="7cef4-186">If `colors.json` doesn't have a value, the command shell's default text color (`AllowedColors.None`) is used.</span></span>
 
-### <a name="set-indentation-size"></a><span data-ttu-id="a64f2-187">Définir la taille de la mise en retrait</span><span class="sxs-lookup"><span data-stu-id="a64f2-187">Set indentation size</span></span>
+### <a name="set-indentation-size"></a><span data-ttu-id="7cef4-187">Définir la taille de la mise en retrait</span><span class="sxs-lookup"><span data-stu-id="7cef4-187">Set indentation size</span></span>
 
-<span data-ttu-id="a64f2-188">La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement.</span><span class="sxs-lookup"><span data-stu-id="a64f2-188">Response indentation size customization is currently supported for JSON only.</span></span> <span data-ttu-id="a64f2-189">La taille par défaut est de deux espaces.</span><span class="sxs-lookup"><span data-stu-id="a64f2-189">The default size is two spaces.</span></span> <span data-ttu-id="a64f2-190">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-190">For example:</span></span>
+<span data-ttu-id="7cef4-188">La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement.</span><span class="sxs-lookup"><span data-stu-id="7cef4-188">Response indentation size customization is currently supported for JSON only.</span></span> <span data-ttu-id="7cef4-189">La taille par défaut est de deux espaces.</span><span class="sxs-lookup"><span data-stu-id="7cef4-189">The default size is two spaces.</span></span> <span data-ttu-id="7cef4-190">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-190">For example:</span></span>
 
 ```json
 [
@@ -331,13 +331,13 @@ https://localhost:5001/people> pref set colors.json White
 ]
 ```
 
-<span data-ttu-id="a64f2-191">Pour changer la taille par défaut, définissez la clé `formatting.json.indentSize`.</span><span class="sxs-lookup"><span data-stu-id="a64f2-191">To change the default size, set the `formatting.json.indentSize` key.</span></span> <span data-ttu-id="a64f2-192">Par exemple, pour toujours utiliser quatre espaces :</span><span class="sxs-lookup"><span data-stu-id="a64f2-192">For example, to always use four spaces:</span></span>
+<span data-ttu-id="7cef4-191">Pour changer la taille par défaut, définissez la clé `formatting.json.indentSize`.</span><span class="sxs-lookup"><span data-stu-id="7cef4-191">To change the default size, set the `formatting.json.indentSize` key.</span></span> <span data-ttu-id="7cef4-192">Par exemple, pour toujours utiliser quatre espaces :</span><span class="sxs-lookup"><span data-stu-id="7cef4-192">For example, to always use four spaces:</span></span>
 
 ```console
 pref set formatting.json.indentSize 4
 ```
 
-<span data-ttu-id="a64f2-193">Les réponses suivantes adoptent la valeur correspondant à quatre espaces :</span><span class="sxs-lookup"><span data-stu-id="a64f2-193">Subsequent responses honor the setting of four spaces:</span></span>
+<span data-ttu-id="7cef4-193">Les réponses suivantes adoptent la valeur correspondant à quatre espaces :</span><span class="sxs-lookup"><span data-stu-id="7cef4-193">Subsequent responses honor the setting of four spaces:</span></span>
 
 ```json
 [
@@ -356,29 +356,29 @@ pref set formatting.json.indentSize 4
 ]
 ```
 
-### <a name="set-the-default-text-editor"></a><span data-ttu-id="a64f2-194">Définir l’éditeur de texte par défaut</span><span class="sxs-lookup"><span data-stu-id="a64f2-194">Set the default text editor</span></span>
+### <a name="set-the-default-text-editor"></a><span data-ttu-id="7cef4-194">Définir l’éditeur de texte par défaut</span><span class="sxs-lookup"><span data-stu-id="7cef4-194">Set the default text editor</span></span>
 
-<span data-ttu-id="a64f2-195">Par défaut, le HttpRepl n’a pas d’éditeur de texte configuré pour être utilisé.</span><span class="sxs-lookup"><span data-stu-id="a64f2-195">By default, the HttpRepl has no text editor configured for use.</span></span> <span data-ttu-id="a64f2-196">Pour tester les méthodes d’API web nécessitant un corps de requête HTTP, vous devez définir un éditeur de texte par défaut.</span><span class="sxs-lookup"><span data-stu-id="a64f2-196">To test web API methods requiring an HTTP request body, a default text editor must be set.</span></span> <span data-ttu-id="a64f2-197">L’outil HttpRepl lance l’éditeur de texte configuré dans le seul but de composer le corps de la requête.</span><span class="sxs-lookup"><span data-stu-id="a64f2-197">The HttpRepl tool launches the configured text editor for the sole purpose of composing the request body.</span></span> <span data-ttu-id="a64f2-198">Exécutez la commande suivante pour définir votre éditeur de texte préféré comme éditeur par défaut :</span><span class="sxs-lookup"><span data-stu-id="a64f2-198">Run the following command to set your preferred text editor as the default:</span></span>
+<span data-ttu-id="7cef4-195">Par défaut, le HttpRepl n’a pas d’éditeur de texte configuré pour être utilisé.</span><span class="sxs-lookup"><span data-stu-id="7cef4-195">By default, the HttpRepl has no text editor configured for use.</span></span> <span data-ttu-id="7cef4-196">Pour tester les méthodes d’API web nécessitant un corps de requête HTTP, vous devez définir un éditeur de texte par défaut.</span><span class="sxs-lookup"><span data-stu-id="7cef4-196">To test web API methods requiring an HTTP request body, a default text editor must be set.</span></span> <span data-ttu-id="7cef4-197">L’outil HttpRepl lance l’éditeur de texte configuré dans le seul but de composer le corps de la requête.</span><span class="sxs-lookup"><span data-stu-id="7cef4-197">The HttpRepl tool launches the configured text editor for the sole purpose of composing the request body.</span></span> <span data-ttu-id="7cef4-198">Exécutez la commande suivante pour définir votre éditeur de texte préféré comme éditeur par défaut :</span><span class="sxs-lookup"><span data-stu-id="7cef4-198">Run the following command to set your preferred text editor as the default:</span></span>
 
 ```console
 pref set editor.command.default "<EXECUTABLE>"
 ```
 
-<span data-ttu-id="a64f2-199">Dans la commande précédente, `<EXECUTABLE>` est le chemin complet du fichier exécutable de l’éditeur de texte.</span><span class="sxs-lookup"><span data-stu-id="a64f2-199">In the preceding command, `<EXECUTABLE>` is the full path to the text editor's executable file.</span></span> <span data-ttu-id="a64f2-200">Par exemple, exécutez la commande suivante pour définir Visual Studio Code comme éditeur de texte par défaut :</span><span class="sxs-lookup"><span data-stu-id="a64f2-200">For example, run the following command to set Visual Studio Code as the default text editor:</span></span>
+<span data-ttu-id="7cef4-199">Dans la commande précédente, `<EXECUTABLE>` est le chemin complet du fichier exécutable de l’éditeur de texte.</span><span class="sxs-lookup"><span data-stu-id="7cef4-199">In the preceding command, `<EXECUTABLE>` is the full path to the text editor's executable file.</span></span> <span data-ttu-id="7cef4-200">Par exemple, exécutez la commande suivante pour définir Visual Studio Code comme éditeur de texte par défaut :</span><span class="sxs-lookup"><span data-stu-id="7cef4-200">For example, run the following command to set Visual Studio Code as the default text editor:</span></span>
 
-# <a name="linux"></a>[<span data-ttu-id="a64f2-201">Linux</span><span class="sxs-lookup"><span data-stu-id="a64f2-201">Linux</span></span>](#tab/linux)
+# <a name="linux"></a>[<span data-ttu-id="7cef4-201">Linux</span><span class="sxs-lookup"><span data-stu-id="7cef4-201">Linux</span></span>](#tab/linux)
 
 ```console
 pref set editor.command.default "/usr/bin/code"
 ```
 
-# <a name="macos"></a>[<span data-ttu-id="a64f2-202">macOS</span><span class="sxs-lookup"><span data-stu-id="a64f2-202">macOS</span></span>](#tab/macos)
+# <a name="macos"></a>[<span data-ttu-id="7cef4-202">macOS</span><span class="sxs-lookup"><span data-stu-id="7cef4-202">macOS</span></span>](#tab/macos)
 
 ```console
 pref set editor.command.default "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
 ```
 
-# <a name="windows"></a>[<span data-ttu-id="a64f2-203">Windows</span><span class="sxs-lookup"><span data-stu-id="a64f2-203">Windows</span></span>](#tab/windows)
+# <a name="windows"></a>[<span data-ttu-id="7cef4-203">Windows</span><span class="sxs-lookup"><span data-stu-id="7cef4-203">Windows</span></span>](#tab/windows)
 
 ```console
 pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
@@ -386,77 +386,77 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-<span data-ttu-id="a64f2-204">Pour lancer l’éditeur de texte par défaut avec des arguments CLI spécifiques, définissez la clé `editor.command.default.arguments`.</span><span class="sxs-lookup"><span data-stu-id="a64f2-204">To launch the default text editor with specific CLI arguments, set the `editor.command.default.arguments` key.</span></span> <span data-ttu-id="a64f2-205">Par exemple, supposons que Visual Studio Code est l’éditeur de texte par défaut et que vous souhaitez toujours que le HttpRepl ouvre Visual Studio Code dans une nouvelle session avec les extensions désactivées.</span><span class="sxs-lookup"><span data-stu-id="a64f2-205">For example, assume Visual Studio Code is the default text editor and that you always want the HttpRepl to open Visual Studio Code in a new session with extensions disabled.</span></span> <span data-ttu-id="a64f2-206">Exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-206">Run the following command:</span></span>
+<span data-ttu-id="7cef4-204">Pour lancer l’éditeur de texte par défaut avec des arguments CLI spécifiques, définissez la clé `editor.command.default.arguments`.</span><span class="sxs-lookup"><span data-stu-id="7cef4-204">To launch the default text editor with specific CLI arguments, set the `editor.command.default.arguments` key.</span></span> <span data-ttu-id="7cef4-205">Par exemple, supposons que Visual Studio Code est l’éditeur de texte par défaut et que vous souhaitez toujours que le HttpRepl ouvre Visual Studio Code dans une nouvelle session avec les extensions désactivées.</span><span class="sxs-lookup"><span data-stu-id="7cef4-205">For example, assume Visual Studio Code is the default text editor and that you always want the HttpRepl to open Visual Studio Code in a new session with extensions disabled.</span></span> <span data-ttu-id="7cef4-206">Exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-206">Run the following command:</span></span>
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
 ```
 
 > [!TIP]
-> <span data-ttu-id="a64f2-207">Si votre éditeur par défaut est Visual Studio Code, vous souhaiterez généralement passer l' `-w` `--wait` argument ou pour forcer Visual Studio code à attendre que vous fermiez le fichier avant de retourner.</span><span class="sxs-lookup"><span data-stu-id="a64f2-207">If your default editor is Visual Studio Code, you'll usually want to pass the `-w` or `--wait` argument to force Visual Studio Code to wait for you to close the file before returning.</span></span>
+> <span data-ttu-id="7cef4-207">Si votre éditeur par défaut est Visual Studio Code, vous souhaiterez généralement passer l' `-w` `--wait` argument ou pour forcer Visual Studio code à attendre que vous fermiez le fichier avant de retourner.</span><span class="sxs-lookup"><span data-stu-id="7cef4-207">If your default editor is Visual Studio Code, you'll usually want to pass the `-w` or `--wait` argument to force Visual Studio Code to wait for you to close the file before returning.</span></span>
 
-### <a name="set-the-openapi-description-search-paths"></a><span data-ttu-id="a64f2-208">Définir les chemins de recherche de la description OpenAPI</span><span class="sxs-lookup"><span data-stu-id="a64f2-208">Set the OpenAPI Description search paths</span></span>
+### <a name="set-the-openapi-description-search-paths"></a><span data-ttu-id="7cef4-208">Définir les chemins de recherche de la description OpenAPI</span><span class="sxs-lookup"><span data-stu-id="7cef4-208">Set the OpenAPI Description search paths</span></span>
 
-<span data-ttu-id="a64f2-209">Par défaut, le HttpRepl possède un ensemble de chemins d’accès relatifs qu’il utilise pour trouver la description de OpenAPI lors de l’exécution de la `connect` commande sans l' `--openapi` option.</span><span class="sxs-lookup"><span data-stu-id="a64f2-209">By default, the HttpRepl has a set of relative paths that it uses to find the OpenAPI description when executing the `connect` command without the `--openapi` option.</span></span> <span data-ttu-id="a64f2-210">Ces chemins relatifs sont combinés avec les chemins racine et de base spécifiés dans la commande `connect`.</span><span class="sxs-lookup"><span data-stu-id="a64f2-210">These relative paths are combined with the root and base paths specified in the `connect` command.</span></span> <span data-ttu-id="a64f2-211">Les chemins relatifs par défaut sont les suivants :</span><span class="sxs-lookup"><span data-stu-id="a64f2-211">The default relative paths are:</span></span>
+<span data-ttu-id="7cef4-209">Par défaut, le HttpRepl possède un ensemble de chemins d’accès relatifs qu’il utilise pour trouver la description de OpenAPI lors de l’exécution de la `connect` commande sans l' `--openapi` option.</span><span class="sxs-lookup"><span data-stu-id="7cef4-209">By default, the HttpRepl has a set of relative paths that it uses to find the OpenAPI description when executing the `connect` command without the `--openapi` option.</span></span> <span data-ttu-id="7cef4-210">Ces chemins relatifs sont combinés avec les chemins racine et de base spécifiés dans la commande `connect`.</span><span class="sxs-lookup"><span data-stu-id="7cef4-210">These relative paths are combined with the root and base paths specified in the `connect` command.</span></span> <span data-ttu-id="7cef4-211">Les chemins relatifs par défaut sont les suivants :</span><span class="sxs-lookup"><span data-stu-id="7cef4-211">The default relative paths are:</span></span>
 
-- <span data-ttu-id="a64f2-212">*swagger.js*</span><span class="sxs-lookup"><span data-stu-id="a64f2-212">*swagger.json*</span></span>
-- <span data-ttu-id="a64f2-213">*Swagger/v1/swagger.jssur*</span><span class="sxs-lookup"><span data-stu-id="a64f2-213">*swagger/v1/swagger.json*</span></span>
-- <span data-ttu-id="a64f2-214">*/swagger.jssur*</span><span class="sxs-lookup"><span data-stu-id="a64f2-214">*/swagger.json*</span></span>
-- <span data-ttu-id="a64f2-215">*/swagger/v1/swagger.json*</span><span class="sxs-lookup"><span data-stu-id="a64f2-215">*/swagger/v1/swagger.json*</span></span>
-- <span data-ttu-id="a64f2-216">*openapi.js*</span><span class="sxs-lookup"><span data-stu-id="a64f2-216">*openapi.json*</span></span>
-- <span data-ttu-id="a64f2-217">*/openapi.jssur*</span><span class="sxs-lookup"><span data-stu-id="a64f2-217">*/openapi.json*</span></span>
+- <span data-ttu-id="7cef4-212">*swagger.js*</span><span class="sxs-lookup"><span data-stu-id="7cef4-212">*swagger.json*</span></span>
+- <span data-ttu-id="7cef4-213">*Swagger/v1/swagger.jssur*</span><span class="sxs-lookup"><span data-stu-id="7cef4-213">*swagger/v1/swagger.json*</span></span>
+- <span data-ttu-id="7cef4-214">*/swagger.jssur*</span><span class="sxs-lookup"><span data-stu-id="7cef4-214">*/swagger.json*</span></span>
+- <span data-ttu-id="7cef4-215">*/swagger/v1/swagger.json*</span><span class="sxs-lookup"><span data-stu-id="7cef4-215">*/swagger/v1/swagger.json*</span></span>
+- <span data-ttu-id="7cef4-216">*openapi.js*</span><span class="sxs-lookup"><span data-stu-id="7cef4-216">*openapi.json*</span></span>
+- <span data-ttu-id="7cef4-217">*/openapi.jssur*</span><span class="sxs-lookup"><span data-stu-id="7cef4-217">*/openapi.json*</span></span>
 
-<span data-ttu-id="a64f2-218">Pour utiliser un autre ensemble de chemins de recherche dans votre environnement, définissez la préférence `swagger.searchPaths`.</span><span class="sxs-lookup"><span data-stu-id="a64f2-218">To use a different set of search paths in your environment, set the `swagger.searchPaths` preference.</span></span> <span data-ttu-id="a64f2-219">La valeur doit être une liste de chemins relatifs délimités par des barres verticales.</span><span class="sxs-lookup"><span data-stu-id="a64f2-219">The value must be a pipe-delimited list of relative paths.</span></span> <span data-ttu-id="a64f2-220">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-220">For example:</span></span>
+<span data-ttu-id="7cef4-218">Pour utiliser un autre ensemble de chemins de recherche dans votre environnement, définissez la préférence `swagger.searchPaths`.</span><span class="sxs-lookup"><span data-stu-id="7cef4-218">To use a different set of search paths in your environment, set the `swagger.searchPaths` preference.</span></span> <span data-ttu-id="7cef4-219">La valeur doit être une liste de chemins relatifs délimités par des barres verticales.</span><span class="sxs-lookup"><span data-stu-id="7cef4-219">The value must be a pipe-delimited list of relative paths.</span></span> <span data-ttu-id="7cef4-220">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-220">For example:</span></span>
 
 ```console
 pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
 ```
 
-<span data-ttu-id="a64f2-221">Au lieu de remplacer entièrement la liste par défaut, la liste peut également être modifiée en ajoutant ou en supprimant des chemins.</span><span class="sxs-lookup"><span data-stu-id="a64f2-221">Instead of replacing the default list altogether, the list can also be modified by adding or removing paths.</span></span>
+<span data-ttu-id="7cef4-221">Au lieu de remplacer entièrement la liste par défaut, la liste peut également être modifiée en ajoutant ou en supprimant des chemins.</span><span class="sxs-lookup"><span data-stu-id="7cef4-221">Instead of replacing the default list altogether, the list can also be modified by adding or removing paths.</span></span>
 
-<span data-ttu-id="a64f2-222">Pour ajouter un ou plusieurs chemins de recherche à la liste par défaut, définissez la `swagger.addToSearchPaths` préférence.</span><span class="sxs-lookup"><span data-stu-id="a64f2-222">To add one or more search paths to the default list, set the `swagger.addToSearchPaths` preference.</span></span> <span data-ttu-id="a64f2-223">La valeur doit être une liste de chemins relatifs délimités par des barres verticales.</span><span class="sxs-lookup"><span data-stu-id="a64f2-223">The value must be a pipe-delimited list of relative paths.</span></span> <span data-ttu-id="a64f2-224">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-224">For example:</span></span>
+<span data-ttu-id="7cef4-222">Pour ajouter un ou plusieurs chemins de recherche à la liste par défaut, définissez la `swagger.addToSearchPaths` préférence.</span><span class="sxs-lookup"><span data-stu-id="7cef4-222">To add one or more search paths to the default list, set the `swagger.addToSearchPaths` preference.</span></span> <span data-ttu-id="7cef4-223">La valeur doit être une liste de chemins relatifs délimités par des barres verticales.</span><span class="sxs-lookup"><span data-stu-id="7cef4-223">The value must be a pipe-delimited list of relative paths.</span></span> <span data-ttu-id="7cef4-224">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-224">For example:</span></span>
 
 ```console
 pref set swagger.addToSearchPaths "openapi/v2/openapi.json|openapi/v3/openapi.json"
 ```
 
-<span data-ttu-id="a64f2-225">Pour supprimer un ou plusieurs chemins de recherche de la liste par défaut, définissez la `swagger.addToSearchPaths` préférence.</span><span class="sxs-lookup"><span data-stu-id="a64f2-225">To remove one or more search paths from the default list, set the `swagger.addToSearchPaths` preference.</span></span> <span data-ttu-id="a64f2-226">La valeur doit être une liste de chemins relatifs délimités par des barres verticales.</span><span class="sxs-lookup"><span data-stu-id="a64f2-226">The value must be a pipe-delimited list of relative paths.</span></span> <span data-ttu-id="a64f2-227">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-227">For example:</span></span>
+<span data-ttu-id="7cef4-225">Pour supprimer un ou plusieurs chemins de recherche de la liste par défaut, définissez la `swagger.addToSearchPaths` préférence.</span><span class="sxs-lookup"><span data-stu-id="7cef4-225">To remove one or more search paths from the default list, set the `swagger.addToSearchPaths` preference.</span></span> <span data-ttu-id="7cef4-226">La valeur doit être une liste de chemins relatifs délimités par des barres verticales.</span><span class="sxs-lookup"><span data-stu-id="7cef4-226">The value must be a pipe-delimited list of relative paths.</span></span> <span data-ttu-id="7cef4-227">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-227">For example:</span></span>
 
 ```console
 pref set swagger.removeFromSearchPaths "swagger.json|/swagger.json"
 ```
 
-## <a name="test-http-get-requests"></a><span data-ttu-id="a64f2-228">Tester des requêtes HTTP GET</span><span class="sxs-lookup"><span data-stu-id="a64f2-228">Test HTTP GET requests</span></span>
+## <a name="test-http-get-requests"></a><span data-ttu-id="7cef4-228">Tester des requêtes HTTP GET</span><span class="sxs-lookup"><span data-stu-id="7cef4-228">Test HTTP GET requests</span></span>
 
-### <a name="synopsis"></a><span data-ttu-id="a64f2-229">Synopsis</span><span class="sxs-lookup"><span data-stu-id="a64f2-229">Synopsis</span></span>
+### <a name="synopsis"></a><span data-ttu-id="7cef4-229">Synopsis</span><span class="sxs-lookup"><span data-stu-id="7cef4-229">Synopsis</span></span>
 
 ```console
 get <PARAMETER> [-F|--no-formatting] [-h|--header] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a><span data-ttu-id="a64f2-230">Arguments</span><span class="sxs-lookup"><span data-stu-id="a64f2-230">Arguments</span></span>
+### <a name="arguments"></a><span data-ttu-id="7cef4-230">Arguments</span><span class="sxs-lookup"><span data-stu-id="7cef4-230">Arguments</span></span>
 
 `PARAMETER`
 
-<span data-ttu-id="a64f2-231">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="a64f2-231">The route parameter, if any, expected by the associated controller action method.</span></span>
+<span data-ttu-id="7cef4-231">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="7cef4-231">The route parameter, if any, expected by the associated controller action method.</span></span>
 
-### <a name="options"></a><span data-ttu-id="a64f2-232">Options</span><span class="sxs-lookup"><span data-stu-id="a64f2-232">Options</span></span>
+### <a name="options"></a><span data-ttu-id="7cef4-232">Options</span><span class="sxs-lookup"><span data-stu-id="7cef4-232">Options</span></span>
 
-<span data-ttu-id="a64f2-233">Les options suivantes sont disponibles pour la commande `get` :</span><span class="sxs-lookup"><span data-stu-id="a64f2-233">The following options are available for the `get` command:</span></span>
+<span data-ttu-id="7cef4-233">Les options suivantes sont disponibles pour la commande `get` :</span><span class="sxs-lookup"><span data-stu-id="7cef4-233">The following options are available for the `get` command:</span></span>
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
-### <a name="example"></a><span data-ttu-id="a64f2-234">Exemple</span><span class="sxs-lookup"><span data-stu-id="a64f2-234">Example</span></span>
+### <a name="example"></a><span data-ttu-id="7cef4-234">Exemple</span><span class="sxs-lookup"><span data-stu-id="7cef4-234">Example</span></span>
 
-<span data-ttu-id="a64f2-235">Pour émettre une requête HTTP GET :</span><span class="sxs-lookup"><span data-stu-id="a64f2-235">To issue an HTTP GET request:</span></span>
+<span data-ttu-id="7cef4-235">Pour émettre une requête HTTP GET :</span><span class="sxs-lookup"><span data-stu-id="7cef4-235">To issue an HTTP GET request:</span></span>
 
-1. <span data-ttu-id="a64f2-236">Exécutez la commande `get` sur un point de terminaison qui la prend en charge :</span><span class="sxs-lookup"><span data-stu-id="a64f2-236">Run the `get` command on an endpoint that supports it:</span></span>
+1. <span data-ttu-id="7cef4-236">Exécutez la commande `get` sur un point de terminaison qui la prend en charge :</span><span class="sxs-lookup"><span data-stu-id="7cef4-236">Run the `get` command on an endpoint that supports it:</span></span>
 
     ```console
     https://localhost:5001/people> get
     ```
 
-    <span data-ttu-id="a64f2-237">La commande précédente affiche le format de sortie suivant :</span><span class="sxs-lookup"><span data-stu-id="a64f2-237">The preceding command displays the following output format:</span></span>
+    <span data-ttu-id="7cef4-237">La commande précédente affiche le format de sortie suivant :</span><span class="sxs-lookup"><span data-stu-id="7cef4-237">The preceding command displays the following output format:</span></span>
 
     ```console
     HTTP/1.1 200 OK
@@ -484,13 +484,13 @@ get <PARAMETER> [-F|--no-formatting] [-h|--header] [--response:body] [--response
     https://localhost:5001/people>
     ```
 
-1. <span data-ttu-id="a64f2-238">Récupérez un enregistrement spécifique en passant un paramètre à la commande `get` :</span><span class="sxs-lookup"><span data-stu-id="a64f2-238">Retrieve a specific record by passing a parameter to the `get` command:</span></span>
+1. <span data-ttu-id="7cef4-238">Récupérez un enregistrement spécifique en passant un paramètre à la commande `get` :</span><span class="sxs-lookup"><span data-stu-id="7cef4-238">Retrieve a specific record by passing a parameter to the `get` command:</span></span>
 
     ```console
     https://localhost:5001/people> get 2
     ```
 
-    <span data-ttu-id="a64f2-239">La commande précédente affiche le format de sortie suivant :</span><span class="sxs-lookup"><span data-stu-id="a64f2-239">The preceding command displays the following output format:</span></span>
+    <span data-ttu-id="7cef4-239">La commande précédente affiche le format de sortie suivant :</span><span class="sxs-lookup"><span data-stu-id="7cef4-239">The preceding command displays the following output format:</span></span>
 
     ```console
     HTTP/1.1 200 OK
@@ -510,37 +510,37 @@ get <PARAMETER> [-F|--no-formatting] [-h|--header] [--response:body] [--response
     https://localhost:5001/people>
     ```
 
-## <a name="test-http-post-requests"></a><span data-ttu-id="a64f2-240">Tester des requêtes HTTP POST</span><span class="sxs-lookup"><span data-stu-id="a64f2-240">Test HTTP POST requests</span></span>
+## <a name="test-http-post-requests"></a><span data-ttu-id="7cef4-240">Tester des requêtes HTTP POST</span><span class="sxs-lookup"><span data-stu-id="7cef4-240">Test HTTP POST requests</span></span>
 
-### <a name="synopsis"></a><span data-ttu-id="a64f2-241">Synopsis</span><span class="sxs-lookup"><span data-stu-id="a64f2-241">Synopsis</span></span>
+### <a name="synopsis"></a><span data-ttu-id="7cef4-241">Synopsis</span><span class="sxs-lookup"><span data-stu-id="7cef4-241">Synopsis</span></span>
 
 ```console
 post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a><span data-ttu-id="a64f2-242">Arguments</span><span class="sxs-lookup"><span data-stu-id="a64f2-242">Arguments</span></span>
+### <a name="arguments"></a><span data-ttu-id="7cef4-242">Arguments</span><span class="sxs-lookup"><span data-stu-id="7cef4-242">Arguments</span></span>
 
 `PARAMETER`
 
-<span data-ttu-id="a64f2-243">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="a64f2-243">The route parameter, if any, expected by the associated controller action method.</span></span>
+<span data-ttu-id="7cef4-243">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="7cef4-243">The route parameter, if any, expected by the associated controller action method.</span></span>
 
-### <a name="options"></a><span data-ttu-id="a64f2-244">Options</span><span class="sxs-lookup"><span data-stu-id="a64f2-244">Options</span></span>
+### <a name="options"></a><span data-ttu-id="7cef4-244">Options</span><span class="sxs-lookup"><span data-stu-id="7cef4-244">Options</span></span>
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
 [!INCLUDE [HTTP request body CLI options](~/includes/http-repl/requires-body-options.md)]
 
-### <a name="example"></a><span data-ttu-id="a64f2-245">Exemple</span><span class="sxs-lookup"><span data-stu-id="a64f2-245">Example</span></span>
+### <a name="example"></a><span data-ttu-id="7cef4-245">Exemple</span><span class="sxs-lookup"><span data-stu-id="7cef4-245">Example</span></span>
 
-<span data-ttu-id="a64f2-246">Pour émettre une requête HTTP POST :</span><span class="sxs-lookup"><span data-stu-id="a64f2-246">To issue an HTTP POST request:</span></span>
+<span data-ttu-id="7cef4-246">Pour émettre une requête HTTP POST :</span><span class="sxs-lookup"><span data-stu-id="7cef4-246">To issue an HTTP POST request:</span></span>
 
-1. <span data-ttu-id="a64f2-247">Exécutez la commande `post` sur un point de terminaison qui la prend en charge :</span><span class="sxs-lookup"><span data-stu-id="a64f2-247">Run the `post` command on an endpoint that supports it:</span></span>
+1. <span data-ttu-id="7cef4-247">Exécutez la commande `post` sur un point de terminaison qui la prend en charge :</span><span class="sxs-lookup"><span data-stu-id="7cef4-247">Run the `post` command on an endpoint that supports it:</span></span>
 
     ```console
     https://localhost:5001/people> post -h Content-Type=application/json
     ```
 
-    <span data-ttu-id="a64f2-248">Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON.</span><span class="sxs-lookup"><span data-stu-id="a64f2-248">In the preceding command, the `Content-Type` HTTP request header is set to indicate a request body media type of JSON.</span></span> <span data-ttu-id="a64f2-249">L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="a64f2-249">The default text editor opens a *.tmp* file with a JSON template representing the HTTP request body.</span></span> <span data-ttu-id="a64f2-250">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-250">For example:</span></span>
+    <span data-ttu-id="7cef4-248">Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON.</span><span class="sxs-lookup"><span data-stu-id="7cef4-248">In the preceding command, the `Content-Type` HTTP request header is set to indicate a request body media type of JSON.</span></span> <span data-ttu-id="7cef4-249">L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="7cef4-249">The default text editor opens a *.tmp* file with a JSON template representing the HTTP request body.</span></span> <span data-ttu-id="7cef4-250">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-250">For example:</span></span>
 
     ```json
     {
@@ -550,9 +550,9 @@ post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-f
     ```
 
     > [!TIP]
-    > <span data-ttu-id="a64f2-251">Pour définir l’éditeur de texte par défaut, consultez la section [Définir l’éditeur de texte par défaut](#set-the-default-text-editor).</span><span class="sxs-lookup"><span data-stu-id="a64f2-251">To set the default text editor, see the [Set the default text editor](#set-the-default-text-editor) section.</span></span>
+    > <span data-ttu-id="7cef4-251">Pour définir l’éditeur de texte par défaut, consultez la section [Définir l’éditeur de texte par défaut](#set-the-default-text-editor).</span><span class="sxs-lookup"><span data-stu-id="7cef4-251">To set the default text editor, see the [Set the default text editor](#set-the-default-text-editor) section.</span></span>
 
-1. <span data-ttu-id="a64f2-252">Modifiez le modèle JSON pour répondre aux exigences de validation du modèle :</span><span class="sxs-lookup"><span data-stu-id="a64f2-252">Modify the JSON template to satisfy model validation requirements:</span></span>
+1. <span data-ttu-id="7cef4-252">Modifiez le modèle JSON pour répondre aux exigences de validation du modèle :</span><span class="sxs-lookup"><span data-stu-id="7cef4-252">Modify the JSON template to satisfy model validation requirements:</span></span>
 
     ```json
     {
@@ -561,7 +561,7 @@ post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-f
     }
     ```
 
-1. <span data-ttu-id="a64f2-253">Enregistrez le fichier *.tmp* et fermez l’éditeur de texte.</span><span class="sxs-lookup"><span data-stu-id="a64f2-253">Save the *.tmp* file, and close the text editor.</span></span> <span data-ttu-id="a64f2-254">La sortie suivante s’affiche dans l’interpréteur de commandes :</span><span class="sxs-lookup"><span data-stu-id="a64f2-254">The following output appears in the command shell:</span></span>
+1. <span data-ttu-id="7cef4-253">Enregistrez le fichier *.tmp* et fermez l’éditeur de texte.</span><span class="sxs-lookup"><span data-stu-id="7cef4-253">Save the *.tmp* file, and close the text editor.</span></span> <span data-ttu-id="7cef4-254">La sortie suivante s’affiche dans l’interpréteur de commandes :</span><span class="sxs-lookup"><span data-stu-id="7cef4-254">The following output appears in the command shell:</span></span>
 
     ```console
     HTTP/1.1 201 Created
@@ -580,31 +580,31 @@ post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-f
     https://localhost:5001/people>
     ```
 
-## <a name="test-http-put-requests"></a><span data-ttu-id="a64f2-255">Tester des requêtes HTTP PUT</span><span class="sxs-lookup"><span data-stu-id="a64f2-255">Test HTTP PUT requests</span></span>
+## <a name="test-http-put-requests"></a><span data-ttu-id="7cef4-255">Tester des requêtes HTTP PUT</span><span class="sxs-lookup"><span data-stu-id="7cef4-255">Test HTTP PUT requests</span></span>
 
-### <a name="synopsis"></a><span data-ttu-id="a64f2-256">Synopsis</span><span class="sxs-lookup"><span data-stu-id="a64f2-256">Synopsis</span></span>
+### <a name="synopsis"></a><span data-ttu-id="7cef4-256">Synopsis</span><span class="sxs-lookup"><span data-stu-id="7cef4-256">Synopsis</span></span>
 
 ```console
 put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a><span data-ttu-id="a64f2-257">Arguments</span><span class="sxs-lookup"><span data-stu-id="a64f2-257">Arguments</span></span>
+### <a name="arguments"></a><span data-ttu-id="7cef4-257">Arguments</span><span class="sxs-lookup"><span data-stu-id="7cef4-257">Arguments</span></span>
 
 `PARAMETER`
 
-<span data-ttu-id="a64f2-258">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="a64f2-258">The route parameter, if any, expected by the associated controller action method.</span></span>
+<span data-ttu-id="7cef4-258">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="7cef4-258">The route parameter, if any, expected by the associated controller action method.</span></span>
 
-### <a name="options"></a><span data-ttu-id="a64f2-259">Options</span><span class="sxs-lookup"><span data-stu-id="a64f2-259">Options</span></span>
+### <a name="options"></a><span data-ttu-id="7cef4-259">Options</span><span class="sxs-lookup"><span data-stu-id="7cef4-259">Options</span></span>
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
 [!INCLUDE [HTTP request body CLI options](~/includes/http-repl/requires-body-options.md)]
 
-### <a name="example"></a><span data-ttu-id="a64f2-260">Exemple</span><span class="sxs-lookup"><span data-stu-id="a64f2-260">Example</span></span>
+### <a name="example"></a><span data-ttu-id="7cef4-260">Exemple</span><span class="sxs-lookup"><span data-stu-id="7cef4-260">Example</span></span>
 
-<span data-ttu-id="a64f2-261">Pour émettre une requête HTTP PUT :</span><span class="sxs-lookup"><span data-stu-id="a64f2-261">To issue an HTTP PUT request:</span></span>
+<span data-ttu-id="7cef4-261">Pour émettre une requête HTTP PUT :</span><span class="sxs-lookup"><span data-stu-id="7cef4-261">To issue an HTTP PUT request:</span></span>
 
-1. <span data-ttu-id="a64f2-262">*Facultatif* : exécutez la `get` commande pour afficher les données avant de les modifier :</span><span class="sxs-lookup"><span data-stu-id="a64f2-262">*Optional* : Run the `get` command to view the data before modifying it:</span></span>
+1. <span data-ttu-id="7cef4-262">*Facultatif* : exécutez la `get` commande pour afficher les données avant de les modifier :</span><span class="sxs-lookup"><span data-stu-id="7cef4-262">*Optional* : Run the `get` command to view the data before modifying it:</span></span>
 
     ```console
     https://localhost:5001/fruits> get
@@ -630,13 +630,13 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     ]
     ```
 
-1. <span data-ttu-id="a64f2-263">Exécutez la commande `put` sur un point de terminaison qui la prend en charge :</span><span class="sxs-lookup"><span data-stu-id="a64f2-263">Run the `put` command on an endpoint that supports it:</span></span>
+1. <span data-ttu-id="7cef4-263">Exécutez la commande `put` sur un point de terminaison qui la prend en charge :</span><span class="sxs-lookup"><span data-stu-id="7cef4-263">Run the `put` command on an endpoint that supports it:</span></span>
 
     ```console
     https://localhost:5001/fruits> put 2 -h Content-Type=application/json
     ```
 
-    <span data-ttu-id="a64f2-264">Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON.</span><span class="sxs-lookup"><span data-stu-id="a64f2-264">In the preceding command, the `Content-Type` HTTP request header is set to indicate a request body media type of JSON.</span></span> <span data-ttu-id="a64f2-265">L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="a64f2-265">The default text editor opens a *.tmp* file with a JSON template representing the HTTP request body.</span></span> <span data-ttu-id="a64f2-266">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-266">For example:</span></span>
+    <span data-ttu-id="7cef4-264">Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON.</span><span class="sxs-lookup"><span data-stu-id="7cef4-264">In the preceding command, the `Content-Type` HTTP request header is set to indicate a request body media type of JSON.</span></span> <span data-ttu-id="7cef4-265">L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="7cef4-265">The default text editor opens a *.tmp* file with a JSON template representing the HTTP request body.</span></span> <span data-ttu-id="7cef4-266">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-266">For example:</span></span>
 
     ```json
     {
@@ -646,9 +646,9 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     ```
 
     > [!TIP]
-    > <span data-ttu-id="a64f2-267">Pour définir l’éditeur de texte par défaut, consultez la section [Définir l’éditeur de texte par défaut](#set-the-default-text-editor).</span><span class="sxs-lookup"><span data-stu-id="a64f2-267">To set the default text editor, see the [Set the default text editor](#set-the-default-text-editor) section.</span></span>
+    > <span data-ttu-id="7cef4-267">Pour définir l’éditeur de texte par défaut, consultez la section [Définir l’éditeur de texte par défaut](#set-the-default-text-editor).</span><span class="sxs-lookup"><span data-stu-id="7cef4-267">To set the default text editor, see the [Set the default text editor](#set-the-default-text-editor) section.</span></span>
 
-1. <span data-ttu-id="a64f2-268">Modifiez le modèle JSON pour répondre aux exigences de validation du modèle :</span><span class="sxs-lookup"><span data-stu-id="a64f2-268">Modify the JSON template to satisfy model validation requirements:</span></span>
+1. <span data-ttu-id="7cef4-268">Modifiez le modèle JSON pour répondre aux exigences de validation du modèle :</span><span class="sxs-lookup"><span data-stu-id="7cef4-268">Modify the JSON template to satisfy model validation requirements:</span></span>
 
     ```json
     {
@@ -657,7 +657,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     }
     ```
 
-1. <span data-ttu-id="a64f2-269">Enregistrez le fichier *.tmp* et fermez l’éditeur de texte.</span><span class="sxs-lookup"><span data-stu-id="a64f2-269">Save the *.tmp* file, and close the text editor.</span></span> <span data-ttu-id="a64f2-270">La sortie suivante s’affiche dans l’interpréteur de commandes :</span><span class="sxs-lookup"><span data-stu-id="a64f2-270">The following output appears in the command shell:</span></span>
+1. <span data-ttu-id="7cef4-269">Enregistrez le fichier *.tmp* et fermez l’éditeur de texte.</span><span class="sxs-lookup"><span data-stu-id="7cef4-269">Save the *.tmp* file, and close the text editor.</span></span> <span data-ttu-id="7cef4-270">La sortie suivante s’affiche dans l’interpréteur de commandes :</span><span class="sxs-lookup"><span data-stu-id="7cef4-270">The following output appears in the command shell:</span></span>
 
     ```console
     [main 2019-06-28T17:27:01.805Z] update#setState idle
@@ -666,7 +666,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     Server: Kestrel
     ```
 
-1. <span data-ttu-id="a64f2-271">*Facultatif* : émettez une `get` commande pour voir les modifications.</span><span class="sxs-lookup"><span data-stu-id="a64f2-271">*Optional* : Issue a `get` command to see the modifications.</span></span> <span data-ttu-id="a64f2-272">Par exemple, si vous avez tapé « cerise » dans l’éditeur de texte, un `get` retourne la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-272">For example, if you typed "Cherry" in the text editor, a `get` returns the following output:</span></span>
+1. <span data-ttu-id="7cef4-271">*Facultatif* : émettez une `get` commande pour voir les modifications.</span><span class="sxs-lookup"><span data-stu-id="7cef4-271">*Optional* : Issue a `get` command to see the modifications.</span></span> <span data-ttu-id="7cef4-272">Par exemple, si vous avez tapé « cerise » dans l’éditeur de texte, un `get` retourne la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-272">For example, if you typed "Cherry" in the text editor, a `get` returns the following output:</span></span>
 
     ```console
     https://localhost:5001/fruits> get
@@ -695,29 +695,29 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     https://localhost:5001/fruits>
     ```
 
-## <a name="test-http-delete-requests"></a><span data-ttu-id="a64f2-273">Tester des requêtes HTTP DELETE</span><span class="sxs-lookup"><span data-stu-id="a64f2-273">Test HTTP DELETE requests</span></span>
+## <a name="test-http-delete-requests"></a><span data-ttu-id="7cef4-273">Tester des requêtes HTTP DELETE</span><span class="sxs-lookup"><span data-stu-id="7cef4-273">Test HTTP DELETE requests</span></span>
 
-### <a name="synopsis"></a><span data-ttu-id="a64f2-274">Synopsis</span><span class="sxs-lookup"><span data-stu-id="a64f2-274">Synopsis</span></span>
+### <a name="synopsis"></a><span data-ttu-id="7cef4-274">Synopsis</span><span class="sxs-lookup"><span data-stu-id="7cef4-274">Synopsis</span></span>
 
 ```console
 delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a><span data-ttu-id="a64f2-275">Arguments</span><span class="sxs-lookup"><span data-stu-id="a64f2-275">Arguments</span></span>
+### <a name="arguments"></a><span data-ttu-id="7cef4-275">Arguments</span><span class="sxs-lookup"><span data-stu-id="7cef4-275">Arguments</span></span>
 
 `PARAMETER`
 
-<span data-ttu-id="a64f2-276">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="a64f2-276">The route parameter, if any, expected by the associated controller action method.</span></span>
+<span data-ttu-id="7cef4-276">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="7cef4-276">The route parameter, if any, expected by the associated controller action method.</span></span>
 
-### <a name="options"></a><span data-ttu-id="a64f2-277">Options</span><span class="sxs-lookup"><span data-stu-id="a64f2-277">Options</span></span>
+### <a name="options"></a><span data-ttu-id="7cef4-277">Options</span><span class="sxs-lookup"><span data-stu-id="7cef4-277">Options</span></span>
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
-### <a name="example"></a><span data-ttu-id="a64f2-278">Exemple</span><span class="sxs-lookup"><span data-stu-id="a64f2-278">Example</span></span>
+### <a name="example"></a><span data-ttu-id="7cef4-278">Exemple</span><span class="sxs-lookup"><span data-stu-id="7cef4-278">Example</span></span>
 
-<span data-ttu-id="a64f2-279">Pour émettre une requête HTTP DELETE :</span><span class="sxs-lookup"><span data-stu-id="a64f2-279">To issue an HTTP DELETE request:</span></span>
+<span data-ttu-id="7cef4-279">Pour émettre une requête HTTP DELETE :</span><span class="sxs-lookup"><span data-stu-id="7cef4-279">To issue an HTTP DELETE request:</span></span>
 
-1. <span data-ttu-id="a64f2-280">*Facultatif* : exécutez la `get` commande pour afficher les données avant de les modifier :</span><span class="sxs-lookup"><span data-stu-id="a64f2-280">*Optional* : Run the `get` command to view the data before modifying it:</span></span>
+1. <span data-ttu-id="7cef4-280">*Facultatif* : exécutez la `get` commande pour afficher les données avant de les modifier :</span><span class="sxs-lookup"><span data-stu-id="7cef4-280">*Optional* : Run the `get` command to view the data before modifying it:</span></span>
 
     ```console
     https://localhost:5001/fruits> get
@@ -743,13 +743,13 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
     ]
     ```
 
-1. <span data-ttu-id="a64f2-281">Exécutez la commande `delete` sur un point de terminaison qui la prend en charge :</span><span class="sxs-lookup"><span data-stu-id="a64f2-281">Run the `delete` command on an endpoint that supports it:</span></span>
+1. <span data-ttu-id="7cef4-281">Exécutez la commande `delete` sur un point de terminaison qui la prend en charge :</span><span class="sxs-lookup"><span data-stu-id="7cef4-281">Run the `delete` command on an endpoint that supports it:</span></span>
 
     ```console
     https://localhost:5001/fruits> delete 2
     ```
 
-    <span data-ttu-id="a64f2-282">La commande précédente affiche le format de sortie suivant :</span><span class="sxs-lookup"><span data-stu-id="a64f2-282">The preceding command displays the following output format:</span></span>
+    <span data-ttu-id="7cef4-282">La commande précédente affiche le format de sortie suivant :</span><span class="sxs-lookup"><span data-stu-id="7cef4-282">The preceding command displays the following output format:</span></span>
 
     ```console
     HTTP/1.1 204 No Content
@@ -757,7 +757,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
     Server: Kestrel
     ```
 
-1. <span data-ttu-id="a64f2-283">*Facultatif* : émettez une `get` commande pour voir les modifications.</span><span class="sxs-lookup"><span data-stu-id="a64f2-283">*Optional* : Issue a `get` command to see the modifications.</span></span> <span data-ttu-id="a64f2-284">Dans cet exemple, un `get` retourne la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-284">In this example, a `get` returns the following output:</span></span>
+1. <span data-ttu-id="7cef4-283">*Facultatif* : émettez une `get` commande pour voir les modifications.</span><span class="sxs-lookup"><span data-stu-id="7cef4-283">*Optional* : Issue a `get` command to see the modifications.</span></span> <span data-ttu-id="7cef4-284">Dans cet exemple, un `get` retourne la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-284">In this example, a `get` returns the following output:</span></span>
 
     ```console
     https://localhost:5001/fruits> get
@@ -782,182 +782,182 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
     https://localhost:5001/fruits>
     ```
 
-## <a name="test-http-patch-requests"></a><span data-ttu-id="a64f2-285">Tester des requêtes HTTP PATCH</span><span class="sxs-lookup"><span data-stu-id="a64f2-285">Test HTTP PATCH requests</span></span>
+## <a name="test-http-patch-requests"></a><span data-ttu-id="7cef4-285">Tester des requêtes HTTP PATCH</span><span class="sxs-lookup"><span data-stu-id="7cef4-285">Test HTTP PATCH requests</span></span>
 
-### <a name="synopsis"></a><span data-ttu-id="a64f2-286">Synopsis</span><span class="sxs-lookup"><span data-stu-id="a64f2-286">Synopsis</span></span>
+### <a name="synopsis"></a><span data-ttu-id="7cef4-286">Synopsis</span><span class="sxs-lookup"><span data-stu-id="7cef4-286">Synopsis</span></span>
 
 ```console
 patch <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a><span data-ttu-id="a64f2-287">Arguments</span><span class="sxs-lookup"><span data-stu-id="a64f2-287">Arguments</span></span>
+### <a name="arguments"></a><span data-ttu-id="7cef4-287">Arguments</span><span class="sxs-lookup"><span data-stu-id="7cef4-287">Arguments</span></span>
 
 `PARAMETER`
 
-<span data-ttu-id="a64f2-288">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="a64f2-288">The route parameter, if any, expected by the associated controller action method.</span></span>
+<span data-ttu-id="7cef4-288">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="7cef4-288">The route parameter, if any, expected by the associated controller action method.</span></span>
 
-### <a name="options"></a><span data-ttu-id="a64f2-289">Options</span><span class="sxs-lookup"><span data-stu-id="a64f2-289">Options</span></span>
+### <a name="options"></a><span data-ttu-id="7cef4-289">Options</span><span class="sxs-lookup"><span data-stu-id="7cef4-289">Options</span></span>
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
 [!INCLUDE [HTTP request body CLI options](~/includes/http-repl/requires-body-options.md)]
 
-## <a name="test-http-head-requests"></a><span data-ttu-id="a64f2-290">Tester des requêtes HTTP HEAD</span><span class="sxs-lookup"><span data-stu-id="a64f2-290">Test HTTP HEAD requests</span></span>
+## <a name="test-http-head-requests"></a><span data-ttu-id="7cef4-290">Tester des requêtes HTTP HEAD</span><span class="sxs-lookup"><span data-stu-id="7cef4-290">Test HTTP HEAD requests</span></span>
 
-### <a name="synopsis"></a><span data-ttu-id="a64f2-291">Synopsis</span><span class="sxs-lookup"><span data-stu-id="a64f2-291">Synopsis</span></span>
+### <a name="synopsis"></a><span data-ttu-id="7cef4-291">Synopsis</span><span class="sxs-lookup"><span data-stu-id="7cef4-291">Synopsis</span></span>
 
 ```console
 head <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a><span data-ttu-id="a64f2-292">Arguments</span><span class="sxs-lookup"><span data-stu-id="a64f2-292">Arguments</span></span>
+### <a name="arguments"></a><span data-ttu-id="7cef4-292">Arguments</span><span class="sxs-lookup"><span data-stu-id="7cef4-292">Arguments</span></span>
 
 `PARAMETER`
 
-<span data-ttu-id="a64f2-293">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="a64f2-293">The route parameter, if any, expected by the associated controller action method.</span></span>
+<span data-ttu-id="7cef4-293">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="7cef4-293">The route parameter, if any, expected by the associated controller action method.</span></span>
 
-### <a name="options"></a><span data-ttu-id="a64f2-294">Options</span><span class="sxs-lookup"><span data-stu-id="a64f2-294">Options</span></span>
+### <a name="options"></a><span data-ttu-id="7cef4-294">Options</span><span class="sxs-lookup"><span data-stu-id="7cef4-294">Options</span></span>
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
-## <a name="test-http-options-requests"></a><span data-ttu-id="a64f2-295">Tester des requêtes HTTP OPTIONS</span><span class="sxs-lookup"><span data-stu-id="a64f2-295">Test HTTP OPTIONS requests</span></span>
+## <a name="test-http-options-requests"></a><span data-ttu-id="7cef4-295">Tester des requêtes HTTP OPTIONS</span><span class="sxs-lookup"><span data-stu-id="7cef4-295">Test HTTP OPTIONS requests</span></span>
 
-### <a name="synopsis"></a><span data-ttu-id="a64f2-296">Synopsis</span><span class="sxs-lookup"><span data-stu-id="a64f2-296">Synopsis</span></span>
+### <a name="synopsis"></a><span data-ttu-id="7cef4-296">Synopsis</span><span class="sxs-lookup"><span data-stu-id="7cef4-296">Synopsis</span></span>
 
 ```console
 options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a><span data-ttu-id="a64f2-297">Arguments</span><span class="sxs-lookup"><span data-stu-id="a64f2-297">Arguments</span></span>
+### <a name="arguments"></a><span data-ttu-id="7cef4-297">Arguments</span><span class="sxs-lookup"><span data-stu-id="7cef4-297">Arguments</span></span>
 
 `PARAMETER`
 
-<span data-ttu-id="a64f2-298">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="a64f2-298">The route parameter, if any, expected by the associated controller action method.</span></span>
+<span data-ttu-id="7cef4-298">Paramètre de route, le cas échéant, attendu par la méthode d’action du contrôleur associé.</span><span class="sxs-lookup"><span data-stu-id="7cef4-298">The route parameter, if any, expected by the associated controller action method.</span></span>
 
-### <a name="options"></a><span data-ttu-id="a64f2-299">Options</span><span class="sxs-lookup"><span data-stu-id="a64f2-299">Options</span></span>
+### <a name="options"></a><span data-ttu-id="7cef4-299">Options</span><span class="sxs-lookup"><span data-stu-id="7cef4-299">Options</span></span>
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
-## <a name="set-http-request-headers"></a><span data-ttu-id="a64f2-300">Définir des en-têtes de requête HTTP</span><span class="sxs-lookup"><span data-stu-id="a64f2-300">Set HTTP request headers</span></span>
+## <a name="set-http-request-headers"></a><span data-ttu-id="7cef4-300">Définir des en-têtes de requête HTTP</span><span class="sxs-lookup"><span data-stu-id="7cef4-300">Set HTTP request headers</span></span>
 
-<span data-ttu-id="a64f2-301">Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes :</span><span class="sxs-lookup"><span data-stu-id="a64f2-301">To set an HTTP request header, use one of the following approaches:</span></span>
+<span data-ttu-id="7cef4-301">Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes :</span><span class="sxs-lookup"><span data-stu-id="7cef4-301">To set an HTTP request header, use one of the following approaches:</span></span>
 
-* <span data-ttu-id="a64f2-302">Définir inline avec la requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="a64f2-302">Set inline with the HTTP request.</span></span> <span data-ttu-id="a64f2-303">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-303">For example:</span></span>
+* <span data-ttu-id="7cef4-302">Définir inline avec la requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="7cef4-302">Set inline with the HTTP request.</span></span> <span data-ttu-id="7cef4-303">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-303">For example:</span></span>
 
     ```console
     https://localhost:5001/people> post -h Content-Type=application/json
     ```
     
-    <span data-ttu-id="a64f2-304">Avec l’approche précédente, chaque en-tête de requête HTTP distinct nécessite sa propre option `-h`.</span><span class="sxs-lookup"><span data-stu-id="a64f2-304">With the preceding approach, each distinct HTTP request header requires its own `-h` option.</span></span>
+    <span data-ttu-id="7cef4-304">Avec l’approche précédente, chaque en-tête de requête HTTP distinct nécessite sa propre option `-h`.</span><span class="sxs-lookup"><span data-stu-id="7cef4-304">With the preceding approach, each distinct HTTP request header requires its own `-h` option.</span></span>
 
-* <span data-ttu-id="a64f2-305">Définir avant l’envoi de la requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="a64f2-305">Set before sending the HTTP request.</span></span> <span data-ttu-id="a64f2-306">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-306">For example:</span></span>
+* <span data-ttu-id="7cef4-305">Définir avant l’envoi de la requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="7cef4-305">Set before sending the HTTP request.</span></span> <span data-ttu-id="7cef4-306">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-306">For example:</span></span>
 
     ```console
     https://localhost:5001/people> set header Content-Type application/json
     ```
     
-    <span data-ttu-id="a64f2-307">Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes.</span><span class="sxs-lookup"><span data-stu-id="a64f2-307">When setting the header before sending a request, the header remains set for the duration of the command shell session.</span></span> <span data-ttu-id="a64f2-308">Pour effacer l’en-tête, spécifiez une valeur vide.</span><span class="sxs-lookup"><span data-stu-id="a64f2-308">To clear the header, provide an empty value.</span></span> <span data-ttu-id="a64f2-309">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-309">For example:</span></span>
+    <span data-ttu-id="7cef4-307">Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes.</span><span class="sxs-lookup"><span data-stu-id="7cef4-307">When setting the header before sending a request, the header remains set for the duration of the command shell session.</span></span> <span data-ttu-id="7cef4-308">Pour effacer l’en-tête, spécifiez une valeur vide.</span><span class="sxs-lookup"><span data-stu-id="7cef4-308">To clear the header, provide an empty value.</span></span> <span data-ttu-id="7cef4-309">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-309">For example:</span></span>
     
     ```console
     https://localhost:5001/people> set header Content-Type
     ```
 
-## <a name="test-secured-endpoints"></a><span data-ttu-id="a64f2-310">Tester les points de terminaison sécurisés</span><span class="sxs-lookup"><span data-stu-id="a64f2-310">Test secured endpoints</span></span>
+## <a name="test-secured-endpoints"></a><span data-ttu-id="7cef4-310">Tester les points de terminaison sécurisés</span><span class="sxs-lookup"><span data-stu-id="7cef4-310">Test secured endpoints</span></span>
 
-<span data-ttu-id="a64f2-311">Le HttpRepl prend en charge le test des points de terminaison sécurisés des manières suivantes :</span><span class="sxs-lookup"><span data-stu-id="a64f2-311">The HttpRepl supports the testing of secured endpoints in the following ways:</span></span>
+<span data-ttu-id="7cef4-311">Le HttpRepl prend en charge le test des points de terminaison sécurisés des manières suivantes :</span><span class="sxs-lookup"><span data-stu-id="7cef4-311">The HttpRepl supports the testing of secured endpoints in the following ways:</span></span>
 
-* <span data-ttu-id="a64f2-312">Par le biais des informations d’identification par défaut de l’utilisateur connecté.</span><span class="sxs-lookup"><span data-stu-id="a64f2-312">Via the default credentials of the logged in user.</span></span>
-* <span data-ttu-id="a64f2-313">À l’aide des en-têtes de requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="a64f2-313">Through the use of HTTP request headers.</span></span>
+* <span data-ttu-id="7cef4-312">Par le biais des informations d’identification par défaut de l’utilisateur connecté.</span><span class="sxs-lookup"><span data-stu-id="7cef4-312">Via the default credentials of the logged in user.</span></span>
+* <span data-ttu-id="7cef4-313">À l’aide des en-têtes de requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="7cef4-313">Through the use of HTTP request headers.</span></span>
 
-### <a name="default-credentials"></a><span data-ttu-id="a64f2-314">Informations d’identification par défaut</span><span class="sxs-lookup"><span data-stu-id="a64f2-314">Default credentials</span></span>
+### <a name="default-credentials"></a><span data-ttu-id="7cef4-314">Informations d’identification par défaut</span><span class="sxs-lookup"><span data-stu-id="7cef4-314">Default credentials</span></span>
 
-<span data-ttu-id="a64f2-315">Prenons l’exemple d’une API Web que vous testez et qui est hébergée dans IIS et sécurisée avec l’authentification Windows.</span><span class="sxs-lookup"><span data-stu-id="a64f2-315">Consider a web API you're testing that's hosted in IIS and secured with Windows authentication.</span></span> <span data-ttu-id="a64f2-316">Vous souhaitez que les informations d’identification de l’utilisateur qui exécute l’outil soient transmises aux points de terminaison HTTP en cours de test.</span><span class="sxs-lookup"><span data-stu-id="a64f2-316">You want the credentials of the user running the tool to flow across to the HTTP endpoints being tested.</span></span> <span data-ttu-id="a64f2-317">Pour transmettre les informations d’identification par défaut de l’utilisateur connecté :</span><span class="sxs-lookup"><span data-stu-id="a64f2-317">To pass the default credentials of the logged in user:</span></span>
+<span data-ttu-id="7cef4-315">Prenons l’exemple d’une API Web que vous testez et qui est hébergée dans IIS et sécurisée avec l’authentification Windows.</span><span class="sxs-lookup"><span data-stu-id="7cef4-315">Consider a web API you're testing that's hosted in IIS and secured with Windows authentication.</span></span> <span data-ttu-id="7cef4-316">Vous souhaitez que les informations d’identification de l’utilisateur qui exécute l’outil soient transmises aux points de terminaison HTTP en cours de test.</span><span class="sxs-lookup"><span data-stu-id="7cef4-316">You want the credentials of the user running the tool to flow across to the HTTP endpoints being tested.</span></span> <span data-ttu-id="7cef4-317">Pour transmettre les informations d’identification par défaut de l’utilisateur connecté :</span><span class="sxs-lookup"><span data-stu-id="7cef4-317">To pass the default credentials of the logged in user:</span></span>
 
-1. <span data-ttu-id="a64f2-318">Définissez la `httpClient.useDefaultCredentials` préférence sur `true` :</span><span class="sxs-lookup"><span data-stu-id="a64f2-318">Set the `httpClient.useDefaultCredentials` preference to `true`:</span></span>
+1. <span data-ttu-id="7cef4-318">Définissez la `httpClient.useDefaultCredentials` préférence sur `true` :</span><span class="sxs-lookup"><span data-stu-id="7cef4-318">Set the `httpClient.useDefaultCredentials` preference to `true`:</span></span>
 
     ```console
     pref set httpClient.useDefaultCredentials true
     ```
 
-1. <span data-ttu-id="a64f2-319">Quittez et redémarrez l’outil avant d’envoyer une autre demande à l’API Web.</span><span class="sxs-lookup"><span data-stu-id="a64f2-319">Exit and restart the tool before sending another request to the web API.</span></span>
+1. <span data-ttu-id="7cef4-319">Quittez et redémarrez l’outil avant d’envoyer une autre demande à l’API Web.</span><span class="sxs-lookup"><span data-stu-id="7cef4-319">Exit and restart the tool before sending another request to the web API.</span></span>
  
-### <a name="default-proxy-credentials"></a><span data-ttu-id="a64f2-320">Informations d’identification du proxy par défaut</span><span class="sxs-lookup"><span data-stu-id="a64f2-320">Default proxy credentials</span></span>
+### <a name="default-proxy-credentials"></a><span data-ttu-id="7cef4-320">Informations d’identification du proxy par défaut</span><span class="sxs-lookup"><span data-stu-id="7cef4-320">Default proxy credentials</span></span>
 
-<span data-ttu-id="a64f2-321">Imaginez un scénario dans lequel l’API Web que vous testez se trouve derrière un proxy sécurisé avec l’authentification Windows.</span><span class="sxs-lookup"><span data-stu-id="a64f2-321">Consider a scenario in which the web API you're testing is behind a proxy secured with Windows authentication.</span></span> <span data-ttu-id="a64f2-322">Vous souhaitez que les informations d’identification de l’utilisateur qui exécute l’outil soient acheminées vers le proxy.</span><span class="sxs-lookup"><span data-stu-id="a64f2-322">You want the credentials of the user running the tool to flow to the proxy.</span></span> <span data-ttu-id="a64f2-323">Pour transmettre les informations d’identification par défaut de l’utilisateur connecté :</span><span class="sxs-lookup"><span data-stu-id="a64f2-323">To pass the default credentials of the logged in user:</span></span>
+<span data-ttu-id="7cef4-321">Imaginez un scénario dans lequel l’API Web que vous testez se trouve derrière un proxy sécurisé avec l’authentification Windows.</span><span class="sxs-lookup"><span data-stu-id="7cef4-321">Consider a scenario in which the web API you're testing is behind a proxy secured with Windows authentication.</span></span> <span data-ttu-id="7cef4-322">Vous souhaitez que les informations d’identification de l’utilisateur qui exécute l’outil soient acheminées vers le proxy.</span><span class="sxs-lookup"><span data-stu-id="7cef4-322">You want the credentials of the user running the tool to flow to the proxy.</span></span> <span data-ttu-id="7cef4-323">Pour transmettre les informations d’identification par défaut de l’utilisateur connecté :</span><span class="sxs-lookup"><span data-stu-id="7cef4-323">To pass the default credentials of the logged in user:</span></span>
 
-1. <span data-ttu-id="a64f2-324">Définissez la `httpClient.proxy.useDefaultCredentials` préférence sur `true` :</span><span class="sxs-lookup"><span data-stu-id="a64f2-324">Set the `httpClient.proxy.useDefaultCredentials` preference to `true`:</span></span>
+1. <span data-ttu-id="7cef4-324">Définissez la `httpClient.proxy.useDefaultCredentials` préférence sur `true` :</span><span class="sxs-lookup"><span data-stu-id="7cef4-324">Set the `httpClient.proxy.useDefaultCredentials` preference to `true`:</span></span>
 
     ```console
     pref set httpClient.proxy.useDefaultCredentials true
     ```
 
-1. <span data-ttu-id="a64f2-325">Quittez et redémarrez l’outil avant d’envoyer une autre demande à l’API Web.</span><span class="sxs-lookup"><span data-stu-id="a64f2-325">Exit and restart the tool before sending another request to the web API.</span></span>
+1. <span data-ttu-id="7cef4-325">Quittez et redémarrez l’outil avant d’envoyer une autre demande à l’API Web.</span><span class="sxs-lookup"><span data-stu-id="7cef4-325">Exit and restart the tool before sending another request to the web API.</span></span>
 
-### <a name="http-request-headers"></a><span data-ttu-id="a64f2-326">En-têtes de requête HTTP</span><span class="sxs-lookup"><span data-stu-id="a64f2-326">HTTP request headers</span></span>
+### <a name="http-request-headers"></a><span data-ttu-id="7cef4-326">En-têtes de requête HTTP</span><span class="sxs-lookup"><span data-stu-id="7cef4-326">HTTP request headers</span></span>
 
-<span data-ttu-id="a64f2-327">Voici quelques exemples de modèles d’authentification et d’autorisation pris en charge :</span><span class="sxs-lookup"><span data-stu-id="a64f2-327">Examples of supported authentication and authorization schemes include:</span></span>
+<span data-ttu-id="7cef4-327">Voici quelques exemples de modèles d’authentification et d’autorisation pris en charge :</span><span class="sxs-lookup"><span data-stu-id="7cef4-327">Examples of supported authentication and authorization schemes include:</span></span>
 
-* <span data-ttu-id="a64f2-328">basic authentication</span><span class="sxs-lookup"><span data-stu-id="a64f2-328">basic authentication</span></span>
-* <span data-ttu-id="a64f2-329">Jetons du porteur JWT</span><span class="sxs-lookup"><span data-stu-id="a64f2-329">JWT bearer tokens</span></span>
-* <span data-ttu-id="a64f2-330">authentification Digest</span><span class="sxs-lookup"><span data-stu-id="a64f2-330">digest authentication</span></span>
+* <span data-ttu-id="7cef4-328">basic authentication</span><span class="sxs-lookup"><span data-stu-id="7cef4-328">basic authentication</span></span>
+* <span data-ttu-id="7cef4-329">Jetons du porteur JWT</span><span class="sxs-lookup"><span data-stu-id="7cef4-329">JWT bearer tokens</span></span>
+* <span data-ttu-id="7cef4-330">authentification Digest</span><span class="sxs-lookup"><span data-stu-id="7cef4-330">digest authentication</span></span>
 
-<span data-ttu-id="a64f2-331">Par exemple, vous pouvez envoyer un jeton de porteur à un point de terminaison à l’aide de la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-331">For example, you can send a bearer token to an endpoint with the following command:</span></span>
+<span data-ttu-id="7cef4-331">Par exemple, vous pouvez envoyer un jeton de porteur à un point de terminaison à l’aide de la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-331">For example, you can send a bearer token to an endpoint with the following command:</span></span>
 
 ```console
 set header Authorization "bearer <TOKEN VALUE>"
 ```
 
-<span data-ttu-id="a64f2-332">Pour accéder à un point de terminaison hébergé par Azure ou pour utiliser l' [API REST Azure](/rest/api/azure/), vous avez besoin d’un jeton de porteur.</span><span class="sxs-lookup"><span data-stu-id="a64f2-332">To access an Azure-hosted endpoint or to use the [Azure REST API](/rest/api/azure/), you need a bearer token.</span></span> <span data-ttu-id="a64f2-333">Procédez comme suit pour obtenir un jeton de porteur pour votre abonnement Azure via le [Azure CLI](/cli/azure/).</span><span class="sxs-lookup"><span data-stu-id="a64f2-333">Use the following steps to obtain a bearer token for your Azure subscription via the [Azure CLI](/cli/azure/).</span></span> <span data-ttu-id="a64f2-334">HttpRepl définit le jeton du porteur dans un en-tête de requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="a64f2-334">The HttpRepl sets the bearer token in an HTTP request header.</span></span> <span data-ttu-id="a64f2-335">Une liste de Azure App Service Web Apps est récupérée.</span><span class="sxs-lookup"><span data-stu-id="a64f2-335">A list of Azure App Service Web Apps is retrieved.</span></span>
+<span data-ttu-id="7cef4-332">Pour accéder à un point de terminaison hébergé par Azure ou pour utiliser l' [API REST Azure](/rest/api/azure/), vous avez besoin d’un jeton de porteur.</span><span class="sxs-lookup"><span data-stu-id="7cef4-332">To access an Azure-hosted endpoint or to use the [Azure REST API](/rest/api/azure/), you need a bearer token.</span></span> <span data-ttu-id="7cef4-333">Procédez comme suit pour obtenir un jeton de porteur pour votre abonnement Azure via le [Azure CLI](/cli/azure/).</span><span class="sxs-lookup"><span data-stu-id="7cef4-333">Use the following steps to obtain a bearer token for your Azure subscription via the [Azure CLI](/cli/azure/).</span></span> <span data-ttu-id="7cef4-334">HttpRepl définit le jeton du porteur dans un en-tête de requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="7cef4-334">The HttpRepl sets the bearer token in an HTTP request header.</span></span> <span data-ttu-id="7cef4-335">Une liste de Azure App Service Web Apps est récupérée.</span><span class="sxs-lookup"><span data-stu-id="7cef4-335">A list of Azure App Service Web Apps is retrieved.</span></span>
 
-1. <span data-ttu-id="a64f2-336">Connectez-vous à Azure :</span><span class="sxs-lookup"><span data-stu-id="a64f2-336">Sign in to Azure:</span></span>
+1. <span data-ttu-id="7cef4-336">Connectez-vous à Azure :</span><span class="sxs-lookup"><span data-stu-id="7cef4-336">Sign in to Azure:</span></span>
 
     ```azurecli
     az login
     ```
 
-1. <span data-ttu-id="a64f2-337">Récupérez votre ID d’abonnement à l’aide de la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-337">Get your subscription ID with the following command:</span></span>
+1. <span data-ttu-id="7cef4-337">Récupérez votre ID d’abonnement à l’aide de la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-337">Get your subscription ID with the following command:</span></span>
 
     ```azurecli
     az account show --query id
     ```
 
-1. <span data-ttu-id="a64f2-338">Copiez votre ID d’abonnement et exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-338">Copy your subscription ID and run the following command:</span></span>
+1. <span data-ttu-id="7cef4-338">Copiez votre ID d’abonnement et exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-338">Copy your subscription ID and run the following command:</span></span>
 
     ```azurecli
     az account set --subscription "<SUBSCRIPTION ID>"
     ```
 
-1. <span data-ttu-id="a64f2-339">Récupérez votre jeton de porteur avec la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-339">Get your bearer token with the following command:</span></span>
+1. <span data-ttu-id="7cef4-339">Récupérez votre jeton de porteur avec la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-339">Get your bearer token with the following command:</span></span>
 
     ```azurecli
     az account get-access-token --query accessToken
     ```
 
-1. <span data-ttu-id="a64f2-340">Connectez-vous à l’API REST Azure via HttpRepl :</span><span class="sxs-lookup"><span data-stu-id="a64f2-340">Connect to the Azure REST API via the HttpRepl:</span></span>
+1. <span data-ttu-id="7cef4-340">Connectez-vous à l’API REST Azure via HttpRepl :</span><span class="sxs-lookup"><span data-stu-id="7cef4-340">Connect to the Azure REST API via the HttpRepl:</span></span>
 
     ```console
     httprepl https://management.azure.com
     ```
 
-1. <span data-ttu-id="a64f2-341">Définissez l' `Authorization` en-tête de requête http :</span><span class="sxs-lookup"><span data-stu-id="a64f2-341">Set the `Authorization` HTTP request header:</span></span>
+1. <span data-ttu-id="7cef4-341">Définissez l' `Authorization` en-tête de requête http :</span><span class="sxs-lookup"><span data-stu-id="7cef4-341">Set the `Authorization` HTTP request header:</span></span>
 
     ```console
     https://management.azure.com/> set header Authorization "bearer <ACCESS TOKEN>"
     ```
 
-1. <span data-ttu-id="a64f2-342">Accédez à l’abonnement :</span><span class="sxs-lookup"><span data-stu-id="a64f2-342">Navigate to the subscription:</span></span>
+1. <span data-ttu-id="7cef4-342">Accédez à l’abonnement :</span><span class="sxs-lookup"><span data-stu-id="7cef4-342">Navigate to the subscription:</span></span>
 
     ```console
     https://management.azure.com/> cd subscriptions/<SUBSCRIPTION ID>
     ```
 
-1. <span data-ttu-id="a64f2-343">Obtenir la liste des Web Apps Azure App Service de votre abonnement :</span><span class="sxs-lookup"><span data-stu-id="a64f2-343">Get a list of your subscription's Azure App Service Web Apps:</span></span>
+1. <span data-ttu-id="7cef4-343">Obtenir la liste des Web Apps Azure App Service de votre abonnement :</span><span class="sxs-lookup"><span data-stu-id="7cef4-343">Get a list of your subscription's Azure App Service Web Apps:</span></span>
 
     ```console
     https://management.azure.com/subscriptions/{SUBSCRIPTION ID}> get providers/Microsoft.Web/sites?api-version=2016-08-01
     ```
 
-    <span data-ttu-id="a64f2-344">La réponse suivante s’affiche :</span><span class="sxs-lookup"><span data-stu-id="a64f2-344">The following response is displayed:</span></span>
+    <span data-ttu-id="7cef4-344">La réponse suivante s’affiche :</span><span class="sxs-lookup"><span data-stu-id="7cef4-344">The following response is displayed:</span></span>
 
     ```console
     HTTP/1.1 200 OK
@@ -981,20 +981,20 @@ set header Authorization "bearer <TOKEN VALUE>"
     }
     ```
 
-## <a name="toggle-http-request-display"></a><span data-ttu-id="a64f2-345">Activer/désactiver l’affichage des requêtes HTTP</span><span class="sxs-lookup"><span data-stu-id="a64f2-345">Toggle HTTP request display</span></span>
+## <a name="toggle-http-request-display"></a><span data-ttu-id="7cef4-345">Activer/désactiver l’affichage des requêtes HTTP</span><span class="sxs-lookup"><span data-stu-id="7cef4-345">Toggle HTTP request display</span></span>
 
-<span data-ttu-id="a64f2-346">Par défaut, l’affichage de la requête HTTP envoyée est supprimé.</span><span class="sxs-lookup"><span data-stu-id="a64f2-346">By default, display of the HTTP request being sent is suppressed.</span></span> <span data-ttu-id="a64f2-347">Il est possible de changer le paramètre correspondant pour la durée de la session de l’interpréteur de commandes.</span><span class="sxs-lookup"><span data-stu-id="a64f2-347">It's possible to change the corresponding setting for the duration of the command shell session.</span></span>
+<span data-ttu-id="7cef4-346">Par défaut, l’affichage de la requête HTTP envoyée est supprimé.</span><span class="sxs-lookup"><span data-stu-id="7cef4-346">By default, display of the HTTP request being sent is suppressed.</span></span> <span data-ttu-id="7cef4-347">Il est possible de changer le paramètre correspondant pour la durée de la session de l’interpréteur de commandes.</span><span class="sxs-lookup"><span data-stu-id="7cef4-347">It's possible to change the corresponding setting for the duration of the command shell session.</span></span>
 
-### <a name="enable-request-display"></a><span data-ttu-id="a64f2-348">Activer l’affichage des requêtes</span><span class="sxs-lookup"><span data-stu-id="a64f2-348">Enable request display</span></span>
+### <a name="enable-request-display"></a><span data-ttu-id="7cef4-348">Activer l’affichage des requêtes</span><span class="sxs-lookup"><span data-stu-id="7cef4-348">Enable request display</span></span>
 
-<span data-ttu-id="a64f2-349">Affichez la requête HTTP envoyée en exécutant la commande `echo on`.</span><span class="sxs-lookup"><span data-stu-id="a64f2-349">View the HTTP request being sent by running the `echo on` command.</span></span> <span data-ttu-id="a64f2-350">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-350">For example:</span></span>
+<span data-ttu-id="7cef4-349">Affichez la requête HTTP envoyée en exécutant la commande `echo on`.</span><span class="sxs-lookup"><span data-stu-id="7cef4-349">View the HTTP request being sent by running the `echo on` command.</span></span> <span data-ttu-id="7cef4-350">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-350">For example:</span></span>
 
 ```console
 https://localhost:5001/people> echo on
 Request echoing is on
 ```
 
-<span data-ttu-id="a64f2-351">Les requêtes HTTP suivantes dans la session active affichent les en-têtes de requête.</span><span class="sxs-lookup"><span data-stu-id="a64f2-351">Subsequent HTTP requests in the current session display the request headers.</span></span> <span data-ttu-id="a64f2-352">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-352">For example:</span></span>
+<span data-ttu-id="7cef4-351">Les requêtes HTTP suivantes dans la session active affichent les en-têtes de requête.</span><span class="sxs-lookup"><span data-stu-id="7cef4-351">Subsequent HTTP requests in the current session display the request headers.</span></span> <span data-ttu-id="7cef4-352">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-352">For example:</span></span>
 
 ```console
 https://localhost:5001/people> post
@@ -1030,20 +1030,20 @@ Transfer-Encoding: chunked
 https://localhost:5001/people>
 ```
 
-### <a name="disable-request-display"></a><span data-ttu-id="a64f2-353">Désactiver l’affichage des requêtes</span><span class="sxs-lookup"><span data-stu-id="a64f2-353">Disable request display</span></span>
+### <a name="disable-request-display"></a><span data-ttu-id="7cef4-353">Désactiver l’affichage des requêtes</span><span class="sxs-lookup"><span data-stu-id="7cef4-353">Disable request display</span></span>
 
-<span data-ttu-id="a64f2-354">Supprimez l’affichage de la requête HTTP envoyée en exécutant la commande `echo off`.</span><span class="sxs-lookup"><span data-stu-id="a64f2-354">Suppress display of the HTTP request being sent by running the `echo off` command.</span></span> <span data-ttu-id="a64f2-355">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-355">For example:</span></span>
+<span data-ttu-id="7cef4-354">Supprimez l’affichage de la requête HTTP envoyée en exécutant la commande `echo off`.</span><span class="sxs-lookup"><span data-stu-id="7cef4-354">Suppress display of the HTTP request being sent by running the `echo off` command.</span></span> <span data-ttu-id="7cef4-355">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-355">For example:</span></span>
 
 ```console
 https://localhost:5001/people> echo off
 Request echoing is off
 ```
 
-## <a name="run-a-script"></a><span data-ttu-id="a64f2-356">Exécuter un script</span><span class="sxs-lookup"><span data-stu-id="a64f2-356">Run a script</span></span>
+## <a name="run-a-script"></a><span data-ttu-id="7cef4-356">Exécuter un script</span><span class="sxs-lookup"><span data-stu-id="7cef4-356">Run a script</span></span>
 
-<span data-ttu-id="a64f2-357">Si vous exécutez fréquemment le même jeu de commandes HttpRepl, envisagez de les stocker dans un fichier texte.</span><span class="sxs-lookup"><span data-stu-id="a64f2-357">If you frequently execute the same set of HttpRepl commands, consider storing them in a text file.</span></span> <span data-ttu-id="a64f2-358">Les commandes du fichier prennent la même forme que les commandes exécutées manuellement sur la ligne de commande.</span><span class="sxs-lookup"><span data-stu-id="a64f2-358">Commands in the file take the same form as commands executed manually on the command line.</span></span> <span data-ttu-id="a64f2-359">Les commandes peuvent être exécutées de façon groupée avec la commande `run`.</span><span class="sxs-lookup"><span data-stu-id="a64f2-359">The commands can be executed in a batched fashion using the `run` command.</span></span> <span data-ttu-id="a64f2-360">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-360">For example:</span></span>
+<span data-ttu-id="7cef4-357">Si vous exécutez fréquemment le même jeu de commandes HttpRepl, envisagez de les stocker dans un fichier texte.</span><span class="sxs-lookup"><span data-stu-id="7cef4-357">If you frequently execute the same set of HttpRepl commands, consider storing them in a text file.</span></span> <span data-ttu-id="7cef4-358">Les commandes du fichier prennent la même forme que les commandes exécutées manuellement sur la ligne de commande.</span><span class="sxs-lookup"><span data-stu-id="7cef4-358">Commands in the file take the same form as commands executed manually on the command line.</span></span> <span data-ttu-id="7cef4-359">Les commandes peuvent être exécutées de façon groupée avec la commande `run`.</span><span class="sxs-lookup"><span data-stu-id="7cef4-359">The commands can be executed in a batched fashion using the `run` command.</span></span> <span data-ttu-id="7cef4-360">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-360">For example:</span></span>
 
-1. <span data-ttu-id="a64f2-361">Créez un fichier texte contenant un ensemble de commandes délimitées par des sauts de ligne.</span><span class="sxs-lookup"><span data-stu-id="a64f2-361">Create a text file containing a set of newline-delimited commands.</span></span> <span data-ttu-id="a64f2-362">Pour illustrer ceci, considérez un fichier *people-script.txt* contenant les commandes suivantes :</span><span class="sxs-lookup"><span data-stu-id="a64f2-362">To illustrate, consider a *people-script.txt* file containing the following commands:</span></span>
+1. <span data-ttu-id="7cef4-361">Créez un fichier texte contenant un ensemble de commandes délimitées par des sauts de ligne.</span><span class="sxs-lookup"><span data-stu-id="7cef4-361">Create a text file containing a set of newline-delimited commands.</span></span> <span data-ttu-id="7cef4-362">Pour illustrer ceci, considérez un fichier *people-script.txt* contenant les commandes suivantes :</span><span class="sxs-lookup"><span data-stu-id="7cef4-362">To illustrate, consider a *people-script.txt* file containing the following commands:</span></span>
 
     ```text
     set base https://localhost:5001
@@ -1053,13 +1053,13 @@ Request echoing is off
     get 1
     ```
 
-1. <span data-ttu-id="a64f2-363">Exécutez la commande `run`, en passant le chemin du fichier texte.</span><span class="sxs-lookup"><span data-stu-id="a64f2-363">Execute the `run` command, passing in the text file's path.</span></span> <span data-ttu-id="a64f2-364">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="a64f2-364">For example:</span></span>
+1. <span data-ttu-id="7cef4-363">Exécutez la commande `run`, en passant le chemin du fichier texte.</span><span class="sxs-lookup"><span data-stu-id="7cef4-363">Execute the `run` command, passing in the text file's path.</span></span> <span data-ttu-id="7cef4-364">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="7cef4-364">For example:</span></span>
 
     ```console
     https://localhost:5001/> run C:\http-repl-scripts\people-script.txt
     ```
 
-    <span data-ttu-id="a64f2-365">Vous obtenez la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-365">The following output appears:</span></span>
+    <span data-ttu-id="7cef4-365">Vous obtenez la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-365">The following output appears:</span></span>
 
     ```console
     https://localhost:5001/> set base https://localhost:5001
@@ -1094,9 +1094,9 @@ Request echoing is off
     https://localhost:5001/People>
     ```
 
-## <a name="clear-the-output"></a><span data-ttu-id="a64f2-366">Effacer la sortie</span><span class="sxs-lookup"><span data-stu-id="a64f2-366">Clear the output</span></span>
+## <a name="clear-the-output"></a><span data-ttu-id="7cef4-366">Effacer la sortie</span><span class="sxs-lookup"><span data-stu-id="7cef4-366">Clear the output</span></span>
 
-<span data-ttu-id="a64f2-367">Pour supprimer toutes les sorties écrites dans l’interface de commande par l’outil HttpRepl, exécutez la `clear` `cls` commande ou.</span><span class="sxs-lookup"><span data-stu-id="a64f2-367">To remove all output written to the command shell by the HttpRepl tool, run the `clear` or `cls` command.</span></span> <span data-ttu-id="a64f2-368">À titre d’illustration, imaginez que l’interpréteur de commandes contient la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-368">To illustrate, imagine the command shell contains the following output:</span></span>
+<span data-ttu-id="7cef4-367">Pour supprimer toutes les sorties écrites dans l’interface de commande par l’outil HttpRepl, exécutez la `clear` `cls` commande ou.</span><span class="sxs-lookup"><span data-stu-id="7cef4-367">To remove all output written to the command shell by the HttpRepl tool, run the `clear` or `cls` command.</span></span> <span data-ttu-id="7cef4-368">À titre d’illustration, imaginez que l’interpréteur de commandes contient la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-368">To illustrate, imagine the command shell contains the following output:</span></span>
 
 ```console
 httprepl https://localhost:5001
@@ -1111,19 +1111,22 @@ People   [get|post]
 https://localhost:5001/>
 ```
 
-<span data-ttu-id="a64f2-369">Exécutez la commande suivante pour effacer la sortie :</span><span class="sxs-lookup"><span data-stu-id="a64f2-369">Run the following command to clear the output:</span></span>
+<span data-ttu-id="7cef4-369">Exécutez la commande suivante pour effacer la sortie :</span><span class="sxs-lookup"><span data-stu-id="7cef4-369">Run the following command to clear the output:</span></span>
 
 ```console
 https://localhost:5001/> clear
 ```
 
-<span data-ttu-id="a64f2-370">Après l’exécution de la commande précédente, l’interpréteur de commandes contient seulement la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="a64f2-370">After running the preceding command, the command shell contains only the following output:</span></span>
+<span data-ttu-id="7cef4-370">Après l’exécution de la commande précédente, l’interpréteur de commandes contient seulement la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="7cef4-370">After running the preceding command, the command shell contains only the following output:</span></span>
 
 ```console
 https://localhost:5001/>
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="a64f2-371">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="a64f2-371">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="7cef4-371">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="7cef4-371">Additional resources</span></span>
 
-* [<span data-ttu-id="a64f2-372">Requêtes de l’API REST</span><span class="sxs-lookup"><span data-stu-id="a64f2-372">REST API requests</span></span>](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)
-* [<span data-ttu-id="a64f2-373">Référentiel GitHub HttpRepl</span><span class="sxs-lookup"><span data-stu-id="a64f2-373">HttpRepl GitHub repository</span></span>](https://github.com/dotnet/HttpRepl)
+* [<span data-ttu-id="7cef4-372">Requêtes de l’API REST</span><span class="sxs-lookup"><span data-stu-id="7cef4-372">REST API requests</span></span>](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)
+* [<span data-ttu-id="7cef4-373">Référentiel GitHub HttpRepl</span><span class="sxs-lookup"><span data-stu-id="7cef4-373">HttpRepl GitHub repository</span></span>](https://github.com/dotnet/HttpRepl)
+* [<span data-ttu-id="7cef4-374">Configurer Visual Studio pour lancer HttpRepl</span><span class="sxs-lookup"><span data-stu-id="7cef4-374">Configure Visual Studio to launch HttpRepl</span></span>](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services/#configure-visual-studio-for-windows-to-launch-httprepl-on-f5)
+* [<span data-ttu-id="7cef4-375">Configurer Visual Studio Code pour lancer HttpRepl</span><span class="sxs-lookup"><span data-stu-id="7cef4-375">Configure Visual Studio Code to launch HttpRepl</span></span>](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services/#configure-visual-studio-code-to-launch-httprepl-on-debug)
+* [<span data-ttu-id="7cef4-376">Configurer Visual Studio pour Mac pour lancer HttpRepl</span><span class="sxs-lookup"><span data-stu-id="7cef4-376">Configure Visual Studio for Mac to launch HttpRepl</span></span>](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services/#configure-visual-studio-for-mac-to-launch-httprepl-as-a-custom-tool)
