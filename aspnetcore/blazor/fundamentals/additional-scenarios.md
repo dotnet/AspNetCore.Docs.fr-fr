@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: 9ec3900b67897255e321462b83117f5c2e32ab45
-ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
+ms.openlocfilehash: ef37c539d377f14a2744c3ead28234d8497df700
+ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595413"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637676"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>BlazorConfiguration du modèle d’hébergement ASP.net Core
 
@@ -378,3 +378,4 @@ Pour créer des mappages de fichiers supplémentaires avec <xref:Microsoft.AspNe
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:fundamentals/logging/index>
+* [Blazor Server événements de reconnexion et événements de cycle de vie du composant](xref:blazor/components/lifecycle#blazor-server-reconnection-events)

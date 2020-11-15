@@ -1,5 +1,5 @@
 ---
-title: Utiliser ASP.NET Core SignalR avec Blazor WebAssembly
+title: Utiliser ASP.NET Core SignalR avec une application hébergée Blazor WebAssembly
 author: guardrex
 description: Créez une application de conversation qui utilise ASP.NET Core SignalR avec Blazor WebAssembly .
 monikerRange: '>= aspnetcore-3.1'
@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: afbfc44db8cb833df7a79061f9bd73052859fec2
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: 2975ee699a2535cdf63ef2f5af5790f178a09f93
+ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94508173"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637728"
 ---
-# <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Utiliser ASP.NET Core SignalR avec Blazor WebAssembly
+# <a name="use-aspnet-core-no-locsignalr-with-a-hosted-no-locblazor-webassembly-app"></a>Utiliser ASP.NET Core SignalR avec une application hébergée Blazor WebAssembly
 
 Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
 
@@ -97,7 +97,7 @@ Ce didacticiel enseigne les bases de la création d’une application en temps r
 
 Suivez les instructions de votre choix d’outils :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -167,7 +167,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 ## <a name="add-the-no-locsignalr-client-library"></a>Ajouter la SignalR bibliothèque cliente
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
 1. Dans **Explorateur de solutions** , cliquez avec le bouton droit sur le `BlazorSignalRApp.Client` projet et sélectionnez **gérer les packages NuGet**.
 
@@ -291,7 +291,7 @@ Dans le `BlazorSignalRApp.Server` projet, créez un `Hubs` dossier (pluriel) et 
 
 1. Suivez les instructions pour vos outils :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Dans **Explorateur de solutions** , sélectionnez le `BlazorSignalRApp.Server` projet. Appuyez sur <kbd>F5</kbd> pour exécuter l’application avec débogage ou sur <kbd>CTRL</kbd> + <kbd>F5</kbd> pour exécuter l’application sans débogage.
 
