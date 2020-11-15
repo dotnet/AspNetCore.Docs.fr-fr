@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: e25549d557dd971d0f2f4d67a182574f07138acb
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: 84747e2d13275a23e83dc2dc0f666cb0c8d001b1
+ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94508121"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634624"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Nouveautés de ASP.NET Core 5,0
 
@@ -353,7 +353,7 @@ Indication du nom du serveur (SNI) est une extension TLS pour inclure un domaine
    ```
    <!-- review: KeepAlivePingInterval not found in RC1. Try testing with RC1. See https://github.com/dotnet/aspnetcore/pull/22565/files see C:/Users/riande/source/repos/WebApplication128/WebApplication128 -->
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Conteneurs
 
 Avant .NET 5,0, la génération et la publication d’un *fichier dockerfile* pour une application ASP.net Core nécessitait l’extraction de l’ensemble des kit SDK .net Core et de l’image ASP.net core. Avec cette version, l’extraction des octets des images du SDK est réduite et les octets tirés pour l’image ASP.NET Core sont en grande partie éliminés. Pour plus d’informations, consultez [ce commentaire de problème GitHub](https://github.com/dotnet/dotnet-docker/issues/1814#issuecomment-625294750).
 
@@ -453,8 +453,6 @@ Dans .NET 5, l’exécution de [dotnet Watch](xref:tutorials/dotnet-watch) sur u
 _ Ouvrir un projet de ASP.NET Core dans un éditeur de texte.
 * Exécutez `dotnet watch`.
 * Concentrez-vous sur les modifications de code, tandis que les outils gèrent la reconstruction, le redémarrage et le rechargement de l’application.
-
-Nous espérons que la fonctionnalité d’actualisation automatique de Visual Studio est à l’avenir.
 
 ### <a name="console-logger-formatter"></a>Formateur d’enregistreur de console
 
