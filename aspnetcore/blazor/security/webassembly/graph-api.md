@@ -1,23 +1,23 @@
 ---
-title: 'Utilisez API Graph avec ASP.NET Core :::no-loc(Blazor WebAssembly):::'
+title: 'Utilisez API Graph avec ASP.NET Core Blazor WebAssembly'
 author: guardrex
-description: 'Découvrez comment utiliser API Graph avec les :::no-loc(Blazor)::: applications WebAssemlby.'
+description: 'Découvrez comment utiliser API Graph avec les Blazor applications WebAssemlby.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/security/webassembly/graph-api
 ms.openlocfilehash: 6464b80d52837e7fe35efe5daac2193b77e21c84
 ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
@@ -26,13 +26,13 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 11/15/2020
 ms.locfileid: "94637650"
 ---
-# <a name="use-graph-api-with-aspnet-core-no-locblazor-webassembly"></a><span data-ttu-id="2b072-103">Utilisez API Graph avec ASP.NET Core :::no-loc(Blazor WebAssembly):::</span><span class="sxs-lookup"><span data-stu-id="2b072-103">Use Graph API with ASP.NET Core :::no-loc(Blazor WebAssembly):::</span></span>
+# <a name="use-graph-api-with-aspnet-core-no-locblazor-webassembly"></a><span data-ttu-id="2b072-103">Utilisez API Graph avec ASP.NET Core Blazor WebAssembly</span><span class="sxs-lookup"><span data-stu-id="2b072-103">Use Graph API with ASP.NET Core Blazor WebAssembly</span></span>
 
 <span data-ttu-id="2b072-104">Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="2b072-104">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-<span data-ttu-id="2b072-105">[Microsoft Graph API](/graph/use-the-api) est une API Web RESTful qui permet :::no-loc(Blazor)::: à et d’autres applications .NET Framework d’accéder aux ressources de service Microsoft Cloud.</span><span class="sxs-lookup"><span data-stu-id="2b072-105">[Microsoft Graph API](/graph/use-the-api) is a RESTful web API that enables :::no-loc(Blazor)::: and other .NET Framework apps to access Microsoft Cloud service resources.</span></span>
+<span data-ttu-id="2b072-105">[Microsoft Graph API](/graph/use-the-api) est une API Web RESTful qui permet Blazor à et d’autres applications .NET Framework d’accéder aux ressources de service Microsoft Cloud.</span><span class="sxs-lookup"><span data-stu-id="2b072-105">[Microsoft Graph API](/graph/use-the-api) is a RESTful web API that enables Blazor and other .NET Framework apps to access Microsoft Cloud service resources.</span></span>
 
 ## <a name="graph-sdk"></a><span data-ttu-id="2b072-106">SDK Graph</span><span class="sxs-lookup"><span data-stu-id="2b072-106">Graph SDK</span></span>
 
@@ -50,7 +50,7 @@ ms.locfileid: "94637650"
 
 <span data-ttu-id="2b072-112">Après l’ajout des étendues d’API Microsoft Graph dans la zone AAD du Portail Azure :</span><span class="sxs-lookup"><span data-stu-id="2b072-112">After adding the Microsoft Graph API scopes in the AAD area of the Azure portal:</span></span>
 
-* <span data-ttu-id="2b072-113">Ajoutez la `GraphClientExtensions.cs` classe suivante à l’application autonome ou à l' *`Client`* application d’une solution hébergée :::no-loc(Blazor)::: .</span><span class="sxs-lookup"><span data-stu-id="2b072-113">Add the following `GraphClientExtensions.cs` class to the standalone app or *`Client`* app of a hosted :::no-loc(Blazor)::: solution.</span></span>
+* <span data-ttu-id="2b072-113">Ajoutez la `GraphClientExtensions.cs` classe suivante à l’application autonome ou à l' *`Client`* application d’une solution hébergée Blazor .</span><span class="sxs-lookup"><span data-stu-id="2b072-113">Add the following `GraphClientExtensions.cs` class to the standalone app or *`Client`* app of a hosted Blazor solution.</span></span>
 * <span data-ttu-id="2b072-114">Fournissez les étendues requises à la <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenRequestOptions.Scopes> propriété de <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenRequestOptions> dans la `AuthenticateRequestAsync` méthode.</span><span class="sxs-lookup"><span data-stu-id="2b072-114">Provide the required scopes to the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenRequestOptions.Scopes> property of the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenRequestOptions> in the `AuthenticateRequestAsync` method.</span></span> <span data-ttu-id="2b072-115">Dans l’exemple suivant, l' `User.Read` étendue est spécifiée pour correspondre aux exemples des sections ultérieures de cet article.</span><span class="sxs-lookup"><span data-stu-id="2b072-115">In the following example, the `User.Read` scope is specified to match the examples in later sections of this article.</span></span>
 
 ```csharp
@@ -240,9 +240,9 @@ public class CustomAccountFactory
     {
         var initialUser = await base.CreateUserAsync(account, options);
 
-        if (initialUser.:::no-loc(Identity):::.IsAuthenticated)
+        if (initialUser.Identity.IsAuthenticated)
         {
-            var user:::no-loc(Identity)::: = (Claims:::no-loc(Identity):::)initialUser.:::no-loc(Identity):::;
+            var userIdentity = (ClaimsIdentity)initialUser.Identity;
 
             try
             {
@@ -253,7 +253,7 @@ public class CustomAccountFactory
 
                 if (user != null)
                 {
-                    user:::no-loc(Identity):::.AddClaim(new Claim("mobilephone", 
+                    userIdentity.AddClaim(new Claim("mobilephone", 
                         user.MobilePhone));
                 }
             }
@@ -335,7 +335,7 @@ builder.Services.AddHttpClient("GraphAPI",
 
 <span data-ttu-id="2b072-145">Cette section utilise le [Gestionnaire de messages d’autorisation Graph ( `GraphAuthorizationMessageHandler.cs` ) et `Program.Main` les ajouts à l’application](#named-client-with-graph-api) décrite précédemment dans cet article, qui fournit un nommé <xref:System.Net.Http.HttpClient> pour API Graph.</span><span class="sxs-lookup"><span data-stu-id="2b072-145">This section uses the [Graph Authorization Message Handler (`GraphAuthorizationMessageHandler.cs`) and `Program.Main` additions to the app](#named-client-with-graph-api) described earlier in this article, which provides a named <xref:System.Net.Http.HttpClient> for Graph API.</span></span>
 
-<span data-ttu-id="2b072-146">Dans un :::no-loc(Razor)::: composant :</span><span class="sxs-lookup"><span data-stu-id="2b072-146">In a :::no-loc(Razor)::: component:</span></span>
+<span data-ttu-id="2b072-146">Dans un Razor composant :</span><span class="sxs-lookup"><span data-stu-id="2b072-146">In a Razor component:</span></span>
 
 * <span data-ttu-id="2b072-147">Créez un <xref:System.Net.Http.HttpClient> pour API Graph et émettez une demande pour les données de profil de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="2b072-147">Create an <xref:System.Net.Http.HttpClient> for Graph API and issue a request for the user's profile data.</span></span>
 * <span data-ttu-id="2b072-148">La `UserInfo.cs` classe désigne les propriétés de profil utilisateur requises avec l' <xref:System.Text.Json.Serialization.JsonPropertyNameAttribute> attribut et le nom JSON utilisé par AAD pour ces propriétés.</span><span class="sxs-lookup"><span data-stu-id="2b072-148">The `UserInfo.cs` class designates the required user profile properties with the <xref:System.Text.Json.Serialization.JsonPropertyNameAttribute> attribute and the JSON name used by AAD for those properties.</span></span>
@@ -478,9 +478,9 @@ public class CustomAccountFactory
     {
         var initialUser = await base.CreateUserAsync(account, options);
 
-        if (initialUser.:::no-loc(Identity):::.IsAuthenticated)
+        if (initialUser.Identity.IsAuthenticated)
         {
-            var user:::no-loc(Identity)::: = (Claims:::no-loc(Identity):::)initialUser.:::no-loc(Identity):::;
+            var userIdentity = (ClaimsIdentity)initialUser.Identity;
 
             try
             {
@@ -490,7 +490,7 @@ public class CustomAccountFactory
 
                 if (userInfo != null)
                 {
-                    user:::no-loc(Identity):::.AddClaim(new Claim("mobilephone", 
+                    userIdentity.AddClaim(new Claim("mobilephone", 
                         userInfo.MobilePhone));
                 }
             }
