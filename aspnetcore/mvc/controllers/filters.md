@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: ecb4de3439656eb56507b920db704048d8f96759
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d075faa951a34fb3856b54eb9e21593b6616b4f1
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058504"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94673963"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -49,7 +49,7 @@ Ce document s’applique aux Razor pages, aux contrôleurs d’API et aux contr�
 
 ## <a name="how-filters-work"></a>Fonctionnement des filtres
 
-Les filtres s’exécutent dans le *pipeline des appels d’action ASP.NET Core* , parfois appelé *pipeline de filtres* . Le pipeline de filtres s’exécute après la sélection par ASP.NET Core de l’action à exécuter.
+Les filtres s’exécutent dans le *pipeline des appels d’action ASP.NET Core*, parfois appelé *pipeline de filtres*. Le pipeline de filtres s’exécute après la sélection par ASP.NET Core de l’action à exécuter.
 
 ![La demande est traitée par un autre intergiciel, un intergiciel (middleware) de routage, une sélection d’action et le pipeline d’appel d’action. Le traitement de la requête se poursuit via une sélection d’action, un intergiciel de routage et différents autres intergiciels avant de devenir une réponse envoyée au client.](filters/_static/filter-pipeline-1.png)
 
@@ -118,7 +118,7 @@ Les attributs autorisent les filtres à accepter des arguments, comme indiqué d
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]
 
-Utilisez un outil tel que les [outils de développement du navigateur](https://developer.mozilla.org/docs/Learn/Common_questions/What_are_browser_developer_tools) pour examiner les en-têtes. Sous **en-têtes de réponse** , `author: Rick Anderson` est affiché.
+Utilisez un outil tel que les [outils de développement du navigateur](https://developer.mozilla.org/docs/Learn/Common_questions/What_are_browser_developer_tools) pour examiner les en-têtes. Sous **en-têtes de réponse**, `author: Rick Anderson` est affiché.
 
 Le code suivant implémente un `ActionFilterAttribute` qui :
 
@@ -146,7 +146,7 @@ Le code suivant applique `MyActionFilterAttribute` à la `Index2` méthode :
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet2&highlight=9)]
 
-Sous **les en-têtes de réponse** , `author: Rick Anderson` et `Editor: Joe Smith` s’affiche lorsque le `Sample/Index2` point de terminaison est appelé.
+Sous **les en-têtes de réponse**, `author: Rick Anderson` et `Editor: Joe Smith` s’affiche lorsque le `Sample/Index2` point de terminaison est appelé.
 
 Le code suivant applique le `MyActionFilterAttribute` et le `AddHeaderAttribute` à la Razor page :
 
@@ -179,7 +179,7 @@ Un filtre peut être ajouté au pipeline à l’une des trois *étendues* suivan
 
 Quand il existe plusieurs filtres pour une étape particulière du pipeline, l’étendue détermine l’ordre par défaut de l’exécution du filtre.  Les filtres globaux entourent les filtres de classe, qui à leur tour entourent les filtres de méthode.
 
-En raison de l’imbrication de filtres, le code *après* des filtres s’exécute dans l’ordre inverse du code *avant* . La séquence de filtre :
+En raison de l’imbrication de filtres, le code *après* des filtres s’exécute dans l’ordre inverse du code *avant*. La séquence de filtre :
 
 * Le code *avant* des filtres globaux.
   * *Avant* le code du contrôleur et des Razor filtres de page.
@@ -555,6 +555,18 @@ Par exemple, le filtre suivant exécute et définit toujours un résultat d’ac
 
 L'objet <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory> implémente l'objet <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. Par conséquent, une instance de `IFilterFactory` peut être utilisée comme instance de `IFilterMetadata` n’importe où dans le pipeline de filtres. Quan se prépare à appeler le filtre, il tente de le caster en `IFilterFactory`. Si ce cast réussit, la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> est appelée pour créer l’instance `IFilterMetadata` qui sera appelée. La conception est flexible, car il n’est pas nécessaire de définir explicitement le pipeline de filtres exact quand l’application démarre.
 
+`IFilterFactory.IsReusable`:
+
+* Est un indicateur par la fabrique que l’instance de filtre créée par la fabrique peut être réutilisée en dehors de la portée de la demande dans laquelle elle a été créée.
+* ***Not** _ doit être utilisé avec un filtre qui dépend de services dont la durée de vie n’est pas le singleton.
+
+Le runtime ASP.NET Core ne garantit pas :
+
+_ Qu’une seule instance du filtre sera créée.
+* Le filtre ne sera pas demandé à nouveau à partir du conteneur d’injection de dépendance à un stade ultérieur.
+
+[!WARNING] Configurez uniquement `IFilterFactory.IsReusable` pour retourner la valeur `true` si la source des filtres n’est pas ambiguë, si les filtres sont sans État et peuvent être utilisés en toute sécurité sur plusieurs requêtes http. Par exemple, ne retournent pas de filtres de DI qui sont enregistrés comme étendus ou transitoires si `IFilterFactory.IsReusable` retourne `true`
+
 Une autre approche pour la création de filtres est d’implémenter `IFilterFactory` à l’aide des implémentations d’attribut personnalisé :
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]
@@ -638,7 +650,7 @@ Ce document s’applique aux Razor pages, aux contrôleurs d’API et aux contr�
 
 ## <a name="how-filters-work"></a>Fonctionnement des filtres
 
-Les filtres s’exécutent dans le *pipeline des appels d’action ASP.NET Core* , parfois appelé *pipeline de filtres* .  Le pipeline de filtres s’exécute après la sélection par ASP.NET Core de l’action à exécuter.
+Les filtres s’exécutent dans le *pipeline des appels d’action ASP.NET Core*, parfois appelé *pipeline de filtres*.  Le pipeline de filtres s’exécute après la sélection par ASP.NET Core de l’action à exécuter.
 
 ![La requête est traitée via un autre intergiciel, un intergiciel de routage, une sélection d’action et le pipeline d’appels d’action ASP.NET Core. Le traitement de la requête se poursuit via une sélection d’action, un intergiciel de routage et différents autres intergiciels avant de devenir une réponse envoyée au client.](filters/_static/filter-pipeline-1.png)
 
@@ -723,9 +735,9 @@ Le code précédent ajoute trois filtres globalement à l’aide de la collectio
 
 ### <a name="default-order-of-execution"></a>Ordre d’exécution par défaut
 
-Lorsqu’il existe plusieurs filtres *du même type* , l’étendue détermine l’ordre par défaut de l’exécution du filtre.  Filtres globaux-filtres de classe surround. Les filtres de classe entourent les filtres de méthode.
+Lorsqu’il existe plusieurs filtres *du même type*, l’étendue détermine l’ordre par défaut de l’exécution du filtre.  Filtres globaux-filtres de classe surround. Les filtres de classe entourent les filtres de méthode.
 
-En raison de l’imbrication de filtres, le code *après* des filtres s’exécute dans l’ordre inverse du code *avant* . La séquence de filtre :
+En raison de l’imbrication de filtres, le code *après* des filtres s’exécute dans l’ordre inverse du code *avant*. La séquence de filtre :
 
 * Le code *avant* des filtres globaux.
   * Le code *avant* des filtres du contrôleur.

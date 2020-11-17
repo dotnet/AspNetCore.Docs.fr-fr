@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 2efed6b76228227f032482346a36f528b3448de2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 833114a12c8c1ac67097b3592cf410d7a69bb628
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053564"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94673976"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>Authentification et autorisation dans gRPC pour ASP.NET Core
 
@@ -76,7 +76,7 @@ Le client peut fournir un jeton d’accès pour l’authentification. Le serveur
 
 Sur le serveur, l’authentification du jeton du porteur est configurée à l’aide de l’intergiciel (middleware) du [porteur JWT](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).
 
-Dans le client .NET gRPC, le jeton peut être envoyé avec des appels comme un en-tête :
+Dans le client .NET gRPC, le jeton peut être envoyé avec des appels à l’aide de la `Metadata` collection. Les entrées de la `Metadata` collection sont envoyées avec un appel gRPC en tant qu’en-têtes http :
 
 ```csharp
 public bool DoAuthenticatedCall(
@@ -92,7 +92,9 @@ public bool DoAuthenticatedCall(
 }
 ```
 
-La configuration `ChannelCredentials` sur un canal est une autre façon d’envoyer le jeton au service avec des appels gRPC. Les informations d’identification sont exécutées chaque fois qu’un appel gRPC est effectué, ce qui évite d’avoir à écrire du code à plusieurs endroits pour passer le jeton vous-même.
+La configuration `ChannelCredentials` sur un canal est une autre façon d’envoyer le jeton au service avec des appels gRPC. Un `ChannelCredentials` peut inclure `CallCredentials` , qui fournit un moyen de définir automatiquement `Metadata` .
+
+`CallCredentials` est exécuté à chaque fois qu’un appel gRPC est effectué, ce qui évite d’avoir à écrire du code à plusieurs endroits pour passer le jeton vous-même. Notez que ne s' `CallCredentials` appliquent que si le canal est sécurisé avec TLS. `CallCredentials` ne sont pas appliquées sur les canaux non TLS non sécurisés.
 
 Les informations d’identification dans l’exemple suivant configure le canal pour envoyer le jeton avec chaque appel gRPC :
 

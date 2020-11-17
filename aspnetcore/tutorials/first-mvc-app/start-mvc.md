@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 1c703cdbd168c2e83d09c40f7740689df8938dad
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: c96e7107c85bf36f55f6571c71c20d09bc94ddb3
+ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422784"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94688499"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Bien démarrer avec ASP.NET Core MVC
 
@@ -75,7 +75,7 @@ L’application gère une base de données de titres de films. Vous allez appren
     1. **ASP.net Core application Web (Model-View-Controller)**.
     1. **Créer**
 
-![Créer une application Web de ASP.NET Core ](start-mvc/_static/5/mvc.png)
+![Créer une application Web de ASP.NET Core ](start-mvc/_static/mvcVS19v16.9.png)
 
 Pour obtenir d’autres approches de création du projet, consultez [créer un projet dans Visual Studio](/visualstudio/ide/create-new-project).
 
@@ -112,11 +112,11 @@ Ce didacticiel part du principe que vous êtes familiarisé avec VS Code. Pour p
 * Dans la boîte de dialogue **configurer votre nouvelle application Web** :
 
   * Vérifiez que **l’authentification** est définie sur **aucune authentification**.
-  * Si vous avez présenté une option permettant de sélectionner un **Framework cible** , sélectionnez la version la plus récente de 5. x.
+  * Si vous avez présenté une option permettant de sélectionner un **Framework cible**, sélectionnez la version la plus récente de 5. x.
 
   Sélectionnez **Suivant**.
 
-* Nommez le projet **MvcMovie** , puis sélectionnez **Créer**.
+* Nommez le projet **MvcMovie**, puis sélectionnez **Créer**.
 
   ![macOS nom du projet](start-mvc/_static/MvcMovie.png)
 
@@ -142,7 +142,7 @@ Sélectionnez **Ctrl-F5** pour exécuter l'application en mode non-débogage.
 
   L’image suivante montre l’application :
 
-  ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)
+  ![Page d’accueil ou d’index](start-mvc/_static/home50-vs.png)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -154,7 +154,7 @@ Appuyez sur Ctrl+F5 pour exécuter sans le débogueur.
 
   Si vous lancez l’application avec Ctrl+F5 (mode sans débogage), vous pouvez apporter des modifications au code, enregistrer le fichier, actualiser le navigateur et examiner les modifications apportées au code. De nombreux développeurs préfèrent utiliser le mode sans débogage pour actualiser les modifications des pages et des vues.
 
-  ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)
+  ![Page d’accueil ou d’index](start-mvc/_static/home50-port5001.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
@@ -224,11 +224,11 @@ L’application gère une base de données de titres de films. Vous allez appren
 
 ![Nouvelle application web ASP.NET Core](start-mvc/_static/np_2.1.png)
 
-* Nommez le projet **MvcMovie** , puis sélectionnez **Créer**. Il est important de nommer le projet **MvcMovie** pour que l’espace de noms corresponde quand vous copiez du code.
+* Nommez le projet **MvcMovie**, puis sélectionnez **Créer**. Il est important de nommer le projet **MvcMovie** pour que l’espace de noms corresponde quand vous copiez du code.
 
   ![Nouvelle application web ASP.NET Core](start-mvc/_static/config.png)
 
-* Sélectionnez **application Web (Model-View-Controller)**. Dans les zones de liste déroulante, sélectionnez **.net Core** et **ASP.net Core 3,1** , puis sélectionnez **créer**.
+* Sélectionnez **application Web (Model-View-Controller)**. Dans les zones de liste déroulante, sélectionnez **.net Core** et **ASP.net Core 3,1**, puis sélectionnez **créer**.
 
 ![Boîte de dialogue Nouveau projet, .NET Core dans le volet gauche, web ASP.NET Core ](start-mvc/_static/new_project30.png)
 
@@ -265,11 +265,11 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 * Dans la boîte de dialogue **configurer votre nouvelle application Web** :
 
   * Vérifiez que **l’authentification** est définie sur **aucune authentification**.
-  * Si vous avez présenté une option permettant de sélectionner un **Framework cible** , sélectionnez la version la plus récente de 3. x.
+  * Si vous avez présenté une option permettant de sélectionner un **Framework cible**, sélectionnez la version la plus récente de 3. x.
 
   Sélectionnez **Suivant**.
 
-* Nommez le projet **MvcMovie** , puis sélectionnez **Créer**.
+* Nommez le projet **MvcMovie**, puis sélectionnez **Créer**.
 
   ![macOS nom du projet](start-mvc/_static/MvcMovie.png)
 
@@ -372,16 +372,16 @@ L’application gère une base de données de titres de films. Vous allez appren
 
 * Dans Visual Studio, sélectionnez **Créer un projet**.
 
-* Sélectionnez **Application web ASP.NET Core** , puis **Suivant**.
+* Sélectionnez **Application web ASP.NET Core**, puis **Suivant**.
 
 ![Nouvelle application web ASP.NET Core](start-mvc/_static/np_2.1.png)
 
-* Nommez le projet **MvcMovie** , puis sélectionnez **Créer**. Il est important de nommer le projet **MvcMovie** pour que l’espace de noms corresponde quand vous copiez du code.
+* Nommez le projet **MvcMovie**, puis sélectionnez **Créer**. Il est important de nommer le projet **MvcMovie** pour que l’espace de noms corresponde quand vous copiez du code.
 
   ![Nouvelle application web ASP.NET Core](start-mvc/_static/config.png)
 
 
-* Sélectionnez **Application web (modèle-vue-contrôleur)** , puis **Créer**.
+* Sélectionnez **Application web (modèle-vue-contrôleur)**, puis **Créer**.
 
 ![Boîte de dialogue Nouveau projet, .NET Core dans le volet gauche, web ASP.NET Core ](start-mvc/_static/new_project22-21.png)
 
@@ -416,11 +416,11 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 * Dans la boîte de dialogue **configurer votre nouvelle application Web** :
 
   * Vérifiez que **l’authentification** est définie sur **aucune authentification**.
-  * Si vous avez présenté une option permettant de sélectionner un **Framework cible** , sélectionnez la version la plus récente de 2. x.
+  * Si vous avez présenté une option permettant de sélectionner un **Framework cible**, sélectionnez la version la plus récente de 2. x.
 
   Sélectionnez **Suivant**.
 
-* Nommez le projet **MvcMovie** , puis sélectionnez **Créer**.
+* Nommez le projet **MvcMovie**, puis sélectionnez **Créer**.
 
 ---
 

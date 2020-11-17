@@ -3,7 +3,7 @@ title: 'Partie 2 : ajouter un contrôleur à une application ASP.NET Core MVC'
 author: rick-anderson
 description: Partie 2 de la série de didacticiels sur ASP.NET Core MVC.
 ms.author: riande
-ms.date: 08/05/2017
+ms.date: 11/12/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 1851a61441ed351442f86939022319ad59d10006
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: e51edc15b14a5bdd1d53e547e0b469ad608f46d0
+ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422617"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94688406"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Partie 2 : ajouter un contrôleur à une application ASP.NET Core MVC
 
@@ -46,24 +46,24 @@ Nous présentons ces concepts dans cette série de didacticiels et nous vous mon
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans le **Explorateur de solutions** , cliquez avec le bouton droit sur **contrôleurs > ajouter > contrôleur** 
-   ![ Explorateur de solutions, cliquez avec le bouton droit sur contrôleurs > ajouter un contrôleur de >](~/tutorials/first-mvc-app/adding-controller/_static/add_controllerCopy.png)
+* Dans le **Explorateur de solutions**, cliquez avec le bouton droit sur **contrôleurs > ajouter > contrôleur** 
+   ![ Explorateur de solutions, cliquez avec le bouton droit sur contrôleurs > ajouter un contrôleur de >](~/tutorials/first-mvc-app/adding-controller/_static/add_controllercopyVS19v16.9.png)
 
-* Dans la boîte de dialogue **Ajouter un modèle automatique** , sélectionnez **Contrôleur MVC - vide**
+* Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Contrôleur MVC - vide**
 
-  ![Ajouter un contrôleur MVC et le nommer](~/tutorials/first-mvc-app/adding-controller/_static/acCopy.png)
+  ![Ajouter un contrôleur MVC et le nommer](~/tutorials/first-mvc-app/adding-controller/_static/acCopyVS19v16.9.png)
 
-* Dans la **boîte de dialogue Ajouter un contrôleur MVC vide** , entrez **HelloWorldController** et sélectionnez **AJOUTER**.
+* Dans la **boîte de dialogue Ajouter un nouvel élément-MvcMovie**, entrez **HelloWorldController.cs** , puis sélectionnez **Ajouter**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Sélectionnez l’icône **EXPLORATEUR** et cliquez en maintenant enfoncée la touche Ctrl (ou cliquez avec le bouton droit) sur **Contrôleurs > Nouveau fichier** et nommez le nouveau fichier *HelloWorldController.cs*.
 
-  ![Menu contextuel](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
+  ![Menu contextuel](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_fileVSC1.51.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-Dans **l’Explorateur de solutions** , cliquez avec le bouton droit sur **Contrôleurs > Ajouter > Nouveau fichier**.
+Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur **Contrôleurs > Ajouter > Nouveau fichier**.
 ![Menu contextuel](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
 Sélectionnez **ASP.net Core** et **classe de contrôleur**.
@@ -160,14 +160,14 @@ Nous présentons ces concepts dans cette série de didacticiels et nous vous mon
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans **Explorateur de solutions** , cliquez avec le bouton droit sur **contrôleurs >** 
+* Dans **Explorateur de solutions**, cliquez avec le bouton droit sur **contrôleurs >** 
    ![ menu contextuel ajouter un contrôleur de >](~/tutorials/first-mvc-app/adding-controller/_static/add_controller.png)
 
-* Dans la boîte de dialogue **Ajouter un modèle automatique** , sélectionnez **Contrôleur MVC - vide**
+* Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Contrôleur MVC - vide**
 
   ![Ajouter un contrôleur MVC et le nommer](~/tutorials/first-mvc-app/adding-controller/_static/ac.png)
 
-* Dans la **boîte de dialogue Ajouter un contrôleur MVC vide** , entrez **HelloWorldController** et sélectionnez **AJOUTER**.
+* Dans la **boîte de dialogue Ajouter un contrôleur MVC vide**, entrez **HelloWorldController** et sélectionnez **AJOUTER**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -177,7 +177,7 @@ Sélectionnez l’icône **EXPLORATEUR** et cliquez en maintenant enfoncée la t
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-Dans **l’Explorateur de solutions** , cliquez avec le bouton droit sur **Contrôleurs > Ajouter > Nouveau fichier**.
+Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur **Contrôleurs > Ajouter > Nouveau fichier**.
 ![Menu contextuel](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
 Sélectionnez **ASP.NET Core** et **Classe de contrôleur MVC**.

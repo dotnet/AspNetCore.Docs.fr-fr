@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: 6f826416e3045df32abf41e94e667120e71ae717
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f1aa388015bd540a6fda263eac53753ada63bf79
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051614"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94673989"
 ---
 # <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>Utiliser des SameSite cookie dans ASP.net Core
 
@@ -101,7 +101,7 @@ La valeur SameSite par défaut pour l’authentification par formulaire et l’�
 
 Tous les composants ASP.NET Core qui émettent des cookie s remplacent les valeurs par défaut précédentes par les paramètres appropriés pour leurs scénarios. Les valeurs par défaut substituées ne sont pas modifiées.
 
-| Composant | cookie | Default |
+| Composant | cookie | Par défaut |
 | ------------- | ------------- |
 | <xref:Microsoft.AspNetCore.Http.CookieBuilder> | <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite> | `Unspecified` |
 | <xref:Microsoft.AspNetCore.Http.HttpContext.Session>  | [SessionOptions.Cookie](xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie) |`Lax` |
@@ -166,7 +166,7 @@ Dans `Startup.Configure` , ajoutez le code qui appelle <xref:Microsoft.AspNetCor
 
 Dans `Startup.ConfigureServices` , ajoutez un code similaire à ce qui suit :
 
-::: moniker range="= aspnetcore-3.1"
+::: moniker range=">= aspnetcore-3.1"
 
 [!code-csharp[](samesite/sample/Startup31.cs?name=snippet)]
 
@@ -202,7 +202,7 @@ Testez les applications Web à l’aide d’une version du client qui peut s’a
 
 ### <a name="test-with-chrome"></a>Tester avec chrome
 
-Chrome 78 + donne des résultats trompeurs, car une atténuation temporaire est en place. Le chrome 78 + atténuation temporaire autorise les cookie savesets de moins de deux minutes. Le chrome 76 ou 77 avec les indicateurs de test appropriés activés fournit des résultats plus précis. Pour tester le nouveau comportement de SameSite, basculez `chrome://flags/#same-site-by-default-cookies` vers **activé** . Les anciennes versions de chrome (75 et versions antérieures) sont signalées pour échouer avec le nouveau `None` paramètre. Consultez [prise en charge des navigateurs plus anciens](#sob) dans ce document.
+Chrome 78 + donne des résultats trompeurs, car une atténuation temporaire est en place. Le chrome 78 + atténuation temporaire autorise les cookie savesets de moins de deux minutes. Le chrome 76 ou 77 avec les indicateurs de test appropriés activés fournit des résultats plus précis. Pour tester le nouveau comportement de SameSite, basculez `chrome://flags/#same-site-by-default-cookies` vers **activé**. Les anciennes versions de chrome (75 et versions antérieures) sont signalées pour échouer avec le nouveau `None` paramètre. Consultez [prise en charge des navigateurs plus anciens](#sob) dans ce document.
 
 Google ne rend pas les versions de chrome plus anciennes disponibles. Suivez les instructions de [Télécharger chrome](https://www.chromium.org/getting-involved/download-chromium) pour tester les anciennes versions de chrome. Ne téléchargez **pas** chrome à partir des liens fournis en recherchant les anciennes versions de chrome.
 
