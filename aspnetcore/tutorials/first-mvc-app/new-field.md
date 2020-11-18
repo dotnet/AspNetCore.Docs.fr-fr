@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 84e344aabc9171020c0117d55eaf1a95e6b768db
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: ce119d79bc96f01803b63c715332ec3d287473ff
+ms.sourcegitcommit: df808efa68574dd674f1985aa9d03f4f5fab883f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422533"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94851180"
 ---
 # <a name="part-8-add-a-new-field-to-an-aspnet-core-mvc-app"></a>Partie 8, ajouter un nouveau champ à une application ASP.NET Core MVC
 
@@ -63,7 +63,7 @@ Commande ⌘ + B
 
 ------
 
-Étant donné que vous avez ajouté un nouveau champ à la `Movie` classe, vous devez mettre à jour la liste des liaisons de propriétés pour inclure cette nouvelle propriété. Dans *MoviesController.cs* , mettez à jour l’attribut `[Bind]` des méthodes d’action `Create` et `Edit` pour y inclure la propriété `Rating` :
+Étant donné que vous avez ajouté un nouveau champ à la `Movie` classe, vous devez mettre à jour la liste des liaisons de propriétés pour inclure cette nouvelle propriété. Dans *MoviesController.cs*, mettez à jour l’attribut `[Bind]` des méthodes d’action `Create` et `Edit` pour y inclure la propriété `Rating` :
 
 ```csharp
 [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")]
@@ -75,13 +75,13 @@ Ouvrez le fichier */Views/Movies/Index.cshtml* et ajoutez un champ `Rating` :
 
 ::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
 
-[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-64)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-63)]
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie5/Views/Movies/Index.cshtml?highlight=28-49&range=12-51)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie5/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-63)]
 
 ::: moniker-end
 
@@ -123,7 +123,7 @@ Pour ce didacticiel, les migrations Code First sont utilisées.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
 
   ![Menu Console du Gestionnaire de package](adding-model/_static/pmc.png)
 
