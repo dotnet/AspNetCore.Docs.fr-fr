@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: e473da9a7cbd91a601ad4af0c7c02c7f576f348c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: aa109aaa89003fd7566e7dc219ecc9799b077355
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051120"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703668"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer le protocole HTTPs en ASP.NET Core
 
@@ -136,7 +136,7 @@ Spécifiez le port HTTPs à l’aide de l’une des approches suivantes :
 
 ::: moniker-end
 
-* Dans développement, définissez une URL HTTPs dans *launchsettings.js* . Activez le protocole HTTPs lorsque IIS Express est utilisé.
+* Dans développement, définissez une URL HTTPs dans *launchsettings.js*. Activez le protocole HTTPs lorsque IIS Express est utilisé.
 
 * Configurez un point de terminaison d’URL HTTPs pour un déploiement de périphérie public d’un serveur [Kestrel](xref:fundamentals/servers/kestrel) ou d’un serveur [HTTP.sys](xref:fundamentals/servers/httpsys) . **Un seul port HTTPS** est utilisé par l’application. L’intergiciel Découvre le port via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> .
 
@@ -193,7 +193,7 @@ Par défaut, l’intergiciel envoie un [Status307TemporaryRedirect](/dotnet/api/
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Lors de la configuration des services dans *Startup.cs* :
+Lors de la configuration des services dans *Startup.cs*:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -214,7 +214,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range="<= aspnetcore-2.2"
 
-Lors de la configuration des services dans *Startup.cs* :
+Lors de la configuration des services dans *Startup.cs*:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -306,7 +306,7 @@ Dans certains scénarios de service backend où la sécurité de connexion est g
 
 Pour désactiver HTTPs/HSTS :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 Désactivez la case à cocher **configurer pour HTTPS** .
 
@@ -413,7 +413,7 @@ Les commandes précédentes résolvent la plupart des problèmes d’approbation
 ### <a name="docker---certificate-not-trusted"></a>Dockr-certificat non approuvé
 
 * Supprimez le dossier *C:\Users \{ User} \AppData\Roaming\ASP.NET\Https* .
-* Nettoyez la solution. Supprimez les dossiers *bin* et *obj* .
+* Nettoyez la solution. Supprimez les dossiers *bin* et *obj*.
 * Redémarrez l’outil de développement. Par exemple, Visual Studio, Visual Studio Code ou Visual Studio pour Mac.
 
 ### <a name="windows---certificate-not-trusted"></a>Windows-certificat non approuvé
@@ -450,6 +450,20 @@ Consultez [erreur HTTPS à l’aide de IIS Express (dotnet/AspNetCore #16892)](h
 ### <a name="iis-express-ssl-certificate-used-with-visual-studio"></a>IIS Express certificat SSL utilisé avec Visual Studio
 
 Pour résoudre les problèmes liés au certificat de IIS Express, sélectionnez **réparer** dans le programme d’installation de Visual Studio. Pour plus d’informations, consultez [ce problème GitHub](https://github.com/dotnet/aspnetcore/issues/16892).
+
+<a name="trust-ff"></a>
+
+### <a name="firefox-sec_error_inadequate_key_usage-certificate-error"></a>Erreur de certificat de SEC_ERROR_INADEQUATE_KEY_USAGE Firefox
+
+Le navigateur Firefox utilise son propre magasin de certificats. par conséquent, il n’approuve pas les certificats de développeur [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) ou [Kestrel](xref:fundamentals/servers/kestrel) .
+
+Pour utiliser Firefox avec IIS Express ou Kestrel, définissez  `security.enterprise_roots.enabled` = `true`
+
+1. Entrez `about:config` dans le navigateur Firefox.
+1. Sélectionnez **accepter le risque et continuer** si vous acceptez le risque.
+1. Sélectionner **Afficher tout**
+1. Définie `security.enterprise_roots.enabled` = `true`
+1. Quitter et redémarrer Firefox
 
 ## <a name="additional-information"></a>Informations supplémentaires
 

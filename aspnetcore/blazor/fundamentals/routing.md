@@ -5,7 +5,7 @@ description: Découvrez comment acheminer des requêtes dans des applications et
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/02/2020
+ms.date: 11/17/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 585b697aedf31bce2305df0ec5f84824c4019156
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: c4da8bf8447618c9a7a2d0f690164fe48a7ed006
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637689"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703694"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Routage de ASP.NET Core Blazor
 
@@ -159,6 +159,15 @@ Les paramètres facultatifs ne sont pas pris en charge. Deux `@page` directives 
 
 ::: moniker-end
 
+Utilisez sur [`OnParametersSet`](xref:blazor/components/lifecycle#after-parameters-are-set) au lieu de [`OnInitialized`](xref:blazor/components/lifecycle#component-initialization-methods) pour autoriser la navigation de l’application vers le même composant avec une valeur de paramètre facultative différente. En fonction de l’exemple précédent, utilisez `OnParametersSet` lorsque l’utilisateur doit pouvoir naviguer de `/RouteParameter` vers `/RouteParameter/awesome` ou de `/RouteParameter/awesome` vers `/RouteParameter` :
+
+```csharp
+protected override void OnParametersSet()
+{
+    Text = Text ?? "fantastic";
+}
+```
+
 ## <a name="route-constraints"></a>Contraintes d’itinéraire
 
 Une contrainte d’itinéraire applique la correspondance de type sur un segment de routage à un composant.
@@ -172,16 +181,16 @@ Dans l’exemple suivant, l’itinéraire vers le `Users` composant correspond u
 
 Les contraintes de routage indiquées dans le tableau suivant sont disponibles. Pour plus d’informations sur les contraintes d’itinéraire qui correspondent à la culture dite indifférente, consultez l’avertissement sous le tableau.
 
-| Contrainte | Exemple           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
+| Contrainte |  Exemple           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
-| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | No                               |
-| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Yes                              |
-| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Yes                              |
-| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Yes                              |
-| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Yes                              |
-| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | No                               |
-| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Yes                              |
-| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Yes                              |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Non                               |
+| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Oui                              |
+| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Oui                              |
+| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Oui                              |
+| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Oui                              |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Non                               |
+| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Oui                              |
+| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Oui                              |
 
 > [!WARNING]
 > Les contraintes de routage qui vérifient que l’URL peut être convertie en type CLR (comme `int` ou <xref:System.DateTime>) utilisent toujours la culture invariant. ces contraintes partent du principe que l’URL n’est pas localisable.
@@ -264,7 +273,7 @@ Le `NavMenu` composant suivant crée une [`Bootstrap`](https://getbootstrap.com/
 Il existe deux <xref:Microsoft.AspNetCore.Components.Routing.NavLinkMatch> options que vous pouvez assigner à l' `Match` attribut de l' `<NavLink>` élément :
 
 * <xref:Microsoft.AspNetCore.Components.Routing.NavLinkMatch.All?displayProperty=nameWithType>: Le <xref:Microsoft.AspNetCore.Components.Routing.NavLink> est actif lorsqu’il correspond à la totalité de l’URL actuelle.
-* <xref:Microsoft.AspNetCore.Components.Routing.NavLinkMatch.Prefix?displayProperty=nameWithType> ( *valeur par défaut* ) : le <xref:Microsoft.AspNetCore.Components.Routing.NavLink> est actif lorsqu’il correspond à n’importe quel préfixe de l’URL actuelle.
+* <xref:Microsoft.AspNetCore.Components.Routing.NavLinkMatch.Prefix?displayProperty=nameWithType> (*valeur par défaut*) : le <xref:Microsoft.AspNetCore.Components.Routing.NavLink> est actif lorsqu’il correspond à n’importe quel préfixe de l’URL actuelle.
 
 Dans l’exemple précédent, la page <xref:Microsoft.AspNetCore.Components.Routing.NavLink> `href=""` d’hébergement correspond à l’URL de base et reçoit uniquement la `active` classe CSS à l’URL du chemin de base par défaut de l’application (par exemple, `https://localhost:5001/` ). Le deuxième <xref:Microsoft.AspNetCore.Components.Routing.NavLink> reçoit la `active` classe lorsque l’utilisateur visite une URL avec un `MyComponent` préfixe (par exemple, `https://localhost:5001/MyComponent` et `https://localhost:5001/MyComponent/AnotherSegment` ).
 

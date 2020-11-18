@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 4a80e3e82a18e0066c7628c8f40401155538e32b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c32c5befe0be3b1ad4bd87649d3cc74b0296a134
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061195"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703707"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Didacticiel : appeler une API Web ASP.NET Core avec JavaScript
 
@@ -52,7 +52,7 @@ La `fetch` fonction retourne un [Promise](https://developer.mozilla.org/docs/Web
 
 L'appel `fetch` le plus simple accepte un seul paramètre représentant l’itinéraire. Un deuxième paramètre, connu sous le nom d’objet `init`, est facultatif. `init` est utilisé pour configurer la requête HTTP.
 
-1. Configurez l’application pour [traiter les fichiers statiques](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) et [activer le mappage de fichiers par défaut](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_). Le code en surbrillance suivant est nécessaire dans la méthode `Configure` de *Startup.cs*  :
+1. Configurez l’application pour [traiter les fichiers statiques](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) et [activer le mappage de fichiers par défaut](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_). Le code en surbrillance suivant est nécessaire dans la méthode `Configure` de *Startup.cs* :
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 
@@ -64,24 +64,28 @@ L'appel `fetch` le plus simple accepte un seul paramètre représentant l’itin
 
     [!code-html[](first-web-api/samples/3.0/TodoApi/wwwroot/index.html)]
 
+1. Ajoutez un fichier CSS nommé *site. CSS* au dossier *wwwroot/CSS* . Remplacez le contenu de *site. CSS* par les styles suivants :
+
+    [!code-css[](first-web-api/samples/3.0/TodoApi/wwwroot/css/site.css)]
+
 1. Ajoutez un fichier JavaScript nommé *site.js* dans le dossier *wwwroot/js* . Remplacez le contenu de *site.js* par le code suivant :
 
     [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_SiteJs)]
 
 Vous devrez peut-être changer les paramètres de lancement du projet ASP.NET Core pour tester la page HTML localement :
 
-1. Ouvrez *Properties\launchSettings.json* .
+1. Ouvrez *Properties\launchSettings.json*.
 1. Supprimez la `launchUrl` propriété pour forcer l’ouverture de l’application à *index.html* &mdash; fichier par défaut du projet.
 
 Cet exemple appelle toutes les méthodes CRUD de l’API web. Les explications suivantes traitent des demandes de l’API web.
 
 ### <a name="get-a-list-of-to-do-items"></a>Obtenir une liste de tâches
 
-Dans le code suivant, une requête HTTP GET est envoyée à l'itinéraire *api/TodoItems*  :
+Dans le code suivant, une requête HTTP GET est envoyée à l'itinéraire *api/TodoItems* :
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_GetItems)]
 
-Quand l’API web retourne un code d’état de réussite, la fonction `_displayItems` est appelée. Chaque élément de tâche du paramètre de tableau accepté par `_displayItems` est ajouté à une table avec les boutons **Modifier** et **Supprimer** . Si la demande de l’API Web échoue, une erreur est consignée dans la console du navigateur.
+Quand l’API web retourne un code d’état de réussite, la fonction `_displayItems` est appelée. Chaque élément de tâche du paramètre de tableau accepté par `_displayItems` est ajouté à une table avec les boutons **Modifier** et **Supprimer**. Si la demande de l’API Web échoue, une erreur est consignée dans la console du navigateur.
 
 ### <a name="add-a-to-do-item"></a>Ajouter une tâche
 
@@ -92,7 +96,7 @@ Dans le code suivant :
   * `method`&mdash; spécifie le verbe d’action POST HTTP.
   * `body`&mdash; spécifie la représentation JSON du corps de la demande. Le JSON est généré en passant le littéral d’objet stocké dans `item` à la fonction [JSON. stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
   * `headers`&mdash; spécifie les en-têtes de requête HTTP `Accept` et `Content-Type`. Les deux en-têtes sont définies sur `application/json` pour spécifier le type de média respectivement reçu et envoyé.
-* Une requête HTTP POST est envoyée à l’itinéraire *api/TodoItems* .
+* Une requête HTTP POST est envoyée à l’itinéraire *api/TodoItems*.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]
 
@@ -102,7 +106,7 @@ Quand l’API web retourne un code d’état de réussite, la fonction `getItems
 
 La mise à jour d’un élément de tâche est semblable à l’ajout d’un élément. Toutefois, il y a deux différences importantes :
 
-* L’itinéraire est suivi de l’identificateur unique de l’élément à mettre à jour. Par exemple, *api/TodoItems/1* .
+* L’itinéraire est suivi de l’identificateur unique de l’élément à mettre à jour. Par exemple, *api/TodoItems/1*.
 * Le verbe d’action HTTP est PUT, comme indiqué par l’option `method`.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_UpdateItem)]
