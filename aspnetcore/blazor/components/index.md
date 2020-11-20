@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d8838a458943599890420adec4551ad87e43d328
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: cc4604f7f67a6648c96e099572ff27bfed838916
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637702"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981867"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Créer et utiliser des Razor composants ASP.net Core
 
@@ -53,7 +53,7 @@ Le nom d’un composant doit commencer par un caractère majuscule. Par exemple,
 
 ### <a name="routing"></a>Routage
 
-Le routage dans Blazor est effectué en fournissant un modèle de routage à chaque composant accessible dans l’application. Lorsqu’un Razor fichier avec une [`@page`][9] directive est compilé, la classe générée reçoit un <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> qui spécifie le modèle de routage. Lors de l’exécution, le routeur recherche les classes de composant avec un <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> et rend le composant qui a un modèle de routage correspondant à l’URL demandée. Pour plus d'informations, consultez <xref:blazor/fundamentals/routing>.
+Le routage dans Blazor est effectué en fournissant un modèle de routage à chaque composant accessible dans l’application. Lorsqu’un Razor fichier avec une [`@page`][9] directive est compilé, la classe générée reçoit un <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> qui spécifie le modèle de routage. Lors de l’exécution, le routeur recherche les classes de composant avec un <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> et rend le composant qui a un modèle de routage correspondant à l’URL demandée. Pour plus d’informations, consultez <xref:blazor/fundamentals/routing>.
 
 ```razor
 @page "/ParentComponent"
@@ -268,7 +268,7 @@ Pour plus d’informations sur les paramètres d’itinéraire Catch-All ( `{*pa
 
 ### <a name="component-parameters"></a>Paramètres de composant
 
-Les composants peuvent avoir des *paramètres de composant* , qui sont définis à l’aide de propriétés publiques sur la classe de composant avec l' [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) attribut. Utilisez des attributs pour spécifier des arguments pour un composant dans le balisage.
+Les composants peuvent avoir des *paramètres de composant*, qui sont définis à l’aide de propriétés publiques simples ou complexes sur la classe de composant avec l' [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) attribut. Utilisez des attributs pour spécifier des arguments pour un composant dans le balisage.
 
 `Components/ChildComponent.razor`:
 
@@ -286,10 +286,10 @@ Par Convention, une valeur d’attribut qui se compose de code C# est assignée 
 * Résultat d’une méthode : `Title="@{METHOD}"` , où l’espace réservé `{METHOD}` est une méthode C# du composant parent.
 * [Expression implicite ou explicite](xref:mvc/views/razor#implicit-razor-expressions): `Title="@({EXPRESSION})"` , où l’espace réservé `{EXPRESSION}` est une expression C#.
   
-Pour plus d'informations, consultez <xref:mvc/views/razor>.
+Pour plus d’informations, consultez <xref:mvc/views/razor>.
 
 > [!WARNING]
-> Ne créez pas de composants qui écrivent dans leurs propres *paramètres de composant* , utilisez un champ privé à la place. Pour plus d’informations, consultez la section [paramètres remplacés](#overwritten-parameters) .
+> Ne créez pas de composants qui écrivent dans leurs propres *paramètres de composant*, utilisez un champ privé à la place. Pour plus d’informations, consultez la section [paramètres remplacés](#overwritten-parameters) .
 
 ## <a name="child-content"></a>Contenu enfant
 
@@ -794,7 +794,7 @@ Si `IsCompleted` est `false` , la case à cocher s’affiche comme suit :
 <input type="checkbox" />
 ```
 
-Pour plus d'informations, consultez <xref:mvc/views/razor>.
+Pour plus d’informations, consultez <xref:mvc/views/razor>.
 
 > [!WARNING]
 > Certains attributs HTML, tels que [`aria-pressed`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons) , ne fonctionnent pas correctement quand le type .net est un `bool` . Dans ce cas, utilisez un `string` type au lieu d’un `bool` .

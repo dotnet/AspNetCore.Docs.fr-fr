@@ -19,22 +19,25 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 680b44a705b66be0aab824487119cdb118b44d0f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ded70f028b3021574ba260838837d9b23abd72f1
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055306"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981880"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Groupes Azure Active Directory (AAD), rôles d’administrateur et rôles définis par l’utilisateur
 
 Par [Luke Latham](https://github.com/guardrex) et [Javier Calvarro Nelson](https://github.com/javiercn)
 
+> [!NOTE]
+> Cet article s’applique à Blazor ASP.net Core Apps version 3,1 avec Microsoft Identity v 1.0 et est prévu pour la mise à jour de 5,0 avec Identity v 2.0. Pour plus d’informations, voir [ Blazor WASM with AAD/B2C Groups and Roles (dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683).
+
 Azure Active Directory (AAD) fournit plusieurs approches d’autorisation qui peuvent être combinées avec ASP.NET Core Identity :
 
 * Groupes définis par l’utilisateur
   * Sécurité
-  * Microsoft 365
+  * Microsoft 365
   * Distribution
 * Rôles
   * Rôles d’administrateur AAD
@@ -515,7 +518,7 @@ L’appel à API Graph par l’application API serveur nécessite uniquement une
 
 ### <a name="azure-configuration"></a>Configuration Azure
 
-* Vérifiez que l’inscription de l’application *serveur* est donnée à l' **application** (non **déléguée** ) API Graph pour `Directory.Read.All` , qui est le niveau d’accès le moins privilégié pour les groupes de sécurité. Confirmez que le consentement de l’administrateur est appliqué à l’étendue après avoir effectué l’attribution de l’étendue.
+* Vérifiez que l’inscription de l’application *serveur* est donnée à l' **application** (non **déléguée**) API Graph pour `Directory.Read.All` , qui est le niveau d’accès le moins privilégié pour les groupes de sécurité. Confirmez que le consentement de l’administrateur est appliqué à l’étendue après avoir effectué l’attribution de l’étendue.
 * Attribuez une nouvelle clé secrète client à l’application *serveur* . Notez le secret de la configuration de l’application dans la section paramètres de l' [application](#app-settings) .
 
 ### <a name="app-settings"></a>Paramètres de l’application
@@ -532,7 +535,7 @@ Dans le fichier de paramètres d’application ( `appsettings.json` ou `appsetti
 },
 ```
 
-Exemple :
+Par exemple :
 
 ```json
 "AzureAd": {
@@ -580,7 +583,7 @@ Exemple :
 > > [!NOTE]
 > > La configuration d’une en `Audience` général n’est **pas** obligatoire pour les applications avec un domaine d’éditeur vérifié qui a une `api://` étendue d’API basée sur.
 >
-> Pour plus d'informations, consultez <xref:blazor/security/webassembly/hosted-with-azure-active-directory#app-settings>.
+> Pour plus d’informations, consultez <xref:blazor/security/webassembly/hosted-with-azure-active-directory#app-settings>.
 
 ::: moniker-end
 
@@ -598,7 +601,7 @@ services.AddAuthorization(options =>
 });
 ```
 
-Pour plus d'informations, consultez <xref:security/authorization/policies>.
+Pour plus d’informations, consultez <xref:security/authorization/policies>.
 
 ### <a name="controller-access"></a>Accès du contrôleur
 

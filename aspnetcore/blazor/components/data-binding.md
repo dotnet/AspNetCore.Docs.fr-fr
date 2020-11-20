@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 004a15bf63c34144049a45f9d5fca8852fa36a3f
-ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
+ms.openlocfilehash: 7def253a0676e65f8f96209b3f3b7f7a700c4ebe
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94463819"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981906"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>BlazorLiaison de données ASP.net Core
 
@@ -91,7 +91,7 @@ La liaison d’attribut respecte la casse :
 
 Quand un utilisateur fournit une valeur non analysable à un élément DataBound, la valeur unanalysable est automatiquement rétablie à sa valeur précédente lorsque l’événement de liaison est déclenché.
 
-Considérez le scénario suivant :
+Examinez le cas suivant :
 
 * Un `<input>` élément est lié à un `int` type dont la valeur initiale est `123` :
 
@@ -111,7 +111,7 @@ Par défaut, la liaison s’applique à l’événement de l’élément `onchan
 
 * N’utilisez pas l' `oninput` événement. Utilisez l’événement par défaut `onchange` (spécifiez uniquement `@bind="{PROPERTY OR FIELD}"` ), où une valeur non valide n’est pas rétablie tant que l’élément n’a pas perdu le focus.
 * Effectuer une liaison à un type Nullable, tel que `int?` ou, `string` et fournir une logique personnalisée pour gérer les entrées non valides.
-* Utilisez un [composant de validation de formulaire](xref:blazor/forms-validation), tel que <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> ou <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> . Les composants de validation de formulaire offrent une prise en charge intégrée pour gérer les entrées non valides. Pour plus d'informations, consultez <xref:blazor/forms-validation>. Composants de validation de formulaire :
+* Utilisez un [composant de validation de formulaire](xref:blazor/forms-validation), tel que <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> ou <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> . Les composants de validation de formulaire offrent une prise en charge intégrée pour gérer les entrées non valides. Pour plus d’informations, consultez <xref:blazor/forms-validation>. Composants de validation de formulaire :
   * Permet à l’utilisateur de fournir une entrée non valide et de recevoir des erreurs de validation sur le associé <xref:Microsoft.AspNetCore.Components.Forms.EditContext> .
   * Affichez les erreurs de validation dans l’interface utilisateur sans interférer avec l’utilisateur qui saisit des données Webform supplémentaires.
 
@@ -146,7 +146,7 @@ La spécification d’un format pour le `date` type de champ n’est pas recomma
 
 Un scénario courant consiste à lier une propriété dans un composant enfant à une propriété dans son parent. Ce scénario est appelé *liaison chaînée* car plusieurs niveaux de liaison se produisent simultanément.
 
-Les paramètres de composant autorisent les propriétés de liaison et les champs d’un composant parent avec la `@bind-{PROPERTY OR FIELD}` syntaxe.
+Les [paramètres de composant](xref:blazor/components/index#component-parameters) autorisent les propriétés de liaison et les champs d’un composant parent avec la `@bind-{PROPERTY OR FIELD}` syntaxe.
 
 Les liaisons chaînées ne peuvent pas être implémentées avec [`@bind`](xref:mvc/views/razor#bind) la syntaxe dans le composant enfant. Un gestionnaire d’événements et une valeur doivent être spécifiés séparément pour prendre en charge la mise à jour de la propriété dans le parent à partir du composant enfant.
 
@@ -218,7 +218,7 @@ Dans un exemple plus sophistiqué et réaliste, le `PasswordField` composant sui
 
 * Définit `<input>` la valeur d’un élément sur `password` un champ.
 * Expose les modifications d’une `Password` propriété à un composant parent avec un [`EventCallback`](xref:blazor/components/event-handling#eventcallback) qui passe la valeur actuelle du champ de l’enfant `password` comme argument.
-* Utilise l' `onclick` événement pour déclencher la `ToggleShowPassword` méthode. Pour plus d'informations, consultez <xref:blazor/components/event-handling>.
+* Utilise l' `onclick` événement pour déclencher la `ToggleShowPassword` méthode. Pour plus d’informations, consultez <xref:blazor/components/event-handling>.
 
 ```razor
 <h1>Provide your password</h1>

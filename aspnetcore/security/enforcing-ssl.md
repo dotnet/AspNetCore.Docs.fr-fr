@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: aa109aaa89003fd7566e7dc219ecc9799b077355
-ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
+ms.openlocfilehash: 209d055f6205eceb9efb5434427c303345791809
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94703668"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981958"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer le protocole HTTPs en ASP.NET Core
 
@@ -464,6 +464,8 @@ Pour utiliser Firefox avec IIS Express ou Kestrel, définissez  `security.enterp
 1. Sélectionner **Afficher tout**
 1. Définie `security.enterprise_roots.enabled` = `true`
 1. Quitter et redémarrer Firefox
+
+Pour plus d’informations, consultez [Configuration des autorités de certification (ca) dans Firefox](https://support.mozilla.org/kb/setting-certificate-authorities-firefox).
 
 ## <a name="additional-information"></a>Informations supplémentaires
 

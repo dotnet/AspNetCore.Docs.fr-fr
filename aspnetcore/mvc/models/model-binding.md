@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: 49300d32096e577db9b13a0510cc310b91ddb51d
-ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
+ms.openlocfilehash: 4de34a75da932b41190caa8434ac5be8cc0710fd
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93365351"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981932"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -211,8 +211,8 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Décimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Enum](xref:System.ComponentModel.EnumConverter)
-* [GUID](xref:System.ComponentModel.GuidConverter)
+* [Variables](xref:System.ComponentModel.EnumConverter)
+* [Uniques](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Unique](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
@@ -280,7 +280,7 @@ Plusieurs attributs intégrés sont disponibles pour contrôler la liaison de mo
 * `[BindNever]`
 
 > [!WARNING]
-> Ces attributs affectent la liaison de modèle quand les données de formulaire postées représentent la source des valeurs. Ils ne * **pas** _ affectent les formateurs d’entrée qui traitent les corps de requête JSON et XML publiés. Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).
+> Ces attributs affectent la liaison de modèle quand les données de formulaire postées représentent la source des valeurs. Ils ne ***pas** _ affectent les formateurs d’entrée qui traitent les corps de requête JSON et XML publiés. Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).
 
 ### <a name="bind-attribute"></a>Attribut [Bind]
 
@@ -488,7 +488,7 @@ Fichier chargé inclus dans la requête HTTP.  `IEnumerable<IFormFile>` est éga
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-utilisé pour annuler l’activité dans les contrôleurs asynchrones.
+Les actions peuvent éventuellement lier un `CancellationToken` en tant que paramètre. Cela crée une liaison <xref:Microsoft.AspNetCore.Http.HttpContext.RequestAborted> qui signale lorsque la connexion sous-jacente à la requête HTTP est abandonnée. Les actions peuvent utiliser ce paramètre pour annuler les opérations asynchrones longues exécutées dans le cadre des actions du contrôleur.
 
 ### <a name="formcollection"></a>FormCollection
 
@@ -760,8 +760,8 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Décimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Enum](xref:System.ComponentModel.EnumConverter)
-* [GUID](xref:System.ComponentModel.GuidConverter)
+* [Variables](xref:System.ComponentModel.EnumConverter)
+* [Uniques](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Unique](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
