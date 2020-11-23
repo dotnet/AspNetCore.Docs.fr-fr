@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: ab5be222416e61fcff90c5130ca91ad4a2a5c9b0
-ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
+ms.openlocfilehash: 25ada6e3a210ed830514e69da7d5212264b4b91e
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94674002"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417563"
 ---
 # <a name="tutorial-part-5-apply-migrations-to-the-contoso-university-sample"></a>Didacticiel : partie 5, appliquer des migrations à l’exemple Contoso University
 
 Dans ce didacticiel, vous utilisez la fonctionnalité Migrations d’EF Core pour gérer les modifications du modèle de données. Dans les didacticiels suivants, vous allez ajouter d’autres migrations au fil de la modification du modèle de données.
 
-Dans ce tutoriel, vous avez :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * En savoir plus sur les migrations
@@ -53,9 +53,10 @@ Pour travailler avec des migrations, vous pouvez utiliser la **console du gestio
 
 ## <a name="drop-the-database"></a>Supprimer la base de données
 
-Supprimez la base de données. Utilisez **SQL Server Object Explorer** (SSOX) ou la commande CLI `database drop` :
+Installez EF Core Tools en tant qu' [outil Global](/ef/core/miscellaneous/cli/dotnet) et supprimez la base de données :
 
  ```dotnetcli
+ dotnet tool install --global dotnet-ef
  dotnet ef database drop
  ```
 
@@ -76,11 +77,8 @@ Enregistrez vos modifications et générez le projet. Ouvrez ensuite une fenêtr
 Entrez la commande suivante dans la fenêtre Commande :
 
 ```dotnetcli
-dotnet tool install --global dotnet-ef
 dotnet ef migrations add InitialCreate
 ```
-
-`dotnet tool install --global dotnet-ef` s’installe `dotnet ef` en tant qu' [outil Global](/ef/core/miscellaneous/cli/dotnet).
 
 Dans les commandes précédentes, une sortie similaire à ce qui suit s’affiche :
 
@@ -120,7 +118,7 @@ Dans la fenêtre Commande, entrez la commande suivante pour créer la base de do
 dotnet ef database update
 ```
 
-La sortie de la commande est similaire à la commande `migrations add`, à ceci près que vous voyez des journaux pour les commandes SQL qui configurent la base de données. La plupart des journaux sont omis dans l’exemple de sortie suivant. Si vous préférez ne pas voir ce niveau de détail dans les messages des journaux, vous pouvez changer le niveau de journalisation dans le fichier *appsettings.Development.json*. Pour plus d'informations, consultez <xref:fundamentals/logging/index>.
+La sortie de la commande est similaire à la commande `migrations add`, à ceci près que vous voyez des journaux pour les commandes SQL qui configurent la base de données. La plupart des journaux sont omis dans l’exemple de sortie suivant. Si vous préférez ne pas voir ce niveau de détail dans les messages des journaux, vous pouvez changer le niveau de journalisation dans le fichier *appsettings.Development.json*. Pour plus d’informations, consultez <xref:fundamentals/logging/index>.
 
 ```text
 info: Microsoft.EntityFrameworkCore.Infrastructure[10403]

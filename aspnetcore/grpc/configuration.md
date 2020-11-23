@@ -5,7 +5,7 @@ description: Découvrez comment configurer gRPC pour les applications .NET.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 05/26/2020
+ms.date: 11/23/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/configuration
-ms.openlocfilehash: e0b782a254cafc440638ca77a3b9ac885dc3575e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 617c042c628dc431391f39c2ecb2d2f9c9463fa5
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059960"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417589"
 ---
 # <a name="grpc-for-net-configuration"></a>configuration de gRPC pour .NET
 
 ## <a name="configure-services-options"></a>Configurer les options des services
 
-les services gRPC sont configurés avec `AddGrpc` dans *Startup.cs* . Le tableau suivant décrit les options de configuration des services gRPC :
+les services gRPC sont configurés avec `AddGrpc` dans *Startup.cs*. Le tableau suivant décrit les options de configuration des services gRPC :
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
@@ -40,7 +40,7 @@ les services gRPC sont configurés avec `AddGrpc` dans *Startup.cs* . Le tableau
 | CompressionProviders | gzip | Collection de fournisseurs de compression utilisée pour compresser et décompresser des messages. Des fournisseurs de compression personnalisés peuvent être créés et ajoutés à la collection. Les fournisseurs configurés par défaut prennent en charge la compression **gzip** . |
 | <span style="word-break:normal;word-wrap:normal">ResponseCompressionAlgorithm</span> | `null` | Algorithme de compression utilisé pour compresser les messages envoyés à partir du serveur. L’algorithme doit correspondre à un fournisseur de compression dans `CompressionProviders` . Pour que l’algorithme compresse une réponse, le client doit indiquer qu’il prend en charge l’algorithme en l’envoyant dans l’en-tête **GRPC-Accept-Encoding** . |
 | ResponseCompressionLevel | `null` | Niveau de compression utilisé pour compresser les messages envoyés à partir du serveur. |
-| Intercepteurs | Aucun | Collection d’intercepteurs exécutés avec chaque appel gRPC. Les intercepteurs sont exécutés dans l’ordre dans lequel ils sont inscrits. Les intercepteurs configurés globalement sont exécutés avant les intercepteurs configurés pour un service unique. Pour plus d’informations sur les intercepteurs gRPC, consultez [intercepteurs gRPC et intergiciel](xref:grpc/migration#grpc-interceptors-vs-middleware). |
+| Intercepteurs | None | Collection d’intercepteurs exécutés avec chaque appel gRPC. Les intercepteurs sont exécutés dans l’ordre dans lequel ils sont inscrits. Les intercepteurs configurés globalement sont exécutés avant les intercepteurs configurés pour un service unique. Pour plus d’informations sur les intercepteurs gRPC, consultez [intercepteurs gRPC et intergiciel](xref:grpc/migration#grpc-interceptors-vs-middleware). |
 | IgnoreUnknownServices | `false` | Si `true` la valeur est, les appels aux services et méthodes inconnus ne retournent pas un État non **implémenté** et la demande passe au middleware inscrit suivant dans ASP.net core. |
 
 Les options peuvent être configurées pour tous les services en fournissant un délégué d’options à l' `AddGrpc` appel dans `Startup.ConfigureServices` :
@@ -65,6 +65,7 @@ la configuration du client gRPC est activée `GrpcChannelOptions` . Le tableau s
 | <span style="word-break:normal;word-wrap:normal">MaxReceiveMessageSize</span> | 4 Mo | Taille maximale du message, en octets, qui peut être reçue par le client. Si le client reçoit un message qui dépasse cette limite, il lève une exception. L’augmentation de cette valeur permet au client de recevoir des messages plus volumineux, mais peut avoir un impact négatif sur la consommation de mémoire. Lorsque la valeur `null` est, la taille du message est illimitée. |
 | Informations d'identification | `null` | Instance de `ChannelCredentials`. Les informations d’identification sont utilisées pour ajouter des métadonnées d’authentification à des appels gRPC. |
 | CompressionProviders | gzip | Collection de fournisseurs de compression utilisée pour compresser et décompresser des messages. Des fournisseurs de compression personnalisés peuvent être créés et ajoutés à la collection. Les fournisseurs configurés par défaut prennent en charge la compression **gzip** . |
+| ThrowOperationCanceledOnCancellation | `false` | Si la valeur est `true` , les clients lèvent <xref:System.OperationCanceledException> une exception lorsqu’un appel est annulé ou que son échéance est dépassée. |
 
 Le code suivant :
 

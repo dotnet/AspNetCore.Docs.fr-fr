@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: fe232b40a2255732dd375cc266937576d5b2d5d9
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: 827045775d3bca3cd2c467b12172c53f5f9b0625
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507822"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417394"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor les formulaires et la validation
 
@@ -319,7 +319,7 @@ L' Blazor infrastructure fournit le <xref:Microsoft.AspNetCore.Components.Forms.
 * [Validation du serveur](#server-validation)
 
 > [!NOTE]
-> Les attributs de validation d’annotation de données personnalisées peuvent être utilisés à la place des composants de validateur personnalisés dans de nombreux cas. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, tous les attributs personnalisés appliqués au modèle doivent être exécutables sur le serveur. Pour plus d'informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+> Les attributs de validation d’annotation de données personnalisées peuvent être utilisés à la place des composants de validateur personnalisés dans de nombreux cas. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, tous les attributs personnalisés appliqués au modèle doivent être exécutables sur le serveur. Pour plus d’informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
 
 Créez un composant de validateur à partir de <xref:Microsoft.AspNetCore.Components.ComponentBase> :
 
@@ -337,49 +337,46 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace BlazorSample.Client
+public class CustomValidator : ComponentBase
 {
-    public class CustomValidator : ComponentBase
+    private ValidationMessageStore messageStore;
+
+    [CascadingParameter]
+    private EditContext CurrentEditContext { get; set; }
+
+    protected override void OnInitialized()
     {
-        private ValidationMessageStore messageStore;
-
-        [CascadingParameter]
-        private EditContext CurrentEditContext { get; set; }
-
-        protected override void OnInitialized()
+        if (CurrentEditContext == null)
         {
-            if (CurrentEditContext == null)
-            {
-                throw new InvalidOperationException(
-                    $"{nameof(CustomValidator)} requires a cascading " +
-                    $"parameter of type {nameof(EditContext)}. " +
-                    $"For example, you can use {nameof(CustomValidator)} " +
-                    $"inside an {nameof(EditForm)}.");
-            }
-
-            messageStore = new ValidationMessageStore(CurrentEditContext);
-
-            CurrentEditContext.OnValidationRequested += (s, e) => 
-                messageStore.Clear();
-            CurrentEditContext.OnFieldChanged += (s, e) => 
-                messageStore.Clear(e.FieldIdentifier);
+            throw new InvalidOperationException(
+                $"{nameof(CustomValidator)} requires a cascading " +
+                $"parameter of type {nameof(EditContext)}. " +
+                $"For example, you can use {nameof(CustomValidator)} " +
+                $"inside an {nameof(EditForm)}.");
         }
 
-        public void DisplayErrors(Dictionary<string, List<string>> errors)
-        {
-            foreach (var err in errors)
-            {
-                messageStore.Add(CurrentEditContext.Field(err.Key), err.Value);
-            }
+        messageStore = new ValidationMessageStore(CurrentEditContext);
 
-            CurrentEditContext.NotifyValidationStateChanged();
-        }
-
-        public void ClearErrors()
-        {
+        CurrentEditContext.OnValidationRequested += (s, e) => 
             messageStore.Clear();
-            CurrentEditContext.NotifyValidationStateChanged();
+        CurrentEditContext.OnFieldChanged += (s, e) => 
+            messageStore.Clear(e.FieldIdentifier);
+    }
+
+    public void DisplayErrors(Dictionary<string, List<string>> errors)
+    {
+        foreach (var err in errors)
+        {
+            messageStore.Add(CurrentEditContext.Field(err.Key), err.Value);
         }
+
+        CurrentEditContext.NotifyValidationStateChanged();
+    }
+
+    public void ClearErrors()
+    {
+        messageStore.Clear();
+        CurrentEditContext.NotifyValidationStateChanged();
     }
 }
 ```
@@ -442,7 +439,7 @@ Lorsque des messages de validation sont définis dans le composant, ils sont ajo
 ```
 
 > [!NOTE]
-> En guise d’alternative à l’utilisation de [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d'informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+> En guise d’alternative à l’utilisation de [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d’informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
 
 ## <a name="server-validation"></a>Validation du serveur
 
@@ -451,7 +448,7 @@ La validation du serveur peut être effectuée à l’aide d’un [composant](#v
 * Traitez la validation côté client dans le formulaire avec le <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant.
 * Quand le formulaire passe la validation côté client ( <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> appelée), envoie <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Model?displayProperty=nameWithType> à une API de serveur principal pour le traitement de formulaire.
 * Processus de validation du modèle sur le serveur.
-* L’API serveur comprend la validation des annotations de données d’infrastructure intégrées et la logique de validation personnalisée fournie par le développeur. Si la validation réussit sur le serveur, traite le formulaire et renvoie un code d’état de réussite ( *200-OK* ). Si la validation échoue, retourne un code d’état d’échec ( *400-demande incorrecte* ) et les erreurs de validation de champ.
+* L’API serveur comprend la validation des annotations de données d’infrastructure intégrées et la logique de validation personnalisée fournie par le développeur. Si la validation réussit sur le serveur, traite le formulaire et renvoie un code d’état de réussite (*200-OK*). Si la validation échoue, retourne un code d’état d’échec (*400-demande incorrecte*) et les erreurs de validation de champ.
 * Désactivez le formulaire en cas de réussite ou affichez les erreurs.
 
 L’exemple suivant est basé sur :
@@ -483,7 +480,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BlazorSample.Shared;
 
-namespace BlazorSample.Server.Controllers
+namespace {ASSEMBLY NAME}.Controllers
 {
     [Authorize]
     [ApiController]
@@ -528,6 +525,8 @@ namespace BlazorSample.Server.Controllers
     }
 }
 ```
+
+Dans l’exemple précédent, l’espace réservé `{ASSEMBLY NAME}` est le nom de l’assembly de l’application (par exemple, `BlazorSample.Server` ).
 
 Quand une erreur de validation de liaison de modèle se produit sur le serveur, un [`ApiController`](xref:web-api/index) ( <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> ) retourne normalement une [réponse de demande incorrecte par défaut](xref:web-api/index#default-badrequest-response) avec un <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> . La réponse contient plus de données que les erreurs de validation, comme illustré dans l’exemple suivant lorsque tous les champs du formulaire *de base de données Starfleet Starship* ne sont pas envoyés et que la validation du formulaire échoue :
 
@@ -580,7 +579,7 @@ services.AddControllersWithViews()
     });
 ```
 
-Pour plus d'informations, consultez <xref:web-api/handle-errors#validation-failure-error-response>.
+Pour plus d’informations, consultez <xref:web-api/handle-errors#validation-failure-error-response>.
 
 Dans le projet client, ajoutez le composant validateur présenté dans la section [composants du validateur](#validator-components) .
 
@@ -717,7 +716,7 @@ Dans le projet client, le formulaire *de base de données Starfleet Starship* es
 ```
 
 > [!NOTE]
-> Comme alternative aux [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d'informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+> Comme alternative aux [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d’informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
 
 > [!NOTE]
 > L’approche de validation côté serveur de cette section convient à l’un des Blazor WebAssembly exemples de solutions hébergées dans cet ensemble de documentation :
@@ -1126,7 +1125,7 @@ Pour activer et désactiver le bouton Envoyer en fonction de la validation de fo
 
 * Utilisez le du formulaire <xref:Microsoft.AspNetCore.Components.Forms.EditContext> pour assigner le modèle lorsque le composant est initialisé.
 * Validez le formulaire dans le rappel du contexte <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> pour activer et désactiver le bouton Envoyer.
-* Décrochez le gestionnaire d’événements dans la `Dispose` méthode. Pour plus d'informations, consultez <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
+* Décrochez le gestionnaire d’événements dans la `Dispose` méthode. Pour plus d’informations, consultez <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
 > [!NOTE]
 > Quand vous utilisez un <xref:Microsoft.AspNetCore.Components.Forms.EditContext> , n’assignez pas également <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> à <xref:Microsoft.AspNetCore.Components.Forms.EditForm> .

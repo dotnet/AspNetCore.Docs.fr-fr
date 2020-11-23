@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/httpapi
-ms.openlocfilehash: 45e2a1a5e6a9f00294147db769454b78c5b866e5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 64d18114e2fe9ee10edb902a98a281c3cd9f3393
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059934"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417576"
 ---
 # <a name="create-json-web-apis-from-grpc"></a>Créer des API web JSON à partir de gRPC
 
@@ -39,7 +39,7 @@ Par [James Newton-King](https://twitter.com/jamesnk)
 
 gRPC est un moyen moderne de communiquer entre les applications. gRPC utilise les contrats HTTP/2, streaming, Protobuf et message pour créer des services haute performance et en temps réel.
 
-Une limitation avec gRPC n’est pas possible pour chaque plateforme de l’utiliser. Les navigateurs ne prennent pas entièrement en charge HTTP/2, ce qui fait de REST et de JSON le moyen principal d’extraire des données dans des applications de navigateur. Malgré les avantages que gRPC apporte, REST et JSON ont un emplacement important dans les applications modernes. La génération d’API Web gRPC * **et** _ JSON ajoute une surcharge indésirable au développement d’applications.
+Une limitation avec gRPC n’est pas possible pour chaque plateforme de l’utiliser. Les navigateurs ne prennent pas entièrement en charge HTTP/2, ce qui fait de REST et de JSON le moyen principal d’extraire des données dans des applications de navigateur. Malgré les avantages que gRPC apporte, REST et JSON ont un emplacement important dans les applications modernes. La génération d’API Web gRPC ***et** _ JSON ajoute une surcharge indésirable au développement d’applications.
 
 Ce document explique comment créer des API Web JSON à l’aide des services gRPC.
 
@@ -53,7 +53,7 @@ _ Verbes HTTP
 
 gRPC peut toujours être utilisé pour appeler des services.
 
-### <a name="usage"></a>Utilisation
+### <a name="usage"></a>Usage
 
 1. Ajoutez une référence de package à [Microsoft. AspNetCore. GRPC. HttpApi](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.HttpApi).
 1. Inscrire des services dans *Startup.cs* avec `AddGrpcHttpApi` .
@@ -137,7 +137,7 @@ Nous souhaitons évaluer l’intérêt pour les développeurs dans l’API HTTP 
 
 La plus grande différence entre GRPC-Gateway et gRPC HTTP API est GRPC-Gateway utilise la génération de code pour créer un serveur proxy inverse. Le proxy inverse traduit les appels RESTful en gRPC, puis les envoie au service gRPC.
 
-Pour l’installation et l’utilisation de GRPC-Gateway, consultez la [documentation de GRPC-Gateway](https://grpc-ecosystem.github.io/grpc-gateway/docs/usage.html).
+Pour l’installation et l’utilisation de GRPC-Gateway, consultez le [fichier Lisez-moi de la passerelle GRPC](https://github.com/grpc-ecosystem/grpc-gateway/#grpc-gateway).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

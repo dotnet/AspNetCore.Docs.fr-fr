@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 423745d734d8da2b8f3f974f9b4dd1a0265d4877
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cc090b4e56745e6b010e4a7ee17332b0d3a95560
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054734"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417381"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyMeilleures pratiques en matière de performances de ASP.net Core
 
@@ -32,8 +32,8 @@ Par [Pranav Krishnamoorthy](https://github.com/pranavkm) et [Steve Sanderson](ht
 
 Blazor WebAssembly est conçu et optimisé pour assurer des performances élevées dans les scénarios d’interface utilisateur d’application les plus réalistes. Toutefois, la production des meilleurs résultats dépend des développeurs qui utilisent les modèles et les fonctionnalités appropriés. Tenez compte des aspects suivants :
 
-* **Débit du runtime** : le code .net s’exécute sur un interpréteur au sein du runtime webassembly, le débit de l’UC est donc limité. Dans les scénarios exigeants, l’application tire parti de l’optimisation de la [vitesse de rendu](#optimize-rendering-speed).
-* **Heure de démarrage** : l’application transfère un Runtime .net au navigateur. il est donc important d’utiliser des fonctionnalités qui [réduisent la taille du téléchargement de l’application](#minimize-app-download-size).
+* **Débit du runtime**: le code .net s’exécute sur un interpréteur au sein du runtime webassembly, le débit de l’UC est donc limité. Dans les scénarios exigeants, l’application tire parti de l’optimisation de la [vitesse de rendu](#optimize-rendering-speed).
+* **Heure de démarrage**: l’application transfère un Runtime .net au navigateur. il est donc important d’utiliser des fonctionnalités qui [réduisent la taille du téléchargement de l’application](#minimize-app-download-size).
 
 ## <a name="optimize-rendering-speed"></a>Optimiser la vitesse de rendu
 
@@ -101,7 +101,7 @@ Dans le code précédent, un gestionnaire d’événements peut également `shou
 
 Pour la plupart des composants, ce niveau de contrôle manuel n’est pas nécessaire. Vous devez uniquement vous préoccuper du fait que vous ignorez le rendu des sous-arborescences si ces sous-arborescences sont particulièrement coûteuses à afficher et sont à l’origine du décalage de l’interface utilisateur.
 
-Pour plus d'informations, consultez <xref:blazor/components/lifecycle>.
+Pour plus d’informations, consultez <xref:blazor/components/lifecycle>.
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -142,7 +142,7 @@ Même si l’interface utilisateur résultante est similaire à un utilisateur, 
 
 `<Virtualize>` offre également d’autres avantages. Par exemple, lorsqu’un composant demande des données à partir d’une API externe, `<Virtualize>` permet au composant d’extraire uniquement le segment des enregistrements qui correspondent à la région visible actuelle, au lieu de télécharger toutes les données de la collection.
 
-Pour plus d'informations, consultez <xref:blazor/components/virtualization>.
+Pour plus d’informations, consultez <xref:blazor/components/virtualization>.
 
 ::: moniker-end
 
@@ -150,7 +150,7 @@ Pour plus d'informations, consultez <xref:blazor/components/virtualization>.
 
 La plupart des Blazor composants ne nécessitent pas d’effort d’optimisation agressif. Cela est dû au fait que la plupart des composants ne se répètent souvent pas dans l’interface utilisateur et ne sont pas restitués à une fréquence élevée. Par exemple, les `@page` composants et les composants qui représentent des éléments d’interface utilisateur de haut niveau, tels que les boîtes de dialogue ou les formulaires, s’affichent le plus souvent un seul à la fois et sont uniquement rerendus en réponse à un mouvement utilisateur. Ces composants ne créent pas une charge de travail de rendu élevée. vous pouvez utiliser librement toute combinaison de fonctionnalités d’infrastructure que vous souhaitez sans vous soucier des performances de rendu.
 
-Toutefois, il existe également des scénarios courants dans lesquels vous créez des composants qui doivent être répétés à l’échelle. Exemple :
+Toutefois, il existe également des scénarios courants dans lesquels vous créez des composants qui doivent être répétés à l’échelle. Par exemple :
 
  * Les grands formulaires imbriqués peuvent avoir des centaines d’entrées individuelles, d’étiquettes et d’autres éléments.
  * Les grilles peuvent avoir des milliers de cellules.
@@ -297,7 +297,7 @@ Dans l’exemple précédent, `Data` est différent pour chaque cellule, mais `O
 
 Le `<CascadingValue>` composant a un paramètre facultatif appelé `IsFixed` .
 
- * Si la `IsFixed` valeur est `false` (valeur par défaut), chaque destinataire de la valeur en cascade configure un abonnement pour recevoir des notifications de modification. Dans ce cas, chacune `[CascadingParameter]` d’elles est **beaucoup plus coûteuse** qu’une normale `[Parameter]` en raison du suivi des abonnements.
+ * Si la `IsFixed` valeur est `false` (valeur par défaut), chaque destinataire de la valeur en cascade configure un abonnement pour recevoir des notifications de modification. Dans ce cas, chaque `[CascadingParameter]` est **beaucoup plus coûteuse** qu’un normal `[Parameter]` en raison du suivi des abonnements.
  * Si la `IsFixed` valeur est `true` (par exemple, `<CascadingValue Value="@someValue" IsFixed="true">` ), destinataires reçoit la valeur initiale, mais ne configure *pas* d’abonnement pour recevoir des mises à jour. Dans ce cas, chacune `[CascadingParameter]` est légère et **n’est pas plus coûteuse** qu’une normale `[Parameter]` .
 
 Par conséquent, dans la mesure du possible, vous devez utiliser `IsFixed="true"` des valeurs en cascade. Vous pouvez effectuer cette opération chaque fois que la valeur fournie ne change pas au fil du temps. Dans le modèle commun où un composant passe `this` comme une valeur en cascade, vous devez utiliser `IsFixed="true"` :
@@ -308,7 +308,7 @@ Par conséquent, dans la mesure du possible, vous devez utiliser `IsFixed="true"
 </CascadingValue>
 ```
 
-Cela fait une énorme différence s’il y a un grand nombre d’autres composants qui reçoivent la valeur en cascade. Pour plus d'informations, consultez <xref:blazor/components/cascading-values-and-parameters>.
+Cela fait une énorme différence s’il y a un grand nombre d’autres composants qui reçoivent la valeur en cascade. Pour plus d’informations, consultez <xref:blazor/components/cascading-values-and-parameters>.
 
 #### <a name="avoid-attribute-splatting-with-captureunmatchedvalues"></a>Éviter la projection d’attributs avec `CaptureUnmatchedValues`
 
@@ -330,7 +330,7 @@ Cette approche permet de passer des attributs supplémentaires arbitraires à l�
 
 N’hésitez pas à utiliser <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> des composants non critiques pour les performances, tels que ceux qui ne sont pas fréquemment répétés. Toutefois, pour les composants qui restituent à l’échelle, tels que les éléments d’une grande liste ou les cellules d’une grille, essayez d’éviter la projection d’attributs.
 
-Pour plus d'informations, consultez <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters>.
+Pour plus d’informations, consultez <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters>.
 
 #### <a name="implement-setparametersasync-manually"></a>Implémenter `SetParametersAsync` manuellement
 
@@ -528,7 +528,7 @@ Les appels synchrones fonctionnent dans les cas suivants :
 * L’application est en cours d’exécution sur Blazor WebAssembly , et non Blazor Server .
 * La fonction appelée retourne une valeur de façon synchrone (il ne s’agit pas d’une `async` méthode et ne retourne pas de .NET <xref:System.Threading.Tasks.Task> ou JavaScript `Promise` ).
 
-Pour plus d'informations, consultez <xref:blazor/call-javascript-from-dotnet>.
+Pour plus d’informations, consultez <xref:blazor/call-javascript-from-dotnet>.
 
 ::: moniker range=">= aspnetcore-5.0"
  
@@ -589,7 +589,7 @@ Pour obtenir des conseils sur la migration, consultez [Comment migrer de `Newton
 
 ### <a name="lazy-load-assemblies"></a>Charger des assemblys en différé
 
-Chargez les assemblys au moment de l’exécution lorsque les assemblys sont requis par un itinéraire. Pour plus d'informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
+Chargez les assemblys au moment de l’exécution lorsque les assemblys sont requis par un itinéraire. Pour plus d’informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
 
 ### <a name="compression"></a>Compression
 

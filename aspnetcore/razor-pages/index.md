@@ -1,7 +1,7 @@
 ---
 title: Présentation Razor des pages dans ASP.net Core
 author: Rick-Anderson
-description: Découvrez comment Razor les pages de ASP.net Core rendent le codage des scénarios orientés page plus facile et plus productif que l’utilisation de MVC.
+description: Explique comment Razor les pages de ASP.net Core rendent le codage des scénarios orientés page plus facile et plus productif que l’utilisation de MVC.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 02/12/2020
@@ -18,16 +18,15 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/index
-ms.openlocfilehash: 89e06d00e9312a428c4e164b0dc60527fe12d904
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: bc5f3c85d7ace120dec8369f4550a097b4f258ce
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430872"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417641"
 ---
 # <a name="introduction-to-no-locrazor-pages-in-aspnet-core"></a>Présentation Razor des pages dans ASP.net Core
 
-::: moniker range=">= aspnetcore-3.0"
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT) et [Ryan Nowak](https://github.com/rynowak)
 
@@ -39,19 +38,43 @@ Ce document fournit une introduction aux Razor pages. Il ne s’agit pas d’un 
 
 ## <a name="prerequisites"></a>Prérequis
 
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vs-5.0.md)]
+
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-5.0.md)]
+
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+
+[!INCLUDE[](~/includes/net-core-prereqs-mac-5.0.md)]
+
+---
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 <a name="rpvs17"></a>
 
@@ -73,7 +96,7 @@ Pour obtenir des instructions détaillées sur la création d’un projet de pag
 
 ## <a name="no-locrazor-pages"></a>Razor Pages
 
-Razor Pages est activée dans *Startup.cs* :
+Razor Pages est activée dans *Startup.cs*:
 
 [!code-csharp[](index/3.0sample/RazorPagesIntro/Startup.cs?name=snippet_Startup&highlight=12,36)]
 
@@ -87,7 +110,7 @@ Une page similaire, utilisant une classe `PageModel`, est illustrée dans les de
 
 [!code-cshtml[](index/3.0sample/RazorPagesIntro/Pages/Index2.cshtml)]
 
-Le modèle de page *Pages/Index2.cshtml.cs*  :
+Le modèle de page *Pages/Index2.cshtml.cs* :
 
 [!code-csharp[](index/3.0sample/RazorPagesIntro/Pages/Index2.cshtml.cs)]
 
@@ -129,7 +152,7 @@ Le fichier vue *Pages/Create.cshtml* :
 
 [!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create.cshtml)]
 
-Le modèle de page *Pages/Create.cshtml.cs*  :
+Le modèle de page *Pages/Create.cshtml.cs* :
 
 [!code-csharp[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create.cshtml.cs?name=snippet_ALL)]
 
@@ -138,7 +161,7 @@ Par convention, la classe `PageModel` se nomme `<PageName>Model` et se trouve da
 La classe `PageModel` permet de séparer la logique d’une page de sa présentation. Elle définit des gestionnaires de page pour les demandes envoyées à la page et les données utilisées pour l’afficher. Cette séparation permet :
 
 * Gestion des dépendances de page via l' [injection de dépendances](xref:fundamentals/dependency-injection).
-* [Effectuer des tests unitaires](xref:test/razor-pages-tests)
+* [Tests unitaires](xref:test/razor-pages-tests)
 
 La page a une  *méthode de gestionnaire*`OnPostAsync`, qui s’exécute sur les requêtes `POST` (quand un utilisateur poste le formulaire). Les méthodes de gestionnaire pour tout verbe HTTP peuvent être ajoutées. Les gestionnaires les plus courants sont :
 
@@ -167,7 +190,7 @@ Le fichier vue *Pages/Create.cshtml* :
 
 [!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create.cshtml)]
 
-Le rendu HTML à partir de *pages/Create. cshtml* :
+Le rendu HTML à partir de *pages/Create. cshtml*:
 
 [!code-html[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create4.html)]
 
@@ -216,7 +239,7 @@ Examen du fichier de vue *pages/Create. cshtml* :
 
 [!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Index.cshtml)]
 
-La classe `PageModel` associée ( *Index.cshtml.cs* ) :
+La classe `PageModel` associée (*Index.cshtml.cs*) :
 
 [!code-csharp[](index/3.0sample/RazorPagesContacts/Pages/Customers/Index.cshtml.cs?name=snippet)]
 
@@ -329,7 +352,7 @@ La page créer du modèle affiche des `Movie` Erreurs avec des valeurs non valid
 
 ![Formulaire de vue Movie avec plusieurs erreurs de validation jQuery côté client](~/tutorials/razor-pages/validation/_static/val.png)
 
-Pour plus d’informations, consultez :
+Pour plus d'informations, consultez les pages suivantes :
 
 * [Ajouter la validation à l’application vidéo](xref:tutorials/razor-pages/validation)
 * [Validation de modèle dans ASP.net Core](xref:mvc/models/validation).
@@ -396,7 +419,7 @@ La `@namespace` directive est définie sur une page :
 
 La `@namespace` directive définit l’espace de noms de la page. La directive `@model` n’a pas besoin d’inclure l’espace de noms.
 
-Quand la directive `@namespace` est contenue dans *_ViewImports.cshtml* , l’espace de noms spécifié fournit le préfixe de l’espace de noms généré dans la Page qui importe la directive `@namespace`. Le reste de l’espace de noms généré (la partie suffixe) est le chemin relatif séparé par un point entre le dossier contenant *_ViewImports.cshtml* et le dossier contenant la page.
+Quand la directive `@namespace` est contenue dans *_ViewImports.cshtml*, l’espace de noms spécifié fournit le préfixe de l’espace de noms généré dans la Page qui importe la directive `@namespace`. Le reste de l’espace de noms généré (la partie suffixe) est le chemin relatif séparé par un point entre le dossier contenant *_ViewImports.cshtml* et le dossier contenant la page.
 
 Par exemple, la classe `PageModel`*Pages/Customers/Edit.cshtml.cs* définit explicitement l’espace de noms :
 
@@ -420,7 +443,7 @@ Le fichier de vue *pages/Create. cshtml* mis à jour avec *_ViewImports. cshtml*
 
 Dans le code précédent, le *_ViewImports. cshtml* a importé l’espace de noms et les tag helpers. Le fichier de disposition a importé les fichiers JavaScript.
 
-Le [ Razor projet de démarrage pages](#rpvs17) contient les *pages/_ValidationScriptsPartial. cshtml* , qui raccorde la validation côté client.
+Le [ Razor projet de démarrage pages](#rpvs17) contient les *pages/_ValidationScriptsPartial. cshtml*, qui raccorde la validation côté client.
 
 Pour plus d'informations sur les affichages partiels, consultez <xref:mvc/views/partial>.
 
@@ -622,16 +645,6 @@ Ajouter <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcCoreBuild
 
 ::: moniker range="< aspnetcore-3.0"
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT) et [Ryan Nowak](https://github.com/rynowak)
-
-Razor Pages est un nouvel aspect de ASP.NET Core MVC qui rend le codage des scénarios orientés page plus facile et plus productif.
-
-Si vous cherchez un didacticiel qui utilise l’approche Model-View-Controller, consultez [Bien démarrer avec ASP.NET Core MVC](xref:tutorials/first-mvc-app/start-mvc).
-
-Ce document fournit une introduction aux Razor pages. Il ne s’agit pas d’un didacticiel pas à pas. Si vous trouvez certaines des sections trop avancées, consultez [prise en main des Razor pages](xref:tutorials/razor-pages/razor-pages-start). Pour une vue d’ensemble d’ASP.NET Core, consultez [Introduction à ASP.NET Core](xref:index).
-
-## <a name="prerequisites"></a>Prérequis
-
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
@@ -668,7 +681,7 @@ Exécutez `dotnet new webapp` à partir de la ligne de commande.
 
 ## <a name="no-locrazor-pages"></a>Razor Pages
 
-Razor Pages est activée dans *Startup.cs* :
+Razor Pages est activée dans *Startup.cs*:
 
 [!code-csharp[](index/sample/RazorPagesIntro/Startup.cs?name=snippet_Startup)]
 
@@ -682,7 +695,7 @@ Une page similaire, utilisant une classe `PageModel`, est illustrée dans les de
 
 [!code-cshtml[](index/sample/RazorPagesIntro/Pages/Index2.cshtml)]
 
-Le modèle de page *Pages/Index2.cshtml.cs*  :
+Le modèle de page *Pages/Index2.cshtml.cs* :
 
 [!code-csharp[](index/sample/RazorPagesIntro/Pages/Index2.cshtml.cs)]
 
@@ -722,7 +735,7 @@ Le fichier vue *Pages/Create.cshtml* :
 
 [!code-cshtml[](index/sample/RazorPagesContacts/Pages/Create.cshtml)]
 
-Le modèle de page *Pages/Create.cshtml.cs*  :
+Le modèle de page *Pages/Create.cshtml.cs* :
 
 [!code-csharp[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_ALL)]
 
@@ -768,11 +781,11 @@ Razor Les pages, par défaut, lient les propriétés uniquement avec des non- `G
 
 [!INCLUDE[](~/includes/bind-get.md)]
 
-La page d’accueil ( *Index.cshtml* ) :
+La page d’accueil (*Index.cshtml*) :
 
 [!code-cshtml[](index/sample/RazorPagesContacts/Pages/Index.cshtml)]
 
-La classe `PageModel` associée ( *Index.cshtml.cs* ) :
+La classe `PageModel` associée (*Index.cshtml.cs*) :
 
 [!code-csharp[](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs)]
 
@@ -874,7 +887,7 @@ Vous n’avez aucun code à écrire pour la [validation anti-contrefaçon](xref:
 
 ## <a name="using-layouts-partials-templates-and-tag-helpers-with-no-locrazor-pages"></a>Utilisation de dispositions, de partiels, de modèles et d’aide pour les balises avec des Razor pages
 
-Les pages fonctionnent avec toutes les fonctionnalités du Razor moteur d’affichage. Les mises en page, les partiels, les modèles, les tag helpers, *_ViewStart. cshtml* , *_ViewImports. cshtml* fonctionnent de la même façon que pour les Razor vues conventionnelles.
+Les pages fonctionnent avec toutes les fonctionnalités du Razor moteur d’affichage. Les mises en page, les partiels, les modèles, les tag helpers, *_ViewStart. cshtml*, *_ViewImports. cshtml* fonctionnent de la même façon que pour les Razor vues conventionnelles.
 
 Nous allons nettoyer un peu cette page en tirant parti de certaines de ces fonctionnalités.
 
@@ -915,7 +928,7 @@ Quand la directive `@namespace` est utilisée explicitement sur une page :
 
 La directive définit l’espace de noms pour la page. La directive `@model` n’a pas besoin d’inclure l’espace de noms.
 
-Quand la directive `@namespace` est contenue dans *_ViewImports.cshtml* , l’espace de noms spécifié fournit le préfixe de l’espace de noms généré dans la Page qui importe la directive `@namespace`. Le reste de l’espace de noms généré (la partie suffixe) est le chemin relatif séparé par un point entre le dossier contenant *_ViewImports.cshtml* et le dossier contenant la page.
+Quand la directive `@namespace` est contenue dans *_ViewImports.cshtml*, l’espace de noms spécifié fournit le préfixe de l’espace de noms généré dans la Page qui importe la directive `@namespace`. Le reste de l’espace de noms généré (la partie suffixe) est le chemin relatif séparé par un point entre le dossier contenant *_ViewImports.cshtml* et le dossier contenant la page.
 
 Par exemple, la classe `PageModel`*Pages/Customers/Edit.cshtml.cs* définit explicitement l’espace de noms :
 
@@ -937,7 +950,7 @@ Le fichier vue *Pages/Create.cshtml* mis à jour :
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/Create.cshtml?highlight=2)]
 
-Le [ Razor projet de démarrage pages](#rpvs17) contient les *pages/_ValidationScriptsPartial. cshtml* , qui raccorde la validation côté client.
+Le [ Razor projet de démarrage pages](#rpvs17) contient les *pages/_ValidationScriptsPartial. cshtml*, qui raccorde la validation côté client.
 
 Pour plus d'informations sur les affichages partiels, consultez <xref:mvc/views/partial>.
 
@@ -987,7 +1000,7 @@ Pour rediriger vers une page située dans une autre [Zone](xref:mvc/controllers/
 RedirectToPage("/Index", new { area = "Services" });
 ```
 
-Pour plus d'informations, consultez <xref:mvc/controllers/areas>.
+Pour plus d’informations, consultez <xref:mvc/controllers/areas>.
 
 ## <a name="viewdata-attribute"></a>Attribut ViewData
 
@@ -1025,7 +1038,7 @@ Dans la disposition, le titre est lu à partir du dictionnaire ViewData :
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core expose la propriété [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) sur un [contrôleur](/dotnet/api/microsoft.aspnetcore.mvc.controller). Cette propriété stocke les données jusqu’à ce qu’elles soient lues. Vous pouvez utiliser les méthodes `Keep` et `Peek` pour examiner les données sans suppression. `TempData` est utile pour la redirection, quand des données sont nécessaires pour plusieurs requêtes.
+ASP.NET Core expose la propriété [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata#Microsoft_AspNetCore_Mvc_Controller_TempData) sur un [contrôleur](/dotnet/api/microsoft.aspnetcore.mvc.controller). Cette propriété stocke les données jusqu’à ce qu’elles soient lues. Vous pouvez utiliser les méthodes `Keep` et `Peek` pour examiner les données sans suppression. `TempData` est utile pour la redirection, quand des données sont nécessaires pour plusieurs requêtes.
 
 Le code suivant définit la valeur de `Message` à l’aide de `TempData` :
 

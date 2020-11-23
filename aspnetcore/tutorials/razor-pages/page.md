@@ -20,12 +20,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: a9494feacbe783b20a9f5eb98ef9e481f2c713fa
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: d655be26a794f87a0be07046ae1d6415256d592c
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360890"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417628"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>Partie 3, Razor pages de génération de modèles automatique dans ASP.net Core
 
@@ -98,7 +98,7 @@ Le HTML Helper <xref:System.Web.Mvc.Html.DisplayNameExtensions.DisplayNameFor%2A
 
 ### <a name="the-layout-page"></a>La page de disposition
 
-Sélectionnez le menu liens **Razor PagesMovie** , **orig** et **Privacy**. Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Pages/Shared/_Layout.cshtml*.
+Sélectionnez le menu liens **Razor PagesMovie**, **orig** et **Privacy**. Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Pages/Shared/_Layout.cshtml*.
 
 Ouvrez et examinez le fichier *pages/Shared/_Layout. cshtml* .
 
@@ -119,7 +119,7 @@ Examinez le balisage suivant à partir du fichier *pages/movies/ Index . cshtml*
 
 Le balisage en surbrillance précédent est un exemple de Razor transition en C#. Les caractères `{` et `}` délimitent un bloc de code C#.
 
-La `PageModel` classe de base contient une `ViewData` propriété de dictionnaire qui peut être utilisée pour passer des données à une vue. Les objets sont ajoutés au `ViewData` dictionnaire à l’aide d’un modèle de **valeur de clé** *. Dans l’exemple précédent, la propriété `Title` est ajoutée au dictionnaire `ViewData`.
+La `PageModel` classe de base contient une `ViewData` propriété de dictionnaire qui peut être utilisée pour passer des données à une vue. Les objets sont ajoutés au `ViewData` dictionnaire à l’aide d’un modèle de **valeur de clé***. Dans l’exemple précédent, la propriété `Title` est ajoutée au dictionnaire `ViewData`.
 
 La `Title` propriété est utilisée dans le fichier _Pages/shared/_Layout. cshtml *. La balise suivante montre les premières lignes du fichier *_Layout.cshtml*.
 
@@ -151,12 +151,12 @@ La ligne `@*Markup removed for brevity.*@` est un Razor commentaire. Contraireme
 
 1. Enregistrez les modifications et testez l’application en sélectionnant le lien **RpMovie** . Consultez le fichier [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) dans GitHub si vous rencontrez des problèmes.
 
-1. Testez la **page d’hébergement** , les **RpMovie** , les **Create** **modifications** et les **Delete** liens. Chaque page définit le titre, que vous pouvez voir dans l’onglet navigateur. Lorsque vous ajoutez une page à un signet, le titre est utilisé pour le signet.
+1. Testez la **page d’hébergement**, les **RpMovie**, les **Create** **modifications** et les **Delete** liens. Chaque page définit le titre, que vous pouvez voir dans l’onglet navigateur. Lorsque vous ajoutez une page à un signet, le titre est utilisé pour le signet.
 
 > [!NOTE]
 > Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que l’anglais qui utilisent une virgule (",") pour une virgule décimale, et les formats de date non US-English, vous devez prendre des mesures pour globaliser l’application. Consultez cette page [GitHub problème 4076](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) pour savoir comment ajouter une virgule décimale.
 
-La propriété `Layout` est définie dans le fichier *Pages/_ViewStart.cshtml*  :
+La propriété `Layout` est définie dans le fichier *Pages/_ViewStart.cshtml* :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/_ViewStart.cshtml)]
 
@@ -237,12 +237,6 @@ Pour plus d’informations sur les Tag Helpers, comme `<form method="post">`, co
 
 ::: moniker range="< aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-Ce didacticiel examine les Razor pages créées par génération de modèles automatique dans le [didacticiel précédent](xref:tutorials/razor-pages/model).
-
-[Affichez ou téléchargez](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22) l’exemple de code.
-
 ## <a name="the-no-loccreate-no-locdelete-details-and-edit-pages"></a>Les Create Delete pages,, détails et modifier
 
 Examinez le modèle de page *pages/movies/ Index . cshtml.cs* :
@@ -284,11 +278,11 @@ Examinez l’expression lambda utilisée dans le HTML Helper suivant :
 Le HTML Helper <xref:System.Web.Mvc.Html.DisplayNameExtensions.DisplayNameFor%2A?displayProperty=nameWithType> inspecte la propriété `Title` référencée dans l’expression lambda pour déterminer le nom d’affichage. L’expression lambda est inspectée plutôt qu’évaluée. Cela signifie qu’il n’existe pas de violation d’accès quand `model`, `model.Movie` ou `model.Movie[0]` ont une valeur `null` ou vide. Quand l’expression lambda est évaluée, par exemple avec `@Html.DisplayFor(modelItem => item.Title)` , les valeurs de propriété du modèle sont évaluées.
 ### <a name="the-layout-page"></a>La page de disposition
 
-Sélectionnez le menu liens **Razor PagesMovie** , **orig** et **Privacy**. Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Pages/Shared/_Layout.cshtml*.
+Sélectionnez le menu liens **Razor PagesMovie**, **orig** et **Privacy**. Chaque page affiche la même disposition de menu. La disposition du menu est implémentée dans le fichier *Pages/Shared/_Layout.cshtml*.
 
 Ouvrez et examinez le fichier *pages/Shared/_Layout. cshtml* .
 
-Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifier la disposition de conteneur HTML d’un site à un emplacement, puis de l’appliquer sur plusieurs pages du site. Recherchez la ligne `@RenderBody()`. `RenderBody` est un espace réservé dans lequel tous les affichages spécifiques à la page que vous créez s’affichent, *inclus* dans la page de disposition. Par exemple, si vous sélectionnez le lien **Confidentialité** , la vue **Pages/Privacy.cshtml** est restituée dans la méthode `RenderBody`.
+Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifier la disposition de conteneur HTML d’un site à un emplacement, puis de l’appliquer sur plusieurs pages du site. Recherchez la ligne `@RenderBody()`. `RenderBody` est un espace réservé dans lequel tous les affichages spécifiques à la page que vous créez s’affichent, *inclus* dans la page de disposition. Par exemple, si vous sélectionnez le lien **Confidentialité**, la vue **Pages/Privacy.cshtml** est restituée dans la méthode `RenderBody`.
 
 <a name="vd"></a>
 
@@ -332,12 +326,12 @@ L’élément anchor précédent est un [Tag Helper](xref:mvc/views/tag-helpers/
 
 Enregistrez vos changements, puis testez l’application en cliquant sur le lien **RpMovie**. Consultez le fichier [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) dans GitHub si vous rencontrez des problèmes.
 
-Testez les autres liens ( **famille** , **RpMovie** , **Create** , **modifier** et **Delete** ). Chaque page définit le titre, que vous pouvez voir dans l’onglet navigateur. Lorsque vous ajoutez une page à un signet, le titre est utilisé pour le signet.
+Testez les autres liens (**famille**, **RpMovie**, **Create** , **modifier** et **Delete** ). Chaque page définit le titre, que vous pouvez voir dans l’onglet navigateur. Lorsque vous ajoutez une page à un signet, le titre est utilisé pour le signet.
 
 > [!NOTE]
 > Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que l’anglais qui utilisent une virgule (",") pour une virgule décimale, et les formats de date non US-English, vous devez prendre des mesures pour globaliser l’application. Consultez la page [GitHub problème 4076](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) pour savoir comment ajouter une virgule décimale.
 
-La propriété `Layout` est définie dans le fichier *Pages/_ViewStart.cshtml*  :
+La propriété `Layout` est définie dans le fichier *Pages/_ViewStart.cshtml* :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/_ViewStart.cshtml)]
 
