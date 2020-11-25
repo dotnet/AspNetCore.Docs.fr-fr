@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: 1f7c8cd0716f1ada3517add0d37a09e419f38774
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ca5fd8f746e759d1994dde9a2a0d5b5fd6c88d1a
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053304"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870449"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 
 Par [Valeriy Novytskyy](https://github.com/01binary) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Ce didacticiel montre comment créer une application ASP.NET Core 3,0 qui permet aux utilisateurs de se connecter à l’aide d’OAuth 2,0 avec les informations d’identification des fournisseurs d’authentification externes.
+Ce didacticiel montre comment créer une application ASP.NET Core qui permet aux utilisateurs de se connecter à l’aide d’OAuth 2,0 avec les informations d’identification des fournisseurs d’authentification externes.
 
 Les fournisseurs [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins)et [Microsoft](xref:security/authentication/microsoft-logins) sont traités dans les sections suivantes et utilisent le projet de démarrage créé dans cet article. D’autres fournisseurs sont disponibles dans des packages tiers, comme [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) et [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
 
@@ -42,14 +42,14 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 
 ## <a name="create-a-new-aspnet-core-project"></a>Créer un projet ASP.NET Core
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Créez un projet.
-* Sélectionnez **Nouvelle application web ASP.NET Core** et **Suivant** .
-* Fournissez un **Nom de projet** et confirmez ou changez l’ **Emplacement** . Sélectionnez **Create** (Créer).
-* Sélectionnez la dernière version de ASP.NET Core dans la liste déroulante ( **ASP.net Core {X. Y}** ), puis sélectionnez **application Web** .
-* Sous **Authentification** , sélectionnez **Changer** et définissez l’authentification sur **Comptes d’utilisateur individuels** . Sélectionnez **OK** .
-* Dans la fenêtre **Créer une application web ASP.NET Core** , sélectionnez **Créer** .
+* Sélectionnez **Nouvelle application web ASP.NET Core** et **Suivant**.
+* Fournissez un **Nom de projet** et confirmez ou changez l’**Emplacement**. Sélectionnez **Create** (Créer).
+* Sélectionnez la dernière version de ASP.NET Core dans la liste déroulante (**ASP.net Core {X. Y}**), puis sélectionnez **application Web**.
+* Sous **Authentification**, sélectionnez **Changer** et définissez l’authentification sur **Comptes d’utilisateur individuels**. Sélectionnez **OK**.
+* Dans la fenêtre **Créer une application web ASP.NET Core**, sélectionnez **Créer**.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -78,8 +78,8 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 
 ## <a name="apply-migrations"></a>Appliquer des migrations
 
-* Exécutez l’application et sélectionnez le lien **S’inscrire** .
-* Entrez l’adresse e-mail et le mot de passe du nouveau compte, puis sélectionnez **S’inscrire** .
+* Exécutez l’application et sélectionnez le lien **S’inscrire**.
+* Entrez l’adresse e-mail et le mot de passe du nouveau compte, puis sélectionnez **S’inscrire**.
 * Suivez les instructions pour appliquer des migrations.
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
@@ -111,7 +111,7 @@ Quand vous vous inscrivez auprès d’un fournisseur de connexion externe, vous 
 
 Pour créer un mot de passe et vous connecter à l’aide de l’e-mail que vous avez défini lors du processus de connexion avec des fournisseurs externes :
 
-* Sélectionnez le lien **Bonjour &lt;alias d’e-mail&gt;** en haut à droite pour accéder à la vue **Gérer** .
+* Sélectionnez le lien **Bonjour &lt;alias d’e-mail&gt;** en haut à droite pour accéder à la vue **Gérer**.
 
 ![Vue Gérer de l’application web](index/_static/pass1a.png)
 
@@ -126,4 +126,4 @@ Pour créer un mot de passe et vous connecter à l’aide de l’e-mail que vous
 * Pour plus d’informations sur la personnalisation des boutons de connexion, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/10563) .
 * Cet article a présenté l’authentification externe et expliqué les prérequis nécessaires pour ajouter des connexions externes à votre application ASP.NET Core.
 * Référencez les pages spécifiques au fournisseur pour configurer les connexions pour les fournisseurs nécessaires à votre application.
-* Vous souhaiterez peut-être conserver des données supplémentaires relatives à l’utilisateur et à ses jetons d’accès et d’actualisation. Pour plus d'informations, consultez <xref:security/authentication/social/additional-claims>.
+* Vous souhaiterez peut-être conserver des données supplémentaires relatives à l’utilisateur et à ses jetons d’accès et d’actualisation. Pour plus d’informations, consultez <xref:security/authentication/social/additional-claims>.

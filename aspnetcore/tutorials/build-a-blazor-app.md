@@ -5,7 +5,7 @@ description: Générez une Blazor application pas à pas.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2020
+ms.date: 11/24/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 1efcd167d9a45b2def271b239c9b360749d72791
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: a32655b8afedb73ad436f023d2f821b6920c2edd
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570183"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870436"
 ---
 # <a name="build-a-no-locblazor-todo-list-app"></a>Créer une Blazor application de liste de tâches
 
@@ -85,6 +85,8 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
    <h3>Todo</h3>
    ```
 
+   Enregistrez le fichier `Pages/Todo.razor`.
+
 1. Ajoutez le composant `Todo` à la barre de navigation.
 
    Le `NavMenu` composant ( `Shared/NavMenu.razor` ) est utilisé dans la disposition de l’application. Les dispositions sont des composants qui vous permettent d’éviter la duplication de contenu dans l’application.
@@ -99,7 +101,9 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
    </li>
    ```
 
-1. Générez et exécutez l’application en exécutant la `dotnet run` commande dans l’interface de commande à partir du `TodoList` dossier. Visitez la nouvelle page todo à l’adresse `https://localhost:5001/todo` pour vérifier que le lien vers le `Todo` composant fonctionne.
+   Enregistrez le fichier `Shared/NavMenu.razor`.
+
+1. Générez et exécutez l’application en exécutant la [`dotnet watch run`](/aspnet/core/tutorials/dotnet-watch) commande dans l’interface de commande à partir du `TodoList` dossier. Visitez la nouvelle page todo à l’adresse `https://localhost:5001/todo` pour vérifier que le lien de navigation de l’encadré vers le `Todo` composant fonctionne.
 
 1. Ajoutez un `TodoItem.cs` fichier à la racine du projet (le `TodoList` dossier) pour contenir une classe qui représente un élément TODO. Utilisez le code C# suivant pour la classe `TodoItem` :
 
@@ -116,7 +120,9 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
    [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo3.razor?highlight=12-13)]
 
-1. Arrêtez l’application en cours d’exécution dans l’interface de commande. De nombreux interpréteurs de commandes acceptent la commande de clavier <kbd>CTRL</kbd> + <kbd>c</kbd> pour arrêter une application. Régénérez et exécutez l’application avec la `dotnet run` commande. Lorsque le **`Add todo`** bouton est sélectionné, rien ne se produit, car un gestionnaire d’événements n’est pas relié au bouton.
+1. Enregistrez le `TodoItem.cs` fichier et le fichier mis à jour `Pages/Todo.razor` . Dans l’interface de commande, l’application est automatiquement reconstruite lors de l’enregistrement des fichiers. Le navigateur perd temporairement sa connexion à l’application, puis recharge la page lorsque la connexion est rétablie.
+
+1. Lorsque le **`Add todo`** bouton est sélectionné, rien ne se produit, car un gestionnaire d’événements n’est pas attaché au bouton.
 
 1. Ajoutez une méthode `AddTodo` au composant `Todo` et enregistrez-la pour les sélections du bouton à l’aide de l’attribut `@onclick`. La méthode C# `AddTodo` est appelée lorsque le bouton est sélectionné :
 
@@ -134,7 +140,7 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
    [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo6.razor?highlight=19-26)]
 
-1. Arrêtez l’application en cours d’exécution dans l’interface de commande. Régénérez et exécutez l’application avec la `dotnet run` commande. Ajoutez quelques éléments todo à la liste Todo pour tester le nouveau code.
+1. Enregistrez le fichier `Pages/ToDo.razor`. L’application est automatiquement reconstruite dans l’interface de commande. La page se recharge dans le navigateur une fois que le navigateur s’est reconnecté à l’application.
 
 1. Le texte du titre pour chaque élément todo peut être rendu modifiable et une case à cocher peut aider l’utilisateur à effectuer le suivi des éléments terminés. Ajoutez une entrée de case à cocher pour chaque élément todo et liez sa valeur à la propriété `IsDone`. Remplacez `@todo.Title` par un élément `<input>` lié à `@todo.Title` :
 
@@ -150,7 +156,11 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
    [!code-razor[](build-a-blazor-app/samples_snapshot/Todo1.razor)]
 
-1. Arrêtez l’application en cours d’exécution dans l’interface de commande. Régénérez et exécutez l’application avec la `dotnet run` commande. Ajoutez des éléments todo pour tester le nouveau code.
+1. Enregistrez le fichier `Pages/ToDo.razor`. L’application est automatiquement reconstruite dans l’interface de commande. La page se recharge dans le navigateur une fois que le navigateur s’est reconnecté à l’application.
+
+1. Ajoutez des éléments todo pour tester le nouveau code.
+
+1. Lorsque vous avez terminé, arrêtez l’application dans l’interface de commande. De nombreux interpréteurs de commandes acceptent la commande de clavier <kbd>CTRL</kbd> + <kbd>c</kbd> pour arrêter une application.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/request-features
-ms.openlocfilehash: d906474b0fd291cc4a68390f390b2bf538e21eff
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 88e97d88341789a76a79da8d92098c2e00396fe7
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053707"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870423"
 ---
 # <a name="request-features-in-aspnet-core"></a>Fonctionnalités de requête dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
-L' `HttpContext` API utilisée par les applications et les intergiciels pour traiter les demandes a une couche d’abstraction undernieth appelée « *interfaces de fonctionnalités* ». Chaque interface de fonctionnalité fournit un sous-ensemble granulaire des fonctionnalités exposées par `HttpContext` . Ces interfaces peuvent être ajoutées, modifiées, encapsulées, remplacées ou même supprimées par le serveur ou l’intergiciel (middleware) lors du traitement de la demande sans avoir à réimplémenter l’ensemble du `HttpContext` . Elles peuvent également être utilisées pour simuler des fonctionnalités lors des tests.
+L' `HttpContext` API utilisée par les applications et les intergiciels pour traiter les demandes a une couche d’abstraction en dessous de celle-ci appelée *interfaces de fonctionnalités*. Chaque interface de fonctionnalité fournit un sous-ensemble granulaire des fonctionnalités exposées par `HttpContext` . Ces interfaces peuvent être ajoutées, modifiées, encapsulées, remplacées ou même supprimées par le serveur ou l’intergiciel (middleware) lors du traitement de la demande sans avoir à réimplémenter l’ensemble du `HttpContext` . Elles peuvent également être utilisées pour simuler des fonctionnalités lors des tests.
 
 ## <a name="feature-collections"></a>Collections de fonctionnalités
 

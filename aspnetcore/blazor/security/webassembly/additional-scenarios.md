@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: baed18df2d127b592f420aac0432e0b28f076d46
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: bb502533bca24e82792db8814b75b16407f20339
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94508043"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870384"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly des scénarios de sécurité supplémentaires
 
@@ -34,7 +34,7 @@ Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https
 
 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> est <xref:System.Net.Http.DelegatingHandler> utilisé pour attacher des jetons d’accès aux instances sortantes <xref:System.Net.Http.HttpResponseMessage> . Les jetons sont acquis à l’aide du <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.IAccessTokenProvider> service, qui est enregistré par le Framework. Si un jeton ne peut pas être acquis, une <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> exception est levée. <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> dispose d’une <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException.Redirect%2A> méthode qui peut être utilisée pour accéder au fournisseur d’identité de l’utilisateur afin d’acquérir un nouveau jeton.
 
-Pour plus de commodité, le Framework fournit l' <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> adresse préconfigurée avec l’adresse de base de l’application en tant qu’URL autorisée. **Les jetons d’accès sont ajoutés uniquement lorsque l’URI de la demande se trouve dans l’URI de base de l’application.** Lorsque les URI de demande sortants ne se trouvent pas dans l’URI de base de l’application, utilisez une [ `AuthorizationMessageHandler` classe personnalisée ( *recommandé* )](#custom-authorizationmessagehandler-class) ou [configurez le `AuthorizationMessageHandler`](#configure-authorizationmessagehandler).
+Pour plus de commodité, le Framework fournit l' <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> adresse préconfigurée avec l’adresse de base de l’application en tant qu’URL autorisée. **Les jetons d’accès sont ajoutés uniquement lorsque l’URI de la demande se trouve dans l’URI de base de l’application.** Lorsque les URI de demande sortants ne se trouvent pas dans l’URI de base de l’application, utilisez une [ `AuthorizationMessageHandler` classe personnalisée (*recommandé*)](#custom-authorizationmessagehandler-class) ou [configurez le `AuthorizationMessageHandler`](#configure-authorizationmessagehandler).
 
 > [!NOTE]
 > Outre la configuration de l’application cliente pour l’accès à l’API serveur, l’API serveur doit également autoriser les requêtes Cross-Origin (CORS) lorsque le client et le serveur ne se trouvent pas à la même adresse de base. Pour plus d’informations sur la configuration CORS côté serveur, consultez la section relative au [partage des ressources Cross-Origin (cors)](#cross-origin-resource-sharing-cors) plus loin dans cet article.
@@ -884,6 +884,31 @@ app.UseEndpoints(endpoints =>
 
 Dans l’application serveur, créez un `Pages` dossier s’il n’existe pas. Créez une `_Host.cshtml` page dans le dossier de l’application serveur `Pages` . Collez le contenu du *`Client`* fichier de l’application `wwwroot/index.html` dans le `Pages/_Host.cshtml` fichier. Mettez à jour le contenu du fichier :
 
+::: moniker range=">= aspnetcore-5.0"
+
+* Ajoutez `@page "_Host"` en haut du fichier.
+* Remplacez la `<div id="app">Loading...</div>` balise par le suivant :
+
+  ```cshtml
+  <div id="app">
+      @if (!HttpContext.Request.Path.StartsWithSegments("/authentication"))
+      {
+          <component type="typeof({CLIENT APP ASSEMBLY NAME}.App)" 
+              render-mode="Static" />
+      }
+      else
+      {
+          <text>Loading...</text>
+      }
+  </div>
+  ```
+  
+  Dans l’exemple précédent, l’espace réservé `{CLIENT APP ASSEMBLY NAME}` est le nom de l’assembly de l’application cliente (par exemple `BlazorSample.Client` ).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 * Ajoutez `@page "_Host"` en haut du fichier.
 * Remplacez la `<app>Loading...</app>` balise par le suivant :
 
@@ -891,7 +916,7 @@ Dans l’application serveur, créez un `Pages` dossier s’il n’existe pas. C
   <app>
       @if (!HttpContext.Request.Path.StartsWithSegments("/authentication"))
       {
-          <component type="typeof(Wasm.Authentication.Client.App)" 
+          <component type="typeof({CLIENT APP ASSEMBLY NAME}.App)" 
               render-mode="Static" />
       }
       else
@@ -901,11 +926,15 @@ Dans l’application serveur, créez un `Pages` dossier s’il n’existe pas. C
   </app>
   ```
   
+  Dans l’exemple précédent, l’espace réservé `{CLIENT APP ASSEMBLY NAME}` est le nom de l’assembly de l’application cliente (par exemple `BlazorSample.Client` ).
+
+::: moniker-end
+  
 ## <a name="options-for-hosted-apps-and-third-party-login-providers"></a>Options pour les applications hébergées et les fournisseurs de connexion tiers
 
 Lors de l’authentification et de l’autorisation d’une application hébergée Blazor WebAssembly auprès d’un fournisseur tiers, plusieurs options sont disponibles pour l’authentification de l’utilisateur. Celui que vous choisissez dépend de votre scénario.
 
-Pour plus d'informations, consultez <xref:security/authentication/social/additional-claims>.
+Pour plus d’informations, consultez <xref:security/authentication/social/additional-claims>.
 
 ### <a name="authenticate-users-to-only-call-protected-third-party-apis"></a>Authentifier les utilisateurs pour appeler uniquement des API tierces protégées
 
@@ -977,7 +1006,7 @@ La liste des revendications dans le jeton d’ID change pour les points de termi
 
 Pour configurer une Blazor WebAssembly application afin d’utiliser l' [infrastructure ASP.net Core gRPC](xref:grpc/index):
 
-* Activez gRPC-Web sur le serveur. Pour plus d'informations, consultez <xref:grpc/browser>.
+* Activez gRPC-Web sur le serveur. Pour plus d’informations, consultez <xref:grpc/browser>.
 * Inscrivez les services gRPC pour le gestionnaire de messages de l’application. L’exemple suivant configure le gestionnaire de messages d’autorisation de l’application pour qu’il utilise le [ `GreeterClient` service à partir du didacticiel gRPC](xref:tutorials/grpc/grpc-start#create-a-grpc-service) ( `Program.Main` ) :
 
 ```csharp
@@ -1047,7 +1076,7 @@ Server response: <strong>@serverResponse</strong>
 
 L’espace réservé `{APP ASSEMBLY}` est le nom de l’assembly de l’application (par exemple, `BlazorSample` ). Pour utiliser la `Status.DebugException` propriété, utilisez [GRPC .net. client](https://www.nuget.org/packages/Grpc.Net.Client) version 2.30.0 ou ultérieure.
 
-Pour plus d'informations, consultez <xref:grpc/browser>.
+Pour plus d’informations, consultez <xref:grpc/browser>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

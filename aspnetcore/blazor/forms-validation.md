@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 827045775d3bca3cd2c467b12172c53f5f9b0625
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: a8bbcbd6ac13ec064350a5b885423835baa4c4cc
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417394"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870371"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor les formulaires et la validation
 
@@ -1029,7 +1029,7 @@ private class CustomValidator : ValidationAttribute
 ```
 
 > [!NOTE]
-> <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> est `null`. L’injection de services pour la validation dans la `IsValid` méthode n’est pas prise en charge.
+> <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> a la valeur `null`. L’injection de services pour la validation dans la `IsValid` méthode n’est pas prise en charge.
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -1064,9 +1064,13 @@ Le [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nu
 > [!NOTE]
 > Le [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) package a une version la plus récente de la version *Release candidate* sur [NuGet.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation). Continuez à utiliser le package *expérimental* release candidate pour l’instant. L’assembly du package peut être déplacé vers l’infrastructure ou le runtime dans une version ultérieure. Regardez le [référentiel GitHub d’annonces](https://github.com/aspnet/Announcements), le [référentiel GitHub dotnet/aspnetcore](https://github.com/dotnet/aspnetcore), ou la section de cette rubrique pour obtenir des mises à jour supplémentaires.
 
-### <a name="compareproperty-attribute"></a>Attribut [CompareProperty]
+::: moniker range="< aspnetcore-5.0"
+
+### <a name="compareproperty-attribute"></a>Attribut `[CompareProperty]`
 
 Le <xref:System.ComponentModel.DataAnnotations.CompareAttribute> ne fonctionne pas correctement avec le <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant, car il n’associe pas le résultat de la validation à un membre spécifique. Cela peut entraîner un comportement incohérent entre la validation au niveau du champ et le moment où la totalité du modèle est validée sur une soumission. Le [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) package *expérimental* introduit un attribut de validation supplémentaire, `ComparePropertyAttribute` , qui contourne ces limitations. Dans une Blazor application, `[CompareProperty]` est un remplacement direct de l' [`[Compare]`](xref:System.ComponentModel.DataAnnotations.CompareAttribute) attribut.
+
+::: moniker-end
 
 ### <a name="nested-models-collection-types-and-complex-types"></a>Modèles imbriqués, types de collection et types complexes
 
