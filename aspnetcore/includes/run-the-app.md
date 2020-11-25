@@ -19,7 +19,7 @@
 
   [!INCLUDE[](~/includes/trustCertMac.md)]
 
-* De Visual Studio, appuyez sur **Opt-Cmd-Return** pour courir sans le débbugger. Alternativement, naviguer à la barre de menu et aller à **Run>Start Without Debugging**.
+* Dans Visual Studio, appuyez sur **OPT-CMD-Return** pour exécuter sans le débogueur. Vous pouvez également accéder à la barre de menus et accéder à **exécuter>démarrer sans débogage**.
 
   Visual Studio démarre [Kestrel](xref:fundamentals/servers/kestrel), lance un navigateur, puis accède à `http://localhost:5001`.
 

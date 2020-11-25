@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory
-ms.openlocfilehash: 4e8c22c56b7023301499fd273a9194b8c7b58f3d
-ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
+ms.openlocfilehash: 4f203e57fe69c3a14dc267c0693094fcefa3dd80
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343706"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024681"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory"></a>Sécuriser une Blazor WebAssembly application ASP.net Core autonome avec Azure Active Directory
 
@@ -35,11 +35,15 @@ Cet article explique comment créer une [ Blazor WebAssembly application autonom
 ::: moniker range=">= aspnetcore-5.0"
 
 > [!NOTE]
-> Pour les Blazor WebAssembly applications créées dans Visual Studio qui sont configurées pour prendre en charge les comptes dans un annuaire d’organisation AAD, Visual Studio ne configure pas correctement l’application lors de la génération du projet. Cela sera résolu dans une prochaine version de Visual Studio. Cet article explique comment créer l’application avec la commande de l’CLI .NET Core `dotnet new` . Si vous préférez créer l’application avec Visual Studio avant la mise à jour de l’IDE pour les modèles les plus récents Blazor dans ASP.NET Core 5,0, reportez-vous à chaque section de cet article et confirmez ou mettez à jour la configuration de l’application une fois que Visual Studio a créé l’application.
+> Pour les Blazor WebAssembly applications créées dans Visual Studio qui sont configurées pour prendre en charge les comptes dans un annuaire d’organisation AAD, Visual Studio ne configure pas les inscriptions de portail Azure des applications correctement dans la génération de projet. Cela sera résolu dans une prochaine version de Visual Studio.
+>
+> Cet article explique comment créer la solution et l’inscription du portail Azure App à l’aide de la commande CLI .NET `dotnet new` et en créant manuellement l’inscription de l’application dans la portail Azure.
+>
+> Si vous préférez créer la solution et l’inscription de l’application Azure avec Visual Studio avant la mise à jour de l’IDE, reportez-vous à **_chaque section de cet article_** et confirmez ou mettez à jour la configuration de l’application et l’inscription de l’application une fois que Visual Studio a créé la solution.
 
 Inscrire une application AAD dans la **Azure Active Directory** > zone de **inscriptions d’applications** Azure Active Directory de l’portail Azure :
 
-1. Fournissez un **nom** pour l’application (par exemple, **Blazor AAD autonome** ).
+1. Fournissez un **nom** pour l’application (par exemple, **Blazor AAD autonome**).
 1. Choisissez un **type de compte pris en charge**. Vous ne pouvez sélectionner des **comptes dans cet annuaire d’organisation que** pour cette expérience.
 1. Définissez la liste déroulante **URI de redirection** sur **une application à page unique (Spa)** et fournissez l’URI de redirection suivante : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque s’affiche plus loin dans cette rubrique pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
@@ -50,10 +54,10 @@ Notez les informations suivantes :
 * ID de l’application (client) (par exemple, `41451fa7-82d9-4673-8fa5-69eff5a761fd` )
 * ID de répertoire (locataire) (par exemple, `e86c78e2-8bb4-4c41-aefd-918e0565a45e` )
 
-Dans configurations de plateforme **d’authentification** , > **Platform configurations** > **application à page unique (Spa)** :
+Dans configurations de plateforme **d’authentification** , > **Platform configurations** > **application à page unique (Spa)**:
 
 1. Confirmez que l' **URI de redirection** de `https://localhost:{PORT}/authentication/login-callback` est présent.
-1. Pour **octroi implicite** , assurez-vous que les cases à cocher pour les **jetons d’accès** et les **jetons d’ID** ne sont **pas** sélectionnées.
+1. Pour **octroi implicite**, assurez-vous que les cases à cocher pour les **jetons d’accès** et les **jetons d’ID** ne sont **pas** sélectionnées.
 1. Les valeurs par défaut restantes pour l’application sont acceptables pour cette expérience.
 1. Sélectionnez le bouton **Enregistrer**.
 
@@ -63,7 +67,7 @@ Dans configurations de plateforme **d’authentification** , > **Platform config
 
 Inscrire une application AAD dans la **Azure Active Directory** > zone de **inscriptions d’applications** Azure Active Directory de l’portail Azure :
 
-1. Fournissez un **nom** pour l’application (par exemple, **Blazor AAD autonome** ).
+1. Fournissez un **nom** pour l’application (par exemple, **Blazor AAD autonome**).
 1. Choisissez un **type de compte pris en charge**. Vous ne pouvez sélectionner des **comptes dans cet annuaire d’organisation que** pour cette expérience.
 1. Laissez la liste déroulante **URI de redirection** définie sur **Web** et indiquez l’URI de redirection suivant : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque s’affiche plus loin dans cette rubrique pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
@@ -77,7 +81,7 @@ Notez les informations suivantes :
 Dans **Authentication** le > **Platform configurations** > **site Web** configurations de la plateforme d’authentification :
 
 1. Confirmez que l' **URI de redirection** de `https://localhost:{PORT}/authentication/login-callback` est présent.
-1. Pour **octroi implicite** , activez les cases à cocher pour les **jetons d’accès** et les **jetons d’ID**.
+1. Pour **octroi implicite**, activez les cases à cocher pour les **jetons d’accès** et les **jetons d’ID**.
 1. Les valeurs par défaut restantes pour l’application sont acceptables pour cette expérience.
 1. Sélectionnez le bouton **Enregistrer**.
 
@@ -159,7 +163,7 @@ La configuration est fournie par le `wwwroot/appsettings.json` fichier :
 }
 ```
 
-Exemple :
+Exemple :
 
 ```json
 {

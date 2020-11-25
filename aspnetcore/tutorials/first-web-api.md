@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 569744b2cbec062ec9abab9db1c94960f1f912e7
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 9299ba685c95ced522fc725854a66252e67fc799
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570248"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96024970"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Didacticiel : créer une API Web avec ASP.NET Core
 
@@ -34,7 +34,7 @@ Ce tutoriel décrit les principes fondamentaux liés à la génération d’une 
 
 ::: moniker range=">= aspnetcore-5.0"
 
-Dans ce tutoriel, vous allez apprendre à :
+Dans ce tutoriel, vous allez découvrir comment :
 
 > [!div class="checklist"]
 > * Créer un projet d’API web.
@@ -51,10 +51,10 @@ Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obtenir toutes les tâches | Aucun | Tableau de tâches|
-|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | Aucun | Tâche|
+|`GET /api/TodoItems` | Obtenir toutes les tâches | None | Tableau de tâches|
+|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | None | Tâche|
 |`POST /api/TodoItems` | Ajouter un nouvel élément | Tâche | Tâche |
-|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
+|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | None |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -121,7 +121,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 * Dans la boîte de dialogue **configurer la nouvelle API Web ASP.net Core** , sélectionnez la version la plus récente de .net Core 5. x **Target Framework**. Sélectionnez **Suivant**.
 
-* Entrez *TodoApi* comme **Nom du projet** , puis sélectionnez **Créer**.
+* Entrez *TodoApi* comme **Nom du projet**, puis sélectionnez **Créer**.
 
   ![boîte de dialogue de configuration](first-web-api-mac/_static/2.png)
 
@@ -149,7 +149,7 @@ Appuyez sur Ctrl+F5 pour exécuter sans le débogueur.
   Lancements de Visual Studio :
 
 * Serveur Web IIS Express.
-* Le navigateur par défaut et navigue vers `https://localhost:<port>/https://localhost:5001/swagger/index.html` , où `<port>` est un numéro de port choisi de façon aléatoire.
+* Le navigateur par défaut et navigue vers `https://localhost:<port>/swagger/index.html` , où `<port>` est un numéro de port choisi de façon aléatoire.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -215,7 +215,7 @@ Un code JSON similaire au suivant est retourné :
 
 ### <a name="update-the-launchurl"></a>Mettre à jour launchUrl
 
-Dans *Properties\launchSettings.js* , mettez à jour `launchUrl` de `"swagger"` vers `"api/TodoItems"` :
+Dans *Properties\launchSettings.js*, mettez à jour `launchUrl` de `"swagger"` vers `"api/TodoItems"` :
 
 ```json
 "launchUrl": "api/TodoItems",
@@ -229,7 +229,7 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans l’ **Explorateur de solutions** , cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter**  >  **un nouveau dossier**. Nommez le dossier *Models* .
+* Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter**  >  **un nouveau dossier**. Nommez le dossier *Models* .
 
 * Cliquez avec le bouton droit sur le *Models* dossier et sélectionnez **Ajouter** une  >  **classe**. Nommez la classe *TodoItem* et sélectionnez sur **Ajouter**.
 
@@ -269,11 +269,9 @@ Le *contexte de base de données* est la classe principale qui coordonne les fon
 
 ### <a name="add-nuget-packages"></a>Ajouter des packages NuGet
 
-* Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Gérer les packages NuGet pour la solution**.
-* Sélectionnez l’onglet **Parcourir** , puis entrez * * Microsoft.
-**EntityFrameworkCore. SqlServer** dans la zone de recherche.
+* Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Gérer les packages NuGet pour la solution**.
+* Sélectionnez l’onglet **Parcourir**, puis entrez **Microsoft.EntityFrameworkCore.SqlServer** dans la zone de recherche.
 <!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
-* Activez la case à cocher inclure la version **préliminaire** afin que la version 5,0 RC soit disponible. 
 * Dans le volet gauche, sélectionnez **Microsoft. EntityFrameworkCore. SqlServer** .
 * Cochez la case **Projet** dans le volet droit, puis sélectionnez **Installer**.
 * Utilisez les instructions précédentes pour ajouter le package NuGet **Microsoft. EntityFrameworkCore. InMemory** .
@@ -316,8 +314,8 @@ Le code précédent :
 
 * Cliquez avec le bouton droit sur le dossier *Contrôleurs*.
 * Sélectionnez **Ajouter** > **Nouvel élément généré automatiquement**.
-* Sélectionnez **Contrôleur d’API avec actions, utilisant Entity Framework** , puis **Ajouter**.
-* Dans la boîte de dialogue **Contrôleur d’API avec actions, utilisant Entity Framework**  :
+* Sélectionnez **Contrôleur d’API avec actions, utilisant Entity Framework**, puis **Ajouter**.
+* Dans la boîte de dialogue **Contrôleur d’API avec actions, utilisant Entity Framework** :
 
   * Sélectionnez **TodoItem (TodoApi. Models )** dans la **classe de modèle**.
   * Sélectionnez **TodoContext (TodoApi. Models )** dans la **classe de contexte de données**.
@@ -330,8 +328,8 @@ Exécutez les commandes suivantes :
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet tool update -g Dotnet-aspnet-codegenerator
+dotnet tool install -g dotnet-aspnet-codegenerator
+dotnet tool update -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
@@ -379,7 +377,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 * Démarrez l’application web.
 * Démarrez Postman.
 * Désactivez la **vérification du certificat SSL**.
-  * À partir de **Fichier** > **Paramètres** (onglet **Général** ), désactivez **Vérification du certificat SSL**.
+  * À partir de **Fichier** > **Paramètres** (onglet **Général**), désactivez **Vérification du certificat SSL**.
     > [!WARNING]
     > Réactivez la vérification du certificat SSL après avoir testé le contrôleur.
 
@@ -450,7 +448,7 @@ Une réponse semblable à la suivante est produite par l’appel à `GetTodoItem
 * Créez une requête.
 * Définissez la méthode HTTP sur **GET**.
 * Définissez l’URI de la demande sur `https://localhost:<port>/api/TodoItems` . Par exemple : `https://localhost:5001/api/TodoItems`.
-* Définissez l’ **affichage à deux volets** dans Postman.
+* Définissez l’**affichage à deux volets** dans Postman.
 * Sélectionnez **Envoyer**.
 
 Cette application utilise une base de données en mémoire. Si l’application est arrêtée et démarrée, la requête GET précédente ne retourne aucune donnée. Si aucune donnée n’est retournée, publiez ([POST](#post)) les données dans l’application.
@@ -560,7 +558,7 @@ Consultez [Didacticiel : appeler une API web ASP.net core avec JavaScript](xref
 
 ::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
 
-Dans ce tutoriel, vous allez apprendre à :
+Dans ce tutoriel, vous allez découvrir comment :
 
 > [!div class="checklist"]
 > * Créer un projet d’API web.
@@ -577,10 +575,10 @@ Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obtenir toutes les tâches | Aucun | Tableau de tâches|
-|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | Aucun | Tâche|
+|`GET /api/TodoItems` | Obtenir toutes les tâches | None | Tableau de tâches|
+|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | None | Tâche|
 |`POST /api/TodoItems` | Ajouter un nouvel élément | Tâche | Tâche |
-|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
+|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | None |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -647,7 +645,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 * Dans la boîte de dialogue **configurer la nouvelle API Web ASP.net Core** , sélectionnez la version la plus récente de .net Core 3. x **Target Framework**. Sélectionnez **Suivant**.
 
-* Entrez *TodoApi* comme **Nom du projet** , puis sélectionnez **Créer**.
+* Entrez *TodoApi* comme **Nom du projet**, puis sélectionnez **Créer**.
 
   ![boîte de dialogue de configuration](first-web-api-mac/_static/2.png)
 
@@ -725,7 +723,7 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans l’ **Explorateur de solutions** , cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter**  >  **un nouveau dossier**. Nommez le dossier *Models* .
+* Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter**  >  **un nouveau dossier**. Nommez le dossier *Models* .
 
 * Cliquez avec le bouton droit sur le *Models* dossier et sélectionnez **Ajouter** une  >  **classe**. Nommez la classe *TodoItem* et sélectionnez sur **Ajouter**.
 
@@ -765,8 +763,8 @@ Le *contexte de base de données* est la classe principale qui coordonne les fon
 
 ### <a name="add-nuget-packages"></a>Ajouter des packages NuGet
 
-* Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Gérer les packages NuGet pour la solution**.
-* Sélectionnez l’onglet **Parcourir** , puis entrez **Microsoft.EntityFrameworkCore.SqlServer** dans la zone de recherche.
+* Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Gérer les packages NuGet pour la solution**.
+* Sélectionnez l’onglet **Parcourir**, puis entrez **Microsoft.EntityFrameworkCore.SqlServer** dans la zone de recherche.
 * Dans le volet gauche, sélectionnez **Microsoft. EntityFrameworkCore. SqlServer** .
 * Cochez la case **Projet** dans le volet droit, puis sélectionnez **Installer**.
 * Utilisez les instructions précédentes pour ajouter le package NuGet **Microsoft. EntityFrameworkCore. InMemory** .
@@ -807,8 +805,8 @@ Le code précédent :
 
 * Cliquez avec le bouton droit sur le dossier *Contrôleurs*.
 * Sélectionnez **Ajouter** > **Nouvel élément généré automatiquement**.
-* Sélectionnez **Contrôleur d’API avec actions, utilisant Entity Framework** , puis **Ajouter**.
-* Dans la boîte de dialogue **Contrôleur d’API avec actions, utilisant Entity Framework**  :
+* Sélectionnez **Contrôleur d’API avec actions, utilisant Entity Framework**, puis **Ajouter**.
+* Dans la boîte de dialogue **Contrôleur d’API avec actions, utilisant Entity Framework** :
 
   * Sélectionnez **TodoItem (TodoApi. Models )** dans la **classe de modèle**.
   * Sélectionnez **TodoContext (TodoApi. Models )** dans la **classe de contexte de données**.
@@ -870,7 +868,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 * Démarrez l’application web.
 * Démarrez Postman.
 * Désactivez la **vérification du certificat SSL**.
-  * À partir de **Fichier** > **Paramètres** (onglet **Général** ), désactivez **Vérification du certificat SSL**.
+  * À partir de **Fichier** > **Paramètres** (onglet **Général**), désactivez **Vérification du certificat SSL**.
     > [!WARNING]
     > Réactivez la vérification du certificat SSL après avoir testé le contrôleur.
 
@@ -937,7 +935,7 @@ Une réponse semblable à la suivante est produite par l’appel à `GetTodoItem
 * Créez une requête.
 * Définissez la méthode HTTP sur **GET**.
 * Définissez l’URI de la demande sur `https://localhost:<port>/api/TodoItems` . Par exemple : `https://localhost:5001/api/TodoItems`.
-* Définissez l’ **affichage à deux volets** dans Postman.
+* Définissez l’**affichage à deux volets** dans Postman.
 * Sélectionnez **Envoyer**.
 
 Cette application utilise une base de données en mémoire. Si l’application est arrêtée et démarrée, la requête GET précédente ne retourne aucune donnée. Si aucune donnée n’est retournée, publiez ([POST](#post)) les données dans l’application.
@@ -1048,7 +1046,7 @@ Consultez [Didacticiel : appeler une API web ASP.net core avec JavaScript](xref
 
 ::: moniker range="< aspnetcore-3.0"
 
-Dans ce tutoriel, vous allez apprendre à :
+Dans ce tutoriel, vous allez découvrir comment :
 
 > [!div class="checklist"]
 > * Créer un projet d’API web.
@@ -1068,10 +1066,10 @@ Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obtenir toutes les tâches | Aucun | Tableau de tâches|
-|GET /api/TodoItems/{id} | Obtenir un élément par ID | Aucun | Tâche|
+|GET /api/TodoItems | Obtenir toutes les tâches | None | Tableau de tâches|
+|GET /api/TodoItems/{id} | Obtenir un élément par ID | None | Tâche|
 |POST /api/TodoItems | Ajouter un nouvel élément | Tâche | Tâche |
-|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
+|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | None |
 |SUPPRIMER/api/TodoItems/{id} &nbsp;&nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -1101,7 +1099,7 @@ Le diagramme suivant illustre la conception de l’application.
 * Dans le menu **fichier** , sélectionnez **nouveau** > **projet**.
 * Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant**.
 * Nommez le projet *TodoApi* et cliquez sur **Créer**.
-* Dans la boîte de dialogue **Créer une application web ASP.NET Core** , vérifiez que **.NET Core** et **ASP.NET Core 2.2** sont sélectionnés. Sélectionnez le modèle **API** et cliquez sur **Créer**. Ne sélectionnez **pas****Activer la prise en charge de Docker**.
+* Dans la boîte de dialogue **Créer une application web ASP.NET Core**, vérifiez que **.NET Core** et **ASP.NET Core 2.2** sont sélectionnés. Sélectionnez le modèle **API** et cliquez sur **Créer**. Ne sélectionnez **pas****Activer la prise en charge de Docker**.
 
 ![Boîte de dialogue de nouveau projet dans VS](first-web-api/_static/vs.png)
 
@@ -1130,7 +1128,7 @@ Le diagramme suivant illustre la conception de l’application.
   
 * Dans la boîte de dialogue **configurer la nouvelle API Web ASP.net Core** , sélectionnez la version la plus récente de .net Core 2. x **Target Framework**. Sélectionnez **Suivant**.
 
-* Entrez *TodoApi* comme **Nom du projet** , puis sélectionnez **Créer**.
+* Entrez *TodoApi* comme **Nom du projet**, puis sélectionnez **Créer**.
 
   ![boîte de dialogue de configuration](first-web-api-mac/_static/2.png)
 
@@ -1168,7 +1166,7 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans l’ **Explorateur de solutions** , cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter**  >  **un nouveau dossier**. Nommez le dossier *Models* .
+* Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter**  >  **un nouveau dossier**. Nommez le dossier *Models* .
 
 * Cliquez avec le bouton droit sur le *Models* dossier et sélectionnez **Ajouter** une  >  **classe**. Nommez la classe *TodoItem* et sélectionnez sur **Ajouter**.
 
@@ -1238,14 +1236,14 @@ Le code précédent :
 
 * Cliquez avec le bouton droit sur le dossier *Contrôleurs*.
 * Sélectionnez **Ajouter** > **un nouvel élément**.
-* Dans la boîte de dialogue **Ajouter un nouvel élément** , sélectionnez le modèle **Classe de contrôleur d’API**.
+* Dans la boîte de dialogue **Ajouter un nouvel élément**, sélectionnez le modèle **Classe de contrôleur d’API**.
 * Nommez la classe *TodoController* et sélectionnez **Ajouter**.
 
   ![Boîte de dialogue Ajouter un nouvel élément avec contrôleur dans la zone de recherche et le contrôleur des API web sélectionné](first-web-api/_static/new_controller.png)
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Dans le dossier *Contrôleurs* , créez une classe nommée `TodoController`.
+* Dans le dossier *Contrôleurs*, créez une classe nommée `TodoController`.
 
 ---
 
@@ -1325,11 +1323,11 @@ Ce tutoriel utilise Postman pour tester l’API web.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* À partir de **Fichier** > **Paramètres** (onglet **Général** ), désactivez **Vérification du certificat SSL**.
+* À partir de **Fichier** > **Paramètres** (onglet **Général**), désactivez **Vérification du certificat SSL**.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Dans **Postman**  >  **Préférences** de publication (onglet **général** ), désactivez la vérification de **certificat SSL**. Vous pouvez également sélectionner la clé et sélectionner **Paramètres** , puis désactiver la vérification du certificat SSL.
+* Dans **Postman**  >  **Préférences** de publication (onglet **général** ), désactivez la vérification de **certificat SSL**. Vous pouvez également sélectionner la clé et sélectionner **Paramètres**, puis désactiver la vérification du certificat SSL.
 
 ---
   
@@ -1339,7 +1337,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 * Créez une requête.
   * Définissez la méthode HTTP sur **GET**.
   * Définissez l’URI de la demande sur `https://localhost:<port>/api/todo` . Par exemple : `https://localhost:5001/api/todo`.
-* Définissez l’ **affichage à deux volets** dans Postman.
+* Définissez l’**affichage à deux volets** dans Postman.
 * Sélectionnez **Envoyer**.
 
 ![Postman avec requête Get](first-web-api/_static/2pv.png)
@@ -1454,7 +1452,7 @@ Ajoutez un fichier HTML nommé *index.html* au répertoire *wwwroot*. Remplacez 
 
 [!code-html[](first-web-api/samples/2.2/TodoApi/wwwroot/index.html)]
 
-Ajoutez un fichier JavaScript nommé *site.js* au répertoire *wwwroot*. Remplacez le contenu par le code suivant :
+Ajoutez un fichier JavaScript nommé *site.js* au répertoire *wwwroot*. Remplacez son contenu par le code ci-dessous :
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_SiteJs)]
 

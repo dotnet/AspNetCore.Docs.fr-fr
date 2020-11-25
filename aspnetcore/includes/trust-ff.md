@@ -1,0 +1,1 @@
+Pour plus d’informations sur l’approbation du navigateur Firefox, voir [firefox SEC_ERROR_INADEQUATE_KEY_USAGE erreur de certificat](xref:security/enforcing-ssl#trust-ff).

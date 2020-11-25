@@ -9,3 +9,5 @@ La boîte de dialogue suivante s’affiche :
 ![Boîte de dialogue Avertissement de sécurité](~/getting-started/_static/cert.png)
 
 Sélectionnez **Oui** si vous acceptez d’approuver le certificat de développement.
+
+[!INCLUDE[trust FF](~/includes/trust-ff.md)]

@@ -44,7 +44,7 @@ L’une des méthodes permettant d’empêcher les cookies en attente et les don
     * Microsoft Edge : utilisez `-inprivate` .
     * Google Chrome : utilisez `--incognito --new-window {URL}` , où l’espace réservé `{URL}` est l’URL à ouvrir (par exemple, `https://localhost:5001` ).
     * Mozilla Firefox : utilisez `-private -url {URL}` , où l’espace réservé `{URL}` est l’URL à ouvrir (par exemple, `https://localhost:5001` ).
-  * Entrez un nom dans le champ **nom convivial** . Par exemple, `Firefox Auth Testing`.
+  * Entrez un nom dans le champ **nom convivial** . Par exemple : `Firefox Auth Testing`.
   * Cliquez sur le bouton **OK**.
   * Pour éviter d’avoir à sélectionner le profil de navigateur pour chaque itération de test avec une application, définissez le profil par défaut avec le bouton **définir comme valeur par défaut** .
   * Assurez-vous que le navigateur est fermé par l’IDE pour toute modification apportée à l’application, à l’utilisateur de test ou à la configuration du fournisseur.
