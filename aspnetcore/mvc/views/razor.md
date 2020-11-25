@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: c1278b0cd3e58814b1c06dca81efd662c3de0c54
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 91e35a7cbd97e2bd6e77566362f02409915de7d7
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059193"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035708"
 ---
 # <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor Référence de syntaxe pour ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Taylor Mullen](https://twitter.com/ntaylormullen)et [Dan Vicarel](https://github.com/Rabadash8820)
 
-Razor est une syntaxe de balisage pour incorporer du code basé sur le serveur dans des pages Web. La Razor syntaxe se compose du Razor balisage, de C# et du code html. Les fichiers contenant Razor ont généralement une extension de fichier *. cshtml* . Razorse trouve également dans les fichiers de [ Razor composants](xref:blazor/components/index) ( *. Razor* ).
+Razor est une syntaxe de balisage pour incorporer du code basé sur le serveur dans des pages Web. La Razor syntaxe se compose du Razor balisage, de C# et du code html. Les fichiers contenant Razor ont généralement une extension de fichier *. cshtml* . Razorse trouve également dans les fichiers de [ Razor composants](xref:blazor/components/index) (*. Razor*).
 
 ## <a name="rendering-html"></a>Rendu HTML
 
@@ -118,7 +118,7 @@ Les expressions explicites peuvent servir à concaténer du texte avec un résul
 
 Sans l’expression explicite, `<p>Age@joe.Age</p>` est traité comme une adresse e-mail, et `<p>Age@joe.Age</p>` est affiché. Avec une expression explicite, `<p>Age33</p>` est affiché.
 
-Les expressions explicites peuvent être utilisées pour afficher la sortie de méthodes génériques dans les fichiers *.cshtml* . Le balisage suivant montre comment corriger l’erreur affichée précédemment provoquée par les crochets d’un générique C#. Le code est écrit sous forme d’expression explicite :
+Les expressions explicites peuvent être utilisées pour afficher la sortie de méthodes génériques dans les fichiers *.cshtml*. Le balisage suivant montre comment corriger l’erreur affichée précédemment provoquée par les crochets d’un générique C#. Le code est écrit sous forme d’expression explicite :
 
 ```cshtml
 <p>@(GenericMethod<int>())</p>
@@ -497,7 +497,7 @@ Dans [ Razor composants](xref:blazor/components/index), utilisez `@code` sur `@f
 
 ::: moniker-end
 
-Exemple :
+Par exemple :
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -611,7 +611,7 @@ La `@inject` directive permet Razor à la page d’injecter un service à partir
 
 *Ce scénario s’applique uniquement aux Razor composants (. Razor).*
 
-La `@layout` directive spécifie une disposition pour un Razor composant. Les composants de disposition sont utilisés pour éviter la duplication et l’incohérence de code. Pour plus d'informations, consultez <xref:blazor/layouts>.
+La `@layout` directive spécifie une disposition pour un Razor composant. Les composants de disposition sont utilisés pour éviter la duplication et l’incohérence de code. Pour plus d’informations, consultez <xref:blazor/layouts>.
 
 ::: moniker-end
 
@@ -658,7 +658,7 @@ La directive `@namespace` :
 
 Pour l' Razor exemple de pages illustré dans le tableau suivant :
 
-* Chaque page importe *Pages/_ViewImports.cshtml* .
+* Chaque page importe *Pages/_ViewImports.cshtml*.
 * *Pages/_ViewImports.cshtml* contient `@namespace Hello.World`.
 * Chaque page a `Hello.World` comme racine de son espace de noms.
 
@@ -687,13 +687,27 @@ Si le dossier *EvenMorePages* dans l’exemple précédent comprend un fichier d
 La directive `@page` a des effets différents selon le type du fichier dans lequel elle apparaît. La directive :
 
 * Dans un fichier *. cshtml* indique que le fichier est une Razor page. Pour plus d’informations, consultez [itinéraires personnalisés](xref:razor-pages/index#custom-routes) et <xref:razor-pages/index> .
-* Spécifie qu’un Razor composant doit gérer les demandes directement. Pour plus d'informations, consultez <xref:blazor/fundamentals/routing>.
+* Spécifie qu’un Razor composant doit gérer les demandes directement. Pour plus d’informations, consultez <xref:blazor/fundamentals/routing>.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-La `@page` directive sur la première ligne d’un fichier *. cshtml* indique que le fichier est une Razor page. Pour plus d'informations, consultez <xref:razor-pages/index>.
+La `@page` directive sur la première ligne d’un fichier *. cshtml* indique que le fichier est une Razor page. Pour plus d’informations, consultez <xref:razor-pages/index>.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+### `@preservewhitespace`
+
+*Ce scénario s’applique uniquement aux Razor composants ( `.razor` ).*
+
+Quand la valeur `false` est (valeur par défaut), l’espace blanc dans le balisage rendu à partir des Razor composants ( `.razor` ) est supprimé si :
+
+* À gauche ou à droite dans un élément.
+* De début ou de fin dans un `RenderFragment` paramètre. Par exemple, le contenu enfant est passé à un autre composant.
+* Il précède ou suit un bloc de code C#, tel que `@if` ou `@foreach` .
 
 ::: moniker-end
 
@@ -701,7 +715,7 @@ La `@page` directive sur la première ligne d’un fichier *. cshtml* indique qu
 
 *Ce scénario s’applique uniquement aux affichages et Razor pages MVC (. cshtml).*
 
-La `@section` directive est utilisée conjointement avec [MVC et les Razor mises en page de pages](xref:mvc/views/layout) pour permettre aux vues ou aux pages de restituer le contenu dans différentes parties de la page html. Pour plus d'informations, consultez <xref:mvc/views/layout>.
+La `@section` directive est utilisée conjointement avec [MVC et les Razor mises en page de pages](xref:mvc/views/layout) pour permettre aux vues ou aux pages de restituer le contenu dans différentes parties de la page html. Pour plus d’informations, consultez <xref:mvc/views/layout>.
 
 ### `@using`
 
@@ -725,19 +739,19 @@ Razor les attributs de directive sont représentés par des expressions implicit
 
 *Ce scénario s’applique uniquement aux Razor composants (. Razor).*
 
-`@attributes` permet à un composant de restituer des attributs non déclarés. Pour plus d'informations, consultez <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters>.
+`@attributes` permet à un composant de restituer des attributs non déclarés. Pour plus d’informations, consultez <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters>.
 
 ### `@bind`
 
 *Ce scénario s’applique uniquement aux Razor composants (. Razor).*
 
-La liaison de données dans des composants s’effectue avec l’attribut `@bind`. Pour plus d'informations, consultez <xref:blazor/components/data-binding>.
+La liaison de données dans des composants s’effectue avec l’attribut `@bind`. Pour plus d’informations, consultez <xref:blazor/components/data-binding>.
 
 ### `@on{EVENT}`
 
 *Ce scénario s’applique uniquement aux Razor composants (. Razor).*
 
-Razor fournit des fonctionnalités de gestion des événements pour les composants. Pour plus d'informations, consultez <xref:blazor/components/event-handling>.
+Razor fournit des fonctionnalités de gestion des événements pour les composants. Pour plus d’informations, consultez <xref:blazor/components/event-handling>.
 
 ::: moniker-end
 
@@ -763,19 +777,19 @@ Arrête la propagation d’événements pour l’événement.
 
 *Ce scénario s’applique uniquement aux Razor composants (. Razor).*
 
-L’attribut de directive `@key` amène les composants à comparer l’algorithme afin de garantir la préservation des éléments ou des composants en fonction de la valeur de la clé. Pour plus d'informations, consultez <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>.
+L’attribut de directive `@key` amène les composants à comparer l’algorithme afin de garantir la préservation des éléments ou des composants en fonction de la valeur de la clé. Pour plus d’informations, consultez <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>.
 
 ### `@ref`
 
 *Ce scénario s’applique uniquement aux Razor composants (. Razor).*
 
-Les références de composants (`@ref`) permettent de référencer une instance de composant afin que vous puissiez émettre des commandes vers cette instance. Pour plus d'informations, consultez <xref:blazor/components/index#capture-references-to-components>.
+Les références de composants (`@ref`) permettent de référencer une instance de composant afin que vous puissiez émettre des commandes vers cette instance. Pour plus d’informations, consultez <xref:blazor/components/index#capture-references-to-components>.
 
 ### `@typeparam`
 
 *Ce scénario s’applique uniquement aux Razor composants (. Razor).*
 
-La `@typeparam` directive déclare un paramètre de type générique pour la classe de composant générée. Pour plus d'informations, consultez <xref:blazor/components/templated-components#generic-typed-components>.
+La `@typeparam` directive déclare un paramètre de type générique pour la classe de composant générée. Pour plus d’informations, consultez <xref:blazor/components/templated-components#generic-typed-components>.
 
 ::: moniker-end
 
@@ -969,7 +983,7 @@ La création du projet dans la configuration *Debug* génère le répertoire *ob
            Index.g.cshtml.cs
 ```
 
-Pour afficher la classe générée pour *pages/index. cshtml* , ouvrez *obj/Debug/netcoreapp 2.1/ Razor /pages/index.g.cshtml.cs* .
+Pour afficher la classe générée pour *pages/index. cshtml*, ouvrez *obj/Debug/netcoreapp 2.1/ Razor /pages/index.g.cshtml.cs*.
 
 ::: moniker-end
 
@@ -994,8 +1008,8 @@ Définissez un point d’arrêt sur l’instruction `return csharpDocument;` de 
 Le Razor moteur d’affichage effectue des recherches respectant la casse pour les vues. Toutefois, la recherche réellement effectuée est déterminée par le système de fichiers sous-jacent :
 
 * Source basé sur un fichier :
-  * Sur les systèmes d’exploitation avec des systèmes de fichiers qui ne respectent pas la casse (par exemple, Windows), les recherches de fournisseurs de fichiers physiques ne respectent pas la casse. Par exemple, `return View("Test")` trouve les correspondances */Views/Home/Test.cshtml* , */Views/home/test.cshtml* et toutes les autres variantes de casse.
-  * Sur des systèmes de fichiers respectant la casse (par exemple, Linux, OSX, et avec `EmbeddedFileProvider`), les recherches respectent la casse. Par exemple, `return View("Test")` trouve uniquement la correspondance */Views/Home/Test.cshtml* .
+  * Sur les systèmes d’exploitation avec des systèmes de fichiers qui ne respectent pas la casse (par exemple, Windows), les recherches de fournisseurs de fichiers physiques ne respectent pas la casse. Par exemple, `return View("Test")` trouve les correspondances */Views/Home/Test.cshtml*, */Views/home/test.cshtml* et toutes les autres variantes de casse.
+  * Sur des systèmes de fichiers respectant la casse (par exemple, Linux, OSX, et avec `EmbeddedFileProvider`), les recherches respectent la casse. Par exemple, `return View("Test")` trouve uniquement la correspondance */Views/Home/Test.cshtml*.
 * Vues précompilées : Avec ASP.NET Core 2.0 et les versions ultérieures, les recherches de vues précompilées ne respectent pas la casse, quels que soient les systèmes d’exploitation. Le comportement est le même que celui du fournisseur de fichiers physiques sur Windows. Si deux vues précompilées diffèrent seulement par leur casse, le résultat de la recherche est non déterministe.
 
 Les développeurs doivent s’efforcer d’utiliser la même casse pour les noms de fichiers et de répertoires que pour les noms des éléments suivants :

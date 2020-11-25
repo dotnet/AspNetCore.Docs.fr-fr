@@ -5,7 +5,7 @@ description: Découvrez comment utiliser l’API de configuration pour configure
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2020
+ms.date: 11/24/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: c04dcc65f7518d2d8b32cdce7a7fbb756dd8ec3a
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: 97ee00dd37ed4eef1c013e0f45b598a79f3f260c
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417537"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035864"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -108,20 +108,20 @@ Pour plus d’informations sur l’ajout de fichiers de configuration JSON suppl
 
 <a name="security"></a>
 
-## <a name="security-and-secret-manager"></a>Responsable de la sécurité et du secret
+## <a name="security-and-user-secrets"></a>Sécurité et secrets de l’utilisateur
 
 Instructions relatives aux données de configuration :
 
-_ Ne stockez jamais les mots de passe ou d’autres données sensibles dans le code du fournisseur de configuration ou dans les fichiers de configuration en texte brut. Le [Gestionnaire de secret](xref:security/app-secrets) peut être utilisé pour stocker les secrets en développement.
+_ Ne stockez jamais les mots de passe ou d’autres données sensibles dans le code du fournisseur de configuration ou dans les fichiers de configuration en texte brut. L’outil [Gestionnaire de secret](xref:security/app-secrets) peut être utilisé pour stocker les secrets en développement.
 * N’utilisez aucun secret de production dans les environnements de développement ou de test.
 * Spécifiez les secrets en dehors du projet afin qu’ils ne puissent pas être validés par inadvertance dans un référentiel de code source.
 
-Par [défaut](#default), le [Gestionnaire de secret](xref:security/app-secrets) lit les paramètres de configuration après *appsettings.json* et *appSettings.* `Environment` *. JSON*.
+Par [défaut](#default), la source de configuration des secrets de l’utilisateur est inscrite après les sources de configuration JSON. Par conséquent, les clés de secrets d’utilisateur sont prioritaires sur les clés dans *appsettings.json* et *appSettings.* `Environment` *. JSON*.
 
 Pour plus d’informations sur le stockage des mots de passe ou d’autres données sensibles :
 
 * <xref:fundamentals/environments>
-* <xref:security/app-secrets>: Fournit des conseils sur l’utilisation de variables d’environnement pour stocker des données sensibles. Le gestionnaire de secret utilise le [fournisseur de configuration de fichiers](#fcp) pour stocker les secrets de l’utilisateur dans un fichier JSON sur le système local.
+* <xref:security/app-secrets>: Fournit des conseils sur l’utilisation de variables d’environnement pour stocker des données sensibles. L’outil Gestionnaire de secret utilise le [fournisseur de configuration de fichiers](#fcp) pour stocker les secrets d’utilisateur dans un fichier JSON sur le système local.
 
 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) stocke en toute sécurité des secrets d’application pour les applications ASP.NET Core. Pour plus d’informations, consultez <xref:security/key-vault-configuration>.
 
@@ -129,7 +129,7 @@ Pour plus d’informations sur le stockage des mots de passe ou d’autres donn�
 
 ## <a name="environment-variables"></a>Variables d'environnement
 
-À l’aide de la configuration [par défaut](#default) , le <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> charge la configuration à partir des paires clé-valeur de variable d’environnement après la lecture *appsettings.json* , *appSettings.* `Environment` *. JSON* et le [Gestionnaire de secret](xref:security/app-secrets). Par conséquent, les valeurs de clés lues à partir de l’environnement remplacent les valeurs lues à partir de *appsettings.json* *appSettings.* `Environment` *. JSON* et le gestionnaire de secret.
+À l’aide de la configuration [par défaut](#default) , le <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> charge la configuration à partir des paires clé-valeur de variable d’environnement après la lecture *appsettings.json* , *appSettings.* `Environment` *. JSON* et les [secrets](xref:security/app-secrets)de l’utilisateur. Par conséquent, les valeurs de clés lues à partir de l’environnement remplacent les valeurs lues à partir de *appsettings.json* *appSettings.* `Environment` *. JSON* et les secrets de l’utilisateur.
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
@@ -243,7 +243,7 @@ Les variables d’environnement définies dans *launchSettings.jslors de* la sub
 À l’aide de la configuration [par défaut](#default) , le <xref:Microsoft.Extensions.Configuration.CommandLine.CommandLineConfigurationProvider> charge la configuration à partir de paires clé-valeur d’argument de ligne de commande après les sources de configuration suivantes :
 
 * *appsettings.json* et *appSettings*. `Environment` . fichiers *JSON* .
-* [Secrets d’application (gestionnaire de secret)](xref:security/app-secrets) dans l’environnement de développement.
+* [Secrets](xref:security/app-secrets) de l’application dans l’environnement de développement.
 * Variables d'environnement.
 
 Par [défaut](#default), les valeurs de configuration définies sur la ligne de commande remplacent les valeurs de configuration définies avec tous les autres fournisseurs de configuration.
@@ -271,7 +271,7 @@ dotnet run --MyKey "Using --" --Position:Title=Cmd-- --Position:Name=Cmd--Rick
 Valeur de la clé :
 
 * Doit suivre `=` ou la clé doit avoir un préfixe `--` ou `/` lorsque la valeur suit un espace.
-* N’est pas obligatoire si `=` est utilisé. Par exemple : `MySetting=`.
+* N’est pas obligatoire si `=` est utilisé. Par exemple, `MySetting=`.
 
 Dans la même commande, ne mélangez pas les paires clé-valeur d’argument de ligne de commande qui utilisent `=` des paires clé-valeur utilisant un espace.
 
@@ -355,7 +355,7 @@ Le tableau suivant présente les fournisseurs de configuration disponibles pour 
 | [Fournisseur de configuration de fichier](#file-configuration-provider) | Fichiers INI, JSON et XML |
 | [Fournisseur de configuration de clé par fichier](#key-per-file-configuration-provider) | Fichiers de répertoire |
 | [Fournisseur de configuration de la mémoire](#memory-configuration-provider) | Collections en mémoire |
-| [Gestionnaire de secret](xref:security/app-secrets)  | Fichier dans le répertoire de profil utilisateur |
+| [Secrets de l’utilisateur](xref:security/app-secrets) | Fichier dans le répertoire de profil utilisateur |
 
 Les sources de configuration sont lues dans l’ordre dans lequel leurs fournisseurs de configuration sont spécifiés. Commandez des fournisseurs de configuration dans le code pour répondre aux priorités des sources de configuration sous-jacentes requises par l’application.
 
@@ -363,7 +363,7 @@ Une séquence type des fournisseurs de configuration est la suivante :
 
 1. *appsettings.json*
 1. *appSettings*. `Environment` . *JSON*
-1. [Gestionnaire de secret](xref:security/app-secrets)
+1. [Secrets de l’utilisateur](xref:security/app-secrets)
 1. Variables d’environnement à l’aide du [fournisseur de configuration des variables d’environnement](#evcp).
 1. Arguments de ligne de commande à l’aide du [fournisseur de configuration de ligne de commande](#command-line-configuration-provider).
 
@@ -865,7 +865,7 @@ Les éléments suivants s’appliquent aux applications qui utilisent l’[hôte
 * La configuration de l’application est fournie à partir des éléments suivants :
   * *appsettings.json* utilisation du [fournisseur de configuration de fichier](#file-configuration-provider).
   * *appsettings.{Environment}.json* à l’aide du [Fournisseur de configuration de fichier](#file-configuration-provider).
-  * L’outil [Secret Manager (Gestionnaire de secrets)](xref:security/app-secrets) quand l’application s’exécute dans l’environnement `Development` à l’aide de l’assembly d’entrée.
+  * Les [secrets utilisateur](xref:security/app-secrets) quand l’application s’exécute dans l’environnement `Development` à l’aide de l’assembly d’entrée
   * Des variables d’environnement à l’aide du [Fournisseur de configuration des variables d’environnement](#environment-variables-configuration-provider).
   * Des arguments de ligne de commande à l’aide du [Fournisseur de configuration de ligne de commande](#command-line-configuration-provider).
 
@@ -880,7 +880,7 @@ Adoptez les pratiques suivantes pour sécuriser les données de configuration se
 Pour plus d'informations, voir les rubriques suivantes :
 
 * <xref:fundamentals/environments>
-* <xref:security/app-secrets>: Fournit des conseils sur l’utilisation de variables d’environnement pour stocker des données sensibles. Secret Manager utilise le fournisseur de configuration de fichier pour stocker les secrets utilisateur dans un fichier JSON sur le système local. Le fournisseur de configuration de fichier est décrit plus loin dans cette rubrique.
+* <xref:security/app-secrets>: Fournit des conseils sur l’utilisation de variables d’environnement pour stocker des données sensibles. L’outil Gestionnaire de secret utilise le fournisseur de configuration de fichiers pour stocker les secrets d’utilisateur dans un fichier JSON sur le système local. Le fournisseur de configuration de fichier est décrit plus loin dans cette rubrique.
 
 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) stocke en toute sécurité des secrets d’application pour les applications ASP.NET Core. Pour plus d’informations, consultez <xref:security/key-vault-configuration>.
 
@@ -983,15 +983,15 @@ Le tableau suivant présente les fournisseurs de configuration disponibles pour 
 | [Fournisseur de configuration de fichier](#file-configuration-provider) | Fichiers (INI, JSON, XML) |
 | [Fournisseur de configuration clé par fichier](#key-per-file-configuration-provider) | Fichiers de répertoire |
 | [Fournisseur de configuration de mémoire](#memory-configuration-provider) | Collections en mémoire |
-| [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (rubrique *Sécurité*) | Fichier dans le répertoire de profil utilisateur |
+| [Secrets](xref:security/app-secrets) de l’utilisateur (rubriques relatives à la *sécurité* ) | Fichier dans le répertoire de profil utilisateur |
 
 Au démarrage, les sources de configuration sont lues dans l’ordre où leurs fournisseurs de configuration sont spécifiés. Les fournisseurs de configuration décrits dans cette rubrique sont décrits par ordre alphabétique, et non pas dans l’ordre dans lequel le code les réorganise. Commandez des fournisseurs de configuration dans le code pour répondre aux priorités des sources de configuration sous-jacentes requises par l’application.
 
 Une séquence type des fournisseurs de configuration est la suivante :
 
 1. Fichiers ( *appsettings.json* , *appSettings. { Environment}. JSON*, où `{Environment}` est l’environnement d’hébergement actuel de l’application)
-1. [Azure Key Vault](xref:security/key-vault-configuration)
-1. [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (dans l’environnement de développement uniquement)
+1. [Azure Key Vault](xref:security/key-vault-configuration)
+1. [Secrets](xref:security/app-secrets) de l’utilisateur (environnement de développement uniquement)
 1. Variables d'environnement
 1. Arguments de ligne de commande
 
@@ -1067,7 +1067,7 @@ Pour activer la configuration en ligne de commande, la méthode d’extension <x
 `CreateDefaultBuilder` charge également :
 
 * Configuration facultative à partir de *appsettings.json* et *appSettings. { Fichiers Environment}. JSON* .
-* [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) dans l’environnement de développement.
+* [Secrets](xref:security/app-secrets) de l’utilisateur dans l’environnement de développement.
 * Variables d'environnement.
 
 `CreateDefaultBuilder` ajoute en dernier le Fournisseur de configuration de ligne de commande. Les arguments de ligne de commande passés lors de l’exécution remplacent la configuration définie par les autres fournisseurs.
@@ -1182,7 +1182,7 @@ Pour activer la configuration des variables d’environnement, appelez la métho
 
 * Configuration de l’application à partir de variables d’environnement sans préfixe en appelant `AddEnvironmentVariables` sans préfixe.
 * Configuration facultative à partir de *appsettings.json* et *appSettings. { Fichiers Environment}. JSON* .
-* [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) dans l’environnement de développement.
+* [Secrets](xref:security/app-secrets) de l’utilisateur dans l’environnement de développement.
 * Arguments de ligne de commande
 
 Le fournisseur de configuration de variables d’environnement est appelé une fois que la configuration est établie à partir des secrets utilisateur et des fichiers *appsettings*. Le fait d’appeler le fournisseur ainsi permet de lire les variables d’environnement pendant l’exécution pour substituer la configuration définie par les secrets utilisateur et les fichiers *appsettings*.
@@ -1342,7 +1342,7 @@ Pour plus d’informations, consultez la section [Configuration par défaut](#de
 `CreateDefaultBuilder` charge également :
 
 * Variables d'environnement.
-* [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) dans l’environnement de développement.
+* [Secrets](xref:security/app-secrets) de l’utilisateur dans l’environnement de développement.
 * Arguments de ligne de commande
 
 Le Fournisseur de configuration JSON est établi en premier. Par conséquent, les secrets utilisateur, les variables d’environnement et les arguments de ligne de commande remplacent la configuration définie par les fichiers *appsettings*.

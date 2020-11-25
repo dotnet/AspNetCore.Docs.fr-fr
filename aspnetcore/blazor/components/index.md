@@ -5,7 +5,7 @@ description: Découvrez comment créer et utiliser des Razor composants, notamme
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/09/2020
+ms.date: 11/25/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,16 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: cc4604f7f67a6648c96e099572ff27bfed838916
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: b87986442bb8127f03df1f7ecff8167cafa27fdf
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981867"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035682"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Créer et utiliser des Razor composants ASP.net Core
 
-Par [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27)et [Tobias Bartsch](https://www.aveo-solutions.com/)
+Par [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), [Scott Addie](https://github.com/scottaddie)et [Tobias Bartsch](https://www.aveo-solutions.com/)
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
@@ -886,6 +886,64 @@ De même, les images SVG sont prises en charge dans les règles CSS d’un fichi
 ```
 
 Toutefois, le balisage SVG en ligne n’est pas pris en charge dans tous les scénarios. Si vous placez une `<svg>` balise directement dans un fichier de composant ( `.razor` ), le rendu d’image de base est pris en charge, mais de nombreux scénarios avancés ne sont pas encore pris en charge. Par exemple, les `<use>` balises ne sont pas actuellement respectées et [`@bind`][10] ne peuvent pas être utilisées avec certaines balises SVG. Pour plus d’informations, consultez [prise en charge SVG dans Blazor (dotnet/aspnetcore #18271)](https://github.com/dotnet/aspnetcore/issues/18271).
+
+## <a name="whitespace-rendering-behavior"></a>Comportement de rendu des espaces blancs
+
+::: moniker range=">= aspnetcore-5.0"
+
+Sauf [`@preservewhitespace`](xref:mvc/views/razor#preservewhitespace) si la directive est utilisée avec la valeur `true` , l’espace blanc supplémentaire est supprimé par défaut si :
+
+* À gauche ou à droite dans un élément.
+* De début ou de fin dans un `RenderFragment` paramètre. Par exemple, le contenu enfant est passé à un autre composant.
+* Il précède ou suit un bloc de code C#, tel que `@if` ou `@foreach` .
+
+La suppression des espaces blancs peut affecter la sortie rendue lors de l’utilisation d’une règle CSS, telle que `white-space: pre` . Pour désactiver cette optimisation des performances et conserver l’espace blanc, effectuez l’une des actions suivantes :
+
+* Ajoutez la `@preservewhitespace true` directive en haut du `.razor` fichier pour appliquer la préférence à un composant spécifique.
+* Ajoutez la `@preservewhitespace true` directive à l’intérieur d’un `_Imports.razor` fichier pour appliquer la préférence à un sous-répertoire entier ou à l’ensemble du projet.
+
+Dans la plupart des cas, aucune action n’est requise, car les applications continuent généralement de se comporter normalement (mais plus rapidement). Si la suppression d’espace blanc provoque un problème pour un composant particulier, utilisez `@preservewhitespace true` dans ce composant pour désactiver cette optimisation.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+Les espaces blancs sont conservés dans le code source d’un composant. Espace blanc : le texte est rendu uniquement dans le Document Object Model du navigateur (DOM), même s’il n’y a aucun effet visuel.
+
+Prenons le Razor Code du composant suivant :
+
+```razor
+<ul>
+    @foreach (var item in Items)
+    {
+        <li>
+            @item.Text
+        </li>
+    }
+</ul>
+```
+
+L’exemple précédent restitue l’espace blanc suivant inutile :
+
+* En dehors du `@foreach` bloc de code.
+* Autour de l' `<li>` élément.
+* Autour de la `@item.Text` sortie.
+
+Une liste contenant 100 éléments donne lieu à 402 zones d’espace blanc, et aucun espace blanc supplémentaire n’affecte visuellement la sortie rendue.
+
+Lors du rendu de code HTML statique pour les composants, les espaces à l’intérieur d’une balise ne sont pas conservés. Par exemple, affichez la source du composant suivant dans le rendu de sortie :
+
+```razor
+<img     alt="My image"   src="img.png"     />
+```
+
+Les espaces blancs ne sont pas conservés dans le Razor balisage précédent :
+
+```razor
+<img alt="My image" src="img.png" />
+```
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

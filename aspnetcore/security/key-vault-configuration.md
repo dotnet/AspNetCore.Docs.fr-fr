@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: fcd5524bed11cca2380ffd8956f437f742729b55
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: 7f5cd3de38f1e45d9b188c513a0e62ca658b2992
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417607"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035903"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 
@@ -39,7 +39,7 @@ Ce document explique comment utiliser le fournisseur de configuration [Azure Key
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="packages"></a>.
+## <a name="packages"></a>Paquets
 
 Ajoutez une référence de package à la [Azure.Extensions.AspNetCore.Configfiguration. ](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets/) Package de secrets.
 
@@ -54,7 +54,7 @@ Pour plus d’informations sur la configuration d’un exemple d’application �
 
 ## <a name="secret-storage-in-the-development-environment"></a>Stockage secret dans l’environnement de développement
 
-Définissez les secrets localement à l’aide de l' [outil Gestionnaire de secret](xref:security/app-secrets). Lorsque l’exemple d’application s’exécute sur l’ordinateur local dans l’environnement de développement, les secrets sont chargés à partir du magasin du gestionnaire de secret local.
+Définissez les secrets localement à l’aide de l' [outil Gestionnaire de secret](xref:security/app-secrets). Lorsque l’exemple d’application s’exécute sur l’ordinateur local dans l’environnement de développement, les secrets sont chargés à partir du magasin de secrets d’utilisateur local.
 
 L’outil Gestionnaire de secret nécessite une `<UserSecretsId>` propriété dans le fichier projet de l’application. Définissez la valeur de la propriété ( `{GUID}` ) sur un GUID unique :
 
@@ -383,7 +383,7 @@ Ce document explique comment utiliser le fournisseur de configuration [Microsoft
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="packages"></a>.
+## <a name="packages"></a>Paquets
 
 Ajoutez une référence de package à la [Microsoft.Extensions.Configfiguration. Package AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) .
 
@@ -398,7 +398,7 @@ Pour plus d’informations sur la configuration d’un exemple d’application �
 
 ## <a name="secret-storage-in-the-development-environment"></a>Stockage secret dans l’environnement de développement
 
-Définissez les secrets localement à l’aide de l' [outil Gestionnaire de secret](xref:security/app-secrets). Lorsque l’exemple d’application s’exécute sur l’ordinateur local dans l’environnement de développement, les secrets sont chargés à partir du magasin du gestionnaire de secret local.
+Définissez les secrets localement à l’aide de l' [outil Gestionnaire de secret](xref:security/app-secrets). Lorsque l’exemple d’application s’exécute sur l’ordinateur local dans l’environnement de développement, les secrets sont chargés à partir du magasin de secrets d’utilisateur local.
 
 L’outil Gestionnaire de secret nécessite une `<UserSecretsId>` propriété dans le fichier projet de l’application. Définissez la valeur de la propriété ( `{GUID}` ) sur un GUID unique :
 
