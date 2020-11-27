@@ -182,6 +182,9 @@
             - name: Journaliser et superviser > >
               display: 'tutorial, kubernetes, aks, acr, docker, serilog'
               href: /learn/modules/microservices-logging-aspnet-core/
+            - name: Implémenter les indicateurs de fonctionnalité >>
+              display: 'tutorial, kubernetes, aks, acr, docker'
+              href: /learn/modules/microservices-configuration-aspnet-core/
         - name: Accès aux données >>
           displayName: 'tutorial, ef, entity framework'
           href: /learn/modules/persist-data-ef-core/
