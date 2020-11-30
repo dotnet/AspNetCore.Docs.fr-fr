@@ -21,12 +21,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 2dca5a9552dd2800212f8cd78ace0578b3d38cdb
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 5263063d82d79dbeeca3e4cec007d240ca8a452a
+ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360877"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96332178"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Partie 7, ajouter un nouveau champ à une Razor page dans ASP.net Core
 
@@ -97,7 +97,7 @@ Générez la solution.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
-1. Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
+1. Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
 2. Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
    ```powershell
@@ -238,7 +238,7 @@ Générez la solution.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
-1. Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
+1. Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
 2. Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
    ```powershell
@@ -378,7 +378,7 @@ Générez la solution.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
-Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
 Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
@@ -397,7 +397,7 @@ La commande `Update-Database` demande à l’infrastructure d’appliquer les mo
 
 <a name="ssox"></a>
 
-Si vous supprimez tous les enregistrements dans DdatabaseB, l’initialiseur amorce le DdatabaseB et inclut le `Rating` champ. Pour ce faire, utilisez les liens de suppression disponibles dans le navigateur ou à partir de [Sql Server Object Explorer](xref:tutorials/razor-pages/sql#ssox).
+Si vous supprimez tous les enregistrements de la base de données, l’initialiseur amorce la base de données et inclut le `Rating` champ. Pour ce faire, utilisez les liens de suppression disponibles dans le navigateur ou à partir de [Sql Server Object Explorer](xref:tutorials/razor-pages/sql#ssox).
 
 Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données. Pour supprimer la base de données dans SSOX :
 
@@ -432,7 +432,7 @@ Une autre option consiste à supprimer la base de données et à utiliser des mi
 > * [Amorçage des données](/ef/core/modeling/data-seeding)
 > * [Instruction SQLite ALTER TABLE](https://sqlite.org/lang_altertable.html)
 
-Delete la base de données et utilisent des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données ( *MvcMovie.db* ). Ensuite, exécutez la commande `ef database update` :
+Delete la base de données et utilisent des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données (*MvcMovie.db*). Ensuite, exécutez la commande `ef database update` :
 
 ```dotnetcli
 dotnet ef database update

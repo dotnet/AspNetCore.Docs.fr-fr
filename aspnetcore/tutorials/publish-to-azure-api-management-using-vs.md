@@ -4,14 +4,14 @@ author: codemillmatt
 description: Découvrez comment publier une API Web ASP.NET Core dans gestion des API Azure à l’aide de Visual Studio.
 ms.author: masoucou
 ms.custom: devx-track-csharp, mvc
-ms.date: 08/26/2020
+ms.date: 11/22/2020
 uid: tutorials/publish-to-azure-api-management-using-vs
-ms.openlocfilehash: 3cc6b8c0bd93f133151e1c8ad18a55b11975a9be
-ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
+ms.openlocfilehash: 395b5981a3018486235c38f032893f985ab71383
+ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88945697"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96332209"
 ---
 # <a name="publish-an-aspnet-core-web-api-to-azure-api-management-with-visual-studio"></a>Publier une API Web ASP.NET Core dans gestion des API Azure avec Visual Studio
 
@@ -47,7 +47,7 @@ L’ajout de définitions Swagger à l’API Web ASP.NET Core permet à la gesti
 
 ### <a name="change-the-api-routing"></a>Modifier le routage d’API
 
-Ensuite, vous allez modifier la structure d’URL nécessaire pour accéder à l' `Get` action de `WeatherForecastController` . Procédez comme suit :
+Ensuite, vous allez modifier la structure d’URL nécessaire pour accéder à l' `Get` action de `WeatherForecastController` . Suivez les étapes ci-dessous :
 
 1. Ouvrez le fichier *WeatherForecastController.cs* .
 1. Supprimez l' `[Route("[controller]")]` attribut de niveau classe. La définition de la classe doit ressembler à ce qui suit :
@@ -108,17 +108,21 @@ Une fois la création terminée, la boîte de dialogue est fermée automatiqueme
 
 1. Ouvrez l’instance de service gestion des API créée précédemment dans le Portail Azure. Sélectionnez le panneau **API** :
 
-    ![Panneau API sélectionné à partir de l’instance du service gestion des API](publish-to-azure-api-management-using-vs/_static/portal_api_overview.png)
+  ![Panneau API sélectionné à partir de l’instance du service gestion des API](publish-to-azure-api-management-using-vs/_static/portal_api_overview.png)
+
+1. Sélectionnez les 3 points en regard de l' **API Echo** , puis sélectionnez **supprimer** dans le menu contextuel pour la supprimer.
+
+  ![Suppression de l’API Echo de l’instance du service gestion des API](publish-to-azure-api-management-using-vs/_static/portal_delete_echo.png)
 
 1. Dans le panneau **Ajouter une nouvelle API** , sélectionnez la vignette **API vide** :
 
-    ![Écran présentant la vignette de l’API vide mise en surbrillance](publish-to-azure-api-management-using-vs/_static/portal_api_create_blank.png)
+  ![Écran présentant la vignette de l’API vide mise en surbrillance](publish-to-azure-api-management-using-vs/_static/portal_api_create_blank.png)
 
 1. Entrez les valeurs suivantes dans la boîte de dialogue **créer une API vide** qui s’affiche :    
 
     - **Nom complet**: *WeatherForecasts*
     - **Nom**: *weatherforecasts*
-    - **Suffixe**de l’URL de l’API : *v1*
+    - **Suffixe** de l’URL de l’API : *v1*
     - Laissez le champ **URL du service Web** vide.
 
 1. Cliquez sur le bouton **Créer**.
