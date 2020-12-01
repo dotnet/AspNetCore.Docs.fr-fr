@@ -7,8 +7,6 @@ ms.custom: mvc
 ms.date: 09/28/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -21,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 5263063d82d79dbeeca3e4cec007d240ca8a452a
-ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
+ms.openlocfilehash: 6b6856731c61957a9e23f76e2bc15befe56ea57d
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96332178"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420004"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Partie 7, ajouter un nouveau champ à une Razor page dans ASP.net Core
 
@@ -63,8 +61,8 @@ Vérification automatique que le schéma et le modèle sont synchronisés facili
    [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie50/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 1. Mettez à jour les pages suivantes :
-   1. Ajoutez le `Rating` champ aux Delete pages détails et.
-   1. Mettez à jour [ Create . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml) avec un `Rating` champ.
+   1. Ajoutez le champ `Rating` aux pages Delete et Details.
+   1. Mettez à jour [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml) avec un champ `Rating`.
    1. Ajoutez le champ `Rating` à la Page Edit.
 
 L’application ne fonctionne pas tant que la base de données n’a pas été mise à jour pour inclure le nouveau champ. L’exécution de l’application sans mise à jour de la base de données lève une exception `SqlException` :
@@ -108,7 +106,7 @@ Générez la solution.
 La commande `Add-Migration` indique au framework qu’il doit :
 
 * Comparez le `Movie` modèle au `Movie` schéma de la base de données.
-* Create code pour migrer le schéma de base de données vers le nouveau modèle.
+* Créez du code pour migrer le schéma de base de données vers le nouveau modèle.
 
 Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
@@ -121,7 +119,7 @@ Si vous supprimez tous les enregistrements de la base de données, l’initialis
 Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données. Pour supprimer la base de données dans SSOX :
 
 1. Sélectionnez la base de données dans SSOX.
-1. Cliquez avec le bouton droit sur la base de données, puis sélectionnez **Delete** .
+1. Cliquez avec le bouton droit sur la base de données, puis sélectionnez **supprimer**.
 1. Cochez **Fermer les connexions existantes**.
 1. Sélectionnez **OK**.
 1. Dans le [PMC](xref:tutorials/razor-pages/new-field#pmc), mettez à jour la base de données :
@@ -151,7 +149,7 @@ Une autre option consiste à supprimer la base de données et à utiliser des mi
 > * [Amorçage des données](/ef/core/modeling/data-seeding)
 > * [Instruction SQLite ALTER TABLE](https://sqlite.org/lang_altertable.html)
 
-1. Delete dossier de migration.  
+1. Supprimer le dossier de migration.  
 
 1. Utilisez les commandes suivantes pour recréer la base de données.
 
@@ -204,8 +202,8 @@ Vérification automatique que le schéma et le modèle sont synchronisés facili
    [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 1. Mettez à jour les pages suivantes :
-   1. Ajoutez le `Rating` champ aux Delete pages détails et.
-   1. Mettez à jour [ Create . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) avec un `Rating` champ.
+   1. Ajoutez le champ `Rating` aux pages Delete et Details.
+   1. Mettez à jour [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) avec un champ `Rating`.
    1. Ajoutez le champ `Rating` à la Page Edit.
 
 L’application ne fonctionne pas tant que la base de données n’a pas été mise à jour pour inclure le nouveau champ. L’exécution de l’application sans mise à jour de la base de données lève une exception `SqlException` :
@@ -249,7 +247,7 @@ Générez la solution.
 La commande `Add-Migration` indique au framework qu’il doit :
 
 * Comparez le `Movie` modèle au `Movie` schéma de la base de données.
-* Create code pour migrer le schéma de base de données vers le nouveau modèle.
+* Créez du code pour migrer le schéma de base de données vers le nouveau modèle.
 
 Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
@@ -262,7 +260,7 @@ Si vous supprimez tous les enregistrements de la base de données, l’initialis
 Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données. Pour supprimer la base de données dans SSOX :
 
 * Sélectionnez la base de données dans SSOX.
-* Cliquez avec le bouton droit sur la base de données, puis sélectionnez **Delete** .
+* Cliquez avec le bouton droit sur la base de données, puis sélectionnez **supprimer**.
 * Cochez **Fermer les connexions existantes**.
 * Sélectionnez **OK**.
 * Dans le [PMC](xref:tutorials/razor-pages/new-field#pmc), mettez à jour la base de données :
@@ -292,7 +290,7 @@ Une autre option consiste à supprimer la base de données et à utiliser des mi
 > * [Amorçage des données](/ef/core/modeling/data-seeding)
 > * [Instruction SQLite ALTER TABLE](https://sqlite.org/lang_altertable.html)
 
-1. Delete dossier de migration.  
+1. Supprimer le dossier de migration.  
 
 1. Utilisez les commandes suivantes pour recréer la base de données.
 
@@ -344,8 +342,8 @@ Modifiez *pages/movies/ Index . cshtml* et ajoutez un `Rating` champ :
 
 Mettez à jour les pages suivantes :
 
-* Ajoutez le `Rating` champ aux Delete pages détails et.
-* Mettez à jour [ Create . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) avec un `Rating` champ.
+* Ajoutez le champ `Rating` aux pages Delete et Details.
+* Mettez à jour [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) avec un champ `Rating`.
 * Ajoutez le champ `Rating` à la Page Edit.
 
 L’application ne fonctionne pas tant que la base de données n’a pas été mise à jour pour inclure le nouveau champ. Si l’application est exécutée maintenant, l’application lève une exception `SqlException` :
@@ -389,7 +387,7 @@ Update-Database
 La commande `Add-Migration` indique au framework qu’il doit :
 
 * Comparez le `Movie` modèle au `Movie` schéma de la base de données.
-* Create code pour migrer le schéma de base de données vers le nouveau modèle.
+* Créez du code pour migrer le schéma de base de données vers le nouveau modèle.
 
 Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
@@ -402,7 +400,7 @@ Si vous supprimez tous les enregistrements de la base de données, l’initialis
 Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données. Pour supprimer la base de données dans SSOX :
 
 * Sélectionnez la base de données dans SSOX.
-* Cliquez avec le bouton droit sur la base de données, puis sélectionnez **Delete** .
+* Cliquez avec le bouton droit sur la base de données, puis sélectionnez **supprimer**.
 * Cochez **Fermer les connexions existantes**.
 * Sélectionnez **OK**.
 * Dans le [PMC](xref:tutorials/razor-pages/new-field#pmc), mettez à jour la base de données :
@@ -432,7 +430,7 @@ Une autre option consiste à supprimer la base de données et à utiliser des mi
 > * [Amorçage des données](/ef/core/modeling/data-seeding)
 > * [Instruction SQLite ALTER TABLE](https://sqlite.org/lang_altertable.html)
 
-Delete la base de données et utilisent des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données (*MvcMovie.db*). Ensuite, exécutez la commande `ef database update` :
+Supprimer la base de données et utiliser des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données (*MvcMovie.db*). Ensuite, exécutez la commande `ef database update` :
 
 ```dotnetcli
 dotnet ef database update

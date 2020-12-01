@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/26/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 2c5bc221901d9e41984fb591755a8ad94e7e1420
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 6627825239d815d2c8bcad98e22340f07f921ab9
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570235"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420017"
 ---
 # <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a>Partie 4 de la série de didacticiels sur les Razor pages
 
@@ -35,7 +33,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://tw
 
 [Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
-L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` de *Startup.cs*  :
+L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` de *Startup.cs* :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -70,11 +68,11 @@ Lorsque l’application est déployée sur un serveur de test ou de production, 
 LocalDB est une version allégée du moteur de base de données SQL Server Express, qui est ciblée pour le développement de programmes. LocalDB démarre à la demande et s’exécute en mode utilisateur, ce qui n’implique aucune configuration complexe. Par défaut, la base de données LocalDB crée des fichiers `*.mdf` dans le répertoire `C:\Users\<user>\`.
 
 <a name="ssox"></a>
-1. Dans le menu **Affichage** , ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
+1. Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
    ![Menu Affichage](sql/_static/5/ssox.png)
 
-1. Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **Concepteur de vues** :
+1. Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **Concepteur de vues**:
 
    ![Les menus contextuels s’ouvrent dans la table Movie](sql/_static/5/design.png)
 
@@ -82,7 +80,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 
    Notez l’icône de clé en regard de `ID`. Par défaut, EF crée une propriété nommée `ID` pour la clé primaire.
 
-1. Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **afficher les données** :
+1. Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **afficher les données**:
 
    ![Table Movie ouverte, affichant des données de table](sql/_static/vd22.png)
 
@@ -118,7 +116,7 @@ Vous pouvez télécharger de nombreux outils tiers pour gérer et afficher une b
 
 ## <a name="seed-the-database"></a>Amorcer la base de données
 
-Create une nouvelle classe nommée `SeedData` dans le dossier *Models* avec le code suivant :
+Créez une classe nommée `SeedData` dans le dossier *Modèles* avec le code suivant :
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
@@ -150,15 +148,15 @@ L’exception suivante se produit lorsque `Update-Database` n’a pas été exé
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
 
-### <a name="test-the-app"></a>Tester l'application
+### <a name="test-the-app"></a>Test de l'application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Delete tous les enregistrements de la base de données. Utilisez les liens supprimer dans le navigateur ou à partir de [SSOX](xref:tutorials/razor-pages/new-field#ssox)
+1. Supprimez tous les enregistrements de la base de données. Utilisez les liens supprimer dans le navigateur ou à partir de [SSOX](xref:tutorials/razor-pages/new-field#ssox)
 
 1. Force l’initialisation de l’application en appelant les méthodes de la `Startup` classe, de sorte que la méthode Seed s’exécute. Pour forcer l’initialisation, IIS Express doit être arrêté et redémarré. Arrêtez et redémarrez IIS avec l’une des approches suivantes :
 
-   1. Cliquez avec le bouton droit sur l’icône IIS Express de la barre d’état système dans la zone de notification et sélectionnez **quitter** ou **arrêter le site** :
+   1. Cliquez avec le bouton droit sur l’icône IIS Express de la barre d’état système dans la zone de notification et sélectionnez **quitter** ou **arrêter le site**:
 
       ![Icône de la barre d’état système IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
@@ -169,7 +167,7 @@ L’exception suivante se produit lorsque `Update-Database` n’a pas été exé
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Delete tous les enregistrements de la base de données, la méthode Seed est donc exécutée. Arrêtez et démarrez l’application pour amorcer la base de données.
+Supprimez tous les enregistrements de la base de données, afin que la méthode Seed s’exécute. Arrêtez et démarrez l’application pour amorcer la base de données.
 
 ---
 
@@ -189,7 +187,7 @@ L’application affiche les données de départ :
 
 [Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
-L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` de *Startup.cs*  :
+L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` de *Startup.cs* :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -224,11 +222,11 @@ Lorsque l’application est déployée sur un serveur de test ou de production, 
 LocalDB est une version allégée du moteur de base de données SQL Server Express, qui est ciblée pour le développement de programmes. LocalDB démarre à la demande et s’exécute en mode utilisateur, ce qui n’implique aucune configuration complexe. Par défaut, la base de données LocalDB crée des fichiers `*.mdf` dans le répertoire `C:\Users\<user>\`.
 
 <a name="ssox"></a>
-* Dans le menu **Affichage** , ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
+* Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
   ![Menu Affichage](sql/_static/ssox.png)
 
-* Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **Concepteur de vues** :
+* Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **Concepteur de vues**:
 
   ![Les menus contextuels s’ouvrent dans la table Movie](sql/_static/design.png)
 
@@ -236,7 +234,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 
 Notez l’icône de clé en regard de `ID`. Par défaut, EF crée une propriété nommée `ID` pour la clé primaire.
 
-* Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **afficher les données** :
+* Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **afficher les données**:
 
   ![Table Movie ouverte, affichant des données de table](sql/_static/vd22.png)
 
@@ -272,7 +270,7 @@ Vous pouvez télécharger de nombreux outils tiers pour gérer et afficher une b
 
 ## <a name="seed-the-database"></a>Amorcer la base de données
 
-Create une nouvelle classe nommée `SeedData` dans le dossier *Models* avec le code suivant :
+Créez une classe nommée `SeedData` dans le dossier *Modèles* avec le code suivant :
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
@@ -304,11 +302,11 @@ L’exception suivante se produit lorsque `Update-Database` n’a pas été exé
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
 
-### <a name="test-the-app"></a>Tester l'application
+### <a name="test-the-app"></a>Test de l'application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Delete tous les enregistrements de la base de données. Utilisez les liens supprimer dans le navigateur ou à partir de [SSOX](xref:tutorials/razor-pages/new-field#ssox).
+* Supprimez tous les enregistrements de la base de données. Utilisez les liens supprimer dans le navigateur ou à partir de [SSOX](xref:tutorials/razor-pages/new-field#ssox).
 * Force l’initialisation de l’application en appelant les méthodes de la `Startup` classe, de sorte que la méthode Seed s’exécute. Pour forcer l’initialisation, IIS Express doit être arrêté et redémarré. Arrêtez et redémarrez IIS avec l’une des approches suivantes :
 
   * Cliquez avec le bouton droit sur l’icône de barre d’état système IIS Express dans la zone de notification, puis appuyez sur **Quitter** ou sur **Arrêter le site** :
@@ -322,7 +320,7 @@ L’exception suivante se produit lorsque `Update-Database` n’a pas été exé
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Delete tous les enregistrements de la base de données, la méthode Seed est donc exécutée. Arrêtez et démarrez l’application pour amorcer la base de données.
+Supprimez tous les enregistrements de la base de données, afin que la méthode Seed s’exécute. Arrêtez et démarrez l’application pour amorcer la base de données.
 
 ---
 
@@ -342,7 +340,7 @@ L’application affiche les données de départ :
 
 [Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
-L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` de *Startup.cs*  :
+L’objet `RazorPagesMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` de *Startup.cs* :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -386,11 +384,11 @@ Lorsque l’application est déployée sur un serveur de test ou de production, 
 LocalDB est une version allégée du moteur de base de données SQL Server Express, qui est ciblée pour le développement de programmes. LocalDB démarre à la demande et s’exécute en mode utilisateur, ce qui n’implique aucune configuration complexe. Par défaut, la base de données LocalDB crée des fichiers `*.mdf` dans le répertoire `C:/Users/<user/>`.
 
 <a name="ssox"></a>
-* Dans le menu **Affichage** , ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
+* Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
   ![Menu Affichage](sql/_static/ssox.png)
 
-* Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **Concepteur de vues** :
+* Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **Concepteur de vues**:
 
   ![Menu contextuel ouvert sur la table Movie](sql/_static/design.png)
 
@@ -398,7 +396,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 
 Notez l’icône de clé en regard de `ID`. Par défaut, EF crée une propriété nommée `ID` pour la clé primaire.
 
-* Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **afficher les données** :
+* Cliquez avec le bouton droit sur la `Movie` table et sélectionnez **afficher les données**:
 
   ![Table Movie ouverte, affichant des données de table](sql/_static/vd22.png)
 
@@ -416,7 +414,7 @@ Notez l’icône de clé en regard de `ID`. Par défaut, EF crée une propriét�
 
 ## <a name="seed-the-database"></a>Amorcer la base de données
 
-Create une nouvelle classe nommée `SeedData` dans le dossier *Models* avec le code suivant :
+Créez une classe nommée `SeedData` dans le dossier *Modèles* avec le code suivant :
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedData.cs?name=snippet_1)]
 
@@ -448,11 +446,11 @@ Une application de production n’appelle pas `Database.Migrate`. Il est ajouté
 SqlException : impossible d’ouvrir la base de données « Razor PagesMovieContext-21 » demandée par la connexion. La connexion a échoué.
 Échec de la connexion de l’utilisateur 'nom utilisateur'.
 
-### <a name="test-the-app"></a>Tester l'application
+### <a name="test-the-app"></a>Test de l'application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Delete tous les enregistrements de la base de données. Vous pouvez le faire avec les liens supprimer dans le navigateur ou à partir de [SSOX](xref:tutorials/razor-pages/new-field#ssox)
+* Supprimez tous les enregistrements de la base de données. Vous pouvez le faire avec les liens supprimer dans le navigateur ou à partir de [SSOX](xref:tutorials/razor-pages/new-field#ssox)
 * Force l’initialisation de l’application en appelant les méthodes de la `Startup` classe, de sorte que la méthode Seed s’exécute. Pour forcer l’initialisation, IIS Express doit être arrêté et redémarré. Pour cela, adoptez l’une des approches suivantes :
 
   * Cliquez avec le bouton droit sur l’icône de barre d’état système IIS Express dans la zone de notification, puis appuyez sur **Quitter** ou sur **Arrêter le site** :
@@ -466,11 +464,11 @@ SqlException : impossible d’ouvrir la base de données « Razor PagesMovieCon
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Delete tous les enregistrements de la base de données, la méthode Seed est donc exécutée. Arrêtez et démarrez l’application pour amorcer la base de données.
+Supprimez tous les enregistrements de la base de données, afin que la méthode Seed s’exécute. Arrêtez et démarrez l’application pour amorcer la base de données.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-Delete tous les enregistrements de la base de données, la méthode Seed est donc exécutée. Arrêtez et démarrez l’application pour amorcer la base de données.
+Supprimez tous les enregistrements de la base de données, afin que la méthode Seed s’exécute. Arrêtez et démarrez l’application pour amorcer la base de données.
 
 ---
 

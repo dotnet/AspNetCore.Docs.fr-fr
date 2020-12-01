@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 12/05/2019
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 00c1be2704d92c7d4f868e6eaa346bd8e9901dbf
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 3b95fe117895555ebcd44f971e7bb9d1173e1697
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360837"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96419978"
 ---
 # <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>Partie 6, ajouter une recherche aux Razor Pages ASP.net Core
 
@@ -47,7 +45,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Dans les sections suivantes, la recherche de films par *genre* ou par *nom* est ajoutée.
 
-Ajoutez l’instruction et les propriétés en surbrillance suivantes à *pages/movies/ Index . cshtml.cs* :
+Ajoutez l’instruction et les propriétés en surbrillance suivantes à *pages/movies/ Index . cshtml.cs*:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=3,23,24,25,26,27)]
 
@@ -83,11 +81,11 @@ Le code `s => s.Title.Contains()` est une [expression lambda](/dotnet/csharp/pro
 > [!NOTE]
 > La méthode [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données, et non pas dans le code C#. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
 
-Accédez à la page films et ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL. Par exemple, `https://localhost:5001/Movies?searchString=Ghost`. Les films filtrés sont affichés.
+Accédez à la page films et ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL. Par exemple : `https://localhost:5001/Movies?searchString=Ghost`. Les films filtrés sont affichés.
 
 ![::: No-Loc (index) ::: View](search/_static/ghost.png)
 
-Si le modèle de routage suivant est ajouté à la Index page, la chaîne de recherche peut être transmise en tant que segment d’URL. Par exemple, `https://localhost:5001/Movies/Ghost`.
+Si le modèle de routage suivant est ajouté à la Index page, la chaîne de recherche peut être transmise en tant que segment d’URL. Par exemple : `https://localhost:5001/Movies/Ghost`.
 
 ```cshtml
 @page "{searchString?}"
@@ -150,7 +148,7 @@ La liste `SelectList` de genres est créée en projetant des différents genres.
 
 Dans les sections suivantes, la recherche de films par *genre* ou par *nom* est ajoutée.
 
-Ajoutez les propriétés en surbrillance suivantes à *pages/movies/ Index . cshtml.cs* :
+Ajoutez les propriétés en surbrillance suivantes à *pages/movies/ Index . cshtml.cs*:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
@@ -183,11 +181,11 @@ Le code `s => s.Title.Contains()` est une [expression lambda](/dotnet/csharp/pro
 
 **Remarque :** La méthode [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données, et non pas dans le code C#. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
 
-Accédez à la page films et ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL. Par exemple, `https://localhost:5001/Movies?searchString=Ghost`. Les films filtrés sont affichés.
+Accédez à la page films et ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL. Par exemple : `https://localhost:5001/Movies?searchString=Ghost`. Les films filtrés sont affichés.
 
 ![::: No-Loc (index) ::: View](search/_static/ghost.png)
 
-Si le modèle de routage suivant est ajouté à la Index page, la chaîne de recherche peut être transmise en tant que segment d’URL. Par exemple, `https://localhost:5001/Movies/Ghost`.
+Si le modèle de routage suivant est ajouté à la Index page, la chaîne de recherche peut être transmise en tant que segment d’URL. Par exemple : `https://localhost:5001/Movies/Ghost`.
 
 ```cshtml
 @page "{searchString?}"

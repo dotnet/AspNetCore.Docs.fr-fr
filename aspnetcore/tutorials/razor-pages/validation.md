@@ -7,8 +7,6 @@ ms.custom: mvc
 ms.date: 09/29/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -21,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: d69ab3452f4f15e916049e5c772a20fe9f9fac65
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: f155922c9cb5ea7fdbad0963221ceddd19f4fe60
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570222"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96419952"
 ---
 # <a name="part-8-of-tutorial-series-on-no-locrazor-pages"></a>Partie 8 de la série de didacticiels sur les Razor pages.
 
@@ -85,7 +83,7 @@ L’application automatique des règles de validation par ASP.NET Core aide à 
 
 Exécutez l’application, puis accédez à Pages/Movies.
 
-Sélectionnez le **Create nouveau** lien. Complétez le formulaire avec des valeurs non valides. Quand la validation jQuery côté client détecte l’erreur, elle affiche un message d’erreur.
+Sélectionnez le lien **Créer nouveau**. Complétez le formulaire avec des valeurs non valides. Quand la validation jQuery côté client détecte l’erreur, elle affiche un message d’erreur.
 
 ![Formulaire de vue Movie avec plusieurs erreurs de validation jQuery côté client](validation/_static/val.png)
 
@@ -93,11 +91,11 @@ Sélectionnez le **Create nouveau** lien. Complétez le formulaire avec des vale
 
 Notez que le formulaire a affiché automatiquement un message d’erreur de validation dans chaque champ contenant une valeur non valide. Les erreurs sont appliquées à la fois côté client, à l’aide de JavaScript et jQuery et côté serveur, lorsqu’un utilisateur a désactivé JavaScript.
 
-L’un des principaux avantages est qu' **aucune** modification du code n’était nécessaire dans les Create pages ou de modification. Une fois que les annotations de données ont été appliquées au modèle, l’interface utilisateur de validation a été activée. Les Razor pages créées dans ce didacticiel ont automatiquement récupéré les règles de validation, à l’aide des attributs de validation sur les propriétés de la `Movie` classe de modèle. Testez la validation à l’aide de la page de modification. La même validation est appliquée.
+L’un des principaux avantages est qu' **aucune** modification du code n’était nécessaire dans les pages de création ou de modification. Une fois que les annotations de données ont été appliquées au modèle, l’interface utilisateur de validation a été activée. Les Razor pages créées dans ce didacticiel ont automatiquement récupéré les règles de validation, à l’aide des attributs de validation sur les propriétés de la `Movie` classe de modèle. Testez la validation à l’aide de la page de modification. La même validation est appliquée.
 
 Les données de formulaire ne sont pas publiées sur le serveur tant qu’il y a des erreurs de validation côté client. Vérifiez que les données du formulaire ne sont pas publiées à l’aide d’une ou de plusieurs des approches suivantes :
 
-* Placez un point d’arrêt dans la méthode `OnPostAsync`. Envoyez le formulaire en sélectionnant **Create** ou **Enregistrer**. Le point d’arrêt n’est jamais atteint.
+* Placez un point d’arrêt dans la méthode `OnPostAsync`. Envoyez le formulaire en sélectionnant **créer** ou **Enregistrer**. Le point d’arrêt n’est jamais atteint.
 * Utilisez l’[outil Fiddler](https://www.telerik.com/fiddler).
 * Utilisez les outils de développement du navigateur pour surveiller le trafic réseau.
 
@@ -108,7 +106,7 @@ Quand JavaScript est désactivé dans le navigateur, l’envoi du formulaire ave
 Facultatif : Testez la validation côté serveur :
 
 1. Désactivez JavaScript dans le navigateur. JavaScript peut être désactivé à l’aide des outils de développement du navigateur. Si JavaScript ne peut pas être désactivé dans le navigateur, essayez un autre navigateur.
-1. Définissez un point d’arrêt dans la `OnPostAsync` méthode de la Create page de modification ou.
+1. Définissez un point d’arrêt dans la méthode `OnPostAsync` de la page Créer ou Modifier.
 1. Envoyez un formulaire avec des données non valides.
 1. Vérifiez que l’état de modèle n’est pas valide :
 
@@ -121,7 +119,7 @@ Facultatif : Testez la validation côté serveur :
   
 Vous pouvez également [désactiver la validation côté client sur le serveur](xref:mvc/models/validation#disable-client-side-validation).
 
-Le code suivant illustre une partie de la page *Create . cshtml* , qui a été généré au préalable dans le didacticiel. Elle est utilisée par le Create et les pages de modification pour :
+Le code suivant affiche la partie de la page *Create.cshtml* générée automatiquement plus tôt dans le tutoriel. Elle est utilisée par les pages de création et de modification pour :
 
 * Affichez le formulaire initial.
 * Réaffichez le formulaire en cas d’erreur.
@@ -130,7 +128,7 @@ Le code suivant illustre une partie de la page *Create . cshtml* , qui a été g
 
 Le [Tag Helper d’entrée](xref:mvc/views/working-with-forms) utilise les attributs [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) et produit les attributs HTML nécessaires à la validation jQuery côté client. Le [Tag Helper Validation](xref:mvc/views/working-with-forms#the-validation-tag-helpers) affiche les erreurs de validation. Pour plus d’informations, consultez [Validation](xref:mvc/models/validation).
 
-Les Create pages de modification et ne contiennent pas de règles de validation. Les règles de validation et les chaînes d’erreur sont spécifiées uniquement dans la classe `Movie`. Ces règles de validation sont appliquées automatiquement aux Razor pages qui modifient le `Movie` modèle.
+Les pages Créer et Modifier ne contiennent pas de règles de validation. Les règles de validation et les chaînes d’erreur sont spécifiées uniquement dans la classe `Movie`. Ces règles de validation sont appliquées automatiquement aux Razor pages qui modifient le `Movie` modèle.
 
 Quand la logique de validation doit être modifiée, cela s’effectue uniquement dans le modèle. La validation est appliquée de manière cohérente dans toute l’application, la logique de validation est définie à un seul emplacement. La validation dans un emplacement unique permet de maintenir votre code clair, et d’en faciliter la maintenance et la mise à jour.
 
@@ -216,7 +214,7 @@ CREATE TABLE [dbo].[Movie] (
 
 Les modifications précédentes du schéma n’entraînent pas la levée d’une exception par EF. Cependant, créez une migration pour que le schéma soit cohérent avec le modèle.
 
-Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
 Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
