@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 2975ee699a2535cdf63ef2f5af5790f178a09f93
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: 89aeb20d5566447ff86581dfa1d7946d20b9ed2d
+ms.sourcegitcommit: 94c8cc1a8ce2bdba0ebdd9d37c155bf42d3cc62b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637728"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96473714"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-a-hosted-no-locblazor-webassembly-app"></a>Utiliser ASP.NET Core SignalR avec une application hébergée Blazor WebAssembly
 
@@ -97,7 +97,7 @@ Ce didacticiel enseigne les bases de la création d’une application en temps r
 
 Suivez les instructions de votre choix d’outils :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -121,7 +121,7 @@ Suivez les instructions de votre choix d’outils :
 
 1. Choisissez le modèle d' **Blazor WebAssembly application** .
 
-1. Sous **avancé** , activez la case à cocher **ASP.net Core hébergé** .
+1. Sous **avancé**, activez la case à cocher **ASP.net Core hébergé** .
 
 1. Sélectionnez **Create** (Créer).
 
@@ -167,9 +167,9 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 ## <a name="add-the-no-locsignalr-client-library"></a>Ajouter la SignalR bibliothèque cliente
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-1. Dans **Explorateur de solutions** , cliquez avec le bouton droit sur le `BlazorSignalRApp.Client` projet et sélectionnez **gérer les packages NuGet**.
+1. Dans **Explorateur de solutions**, cliquez avec le bouton droit sur le `BlazorSignalRApp.Client` projet et sélectionnez **gérer les packages NuGet**.
 
 1. Dans la boîte de dialogue **gérer les packages NuGet** , vérifiez que la **source du package** est définie sur `nuget.org` .
 
@@ -183,7 +183,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-Dans le **Terminal intégré** ( **Afficher**  >  **Terminal** à partir de la barre d’outils), exécutez les commandes suivantes :
+Dans le **Terminal intégré** (**Afficher**  >  **Terminal** à partir de la barre d’outils), exécutez les commandes suivantes :
 
 ```dotnetcli
 dotnet add Client package Microsoft.AspNetCore.SignalR.Client
@@ -242,7 +242,7 @@ Dans le `BlazorSignalRApp.Server` projet, créez un `Hubs` dossier (pluriel) et 
 
 ::: moniker range=">= aspnetcore-5.0"
 
-   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
+   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
 
 ::: moniker-end
 
@@ -259,7 +259,7 @@ Dans le `BlazorSignalRApp.Server` projet, créez un `Hubs` dossier (pluriel) et 
 
 ::: moniker range=">= aspnetcore-5.0"
 
-   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
+   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
 
 ::: moniker-end
 
@@ -291,9 +291,9 @@ Dans le `BlazorSignalRApp.Server` projet, créez un `Hubs` dossier (pluriel) et 
 
 1. Suivez les instructions pour vos outils :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Dans **Explorateur de solutions** , sélectionnez le `BlazorSignalRApp.Server` projet. Appuyez sur <kbd>F5</kbd> pour exécuter l’application avec débogage ou sur <kbd>CTRL</kbd> + <kbd>F5</kbd> pour exécuter l’application sans débogage.
+1. Dans **Explorateur de solutions**, sélectionnez le `BlazorSignalRApp.Server` projet. Appuyez sur <kbd>F5</kbd> pour exécuter l’application avec débogage ou sur <kbd>CTRL</kbd> + <kbd>F5</kbd> pour exécuter l’application sans débogage.
 
 1. Copiez l’URL à partir de la barre d’adresse, ouvrez un autre onglet ou instance du navigateur, puis collez l’URL dans la barre d’adresse.
 
