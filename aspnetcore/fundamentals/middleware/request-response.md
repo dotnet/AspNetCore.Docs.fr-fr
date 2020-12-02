@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/request-response
-ms.openlocfilehash: cc701343cb3859f0f76ebc62bd54aa2e4431d522
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5ad39821778ea58097169def85a940a06f1d036e
+ms.sourcegitcommit: 0bcc0d6df3145a0727da7c4be2f4bda8f27eeaa3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061026"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96513107"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>Opérations de demande et de réponse dans ASP.NET Core
 
@@ -44,6 +44,8 @@ Les [pipelines](/dotnet/standard/io/pipelines) sont recommandés par rapport aux
 Les flux ne sont pas supprimés de l’infrastructure. Les flux continuent à être utilisés dans .NET, et de nombreux types de flux n’ont pas d’équivalents de canal, tels que `FileStreams` et `ResponseCompression` .
 
 ## <a name="stream-examples"></a>Exemples de flux
+
+<!-- see "fundamentals\middleware\request-response\static\TestPipes.JPG for testing sample -->
 
 Supposons que l’objectif est de créer un intergiciel qui lit l’intégralité du corps de la requête sous la forme d’une liste de chaînes, en la fractionnant sur de nouvelles lignes. Une implémentation simple de flux peut se présenter comme dans l’exemple suivant :
 
