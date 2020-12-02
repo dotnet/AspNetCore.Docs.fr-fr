@@ -1301,6 +1301,8 @@
       uid: mvc/compatibility-version
     - name: Middleware Écriture
       uid: fundamentals/middleware/write
+    - name: API JSON de base avec Route-to-code
+      uid: web-api/route-to-code
     - name: Opérations de demande et de réponse
       displayName: middleware
       uid: fundamentals/middleware/request-response
