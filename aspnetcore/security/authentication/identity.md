@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: bfcef860beb07ab81dda1a10a1648491ae187bef
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ad4184fce494ba06acf7e583a42a54d04d37ea20
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052017"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556643"
 ---
 # <a name="introduction-to-no-locidentity-on-aspnet-core"></a>Présentation de Identity sur ASP.net Core
 
@@ -60,12 +60,12 @@ Dans cette rubrique, vous allez apprendre à utiliser Identity pour inscrire, se
 
 Créez un projet d’application Web ASP.NET Core avec des comptes d’utilisateur individuels.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Sélectionnez **fichier** > **nouveau** > **projet** .
-* Sélectionnez **Application web ASP.NET Core** . Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK** .
-* Sélectionnez une **application Web** ASP.net Core, puis sélectionnez **modifier l’authentification** .
-* Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK** .
+* Sélectionnez **fichier** > **nouveau** > **projet**.
+* Sélectionnez **Application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK**.
+* Sélectionnez une **application Web** ASP.net Core, puis sélectionnez **modifier l’authentification**.
+* Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK**.
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
@@ -81,7 +81,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication/identity) une [ Razor bibliothèque de classes](xref:razor-pages/ui-class). La Identity Razor bibliothèque de classes expose des points de terminaison avec la `Identity` zone. Exemple :
+Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication/identity) une [ Razor bibliothèque de classes](xref:razor-pages/ui-class). La Identity Razor bibliothèque de classes expose des points de terminaison avec la `Identity` zone. Par exemple :
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -91,7 +91,7 @@ Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication
 
 Appliquez les migrations pour initialiser la base de données.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez la commande suivante dans la console du gestionnaire de package (PMC) :
 
@@ -123,6 +123,10 @@ Exécutez l’application et inscrivez un utilisateur. Selon la taille de votre 
 
 Les services sont ajoutés dans `ConfigureServices` . Le modèle par défaut consiste à appeler toutes les méthodes `Add{Service}`, puis toutes les méthodes `services.Configure{Service}`.
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
 [!code-csharp[](identity/sample/WebApp3/Startup.cs?name=snippet_configureservices&highlight=11-99)]
 
 Le code en surbrillance précédent configure Identity avec les valeurs d’option par défaut. Les services sont mis à la disposition de l’application via l' [injection de dépendances](xref:fundamentals/dependency-injection).
@@ -131,19 +135,35 @@ Identity est activé en appelant <xref:Microsoft.AspNetCore.Builder.AuthAppBuild
 
 [!code-csharp[](identity/sample/WebApp3/Startup.cs?name=snippet_configure&highlight=19)]
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-csharp[](identity/sample/WebApp5x/Startup.cs?name=snippet_configureservices&highlight=12-99)]
+
+Le code précédent configure Identity avec les valeurs d’option par défaut. Les services sont mis à la disposition de l’application via l' [injection de dépendances](xref:fundamentals/dependency-injection).
+
+Identity est activé en appelant [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_). `UseAuthentication` Ajoute l' [intergiciel (middleware](xref:fundamentals/middleware/index) ) d’authentification au pipeline de requête.
+
+[!code-csharp[](identity/sample/WebApp5x/Startup.cs?name=snippet_configure&highlight=19)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
 L’application générée par un modèle n’utilise pas [d’autorisation](xref:security/authorization/secure-data). `app.UseAuthorization` est inclus pour s’assurer qu’il est ajouté dans le bon ordre si l’application ajoute une autorisation. `UseRouting`, `UseAuthentication` , `UseAuthorization` et `UseEndpoints` doivent être appelés dans l’ordre indiqué dans le code précédent.
 
 Pour plus d’informations sur `IdentityOptions` et `Startup` , consultez <xref:Microsoft.AspNetCore.Identity.IdentityOptions> et démarrage de l' [application](xref:fundamentals/startup).
 
 ## <a name="scaffold-register-login-logout-and-registerconfirmation"></a>Registre de génération de modèles, connexion, déconnexion et RegisterConfirmation
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ajoutez les `Register` fichiers,, `Login` `LogOut` et `RegisterConfirmation` . Suivez l' [identité de l’échafaudage dans un Razor projet avec des instructions d’autorisation](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) pour générer le code présenté dans cette section.
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Si vous avez créé le projet avec le nom **application Web 1** , exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour `ApplicationDbContext` :
+Si vous avez créé le projet avec le nom **application Web 1**, exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour `ApplicationDbContext` :
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -190,7 +210,7 @@ Dans le code précédent, le code `return RedirectToPage();` doit être une redi
 
 [SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) efface les revendications de l’utilisateur stockées dans un cookie .
 
-La publication est spécifiée dans *pages/Shared/_LoginPartial. cshtml* :
+La publication est spécifiée dans *pages/Shared/_LoginPartial. cshtml*:
 
 [!code-cshtml[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
 
@@ -255,7 +275,7 @@ Pour empêcher la publication Identity des ressources statiques (feuilles de sty
 
 * [ASP.NET Core Identity code source](https://github.com/dotnet/aspnetcore/tree/master/src/Identity)
 * Pour plus d’informations sur la configuration de à l’aide de SQLite, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) Identity .
-* [Configurer Identity](xref:security/authentication/identity-configuration)
+* [Configuration de Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
 * <xref:security/authentication/identity-enable-qrcodes>
@@ -294,12 +314,12 @@ Pour plus d’informations, consultez [ Identity source AddDefault](https://gith
 
 Créez un projet d’application Web ASP.NET Core avec des comptes d’utilisateur individuels.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Sélectionnez **fichier** > **nouveau** > **projet** .
-* Sélectionnez **Application web ASP.NET Core** . Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK** .
-* Sélectionnez une **application Web** ASP.net Core, puis sélectionnez **modifier l’authentification** .
-* Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK** .
+* Sélectionnez **fichier** > **nouveau** > **projet**.
+* Sélectionnez **Application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK**.
+* Sélectionnez une **application Web** ASP.net Core, puis sélectionnez **modifier l’authentification**.
+* Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK**.
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
@@ -309,7 +329,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication/identity) une [ Razor bibliothèque de classes](xref:razor-pages/ui-class). La Identity Razor bibliothèque de classes expose des points de terminaison avec la `Identity` zone. Exemple :
+Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication/identity) une [ Razor bibliothèque de classes](xref:razor-pages/ui-class). La Identity Razor bibliothèque de classes expose des points de terminaison avec la `Identity` zone. Par exemple :
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -319,7 +339,7 @@ Le projet généré fournit [ASP.NET Core Identity](xref:security/authentication
 
 Appliquez les migrations pour initialiser la base de données.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez la commande suivante dans la console du gestionnaire de package (PMC) :
 
@@ -347,8 +367,6 @@ Exécutez l’application et inscrivez un utilisateur. Selon la taille de votre 
 
 Les services sont ajoutés dans `ConfigureServices` . Le modèle par défaut consiste à appeler toutes les méthodes `Add{Service}`, puis toutes les méthodes `services.Configure{Service}`.
 
-[!code-csharp[](identity/sample/WebApp1/Startup.cs?name=snippet_configureservices)]
-
 Le code précédent configure Identity avec les valeurs d’option par défaut. Les services sont mis à la disposition de l’application via l' [injection de dépendances](xref:fundamentals/dependency-injection).
 
 Identity est activé en appelant [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_). `UseAuthentication` Ajoute l' [intergiciel (middleware](xref:fundamentals/middleware/index) ) d’authentification au pipeline de requête.
@@ -361,13 +379,13 @@ Pour plus d’informations, consultez la [ Identity classe options](/dotnet/api/
 
 Suivez l' [identité de l’échafaudage dans un Razor projet avec des instructions d’autorisation](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) pour générer le code présenté dans cette section.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ajoutez les fichiers Register, login et LogOut.
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Si vous avez créé le projet avec le nom **application Web 1** , exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour `ApplicationDbContext` :
+Si vous avez créé le projet avec le nom **application Web 1**, exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour `ApplicationDbContext` :
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -409,7 +427,7 @@ Le lien de **déconnexion** appelle l' `LogoutModel.OnPost` action.
 
 [SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) efface les revendications de l’utilisateur stockées dans un cookie .
 
-La publication est spécifiée dans *pages/Shared/_LoginPartial. cshtml* :
+La publication est spécifiée dans *pages/Shared/_LoginPartial. cshtml*:
 
 [!code-cshtml[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 
@@ -445,7 +463,7 @@ Consultez [configuration](#pw) d’un exemple qui définit la configuration mini
 ## <a name="next-steps"></a>Étapes suivantes
 
 * Pour plus d’informations sur la configuration de à l’aide de SQLite, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) Identity .
-* [Configurer Identity](xref:security/authentication/identity-configuration)
+* [Configuration de Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
 * <xref:security/authentication/identity-enable-qrcodes>

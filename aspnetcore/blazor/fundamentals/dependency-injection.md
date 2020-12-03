@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/dependency-injection
-ms.openlocfilehash: 0cec9a1ea6f6df52103ab190c85518ddc42a573f
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: c68deb5237754872e11bfd9c83275b9a3b147319
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507926"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556513"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>ASP.NET Core l' Blazor injection de dépendances
 
@@ -43,8 +43,8 @@ Les services par défaut sont automatiquement ajoutés à la collection de servi
 
 | Service | Durée de vie | Description |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | Délimité | Fournit des méthodes pour envoyer des requêtes HTTP et recevoir des réponses HTTP d’une ressource identifiée par un URI.<br><br>L’instance de <xref:System.Net.Http.HttpClient> dans une Blazor WebAssembly application utilise le navigateur pour gérer le trafic HTTP en arrière-plan.<br><br>Blazor Server par défaut, les applications n’incluent pas une <xref:System.Net.Http.HttpClient> configuration en tant que service. Fournissez un <xref:System.Net.Http.HttpClient> à une Blazor Server application.<br><br>Pour plus d'informations, consultez <xref:blazor/call-web-api>.<br><br>Un <xref:System.Net.Http.HttpClient> est inscrit en tant que service étendu, et non Singleton. Pour plus d’informations, consultez la section [durée de vie du service](#service-lifetime) . |
-| <xref:Microsoft.JSInterop.IJSRuntime> | Singleton ( Blazor WebAssembly )<br>Étendu ( Blazor Server ) | Représente une instance d’un Runtime JavaScript dans laquelle les appels JavaScript sont distribués. Pour plus d'informations, consultez <xref:blazor/call-javascript-from-dotnet>. |
+| <xref:System.Net.Http.HttpClient> | Délimité | Fournit des méthodes pour envoyer des requêtes HTTP et recevoir des réponses HTTP d’une ressource identifiée par un URI.<br><br>L’instance de <xref:System.Net.Http.HttpClient> dans une Blazor WebAssembly application utilise le navigateur pour gérer le trafic HTTP en arrière-plan.<br><br>Blazor Server par défaut, les applications n’incluent pas une <xref:System.Net.Http.HttpClient> configuration en tant que service. Fournissez un <xref:System.Net.Http.HttpClient> à une Blazor Server application.<br><br>Pour plus d’informations, consultez <xref:blazor/call-web-api>.<br><br>Un <xref:System.Net.Http.HttpClient> est inscrit en tant que service étendu, et non Singleton. Pour plus d’informations, consultez la section [durée de vie du service](#service-lifetime) . |
+| <xref:Microsoft.JSInterop.IJSRuntime> | Singleton ( Blazor WebAssembly )<br>Étendu ( Blazor Server ) | Représente une instance d’un Runtime JavaScript dans laquelle les appels JavaScript sont distribués. Pour plus d’informations, consultez <xref:blazor/call-javascript-from-dotnet>. |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager> | Singleton ( Blazor WebAssembly )<br>Étendu ( Blazor Server ) | Contient des assistances pour l’utilisation des URI et de l’état de navigation. Pour plus d’informations, consultez [URI et assistance de l’état de navigation](xref:blazor/fundamentals/routing#uri-and-navigation-state-helpers). |
 
 Un fournisseur de services personnalisé ne fournit pas automatiquement les services par défaut indiqués dans le tableau. Si vous utilisez un fournisseur de services personnalisé et que vous avez besoin de l’un des services répertoriés dans le tableau, ajoutez les services requis au nouveau fournisseur de services.
@@ -154,11 +154,11 @@ Les services peuvent être configurés avec les durées de vie indiquées dans l
 
 | Durée de vie | Description |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | Blazor WebAssembly les applications n’ont pas actuellement de concept d’étendues DI. `Scoped`-les services inscrits se comportent comme des `Singleton` services. Toutefois, le Blazor Server modèle d’hébergement prend en charge la `Scoped` durée de vie. Dans Blazor Server les applications, l’inscription d’un service étendu est limitée à la *connexion*. Pour cette raison, il est préférable d’utiliser les services délimités pour les services qui doivent être étendus à l’utilisateur actuel, même si l’objectif actuel est d’exécuter côté client dans le navigateur dans une Blazor WebAssembly application. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | <p>Blazor WebAssembly les applications n’ont pas actuellement de concept d’étendues DI. `Scoped`-les services inscrits se comportent comme des `Singleton` services.</p><p>Le Blazor Server modèle d’hébergement prend en charge la `Scoped` durée de vie des requêtes http, mais pas entre les messages de connexion/circuit SingalR parmi les composants chargés sur le client. La Razor partie pages ou MVC de l’application traite normalement les services délimités et recrée les services sur *chaque requête http* lors de la navigation entre les pages ou les vues, ou à partir d’une page ou d’une vue dans un composant. Les services délimités ne sont pas reconstruits lors de la navigation entre les composants du client, où la communication avec le serveur a lieu via la SignalR connexion du circuit de l’utilisateur, et non par le biais de requêtes http. Dans les scénarios de composants suivants sur le client, les services délimités sont reconstruits car un nouveau circuit est créé pour l’utilisateur :</p><ul><li>L’utilisateur ferme la fenêtre du navigateur. L’utilisateur ouvre une nouvelle fenêtre et revient à l’application.</li><li>L’utilisateur ferme le dernier onglet de l’application dans une fenêtre de navigateur. L’utilisateur ouvre un nouvel onglet et revient à l’application.</li><li>L’utilisateur sélectionne le bouton de rechargement/actualisation du navigateur.</li></ul><p>Pour plus d’informations sur la conservation de l’état utilisateur sur les services étendus dans les Blazor Server applications, consultez <xref:blazor/hosting-models?pivots=server> .</p> |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | DI crée une *seule instance* du service. Tous les composants qui requièrent un `Singleton` service reçoivent une instance du même service. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | Chaque fois qu’un composant obtient une instance d’un `Transient` service à partir du conteneur de service, il reçoit une *nouvelle instance* du service. |
 
-Le système DI est basé sur le système DI dans ASP.NET Core. Pour plus d'informations, consultez <xref:fundamentals/dependency-injection>.
+Le système DI est basé sur le système DI dans ASP.NET Core. Pour plus d’informations, consultez <xref:fundamentals/dependency-injection>.
 
 ## <a name="request-a-service-in-a-component"></a>Demander un service dans un composant
 
@@ -167,7 +167,7 @@ Une fois les services ajoutés à la collection de services, injectez les servic
 * Type : type du service à injecter.
 * Propriété : nom de la propriété qui reçoit le service d’application injecté. La propriété ne nécessite pas de création manuelle. Le compilateur crée la propriété.
 
-Pour plus d'informations, consultez <xref:mvc/views/dependency-injection>.
+Pour plus d’informations, consultez <xref:mvc/views/dependency-injection>.
 
 Utilisez plusieurs [`@inject`](xref:mvc/views/razor#inject) instructions pour injecter différents services.
 
@@ -281,7 +281,7 @@ Deux versions du <xref:Microsoft.AspNetCore.Components.OwningComponentBase> type
 
 ## <a name="use-of-an-entity-framework-core-ef-core-dbcontext-from-di"></a>Utilisation d’un DbContext Entity Framework Core (EF Core) à partir de DI
 
-Pour plus d'informations, consultez <xref:blazor/blazor-server-ef-core>.
+Pour plus d’informations, consultez <xref:blazor/blazor-server-ef-core>.
 
 ## <a name="detect-transient-disposables"></a>Détecter les supprimables temporaires
 
