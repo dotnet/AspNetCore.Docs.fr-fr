@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 7ae462ff9abd06fe4ab4b3e00a71515b76b0ee7d
-ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
+ms.openlocfilehash: 7edba338716a0545390ec53775f69eaef141d389
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94339982"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855285"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Héberger et déployer des ASP.NET Core Blazor WebAssembly
 
@@ -540,7 +540,7 @@ Si vous recevez un message *500 – Erreur interne du serveur* et que le Gestion
 
 Pour plus d’informations sur le dépannage des déploiements sur IIS, consultez <xref:test/troubleshoot-azure-iis>.
 
-### <a name="azure-storage"></a>Stockage Azure
+### <a name="azure-storage"></a>Azure Storage
 
 L’hébergement de fichiers statiques [Azure Storage](/azure/storage/) permet l’hébergement d’applications sans serveur Blazor . Les noms de domaine personnalisé, le réseau de distribution de contenu Azure (CDN) et HTTPS sont pris en charge.
 
@@ -748,7 +748,7 @@ L’argument `--urls` définit les adresses IP ou les adresses d’hôtes avec 
 
 ## <a name="configure-the-trimmer"></a>Configurer l’outil de découpage
 
-Blazor effectue un découpage en langage intermédiaire sur chaque version de mise en production pour supprimer l’IL inutile des assemblys de sortie. Pour plus d'informations, consultez <xref:blazor/host-and-deploy/configure-trimmer>.
+Blazor effectue un découpage en langage intermédiaire sur chaque version de mise en production pour supprimer l’IL inutile des assemblys de sortie. Pour plus d’informations, consultez <xref:blazor/host-and-deploy/configure-trimmer>.
 
 ::: moniker-end
 
@@ -756,7 +756,7 @@ Blazor effectue un découpage en langage intermédiaire sur chaque version de mi
 
 ## <a name="configure-the-linker"></a>Configurer l'éditeur de liens
 
-Blazor effectue une liaison IL (Intermediate Language) sur chaque version de mise en production pour supprimer l’IL inutile des assemblys de sortie. Pour plus d'informations, consultez <xref:blazor/host-and-deploy/configure-linker>.
+Blazor effectue une liaison IL (Intermediate Language) sur chaque version de mise en production pour supprimer l’IL inutile des assemblys de sortie. Pour plus d’informations, consultez <xref:blazor/host-and-deploy/configure-linker>.
 
 ::: moniker-end
 
@@ -922,7 +922,7 @@ Quand une application est générée, le `blazor.boot.json` manifeste généré 
 
 Causes courantes de cet échec :
 
- * La réponse du serveur Web est une erreur (par exemple, *404-introuvable* ou une *erreur de serveur 500-Internal* ) au lieu du fichier demandé par le navigateur. Cela est signalé par le navigateur comme un échec de vérification de l’intégrité et non comme un échec de réponse.
+ * La réponse du serveur Web est une erreur (par exemple, *404-introuvable* ou une *erreur de serveur 500-Internal*) au lieu du fichier demandé par le navigateur. Cela est signalé par le navigateur comme un échec de vérification de l’intégrité et non comme un échec de réponse.
  * Une modification a été apportée au contenu des fichiers entre la génération et la remise des fichiers dans le navigateur. Cela peut se produire :
    * Si vous ou les outils de génération modifiez manuellement la sortie de la génération.
    * Si certains aspects du processus de déploiement ont modifié les fichiers. Par exemple, si vous utilisez un mécanisme de déploiement basé sur git, gardez à l’esprit que git convertit en toute transparence les fins de ligne de style Windows en terminaisons de ligne de style UNIX si vous validez des fichiers sur Windows et que vous les consultez sur Linux. La modification des fins de ligne de fichier modifie les hachages SHA-256. Pour éviter ce problème, envisagez [ `.gitattributes` d’utiliser pour traiter les artefacts de build comme des `binary` fichiers](https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes).
@@ -934,11 +934,33 @@ Pour diagnostiquer les éléments suivants dans votre cas :
  1. Ouvrez les outils de développement de votre navigateur et recherchez dans l’onglet *réseau* . Si nécessaire, rechargez la page pour afficher la liste des demandes et des réponses. Recherchez le fichier qui déclenche l’erreur dans cette liste.
  1. Vérifiez le code d’état HTTP dans la réponse. Si le serveur retourne une valeur autre que *200-OK* (ou un autre code d’État 2xx), vous pouvez diagnostiquer un problème côté serveur. Par exemple, le code d’état 403 signifie qu’il y a un problème d’autorisation, alors que le code d’état 500 signifie que le serveur échoue de manière non spécifiée. Consultez les journaux côté serveur pour diagnostiquer et corriger l’application.
  1. Si le code d’État est *200-OK* pour la ressource, examinez le contenu de la réponse dans les outils de développement du navigateur et vérifiez que le contenu correspond aux données attendues. Par exemple, un problème courant consiste à configurer le routage de manière inhabituelle afin que les demandes retournent vos `index.html` données même pour d’autres fichiers. Assurez-vous que `.wasm` les réponses aux requêtes sont des binaires Webassembly et que les réponses aux `.dll` requêtes sont des binaires d’assembly .net. Si ce n’est pas le cas, vous pouvez diagnostiquer un problème de routage côté serveur.
+ 1. Recherchez la validation de la sortie publiée et déployée de l’application avec le [script PowerShell d’intégrité](#troubleshoot-integrity-powershell-script)de la résolution des problèmes.
 
 Si vous confirmez que le serveur retourne des données correctes plausibly, il doit y avoir une autre modification du contenu entre la génération et la remise du fichier. Pour examiner ce qui suit :
 
  * Examinez le chaîne d’outils de build et le mécanisme de déploiement en cas de modification des fichiers après la génération des fichiers. C’est le cas, par exemple, lorsque git transforme les fins de ligne de fichier, comme décrit précédemment.
  * Examinez le serveur Web ou la configuration CDN au cas où ils seraient configurés pour modifier les réponses de manière dynamique (par exemple, en tentant de réduire HTML). Il convient que le serveur Web implémente la compression HTTP (par exemple, en retournant `content-encoding: br` ou `content-encoding: gzip` ), car cela n’affecte pas le résultat après la décompression. Toutefois, il *n’est pas correct* pour le serveur Web de modifier les données non compressées.
+
+### <a name="troubleshoot-integrity-powershell-script"></a>Résoudre les problèmes de script PowerShell d’intégrité
+
+Utilisez le [`integrity.ps1`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/integrity.ps1?raw=true) script PowerShell pour valider une application publiée et déployée Blazor . Le script est fourni comme point de départ lorsque l’application rencontre des problèmes d’intégrité que l' Blazor infrastructure ne peut pas identifier. La personnalisation du script peut être nécessaire pour vos applications.
+
+Le script vérifie les fichiers dans le `publish` dossier et les télécharge à partir de l’application déployée pour détecter les problèmes dans les différents manifestes qui contiennent des hachages d’intégrité. Ces contrôles doivent détecter les problèmes les plus courants :
+
+* Vous avez modifié un fichier dans la sortie publiée sans l’avoir réalisé.
+* L’application n’a pas été correctement déployée sur la cible de déploiement, ou une modification a été apportée dans l’environnement de la cible de déploiement.
+* Il existe des différences entre l’application déployée et la sortie de la publication de l’application.
+
+Appelez le script avec la commande suivante dans une interface de commande PowerShell :
+
+```powershell
+.\integrity.ps1 {BASE URL} {PUBLISH OUTPUT FOLDER}
+```
+
+Espaces réservés
+
+* `{BASE URL}`: URL de l’application déployée.
+* `{PUBLISH OUTPUT FOLDER}`: Chemin d’accès au dossier de l’application ou à l' `publish` emplacement où l’application est publiée pour le déploiement.
 
 ### <a name="disable-integrity-checking-for-non-pwa-apps"></a>Désactiver le contrôle d’intégrité pour les applications non-PWA
 

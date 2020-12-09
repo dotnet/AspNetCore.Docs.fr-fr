@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 8e848ef57a9164501fd3c4f29f47ad7c72118507
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: d7ffcb67637593ab2909885a9e1f6de74a78361b
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417550"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855493"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Nouveautés de ASP.NET Core 5,0
 
@@ -80,7 +80,7 @@ The validation system in .NET Core 3.0 and later treats non-nullable parameters 
 see https://docs.microsoft.com/aspnet/core/mvc/models/validation?view=aspnetcore-3.1   
 -->
 
-## <a name="web-api"></a>API web
+## <a name="web-api"></a>API Web
 
 ### <a name="openapi-specification-on-by-default"></a>Spécification OpenAPI activée par défaut
 
@@ -130,7 +130,7 @@ Avec OpenAPI activé par défaut, l’expérience de lancement d’application (
 
 ## Blazor
 
-### <a name="performance-improvements"></a>Améliorations des performances
+### <a name="performance-improvements"></a>Amélioration des performances
 
 Pour .NET 5, nous avons apporté des améliorations significatives aux Blazor WebAssembly performances de l’exécution avec un focus spécifique sur le rendu de l’interface utilisateur complexe et la SÉRIALISATION JSON. Dans nos tests de performances, Blazor WebAssembly dans .net 5, il s’agit de deux à trois fois plus rapides pour la plupart des scénarios. Pour plus d’informations, consultez le [Blog ASP.net : ASP.net Core des mises à jour dans .net 5 Release Candidate 1](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-5-release-candidate-1/#blazor-webassembly-performance-improvements).
 
@@ -328,7 +328,7 @@ L’exemple suivant montre comment spécifier un point de terminaison spécifiqu
 
 Indication du nom du serveur (SNI) est une extension TLS pour inclure un domaine virtuel dans le cadre de la négociation SSL. Cela signifie que le nom de domaine virtuel, ou un nom d’hôte, peut être utilisé pour identifier le point de terminaison réseau.
 
-## <a name="performance-improvements"></a>Améliorations des performances
+## <a name="performance-improvements"></a>Amélioration des performances
 
 ### <a name="http2"></a>HTTP/2
 
@@ -353,7 +353,7 @@ Indication du nom du serveur (SNI) est une extension TLS pour inclure un domaine
    ```
    <!-- review: KeepAlivePingInterval not found in RC1. Try testing with RC1. See https://github.com/dotnet/aspnetcore/pull/22565/files see C:/Users/riande/source/repos/WebApplication128/WebApplication128 -->
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Conteneurs
 
 Avant .NET 5,0, la génération et la publication d’un *fichier dockerfile* pour une application ASP.net Core nécessitait l’extraction de l’ensemble des kit SDK .net Core et de l’image ASP.net core. Avec cette version, l’extraction des octets des images du SDK est réduite et les octets tirés pour l’image ASP.NET Core sont en grande partie éliminés. Pour plus d’informations, consultez [ce commentaire de problème GitHub](https://github.com/dotnet/dotnet-docker/issues/1814#issuecomment-625294750).
 

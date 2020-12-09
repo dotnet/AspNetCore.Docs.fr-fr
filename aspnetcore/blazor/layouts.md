@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 9462b73ad67394e79de08e7d2b13bf6a3145a04e
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: c6f9815f473380f96092d663cdd785fd19109701
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507965"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855298"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>Dispositions de ASP.NET Core Blazor
 
@@ -34,10 +34,10 @@ Certains éléments de l’application, tels que les menus, les messages de copy
 
 Techniquement, une disposition est simplement un autre composant. Une disposition est définie dans un Razor modèle ou dans du code C# et peut utiliser la [liaison de données](xref:blazor/components/data-binding), l' [injection de dépendances](xref:blazor/fundamentals/dependency-injection)et d’autres scénarios de composants.
 
-Pour transformer un *composant* en une *disposition* , le composant :
+Pour convertir un composant en disposition :
 
-* Hérite de <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> , qui définit une <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> propriété pour le contenu rendu à l’intérieur de la disposition.
-* Utilise la Razor syntaxe `@Body` pour spécifier l’emplacement dans la balise de mise en page où le contenu est restitué.
+* Hérite du composant de <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> . <xref:Microsoft.AspNetCore.Components.LayoutComponentBase>Définit une <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> propriété pour le contenu rendu à l’intérieur de la disposition.
+* Utilisez la Razor syntaxe `@Body` pour spécifier l’emplacement dans la balise de mise en page où le contenu est affiché.
 
 L’exemple de code suivant montre le Razor modèle d’un composant de disposition, `MainLayout.razor` . La disposition hérite <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> de et définit la `@Body` entre la barre de navigation et le pied de page :
 
@@ -120,7 +120,7 @@ Enfin, `MasterLayout` dans `MasterLayout.razor` contient les éléments de dispo
 
 ## <a name="share-a-no-locrazor-pages-layout-with-integrated-components"></a>Partager une Razor disposition de pages avec des composants intégrés
 
-Lorsque des composants routables sont intégrés à une Razor application pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d'informations, consultez <xref:blazor/components/prerendering-and-integration>.
+Lorsque des composants routables sont intégrés à une Razor application pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d’informations, consultez <xref:blazor/components/prerendering-and-integration>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

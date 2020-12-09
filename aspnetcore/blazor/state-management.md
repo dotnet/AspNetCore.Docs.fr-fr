@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 7e79836e3dd1da175a62a84e11dfd30fee7b2f1b
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 24f845bc1d98331f2ee54710d17beb6ffa95ad88
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570144"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855415"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>Gestion de l’état des ASP.NET Core Blazor
 
@@ -43,6 +43,9 @@ Voici quelques exemples d’état utilisateur contenu dans la mémoire du naviga
 * Valeurs définies par le biais d’appels [Interop JavaScript](xref:blazor/call-javascript-from-dotnet) .
 
 Lorsqu’un utilisateur ferme et ouvre à nouveau son navigateur ou recharge la page, l’état utilisateur contenu dans la mémoire du navigateur est perdu.
+
+> [!NOTE]
+> Le [stockage du navigateur protégé](xref:blazor/state-management?pivots=server#aspnet-core-protected-browser-storage) ( <xref:Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage?displayProperty=fullName> espace de noms) s’appuie sur la Protection des données ASP.net Core et n’est pris en charge que pour les Blazor Server applications.
 
 ## <a name="persist-state-across-browser-sessions"></a>Conserver l’état entre les sessions de navigateur
 
@@ -68,9 +71,9 @@ Les emplacements communs existent pour l’état de persistance :
 
 <h2 id="server-side-storage-wasm">Stockage côté serveur</h2>
 
-Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser un stockage indépendant côté serveur accessible via une API Web. Les options sont :
+Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser un stockage indépendant côté serveur accessible via une API Web. Les options sont les suivantes :
 
-* Stockage d'objets blob
+* Stockage d’objets blob
 * Stockage clé-valeur
 * Base de données relationnelle
 * Stockage de tables
@@ -177,9 +180,9 @@ Les emplacements communs existent pour l’état de persistance :
 
 <h2 id="server-side-storage-server">Stockage côté serveur</h2>
 
-Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser le stockage côté serveur. Les options sont :
+Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser le stockage côté serveur. Les options sont les suivantes :
 
-* Stockage d'objets blob
+* Stockage d’objets blob
 * Stockage clé-valeur
 * Base de données relationnelle
 * Stockage de tables
@@ -277,7 +280,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-Si les paramètres du composant incluent l’état de navigation, appelez `ProtectedSessionStore.GetAsync` et assignez un non- `null` résultat dans <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> , et non <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> . <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> la méthode est appelée une seule fois lors de la première instanciation du composant. <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> n’est pas rappelée ultérieurement si l’utilisateur accède à une autre URL tout en restant sur la même page. Pour plus d'informations, consultez <xref:blazor/components/lifecycle>.
+Si les paramètres du composant incluent l’état de navigation, appelez `ProtectedSessionStore.GetAsync` et assignez un non- `null` résultat dans <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> , et non <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> . <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> la méthode est appelée une seule fois lors de la première instanciation du composant. <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> n’est pas rappelée ultérieurement si l’utilisateur accède à une autre URL tout en restant sur la même page. Pour plus d’informations, consultez <xref:blazor/components/lifecycle>.
 
 > [!WARNING]
 > Les exemples de cette section ne fonctionnent que si le prérendu n’est pas activé sur le serveur. Quand le prérendu est activé, une erreur est générée, expliquant que les appels Interop JavaScript ne peuvent pas être émis car le composant est en cours de prérendu.
@@ -522,7 +525,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-Si les paramètres du composant incluent l’état de navigation, appelez `ProtectedSessionStore.GetAsync` et assignez le résultat dans <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> , et non <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> . <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> la méthode est appelée une seule fois lors de la première instanciation du composant. <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> n’est pas rappelée ultérieurement si l’utilisateur accède à une autre URL tout en restant sur la même page. Pour plus d'informations, consultez <xref:blazor/components/lifecycle>.
+Si les paramètres du composant incluent l’état de navigation, appelez `ProtectedSessionStore.GetAsync` et assignez le résultat dans <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> , et non <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> . <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> la méthode est appelée une seule fois lors de la première instanciation du composant. <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> n’est pas rappelée ultérieurement si l’utilisateur accède à une autre URL tout en restant sur la même page. Pour plus d’informations, consultez <xref:blazor/components/lifecycle>.
 
 > [!WARNING]
 > Les exemples de cette section ne fonctionnent que si le prérendu n’est pas activé sur le serveur. Quand le prérendu est activé, une erreur est générée, expliquant que les appels Interop JavaScript ne peuvent pas être émis car le composant est en cours de prérendu.

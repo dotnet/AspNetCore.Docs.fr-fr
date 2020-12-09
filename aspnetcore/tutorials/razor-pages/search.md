@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 3b95fe117895555ebcd44f971e7bb9d1173e1697
-ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
+ms.openlocfilehash: 1e571966b78f93e29e7901dd9648fbe3aca52726
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96419978"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855480"
 ---
 # <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>Partie 6, ajouter une recherche aux Razor Pages ASP.net Core
 
@@ -70,7 +70,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-La requête est *seulement* définie à ce stade, elle n’a **pas** été exécutée sur la base de données.
+La requête est uniquement ***définie** _ à ce stade, elle n’a _*_pas_*_ été exécutée sur la base de données.
 
 Si la propriété `SearchString` n’est pas nulle ou vide, la requête sur les films est modifiée de façon à filtrer sur la chaîne de recherche :
 
@@ -95,7 +95,7 @@ La contrainte d’itinéraire précédente permet de rechercher le titre comme d
 
 ![::: No-Loc (index) ::: View avec le mot fantôme ajouté à l’URL et une liste de films retournée de deux films, Ghostbusters et Ghostbusters 2](search/_static/g2.png)
 
-Le runtime ASP.NET Core utilise la [liaison de modèle](xref:mvc/models/model-binding) pour définir la valeur de la propriété `SearchString` à partir de la chaîne de requête (`?searchString=Ghost`) ou des données de la route (`https://localhost:5001/Movies/Ghost`). La liaison de modèle est *_sans_* respect de la casse.
+Le runtime ASP.NET Core utilise la [liaison de modèle](xref:mvc/models/model-binding) pour définir la valeur de la propriété `SearchString` à partir de la chaîne de requête (`?searchString=Ghost`) ou des données de la route (`https://localhost:5001/Movies/Ghost`). La liaison de modèle ne respecte _*_pas_*_ la casse.
 
 Toutefois, les utilisateurs ne sont pas censés modifier l’URL pour rechercher un film. Dans cette étape, une interface utilisateur est ajoutée pour filtrer les films. Si vous avez ajouté la contrainte d’itinéraire `"{searchString?}"`, supprimez-la.
 

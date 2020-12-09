@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 9dcb1c4a19e50a57f1a1918cfcf775b49fa89b11
-ms.sourcegitcommit: 43a540e703b9096921de27abc6b66bc0783fe905
+ms.openlocfilehash: 0e81397d210518854939c6941e7f6da43ed48389
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96320146"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855506"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages avec Entity Framework Core dans ASP.NET Core-didacticiel 1 sur 8
 
@@ -122,7 +122,7 @@ To run the app after downloading the completed project:
 1. Démarrez Visual Studio et sélectionnez **Créer un projet**.
 1. Dans la boîte de dialogue **créer un nouveau projet** , sélectionnez **ASP.net Core application Web** > **suivant**.
 1. Dans la boîte de dialogue **configurer votre nouveau projet** , entrez `ContosoUniversity` pour **nom du projet**. Il est important d’utiliser ce nom exact, y compris la mise en majuscules, donc chaque correspond à la `namespace` copie du code.
-1. Sélectionnez **Create** (Créer).
+1. Sélectionnez **Créer**.
 1. Dans la boîte de dialogue **créer une application web ASP.net Core** , sélectionnez :
     1. **.Net Core** et **ASP.net Core 5,0** dans les listes déroulantes.
     1. **ASP.net Core application Web**.
@@ -413,7 +413,7 @@ Ce workflow fonctionne bien à un stade précoce du développement, quand le sch
 
 Plus tard dans cette série de tutoriels, vous supprimerez la base de données créée par `EnsureCreated` et procéderez à des migrations. Une base de données créée par `EnsureCreated` ne peut pas être mise à jour via des migrations.
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 * Exécutez l'application.
 * Sélectionnez le lien **Students**, puis **Créer nouveau**.
@@ -479,7 +479,7 @@ Un serveur web a un nombre limité de threads disponibles et, dans les situation
 
 Le code asynchrone introduit néanmoins une petite surcharge au moment de l’exécution. Dans les situations de faible trafic, le gain de performances est négligeable, tandis qu’en cas de trafic élevé l’amélioration potentielle des performances est importante.
 
-Dans le code suivant, le mot clé [async](/dotnet/csharp/language-reference/keywords/async), la valeur renvoyée `Task<T>`, le mot clé `await` et la méthode `ToListAsync` déclenchent l’exécution asynchrone du code.
+Dans le code suivant, le mot clé [async](/dotnet/csharp/language-reference/keywords/async), la valeur renvoyée `Task`, le mot clé `await` et la méthode `ToListAsync` déclenchent l’exécution asynchrone du code.
 
 ```csharp
 public async Task OnGetAsync()
@@ -491,7 +491,7 @@ public async Task OnGetAsync()
 * Le mot clé `async` fait en sorte que le compilateur :
   * Génère des rappels pour les parties du corps de méthode.
   * Crée l’objet [Task](/dotnet/csharp/programming-guide/concepts/async/async-return-types#BKMK_TaskReturnType) qui est retourné.
-* Le type de retour `Task<T>` représente le travail en cours.
+* Le type de retour `Task` représente le travail en cours.
 * Le mot clé `await` indique au compilateur de fractionner la méthode en deux parties. La première partie se termine par l’opération qui est démarrée de façon asynchrone. La seconde partie est placée dans une méthode de rappel qui est appelée quand l’opération se termine.
 * `ToListAsync` est la version asynchrone de la méthode d’extension `ToList`.
 
@@ -864,7 +864,7 @@ Ce workflow fonctionne bien à un stade précoce du développement, quand le sch
 
 Plus tard dans cette série de tutoriels, vous supprimerez la base de données créée par `EnsureCreated` et procéderez à des migrations. Une base de données créée par `EnsureCreated` ne peut pas être mise à jour via des migrations.
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 * Exécutez l'application.
 * Sélectionnez le lien **Students**, puis **Créer nouveau**.
@@ -1171,7 +1171,7 @@ Le code suivant montre le fichier *Program.cs* mis à jour.
 
 `EnsureCreated` est pratique au début du développement quand le schéma évolue rapidement. Plus loin dans le tutoriel, la base de données est supprimée et les migrations sont utilisées.
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 Exécutez l’application et acceptez la cookie stratégie. Cette application ne conserve pas les informations personnelles. Pour en savoir plus sur la cookie stratégie au niveau de la [prise en charge de l’union européenne règlement général sur la protection des données (RGPD)](xref:security/gdpr).
 

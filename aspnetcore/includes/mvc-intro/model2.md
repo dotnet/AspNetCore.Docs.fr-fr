@@ -14,7 +14,7 @@ Le code précédent crée une propriété `DbSet` pour le jeu d’entités. Dans
 
 ### <a name="add-a-database-connection-string"></a>Ajouter une chaîne de connexion de base de données
 
-Ajoutez une chaîne de connexion au fichier *appsettings.json* :
+Ajoutez une chaîne de connexion au *appsettings.jssur* le fichier :
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
 
@@ -53,7 +53,7 @@ Le code précédent crée une propriété `DbSet` pour le jeu d’entités. Dans
 
 ### <a name="add-a-database-connection-string"></a>Ajouter une chaîne de connexion de base de données
 
-Ajoutez une chaîne de connexion au fichier *appsettings.json* :
+Ajoutez une chaîne de connexion au *appsettings.jssur* le fichier :
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 

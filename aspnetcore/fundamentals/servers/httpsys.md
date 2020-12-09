@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: ca8aa126a44ea417017f0be0372e818a95ad8413
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 9c65abd5a055bb677a14921296316e7e03760bc2
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053746"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855363"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web HTTP.sys dans ASP.NET Core
 
@@ -98,10 +98,11 @@ Le reste de la configuration de HTTP.sys est géré par le biais des [paramètre
 
 | Propriété | Description | Default |
 | -------- | ----------- | :-----: |
-| [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | Contrôle si l’entrée/sortie synchrone est autorisée pour le `HttpContext.Request.Body` et le `HttpContext.Response.Body`. | `false` |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO> | Contrôle si l’entrée/sortie synchrone est autorisée pour le `HttpContext.Request.Body` et le `HttpContext.Response.Body`. | `false` |
 | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | Autorise les requêtes anonymes. | `true` |
 | [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | Spécifie les schémas d’authentification autorisés. Peut être modifié à tout moment avant la suppression de l’écouteur. Les valeurs sont fournies par l' [énumération AuthenticationSchemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes): `Basic` , `Kerberos` ,, `Negotiate` `None` et `NTLM` . | `None` |
-| [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | Tente la mise en cache [en mode noyau](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode) pour les réponses comportant un en-tête compatible. La réponse peut ne pas inclure d’en-tête `Set-Cookie`, `Vary` ou `Pragma`. Elle doit comporter un en-tête `Cache-Control``public` et soit une valeur `shared-max-age` ou `max-age`, soit un en-tête `Expires`. | `true` |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching> | Tente la mise en cache [en mode noyau](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode) pour les réponses comportant un en-tête compatible. La réponse peut ne pas inclure d’en-tête `Set-Cookie`, `Vary` ou `Pragma`. Elle doit comporter un en-tête `Cache-Control``public` et soit une valeur `shared-max-age` ou `max-age`, soit un en-tête `Expires`. | `true` |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.Http503Verbosity> | Le comportement de HTTP.sys lors du rejet des demandes en raison de conditions de limitation. | [Http503VerbosityLevel. <br> Bases](xref:Microsoft.AspNetCore.Server.HttpSys.Http503VerbosityLevel) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | Nombre maximal d'acceptations simultanées. | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | Nombre maximum de connexions simultanées à accepter. Utilisez `-1` pour signifier l’infini, et `null` pour utiliser le paramètre du Registre qui s’applique à l’ordinateur dans son ensemble. | `null`<br>(au niveau de l’ordinateur<br>défini |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | Consultez la section <a href="#maxrequestbodysize">MaxRequestBodySize</a>. | 30 000 000 octets<br>(env. 28,6 Mo) |
@@ -109,8 +110,8 @@ Le reste de la configuration de HTTP.sys est géré par le biais des [paramètre
 | `RequestQueueMode` | Cela indique si le serveur est responsable de la création et de la configuration de la file d’attente des demandes, ou s’il doit être attaché à une file d’attente existante.<br>La plupart des options de configuration existantes ne s’appliquent pas lors de l’attachement à une file d’attente existante. | `RequestQueueMode.Create` |
 | `RequestQueueName` | Nom de la file d’attente de demandes de HTTP.sys. | `null` (File d’attente anonyme) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | Indique si les écritures dans le corps de la réponse qui échouent en raison d’une déconnexion du client doivent lever des exceptions ou se terminer normalement. | `false`<br>(se terminer normalement) |
-| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.Timeouts> | Expose la configuration <xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager> de HTTP.sys, également paramétrable dans le Registre. Suivez les liens de l’API pour en savoir plus sur chaque paramètre, y compris les valeurs par défaut :<ul><li>[TimeoutManager. DrainEntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.DrainEntityBody): temps accordé à l’API du serveur http pour vider le corps d’entité sur une connexion Keep-Alive.</li><li>[TimeoutManager. EntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.EntityBody): temps autorisé pour l’arrivée du corps d’entité de la requête.</li><li>[TimeoutManager. HeaderWait](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.HeaderWait): temps accordé à l’API du serveur http pour analyser l’en-tête de la demande.</li><li>[TimeoutManager. IdleConnection](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.IdleConnection): temps autorisé pour une connexion inactive.</li><li>[TimeoutManager. MinSendBytesPerSecond](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.MinSendBytesPerSecond): taux d’envoi minimal pour la réponse.</li><li>[TimeoutManager. RequestQueue](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.RequestQueue): temps pendant lequel la demande doit rester dans la file d’attente des demandes avant que l’application la récupère.</li></ul> |  |
-| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.UrlPrefixes> | Spécifiez <xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection> à inscrire auprès de HTTP.sys. La plus utile est [UrlPrefixCollection.Add](xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection.Add*), qui permet d’ajouter un préfixe à la collection. Ces choix peuvent être modifiés à tout moment avant la suppression de l’écouteur. |  |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.Timeouts> | Expose la configuration <xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager> de HTTP.sys, également paramétrable dans le Registre. Suivez les liens de l’API pour en savoir plus sur chaque paramètre, y compris les valeurs par défaut :<ul><li><xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.DrainEntityBody?displayProperty=nameWithType>: Temps accordé à l’API du serveur HTTP pour vider le corps d’entité sur une connexion Keep-Alive.</li><li><xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.EntityBody?displayProperty=nameWithType>: Temps autorisé pour l’arrivée du corps d’entité de la requête.</li><li><xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.HeaderWait?displayProperty=nameWithType>: Temps accordé à l’API du serveur HTTP pour analyser l’en-tête de la demande.</li><li><xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.IdleConnection?displayProperty=nameWithType>: Durée autorisée pour une connexion inactive.</li><li><xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.MinSendBytesPerSecond?displayProperty=nameWithType>: Taux d’envoi minimal pour la réponse.</li><li><xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.RequestQueue?displayProperty=nameWithType>: Durée pendant laquelle la demande doit rester dans la file d’attente des demandes avant que l’application la récupère.</li></ul> |  |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.UrlPrefixes> | Spécifiez <xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection> à inscrire auprès de HTTP.sys. Le plus utile est <xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection.Add%2A?displayProperty=nameWithType> , qui est utilisé pour ajouter un préfixe à la collection. Ces choix peuvent être modifiés à tout moment avant la suppression de l’écouteur. |  |
 
 <a name="maxrequestbodysize"></a>
 
@@ -151,8 +152,8 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
 
 1. Si l’application est un [déploiement dépendant de .NET Framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd), installez .NET Core, .NET Framework ou les deux (si l’application est une application .NET Core ciblant .NET Framework).
 
-   * **.Net Core** : si l’application requiert .net Core, obtenez et exécutez le programme d’installation du **Runtime .net Core** à partir des [téléchargements .net Core](https://dotnet.microsoft.com/download). N’installez pas le Kit SDK complet sur le serveur.
-   * **.NET Framework** : si l’application requiert des .NET Framework, consultez le [Guide d’installation de .NET Framework](/dotnet/framework/install/). Installez la version requise de .NET Framework. Le programme d’installation du .NET Framework le plus récent est disponible depuis la page [Téléchargements .NET Core](https://dotnet.microsoft.com/download).
+   * **.Net Core**: si l’application requiert .net Core, obtenez et exécutez le programme d’installation du **Runtime .net Core** à partir des [téléchargements .net Core](https://dotnet.microsoft.com/download). N’installez pas le Kit SDK complet sur le serveur.
+   * **.NET Framework**: si l’application requiert des .NET Framework, consultez le [Guide d’installation de .NET Framework](/dotnet/framework/install/). Installez la version requise de .NET Framework. Le programme d’installation du .NET Framework le plus récent est disponible depuis la page [Téléchargements .NET Core](https://dotnet.microsoft.com/download).
 
    Si l’application est un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd), elle inclut le runtime dans son déploiement. Aucune installation de framework n’est requise sur le serveur.
 
@@ -180,7 +181,7 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
 
 1. Préenregistrez les préfixes d’URL sur le serveur.
 
-   L’outil intégré pour configurer HTTP.sys est *netsh.exe* . *netsh.exe* permet de réserver des préfixes d’URL et d’assigner des certificats X.509. L’outil requiert des privilèges Administrateur.
+   L’outil intégré pour configurer HTTP.sys est *netsh.exe*. *netsh.exe* permet de réserver des préfixes d’URL et d’assigner des certificats X.509. L’outil requiert des privilèges Administrateur.
 
    Utilisez l’outil *netsh.exe* pour enregistrer les URL pour l’application :
 
@@ -221,9 +222,9 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
    À titre de référence, stockez le GUID dans l’application en tant que balise de package :
 
    * Dans Visual Studio :
-     * Ouvrez les propriétés du projet de l’application en cliquant avec le bouton droit sur l’application dans **l’Explorateur de solutions** et en sélectionnant **Propriétés** .
-     * Sélectionnez l’onglet **Package** .
-     * Entrez le GUID que vous avez créé dans le champ **Balises** .
+     * Ouvrez les propriétés du projet de l’application en cliquant avec le bouton droit sur l’application dans **l’Explorateur de solutions** et en sélectionnant **Propriétés**.
+     * Sélectionnez l’onglet **Package**.
+     * Entrez le GUID que vous avez créé dans le champ **Balises**.
    * Si vous n’utilisez pas Visual Studio :
      * Ouvrez le chemin d’accès vers le fichier de projet de l’application.
      * Ajoutez une propriété `<PackageTags>` à un `<PropertyGroup>` nouveau ou existant avec le GUID que vous avez créé :
@@ -259,7 +260,7 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
    * [Commandes netsh pour le protocole HTTP (Hypertext Transfer Protocol)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [Chaînes UrlPrefix](/windows/win32/http/urlprefix-strings)
 
-1. Exécutez l’application.
+1. Exécutez l'application.
 
    Les privilèges administrateur ne sont pas requis pour exécuter l’application lors d’une liaison à localhost à l’aide de HTTP (pas HTTPS) avec un numéro de port supérieur à 1024. Pour les autres configurations (par exemple, l’utilisation d’une adresse IP locale ou la liaison au port 443), exécutez l’application avec des privilèges administrateur.
 
@@ -419,8 +420,8 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
 
 1. Si l’application est un [déploiement dépendant de .NET Framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd), installez .NET Core, .NET Framework ou les deux (si l’application est une application .NET Core ciblant .NET Framework).
 
-   * **.Net Core** : si l’application requiert .net Core, obtenez et exécutez le programme d’installation du **Runtime .net Core** à partir des [téléchargements .net Core](https://dotnet.microsoft.com/download). N’installez pas le Kit SDK complet sur le serveur.
-   * **.NET Framework** : si l’application requiert des .NET Framework, consultez le [Guide d’installation de .NET Framework](/dotnet/framework/install/). Installez la version requise de .NET Framework. Le programme d’installation du .NET Framework le plus récent est disponible depuis la page [Téléchargements .NET Core](https://dotnet.microsoft.com/download).
+   * **.Net Core**: si l’application requiert .net Core, obtenez et exécutez le programme d’installation du **Runtime .net Core** à partir des [téléchargements .net Core](https://dotnet.microsoft.com/download). N’installez pas le Kit SDK complet sur le serveur.
+   * **.NET Framework**: si l’application requiert des .NET Framework, consultez le [Guide d’installation de .NET Framework](/dotnet/framework/install/). Installez la version requise de .NET Framework. Le programme d’installation du .NET Framework le plus récent est disponible depuis la page [Téléchargements .NET Core](https://dotnet.microsoft.com/download).
 
    Si l’application est un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd), elle inclut le runtime dans son déploiement. Aucune installation de framework n’est requise sur le serveur.
 
@@ -448,7 +449,7 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
 
 1. Préenregistrez les préfixes d’URL sur le serveur.
 
-   L’outil intégré pour configurer HTTP.sys est *netsh.exe* . *netsh.exe* permet de réserver des préfixes d’URL et d’assigner des certificats X.509. L’outil requiert des privilèges Administrateur.
+   L’outil intégré pour configurer HTTP.sys est *netsh.exe*. *netsh.exe* permet de réserver des préfixes d’URL et d’assigner des certificats X.509. L’outil requiert des privilèges Administrateur.
 
    Utilisez l’outil *netsh.exe* pour enregistrer les URL pour l’application :
 
@@ -489,9 +490,9 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
    À titre de référence, stockez le GUID dans l’application en tant que balise de package :
 
    * Dans Visual Studio :
-     * Ouvrez les propriétés du projet de l’application en cliquant avec le bouton droit sur l’application dans **l’Explorateur de solutions** et en sélectionnant **Propriétés** .
-     * Sélectionnez l’onglet **Package** .
-     * Entrez le GUID que vous avez créé dans le champ **Balises** .
+     * Ouvrez les propriétés du projet de l’application en cliquant avec le bouton droit sur l’application dans **l’Explorateur de solutions** et en sélectionnant **Propriétés**.
+     * Sélectionnez l’onglet **Package**.
+     * Entrez le GUID que vous avez créé dans le champ **Balises**.
    * Si vous n’utilisez pas Visual Studio :
      * Ouvrez le chemin d’accès vers le fichier de projet de l’application.
      * Ajoutez une propriété `<PackageTags>` à un `<PropertyGroup>` nouveau ou existant avec le GUID que vous avez créé :
@@ -527,7 +528,7 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
    * [Commandes netsh pour le protocole HTTP (Hypertext Transfer Protocol)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [Chaînes UrlPrefix](/windows/win32/http/urlprefix-strings)
 
-1. Exécutez l’application.
+1. Exécutez l'application.
 
    Les privilèges administrateur ne sont pas requis pour exécuter l’application lors d’une liaison à localhost à l’aide de HTTP (pas HTTPS) avec un numéro de port supérieur à 1024. Pour les autres configurations (par exemple, l’utilisation d’une adresse IP locale ou la liaison au port 443), exécutez l’application avec des privilèges administrateur.
 
@@ -672,8 +673,8 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
 
 1. Si l’application est un [déploiement dépendant de .NET Framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd), installez .NET Core, .NET Framework ou les deux (si l’application est une application .NET Core ciblant .NET Framework).
 
-   * **.Net Core** : si l’application requiert .net Core, obtenez et exécutez le programme d’installation du **Runtime .net Core** à partir des [téléchargements .net Core](https://dotnet.microsoft.com/download). N’installez pas le Kit SDK complet sur le serveur.
-   * **.NET Framework** : si l’application requiert des .NET Framework, consultez le [Guide d’installation de .NET Framework](/dotnet/framework/install/). Installez la version requise de .NET Framework. Le programme d’installation du .NET Framework le plus récent est disponible depuis la page [Téléchargements .NET Core](https://dotnet.microsoft.com/download).
+   * **.Net Core**: si l’application requiert .net Core, obtenez et exécutez le programme d’installation du **Runtime .net Core** à partir des [téléchargements .net Core](https://dotnet.microsoft.com/download). N’installez pas le Kit SDK complet sur le serveur.
+   * **.NET Framework**: si l’application requiert des .NET Framework, consultez le [Guide d’installation de .NET Framework](/dotnet/framework/install/). Installez la version requise de .NET Framework. Le programme d’installation du .NET Framework le plus récent est disponible depuis la page [Téléchargements .NET Core](https://dotnet.microsoft.com/download).
 
    Si l’application est un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd), elle inclut le runtime dans son déploiement. Aucune installation de framework n’est requise sur le serveur.
 
@@ -701,7 +702,7 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
 
 1. Préenregistrez les préfixes d’URL sur le serveur.
 
-   L’outil intégré pour configurer HTTP.sys est *netsh.exe* . *netsh.exe* permet de réserver des préfixes d’URL et d’assigner des certificats X.509. L’outil requiert des privilèges Administrateur.
+   L’outil intégré pour configurer HTTP.sys est *netsh.exe*. *netsh.exe* permet de réserver des préfixes d’URL et d’assigner des certificats X.509. L’outil requiert des privilèges Administrateur.
 
    Utilisez l’outil *netsh.exe* pour enregistrer les URL pour l’application :
 
@@ -742,9 +743,9 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
    À titre de référence, stockez le GUID dans l’application en tant que balise de package :
 
    * Dans Visual Studio :
-     * Ouvrez les propriétés du projet de l’application en cliquant avec le bouton droit sur l’application dans **l’Explorateur de solutions** et en sélectionnant **Propriétés** .
-     * Sélectionnez l’onglet **Package** .
-     * Entrez le GUID que vous avez créé dans le champ **Balises** .
+     * Ouvrez les propriétés du projet de l’application en cliquant avec le bouton droit sur l’application dans **l’Explorateur de solutions** et en sélectionnant **Propriétés**.
+     * Sélectionnez l’onglet **Package**.
+     * Entrez le GUID que vous avez créé dans le champ **Balises**.
    * Si vous n’utilisez pas Visual Studio :
      * Ouvrez le chemin d’accès vers le fichier de projet de l’application.
      * Ajoutez une propriété `<PackageTags>` à un `<PropertyGroup>` nouveau ou existant avec le GUID que vous avez créé :
@@ -780,7 +781,7 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
    * [Commandes netsh pour le protocole HTTP (Hypertext Transfer Protocol)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [Chaînes UrlPrefix](/windows/win32/http/urlprefix-strings)
 
-1. Exécutez l’application.
+1. Exécutez l'application.
 
    Les privilèges administrateur ne sont pas requis pour exécuter l’application lors d’une liaison à localhost à l’aide de HTTP (pas HTTPS) avec un numéro de port supérieur à 1024. Pour les autres configurations (par exemple, l’utilisation d’une adresse IP locale ou la liaison au port 443), exécutez l’application avec des privilèges administrateur.
 
@@ -925,8 +926,8 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
 
 1. Si l’application est un [déploiement dépendant de .NET Framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd), installez .NET Core, .NET Framework ou les deux (si l’application est une application .NET Core ciblant .NET Framework).
 
-   * **.Net Core** : si l’application requiert .net Core, obtenez et exécutez le programme d’installation du **Runtime .net Core** à partir des [téléchargements .net Core](https://dotnet.microsoft.com/download). N’installez pas le Kit SDK complet sur le serveur.
-   * **.NET Framework** : si l’application requiert des .NET Framework, consultez le [Guide d’installation de .NET Framework](/dotnet/framework/install/). Installez la version requise de .NET Framework. Le programme d’installation du .NET Framework le plus récent est disponible depuis la page [Téléchargements .NET Core](https://dotnet.microsoft.com/download).
+   * **.Net Core**: si l’application requiert .net Core, obtenez et exécutez le programme d’installation du **Runtime .net Core** à partir des [téléchargements .net Core](https://dotnet.microsoft.com/download). N’installez pas le Kit SDK complet sur le serveur.
+   * **.NET Framework**: si l’application requiert des .NET Framework, consultez le [Guide d’installation de .NET Framework](/dotnet/framework/install/). Installez la version requise de .NET Framework. Le programme d’installation du .NET Framework le plus récent est disponible depuis la page [Téléchargements .NET Core](https://dotnet.microsoft.com/download).
 
    Si l’application est un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd), elle inclut le runtime dans son déploiement. Aucune installation de framework n’est requise sur le serveur.
 
@@ -954,7 +955,7 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
 
 1. Préenregistrez les préfixes d’URL sur le serveur.
 
-   L’outil intégré pour configurer HTTP.sys est *netsh.exe* . *netsh.exe* permet de réserver des préfixes d’URL et d’assigner des certificats X.509. L’outil requiert des privilèges Administrateur.
+   L’outil intégré pour configurer HTTP.sys est *netsh.exe*. *netsh.exe* permet de réserver des préfixes d’URL et d’assigner des certificats X.509. L’outil requiert des privilèges Administrateur.
 
    Utilisez l’outil *netsh.exe* pour enregistrer les URL pour l’application :
 
@@ -995,9 +996,9 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
    À titre de référence, stockez le GUID dans l’application en tant que balise de package :
 
    * Dans Visual Studio :
-     * Ouvrez les propriétés du projet de l’application en cliquant avec le bouton droit sur l’application dans **l’Explorateur de solutions** et en sélectionnant **Propriétés** .
-     * Sélectionnez l’onglet **Package** .
-     * Entrez le GUID que vous avez créé dans le champ **Balises** .
+     * Ouvrez les propriétés du projet de l’application en cliquant avec le bouton droit sur l’application dans **l’Explorateur de solutions** et en sélectionnant **Propriétés**.
+     * Sélectionnez l’onglet **Package**.
+     * Entrez le GUID que vous avez créé dans le champ **Balises**.
    * Si vous n’utilisez pas Visual Studio :
      * Ouvrez le chemin d’accès vers le fichier de projet de l’application.
      * Ajoutez une propriété `<PackageTags>` à un `<PropertyGroup>` nouveau ou existant avec le GUID que vous avez créé :
@@ -1033,7 +1034,7 @@ Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Expr
    * [Commandes netsh pour le protocole HTTP (Hypertext Transfer Protocol)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [Chaînes UrlPrefix](/windows/win32/http/urlprefix-strings)
 
-1. Exécutez l’application.
+1. Exécutez l'application.
 
    Les privilèges administrateur ne sont pas requis pour exécuter l’application lors d’une liaison à localhost à l’aide de HTTP (pas HTTPS) avec un numéro de port supérieur à 1024. Pour les autres configurations (par exemple, l’utilisation d’une adresse IP locale ou la liaison au port 443), exécutez l’application avec des privilèges administrateur.
 

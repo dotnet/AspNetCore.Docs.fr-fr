@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: c8ff2fc0f2f4d4e75f535f379ec94ea9de2e3ecb
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f400319ef81b3d7768bdbdab84f46d3f9c50bb46
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055696"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855441"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Créez des applications Web progressifs avec ASP.NET Core Blazor WebAssembly
 
@@ -45,7 +45,7 @@ Le mot *progressif* est utilisé pour décrire de telles applications, car :
 
 ## <a name="create-a-project-from-the-pwa-template"></a>Créer un projet à partir du modèle PWA
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Quand vous créez une nouvelle **Blazor WebAssembly application** dans la boîte de dialogue **créer un nouveau projet** , activez la case à cocher **application Web progressive** :
 
@@ -75,7 +75,7 @@ Quand vous visitez une application créée à l’aide du modèle PWA, les utili
 
 ![La boîte de dialogue de confirmation de Google Chrome présente un bouton installer pour l’utilisateur de l’application « my ::: No-Loc (éblouissant) :::P wa ».](progressive-web-app/_static/image2.png)
 
-Sur iOS, les visiteurs peuvent installer le PWA à l’aide du bouton de **partage** de Safari et de l’option **Ajouter à homescreen** . Sur chrome pour Android, les utilisateurs doivent sélectionner le bouton de **menu** dans l’angle supérieur droit, puis **Ajouter à l’écran d’accueil** .
+Sur iOS, les visiteurs peuvent installer le PWA à l’aide du bouton de **partage** de Safari et de l’option **Ajouter à homescreen** . Sur chrome pour Android, les utilisateurs doivent sélectionner le bouton de **menu** dans l’angle supérieur droit, puis **Ajouter à l’écran d’accueil**.
 
 Une fois installé, l’application s’affiche dans sa propre fenêtre sans barre d’adresses :
 
@@ -95,7 +95,7 @@ Par défaut, les applications créées à l’aide de l’option de modèle PWA 
 
 Pour voir comment fonctionne la prise en charge hors connexion :
 
-1. Publiez l’application. Pour plus d'informations, consultez <xref:blazor/host-and-deploy/index#publish-the-app>.
+1. Publiez l’application. Pour plus d’informations, consultez <xref:blazor/host-and-deploy/index#publish-the-app>.
 1. Déployez l’application sur un serveur qui prend en charge le protocole HTTPs, et accédez à l’application dans un navigateur à son adresse HTTPs sécurisée.
 1. Ouvrez les outils de développement du navigateur, puis vérifiez qu’un *Worker service* est inscrit pour l’ordinateur hôte sous l’onglet **application** :
 
@@ -145,7 +145,7 @@ En tant que modèle mental, vous pouvez considérer qu’un PWA en mode hors con
 
 Le Blazor modèle PWA produit des applications qui essaient automatiquement de se mettre à jour en arrière-plan chaque fois que l’utilisateur accède à une connexion réseau opérationnelle. Ce fonctionnement est le suivant :
 
-* Au cours de la compilation, le projet génère un *manifeste des ressources de traitement de service* . Par défaut, cette méthode est appelée `service-worker-assets.js` . Le manifeste répertorie toutes les ressources statiques dont l’application a besoin pour fonctionner hors connexion, telles que les assemblys .NET, les fichiers JavaScript et CSS, y compris leurs hachages de contenu. La liste des ressources est chargée par le processus de travail du service afin qu’il sache quelles ressources mettre en cache.
+* Au cours de la compilation, le projet génère un *manifeste des ressources de traitement de service*. Par défaut, cette méthode est appelée `service-worker-assets.js` . Le manifeste répertorie toutes les ressources statiques dont l’application a besoin pour fonctionner hors connexion, telles que les assemblys .NET, les fichiers JavaScript et CSS, y compris leurs hachages de contenu. La liste des ressources est chargée par le processus de travail du service afin qu’il sache quelles ressources mettre en cache.
 * Chaque fois que l’utilisateur visite l’application, le navigateur redemande `service-worker.js` et `service-worker-assets.js` en arrière-plan. Les fichiers sont comparés octet par octet avec le processus de travail de service installé existant. Si le serveur retourne le contenu modifié de l’un de ces fichiers, le processus de travail de service tente d’installer une nouvelle version de lui-même.
 * Lors de l’installation d’une nouvelle version de lui-même, le processus de travail crée un cache distinct pour les ressources hors connexion et démarre le remplissage du cache avec les ressources listées dans `service-worker-assets.js` . Cette logique est implémentée dans la `onInstall` fonction à l’intérieur de `service-worker.published.js` .
 * Le processus se termine correctement lorsque toutes les ressources sont chargées sans erreur et que tous les hachages de contenu correspondent. En cas de réussite, le nouveau service Worker entre dans un état *d’activation en attente* . Dès que l’utilisateur ferme l’application (pas d’onglets ou de fenêtres d’application restants), le nouveau Worker service devient *actif* et est utilisé pour les visites de l’application suivante. L’ancien service Worker et son cache sont supprimés.
@@ -301,4 +301,5 @@ L' [`CarChecker`](https://github.com/SteveSandersonMS/CarChecker) exemple d’ap
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
+* [Résoudre les problèmes de script PowerShell d’intégrité](xref:blazor/host-and-deploy/webassembly#troubleshoot-integrity-powershell-script)
 * [SignalR négociation Cross-Origin pour l’authentification](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)

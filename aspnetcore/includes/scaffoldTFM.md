@@ -1,4 +1,4 @@
-Si vous obtenez une erreur d’échafaudage, vérifiez que le Target Framework Moniker (TFM) correspond à la version du paquet NuGet dans le fichier du projet. Par exemple, le fichier de projet suivant contient la version 3.1 pour .NET Core et les paquets NuGet répertoriés :
+Si vous recevez une erreur de génération de modèles automatique, vérifiez que le moniker du Framework cible (TFM) correspond à la version du package NuGet dans le fichier projet. Par exemple, le fichier projet suivant contient la version 3,1 pour .NET Core et les packages NuGet listés :
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">

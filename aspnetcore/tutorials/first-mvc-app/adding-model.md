@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 16cef6cc9e772f494515942072c2aaf58913ce91
-ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
+ms.openlocfilehash: d99d5bfd84c8c7e7d0c479964211591be434330c
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94688447"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855519"
 ---
 # <a name="part-4-add-a-model-to-an-aspnet-core-mvc-app"></a>Partie 4 : ajouter un modèle à une application ASP.NET Core MVC
 
@@ -227,6 +227,12 @@ La création automatique de ces fichiers est appelée *génération de modèles 
 ### <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+
+* Exportez le chemin de l’outil de structure :
+
+  ```console
+  export PATH=$HOME/.dotnet/tools:$PATH
+  ```
 
 * Exécutez la commande suivante :
 
@@ -550,11 +556,11 @@ Ajoutez une chaîne de connexion au *appsettings.json* fichier :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-13)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-13)]
 
 ---
 
@@ -969,7 +975,7 @@ Dans cette section, vous devez effectuer les tâches suivantes :
 
    La commande `Add-Migration` génère du code pour créer le schéma de base de données initial.
 
-   Le schéma de base de données est basé sur le modèle spécifié dans la classe `MvcMovieContext`. L’argument `Initial` est le nom de la migration. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est utilisé. Pour plus d'informations, consultez <xref:data/ef-mvc/migrations>.
+   Le schéma de base de données est basé sur le modèle spécifié dans la classe `MvcMovieContext`. L’argument `Initial` est le nom de la migration. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est utilisé. Pour plus d’informations, consultez <xref:data/ef-mvc/migrations>.
 
    La `Update-Database` commande exécute la `Up` méthode dans le fichier *migrations/{Time-horodatage} _InitialCreate. cs* , qui crée la base de données.
 
