@@ -6,4 +6,4 @@ La bibliothèque de classes gère l’incorporation des ressources JavaScript da
 
 Le package NuGet créé est référencé dans le fichier projet de l’application de la même façon que n’importe quel package NuGet. Une fois le package restauré, le code d’application peut appeler JavaScript comme s’il s’agissait de C#.
 
-Pour plus d'informations, consultez <xref:blazor/components/class-libraries>.
+Pour plus d’informations, consultez <xref:blazor/components/class-libraries>.
