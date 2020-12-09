@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 52c4905ecb3a76f1dd10629f834b2b541b698774
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f1c7acba0b7fb7dc07da576b188e580328ff4b89
+ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052355"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96901156"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Déployer une application sur App Service
 
@@ -67,7 +67,7 @@ N’hésitez pas à examiner le code, mais il est important de comprendre qu’i
     dotnet build
     ```
 
-4. Exécutez l’application.
+4. Exécutez l'application.
 
     ```dotnetcli
     dotnet run
@@ -121,13 +121,13 @@ Pour déployer l’application, vous devez créer une [application Web](/azure/a
     az webapp deployment user set --user-name REPLACE_WITH_USER_NAME --password REPLACE_WITH_PASSWORD
     ```
 
-    f. Configurez l’application Web pour accepter les déploiements à partir du Git local et afficher l' *URL de déploiement git* . **Notez cette URL pour référence ultérieure** .
+    f. Configurez l’application Web pour accepter les déploiements à partir du Git local et afficher l' *URL de déploiement git*. **Notez cette URL pour référence ultérieure**.
 
     ```azurecli
     echo Git deployment URL: $(az webapp deployment source config-local-git --name $webappname --resource-group AzureTutorial --query url --output tsv)
     ```
 
-    g. Affichez l’URL de l' *application Web* . Accédez à cette URL pour voir l’application Web vide. **Notez cette URL pour référence ultérieure** .
+    g. Affichez l’URL de l' *application Web*. Accédez à cette URL pour voir l’application Web vide. **Notez cette URL pour référence ultérieure**.
 
     ```console
     echo Web app URL: http://$webappname.azurewebsites.net
@@ -141,7 +141,7 @@ Pour déployer l’application, vous devez créer une [application Web](/azure/a
     git remote add azure-prod GIT_DEPLOYMENT_URL
     ```
 
-    b. Envoyez la branche *principale* locale à la branche *principale* d' *Azure-prod* Remote.
+    b. Poussez la branche par défaut locale (*Master*) vers la branche par défaut (*Master*) d' *Azure-prod* Remote.
 
     ```console
     git push azure-prod master
@@ -158,14 +158,14 @@ Pour déployer l’application, vous devez créer une [application Web](/azure/a
 L’application a déjà été déployée à partir de l’interface de commande. Nous allons utiliser les outils intégrés de Visual Studio pour déployer une mise à jour de l’application. En arrière-plan, Visual Studio remplit la même fonction que les outils de ligne de commande, mais dans l’interface utilisateur familière de Visual Studio.
 
 1. Ouvrez *SimpleFeedReader. sln* dans Visual Studio.
-2. Dans Explorateur de solutions, ouvrez *Pages\Index.cshtml* . Remplacez `<h2>Simple Feed Reader</h2>` par `<h2>Simple Feed Reader - V2</h2>`.
+2. Dans Explorateur de solutions, ouvrez *Pages\Index.cshtml*. Remplacez `<h2>Simple Feed Reader</h2>` par `<h2>Simple Feed Reader - V2</h2>`.
 3. Appuyez sur **CTRL** + **MAJ** + **B** pour générer l’application.
-4. Dans Explorateur de solutions, cliquez avec le bouton droit sur le projet et cliquez sur **publier** .
+4. Dans Explorateur de solutions, cliquez avec le bouton droit sur le projet et cliquez sur **publier**.
 
     ![Capture d’écran montrant un clic droit, publier](./media/deploying-to-app-service/publish.png)
-5. Visual Studio peut créer une ressource de App Service, mais cette mise à jour sera publiée sur le déploiement existant. Dans la boîte de dialogue **choisir une cible de publication** , sélectionnez **app service** dans la liste à gauche, puis sélectionnez **Sélectionner existant** . Cliquez sur **Publier** .
+5. Visual Studio peut créer une ressource de App Service, mais cette mise à jour sera publiée sur le déploiement existant. Dans la boîte de dialogue **choisir une cible de publication** , sélectionnez **app service** dans la liste à gauche, puis sélectionnez **Sélectionner existant**. Cliquez sur **Publier**.
 6. Dans la boîte de dialogue **app service** , vérifiez que le compte Microsoft ou professionnel utilisé pour créer votre abonnement Azure s’affiche dans l’angle supérieur droit. Si ce n’est pas le cas, cliquez sur la liste déroulante et ajoutez-la.
-7. Confirmez que l' **abonnement** Azure correct est sélectionné. Pour **Afficher** , sélectionnez **groupe de ressources** . Développez le groupe de ressources **AzureTutorial** , puis sélectionnez l’application Web existante. Cliquez sur **OK** .
+7. Confirmez que l' **abonnement** Azure correct est sélectionné. Pour **Afficher**, sélectionnez **groupe de ressources**. Développez le groupe de ressources **AzureTutorial** , puis sélectionnez l’application Web existante. Cliquez sur **OK**.
 
     ![Capture d’écran montrant la boîte de dialogue publier App Service](./media/deploying-to-app-service/publish-dialog.png)
 
@@ -180,19 +180,19 @@ Les emplacements de déploiement prennent en charge la mise en lots des modifica
 1. Connectez-vous au [Azure Cloud Shell](https://shell.azure.com/bash), s’il n’est pas déjà connecté.
 2. Créez l’emplacement intermédiaire.
 
-    a. Créez un emplacement de déploiement avec le nom *intermédiaire* .
+    a. Créez un emplacement de déploiement avec le nom *intermédiaire*.
 
     ```azurecli
     az webapp deployment slot create --name $webappname --resource-group AzureTutorial --slot staging
     ```
 
-    b. Configurez l’emplacement intermédiaire pour utiliser le déploiement à partir de Git local et récupérez l’URL de déploiement **intermédiaire** . **Notez cette URL pour référence ultérieure** .
+    b. Configurez l’emplacement intermédiaire pour utiliser le déploiement à partir de Git local et récupérez l’URL de déploiement **intermédiaire** . **Notez cette URL pour référence ultérieure**.
 
     ```azurecli
     echo Git deployment URL for staging: $(az webapp deployment source config-local-git --name $webappname --resource-group AzureTutorial --slot staging --query url --output tsv)
     ```
 
-    c. Affichez l’URL de l’emplacement intermédiaire. Accédez à l’URL pour voir l’emplacement de mise en lots vide. **Notez cette URL pour référence ultérieure** .
+    c. Affichez l’URL de l’emplacement intermédiaire. Accédez à l’URL pour voir l’emplacement de mise en lots vide. **Notez cette URL pour référence ultérieure**.
 
     ```console
     echo Staging web app URL: http://$webappname-staging.azurewebsites.net
@@ -214,7 +214,7 @@ Les emplacements de déploiement prennent en charge la mise en lots des modifica
     git remote add azure-staging <Git_staging_deployment_URL>
     ```
 
-    b. Transmettent la branche *maître* locale à la branche *principale* *Azure-Staging* distante.
+    b. Pousser la branche locale par défaut (*Master*) vers la branche par défaut (*Master*) de la succursale *Azure intermédiaire* .
 
     ```console
     git push azure-staging master

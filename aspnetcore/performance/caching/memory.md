@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/memory
-ms.openlocfilehash: 4d5f459d54a3c74a2eb23a50db6537eeaf8596b3
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 9b19c782d1d42ddaba590f05bab31899402f681a
+ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061442"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96901221"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Cache en mémoire dans ASP.NET Core
 
@@ -84,6 +84,9 @@ L’heure actuelle et l’heure de mise en cache sont affichées :
 
 [!code-cshtml[](memory/3.0sample/WebCacheSample/Views/Home/Cache.cshtml)]
 
+Le code suivant utilise la méthode d’extension [Set pour mettre](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.set#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_System_TimeSpan_) en cache des données pour une heure relative sans créer l' `MemoryCacheEntryOptions` objet.
+[!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_set)]
+
 La valeur mise en cache `DateTime` reste dans le cache pendant qu’il y a des requêtes dans le délai imparti.
 
 Le code suivant utilise [GetOrCreate](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.getorcreate#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__) et [GetOrCreateAsync](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.getorcreateasync#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___) pour mettre en cache des données.
@@ -122,7 +125,7 @@ L’exemple suivant :
 
 Une `MemoryCache` instance peut éventuellement spécifier et appliquer une limite de taille. La limite de taille du cache n’a pas d’unité de mesure définie car le cache n’a pas de mécanisme pour mesurer la taille des entrées. Si la limite de taille du cache est définie, toutes les entrées doivent spécifier la taille. Le runtime ASP.NET Core ne limite pas la taille du cache en fonction de la sollicitation de la mémoire. C’est au développeur de limiter la taille du cache. La taille spécifiée est dans les unités choisies par le développeur.
 
-Exemple :
+Par exemple :
 
 * Si l’application Web a principalement mis en cache des chaînes, chaque taille d’entrée de cache peut être la longueur de chaîne.
 * L’application peut spécifier la taille de toutes les entrées en tant que 1, et la limite de taille est le nombre d’entrées.
@@ -298,7 +301,7 @@ L’exemple suivant :
 
 Une `MemoryCache` instance peut éventuellement spécifier et appliquer une limite de taille. La limite de taille du cache n’a pas d’unité de mesure définie car le cache n’a pas de mécanisme pour mesurer la taille des entrées. Si la limite de taille du cache est définie, toutes les entrées doivent spécifier la taille. Le runtime ASP.NET Core ne limite pas la taille du cache en fonction de la sollicitation de la mémoire. C’est au développeur de limiter la taille du cache. La taille spécifiée est dans les unités choisies par le développeur.
 
-Exemple :
+Par exemple :
 
 * Si l’application Web a principalement mis en cache des chaînes, chaque taille d’entrée de cache peut être la longueur de chaîne.
 * L’application peut spécifier la taille de toutes les entrées en tant que 1, et la limite de taille est le nombre d’entrées.

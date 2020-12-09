@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/crud
-ms.openlocfilehash: c5b9be64ea30cce7a3178bfbb244ef893e9639d2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4a48fb094888d51aa6f881c82e4f20ffbc84c8e2
+ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053863"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96901169"
 ---
 # <a name="part-2-no-locrazor-pages-with-ef-core-in-aspnet-core---crud"></a>Partie 2, Razor pages avec EF Core dans ASP.net Core-CRUD
 
@@ -52,7 +52,7 @@ Remplacez la méthode `OnGetAsync` par le code suivant pour lire les données d�
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Details.cshtml.cs?name=snippet_OnGetAsync&highlight=8-12)]
 
-Les méthodes [Include](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include) et [ThenInclude](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.theninclude#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_ThenInclude__3_Microsoft_EntityFrameworkCore_Query_IIncludableQueryable___0_System_Collections_Generic_IEnumerable___1___System_Linq_Expressions_Expression_System_Func___1___2___) forcent le contexte à charger la propriété de navigation `Student.Enrollments` et, dans chaque inscription, la propriété de navigation `Enrollment.Course`. Ces méthodes sont examinées en détail dans le tutoriel [Lecture de données associées](xref:data/ef-rp/read-related-data).
+Les méthodes [Include](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include) et [ThenInclude](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.theninclude#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_ThenInclude__3_Microsoft_EntityFrameworkCore_Query_IIncludableQueryable___0_System_Collections_Generic_IEnumerable___1___System_Linq_Expressions_Expression_System_Func___1___2___) forcent le contexte à charger la propriété de navigation `Student.Enrollments` et, dans chaque inscription, la propriété de navigation `Enrollment.Course`. Ces méthodes sont examinées en détail dans le didacticiel [lire les données associées](xref:data/ef-rp/read-related-data) .
 
 La méthode [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour dans le contexte actuel. Le sujet `AsNoTracking` est abordé plus loin dans ce didacticiel.
 
@@ -64,7 +64,7 @@ Remplacez le code dans *Pages/Students/Details.cshtml* par le code suivant pour 
 
 Le code précédent effectue une itération sur les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et le niveau. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
 
-Exécutez l’application, sélectionnez l’onglet **Students** , puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et les notes de l’étudiant sélectionné s’affiche.
+Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et les notes de l’étudiant sélectionné s’affiche.
 
 ### <a name="ways-to-read-one-entity"></a>Méthodes pour lire une entité
 
@@ -137,7 +137,7 @@ L’utilisation `StudentVM` de requiert l’utilisation de la page Create `Stude
 
 ## <a name="update-the-edit-page"></a>Mettre à jour la page Edit
 
-Dans *Pages/Students/Edit.cshtml.cs* , remplacez les méthodes `OnGetAsync` et `OnPostAsync` par le code suivant.
+Dans *Pages/Students/Edit.cshtml.cs*, remplacez les méthodes `OnGetAsync` et `OnPostAsync` par le code suivant.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Edit.cshtml.cs?name=snippet_OnGetPost)]
 
@@ -184,7 +184,7 @@ La méthode `OnPostAsync` récupère l’entité sélectionnée, puis appelle la
 * L’exception de la base de données est interceptée.
 * La méthode `OnGetAsync` des pages est appelée avec `saveChangesError=true`.
 
-Ajoutez un message d’erreur à *pages/élèves/Delete. cshtml* :
+Ajoutez un message d’erreur à *pages/élèves/Delete. cshtml*:
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Delete.cshtml?highlight=10)]
 
@@ -232,7 +232,7 @@ Remplacez le code dans *Pages/Students/Details.cshtml* par le code suivant pour 
 
 Le code précédent effectue une itération sur les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et le niveau. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
 
-Exécutez l’application, sélectionnez l’onglet **Students** , puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et les notes de l’étudiant sélectionné s’affiche.
+Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et les notes de l’étudiant sélectionné s’affiche.
 
 ### <a name="ways-to-read-one-entity"></a>Méthodes pour lire une entité
 
@@ -300,7 +300,7 @@ L’utilisation de `StudentVM` exige que [Create.cshtml](https://github.com/dotn
 
 ## <a name="update-the-edit-page"></a>Mettre à jour la page Edit
 
-Dans *Pages/Students/Edit.cshtml.cs* , remplacez les méthodes `OnGetAsync` et `OnPostAsync` par le code suivant.
+Dans *Pages/Students/Edit.cshtml.cs*, remplacez les méthodes `OnGetAsync` et `OnPostAsync` par le code suivant.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Edit.cshtml.cs?name=snippet_OnGetPost)]
 
@@ -345,9 +345,9 @@ Le code précédent ajoute le paramètre facultatif `saveChangesError` à la sig
 La méthode `OnPostAsync` récupère l’entité sélectionnée, puis appelle la méthode [Remove](/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#Microsoft_EntityFrameworkCore_DbContext_Remove_System_Object_) pour définir l’état de l’entité sur `Deleted`. Lorsque `SaveChanges` est appelée, une commande SQL DELETE est générée. Si `Remove` échoue :
 
 * L’exception de la base de données est interceptée.
-* La méthode `OnGetAsync` des pages est appelée avec `saveChangesError=true`.
+* La méthode de la page de suppression `OnGetAsync` est appelée avec `saveChangesError=true` .
 
-Ajoutez un message d’erreur à la Razor page de suppression ( *pages/élèves/Delete. cshtml* ) :
+Ajoutez un message d’erreur à la Razor page de suppression (*pages/élèves/Delete. cshtml*) :
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Delete.cshtml?highlight=10)]
 
@@ -405,11 +405,11 @@ Toutefois, si vous voulez exécuter `Include` sur d’autres entités, `FindAsyn
 
 ## <a name="customize-the-details-page"></a>Personnaliser la page Details
 
-Accédez à la page `Pages/Students`. Les liens **Edit** , **Details** , et **Delete** sont générés par le [Tag helper anchor](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) dans le fichier *Pages/Student/Index.cshtml* .
+Accédez à la page `Pages/Students`. Les liens **Edit**, **Details**, et **Delete** sont générés par le [Tag helper anchor](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) dans le fichier *Pages/Student/Index.cshtml*.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index1.cshtml?name=snippet)]
 
-Exécutez l’application et sélectionnez un lien **Details** . L’URL est au format `http://localhost:5000/Students/Details?id=2`. L’ID d’étudiant est transmis à l’aide d’une chaîne de requête (`?id=2`).
+Exécutez l’application et sélectionnez un lien **Details**. L’URL est au format `http://localhost:5000/Students/Details?id=2`. L’ID d’étudiant est transmis à l’aide d’une chaîne de requête (`?id=2`).
 
 Mettez à jour les pages de modification, de détails et Razor de suppression pour utiliser le `"{id:int}"` modèle de routage. Remplacez la directive de chacune de ces pages (`@page "{id:int}"`) par `@page`.
 
@@ -439,7 +439,7 @@ La méthode [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframe
 
 ### <a name="display-related-enrollments-on-the-details-page"></a>Afficher les inscriptions associées sur la page Details
 
-Ouvrez *Pages/Students/Details.cshtml* . Ajoutez le code en surbrillance suivant pour afficher la liste des inscriptions :
+Ouvrez *Pages/Students/Details.cshtml*. Ajoutez le code en surbrillance suivant pour afficher la liste des inscriptions :
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Details.cshtml?highlight=32-53)]
 
@@ -447,7 +447,7 @@ Si la mise en retrait du code est incorrecte, une fois que le code est collé, a
 
 Le code précédent effectue une itération sur les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et le niveau. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
 
-Exécutez l’application, sélectionnez l’onglet **Students** , puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et les notes de l’étudiant sélectionné s’affiche.
+Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et les notes de l’étudiant sélectionné s’affiche.
 
 ## <a name="update-the-create-page"></a>Mettre à jour la page Create
 
