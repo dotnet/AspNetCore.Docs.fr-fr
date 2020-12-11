@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 0e81397d210518854939c6941e7f6da43ed48389
-ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
+ms.openlocfilehash: 86b57a9cad27673b72ad174a18741f5528f9f78a
+ms.sourcegitcommit: c321518bfe367280ef262aecaada287f17fe1bc5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "96855506"
+ms.locfileid: "97011856"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages avec Entity Framework Core dans ASP.NET Core-didacticiel 1 sur 8
 
@@ -237,7 +237,8 @@ Dans cette section, vous allez utiliser l’outil de génération de modèles au
   * Dans la liste déroulante **Classe de modèle**, sélectionnez **Student (ContosoUniversity.Models)**.
   * Dans la ligne **Classe du contexte de données**, sélectionnez le signe **+** (plus).
     * Modifiez le nom du contexte de données pour qu’il se termine par `SchoolContext` plutôt que `ContosoUniversityContext` . Nom du contexte mis à jour : `ContosoUniversity.Data.SchoolContext`
-   * Sélectionnez **Ajouter**.
+    * Sélectionnez **Ajouter** pour terminer l’ajout de la classe de contexte de données.
+   * Sélectionnez **Ajouter** pour terminer la boîte de dialogue **Ajouter des Razor pages** .
 
 Les packages suivants sont automatiquement installés :
 
