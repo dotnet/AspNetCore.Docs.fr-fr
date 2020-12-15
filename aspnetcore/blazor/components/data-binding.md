@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 7def253a0676e65f8f96209b3f3b7f7a700c4ebe
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: 1f22468c2c9bfb5c3c184e8686f1a8d1b486536d
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981906"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486068"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>BlazorLiaison de données ASP.net Core
 
@@ -426,7 +426,7 @@ Les composants suivants illustrent les concepts précédents :
 }
 ```
 
-Pour une autre approche adaptée au partage des données en mémoire entre des composants qui ne sont pas nécessairement imbriqués, consultez <xref:blazor/state-management#in-memory-state-container-service> .
+Pour une autre approche adaptée au partage des données en mémoire entre des composants qui ne sont pas nécessairement imbriqués, consultez la section *service de conteneur d’État en mémoire* de  <xref:blazor/state-management> .
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

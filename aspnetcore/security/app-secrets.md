@@ -3,7 +3,7 @@ title: Stockage sécurisé des secrets d’application en développement dans AS
 author: rick-anderson
 description: Découvrez comment stocker et récupérer des informations sensibles pendant le développement d’une application ASP.NET Core.
 ms.author: scaddie
-ms.custom: mvc, contperfq2
+ms.custom: mvc, contperf-fy21q2
 ms.date: 11/24/2020
 no-loc:
 - appsettings.json
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/app-secrets
-ms.openlocfilehash: 99b7b04076206f95c04da79283010beafdd1cc88
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: 63032895ce45ad096612a8c39a2709628c12790f
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035851"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486198"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Stockage sécurisé des secrets d’application en développement dans ASP.NET Core
 
@@ -227,7 +227,7 @@ Exécutez la commande suivante à partir du répertoire dans lequel se trouve le
 dotnet user-secrets list
 ```
 
-Vous obtenez la sortie suivante :
+Vous obtenez la sortie suivante :
 
 ```console
 Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted_Connection=True;MultipleActiveResultSets=true
@@ -472,7 +472,7 @@ Exécutez la commande suivante à partir du répertoire dans lequel se trouve le
 dotnet user-secrets list
 ```
 
-Vous obtenez la sortie suivante :
+Vous obtenez la sortie suivante :
 
 ```console
 Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted_Connection=True;MultipleActiveResultSets=true

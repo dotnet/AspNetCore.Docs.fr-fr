@@ -4,6 +4,7 @@ author: rick-anderson
 description: Partie 2 de la série de didacticiels sur les Razor pages. Dans cette section, des classes de modèle sont ajoutées.
 ms.author: riande
 ms.date: 11/11/2020
+ms.custom: contperf-fy21q2
 no-loc:
 - Index
 - appsettings.json
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: b2e840e20d034b42b2dc4a525b1dd76e44bbe3a8
-ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
+ms.openlocfilehash: 7ea28e0ecad410335c37c603c8ec1eb5e6e41d33
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96420056"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97485990"
 ---
 # <a name="part-2-add-a-model-to-a-no-locrazor-pages-app-in-aspnet-core"></a>Partie 2, ajouter un modèle à une Razor application pages dans ASP.net Core
 
@@ -354,7 +355,7 @@ Examinez la méthode `Up`.
 
 <a name="test"></a>
 
-## <a name="test-the-app"></a>Test de l'application
+## <a name="test-the-app"></a>Tester l’application
 
 1. Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
 
@@ -729,7 +730,7 @@ Examinez la méthode `Up`.
 
 <a name="test"></a>
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 * Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
 
@@ -1072,7 +1073,7 @@ Examinez la méthode `Up`.
 
 <a name="test"></a>
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 * Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
 

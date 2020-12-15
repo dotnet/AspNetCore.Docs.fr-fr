@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/index
-ms.openlocfilehash: 082072d2b70abfe60da8e2cd40daa8b93ebcc9ac
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a23bee120611ee603305a88dabac76566481fa4a
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055813"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97485886"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor"></a>Héberger et déployer des ASP.NET Core Blazor
 
@@ -34,15 +34,15 @@ Par [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.tim
 
 Les applications sont publiées pour le déploiement dans la configuration Release.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Sélectionnez **générer**  >  **publier {application}** dans la barre de navigation.
-1. Sélectionnez l’onglet *Cible de publication* . Pour publier localement, sélectionnez **Dossier** .
-1. Acceptez l’emplacement par défaut dans le champ **Choisir un dossier** ou spécifiez un autre emplacement. Sélectionner le bouton **`Publish`** .
+1. Sélectionnez l’onglet *Cible de publication*. Pour publier localement, sélectionnez **Dossier**.
+1. Acceptez l’emplacement par défaut dans le champ **Choisir un dossier** ou spécifiez un autre emplacement. Sélectionner le bouton **`Publish`**.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-1. Sélectionnez **générer**  >  **publier dans le dossier** .
+1. Sélectionnez **générer**  >  **publier dans le dossier**.
 1. Confirmez le dossier pour recevoir les ressources publiées et sélectionnez **`Publish`** .
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
@@ -79,10 +79,18 @@ Le *chemin d’accès de base* de l’application est le chemin de l’URL racin
 
 Si vous ne spécifiez pas de configuration supplémentaire pour `CoolApp` , la sous-application dans ce scénario n’a aucune connaissance de son emplacement sur le serveur. Par exemple, l’application ne peut pas construire des URL relatives correctes pour ses ressources sans savoir qu’elle réside sur le chemin d’URL relatif `/CoolApp/` .
 
-Pour fournir la configuration du Blazor chemin d’accès de base de l’application `https://www.contoso.com/CoolApp/` , l’attribut de la `<base>` balise `href` est défini sur le chemin d’accès racine relatif dans le `Pages/_Host.cshtml` fichier ( Blazor Server ) ou le `wwwroot/index.html` fichier ( Blazor WebAssembly ) :
+Pour fournir la configuration du Blazor chemin d’accès de base de l’application `https://www.contoso.com/CoolApp/` , l’attribut de la `<base>` balise `href` est défini sur le chemin d’accès racine relatif dans le `wwwroot/index.html` fichier ( Blazor WebAssembly ) ou le `Pages/_Host.cshtml` fichier ( Blazor Server ).
+
+Blazor WebAssembly (`wwwroot/index.html`):
 
 ```html
 <base href="/CoolApp/">
+```
+
+Blazor Server (`Pages/_Host.cshtml`):
+
+```html
+<base href="~/CoolApp/">
 ```
 
 Blazor Server les applications définissent également le chemin d’accès de base côté serveur en appelant <xref:Microsoft.AspNetCore.Builder.UsePathBaseExtensions.UsePathBase*> dans le pipeline de demande de l’application `Startup.Configure` :
@@ -95,9 +103,9 @@ En fournissant le chemin d’URL relatif, un composant qui ne se trouve pas dans
 
 Dans de nombreux scénarios d’hébergement, le chemin d’URL relatif à l’application est la racine de l’application. Dans ce cas, le chemin d’accès de base de l’URL relative de l’application est une barre oblique ( `<base href="/" />` ), qui est la configuration par défaut pour une Blazor application. Dans d’autres scénarios d’hébergement, tels que les pages GitHub et les sous-applications IIS, le chemin d’accès de base de l’application doit être défini sur le chemin d’URL relatif du serveur de l’application.
 
-Pour définir le chemin d’accès de base de l’application, mettez à jour la `<base>` balise dans les `<head>` éléments tag du `Pages/_Host.cshtml` fichier ( Blazor Server ) ou du `wwwroot/index.html` fichier ( Blazor WebAssembly ). Affectez `href` à l’attribut la valeur `/{RELATIVE URL PATH}/` (la barre oblique de fin est requise), où `{RELATIVE URL PATH}` est le chemin d’URL relatif complet de l’application.
+Pour définir le chemin d’accès de base de l’application, mettez à jour la `<base>` balise dans les `<head>` éléments tag du `Pages/_Host.cshtml` fichier ( Blazor Server ) ou du `wwwroot/index.html` fichier ( Blazor WebAssembly ). Affectez `href` à l’attribut la valeur `/{RELATIVE URL PATH}/` ( Blazor WebAssembly ) ou `~/{RELATIVE URL PATH}/` ( Blazor Server ). **La barre oblique de fin est obligatoire.** L’espace réservé `{RELATIVE URL PATH}` est le chemin d’URL relatif complet de l’application.
 
-Pour une Blazor WebAssembly application avec un chemin d’URL relatif non racine (par exemple, `<base href="/CoolApp/">` ), l’application ne parvient pas à trouver ses ressources lorsqu’elle est *exécutée localement* . Pour surmonter ce problème pendant le développement local et les tests, vous pouvez fournir un argument de *base de chemin* qui correspond à la valeur `href` de la balise `<base>` au moment de l’exécution. N’incluez pas de barre oblique finale. Pour passer l’argument de base Path lors de l’exécution locale de l’application, exécutez la `dotnet run` commande à partir du répertoire de l’application avec l' `--pathbase` option :
+Pour une Blazor WebAssembly application avec un chemin d’URL relatif non racine (par exemple, `<base href="/CoolApp/">` ), l’application ne parvient pas à trouver ses ressources lorsqu’elle est *exécutée localement*. Pour surmonter ce problème pendant le développement local et les tests, vous pouvez fournir un argument de *base de chemin* qui correspond à la valeur `href` de la balise `<base>` au moment de l’exécution. **N’incluez pas de barre oblique finale.** Pour passer l’argument de base Path lors de l’exécution locale de l’application, exécutez la `dotnet run` commande à partir du répertoire de l’application avec l' `--pathbase` option :
 
 ```dotnetcli
 dotnet run --pathbase=/{RELATIVE URL PATH (no trailing slash)}

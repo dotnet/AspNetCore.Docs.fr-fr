@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: ef37c539d377f14a2744c3ead28234d8497df700
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: b7fc3710fe5ad1efba907edf98f590a42e2a83ae
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637676"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97485873"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>BlazorConfiguration du modèle d’hébergement ASP.net Core
 
@@ -63,7 +63,7 @@ Pour configurer le SignalR client sous-jacent pour envoyer des informations d’
       }).Build();
   ```
 
-Pour plus d'informations, consultez <xref:signalr/configuration#configure-additional-options>.
+Pour plus d’informations, consultez <xref:signalr/configuration#configure-additional-options>.
 
 ## <a name="reflect-the-connection-state-in-the-ui"></a>Refléter l’état de la connexion dans l’interface utilisateur
 
@@ -106,7 +106,7 @@ Le tableau suivant décrit les classes CSS appliquées à l' `components-reconne
 
 *Cette section s’applique à Hosted Blazor WebAssembly et à Blazor Server .*
 
-Blazor les applications sont configurées par défaut pour prérestituer l’interface utilisateur sur le serveur. Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
+Blazor les applications sont configurées par défaut pour prérestituer l’interface utilisateur sur le serveur. Pour plus d’informations, consultez <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
 
 ::: moniker-end
 
@@ -114,7 +114,7 @@ Blazor les applications sont configurées par défaut pour prérestituer l’int
 
 *Cette section s’applique à Blazor Server .*
 
-Blazor Server les applications sont configurées par défaut pour prérestituer l’interface utilisateur sur le serveur avant que la connexion cliente au serveur soit établie. Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
+Blazor Server les applications sont configurées par défaut pour prérestituer l’interface utilisateur sur le serveur avant que la connexion cliente au serveur soit établie. Pour plus d’informations, consultez <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
 
 ::: moniker-end
 
@@ -212,8 +212,8 @@ Pour modifier les événements de connexion, enregistrez les rappels pour les mo
     <script>
       Blazor.start({
         reconnectionHandler: {
-          onConnectionDown: (options, error) => console.error(error);
-          onConnectionUp: () => console.log("Up, up, and away!");
+          onConnectionDown: (options, error) => console.error(error),
+          onConnectionUp: () => console.log("Up, up, and away!")
         }
       });
     </script>

@@ -3,7 +3,7 @@ title: Didacticiel, partie 5, appliquer des migrations à l’exemple Contoso Un
 description: Partie 5 de la série de didacticiels sur Contoso University. Utilisez la fonctionnalité migrations EF Core pour gérer les modifications de modèle de données dans une application ASP.NET Core MVC.
 author: rick-anderson
 ms.author: riande
-ms.custom: contperfq2
+ms.custom: contperf-fy21q2
 ms.date: 11/13/2020
 ms.topic: tutorial
 no-loc:
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 25ada6e3a210ed830514e69da7d5212264b4b91e
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: 7c8f562bcf0b7e2672f2f1ac244e0d9278e4c204
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417563"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97485925"
 ---
 # <a name="tutorial-part-5-apply-migrations-to-the-contoso-university-sample"></a>Didacticiel : partie 5, appliquer des migrations à l’exemple Contoso University
 

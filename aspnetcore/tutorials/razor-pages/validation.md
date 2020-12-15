@@ -3,7 +3,7 @@ title: Partie 8, ajouter une validation
 author: rick-anderson
 description: Partie 8 de la série de didacticiels sur les Razor pages.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, contperf-fy21q2
 ms.date: 09/29/2020
 no-loc:
 - Index
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: f155922c9cb5ea7fdbad0963221ceddd19f4fe60
-ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
+ms.openlocfilehash: 9774607b641005145bdb1c98d850c9ce79a25476
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96419952"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486120"
 ---
 # <a name="part-8-of-tutorial-series-on-no-locrazor-pages"></a>Partie 8 de la série de didacticiels sur les Razor pages.
 

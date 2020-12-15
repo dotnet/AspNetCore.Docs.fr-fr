@@ -4,6 +4,7 @@ author: rick-anderson
 description: Cette série de didacticiels explique les principes fondamentaux de la création d’une Razor application Web pages.
 ms.author: riande
 ms.date: 09/14/2020
+ms.custom: contperf-fy21q2
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: cad4cf12e475c2f7db3e62a6ae78d53777710b6f
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 2d673aef56be5701849a48f32fe9ffb36c34c0e3
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360565"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97485899"
 ---
 # <a name="tutorial-create-a-no-locrazor-pages-web-app-with-aspnet-core"></a>Didacticiel : créer une Razor application Web de pages avec ASP.net Core
 

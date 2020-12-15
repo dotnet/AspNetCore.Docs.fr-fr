@@ -3,7 +3,7 @@ title: Partie 7, ajouter un nouveau champ
 author: rick-anderson
 description: Partie 7 de la série de didacticiels sur les Razor pages.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, contperf-fy21q2
 ms.date: 09/28/2020
 no-loc:
 - Index
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 6b6856731c61957a9e23f76e2bc15befe56ea57d
-ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
+ms.openlocfilehash: 2961fcaa8bbb93527eb80f5aa7b18ef04761fb50
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96420004"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486159"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Partie 7, ajouter un nouveau champ à une Razor page dans ASP.net Core
 

@@ -4,6 +4,7 @@ author: rick-anderson
 description: Partie 4 de la série de didacticiels sur les Razor pages.
 ms.author: riande
 ms.date: 09/26/2020
+ms.custom: contperf-fy21q2
 no-loc:
 - Index
 - appsettings.json
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 6627825239d815d2c8bcad98e22340f07f921ab9
-ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
+ms.openlocfilehash: 552a74016c281af248ce735c6ed6a5a55768a16a
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96420017"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486243"
 ---
 # <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a>Partie 4 de la série de didacticiels sur les Razor pages
 
@@ -148,7 +149,7 @@ L’exception suivante se produit lorsque `Update-Database` n’a pas été exé
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -302,7 +303,7 @@ L’exception suivante se produit lorsque `Update-Database` n’a pas été exé
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -446,7 +447,7 @@ Une application de production n’appelle pas `Database.Migrate`. Il est ajouté
 SqlException : impossible d’ouvrir la base de données « Razor PagesMovieContext-21 » demandée par la connexion. La connexion a échoué.
 Échec de la connexion de l’utilisateur 'nom utilisateur'.
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
