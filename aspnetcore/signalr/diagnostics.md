@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 6e5e9d866a1e03e69856cc63dcfe30284048dd6d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 49029bbd53b98425a05bdb82517238e3aa2e3b1f
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061312"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506628"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Journalisation et diagnostics dans ASP.NET Core SignalR
 
@@ -106,7 +106,7 @@ Le tableau suivant montre les niveaux de journal disponibles pour le client Java
 
 Une fois que vous avez configuré le niveau de détail, les journaux sont écrits dans la console du navigateur (ou la sortie standard dans une application NodeJS).
 
-Si vous souhaitez envoyer des journaux à un système de journalisation personnalisé, vous pouvez fournir un objet JavaScript qui implémente l' `ILogger` interface. La seule méthode qui doit être implémentée est `log` , qui prend le niveau de l’événement et le message associé à l’événement. Exemple :
+Si vous souhaitez envoyer des journaux à un système de journalisation personnalisé, vous pouvez fournir un objet JavaScript qui implémente l' `ILogger` interface. La seule méthode qui doit être implémentée est `log` , qui prend le niveau de l’événement et le message associé à l’événement. Par exemple :
 
 [!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
 
@@ -117,7 +117,7 @@ Si vous souhaitez envoyer des journaux à un système de journalisation personna
 
 Pour récupérer des journaux à partir du client .NET, vous pouvez utiliser la `ConfigureLogging` méthode sur `HubConnectionBuilder` . Cela fonctionne de la même façon que la `ConfigureLogging` méthode sur `WebHostBuilder` et `HostBuilder` . Vous pouvez configurer les mêmes fournisseurs de journalisation que ceux que vous utilisez dans ASP.NET Core. Toutefois, vous devez installer et activer manuellement les packages NuGet pour les différents fournisseurs de journalisation.
 
-Pour ajouter la journalisation du client .NET à une Blazor WebAssembly application, consultez <xref:blazor/fundamentals/logging#blazor-webassembly-signalr-net-client-logging> .
+Pour ajouter la journalisation du client .NET à une Blazor WebAssembly application, consultez <xref:blazor/fundamentals/logging#signalr-net-client-logging> .
 
 ### <a name="console-logging"></a>Écriture dans le journal de la console
 
@@ -174,7 +174,7 @@ tcpdump -i [interface] -w trace.pcap
 
 Remplacez `[interface]` par l’interface réseau sur laquelle vous souhaitez effectuer la capture. En règle générale, cela ressemble `/dev/eth0` à (pour votre interface Ethernet standard) ou `/dev/lo0` (pour le trafic localhost). Pour plus d’informations, consultez la `tcpdump` page man sur votre système hôte.
 
-## <a name="collect-a-network-trace-in-the-browser"></a>Collecter un suivi réseau dans le navigateur
+## <a name="collect-a-network-trace-in-the-browser"></a>Collecter une trace du réseau dans le navigateur
 
 Cette méthode fonctionne uniquement pour les applications basées sur un navigateur.
 
@@ -226,7 +226,7 @@ Les métriques sont une représentation de mesures de données sur des intervall
 
 SignalR les métriques du serveur sont signalées sur la source de l' <xref:Microsoft.AspNetCore.Http.Connections> événement.
 
-| Nom                    | Description                 |
+| Name                    | Description                 |
 |-------------------------|-----------------------------|
 | `connections-started`   | Nombre total de connexions démarrées   |
 | `connections-stopped`   | Nombre total de connexions arrêtées   |

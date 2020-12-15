@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 500342ac979efdee824ac0d4b5757ca9804f3b30
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 29f1a1f211688a1edcd31c7230e7216df7c89eef
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054812"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506810"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>Outils pour ASP.NET Core Blazor
 
@@ -37,13 +37,15 @@ Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.
 
 1. Créez un projet.
 
-1. Sélectionnez **Blazor application** . Sélectionnez **Suivant** .
+1. Sélectionnez **Blazor application**. Sélectionnez **Suivant**.
 
-1. Indiquez un nom de projet dans le champ **Nom du projet** , ou acceptez le nom de projet par défaut. Confirmez que l’entrée d' **emplacement** est correcte ou indiquez un emplacement pour le projet. Sélectionnez **Create** (Créer).
+1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Confirmez que l’entrée d' **emplacement** est correcte ou indiquez un emplacement pour le projet. Sélectionnez **Create** (Créer).
 
 1. Pour une Blazor WebAssembly expérience, choisissez le modèle d' **Blazor WebAssembly application** . Pour une Blazor Server expérience, choisissez le modèle d' **Blazor Server application** . Sélectionnez **Create** (Créer).
 
-   Pour plus d’informations sur les deux Blazor modèles d’hébergement, *Blazor WebAssembly* et *Blazor Server* , consultez <xref:blazor/hosting-models> .
+   Pour une expérience hébergée Blazor WebAssembly , activez la case à cocher **ASP.net Core hébergée** .
+
+   Pour plus d’informations sur les deux Blazor modèles d’hébergement *Blazor WebAssembly* (autonome et hébergé) et *Blazor Server* , consultez <xref:blazor/hosting-models> .
 
 1. Appuyez sur <kbd>CTRL</kbd> + <kbd>F5</kbd> pour exécuter l’application.
 
@@ -69,17 +71,23 @@ Pour plus d’informations sur l’approbation du certificat de développement H
    dotnet new blazorwasm -o WebApplication1
    ```
 
+   Pour une expérience hébergée Blazor WebAssembly , ajoutez l’option de l’option Hosted ( `-ho` ou `--hosted` ) à la commande :
+   
+   ```dotnetcli
+   dotnet new blazorwasm -o WebApplication1 -ho
+   ```
+   
    Pour une Blazor Server expérience, exécutez la commande suivante dans une interface de commande :
 
    ```dotnetcli
    dotnet new blazorserver -o WebApplication1
    ```
 
-   Pour plus d’informations sur les deux Blazor modèles d’hébergement, *Blazor WebAssembly* et *Blazor Server* , consultez <xref:blazor/hosting-models> .
+   Pour plus d’informations sur les deux Blazor modèles d’hébergement *Blazor WebAssembly* (autonome et hébergé) et *Blazor Server* , consultez <xref:blazor/hosting-models> .
 
 1. Ouvrez le dossier `WebApplication1` dans Visual Studio Code.
 
-1. L’IDE demande que vous ajoutiez des ressources pour générer et déboguer le projet. Sélectionnez **Oui** .
+1. L’IDE demande que vous ajoutiez des ressources pour générer et déboguer le projet. Sélectionnez **Oui**.
 
 1. Appuyez sur <kbd>CTRL</kbd> + <kbd>F5</kbd> pour exécuter l’application.
 
@@ -99,20 +107,42 @@ Pour plus d’informations, consultez les conseils fournis par le fabricant de v
 
 1. Installez [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/).
 
-1. Sélectionnez **fichier**  >  **nouvelle solution** ou créer un **nouveau** projet à partir de la **fenêtre démarrer** .
+1. Sélectionnez **fichier**  >  **nouvelle solution** ou créer un **nouveau** projet à partir de la **fenêtre démarrer**.
 
-1. Dans la barre latérale, sélectionnez application **Web et console**  >  **App** .
+1. Dans la barre latérale, sélectionnez application **Web et console**  >  .
 
-   Pour une Blazor WebAssembly expérience, choisissez le modèle d' **Blazor WebAssembly application** . Pour une Blazor Server expérience, choisissez le modèle d' **Blazor Server application** . Sélectionnez **Suivant** .
+   Pour une Blazor WebAssembly expérience, choisissez le modèle d' **Blazor WebAssembly application** . Pour une Blazor Server expérience, choisissez le modèle d' **Blazor Server application** . Sélectionnez **Suivant**.
 
-   Pour plus d’informations sur les deux Blazor modèles d’hébergement, *Blazor WebAssembly* et *Blazor Server* , consultez <xref:blazor/hosting-models> .
+   Pour plus d’informations sur les deux Blazor modèles d’hébergement *Blazor WebAssembly* (autonome et hébergé) et *Blazor Server* , consultez <xref:blazor/hosting-models> .
 
-1. Vérifiez que **l’authentification** est définie sur **aucune authentification** . Sélectionnez **Suivant** .
+1. Vérifiez que **l’authentification** est définie sur **aucune authentification**. Sélectionnez **Suivant**.
+
+1. Pour une expérience hébergée Blazor WebAssembly , activez la case à cocher **ASP.net Core hébergée** .
 
 1. Dans le champ **nom du projet** , nommez l’application `WebApplication1` . Sélectionnez **Create** (Créer).
 
-1. Sélectionnez **exécuter**  >  **Démarrer sans débogage** pour exécuter l’application *sans le débogueur* . Exécutez l’application avec **Run**  >  le bouton exécuter **Démarrer le débogage** ou exécuter (&#9654;) pour exécuter l’application *avec le débogueur* .
+1. Sélectionnez **exécuter**  >  **Démarrer sans débogage** pour exécuter l’application *sans le débogueur*. Exécutez l’application avec   >  le bouton exécuter **Démarrer le débogage** ou exécuter (&#9654;) pour exécuter l’application *avec le débogueur*.
 
 Si une invite s’affiche pour faire confiance au certificat de développement, approuvez le certificat et continuez. Les mots de passe utilisateur et trousseau sont requis pour approuver le certificat. Pour plus d’informations sur l’approbation du certificat de développement HTTPs ASP.NET Core, consultez <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos> .
 
 ::: zone-end
+
+## <a name="use-visual-studio-code-for-cross-platform-no-locblazor-development"></a>Utiliser Visual Studio Code pour le développement multiplateforme Blazor
+
+[Visual Studio code](https://code.visualstudio.com/) est un environnement de développement intégré (IDE) Open source et multiplateforme qui peut être utilisé pour développer des Blazor applications. Utilisez l’interface CLI .NET pour créer une nouvelle Blazor application en vue du développement avec Visual Studio code. Pour plus d’informations, consultez la [version Linux de cet article](/aspnet/core/blazor/tooling?pivots=linux).
+
+## <a name="no-locblazor-template-options"></a>Blazor options de modèle
+
+Le Blazor Framework fournit des modèles pour créer des applications pour chacun des deux Blazor modèles d’hébergement. Les modèles sont utilisés pour créer des Blazor projets et des solutions, quels que soient les outils que vous sélectionnez pour le Blazor développement (Visual Studio, Visual Studio pour Mac, Visual Studio code ou l’interface de commande .net) :
+
+* Blazor WebAssembly modèle de projet : `blazorwasm`
+* Blazor Server modèle de projet : `blazorserver`
+
+Pour plus d’informations sur les Blazor modèles d’hébergement de, consultez <xref:blazor/hosting-models> .
+
+Les options de modèle sont disponibles en passant l’option d’aide ( `-h` ou `--help` ) à la [`dotnet new`](/dotnet/core/tools/dotnet-new) commande CLI dans une interface de commande :
+
+```dotnetcli
+dotnet new blazorwasm --h
+dotnet new blazorserver --h
+```

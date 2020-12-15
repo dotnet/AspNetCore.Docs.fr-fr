@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: d6f64e67ad799847c0992bad8e4353bac07c9901
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.openlocfilehash: ec183f4aadc6bafd8e77f9d97291ba3d47bd92f5
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97485951"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506927"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Routage de ASP.NET Core Blazor
 
@@ -43,6 +43,8 @@ Le <xref:Microsoft.AspNetCore.Components.Routing.Router> composant permet le rou
 [!code-razor[](routing/samples_snapshot/5.x/App1.razor)]
 
 ::: moniker-end
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 ::: moniker range="< aspnetcore-5.0"
 
@@ -94,6 +96,8 @@ Dans le `App` composant, définissez le contenu personnalisé dans le <xref:Micr
 
 ::: moniker-end
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 ::: moniker range="< aspnetcore-5.0"
 
 [!code-razor[](routing/samples_snapshot/3.x/App2.razor?highlight=5-8)]
@@ -113,6 +117,8 @@ Utilisez le <xref:Microsoft.AspNetCore.Components.Routing.Router.AdditionalAssem
 [!code-razor[](routing/samples_snapshot/5.x/App3.razor)]
 
 ::: moniker-end
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 ::: moniker range="< aspnetcore-5.0"
 
@@ -194,12 +200,12 @@ Les contraintes de routage indiquées dans le tableau suivant sont disponibles. 
 
 | Contrainte | Exemple           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
-| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Non                               |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | No                               |
 | `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Oui                              |
 | `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Oui                              |
 | `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Oui                              |
 | `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Oui                              |
-| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Non                               |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | No                               |
 | `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Oui                              |
 | `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Oui                              |
 

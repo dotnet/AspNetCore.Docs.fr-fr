@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: 6a1feffb5341d432d6d1949a9e26b9537b85ba03
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6e7fa6e231e97793fbf7e1ac1d208bf3013c6fce
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054786"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506568"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Chargement différé d’assemblys dans ASP.NET Core Blazor WebAssembly
 
 Par [safia Abdalla](https://safia.rocks) et [Luke Latham](https://github.com/guardrex)
 
-Blazor WebAssembly les performances de démarrage de l’application peuvent être améliorées en différant le chargement de certains assemblys d’application jusqu’à ce qu’ils soient nécessaires, ce qui s’appelle le *chargement différé* . Par exemple, les assemblys qui sont utilisés uniquement pour le rendu d’un seul composant peuvent être configurés pour être chargés uniquement si l’utilisateur accède à ce composant. Après le chargement, les assemblys sont mis en cache côté client et sont disponibles pour toutes les navigations ultérieures.
+Blazor WebAssembly les performances de démarrage de l’application peuvent être améliorées en différant le chargement de certains assemblys d’application jusqu’à ce qu’ils soient nécessaires, ce qui s’appelle le *chargement différé*. Par exemple, les assemblys qui sont utilisés uniquement pour le rendu d’un seul composant peuvent être configurés pour être chargés uniquement si l’utilisateur accède à ce composant. Après le chargement, les assemblys sont mis en cache côté client et sont disponibles pour toutes les navigations ultérieures.
 
 Blazorla fonctionnalité de chargement différé de vous permet de marquer des assemblys d’application pour le chargement différé, qui charge les assemblys lors de l’exécution lorsque l’utilisateur accède à un itinéraire particulier. La fonctionnalité est constituée de modifications apportées au fichier projet et des modifications apportées au routeur de l’application.
 
@@ -75,6 +75,8 @@ Dans le composant de l’application `Router` ( `App.razor` ) :
 }
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 Si le `OnNavigateAsync` rappel lève une exception non gérée, l' [ Blazor interface utilisateur d’erreur](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development) est appelée.
 
 ### <a name="assembly-load-logic-in-onnavigateasync"></a>Logique de chargement d’assembly dans `OnNavigateAsync`
@@ -84,7 +86,7 @@ Si le `OnNavigateAsync` rappel lève une exception non gérée, l' [ Blazor inte
 * La `Path` propriété est le chemin d’accès de destination de l’utilisateur par rapport au chemin d’accès de base de l’application, par exemple `/robot` .
 * Le `CancellationToken` peut être utilisé pour observer l’annulation de la tâche asynchrone. `OnNavigateAsync` annule automatiquement la tâche de navigation en cours d’exécution lorsque l’utilisateur accède à une autre page.
 
-Dans `OnNavigateAsync` , implémentez une logique pour déterminer les assemblys à charger. Les options sont les suivantes :
+Dans `OnNavigateAsync` , implémentez une logique pour déterminer les assemblys à charger. Options disponibles :
 
 * Vérifications conditionnelles à l’intérieur de la `OnNavigateAsync` méthode.
 * Table de recherche qui mappe des itinéraires à des noms d’assemblys, soit injectés dans le composant, soit implémentée dans le [`@code`](xref:mvc/views/razor#code) bloc.
@@ -133,6 +135,8 @@ Lors du chargement des assemblys, ce qui peut prendre plusieurs secondes, le `Ro
 ...
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 ### <a name="handle-cancellations-in-onnavigateasync"></a>Gérer les annulations dans `OnNavigateAsync`
 
 L' `NavigationContext` objet passé au `OnNavigateAsync` rappel contient un `CancellationToken` qui est défini lorsqu’un nouvel événement de navigation se produit. Le `OnNavigateAsync` rappel doit lever une exception quand ce jeton d’annulation est défini pour éviter de continuer à exécuter le `OnNavigateAsync` rappel sur une navigation obsolète.
@@ -169,6 +173,8 @@ Si un utilisateur accède à l’itinéraire A, puis immédiatement à l’itin�
     }
 }
 ```
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 > [!NOTE]
 > Ne pas lever la valeur si le jeton d’annulation dans `NavigationContext` est annulé peut entraîner un comportement inattendu, tel que le rendu d’un composant à partir d’une navigation précédente.
@@ -230,6 +236,8 @@ Le composant complet suivant `Router` montre le chargement de l' `GrantImaharaRo
     }
 }
 ```
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 ## <a name="troubleshoot"></a>Dépanner
 

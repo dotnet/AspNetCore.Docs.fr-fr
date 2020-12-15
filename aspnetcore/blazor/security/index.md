@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 6435a7c9ce2a30873f0d3475a38270d3dea1b300
-ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
+ms.openlocfilehash: 8a61472da556db48a8572b0a59075beb7737a547
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595465"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506823"
 ---
 # <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>BlazorAuthentification et autorisation ASP.net Core
 
@@ -231,6 +231,8 @@ Configurez le `Task<` <xref:Microsoft.AspNetCore.Components.Authorization.Authen
 </CascadingAuthenticationState>
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 Dans une Blazor WebAssembly application, ajoutez des services pour les options et l’autorisation pour `Program.Main` :
 
 ```csharp
@@ -311,7 +313,7 @@ Pour l’autorisation en fonction du rôle, utilisez le paramètre <xref:Microso
 </AuthorizeView>
 ```
 
-Pour plus d'informations, consultez <xref:security/authorization/roles>.
+Pour plus d’informations, consultez <xref:security/authorization/roles>.
 
 Pour l’autorisation en fonction des stratégies, utilisez le paramètre <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy> :
 
@@ -321,7 +323,7 @@ Pour l’autorisation en fonction des stratégies, utilisez le paramètre <xref:
 </AuthorizeView>
 ```
 
-L’autorisation basée sur les revendications est un cas spécial d’autorisation basée sur les stratégies. Par exemple, vous pouvez définir une stratégie qui impose aux utilisateurs d’avoir une certaine revendication. Pour plus d'informations, consultez <xref:security/authorization/policies>.
+L’autorisation basée sur les revendications est un cas spécial d’autorisation basée sur les stratégies. Par exemple, vous pouvez définir une stratégie qui impose aux utilisateurs d’avoir une certaine revendication. Pour plus d’informations, consultez <xref:security/authorization/policies>.
 
 Ces API peuvent être utilisées dans les Blazor Server Blazor WebAssembly applications ou.
 
@@ -422,6 +424,8 @@ Dans le modèle de projet par défaut Blazor Server , le `App` composant ( `App.
 </CascadingAuthenticationState>
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 Le contenu des `<NotFound>` `<NotAuthorized>` `<Authorizing>` balises, et peut inclure des éléments arbitraires, tels que d’autres composants interactifs.
 
 Si la `<NotAuthorized>` balise n’est pas spécifiée, le <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> utilise le message de secours suivant :
@@ -499,6 +503,8 @@ Il est probable que le projet n’a pas été créé à l’aide d’un Blazor S
     </Router>
 </CascadingAuthenticationState>
 ```
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 Le <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> fournit le `Task<` <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState> `>` paramètre en cascade, qui à son tour est reçu du service di sous-jacent <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> .
 

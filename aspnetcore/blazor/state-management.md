@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 24f845bc1d98331f2ee54710d17beb6ffa95ad88
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 6e6f3047da30490caff4f820003a3018e8c26aaa
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855415"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506607"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>Gestion de l’état des ASP.NET Core Blazor
 
@@ -71,9 +71,9 @@ Les emplacements communs existent pour l’état de persistance :
 
 <h2 id="server-side-storage-wasm">Stockage côté serveur</h2>
 
-Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser un stockage indépendant côté serveur accessible via une API Web. Les options sont les suivantes :
+Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser un stockage indépendant côté serveur accessible via une API Web. Options disponibles :
 
-* Stockage d’objets blob
+* Stockage d'objets Blob
 * Stockage clé-valeur
 * Base de données relationnelle
 * Stockage de tables
@@ -126,7 +126,7 @@ En règle générale, `sessionStorage` il est plus sûr d’utiliser. `sessionSt
 
 <h2 id="in-memory-state-container-service-wasm">Service de conteneur d’État en mémoire</h2>
 
-[!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
+[!INCLUDE[](~/blazor/includes/state-container.md)]
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -180,9 +180,9 @@ Les emplacements communs existent pour l’état de persistance :
 
 <h2 id="server-side-storage-server">Stockage côté serveur</h2>
 
-Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser le stockage côté serveur. Les options sont les suivantes :
+Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser le stockage côté serveur. Options disponibles :
 
-* Stockage d’objets blob
+* Stockage d'objets Blob
 * Stockage clé-valeur
 * Base de données relationnelle
 * Stockage de tables
@@ -427,6 +427,8 @@ Pour utiliser le `CounterStateProvider` composant, encapsulez une instance du co
 </CounterStateProvider>
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 Les composants encapsulés reçoivent et peuvent modifier l’état du compteur persistant. Le `Counter` composant suivant implémente le modèle :
 
 ```razor
@@ -670,6 +672,8 @@ Pour utiliser le `CounterStateProvider` composant, encapsulez une instance du co
 </CounterStateProvider>
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 Les composants encapsulés reçoivent et peuvent modifier l’état du compteur persistant. Le `Counter` composant suivant implémente le modèle :
 
 ```razor
@@ -705,6 +709,6 @@ Pour conserver un grand nombre d’objets d’état différents et utiliser diff
 
 <h2 id="in-memory-state-container-service-server">Service de conteneur d’État en mémoire</h2>
 
-[!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
+[!INCLUDE[](~/blazor/includes/state-container.md)]
 
 ::: zone-end

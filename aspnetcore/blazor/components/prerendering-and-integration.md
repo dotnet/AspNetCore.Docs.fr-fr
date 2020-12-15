@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/components/prerendering-and-integration
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: affca6c9b585b91787f94a13144d07bedfefdd37
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 3402117334548f9d90880d4f536e8baa288e7bc9
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431704"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506979"
 ---
 # <a name="prerender-and-integrate-aspnet-core-no-locrazor-components"></a>Prérendu et intégration des Razor composants ASP.net Core
 
@@ -308,6 +308,8 @@ Pour prendre en charge les composants routables Razor dans les Razor application
    </Router>
    ```
 
+   [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 1. Ajoutez un `_Host.cshtml` fichier au `Pages` dossier avec le contenu suivant :
 
    ```cshtml
@@ -376,6 +378,8 @@ Pour prendre en charge les composants routables Razor dans les applications MVC�
        </NotFound>
    </Router>
    ```
+
+   [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 1. Ajoutez un `_Host.cshtml` fichier au `Views/Home` dossier avec le contenu suivant :
 
@@ -460,7 +464,7 @@ La Razor page suivante affiche un `Counter` composant :
 }
 ```
 
-Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
+Pour plus d’informations, consultez <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
 
 ### <a name="render-noninteractive-components"></a>Rendre les composants non interactifs
 
@@ -483,7 +487,7 @@ Dans la Razor page suivante, le `Counter` composant est rendu statiquement avec 
 }
 ```
 
-Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
+Pour plus d’informations, consultez <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
 
 ## <a name="component-namespaces"></a>Espaces de noms de composants
 
@@ -498,6 +502,6 @@ Lorsque vous utilisez un dossier personnalisé pour stocker les composants de l�
 
 Le `_ViewImports.cshtml` fichier se trouve dans le `Pages` dossier d’une Razor application pages ou dans le `Views` dossier d’une application MVC.
 
-Pour plus d'informations, consultez <xref:blazor/components/index#namespaces>.
+Pour plus d’informations, consultez <xref:blazor/components/index#namespaces>.
 
 ::: zone-end
