@@ -2,7 +2,7 @@
   href: index.yml
 - name: Nouveautés de la documentation ASP.NET Core
   href: whats-new/index.yml
-- name: Vue d'ensemble
+- name: Vue d’ensemble
   items:
     - name: À propos d’ASP.NET Core
       uid: index
@@ -314,8 +314,8 @@
               uid: tutorials/build-a-blazor-app
             - name: SignalR avec Blazor WebAssembly
               uid: tutorials/signalr-blazor-webassembly
-        - name: Modèles
-          uid: blazor/templates
+        - name: Structure du projet
+          uid: blazor/project-structure
         - name: Notions de base
           items:
             - name: Routage
@@ -437,7 +437,7 @@
         - name: Composants intégrés
           items:
             - name: Application
-              href: blazor/templates.md#blazor-project-structure
+              uid: blazor/project-structure
             - name: Authentification
               href: blazor/security/webassembly/index.md#authentication-component
             - name: AuthorizeView
