@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: 209d055f6205eceb9efb5434427c303345791809
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: 3277fda0d1dcb5121a2172b3fc1e4869ed6f8430
+ms.sourcegitcommit: fc4cce2767e34f81079510f34bd54e9d0aa86497
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981958"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592867"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer le protocole HTTPs en ASP.NET Core
 
@@ -41,7 +41,7 @@ Aucune API ne peut empêcher un client d’envoyer des données sensibles à la 
 > [!WARNING]
 > ## <a name="api-projects"></a>Projets d’API
 >
-> N' **not** utilisez pas [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) sur les API Web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise des codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPs. Les clients d’API peuvent ne pas comprendre ou respecter les redirections du protocole HTTP vers HTTPs. Ces clients peuvent envoyer des informations via HTTP. Les API Web doivent être les suivantes :
+> N'  utilisez pas [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) sur les API Web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise des codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPs. Les clients d’API peuvent ne pas comprendre ou respecter les redirections du protocole HTTP vers HTTPs. Ces clients peuvent envoyer des informations via HTTP. Les API Web doivent être les suivantes :
 >
 > * Ne pas écouter sur HTTP.
 > * Fermez la connexion avec le code d’état 400 (requête incorrecte) et ne traitez pas la requête.
@@ -57,7 +57,7 @@ Aucune API ne peut empêcher un client d’envoyer des données sensibles à la 
 > [!WARNING]
 > ## <a name="api-projects"></a>Projets d’API
 >
-> N' **not** utilisez pas [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) sur les API Web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise des codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPs. Les clients d’API peuvent ne pas comprendre ou respecter les redirections du protocole HTTP vers HTTPs. Ces clients peuvent envoyer des informations via HTTP. Les API Web doivent être les suivantes :
+> N'  utilisez pas [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) sur les API Web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise des codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPs. Les clients d’API peuvent ne pas comprendre ou respecter les redirections du protocole HTTP vers HTTPs. Ces clients peuvent envoyer des informations via HTTP. Les API Web doivent être les suivantes :
 >
 > * Ne pas écouter sur HTTP.
 > * Fermez la connexion avec le code d’état 400 (requête incorrecte) et ne traitez pas la requête.
@@ -306,7 +306,7 @@ Dans certains scénarios de service backend où la sécurité de connexion est g
 
 Pour désactiver HTTPs/HSTS :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 Désactivez la case à cocher **configurer pour HTTPS** .
 
@@ -396,6 +396,8 @@ Le sous-système Windows pour Linux (WSL) génère un certificat auto-signé HTT
 ## <a name="troubleshoot-certificate-problems"></a>Résoudre les problèmes de certificat
 
 Cette section fournit de l’aide lorsque le certificat de développement HTTPs ASP.NET Core a été [installé et approuvé](#trust), mais que vous avez encore des avertissements de navigateur indiquant que le certificat n’est pas approuvé. Le certificat de développement HTTPs ASP.NET Core est utilisé par [Kestrel](xref:fundamentals/servers/kestrel).
+
+Pour réparer le certificat de IIS Express, consultez [ce problème StackOverflow](https://stackoverflow.com/a/20048613/502537) .
 
 ### <a name="all-platforms---certificate-not-trusted"></a>Toutes les plateformes-certificat non approuvé
 
