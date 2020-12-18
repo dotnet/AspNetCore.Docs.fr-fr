@@ -2,7 +2,7 @@
   href: index.yml
 - name: Nouveautés de la documentation ASP.NET Core
   href: whats-new/index.yml
-- name: Vue d’ensemble
+- name: Vue d'ensemble
   items:
     - name: À propos d’ASP.NET Core
       uid: index
@@ -193,7 +193,7 @@
           href: /learn/modules/secure-aspnet-core-identity/
 - name: Notions de base
   items:
-    - name: Vue d'ensemble
+    - name: Vue d’ensemble
       uid: fundamentals/index
     - name: Classe Startup
       uid: fundamentals/startup
@@ -334,7 +334,7 @@
               uid: blazor/fundamentals/additional-scenarios
         - name: Composants
           items:
-            - name: Vue d’ensemble
+            - name: Vue d'ensemble
               uid: blazor/components/index
             - name: Valeurs et paramètres en cascade
               uid: blazor/components/cascading-values-and-parameters
@@ -370,7 +370,7 @@
           uid: blazor/call-web-api
         - name: Sécurité et identité
           items:
-            - name: Vue d'ensemble
+            - name: Vue d’ensemble
               uid: blazor/security/index
             - name: WebAssembly Blazor
               items:
@@ -884,7 +884,7 @@
           href: /visualstudio/mac/publish-app-svc?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
         - name: Publier avec l’interface de ligne de commande
           displayName: 'azure, deploy, publish'
-          href: /azure/app-service/app-service-web-tutorial-dotnetcore-sqldb?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
+          href: /azure/app-service/tutorial-dotnetcore-sqldb-app?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
         - name: Publier avec Visual Studio et Git
           displayName: 'azure, deploy, publish'
           uid: host-and-deploy/azure-apps/azure-continuous-deployment
