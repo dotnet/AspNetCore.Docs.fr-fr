@@ -1,4 +1,4 @@
-<span data-ttu-id="8a1db-101">Exécutez les commandes CLI .NET suivantes :</span><span class="sxs-lookup"><span data-stu-id="8a1db-101">Run the following .NET CLI commands:</span></span>
+<span data-ttu-id="93cf8-101">Exécutez les commandes CLI .NET suivantes :</span><span class="sxs-lookup"><span data-stu-id="93cf8-101">Run the following .NET CLI commands:</span></span>
 
 ```dotnetcli
 dotnet tool install --global dotnet-ef
@@ -11,13 +11,13 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add package Microsoft.Extensions.Logging.Debug
 ```
 
-<span data-ttu-id="8a1db-102">Les commandes précédentes ajoutent :</span><span class="sxs-lookup"><span data-stu-id="8a1db-102">The preceding commands add:</span></span>
+<span data-ttu-id="93cf8-102">Les commandes précédentes ajoutent :</span><span class="sxs-lookup"><span data-stu-id="93cf8-102">The preceding commands add:</span></span>
 
-* <span data-ttu-id="8a1db-103">L' [outil de génération de modèles automatique ASPNET-CodeGenerator](xref:fundamentals/tools/dotnet-aspnet-codegenerator).</span><span class="sxs-lookup"><span data-stu-id="8a1db-103">The [aspnet-codegenerator scaffolding tool](xref:fundamentals/tools/dotnet-aspnet-codegenerator).</span></span>
-* <span data-ttu-id="8a1db-104">Les outils de EF Core pour l’interface CLI .NET.</span><span class="sxs-lookup"><span data-stu-id="8a1db-104">The EF Core Tools for the .NET CLI.</span></span>
-* <span data-ttu-id="8a1db-105">Le fournisseur EF Core SQLite, qui installe le package EF Core comme une dépendance.</span><span class="sxs-lookup"><span data-stu-id="8a1db-105">The EF Core SQLite provider, which installs the EF Core package as a dependency.</span></span>
-* <span data-ttu-id="8a1db-106">Les packages nécessaires à la génération de modèles automatique : `Microsoft.VisualStudio.Web.CodeGeneration.Design` et `Microsoft.EntityFrameworkCore.SqlServer`.</span><span class="sxs-lookup"><span data-stu-id="8a1db-106">Packages needed for scaffolding: `Microsoft.VisualStudio.Web.CodeGeneration.Design` and `Microsoft.EntityFrameworkCore.SqlServer`.</span></span>
+* <span data-ttu-id="93cf8-103">L' [outil de génération de modèles automatique ASPNET-CodeGenerator](xref:fundamentals/tools/dotnet-aspnet-codegenerator).</span><span class="sxs-lookup"><span data-stu-id="93cf8-103">The [aspnet-codegenerator scaffolding tool](xref:fundamentals/tools/dotnet-aspnet-codegenerator).</span></span>
+* <span data-ttu-id="93cf8-104">Les outils de EF Core pour l’interface CLI .NET.</span><span class="sxs-lookup"><span data-stu-id="93cf8-104">The EF Core Tools for the .NET CLI.</span></span>
+* <span data-ttu-id="93cf8-105">Le fournisseur EF Core SQLite, qui installe le package EF Core comme une dépendance.</span><span class="sxs-lookup"><span data-stu-id="93cf8-105">The EF Core SQLite provider, which installs the EF Core package as a dependency.</span></span>
+* <span data-ttu-id="93cf8-106">Les packages nécessaires à la génération de modèles automatique : `Microsoft.VisualStudio.Web.CodeGeneration.Design` et `Microsoft.EntityFrameworkCore.SqlServer`.</span><span class="sxs-lookup"><span data-stu-id="93cf8-106">Packages needed for scaffolding: `Microsoft.VisualStudio.Web.CodeGeneration.Design` and `Microsoft.EntityFrameworkCore.SqlServer`.</span></span>
 
-<span data-ttu-id="8a1db-107">Pour obtenir des conseils sur la configuration de plusieurs environnements qui permet à une application de configurer ses contextes de base de données par environnement, consultez <xref:fundamentals/environments#environment-based-startup-class-and-methods> .</span><span class="sxs-lookup"><span data-stu-id="8a1db-107">For guidance on multiple environment configuration that permits an app to configure its database contexts by environment, see <xref:fundamentals/environments#environment-based-startup-class-and-methods>.</span></span>
+<span data-ttu-id="93cf8-107">Pour obtenir des conseils sur la configuration de plusieurs environnements qui permet à une application de configurer ses contextes de base de données par environnement, consultez <xref:fundamentals/environments#environment-based-startup-class-and-methods> .</span><span class="sxs-lookup"><span data-stu-id="93cf8-107">For guidance on multiple environment configuration that permits an app to configure its database contexts by environment, see <xref:fundamentals/environments#environment-based-startup-class-and-methods>.</span></span>
 
 [!INCLUDE[](~/includes/scaffoldTFM-5.md)]
