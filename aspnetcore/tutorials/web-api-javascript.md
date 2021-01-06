@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/web-api-javascript
 ms.openlocfilehash: c32c5befe0be3b1ad4bd87649d3cc74b0296a134
-ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94703707"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Didacticiel : appeler une API Web ASP.NET Core avec JavaScript
@@ -48,7 +48,7 @@ Pour ASP.NET Core 2.2, consultez la version 2.2 de [Appeler l’API web avec J
 
 Dans cette section, vous allez ajouter une page HTML contenant des formulaires permettant de créer et de gérer des éléments de tâche. Des gestionnaires d’événements sont joints aux éléments de la page. Les gestionnaires d’événements génèrent des requêtes HTTP pour les méthodes d’action de l’API web. La fonction `fetch` de l’API Fetch lance chaque requête HTTP.
 
-La `fetch` fonction retourne un [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) objet promise, qui contient une réponse http représentée sous la forme d’un `Response` objet. Un modèle courant consiste à extraire le corps de réponse JSON en appelant la fonction `json` sur l'objet `Response`. JavaScript met à jour la page avec les détails de la réponse de l’API Web.
+La `fetch` fonction retourne un [](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) objet promise, qui contient une réponse http représentée sous la forme d’un `Response` objet. Un modèle courant consiste à extraire le corps de réponse JSON en appelant la fonction `json` sur l'objet `Response`. JavaScript met à jour la page avec les détails de la réponse de l’API Web.
 
 L'appel `fetch` le plus simple accepte un seul paramètre représentant l’itinéraire. Un deuxième paramètre, connu sous le nom d’objet `init`, est facultatif. `init` est utilisé pour configurer la requête HTTP.
 

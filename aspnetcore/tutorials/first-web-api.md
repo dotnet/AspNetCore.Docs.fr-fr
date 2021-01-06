@@ -1,5 +1,5 @@
 ---
-title: 'Didacticiel : créer une API Web avec ASP.NET Core'
+title: 'Tutoriel : Création d’une API web avec ASP.NET Core'
 author: rick-anderson
 description: Apprendre à créer une API web avec ASP.NET Core.
 ms.author: riande
@@ -20,13 +20,13 @@ no-loc:
 - Models
 uid: tutorials/first-web-api
 ms.openlocfilehash: ccbfc27eb89e23938a69f0ab4cb306d6a4136889
-ms.sourcegitcommit: fe2e3174c34bee1e425c6e52dd8f663fe52b8756
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96175050"
 ---
-# <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Didacticiel : créer une API Web avec ASP.NET Core
+# <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Création d’une API web avec ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Kirk Larkin](https://twitter.com/serpent5)et [Mike Wasson](https://github.com/mikewasson)
 
@@ -115,7 +115,7 @@ Le diagramme suivant illustre la conception de l’application.
 
   ![macOS - Nouvelle solution](first-web-api-mac/_static/sln.png)
 
-* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez API de l’application **.net Core**  >  **App**  >  **API**  >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application **Web et**  >  **App**  >  **API** application console  >  **suivant**.
+* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez API de l’application **.net Core**  >    >    >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application **Web et**  >    >  **API** application console  >  **suivant**.
 
   ![sélection du modèle d’API macOS](first-web-api-mac/_static/api_template.png)
 
@@ -247,7 +247,7 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
   ![nouveau dossier](first-web-api-mac/_static/folder.png)
 
-* Cliquez avec le bouton droit sur le *Models* dossier, puis sélectionnez **Ajouter** > **un nouveau fichier** > **General** > **classe générale vide**.
+* Cliquez avec le bouton droit sur le *Models* dossier, puis sélectionnez **Ajouter** > **un nouveau fichier** >  > **classe générale vide**.
 
 * Nommez la classe *TodoItem* et cliquez sur **Nouveau**.
 
@@ -426,7 +426,7 @@ Deux points de terminaison d’extraction sont implémentés :
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Par exemple :
 
 * `https://localhost:5001/api/TodoItems`
 * `https://localhost:5001/api/TodoItems/1`
@@ -639,7 +639,7 @@ Le diagramme suivant illustre la conception de l’application.
 
   ![macOS - Nouvelle solution](first-web-api-mac/_static/sln.png)
 
-* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez API de l’application **.net Core**  >  **App**  >  **API**  >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application **Web et**  >  **App**  >  **API** application console  >  **suivant**.
+* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez API de l’application **.net Core**  >    >    >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application **Web et**  >    >  **API** application console  >  **suivant**.
 
   ![sélection du modèle d’API macOS](first-web-api-mac/_static/api_template.png)
 
@@ -741,7 +741,7 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
   ![nouveau dossier](first-web-api-mac/_static/folder.png)
 
-* Cliquez avec le bouton droit sur le *Models* dossier, puis sélectionnez **Ajouter** > **un nouveau fichier** > **General** > **classe générale vide**.
+* Cliquez avec le bouton droit sur le *Models* dossier, puis sélectionnez **Ajouter** > **un nouveau fichier** >  > **classe générale vide**.
 
 * Nommez la classe *TodoItem* et cliquez sur **Nouveau**.
 
@@ -913,7 +913,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Par exemple :
 
 * `https://localhost:5001/api/TodoItems`
 * `https://localhost:5001/api/TodoItems/1`
@@ -1124,7 +1124,7 @@ Le diagramme suivant illustre la conception de l’application.
 
   ![macOS - Nouvelle solution](first-web-api-mac/_static/sln.png)
 
-* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez API de l’application **.net Core**  >  **App**  >  **API**  >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application **Web et**  >  **App**  >  **API** application console  >  **suivant**.
+* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez API de l’application **.net Core**  >    >    >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application **Web et**  >    >  **API** application console  >  **suivant**.
   
 * Dans la boîte de dialogue **configurer la nouvelle API Web ASP.net Core** , sélectionnez la version la plus récente de .net Core 2. x **Target Framework**. Sélectionnez **Suivant**.
 
@@ -1184,7 +1184,7 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
   ![nouveau dossier](first-web-api-mac/_static/folder.png)
 
-* Cliquez avec le bouton droit sur le *Models* dossier, puis sélectionnez **Ajouter** > **un nouveau fichier** > **General** > **classe générale vide**.
+* Cliquez avec le bouton droit sur le *Models* dossier, puis sélectionnez **Ajouter** > **un nouveau fichier** >  > **classe générale vide**.
 
 * Nommez la classe *TodoItem* et cliquez sur **Nouveau**.
 
@@ -1271,7 +1271,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 
 Arrêtez l’application si elle est toujours en cours d’exécution. Ensuite, réexécutez-la pour inclure les dernières modifications.
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Par exemple :
 
 * `https://localhost:<port>/api/todo`
 * `https://localhost:<port>/api/todo/1`
@@ -1327,7 +1327,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Dans **Postman**  >  **Préférences** de publication (onglet **général** ), désactivez la vérification de **certificat SSL**. Vous pouvez également sélectionner la clé et sélectionner **Paramètres**, puis désactiver la vérification du certificat SSL.
+* Dans   >  **Préférences** de publication (onglet **général** ), désactivez la vérification de **certificat SSL**. Vous pouvez également sélectionner la clé et sélectionner **Paramètres**, puis désactiver la vérification du certificat SSL.
 
 ---
   
@@ -1452,7 +1452,7 @@ Ajoutez un fichier HTML nommé *index.html* au répertoire *wwwroot*. Remplacez 
 
 [!code-html[](first-web-api/samples/2.2/TodoApi/wwwroot/index.html)]
 
-Ajoutez un fichier JavaScript nommé *site.js* au répertoire *wwwroot*. Remplacez son contenu par le code ci-dessous :
+Ajoutez un fichier JavaScript nommé *site.js* au répertoire *wwwroot*. Remplacez le contenu par le code suivant :
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_SiteJs)]
 

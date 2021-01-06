@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 5983cbc1e0256f7cf8e85fb07f9ba1bbc1bf08db
-ms.sourcegitcommit: c321518bfe367280ef262aecaada287f17fe1bc5
+ms.openlocfilehash: 55289dd7048c08ac61432c7cc062e74d2e69ee24
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97011869"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97753125"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Héberger et déployer des ASP.NET Core Blazor WebAssembly
 
@@ -135,9 +135,17 @@ Pour plus d’informations concernant le déploiement sur Azure App Service, con
 
 ### <a name="app-configuration"></a>la configuration d’une application ;
 
-Pour configurer une solution hébergée Blazor pour servir plusieurs Blazor WebAssembly applications :
+Les Blazor solutions hébergées peuvent servir plusieurs Blazor WebAssembly applications.
 
-* Utilisez une solution hébergée existante Blazor ou créez une nouvelle solution à partir du Blazor modèle de projet hébergé.
+> [!NOTE]
+> L’exemple de cette section fait référence à l’utilisation d’une *solution* Visual Studio, mais l’utilisation de Visual Studio et d’une solution Visual Studio n’est pas nécessaire pour que plusieurs applications clientes fonctionnent dans un scénario d’applications hébergées Blazor WebAssembly . Si vous n’utilisez pas Visual Studio, ignorez le `{SOLUTION NAME}.sln` fichier et tous les autres fichiers créés pour Visual Studio.
+
+Dans l’exemple suivant :
+
+* L’application cliente initiale (première) est le projet client par défaut d’une solution créée à partir du Blazor WebAssembly modèle de projet. La première application cliente est accessible dans un navigateur à partir de l’URL `/FirstApp` sur le port 5001 ou avec un hôte de `firstapp.com` .
+* Une deuxième application cliente est ajoutée à la solution, `SecondBlazorApp.Client` . La deuxième application cliente est accessible dans un navigateur à partir de l’URL `/SecondApp` sur le port 5002 ou avec un hôte de `secondapp.com` .
+
+Utilisez une solution hébergée existante Blazor ou créez une nouvelle solution à partir du Blazor modèle de projet hébergé :
 
 * Dans le fichier projet de l’application cliente, ajoutez une `<StaticWebAssetBasePath>` propriété à `<PropertyGroup>` avec une valeur `FirstApp` pour définir le chemin d’accès de base pour les ressources statiques du projet :
 
@@ -150,9 +158,19 @@ Pour configurer une solution hébergée Blazor pour servir plusieurs Blazor WebA
 
 * Ajoutez une deuxième application cliente à la solution :
 
-  * Ajoutez un dossier nommé `SecondClient` au dossier de la solution.
+  * Ajoutez un dossier nommé `SecondClient` au dossier de la solution. Le dossier de solution créé à partir du modèle de projet contient le fichier solution et les dossiers suivants après l' `SecondClient` Ajout du dossier :
+  
+    * `Client` Répertoire
+    * `SecondClient` Répertoire
+    * `Server` Répertoire
+    * `Shared` Répertoire
+    * `{SOLUTION NAME}.sln` txt
+    
+    L’espace réservé `{SOLUTION NAME}` est le nom de la solution.
+
   * Créez une Blazor WebAssembly application nommée `SecondBlazorApp.Client` dans le `SecondClient` dossier à partir du Blazor WebAssembly modèle de projet.
-  * Dans le fichier projet de l’application :
+
+  * Dans le `SecondBlazorApp.Client` fichier projet de l’application :
 
     * Ajoutez une `<StaticWebAssetBasePath>` propriété à `<PropertyGroup>` avec la valeur `SecondApp` :
 
@@ -173,14 +191,17 @@ Pour configurer une solution hébergée Blazor pour servir plusieurs Blazor WebA
 
       L’espace réservé `{SOLUTION NAME}` est le nom de la solution.
 
-* Dans le fichier projet de l’application serveur, créez une référence de projet pour l’application cliente ajoutée :
+* Dans le fichier projet de l’application serveur, créez une référence de projet pour l' `SecondBlazorApp.Client` application cliente ajoutée :
 
   ```xml
   <ItemGroup>
-    ...
+    <ProjectReference Include="..\Client\{SOLUTION NAME}.Client.csproj" />
     <ProjectReference Include="..\SecondClient\SecondBlazorApp.Client.csproj" />
+    <ProjectReference Include="..\Shared\{SOLUTION NAME}.Shared.csproj" />
   </ItemGroup>
   ```
+  
+  L’espace réservé `{SOLUTION NAME}` est le nom de la solution.
 
 * Dans le fichier de l’application serveur `Properties/launchSettings.json` , configurez le `applicationUrl` du profil Kestrel ( `{SOLUTION NAME}.Server` ) pour accéder aux applications clientes aux ports 5001 et 5002 :
 

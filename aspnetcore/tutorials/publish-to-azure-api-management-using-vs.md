@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp, mvc
 ms.date: 11/22/2020
 uid: tutorials/publish-to-azure-api-management-using-vs
 ms.openlocfilehash: 395b5981a3018486235c38f032893f985ab71383
-ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96332209"
 ---
 # <a name="publish-an-aspnet-core-web-api-to-azure-api-management-with-visual-studio"></a>Publier une API Web ASP.NET Core dans gestion des API Azure avec Visual Studio
@@ -210,7 +210,7 @@ Une réponse correcte se présente comme suit :
 
 ![Capture d’écran d’une réponse correcte de la gestion des API](publish-to-azure-api-management-using-vs/_static/portal_successful_response.png)
 
-## <a name="clean-up"></a>Nettoyage
+## <a name="clean-up"></a>Nettoyer
 
 Une fois que vous avez fini de tester l’application, accédez au [portail Azure](https://portal.azure.com/) et supprimez l’application.
 

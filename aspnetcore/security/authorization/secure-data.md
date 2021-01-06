@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: accfd46fa72c33976f8af2a39267c993447e036e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: dc70cfe7cb0c0f044f5f1e7ee68a293b3ea7507f
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051939"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854650"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>Créer une application Web ASP.NET Core avec les données utilisateur protégées par l’autorisation
 
@@ -75,7 +75,7 @@ L’exemple contient les gestionnaires d’autorisations suivants :
 * `ContactManagerAuthorizationHandler`: Permet aux gestionnaires d’approuver ou de rejeter les contacts.
 * `ContactAdministratorsAuthorizationHandler`: Permet aux administrateurs d’approuver ou de refuser des contacts, ainsi que de modifier/supprimer des contacts.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Ce didacticiel est avancé. Vous devez connaître les éléments suivants :
 
@@ -93,7 +93,7 @@ Ce didacticiel est avancé. Vous devez connaître les éléments suivants :
 
 [Téléchargez](xref:index#how-to-download-a-sample) l’application de [démarrage](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) .
 
-Exécutez l’application, appuyez sur le lien **ContactManager** et vérifiez que vous pouvez créer, modifier et supprimer un contact.
+Exécutez l’application, appuyez sur le lien **ContactManager** et vérifiez que vous pouvez créer, modifier et supprimer un contact. Pour créer l’application de démarrage, consultez [créer l’application de démarrage](#create-the-starter-app).
 
 ## <a name="secure-user-data"></a>Sécuriser les données utilisateur
 
@@ -128,7 +128,7 @@ Définissez la stratégie d’authentification de secours pour exiger que les ut
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
-Le code en surbrillance précédent définit la [stratégie d’authentification de secours](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). La stratégie d’authentification de secours exige que * *_tous_* les utilisateurs soient authentifiés, à l’exception des Razor pages, des contrôleurs ou des méthodes d’action avec un attribut d’authentification. Par exemple, Razor les pages, les contrôleurs ou les méthodes d’action avec `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` utilisent l’attribut d’authentification appliqué plutôt que la stratégie d’authentification de secours.
+Le code en surbrillance précédent définit la [stratégie d’authentification de secours](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). La stratégie d’authentification de secours exige que **_tous_* les utilisateurs soient authentifiés, à l’exception des Razor pages, des contrôleurs ou des méthodes d’action avec un attribut d’authentification. Par exemple, Razor les pages, les contrôleurs ou les méthodes d’action avec `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` utilisent l’attribut d’authentification appliqué plutôt que la stratégie d’authentification de secours.
 
 Stratégie d’authentification de secours :
 
@@ -152,7 +152,7 @@ Ajoutez [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowano
 
 ### <a name="configure-the-test-account"></a>Configurer le compte de test
 
-La `SeedData` classe crée deux comptes : administrateur et gestionnaire. Utilisez l' [outil secret Manager](xref:security/app-secrets) pour définir un mot de passe pour ces comptes. Définissez le mot de passe à partir du répertoire du projet (répertoire contenant *Program.cs* ) :
+La `SeedData` classe crée deux comptes : administrateur et gestionnaire. Utilisez l' [outil secret Manager](xref:security/app-secrets) pour définir un mot de passe pour ces comptes. Définissez le mot de passe à partir du répertoire du projet (répertoire contenant *Program.cs*) :
 
 ```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
@@ -334,16 +334,16 @@ Un moyen simple de tester l’application terminée consiste à lancer trois nav
 
 | Utilisateur                | Amorcé par l’application | Options                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | No                | Modifiez/supprimez les données.                |
-| manager@contoso.com | Yes               | Approuver/refuser et modifier/supprimer des données. |
-| admin@contoso.com   | Yes               | Approuver/refuser et modifier/supprimer toutes les données. |
+| test@example.com    | Non                | Modifiez/supprimez les données.                |
+| manager@contoso.com | Oui               | Approuver/refuser et modifier/supprimer des données. |
+| admin@contoso.com   | Oui               | Approuver/refuser et modifier/supprimer toutes les données. |
 
 Créez un contact dans le navigateur de l’administrateur. Copiez l’URL de la suppression et de la modification à partir du contact de l’administrateur. Collez ces liens dans le navigateur de l’utilisateur de test pour vérifier que l’utilisateur de test ne peut pas effectuer ces opérations.
 
 ## <a name="create-the-starter-app"></a>Créer l’application de démarrage
 
 * Créer une Razor application pages nommée « ContactManager »
-  * Créez l’application avec des **comptes d’utilisateur individuels** .
+  * Créez l’application avec des **comptes d’utilisateur individuels**.
   * Nommez-la « ContactManager » pour que l’espace de noms corresponde à l’espace de noms utilisé dans l’exemple.
   * `-uld` spécifie la base de données locale au lieu de SQLite
 
@@ -351,7 +351,7 @@ Créez un contact dans le navigateur de l’administrateur. Copiez l’URL de la
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Ajouter des *modèles/contact. cs* :
+* Ajouter des *modèles/contact. cs*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
@@ -429,7 +429,7 @@ L’exemple contient les gestionnaires d’autorisations suivants :
 * `ContactManagerAuthorizationHandler`: Permet aux gestionnaires d’approuver ou de rejeter les contacts.
 * `ContactAdministratorsAuthorizationHandler`: Permet aux administrateurs d’approuver ou de refuser des contacts, ainsi que de modifier/supprimer des contacts.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Ce didacticiel est avancé. Vous devez connaître les éléments suivants :
 
@@ -488,7 +488,7 @@ Ajoutez [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowano
 
 ### <a name="configure-the-test-account"></a>Configurer le compte de test
 
-La `SeedData` classe crée deux comptes : administrateur et gestionnaire. Utilisez l' [outil secret Manager](xref:security/app-secrets) pour définir un mot de passe pour ces comptes. Définissez le mot de passe à partir du répertoire du projet (répertoire contenant *Program.cs* ) :
+La `SeedData` classe crée deux comptes : administrateur et gestionnaire. Utilisez l' [outil secret Manager](xref:security/app-secrets) pour définir un mot de passe pour ces comptes. Définissez le mot de passe à partir du répertoire du projet (répertoire contenant *Program.cs*) :
 
 ```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
@@ -661,16 +661,16 @@ Un moyen simple de tester l’application terminée consiste à lancer trois nav
 
 | Utilisateur                | Amorcé par l’application | Options                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | No                | Modifiez/supprimez les données.                |
-| manager@contoso.com | Yes               | Approuver/refuser et modifier/supprimer des données. |
-| admin@contoso.com   | Yes               | Approuver/refuser et modifier/supprimer toutes les données. |
+| test@example.com    | Non                | Modifiez/supprimez les données.                |
+| manager@contoso.com | Oui               | Approuver/refuser et modifier/supprimer des données. |
+| admin@contoso.com   | Oui               | Approuver/refuser et modifier/supprimer toutes les données. |
 
 Créez un contact dans le navigateur de l’administrateur. Copiez l’URL de la suppression et de la modification à partir du contact de l’administrateur. Collez ces liens dans le navigateur de l’utilisateur de test pour vérifier que l’utilisateur de test ne peut pas effectuer ces opérations.
 
 ## <a name="create-the-starter-app"></a>Créer l’application de démarrage
 
 * Créer une Razor application pages nommée « ContactManager »
-  * Créez l’application avec des **comptes d’utilisateur individuels** .
+  * Créez l’application avec des **comptes d’utilisateur individuels**.
   * Nommez-la « ContactManager » pour que l’espace de noms corresponde à l’espace de noms utilisé dans l’exemple.
   * `-uld` spécifie la base de données locale au lieu de SQLite
 
@@ -678,7 +678,7 @@ Créez un contact dans le navigateur de l’administrateur. Copiez l’URL de la
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Ajouter des *modèles/contact. cs* :
+* Ajouter des *modèles/contact. cs*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 

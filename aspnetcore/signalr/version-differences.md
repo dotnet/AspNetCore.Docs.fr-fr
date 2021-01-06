@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: c4c0ff83cb789e9aa35085496daa461404615726
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c37f0a3c528b6285fbf35f41eed781fb76c68de4
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061208"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854598"
 ---
 # <a name="differences-between-aspnet-no-locsignalr-and-aspnet-core-no-locsignalr"></a>Différences entre ASP.NET SignalR et ASP.net Core SignalR
 
@@ -151,7 +151,7 @@ Dans ASP.NET Core SignalR , le modèle de connexion a été simplifié. Les conn
 
 ASP.NET Core SignalR prend désormais en charge la [diffusion en continu des données](xref:signalr/streaming) du concentrateur vers le client.
 
-### <a name="state"></a>State
+### <a name="state"></a>État
 
 La possibilité de passer un état arbitraire entre les clients et le Hub (souvent appelé `HubState` ) a été supprimée, ainsi que la prise en charge des messages de progression. Il n’existe aucun équivalent de proxy de Hub pour le moment.
 
@@ -203,8 +203,8 @@ La dépendance sur jQuery a été supprimée, mais les projets peuvent toujours 
 
 ### <a name="internet-explorer-support"></a>Prise en charge d’Internet Explorer
 
-ASP.NET Core SignalR prend en charge Microsoft Internet Explorer 11 ou version ultérieure, tandis que ASP.NET SignalR prend en charge Microsoft Internet Explorer 8 ou version ultérieure.
-Pour plus d’informations sur la prise en charge des navigateurs, consultez [plates-formes prises en charge](xref:signalr/supported-platforms#javascript-client).
+ASP.NET Core SignalR ne prend pas en charge Microsoft Internet Explorer, tandis que ASP.NET SignalR prend en charge Microsoft Internet Explorer 8 ou version ultérieure.
+Pour plus d’informations, consultez <xref:signalr/supported-platforms#javascript-client>.
 
 ### <a name="javascript-client-method-syntax"></a>Syntaxe de méthode du client JavaScript
 
@@ -293,7 +293,7 @@ ASP.NET SignalR prend en charge les SQL Server et les ReDim. ASP.NET Core Signal
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Hubs](xref:signalr/hubs)
+* [Concentrateurs](xref:signalr/hubs)
 * [Client JavaScript](xref:signalr/javascript-client)
 * [Client .NET](xref:signalr/dotnet-client)
 * [Plateformes prises en charge](xref:signalr/supported-platforms)

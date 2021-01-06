@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/host-and-deploy/server
 ms.openlocfilehash: a209109210ef5e335734a974ceb0c2af7cb8e1a1
-ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94595439"
 ---
 # <a name="host-and-deploy-no-locblazor-server"></a>Héberger et déployer Blazor Server
@@ -73,14 +73,14 @@ Nous vous recommandons d’utiliser le [ SignalR service Azure](xref:signalr/sca
 >
 > Nous vous recommandons d’utiliser WebSockets pour les Blazor Server applications déployées sur Azure App service. Par défaut, le [ SignalR service Azure](xref:signalr/scale#azure-signalr-service) utilise WebSocket. Si l’application n’utilise pas le SignalR service Azure, consultez <xref:signalr/publish-to-azure-web-app#configure-the-app-in-azure-app-service> .
 >
-> Pour plus d'informations, consultez les pages suivantes :
+> Pour plus d’informations, consultez :
 >
 > * [Qu’est-ce que le SignalR service Azure ?](/azure/azure-signalr/signalr-overview)
 > * [Guide des performances pour le SignalR service Azure](/azure-signalr/signalr-concept-performance#performance-factors)
 
 ### <a name="configuration"></a>Configuration
 
-Pour configurer une application pour le SignalR service Azure, l’application doit prendre en charge les *sessions rémanentes* , où les clients sont [redirigés vers le même serveur lors du prérendu](xref:blazor/hosting-models#connection-to-the-server). L' `ServerStickyMode` option ou la valeur de configuration est définie sur `Required` . En règle générale, une application crée la configuration à l’aide de l' **_une_** des approches suivantes :
+Pour configurer une application pour le SignalR service Azure, l’application doit prendre en charge les *sessions rémanentes*, où les clients sont [redirigés vers le même serveur lors du prérendu](xref:blazor/hosting-models#connection-to-the-server). L' `ServerStickyMode` option ou la valeur de configuration est définie sur `Required` . En règle générale, une application crée la configuration à l’aide de l' **_une_** des approches suivantes :
 
    * `Startup.ConfigureServices`:
   
@@ -100,7 +100,7 @@ Pour configurer une application pour le SignalR service Azure, l’application d
        "Azure:SignalR:StickyServerMode": "Required"
        ```
 
-     * Les paramètres d’application de **configuration** de l’app service  >  **Application settings** dans le portail Azure ( **nom** : `Azure__SignalR__StickyServerMode` , **valeur** : `Required` ). Cette approche est adoptée automatiquement pour l’application si vous [approvisionnez le SignalR service Azure](#provision-the-azure-signalr-service).
+     * Les paramètres d’application de **configuration** de l’app service  >   dans le portail Azure (**nom**: `Azure__SignalR__StickyServerMode` , **valeur**: `Required` ). Cette approche est adoptée automatiquement pour l’application si vous [approvisionnez le SignalR service Azure](#provision-the-azure-signalr-service).
 
 ### <a name="provision-the-azure-no-locsignalr-service"></a>Approvisionner le SignalR service Azure
 

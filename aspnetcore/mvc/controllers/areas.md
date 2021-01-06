@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: 42eec406813adce4d7edbc1ab66a1f689c4aca0e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f3d76f612e67aeabf1f7fef694199332c732c593
+ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053525"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97878410"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
@@ -63,12 +63,12 @@ Une application web ASP.NET Core type qui utilise des zones, des contrôleurs et
 
 ### <a name="area-folder-structure"></a>Structure de dossiers Zone
 
-Imaginez une application qui contient deux groupes logiques, *Produits* et *Services* . En utilisant des zones, la structure de dossiers se présenterait comme suit :
+Imaginez une application qui contient deux groupes logiques, *Produits* et *Services*. En utilisant des zones, la structure de dossiers se présenterait comme suit :
 
 * Nom du projet
-  * Zones (Areas)
+  * Régions
     * Produits
-      * Contrôleurs
+      * Controllers
         * HomeController.cs
         * ManageController.cs
       * Les vues
@@ -78,7 +78,7 @@ Imaginez une application qui contient deux groupes logiques, *Produits* et *Serv
           * Index.cshtml
           * About.cshtml
     * Services
-      * Contrôleurs
+      * Controllers
         * HomeController.cs
       * Les vues
         * Accueil
@@ -149,7 +149,7 @@ Le dossier racine de l’application est le dossier qui contient *Startup.cs* da
 
 ### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
 
- */Views/_ViewImports. cshtml* , pour MVC et */pages/_ViewImports. cshtml* pour les Razor pages, n’est pas importé dans les vues dans les zones. Utilisez l’une des approches suivantes pour fournir des importations d’affichage à tous les affichages :
+ */Views/_ViewImports. cshtml*, pour MVC et */pages/_ViewImports. cshtml* pour les Razor pages, n’est pas importé dans les vues dans les zones. Utilisez l’une des approches suivantes pour fournir des importations d’affichage à tous les affichages :
 
 * Ajoutez *_ViewImports. cshtml* au [dossier racine](#arf)de l’application. Un *_ViewImports. cshtml* dans le dossier racine de l’application s’applique à toutes les vues de l’application.
 * Copiez le fichier *_ViewImports. cshtml* dans le dossier d’affichage approprié sous zones.
@@ -171,7 +171,7 @@ Le code suivant remplace le dossier de zone par défaut `"Areas"` par `"MyAreas"
 Les zones avec Razor pages requièrent un `Areas/<area name>/Pages` dossier à la racine de l’application. La structure de dossiers suivante est utilisée avec [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples) :
 
 * Nom du projet
-  * Zones (Areas)
+  * Régions
     * Produits
       * Pages
         * _ViewImports
@@ -191,7 +191,7 @@ Le code suivant tiré de [l’exemple de code téléchargeable](https://github.c
 
 L’exemple de code téléchargeable comprend une [vue partielle](xref:mvc/views/partial) qui contient les liens précédents et les mêmes liens sans spécification de la zone. La vue partielle étant référencée dans le [fichier de disposition](xref:mvc/views/layout), chaque page de l’application affiche les liens générés. Les liens générés sans spécification de la zone sont valides uniquement quand ils sont référencés dans une page contenue dans la même zone.
 
-Quand la zone n’est pas spécifiée, le routage dépend des valeurs *ambiantes* . Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans de nombreux cas, pour l’exemple d’application, l’utilisation des valeurs ambiantes génère des liens incorrects. Prenons l’exemple des liens générés à partir de l’extrait de code suivant :
+Quand la zone n’est pas spécifiée, le routage dépend des valeurs *ambiantes*. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans de nombreux cas, pour l’exemple d’application, l’utilisation des valeurs ambiantes génère des liens incorrects. Prenons l’exemple des liens générés à partir de l’extrait de code suivant :
 
 [!code-cshtml[](areas/31samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
 
@@ -205,13 +205,13 @@ Pour le code précédent :
 
 Un fichier *_ViewImports. cshtml* peut être ajouté à chaque dossier des *pages* de zone pour importer l’espace de noms et les tag helpers sur chaque Razor page du dossier.
 
-Considérez la zone *Services* de l’exemple de code, qui ne contient pas de fichier *_ViewImports.cshtml* . La balise suivante affiche la page */services/Manage/about* Razor :
+Considérez la zone *Services* de l’exemple de code, qui ne contient pas de fichier *_ViewImports.cshtml*. La balise suivante affiche la page */services/Manage/about* Razor :
 
 [!code-cshtml[](areas/31samples/RPareas/Areas/Services/Pages/Manage/About.cshtml)]
 
 Dans le balisage précédent :
 
-* Le nom de domaine complet doit être utilisé pour spécifier le modèle (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`).
+* Le nom de classe complet doit être utilisé pour spécifier le modèle ( `@model RPareas.Areas.Services.Pages.Manage.AboutModel` ).
 * Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) sont activés par `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`
 
 Dans l’exemple de téléchargement, la zone Products contient le fichier *_ViewImports.cshtml* suivant :
@@ -265,12 +265,12 @@ Une application web ASP.NET Core type qui utilise des zones, des contrôleurs et
 
 ### <a name="area-folder-structure"></a>Structure de dossiers Zone
 
-Imaginez une application qui contient deux groupes logiques, *Produits* et *Services* . En utilisant des zones, la structure de dossiers se présenterait comme suit :
+Imaginez une application qui contient deux groupes logiques, *Produits* et *Services*. En utilisant des zones, la structure de dossiers se présenterait comme suit :
 
 * Nom du projet
-  * Zones (Areas)
+  * Régions
     * Produits
-      * Contrôleurs
+      * Controllers
         * HomeController.cs
         * ManageController.cs
       * Les vues
@@ -280,7 +280,7 @@ Imaginez une application qui contient deux groupes logiques, *Produits* et *Serv
           * Index.cshtml
           * About.cshtml
     * Services
-      * Contrôleurs
+      * Controllers
         * HomeController.cs
       * Les vues
         * Accueil
@@ -331,7 +331,7 @@ Les liens générés par le code précédent sont valides où que ce soit dans l
 
 L’exemple de code téléchargeable comprend une [vue partielle](xref:mvc/views/partial) qui contient les liens précédents et les mêmes liens sans spécification de la zone. La vue partielle étant référencée dans le [fichier de disposition](xref:mvc/views/layout), chaque page de l’application affiche les liens générés. Les liens générés sans spécification de la zone sont valides uniquement quand ils sont référencés dans une page contenue dans la même zone et le même contrôleur.
 
-Quand la zone ou le contrôleur n’est pas spécifié, le routage dépend des valeurs *ambiantes* . Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans de nombreux cas, pour l’exemple d’application, l’utilisation des valeurs ambiantes génère des liens incorrects.
+Quand la zone ou le contrôleur n’est pas spécifié, le routage dépend des valeurs *ambiantes*. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans de nombreux cas, pour l’exemple d’application, l’utilisation des valeurs ambiantes génère des liens incorrects.
 
 Pour plus d’informations, consultez [Routage vers des actions de contrôleur](xref:mvc/controllers/routing).
 
@@ -358,7 +358,7 @@ Le code suivant remplace le dossier de zone par défaut `"Areas"` par `"MyAreas"
 Les zones avec Razor pages requièrent un `Areas/<area name>/Pages` dossier à la racine de l’application. La structure de dossiers suivante est utilisée avec [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) :
 
 * Nom du projet
-  * Zones (Areas)
+  * Régions
     * Produits
       * Pages
         * _ViewImports
@@ -380,7 +380,7 @@ Les liens générés par le code précédent sont valides où que ce soit dans l
 
 L’exemple de code téléchargeable comprend une [vue partielle](xref:mvc/views/partial) qui contient les liens précédents et les mêmes liens sans spécification de la zone. La vue partielle étant référencée dans le [fichier de disposition](xref:mvc/views/layout), chaque page de l’application affiche les liens générés. Les liens générés sans spécification de la zone sont valides uniquement quand ils sont référencés dans une page contenue dans la même zone.
 
-Quand la zone n’est pas spécifiée, le routage dépend des valeurs *ambiantes* . Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans de nombreux cas, pour l’exemple d’application, l’utilisation des valeurs ambiantes génère des liens incorrects. Prenons l’exemple des liens générés à partir de l’extrait de code suivant :
+Quand la zone n’est pas spécifiée, le routage dépend des valeurs *ambiantes*. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans de nombreux cas, pour l’exemple d’application, l’utilisation des valeurs ambiantes génère des liens incorrects. Prenons l’exemple des liens générés à partir de l’extrait de code suivant :
 
 [!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
 
@@ -394,7 +394,7 @@ Pour le code précédent :
 
 Un fichier *_ViewImports. cshtml* peut être ajouté à chaque dossier des *pages* de zone pour importer l’espace de noms et les tag helpers sur chaque Razor page du dossier.
 
-Considérez la zone *Services* de l’exemple de code, qui ne contient pas de fichier *_ViewImports.cshtml* . La balise suivante affiche la page */services/Manage/about* Razor :
+Considérez la zone *Services* de l’exemple de code, qui ne contient pas de fichier *_ViewImports.cshtml*. La balise suivante affiche la page */services/Manage/about* Razor :
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Services/Pages/Manage/About.cshtml)]
 

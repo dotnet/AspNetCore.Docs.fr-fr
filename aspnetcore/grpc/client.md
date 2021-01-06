@@ -4,7 +4,7 @@ author: jamesnk
 description: Découvrez comment appeler des services gRPC avec le client .NET gRPC.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 07/27/2020
+ms.date: 12/18/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 9322020083ce25b00b2979633ae8a692cfd4da4a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 39f9b3fde19e31ca970668552e5829308705f513
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060961"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97699139"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>Appeler les services gRPC avec le client .NET
 
@@ -201,11 +201,33 @@ Pour des performances optimales et pour éviter les erreurs inutiles dans le cli
 
 Pendant un appel de streaming bidirectionnel, le client et le service peuvent envoyer des messages entre eux à tout moment. La meilleure logique cliente pour interagir avec un appel bidirectionnel varie en fonction de la logique du service.
 
+## <a name="access-grpc-headers"></a>Accéder aux en-têtes gRPC
+
+les appels gRPC retournent des en-têtes de réponse. Les en-têtes de réponse HTTP transmettent les métadonnées de nom/valeur relatives à un appel qui n’est pas lié au message retourné.
+
+Les en-têtes sont accessibles à l’aide de `ResponseHeadersAsync` , qui retourne une collection de métadonnées. Les en-têtes sont généralement retournés avec le message de réponse ; par conséquent, vous devez les attendre.
+
+```csharp
+var client = new Greet.GreeterClient(channel);
+using var call = client.SayHelloAsync(new HelloRequest { Name = "World" });
+
+var headers = await call.ResponseHeadersAsync;
+var myValue = headers.GetValue("my-trailer-name");
+
+var response = await call.ResponseAsync;
+```
+
+`ResponseHeadersAsync` syntaxe
+
+* Doit attendre le résultat de `ResponseHeadersAsync` pour obtenir la collection d’en-têtes.
+* Ne doit pas être accessible avant `ResponseAsync` (ou le flux de réponse lors de la diffusion en continu). Si une réponse a été retournée, `ResponseHeadersAsync` retourne des en-têtes instantanément.
+* Lèvera une exception en cas d’erreur de connexion ou de serveur et si les en-têtes n’ont pas été retournés pour l’appel gRPC.
+
 ## <a name="access-grpc-trailers"></a>Accéder aux codes de fin gRPC
 
-les appels gRPC peuvent retourner des codes de fin gRPC. les codes de fin gRPC sont utilisés pour fournir les métadonnées nom/valeur relatives à un appel. Les codes de fin offrent des fonctionnalités similaires aux en-têtes HTTP, mais sont reçus à la fin de l’appel.
+les appels gRPC peuvent retourner des codes de fin de réponse. Les codes de fin sont utilisés pour fournir les métadonnées nom/valeur relatives à un appel. Les codes de fin offrent des fonctionnalités similaires aux en-têtes HTTP, mais sont reçus à la fin de l’appel.
 
-les codes de fin gRPC sont accessibles à l’aide de `GetTrailers()` , qui retourne une collection de métadonnées. Les codes de fin sont retournés une fois la réponse terminée. par conséquent, vous devez attendre tous les messages de réponse avant d’accéder aux codes de fin.
+Les codes de fin sont accessibles à l’aide de `GetTrailers()` , qui retourne une collection de métadonnées. Les codes de fin sont retournés une fois la réponse terminée. Par conséquent, vous devez attendre tous les messages de réponse avant d’accéder aux codes de fin.
 
 Les appels unaires et de streaming client doivent attendre `ResponseAsync` avant d’appeler `GetTrailers()` :
 
@@ -237,7 +259,7 @@ var trailers = call.GetTrailers();
 var myValue = trailers.GetValue("my-trailer-name");
 ```
 
-les codes de fin gRPC sont également accessibles à partir de `RpcException` . Un service peut retourner des codes de fin avec un État gRPC non OK. Dans ce cas, les codes de fin sont récupérés à partir de l’exception levée par le client gRPC :
+Les codes de fin sont également accessibles à partir de `RpcException` . Un service peut retourner des codes de fin avec un État gRPC non OK. Dans ce cas, les codes de fin sont récupérés à partir de l’exception levée par le client gRPC :
 
 ```csharp
 var client = new Greet.GreeterClient(channel);
@@ -269,7 +291,7 @@ Configurez `CallOptions.Deadline` pour définir une échéance pour un appel gRP
 
 [!code-csharp[](~/grpc/deadlines-cancellation/deadline-client.cs?highlight=7,12)]
 
-Pour plus d'informations, consultez <xref:grpc/deadlines-cancellation#deadlines>.
+Pour plus d’informations, consultez <xref:grpc/deadlines-cancellation#deadlines>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

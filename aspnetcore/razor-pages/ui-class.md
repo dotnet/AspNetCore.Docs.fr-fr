@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: razor-pages/ui-class
 ms.openlocfilehash: 0bfdb1932d829ec00c9de1bd38b7920cb1f40c51
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94570170"
 ---
 # <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>Créer une interface utilisateur réutilisable à l’aide du Razor projet de bibliothèque de classes dans ASP.net Core
@@ -122,7 +122,7 @@ Dans l’exemple suivant, la feuille de style *lib. CSS* du dossier *wwwroot* n�
 
 Pour inclure des fichiers de machine à écrire dans un RCL :
 
-1. Placez les fichiers de machine à écrire ( *. TS* ) en dehors du dossier *wwwroot* . Par exemple, placez les fichiers dans un dossier *client* .
+1. Placez les fichiers de machine à écrire (*. TS*) en dehors du dossier *wwwroot* . Par exemple, placez les fichiers dans un dossier *client* .
 
 1. Configurez la sortie de génération de machine à écrire pour le dossier *wwwroot* . Définissez la `TypescriptOutDir` propriété à l’intérieur d’un `PropertyGroup` dans le fichier projet :
 
@@ -156,7 +156,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-Lors de l’exécution de l’application consommatrice à partir de la sortie de génération ( `dotnet run` ), les ressources Web statiques sont activées par défaut dans l’environnement de développement. Pour prendre en charge les ressources dans d’autres environnements lors de l’exécution à partir de la sortie de génération, appelez `UseStaticWebAssets` sur le générateur d’hôte dans *Program.cs* :
+Lors de l’exécution de l’application consommatrice à partir de la sortie de génération ( `dotnet run` ), les ressources Web statiques sont activées par défaut dans l’environnement de développement. Pour prendre en charge les ressources dans d’autres environnements lors de l’exécution à partir de la sortie de génération, appelez `UseStaticWebAssets` sur le générateur d’hôte dans *Program.cs*:
 
 ```csharp
 using Microsoft.AspNetCore.Hosting;
@@ -190,7 +190,7 @@ Lorsque l’application consommatrice s’exécute :
 
 Lorsque le RCL est généré, un manifeste qui décrit les emplacements des ressources Web statiques est généré. L’application consommatrice lit le manifeste au moment de l’exécution pour consommer les ressources des packages et des projets référencés. Lorsqu’un nouvel élément multimédia est ajouté à un RCL, le RCL doit être régénéré pour mettre à jour son manifeste avant qu’une application consommatrice puisse accéder au nouvel élément multimédia.
 
-### <a name="publish"></a>Publier
+### <a name="publish"></a>Publish
 
 Lorsque l’application est publiée, les ressources complémentaires de tous les packages et projets référencés sont copiées dans le dossier *wwwroot* de l’application publiée sous `_content/{LIBRARY NAME}/` .
 
@@ -206,7 +206,7 @@ Razorles affichages, les pages, les contrôleurs, les modèles de page, les [ Ra
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans Visual Studio, dans le menu **Fichier** , sélectionnez **Nouveau** > **Projet**.
+* Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
 * Sélectionnez **Application web ASP.NET Core**.
 * Nommez la bibliothèque (par exemple, « Razor ClassLib ») > **OK**. Pour éviter une collision de nom de fichier avec la bibliothèque de vues générée, vérifiez que le nom de la bibliothèque ne se termine pas par `.Views`.
 * Vérifiez que **ASP.NET Core 2.1** ou ultérieur est sélectionné.
@@ -253,7 +253,7 @@ Ouvrez le fichier *.sln* dans Visual Studio. Exécutez l'application.
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-À partir d’une invite de commandes dans le répertoire *cli* , générez la RCL et l’application web.
+À partir d’une invite de commandes dans le répertoire *cli*, générez la RCL et l’application web.
 
 ```dotnetcli
 dotnet build
@@ -277,7 +277,7 @@ Dans cette section, un RCL est créé. Razor des fichiers sont ajoutés à RCL.
 
 Créez le projet RCL :
 
-* Dans Visual Studio, dans le menu **Fichier** , sélectionnez **Nouveau** > **Projet**.
+* Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
 * Sélectionnez **Application web ASP.NET Core**.
 * Nommez l’application **Razor UIClassLib** > **OK**.
 * Vérifiez que **ASP.NET Core 2.1** ou ultérieur est sélectionné.
@@ -320,7 +320,7 @@ Le fichier *_ViewStart. cshtml* est requis pour utiliser la disposition du Razor
   dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
   ```
 
-  Pour plus d’informations sur *_ViewImports. cshtml* , consultez [importation de directives partagées](xref:mvc/views/layout#importing-shared-directives)
+  Pour plus d’informations sur *_ViewImports. cshtml*, consultez [importation de directives partagées](xref:mvc/views/layout#importing-shared-directives)
 
 * Générez la bibliothèque de classes pour vérifier l’absence d’erreurs de compilateur :
 
@@ -336,16 +336,16 @@ La sortie de la génération contient *RazorUIClassLib.dll* et *RazorUIClassLib.
 
 Créez l' Razor application Web pages :
 
-* Dans **l’Explorateur de solutions** , cliquez avec le bouton droit sur la solution > **Ajouter** >  **Nouveau projet**.
+* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur la solution > **Ajouter** >  **Nouveau projet**.
 * Sélectionnez **Application web ASP.NET Core**.
 * Nommez l’application **WebApp1**.
 * Vérifiez que **ASP.NET Core 2.1** ou ultérieur est sélectionné.
 * Sélectionnez **Application web** > **OK**.
 
-* Dans **l’Explorateur de solutions** , cliquez avec le bouton droit sur **WebApp1** , puis sélectionnez **Définir comme projet de démarrage**.
-* Dans **l’Explorateur de solutions** , cliquez avec le bouton droit sur **WebApp1** , puis sélectionnez **Dépendances de build** > **Dépendances du projet**.
+* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur **WebApp1**, puis sélectionnez **Définir comme projet de démarrage**.
+* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur **WebApp1**, puis sélectionnez **Dépendances de build** > **Dépendances du projet**.
 * Vérifiez **Razor UIClassLib** comme dépendance de **application Web 1**.
-* Dans **l’Explorateur de solutions** , cliquez avec le bouton droit sur **WebApp1** , puis sélectionnez **Ajouter** > **Référence**.
+* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur **WebApp1**, puis sélectionnez **Ajouter** > **Référence**.
 * Dans la boîte de dialogue **Gestionnaire de références** , activez la case à cocher **Razor UIClassLib** > **OK**.
 
 Exécutez l'application.

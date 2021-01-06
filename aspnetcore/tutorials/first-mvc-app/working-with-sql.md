@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/working-with-sql
 ms.openlocfilehash: c082457258346637499b8ea8000dd8792931112f
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94422650"
 ---
 # <a name="part-5-work-with-a-database-in-an-aspnet-core-mvc-app"></a>Partie 5 : travailler avec une base de données dans une application ASP.NET Core MVC
@@ -58,7 +58,7 @@ Quand l’application est déployée sur un serveur de test ou de production, un
 
 LocalDB est une version allégée du moteur de base de données SQL Server Express qui est ciblée pour le développement de programmes. LocalDB démarre à la demande et s’exécute en mode utilisateur, ce qui n’implique aucune configuration complexe. Par défaut, la base de données LocalDB crée des fichiers *.mdf* dans le répertoire *C:/Users/{utilisateur}*.
 
-* Dans le menu **Affichage** , ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
+* Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
   ![Menu Affichage](working-with-sql/_static/ssox.png)
 
@@ -107,7 +107,7 @@ Remplacez le contenu du fichier *Program.cs* par le code suivant :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Program.cs)]
 
-Tester l'application
+Test de l'application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -170,7 +170,7 @@ Quand vous déployez l’application sur un serveur de test ou de production, vo
 
 LocalDB est une version allégée du moteur de base de données SQL Server Express qui est ciblée pour le développement de programmes. LocalDB démarre à la demande et s’exécute en mode utilisateur, ce qui n’implique aucune configuration complexe. Par défaut, la base de données LocalDB crée des fichiers *.mdf* dans le répertoire *C:/Users/{utilisateur}*.
 
-* Dans le menu **Affichage** , ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
+* Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
   ![Menu Affichage](working-with-sql/_static/ssox.png)
 
@@ -219,7 +219,7 @@ Remplacez le contenu du fichier *Program.cs* par le code suivant :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Program.cs)]
 
-Tester l'application
+Test de l'application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

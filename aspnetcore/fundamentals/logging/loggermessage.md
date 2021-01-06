@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/logging/loggermessage
 ms.openlocfilehash: 0224e768bd0e016eac5165dc4d9745f4b0867094
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060454"
 ---
 # <a name="high-performance-logging-with-loggermessage-in-aspnet-core"></a>Journalisation avancée avec LoggerMessage dans ASP.NET Core
@@ -47,7 +47,7 @@ L’exemple d’application illustre les fonctionnalités <xref:Microsoft.Extens
 
 La chaîne fournie à la méthode <xref:Microsoft.Extensions.Logging.LoggerMessage.Define*> est un modèle et non pas une chaîne interpolée. Les espaces réservés sont remplis dans l’ordre dans lequel les types sont spécifiés. Les noms d’espace réservé dans le modèle doivent être descriptifs et cohérents d’un modèle à l’autre. Ils servent de noms de propriété dans les données de journal structurées. Nous vous recommandons d’utiliser la [casse Pascal](/dotnet/standard/design-guidelines/capitalization-conventions) pour les noms d’espace réservé. Par exemple, `{Count}`, `{FirstName}`.
 
-Chaque message de journal est une <xref:System.Action> contenue dans un champ statique créé par [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*). Par exemple, l’exemple d’application crée un champ afin de décrire un message de journal pour une demande GET pour la page Index ( *Internal/LoggerExtensions.cs* ) :
+Chaque message de journal est une <xref:System.Action> contenue dans un champ statique créé par [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*). Par exemple, l’exemple d’application crée un champ afin de décrire un message de journal pour une demande GET pour la page Index (*Internal/LoggerExtensions.cs*) :
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet1)]
 
@@ -95,7 +95,7 @@ La méthode d’extension statique pour l’ajout d’une citation, `QuoteAdded`
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet10)]
 
-Dans le modèle de page de la page d’index ( *pages/index. cshtml. cs* ), `QuoteAdded` est appelé pour enregistrer le message :
+Dans le modèle de page de la page d’index (*pages/index. cshtml. cs*), `QuoteAdded` est appelé pour enregistrer le message :
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet3&highlight=6)]
 
@@ -108,7 +108,7 @@ info: LoggerMessageSample.Pages.IndexModel[2]
           consequences of avoiding reality. - Ayn Rand')
 ```
 
-L’exemple d’application implémente un modèle [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) pour la suppression de guillemets. Un message d’information est journalisé chaque fois qu’une opération de suppression réussit. Un message d’erreur est journalisé chaque fois qu’une opération de suppression donne lieu à la levée d’une exception. Le message de journal lié à l’échec d’une opération de suppression inclut la trace des exceptions ( *Internal/LoggerExtensions.cs* ) :
+L’exemple d’application implémente un modèle [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) pour la suppression de guillemets. Un message d’information est journalisé chaque fois qu’une opération de suppression réussit. Un message d’erreur est journalisé chaque fois qu’une opération de suppression donne lieu à la levée d’une exception. Le message de journal lié à l’échec d’une opération de suppression inclut la trace des exceptions (*Internal/LoggerExtensions.cs*) :
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet3)]
 
@@ -118,7 +118,7 @@ Notez la manière dont l’exception est passée au délégué dans `QuoteDelete
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet11)]
 
-Dans le modèle de page pour la page Index, la réussite de la suppression d’une citation se traduit par l’appel de la méthode `QuoteDeleted` sur le journaliseur. Quand une citation à supprimer n’est pas trouvée, une <xref:System.ArgumentNullException> est levée. L’exception est interceptée par l’instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) et enregistrée en appelant la `QuoteDeleteFailed` méthode sur le journal dans le bloc [catch](/dotnet/csharp/language-reference/keywords/try-catch) ( *pages/index. cshtml. cs* ) :
+Dans le modèle de page pour la page Index, la réussite de la suppression d’une citation se traduit par l’appel de la méthode `QuoteDeleted` sur le journaliseur. Quand une citation à supprimer n’est pas trouvée, une <xref:System.ArgumentNullException> est levée. L’exception est interceptée par l’instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) et enregistrée en appelant la `QuoteDeleteFailed` méthode sur le journal dans le bloc [catch](/dotnet/csharp/language-reference/keywords/try-catch) (*pages/index. cshtml. cs*) :
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet5&highlight=9,13)]
 
@@ -159,7 +159,7 @@ Activer `IncludeScopes` dans la section du journal de la console de *appsettings
 
 [!code-json[](loggermessage/samples/3.x/LoggerMessageSample/appsettings.json?highlight=3-5)]
 
-Pour créer une étendue de journal, ajoutez un champ destiné à contenir un délégué <xref:System.Func%601> pour l’étendue. L’exemple d’application crée un champ intitulé `_allQuotesDeletedScope` ( *Internal/LoggerExtensions.cs* ) :
+Pour créer une étendue de journal, ajoutez un champ destiné à contenir un délégué <xref:System.Func%601> pour l’étendue. L’exemple d’application crée un champ intitulé `_allQuotesDeletedScope` (*Internal/LoggerExtensions.cs*) :
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet4)]
 
@@ -213,7 +213,7 @@ L’exemple d’application illustre les fonctionnalités <xref:Microsoft.Extens
 
 La chaîne fournie à la méthode <xref:Microsoft.Extensions.Logging.LoggerMessage.Define*> est un modèle et non pas une chaîne interpolée. Les espaces réservés sont remplis dans l’ordre dans lequel les types sont spécifiés. Les noms d’espace réservé dans le modèle doivent être descriptifs et cohérents d’un modèle à l’autre. Ils servent de noms de propriété dans les données de journal structurées. Nous vous recommandons d’utiliser la [casse Pascal](/dotnet/standard/design-guidelines/capitalization-conventions) pour les noms d’espace réservé. Par exemple, `{Count}`, `{FirstName}`.
 
-Chaque message de journal est une <xref:System.Action> contenue dans un champ statique créé par [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*). Par exemple, l’exemple d’application crée un champ afin de décrire un message de journal pour une demande GET pour la page Index ( *Internal/LoggerExtensions.cs* ) :
+Chaque message de journal est une <xref:System.Action> contenue dans un champ statique créé par [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*). Par exemple, l’exemple d’application crée un champ afin de décrire un message de journal pour une demande GET pour la page Index (*Internal/LoggerExtensions.cs*) :
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet1)]
 
@@ -261,7 +261,7 @@ La méthode d’extension statique pour l’ajout d’une citation, `QuoteAdded`
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet10)]
 
-Dans le modèle de page de la page d’index ( *pages/index. cshtml. cs* ), `QuoteAdded` est appelé pour enregistrer le message :
+Dans le modèle de page de la page d’index (*pages/index. cshtml. cs*), `QuoteAdded` est appelé pour enregistrer le message :
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet3&highlight=6)]
 
@@ -274,7 +274,7 @@ info: LoggerMessageSample.Pages.IndexModel[2]
           consequences of avoiding reality. - Ayn Rand')
 ```
 
-L’exemple d’application implémente un modèle [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) pour la suppression de guillemets. Un message d’information est journalisé chaque fois qu’une opération de suppression réussit. Un message d’erreur est journalisé chaque fois qu’une opération de suppression donne lieu à la levée d’une exception. Le message de journal lié à l’échec d’une opération de suppression inclut la trace des exceptions ( *Internal/LoggerExtensions.cs* ) :
+L’exemple d’application implémente un modèle [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) pour la suppression de guillemets. Un message d’information est journalisé chaque fois qu’une opération de suppression réussit. Un message d’erreur est journalisé chaque fois qu’une opération de suppression donne lieu à la levée d’une exception. Le message de journal lié à l’échec d’une opération de suppression inclut la trace des exceptions (*Internal/LoggerExtensions.cs*) :
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet3)]
 
@@ -284,7 +284,7 @@ Notez la manière dont l’exception est passée au délégué dans `QuoteDelete
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet11)]
 
-Dans le modèle de page pour la page Index, la réussite de la suppression d’une citation se traduit par l’appel de la méthode `QuoteDeleted` sur le journaliseur. Quand une citation à supprimer n’est pas trouvée, une <xref:System.ArgumentNullException> est levée. L’exception est interceptée par l’instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) et enregistrée en appelant la `QuoteDeleteFailed` méthode sur le journal dans le bloc [catch](/dotnet/csharp/language-reference/keywords/try-catch) ( *pages/index. cshtml. cs* ) :
+Dans le modèle de page pour la page Index, la réussite de la suppression d’une citation se traduit par l’appel de la méthode `QuoteDeleted` sur le journaliseur. Quand une citation à supprimer n’est pas trouvée, une <xref:System.ArgumentNullException> est levée. L’exception est interceptée par l’instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) et enregistrée en appelant la `QuoteDeleteFailed` méthode sur le journal dans le bloc [catch](/dotnet/csharp/language-reference/keywords/try-catch) (*pages/index. cshtml. cs*) :
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet5&highlight=14,18)]
 
@@ -327,7 +327,7 @@ Activer `IncludeScopes` dans la section du journal de la console de *appsettings
 
 [!code-json[](loggermessage/samples/2.x/LoggerMessageSample/appsettings.json?highlight=3-5)]
 
-Pour créer une étendue de journal, ajoutez un champ destiné à contenir un délégué <xref:System.Func%601> pour l’étendue. L’exemple d’application crée un champ intitulé `_allQuotesDeletedScope` ( *Internal/LoggerExtensions.cs* ) :
+Pour créer une étendue de journal, ajoutez un champ destiné à contenir un délégué <xref:System.Func%601> pour l’étendue. L’exemple d’application crée un champ intitulé `_allQuotesDeletedScope` (*Internal/LoggerExtensions.cs*) :
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet4)]
 
@@ -364,4 +364,4 @@ info: LoggerMessageSample.Pages.IndexModel[4]
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Logging](xref:fundamentals/logging/index)
+* [Journalisation](xref:fundamentals/logging/index)

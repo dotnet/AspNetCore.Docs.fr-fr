@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 29f1a1f211688a1edcd31c7230e7216df7c89eef
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 4813668f5278473fbaae36d572e69700b3fe771a
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506810"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97764235"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>Outils pour ASP.NET Core Blazor
 
@@ -143,6 +143,6 @@ Pour plus d’informations sur les Blazor modèles d’hébergement de, consulte
 Les options de modèle sont disponibles en passant l’option d’aide ( `-h` ou `--help` ) à la [`dotnet new`](/dotnet/core/tools/dotnet-new) commande CLI dans une interface de commande :
 
 ```dotnetcli
-dotnet new blazorwasm --h
-dotnet new blazorserver --h
+dotnet new blazorwasm -h
+dotnet new blazorserver -h
 ```

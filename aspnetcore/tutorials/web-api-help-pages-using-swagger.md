@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/web-api-help-pages-using-swagger
 ms.openlocfilehash: e5442c88048cf41e289fb476b4082cb6029b1b75
-ms.sourcegitcommit: 0d40fc4932531ce13fc4ee9432144584e03c2f1c
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93062452"
 ---
 # <a name="aspnet-core-web-api-documentation-with-swagger--openapi"></a>ASP.NET Core la documentation de l’API Web avec Swagger/OpenAPI
@@ -50,7 +50,7 @@ En résumé :
 
 ## <a name="openapi-specification-openapijson"></a>Spécification OpenAPI (openapi.js)
 
-La spécification OpenAPI est un document qui décrit les fonctionnalités de votre API. Le document est basé sur les annotations XML et d’attribut dans les contrôleurs et les modèles. Il s’agit de la partie fondamentale du Flow OpenAPI et est utilisée pour diriger les outils tels que SwaggerUI. Par défaut, il est nommé *openapi.js* . Voici un exemple de spécification OpenAPI, réduite par souci de concision :
+La spécification OpenAPI est un document qui décrit les fonctionnalités de votre API. Le document est basé sur les annotations XML et d’attribut dans les contrôleurs et les modèles. Il s’agit de la partie fondamentale du Flow OpenAPI et est utilisée pour diriger les outils tels que SwaggerUI. Par défaut, il est nommé *openapi.js*. Voici un exemple de spécification OpenAPI, réduite par souci de concision :
 
 ```json
 {
@@ -144,7 +144,7 @@ L' [interface utilisateur de Swagger](https://swagger.io/swagger-ui/) offre une 
 
 ![Interface utilisateur Swagger](web-api-help-pages-using-swagger/_static/swagger-ui.png)
 
-Chaque méthode d’action publique dans vos contrôleurs peut être testée à partir de l’IU. Sélectionnez un nom de méthode pour développer la section. Ajoutez tous les paramètres nécessaires, puis sélectionnez **essayer !** .
+Chaque méthode d’action publique dans vos contrôleurs peut être testée à partir de l’IU. Sélectionnez un nom de méthode pour développer la section. Ajoutez tous les paramètres nécessaires, puis sélectionnez **essayer !**.
 
 ![Exemple de test GET Swagger](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
 

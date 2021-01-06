@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: d99d5bfd84c8c7e7d0c479964211591be434330c
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: bfda45afeea67a11ad775996d94a06125df08bc6
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855519"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854585"
 ---
 # <a name="part-4-add-a-model-to-an-aspnet-core-mvc-app"></a>Partie 4 : ajouter un modèle à une application ASP.NET Core MVC
 
@@ -50,7 +50,7 @@ Ajoutez un fichier nommé *Movie.cs* au dossier *Models*.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-Cliquez avec le bouton droit sur le dossier *Models* > **Ajouter** une classe  >  **New Class**  >  **vide** Class. Nommez le fichier *Movie.cs*.
+Cliquez avec le bouton droit sur le dossier *Models* > **Ajouter** une classe  >    >  **vide** Class. Nommez le fichier *Movie.cs*.
 
 ---
 
@@ -164,11 +164,11 @@ Ajoutez une chaîne de connexion au *appsettings.json* fichier :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-11)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-12)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-11)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
 
 ---
 
@@ -304,7 +304,7 @@ La méthode `Up` crée la table Movie et configure `Id` comme la clé primaire. 
 
 <a name="test"></a>
 
-## <a name="test-the-app"></a>Tester l’application
+## <a name="test-the-app"></a>Test de l'application
 
 * Exécutez l’application et cliquez sur le lien **Movie App**.
 
@@ -450,7 +450,7 @@ Ajoutez un fichier nommé *Movie.cs* au dossier *Models*.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-Cliquez avec le bouton droit sur le dossier *Models* > **Ajouter** une classe  >  **New Class**  >  **vide** Class. Nommez le fichier *Movie.cs*.
+Cliquez avec le bouton droit sur le dossier *Models* > **Ajouter** une classe  >    >  **vide** Class. Nommez le fichier *Movie.cs*.
 
 ---
 
@@ -690,7 +690,7 @@ La méthode `Up` crée la table Movie et configure `Id` comme la clé primaire. 
 
 <a name="test"></a>
 
-## <a name="test-the-app"></a>Tester l’application
+## <a name="test-the-app"></a>Test de l'application
 
 * Exécutez l’application et cliquez sur le lien **Movie App**.
 
@@ -1017,7 +1017,7 @@ Vous avez créé un contexte de base de données et vous l’avez inscrit dans l
 
 <a name="test"></a>
 
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a>Test de l'application
 
 * Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
 

@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/performance
 ms.openlocfilehash: 622c6ba042c5832f99bba379fadd9aba7d7163f2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060402"
 ---
 # <a name="performance-best-practices-with-grpc"></a>Meilleures pratiques en matière de performances avec gRPC
@@ -50,7 +50,7 @@ Les canaux peuvent être partagés et réutilisés en toute sécurité entre les
 * Un canal et des clients créés à partir du canal peuvent être utilisés en toute sécurité par plusieurs threads.
 * Les clients créés à partir du canal peuvent effectuer plusieurs appels simultanés.
 
-la fabrique de clients gRPC offre une méthode centralisée pour configurer les canaux. Il réutilise automatiquement les canaux sous-jacents. Pour plus d'informations, consultez <xref:grpc/clientfactory>.
+la fabrique de clients gRPC offre une méthode centralisée pour configurer les canaux. Il réutilise automatiquement les canaux sous-jacents. Pour plus d’informations, consultez <xref:grpc/clientfactory>.
 
 ## <a name="connection-concurrency"></a>Accès concurrentiel de la connexion
 
@@ -89,7 +89,7 @@ Il existe deux solutions de contournement pour les applications .NET Core 3,1 :
 > * Conflit de threads entre les flux tentant d’écrire dans la connexion.
 > * La perte de paquets de connexion entraîne le blocage de tous les appels au niveau de la couche TCP.
 
-## <a name="load-balancing"></a>Équilibrage de la charge
+## <a name="load-balancing"></a>Équilibrage de charge
 
 Certains équilibrages de charge ne fonctionnent pas efficacement avec gRPC. Les équilibreurs de charge L4 (transport) fonctionnent à un niveau de connexion, en répartissant les connexions TCP entre les points de terminaison. Cette approche fonctionne bien pour le chargement des appels d’API d’équilibrage effectués avec HTTP/1.1. Les appels simultanés effectués avec HTTP/1.1 sont envoyés sur des connexions différentes, ce qui permet d’équilibrer la charge des appels entre les points de terminaison.
 
@@ -127,7 +127,7 @@ De nombreux proxys L7 sont disponibles. Certaines options sont les suivantes :
 
 les appels gRPC entre un client et un service sont généralement envoyés via des sockets TCP. TCP est idéal pour la communication sur un réseau, mais la [communication entre processus (IPC)](https://wikipedia.org/wiki/Inter-process_communication) est plus efficace lorsque le client et le service se trouvent sur le même ordinateur.
 
-Envisagez d’utiliser un transport comme les sockets de domaine UNIX ou les canaux nommés pour les appels gRPC entre les processus sur le même ordinateur. Pour plus d'informations, consultez <xref:grpc/interprocess>.
+Envisagez d’utiliser un transport comme les sockets de domaine UNIX ou les canaux nommés pour les appels gRPC entre les processus sur le même ordinateur. Pour plus d’informations, consultez <xref:grpc/interprocess>.
 
 ## <a name="keep-alive-pings"></a>Conserver les pings actifs
 

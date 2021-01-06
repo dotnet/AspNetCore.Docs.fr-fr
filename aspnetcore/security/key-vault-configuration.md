@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: 7f5cd3de38f1e45d9b188c513a0e62ca658b2992
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: 4b035fe59b8576eb387ddce67943386ccab55492
+ms.sourcegitcommit: 8dfcd2b4be936950c228b4d98430622a04254cd7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035903"
+ms.lasthandoff: 12/26/2020
+ms.locfileid: "97792084"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 
@@ -41,9 +41,12 @@ Ce document explique comment utiliser le fournisseur de configuration [Azure Key
 
 ## <a name="packages"></a>Paquets
 
-Ajoutez une référence de package à la [Azure.Extensions.AspNetCore.Configfiguration. ](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets/) Package de secrets.
+Ajoutez des références de package pour les packages suivants :
 
-## <a name="sample-app"></a>Exemple d’application
+* [Azure.Extensions.AspNetCore.Configfiguration. Secrète](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets)
+* [Bleu.Identity](https://www.nuget.org/packages/Azure.Identity)
+
+## <a name="sample-app"></a>Exemple d'application
 
 L’exemple d’application s’exécute dans l’un des deux modes déterminés par l' `#define` instruction en haut du fichier *Program.cs* :
 
@@ -193,7 +196,7 @@ L’exemple d’application :
 
 * Crée une instance de la `DefaultAzureCredential` classe, les informations d’identification tente d’obtenir un jeton d’accès à partir de l’environnement pour les ressources Azure.
 * Une nouvelle [`Azure.Security.KeyVault.Secrets.Secrets`](/dotnet/api/azure.security.keyvault.secrets) est créée avec l' `DefaultAzureCredential` instance.
-* L' `Azure.Security.KeyVault.Secrets.Secrets` instance est utilisée avec une implémentation par défaut de `Azure.Extensions.Aspnetcore.Configuration.Secrets` qui charge toutes les valeurs de secret et remplace les doubles tirets ( `--` ) par des signes deux-points ( `:` ) dans les noms de clés.
+* L' `Azure.Security.KeyVault.Secrets.Secrets` instance est utilisée avec une implémentation par défaut de `Azure.Extensions.AspNetCore.Configuration.Secrets` qui charge toutes les valeurs de secret et remplace les doubles tirets ( `--` ) par des signes deux-points ( `:` ) dans les noms de clés.
 
 [!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet2&highlight=12-14)]
 
@@ -227,23 +230,23 @@ config.AddAzureKeyVault(new SecretClient(new URI("Your Key Vault Endpoint"), new
 
 | Propriété         | Description |
 | ---------------- | ----------- |
-| `Manager`        | `Azure.Extensions.Aspnetcore.Configuration.Secrets` instance utilisée pour contrôler le chargement du secret. |
+| `Manager`        | `Azure.Extensions.AspNetCore.Configuration.Secrets` instance utilisée pour contrôler le chargement du secret. |
 | `ReloadInterval` | `Timespan` pour attendre entre les tentatives d’interrogation du coffre de clés pour les modifications. La valeur par défaut est `null` (la configuration n’est pas rechargée). |
 
 ## <a name="use-a-key-name-prefix"></a>Utiliser un préfixe de nom de clé
 
-AddAzureKeyVault fournit une surcharge qui accepte une implémentation de `Azure.Extensions.Aspnetcore.Configuration.Secrets` , qui vous permet de contrôler la façon dont les secrets de coffre de clés sont convertis en clés de configuration. Par exemple, vous pouvez implémenter l’interface pour charger des valeurs de secret en fonction d’une valeur de préfixe que vous fournissez au démarrage de l’application. Cela vous permet, par exemple, de charger des secrets basés sur la version de l’application.
+AddAzureKeyVault fournit une surcharge qui accepte une implémentation de `Azure.Extensions.AspNetCore.Configuration.Secrets` , qui vous permet de contrôler la façon dont les secrets de coffre de clés sont convertis en clés de configuration. Par exemple, vous pouvez implémenter l’interface pour charger des valeurs de secret en fonction d’une valeur de préfixe que vous fournissez au démarrage de l’application. Cela vous permet, par exemple, de charger des secrets basés sur la version de l’application.
 
 > [!WARNING]
 > N’utilisez pas de préfixes sur des secrets de coffre de clés pour placer des secrets pour plusieurs applications dans le même coffre de clés ou pour placer des secrets d’environnement (par exemple, le *développement* et les secrets de *production* ) dans le même coffre. Nous recommandons que les applications et les environnements de développement/production utilisent des coffres de clés distincts pour isoler les environnements d’application pour le plus haut niveau de sécurité.
 
 Dans l’exemple suivant, un secret est établi dans le coffre de clés (et à l’aide de l’outil secret Manager pour l’environnement de développement) pour `5000-AppSecret` (les périodes ne sont pas autorisées dans les noms de secret de coffre de clés). Ce secret représente un secret d’application pour la version 5.0.0.0 de l’application. Pour une autre version de l’application, 5.1.0.0, un secret est ajouté au coffre de clés (et à l’aide de l’outil secret Manager) pour `5100-AppSecret` . Chaque version de l’application charge sa valeur secrète avec version dans sa configuration en tant que `AppSecret` , en éliminant la version au fur et à mesure qu’elle charge le secret.
 
-AddAzureKeyVault est appelé avec un personnalisé `Azure.Extensions.Aspnetcore.Configuration.Secrets` :
+AddAzureKeyVault est appelé avec un personnalisé `Azure.Extensions.AspNetCore.Configuration.Secrets` :
 
 [!code-csharp[](key-vault-configuration/samples_snapshot/Program.cs)]
 
-L' `Azure.Extensions.Aspnetcore.Configuration.Secrets` implémentation réagit aux préfixes de version des secrets pour charger le secret approprié dans la configuration :
+L' `Azure.Extensions.AspNetCore.Configuration.Secrets` implémentation réagit aux préfixes de version des secrets pour charger le secret approprié dans la configuration :
 
 * `Load` charge un secret lorsque son nom commence par le préfixe. Les autres secrets ne sont pas chargés.
 * `GetKey`:
@@ -387,7 +390,7 @@ Ce document explique comment utiliser le fournisseur de configuration [Microsoft
 
 Ajoutez une référence de package à la [Microsoft.Extensions.Configfiguration. Package AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) .
 
-## <a name="sample-app"></a>Exemple d’application
+## <a name="sample-app"></a>Exemple d'application
 
 L’exemple d’application s’exécute dans l’un des deux modes déterminés par l' `#define` instruction en haut du fichier *Program.cs* :
 

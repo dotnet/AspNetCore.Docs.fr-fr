@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/debug
 ms.openlocfilehash: 990882c03ddc14c664aa8da0518fb36087199aca
-ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94550515"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de débogage Blazor WebAssembly
@@ -45,13 +45,13 @@ Les scénarios disponibles sont les suivants :
 * Dans la fenêtre variables *locales* , observez les valeurs des variables locales.
 * Consultez la pile des appels, y compris les chaînes d’appels entre JavaScript et .NET.
 
-Pour le moment, vous *ne pouvez pas* :
+Pour le moment, vous *ne pouvez pas*:
 
 * Arrêt sur les exceptions non gérées.
 * Atteindre les points d’arrêt pendant le démarrage de l’application avant l’exécution du proxy de débogage. Cela comprend les points d’arrêt dans `Program.Main` ( `Program.cs` ) et les points d’arrêt dans les [ `OnInitialized{Async}` méthodes](xref:blazor/components/lifecycle#component-initialization-methods) des composants qui sont chargés par la première page demandée à partir de l’application.
 * Déboguez dans des scénarios non locaux (par exemple, [sous-système Windows pour Linux (WSL)](/windows/wsl/) ou [Visual Studio Codespaces](/visualstudio/codespaces/overview/what-is-vsonline)).
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Le débogage requiert l’un des navigateurs suivants :
 
@@ -95,7 +95,7 @@ Pour déboguer une Blazor WebAssembly application dans Visual Studio :
 1. Appuyez sur <kbd>F5</kbd> pour exécuter l’application dans le débogueur.
 
    > [!NOTE]
-   > **Exécuter sans débogage** ( <kbd>CTRL</kbd> + <kbd>F5</kbd>) n’est pas pris en charge. Lorsque l’application est exécutée dans la configuration Debug, le débogage entraîne toujours une réduction des performances minime.
+   > **Exécuter sans débogage** (<kbd>CTRL</kbd> + <kbd>F5</kbd>) n’est pas pris en charge. Lorsque l’application est exécutée dans la configuration Debug, le débogage entraîne toujours une réduction des performances minime.
 
 1. Dans l' `*Client*` application, définissez un point d’arrêt sur la `currentCount++;` ligne dans `Pages/Counter.razor` .
 1. Dans le navigateur, accédez à la `Counter` page et sélectionnez le bouton **Click Me** pour atteindre le point d’arrêt.
@@ -172,13 +172,13 @@ Pour plus d’informations sur l’utilisation d’un chemin d’accès de base 
    Si vous recevez la notification :
 
    * Vérifiez que la dernière [extension C# pour Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) est installée. Pour inspecter les extensions installées, ouvrez **Afficher** les  >  **Extensions** à partir de la barre de menus ou sélectionnez l’icône **Extensions** dans l’encadré **activité** .
-   * Confirmez que le débogage de l’aperçu JavaScript est activé. Ouvrez les paramètres à partir de la barre de menus (paramètres préférences de **fichiers**  >  **Preferences**  >  **Settings** ). Recherchez à l’aide des mots clés `debug preview` . Dans les résultats de la recherche, vérifiez que la case à cocher **Déboguer > JavaScript : utiliser l’aperçu** est activée. Si l’option permettant d’activer le débogage de l’aperçu n’est pas présente, effectuez une mise à niveau vers la dernière version de VS Code ou installez l' [extension de débogueur JavaScript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) (VS Code versions 1,46 ou antérieures).
+   * Confirmez que le débogage de l’aperçu JavaScript est activé. Ouvrez les paramètres à partir de la barre de menus (paramètres préférences de **fichiers**  >    >  ). Recherchez à l’aide des mots clés `debug preview` . Dans les résultats de la recherche, vérifiez que la case à cocher **Déboguer > JavaScript : utiliser l’aperçu** est activée. Si l’option permettant d’activer le débogage de l’aperçu n’est pas présente, effectuez une mise à niveau vers la dernière version de VS Code ou installez l' [extension de débogueur JavaScript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) (VS Code versions 1,46 ou antérieures).
    * Rechargez la fenêtre.
 
 1. Démarrez le débogage à l’aide du raccourci clavier <kbd>F5</kbd> ou de l’élément de menu.
 
    > [!NOTE]
-   > **Exécuter sans débogage** ( <kbd>CTRL</kbd> + <kbd>F5</kbd>) n’est pas pris en charge. Lorsque l’application est exécutée dans la configuration Debug, le débogage entraîne toujours une réduction des performances minime.
+   > **Exécuter sans débogage** (<kbd>CTRL</kbd> + <kbd>F5</kbd>) n’est pas pris en charge. Lorsque l’application est exécutée dans la configuration Debug, le débogage entraîne toujours une réduction des performances minime.
 
 1. Quand vous y êtes invité, sélectionnez l’option de **Blazor WebAssembly débogage** pour démarrer le débogage.
 
@@ -284,7 +284,7 @@ Pour déboguer une Blazor WebAssembly application dans Visual Studio pour Mac :
 1. Appuyez sur <kbd>&#8984;</kbd> + <kbd>&#8617;</kbd> pour exécuter l’application dans le débogueur.
 
    > [!NOTE]
-   > **Exécuter sans débogage** ( <kbd>&#8997;</kbd> + <kbd>&#8984;</kbd> + <kbd>&#8617;</kbd>) n’est pas pris en charge. Lorsque l’application est exécutée dans la configuration Debug, le débogage entraîne toujours une réduction des performances minime.
+   > **Exécuter sans débogage** (<kbd>&#8997;</kbd> + <kbd>&#8984;</kbd> + <kbd>&#8617;</kbd>) n’est pas pris en charge. Lorsque l’application est exécutée dans la configuration Debug, le débogage entraîne toujours une réduction des performances minime.
 
    > [!IMPORTANT]
    > Google Chrome ou Microsoft Edge doit être le navigateur sélectionné pour la session de débogage.
@@ -364,7 +364,7 @@ Pour obtenir des instructions de configuration du [pare-feu Windows](/windows/se
 Si vous rencontrez des erreurs, les conseils suivants peuvent vous aider :
 
 * Dans l’onglet **débogueur** , ouvrez les outils de développement de votre navigateur. Dans la console, exécutez `localStorage.clear()` pour supprimer tous les points d’arrêt.
-* Confirmez que vous avez installé et approuvé le certificat de développement ASP.NET Core HTTPs. Pour plus d'informations, consultez <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
+* Confirmez que vous avez installé et approuvé le certificat de développement ASP.NET Core HTTPs. Pour plus d’informations, consultez <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
 * Visual Studio requiert l’option **activer le débogage JavaScript pour ASP.net (chrome, Edge et IE)** dans **Outils**  >  **options**  >  **débogage**  >  **général**. Il s’agit du paramètre par défaut pour Visual Studio. Si le débogage ne fonctionne pas, vérifiez que l’option est sélectionnée.
 * Si votre environnement utilise un proxy HTTP, assurez-vous qu' `localhost` il est inclus dans les paramètres de contournement du proxy. Pour ce faire, vous pouvez définir la `NO_PROXY` variable d’environnement dans l’un ou l’autre des éléments suivants :
   * `launchSettings.json`Fichier pour le projet.

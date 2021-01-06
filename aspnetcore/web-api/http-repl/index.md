@@ -4,7 +4,7 @@ author: scottaddie
 description: Découvrez comment utiliser l’outil Global .NET Core HttpRepl pour parcourir et tester une API Web ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
-ms.custom: mvc, devx-track-azurecli
+ms.custom: mvc
 ms.date: 11/12/2020
 no-loc:
 - appsettings.json
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: c661141c1bec93c0f7b6404964dc0bca2319b529
-ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
+ms.openlocfilehash: 1027887738740d50c30e24e800c0402b1ce4ad02
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634611"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854663"
 ---
 # <a name="test-web-apis-with-the-httprepl"></a>Tester les API Web avec HttpRepl
 
@@ -48,7 +48,7 @@ Les [verbes HTTP](https://github.com/microsoft/api-guidelines/blob/vNext/Guideli
 
 Pour continuer, [consultez ou téléchargez l’exemple d’API web ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([comment télécharger](xref:index#how-to-download-a-sample)).
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [!INCLUDE [2.1-SDK](~/includes/2.1-SDK.md)]
 
@@ -62,7 +62,7 @@ dotnet tool install -g Microsoft.dotnet-httprepl
 
 Un [outil global .NET Core](/dotnet/core/tools/global-tools#install-a-global-tool) est installé à partir du package NuGet [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl).
 
-## <a name="usage"></a>Utilisation
+## <a name="usage"></a>Usage
 
 Une fois l’installation de l’outil réussie, exécutez la commande suivante pour démarrer le HttpRepl :
 
@@ -604,7 +604,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 Pour émettre une requête HTTP PUT :
 
-1. *Facultatif* : exécutez la `get` commande pour afficher les données avant de les modifier :
+1. *Facultatif*: exécutez la `get` commande pour afficher les données avant de les modifier :
 
     ```console
     https://localhost:5001/fruits> get
@@ -666,7 +666,7 @@ Pour émettre une requête HTTP PUT :
     Server: Kestrel
     ```
 
-1. *Facultatif* : émettez une `get` commande pour voir les modifications. Par exemple, si vous avez tapé « cerise » dans l’éditeur de texte, un `get` retourne la sortie suivante :
+1. *Facultatif*: émettez une `get` commande pour voir les modifications. Par exemple, si vous avez tapé « cerise » dans l’éditeur de texte, un `get` retourne la sortie suivante :
 
     ```console
     https://localhost:5001/fruits> get
@@ -717,7 +717,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 Pour émettre une requête HTTP DELETE :
 
-1. *Facultatif* : exécutez la `get` commande pour afficher les données avant de les modifier :
+1. *Facultatif*: exécutez la `get` commande pour afficher les données avant de les modifier :
 
     ```console
     https://localhost:5001/fruits> get
@@ -757,7 +757,7 @@ Pour émettre une requête HTTP DELETE :
     Server: Kestrel
     ```
 
-1. *Facultatif* : émettez une `get` commande pour voir les modifications. Dans cet exemple, un `get` retourne la sortie suivante :
+1. *Facultatif*: émettez une `get` commande pour voir les modifications. Dans cet exemple, un `get` retourne la sortie suivante :
 
     ```console
     https://localhost:5001/fruits> get
@@ -1059,7 +1059,7 @@ Si vous exécutez fréquemment le même jeu de commandes HttpRepl, envisagez de 
     https://localhost:5001/> run C:\http-repl-scripts\people-script.txt
     ```
 
-    Vous obtenez la sortie suivante :
+    Vous obtenez la sortie suivante :
 
     ```console
     https://localhost:5001/> set base https://localhost:5001

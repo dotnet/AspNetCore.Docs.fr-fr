@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/routing
 ms.openlocfilehash: e134832ad00b10bb01239afa06acc74d86707af1
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94422559"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
@@ -215,7 +215,7 @@ L’exemple de code précédent est destiné à illustrer les concepts de base d
 * Connectez-vous à un fichier ou à une base de données.
 * Incluez des détails tels que l’utilisateur, l’adresse IP, le nom du point de terminaison sensible, et bien plus encore.
 
-Les métadonnées de la stratégie d’audit `AuditPolicyAttribute` sont définies en tant que `Attribute` pour une utilisation plus facile avec les infrastructures basées sur des classes telles que les contrôleurs et SignalR . Lors de l’utilisation *de l’itinéraire vers le code* :
+Les métadonnées de la stratégie d’audit `AuditPolicyAttribute` sont définies en tant que `Attribute` pour une utilisation plus facile avec les infrastructures basées sur des classes telles que les contrôleurs et SignalR . Lors de l’utilisation *de l’itinéraire vers le code*:
 
 * Les métadonnées sont jointes à une API de générateur.
 * Les infrastructures basées sur des classes incluent tous les attributs de la méthode et de la classe correspondantes lors de la création de points de terminaison.
@@ -437,7 +437,7 @@ Les modèles d’URL qui tentent de capturer un nom de fichier avec une extensio
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Les paramètres de route peuvent avoir des **valeurs par défaut** , désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Les paramètres de routage sont rendus facultatifs en ajoutant un point d’interrogation ( `?` ) à la fin du nom du paramètre. Par exemple, `id?`. La différence entre les valeurs facultatives et les paramètres d’itinéraire par défaut est la suivante :
+Les paramètres de route peuvent avoir des **valeurs par défaut**, désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Les paramètres de routage sont rendus facultatifs en ajoutant un point d’interrogation ( `?` ) à la fin du nom du paramètre. Par exemple : `id?`. La différence entre les valeurs facultatives et les paramètres d’itinéraire par défaut est la suivante :
 
 * Un paramètre d’itinéraire avec une valeur par défaut produit toujours une valeur.
 * Un paramètre facultatif a une valeur uniquement lorsqu’une valeur est fournie par l’URL de la requête.
@@ -567,7 +567,7 @@ Pour échapper les caractères de délimiteur de paramètre de routage `{` ,,,, 
 
 Les expressions régulières utilisées dans le routage commencent souvent par le `^` caractère et correspondent à la position de départ de la chaîne. Les expressions se terminent souvent par le `$` caractère et correspondent à la fin de la chaîne. Les `^` `$` caractères et garantissent que l’expression régulière correspond à l’intégralité de la valeur du paramètre d’itinéraire. Sans les `^` `$` caractères et, l’expression régulière correspond à toute sous-chaîne de la chaîne, ce qui est souvent indésirable. Le tableau suivant fournit des exemples et explique pourquoi ils correspondent ou ne parviennent pas à faire correspondre :
 
-| Expression   | String    | Correspond | Commentaire               |
+| Expression   | String    | Faire correspondre | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
 | `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
@@ -973,7 +973,7 @@ La déclaration d’un type de métadonnées en tant qu’interface ajoute une a
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/ICoolMetadata.cs?name=snippet)]
 
-La meilleure façon de suivre ces instructions consiste à éviter de définir des **métadonnées de marqueur** :
+La meilleure façon de suivre ces instructions consiste à éviter de définir des **métadonnées de marqueur**:
 
 * Ne cherchez pas simplement la présence d’un type de métadonnées.
 * Définissez une propriété sur les métadonnées et vérifiez la propriété.
@@ -1172,20 +1172,20 @@ Il existe quelques différences entre le routage de points de terminaison d’AS
 
   Avec le routage basé sur `IRouter`, le résultat est toujours `/Blog/ReadPost/17`, même si le `BlogController` n’existe pas ou n’a pas de méthode d’action `ReadPost`. Comme prévu, le routage de points de terminaison dans ASP.NET Core 2.2 ou ultérieur produit `/Blog/ReadPost/17` si la méthode d’action existe. *Cependant, le routage de points de terminaison produit une chaîne vide si l’action n’existe pas.* Sur le plan conceptuel, le routage de points de terminaison ne fait pas l’hypothèse que le point de terminaison existe si l’action n’existe pas.
 
-* L’ *algorithme d’invalidation de valeur ambiante* de la génération de liens se comporte différemment quand il est utilisé avec le routage de points de terminaison.
+* L’*algorithme d’invalidation de valeur ambiante* de la génération de liens se comporte différemment quand il est utilisé avec le routage de points de terminaison.
 
-  L’ *invalidation de valeur ambiante* est l’algorithme qui décide quelles valeurs de route provenant de la requête en cours d’exécution (les valeurs ambiantes) peuvent être utilisées dans les opérations de génération de liens. Le routage conventionnel a toujours invalidé les valeurs de route supplémentaires lors de la liaison à une action différente. Le routage d’attributs n’a pas ce comportement avant la publication d’ASP.NET Core 2.2. Dans les versions antérieures d’ASP.NET Core, les liens vers une autre action utilisant les mêmes noms de paramètre de route provoquaient des erreurs de génération de liens. Dans ASP.NET Core 2.2 ou ultérieur, les deux formes de routage invalident les valeurs lors de la liaison vers une autre action.
+  L’*invalidation de valeur ambiante* est l’algorithme qui décide quelles valeurs de route provenant de la requête en cours d’exécution (les valeurs ambiantes) peuvent être utilisées dans les opérations de génération de liens. Le routage conventionnel a toujours invalidé les valeurs de route supplémentaires lors de la liaison à une action différente. Le routage d’attributs n’a pas ce comportement avant la publication d’ASP.NET Core 2.2. Dans les versions antérieures d’ASP.NET Core, les liens vers une autre action utilisant les mêmes noms de paramètre de route provoquaient des erreurs de génération de liens. Dans ASP.NET Core 2.2 ou ultérieur, les deux formes de routage invalident les valeurs lors de la liaison vers une autre action.
 
   Considérez l’exemple suivant dans ASP.NET Core 2.1 ou antérieur. Lors de la liaison à une autre action (ou une autre page), les valeurs de route peuvent être réutilisées de façon non souhaitée.
 
-  Dans */Pages/Store/Product.cshtml*  :
+  Dans */Pages/Store/Product.cshtml* :
 
   ```cshtml
   @page "{id}"
   @Url.Page("/Login")
   ```
 
-  Dans */Pages/Login.cshtml*  :
+  Dans */Pages/Login.cshtml* :
 
   ```cshtml
   @page "{id?}"
@@ -1201,7 +1201,7 @@ Il existe quelques différences entre le routage de points de terminaison d’AS
 
   La syntaxe de paramètre passe-partout avec un seul astérisque dans les versions antérieures d’ASP.NET Core (`{*myparametername}`) reste prise en charge, et les barres obliques sont encodées.
 
-  | Route              | Lien généré avec<br>`Url.Action(new { category = "admin/products" })`&hellip; |
+  | Routage              | Lien généré avec<br>`Url.Action(new { category = "admin/products" })`&hellip; |
   | ------------------ | --------------------------------------------------------------------- |
   | `/search/{*page}`  | `/search/admin%2Fproducts` (la barre oblique est encodée)             |
   | `/search/{**page}` | `/search/admin/products`                                              |
@@ -1395,7 +1395,7 @@ Vous pouvez utiliser un astérisque (`*`) ou un double astérisque (`**`) comme 
 
 Le paramètre fourre-tout place les caractères appropriés dans une séquence d’échappement lorsque la route est utilisée pour générer une URL, y compris les caractères de séparation de chemin (`/`). Par exemple, la route `foo/{*path}` avec les valeurs de route `{ path = "my/path" }` génère `foo/my%2Fpath`. Notez la barre oblique d’échappement. Pour les séparateurs de chemin aller-retour, utilisez le préfixe de paramètre de routage `**`. La route `foo/{**path}` avec `{ path = "my/path" }` génère `foo/my/path`.
 
-Les paramètres de route peuvent avoir des *valeurs par défaut* , désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Vous pouvez rendre facultatifs les paramètres de route en ajoutant un point d’interrogation (`?`) à la fin du nom du paramètre, comme dans `id?`. La différence entre les valeurs facultatives et les paramètres de route par défaut est qu’un paramètre de route ayant une valeur par défaut produit toujours une valeur, tandis qu’un paramètre facultatif a une valeur seulement quand celle-ci est fournie par l’URL de requête.
+Les paramètres de route peuvent avoir des *valeurs par défaut*, désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Vous pouvez rendre facultatifs les paramètres de route en ajoutant un point d’interrogation (`?`) à la fin du nom du paramètre, comme dans `id?`. La différence entre les valeurs facultatives et les paramètres de route par défaut est qu’un paramètre de route ayant une valeur par défaut produit toujours une valeur, tandis qu’un paramètre facultatif a une valeur seulement quand celle-ci est fournie par l’URL de requête.
 
 Les paramètres de route peuvent avoir des contraintes, qui doivent correspondre à la valeur de route liée à partir de l’URL. L’ajout d’un signe deux-points (`:`) et d’un nom de contrainte après le nom du paramètre de routage spécifie une *contrainte inline* sur un paramètre de routage. Si la contrainte nécessite des arguments, ils sont fournis entre parenthèses (`(...)`) après le nom de la contrainte. Il est possible de spécifier plusieurs contraintes inline en ajoutant un autre signe deux-points (`:`) et le nom d’une autre contrainte.
 
@@ -1434,7 +1434,7 @@ Les mots clés suivants sont des noms réservés qui ne peuvent pas être utilis
 Les contraintes de route s’exécutent quand une correspondance s’est produite pour l’URL entrante, et le chemin de l’URL est tokenisé en valeurs de route. En général, les contraintes de routage inspectent la valeur de route associée par le biais du modèle de routage, et créent une décision oui/non indiquant si la valeur est, ou non, acceptable. Certaines contraintes de routage utilisent des données hors de la valeur de route pour déterminer si la requête peut être routée. Par exemple, <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> peut accepter ou rejeter une requête en fonction de son verbe HTTP. Les contraintes sont utilisées dans le routage des requêtes et la génération des liens.
 
 > [!WARNING]
-> N’utilisez pas de contraintes pour la **validation des entrées**. Si des contraintes sont utilisées pour la **validation des entrées** , une entrée non valide génère une réponse *404 - Introuvable* au lieu d’une réponse *400 - Requête incorrecte* avec un message d’erreur approprié. Les contraintes de route sont utilisées pour **lever l’ambiguïté** entre des routes similaires, et non pas pour valider les entrées d’une route particulière.
+> N’utilisez pas de contraintes pour la **validation des entrées**. Si des contraintes sont utilisées pour la **validation des entrées**, une entrée non valide génère une réponse *404 - Introuvable* au lieu d’une réponse *400 - Requête incorrecte* avec un message d’erreur approprié. Les contraintes de route sont utilisées pour **lever l’ambiguïté** entre des routes similaires, et non pas pour valider les entrées d’une route particulière.
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
@@ -1488,7 +1488,7 @@ Pour échapper les caractères de délimiteur de paramètre de routage `{` , `}`
 
 Les expressions régulières utilisées dans le routage commencent souvent par le `^` caractère de signe insertion et correspondent à la position de départ de la chaîne. Les expressions se terminent souvent par le `$` caractère de signe dollar et la fin de la chaîne. Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière peut correspondre à n’importe quelle sous-chaîne dans la chaîne, ce qui est souvent indésirable. Le tableau suivant contient des exemples et explique pourquoi ils établissent ou non une correspondance.
 
-| Expression   | String    | Correspond | Commentaire               |
+| Expression   | String    | Faire correspondre | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
 | `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
@@ -1857,7 +1857,7 @@ Vous pouvez utiliser l’astérisque (`*`) comme préfixe d’un paramètre de r
 
 Le paramètre fourre-tout place les caractères appropriés dans une séquence d’échappement lorsque la route est utilisée pour générer une URL, y compris les caractères de séparation de chemin (`/`). Par exemple, la route `foo/{*path}` avec les valeurs de route `{ path = "my/path" }` génère `foo/my%2Fpath`. Notez la barre oblique d’échappement.
 
-Les paramètres de route peuvent avoir des *valeurs par défaut* , désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Vous pouvez rendre facultatifs les paramètres de route en ajoutant un point d’interrogation (`?`) à la fin du nom du paramètre, comme dans `id?`. La différence entre les valeurs facultatives et les paramètres de route par défaut est qu’un paramètre de route ayant une valeur par défaut produit toujours une valeur, tandis qu’un paramètre facultatif a une valeur seulement quand celle-ci est fournie par l’URL de requête.
+Les paramètres de route peuvent avoir des *valeurs par défaut*, désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Vous pouvez rendre facultatifs les paramètres de route en ajoutant un point d’interrogation (`?`) à la fin du nom du paramètre, comme dans `id?`. La différence entre les valeurs facultatives et les paramètres de route par défaut est qu’un paramètre de route ayant une valeur par défaut produit toujours une valeur, tandis qu’un paramètre facultatif a une valeur seulement quand celle-ci est fournie par l’URL de requête.
 
 Les paramètres de route peuvent avoir des contraintes, qui doivent correspondre à la valeur de route liée à partir de l’URL. L’ajout d’un signe deux-points (`:`) et d’un nom de contrainte après le nom du paramètre de routage spécifie une *contrainte inline* sur un paramètre de routage. Si la contrainte nécessite des arguments, ils sont fournis entre parenthèses (`(...)`) après le nom de la contrainte. Il est possible de spécifier plusieurs contraintes inline en ajoutant un autre signe deux-points (`:`) et le nom d’une autre contrainte.
 
@@ -1884,7 +1884,7 @@ L’utilisation d’un modèle est généralement l’approche la plus simple po
 Les contraintes de route s’exécutent quand une correspondance s’est produite pour l’URL entrante, et le chemin de l’URL est tokenisé en valeurs de route. En général, les contraintes de routage inspectent la valeur de route associée par le biais du modèle de routage, et créent une décision oui/non indiquant si la valeur est, ou non, acceptable. Certaines contraintes de routage utilisent des données hors de la valeur de route pour déterminer si la requête peut être routée. Par exemple, <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> peut accepter ou rejeter une requête en fonction de son verbe HTTP. Les contraintes sont utilisées dans le routage des requêtes et la génération des liens.
 
 > [!WARNING]
-> N’utilisez pas de contraintes pour la **validation des entrées**. Si des contraintes sont utilisées pour la **validation des entrées** , une entrée non valide génère une réponse *404 - Introuvable* au lieu d’une réponse *400 - Requête incorrecte* avec un message d’erreur approprié. Les contraintes de route sont utilisées pour **lever l’ambiguïté** entre des routes similaires, et non pas pour valider les entrées d’une route particulière.
+> N’utilisez pas de contraintes pour la **validation des entrées**. Si des contraintes sont utilisées pour la **validation des entrées**, une entrée non valide génère une réponse *404 - Introuvable* au lieu d’une réponse *400 - Requête incorrecte* avec un message d’erreur approprié. Les contraintes de route sont utilisées pour **lever l’ambiguïté** entre des routes similaires, et non pas pour valider les entrées d’une route particulière.
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
@@ -1932,7 +1932,7 @@ Les expressions régulières utilisent les délimiteurs et des jetons semblables
 
 Les expressions régulières utilisées dans le routage commencent souvent par un caret (`^`) et correspondent à la position de début de la chaîne. Les expressions se terminent souvent par le signe dollar (`$`) de caractère et correspondent à la fin de la chaîne. Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière peut correspondre à n’importe quelle sous-chaîne dans la chaîne, ce qui est souvent indésirable. Le tableau suivant contient des exemples et explique pourquoi ils établissent ou non une correspondance.
 
-| Expression   | String    | Correspond | Commentaire               |
+| Expression   | String    | Faire correspondre | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
 | `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/metapackage
 ms.openlocfilehash: b739398c2a440f21c8bdfdc1f4d8e25412358a6a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060688"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>Métapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.0
@@ -39,7 +39,7 @@ Le `Microsoft.AspNetCore.All` package n’est pas inclus dans ASP.NET Core 3,0 e
 
 Cette fonctionnalité nécessite ASP.NET Core 2.x ciblant .NET Core 2.x.
 
-[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) est un métapaquet qui fait référence à un framework partagé. Un *framework partagé* est un ensemble d’assemblys (fichiers *.dll* ) qui ne sont pas dans les dossiers de l’application. Le framework partagé doit être installé sur l’ordinateur pour exécuter l’application. Pour plus d’informations, consultez [Le framework partagé](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
+[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) est un métapaquet qui fait référence à un framework partagé. Un *framework partagé* est un ensemble d’assemblys (fichiers *.dll*) qui ne sont pas dans les dossiers de l’application. Le framework partagé doit être installé sur l’ordinateur pour exécuter l’application. Pour plus d’informations, consultez [Le framework partagé](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
 
 Le framework partagé auquel `Microsoft.AspNetCore.All` fait référence inclut :
 
@@ -97,7 +97,7 @@ Les packages suivants sont inclus dans `Microsoft.AspNetCore.All` mais pas le pa
 
 Pour passer de `Microsoft.AspNetCore.All` à `Microsoft.AspNetCore.App`, si votre application utilise les API des packages ci-dessus, ou les packages apportés par ces packages, ajoutez des références à ces packages dans votre projet.
 
-Toutes les dépendances des packages précédents qui ne sont pas des dépendances de `Microsoft.AspNetCore.App` ne sont pas incluses de manière implicite. Exemple :
+Toutes les dépendances des packages précédents qui ne sont pas des dépendances de `Microsoft.AspNetCore.App` ne sont pas incluses de manière implicite. Par exemple :
 
 * `StackExchange.Redis` comme dépendance de `Microsoft.Extensions.Caching.Redis`
 * `Microsoft.ApplicationInsights` comme dépendance de `Microsoft.AspNetCore.ApplicationInsights.HostingStartup`

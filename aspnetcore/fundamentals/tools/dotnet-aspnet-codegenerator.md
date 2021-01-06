@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
 ms.openlocfilehash: 8844b0014cac58f414d79df4c64bc0efac75bfe1
-ms.sourcegitcommit: d29535ea0b4197443fd884aaa6e5b4b763d04fc7
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94920701"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
@@ -121,7 +121,7 @@ Les sections suivantes décrivent en détail les options disponibles pour les g�
 * Contrôleur
 * Identity  
 * Razorpage
-* Vue
+* Affichage
 
 <a name="area"></a>
 
@@ -133,9 +133,9 @@ Utilisation : `dotnet aspnet-codegenerator area AreaNameToGenerate`
 
 La commande précédente génère les dossiers suivants :
 
-* *Zones (Areas)*
+* *Régions*
   * *AreaNameToGenerate*
-    * *Contrôleurs*
+    * *Controllers*
     * *Données*
     * *Modèles*
     * *Views*

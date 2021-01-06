@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/progressive-web-app
 ms.openlocfilehash: f400319ef81b3d7768bdbdab84f46d3f9c50bb46
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96855441"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Créez des applications Web progressifs avec ASP.NET Core Blazor WebAssembly
@@ -214,7 +214,7 @@ Les `AssetUrl` métadonnées spécifient l’URL relative de base que le navigat
 > [!IMPORTANT]
 > L’ajout de `ServiceWorkerAssetsManifestItem` n’entraîne pas la publication du fichier dans le répertoire de l’application `wwwroot` . La sortie de publication doit être contrôlée séparément. Le `ServiceWorkerAssetsManifestItem` seul fait apparaître une entrée supplémentaire dans le manifeste des ressources du Worker.
 
-## <a name="push-notifications"></a>Notifications Push
+## <a name="push-notifications"></a>Notifications push
 
 Comme tout autre PWA, Blazor WebAssembly PWA peut recevoir des notifications push à partir d’un serveur principal. Le serveur peut envoyer des notifications push à tout moment, même lorsque l’utilisateur n’utilise pas activement l’application. Par exemple, les notifications push peuvent être envoyées lorsqu’un autre utilisateur effectue une action appropriée.
 

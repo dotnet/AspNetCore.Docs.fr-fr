@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
 ms.openlocfilehash: 4d4e50f8acea73859f5e839616f13f90a42291c4
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97486224"
 ---
 # <a name="tutorial-get-started-with-no-locrazor-pages-in-aspnet-core"></a>Didacticiel : prise en main des Razor pages dans ASP.net Core
@@ -80,7 +80,7 @@ Dans ce tutoriel, vous allez :
     
 1. Dans la boîte de dialogue **configurer votre nouveau projet** , entrez `RazorPagesMovie` pour **nom du projet**. Il est important de nommer le projet *Razor PagesMovie*, y compris la mise en majuscules, afin que les espaces de noms correspondent quand vous copiez et collez l’exemple de code.
 
-1. Sélectionnez **Créer**.
+1. Sélectionnez **Create** (Créer).
 
     ![Nouvelle application web ASP.NET Core](razor-pages-start/_static/config.png)
 
@@ -101,7 +101,7 @@ Dans ce tutoriel, vous allez :
 
 1. Accédez au répertoire (`cd`) qui contiendra le projet.
 
-1. Exécutez les commandes suivantes :
+1. Exécutez les commandes suivantes :
 
    ```dotnetcli
    dotnet new webapp -o RazorPagesMovie
@@ -238,7 +238,7 @@ Dans ce tutoriel, vous allez :
 
 * Accédez au répertoire (`cd`) qui contiendra le projet.
 
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
   ```dotnetcli
   dotnet new webapp -o RazorPagesMovie
@@ -384,7 +384,7 @@ Dans ce tutoriel, vous allez :
 
 * Accédez au répertoire (`cd`) qui contiendra le projet.
 
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
   ```dotnetcli
   dotnet new webapp -o RazorPagesMovie

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: tutorials/razor-pages/search
 ms.openlocfilehash: d852766c9706941a1a5f4f3af2c9293ffc4e6a26
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97486211"
 ---
 # <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>Partie 6, ajouter une recherche aux Razor Pages ASP.net Core
@@ -82,11 +82,11 @@ Le code `s => s.Title.Contains()` est une [expression lambda](/dotnet/csharp/pro
 > [!NOTE]
 > La méthode [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données, et non pas dans le code C#. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
 
-Accédez à la page films et ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL. Par exemple, `https://localhost:5001/Movies?searchString=Ghost`. Les films filtrés sont affichés.
+Accédez à la page films et ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL. Par exemple : `https://localhost:5001/Movies?searchString=Ghost`. Les films filtrés sont affichés.
 
 ![::: No-Loc (index) ::: View](search/_static/ghost.png)
 
-Si le modèle de routage suivant est ajouté à la Index page, la chaîne de recherche peut être transmise en tant que segment d’URL. Par exemple, `https://localhost:5001/Movies/Ghost`.
+Si le modèle de routage suivant est ajouté à la Index page, la chaîne de recherche peut être transmise en tant que segment d’URL. Par exemple : `https://localhost:5001/Movies/Ghost`.
 
 ```cshtml
 @page "{searchString?}"
@@ -182,11 +182,11 @@ Le code `s => s.Title.Contains()` est une [expression lambda](/dotnet/csharp/pro
 
 **Remarque :** La méthode [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données, et non pas dans le code C#. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
 
-Accédez à la page films et ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL. Par exemple, `https://localhost:5001/Movies?searchString=Ghost`. Les films filtrés sont affichés.
+Accédez à la page films et ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL. Par exemple : `https://localhost:5001/Movies?searchString=Ghost`. Les films filtrés sont affichés.
 
 ![::: No-Loc (index) ::: View](search/_static/ghost.png)
 
-Si le modèle de routage suivant est ajouté à la Index page, la chaîne de recherche peut être transmise en tant que segment d’URL. Par exemple, `https://localhost:5001/Movies/Ghost`.
+Si le modèle de routage suivant est ajouté à la Index page, la chaîne de recherche peut être transmise en tant que segment d’URL. Par exemple : `https://localhost:5001/Movies/Ghost`.
 
 ```cshtml
 @page "{searchString?}"

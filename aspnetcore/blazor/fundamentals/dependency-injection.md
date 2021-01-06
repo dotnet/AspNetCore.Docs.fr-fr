@@ -5,7 +5,7 @@ description: Découvrez comment les Blazor applications peuvent injecter des ser
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/11/2020
+ms.date: 12/19/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/dependency-injection
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: af6b645fc3c398414c85c78e1cfeb213e538c2a6
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 3f2b4eff5422acbec80b2fd9b801101271cc3f75
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506797"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97808723"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>ASP.NET Core l' Blazor injection de dépendances
 
@@ -98,7 +98,7 @@ Les services peuvent être configurés avec les durées de vie indiquées dans l
 
 | Durée de vie | Description |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | <p>Blazor WebAssembly les applications n’ont pas actuellement de concept d’étendues DI. `Scoped`-les services inscrits se comportent comme des `Singleton` services.</p><p>Le Blazor Server modèle d’hébergement prend en charge la `Scoped` durée de vie des requêtes http, mais pas entre les messages de connexion/circuit SingalR parmi les composants chargés sur le client. La Razor partie pages ou MVC de l’application traite normalement les services délimités et recrée les services sur *chaque requête http* lors de la navigation entre les pages ou les vues, ou à partir d’une page ou d’une vue dans un composant. Les services délimités ne sont pas reconstruits lors de la navigation entre les composants du client, où la communication avec le serveur a lieu via la SignalR connexion du circuit de l’utilisateur, et non par le biais de requêtes http. Dans les scénarios de composants suivants sur le client, les services délimités sont reconstruits car un nouveau circuit est créé pour l’utilisateur :</p><ul><li>L’utilisateur ferme la fenêtre du navigateur. L’utilisateur ouvre une nouvelle fenêtre et revient à l’application.</li><li>L’utilisateur ferme le dernier onglet de l’application dans une fenêtre de navigateur. L’utilisateur ouvre un nouvel onglet et revient à l’application.</li><li>L’utilisateur sélectionne le bouton de rechargement/actualisation du navigateur.</li></ul><p>Pour plus d’informations sur la conservation de l’état utilisateur sur les services étendus dans les Blazor Server applications, consultez <xref:blazor/hosting-models?pivots=server> .</p> |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | <p>Blazor WebAssembly les applications n’ont pas actuellement de concept d’étendues DI. `Scoped`-les services inscrits se comportent comme des `Singleton` services.</p><p>Le Blazor Server modèle d’hébergement prend en charge la `Scoped` durée de vie des requêtes http, mais pas entre les SignalR messages de connexion/circuit parmi les composants chargés sur le client. La Razor partie pages ou MVC de l’application traite normalement les services délimités et recrée les services sur *chaque requête http* lors de la navigation entre les pages ou les vues, ou à partir d’une page ou d’une vue dans un composant. Les services délimités ne sont pas reconstruits lors de la navigation entre les composants du client, où la communication avec le serveur a lieu via la SignalR connexion du circuit de l’utilisateur, et non par le biais de requêtes http. Dans les scénarios de composants suivants sur le client, les services délimités sont reconstruits car un nouveau circuit est créé pour l’utilisateur :</p><ul><li>L’utilisateur ferme la fenêtre du navigateur. L’utilisateur ouvre une nouvelle fenêtre et revient à l’application.</li><li>L’utilisateur ferme le dernier onglet de l’application dans une fenêtre de navigateur. L’utilisateur ouvre un nouvel onglet et revient à l’application.</li><li>L’utilisateur sélectionne le bouton de rechargement/actualisation du navigateur.</li></ul><p>Pour plus d’informations sur la conservation de l’état utilisateur sur les services étendus dans les Blazor Server applications, consultez <xref:blazor/hosting-models?pivots=server> .</p> |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | DI crée une *seule instance* du service. Tous les composants qui requièrent un `Singleton` service reçoivent une instance du même service. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | Chaque fois qu’un composant obtient une instance d’un `Transient` service à partir du conteneur de service, il reçoit une *nouvelle instance* du service. |
 
@@ -106,7 +106,7 @@ Le système DI est basé sur le système DI dans ASP.NET Core. Pour plus d’inf
 
 ## <a name="request-a-service-in-a-component"></a>Demander un service dans un composant
 
-Une fois les services ajoutés à la collection de services, injectez les services dans les composants à l’aide de la directive [ \@ Inject](xref:mvc/views/razor#inject) Razor . [`@inject`](xref:mvc/views/razor#inject) a deux paramètres :
+Une fois les services ajoutés à la collection de services, injectez les services dans les composants à l’aide de la [`@inject`](xref:mvc/views/razor#inject) Razor directive, qui a deux paramètres :
 
 * Type : type du service à injecter.
 * Propriété : nom de la propriété qui reçoit le service d’application injecté. La propriété ne nécessite pas de création manuelle. Le compilateur crée la propriété.
@@ -192,8 +192,6 @@ Deux versions du <xref:Microsoft.AspNetCore.Components.OwningComponentBase> type
 
 Pour plus d’informations, consultez <xref:blazor/blazor-server-ef-core>.
 
-::: moniker range="< aspnetcore-5.0"
-
 ## <a name="detect-transient-disposables"></a>Détecter les supprimables temporaires
 
 Les exemples suivants montrent comment détecter des services transitoires jetables dans une application qui doit utiliser <xref:Microsoft.AspNetCore.Components.OwningComponentBase> . Pour plus d’informations, consultez la section [classes du composant de base de l’utilitaire pour gérer une étendue de l’injection de](#utility-base-component-classes-to-manage-a-di-scope) données.
@@ -206,17 +204,17 @@ Les exemples suivants montrent comment détecter des services transitoires jetab
 
 Le `TransientDisposable` dans l’exemple suivant est détecté ( `Program.cs` ) :
 
-<!-- moniker range=">= aspnetcore-5.0"
+::: moniker range=">= aspnetcore-5.0"
 
 [!code-csharp[](dependency-injection/samples_snapshot/5.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm-program.cs?highlight=6,9,17,22-25)]
 
-moniker-end 
+::: moniker-end 
 
-moniker range="< aspnetcore-5.0" -->
+::: moniker range="< aspnetcore-5.0"
 
 [!code-csharp[](dependency-injection/samples_snapshot/3.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm-program.cs?highlight=6,9,17,22-25)]
 
-<!-- moniker-end -->
+::: moniker-end
 
 ::: zone-end
 
@@ -242,7 +240,20 @@ Le `TransientDependency` dans l’exemple suivant est détecté ( `Startup.cs` )
 
 ::: zone-end
 
-::: moniker-end
+L’application peut enregistrer des exceptions transitoires temporaires sans lever d’exception. Toutefois, si vous tentez de résoudre un résultat à usage unique transitoire dans <xref:System.InvalidOperationException> , comme le montre l’exemple suivant.
+
+`Pages/TransientDisposable.razor`:
+
+```razor
+@page "/transient-disposable"
+@inject TransientDisposable TransientDisposable
+
+<h1>Transient Disposable Detection</h1>
+```
+
+Naviguez jusqu’au `TransientDisposable` composant à l’adresse `/transient-disposable` et une <xref:System.InvalidOperationException> exception est levée lorsque l’infrastructure tente de construire une instance de `TransientDisposable` :
+
+> System. InvalidOperationException : tentative de résolution des TransientDisposable de service temporaires temporaires dans une étendue incorrecte. Utilisez une \<T> classe de base de composant « OwningComponentBase » pour le service « t » que vous essayez de résoudre.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

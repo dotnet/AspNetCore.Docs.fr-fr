@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/deadlines-cancellation
 ms.openlocfilehash: a735ed4d2ca8db1c9b7998acd14f9be761fe7ec6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059921"
 ---
 # <a name="reliable-grpc-services-with-deadlines-and-cancellation"></a>Services gRPC fiables avec échéances et annulation
@@ -58,7 +58,7 @@ Utilisation `ServerCallContext.CancellationToken` de dans un service gRPC :
 
 ### <a name="propagating-deadlines"></a>Propagation des échéances
 
-Lorsqu’un appel gRPC est effectué à partir d’un service gRPC en cours d’exécution, l’échéance doit être propagée. Exemple :
+Lorsqu’un appel gRPC est effectué à partir d’un service gRPC en cours d’exécution, l’échéance doit être propagée. Par exemple :
 
 1. Appels de l’application cliente `FrontendService.GetUser` avec une échéance.
 2. `FrontendService` appelle `UserService.GetUser`. L’échéance spécifiée par le client doit être spécifiée avec le nouvel appel gRPC.
@@ -75,7 +75,7 @@ La propagation manuelle des échéances peut s’avérer fastidieuse. L’éché
 
 [!code-csharp[](~/grpc/deadlines-cancellation/clientfactory-propagate.cs?highlight=6)]
 
-Pour plus d'informations, consultez <xref:grpc/clientfactory#deadline-and-cancellation-propagation>.
+Pour plus d’informations, consultez <xref:grpc/clientfactory#deadline-and-cancellation-propagation>.
 
 ## <a name="cancellation"></a>Annulation
 

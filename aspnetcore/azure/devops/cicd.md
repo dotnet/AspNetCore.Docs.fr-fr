@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: azure/devops/cicd
 ms.openlocfilehash: 2ac7a130d223b21330d0a797c1d460fc0cf467d7
-ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96901208"
 ---
 # <a name="continuous-integration-and-deployment"></a>Intégration et déploiement continus
@@ -177,7 +177,7 @@ Il existe trois étapes distinctes à effectuer. La réalisation des étapes dé
     Lorsque cette option est activée, un déploiement se produit chaque fois qu’une nouvelle build est disponible.
 1. Un panneau **déclencheur de déploiement continu** s’affiche à droite. Cliquez sur le bouton bascule pour activer la fonctionnalité. Il n’est pas nécessaire d’activer le **déclencheur de requête de tirage**.
 1. Cliquez sur la liste déroulante **Ajouter** dans la section **créer des filtres de branche** . Choisissez l’option **de branche par défaut de la définition de build** . Ce filtre entraîne le déclenchement de la mise en sortie uniquement pour une build à partir de la branche par défaut du dépôt GitHub (*Master*).
-1. Cliquez sur le bouton **Enregistrer**. Cliquez sur le bouton **OK** dans la boîte de dialogue d' **enregistrement** modal.
+1. Cliquez sur le bouton **Enregistrer** . Cliquez sur le bouton **OK** dans la boîte de dialogue d' **enregistrement** modal.
 1. Cliquez sur la zone **environnement 1** . Un panneau d' **environnement** s’affiche à droite. Modifiez le texte de l' *environnement 1* dans la zone de texte nom de l' **environnement** en *production*.
 
    ![Zone de texte Release pipeline-nom de l’environnement](media/cicd/vsts-environment-name-textbox.png)
@@ -193,12 +193,12 @@ Il existe trois étapes distinctes à effectuer. La réalisation des étapes dé
 1. Sélectionnez *myWebApp/<unique_number/>* dans la liste déroulante nom de l' **app service** .
 1. Sélectionnez *AzureTutorial* dans la liste déroulante **groupe de ressources** .
 1. Sélectionnez *intermédiaire* dans la liste déroulante **emplacement** .
-1. Cliquez sur le bouton **Enregistrer**.
+1. Cliquez sur le bouton **Enregistrer** .
 1. Pointez sur le nom du pipeline de version par défaut. Cliquez sur l’icône de crayon pour la modifier. Utilisez *MyFirstProject-ASP.net Core-CD* comme nom.
 
     ![Nom du pipeline de version](media/cicd/vsts-release-definition-name.png)
 
-1. Cliquez sur le bouton **Enregistrer**.
+1. Cliquez sur le bouton **Enregistrer** .
 
 ## <a name="commit-changes-to-github-and-automatically-deploy-to-azure"></a>Valider les modifications apportées à GitHub et les déployer automatiquement dans Azure
 

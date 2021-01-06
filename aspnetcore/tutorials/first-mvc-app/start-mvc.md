@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
 ms.openlocfilehash: c96e7107c85bf36f55f6571c71c20d09bc94ddb3
-ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94688499"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Bien démarrer avec ASP.NET Core MVC
@@ -94,7 +94,7 @@ Ce didacticiel part du principe que vous êtes familiarisé avec VS Code. Pour p
    code -r MvcMovie
    ```
 
-  * Une boîte de dialogue s’affiche avec les **ressources requises pour la génération et le débogage dans’MvcMovie'. Ajoutez-les ?**  Sélectionnez **Oui**
+  * Une boîte de dialogue s’affiche avec les **ressources requises pour la génération et le débogage dans’MvcMovie'. Ajoutez-les ?**  Sélectionnez **Oui**.
 
   * `dotnet new mvc -o MvcMovie` : crée un nouveau projet ASP.NET Core MVC dans le dossier *MvcMovie*.
   * `code -r MvcMovie`: Charge le fichier projet *MvcMovie. csproj* dans Visual Studio code.
@@ -105,7 +105,7 @@ Ce didacticiel part du principe que vous êtes familiarisé avec VS Code. Pour p
 
   ![macOS - Nouvelle solution](start-mvc/_static/new_project_vsmac.png)
 
-* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez application Web de l’application **.net Core**  >  **App**  >  **(Model-View-Controller)**  >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application Web **et**  >  **App**  >  **application console (Model-View-Controller)**  >  **suivant**.
+* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez application Web de l’application **.net Core**  >    >  **(Model-View-Controller)**  >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application Web **et**  >    >  **application console (Model-View-Controller)**  >  **suivant**.
 
   ![sélection du modèle d’application Web macOS](start-mvc/_static/web_app_template_vsmac.png)
 
@@ -247,7 +247,7 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
    code -r MvcMovie
    ```
 
-  * Une boîte de dialogue s’affiche avec les **ressources requises pour la génération et le débogage dans’MvcMovie'. Ajoutez-les ?**  Sélectionnez **Oui**
+  * Une boîte de dialogue s’affiche avec les **ressources requises pour la génération et le débogage dans’MvcMovie'. Ajoutez-les ?**  Sélectionnez **Oui**.
 
   * `dotnet new mvc -o MvcMovie` : crée un nouveau projet ASP.NET Core MVC dans le dossier *MvcMovie*.
   * `code -r MvcMovie`: Charge le fichier projet *MvcMovie. csproj* dans Visual Studio code.
@@ -258,7 +258,7 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 
   ![macOS - Nouvelle solution](start-mvc/_static/new_project_vsmac.png)
 
-* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez application Web de l’application **.net Core**  >  **App**  >  **(Model-View-Controller)**  >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application Web **et**  >  **App**  >  **application console (Model-View-Controller)**  >  **suivant**.
+* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez application Web de l’application **.net Core**  >    >  **(Model-View-Controller)**  >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application Web **et**  >    >  **application console (Model-View-Controller)**  >  **suivant**.
 
   ![sélection du modèle d’application Web macOS](start-mvc/_static/web_app_template_vsmac.png)
 
@@ -400,7 +400,7 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
    code -r MvcMovie
    ```
 
-  * Une boîte de dialogue s’affiche avec les **ressources requises pour la génération et le débogage dans’MvcMovie'. Ajoutez-les ?**  Sélectionnez **Oui**
+  * Une boîte de dialogue s’affiche avec les **ressources requises pour la génération et le débogage dans’MvcMovie'. Ajoutez-les ?**  Sélectionnez **Oui**.
 
   * `dotnet new mvc -o MvcMovie` : crée un nouveau projet ASP.NET Core MVC dans le dossier *MvcMovie*.
   * `code -r MvcMovie`: Charge le fichier projet *MvcMovie. csproj* dans Visual Studio code.
@@ -411,7 +411,7 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 
   ![macOS - Nouvelle solution](./start-mvc/_static/new_project_vsmac.png)
 
-* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez application Web de l’application **.net Core**  >  **App**  >  **(Model-View-Controller)**  >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application Web **et**  >  **App**  >  **application console (Model-View-Controller)**  >  **suivant**.
+* Dans Visual Studio pour Mac antérieure à la version 8,6, sélectionnez application Web de l’application **.net Core**  >    >  **(Model-View-Controller)**  >  **suivant**. Dans la version 8,6 ou une version ultérieure, sélectionnez application Web **et**  >    >  **application console (Model-View-Controller)**  >  **suivant**.
 
 * Dans la boîte de dialogue **configurer votre nouvelle application Web** :
 

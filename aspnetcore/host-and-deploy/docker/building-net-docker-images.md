@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
 ms.openlocfilehash: 81daa1d4a996519f44e513b4f61c27cdf2b6ef5e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059804"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Images Docker pour ASP.NET Core
@@ -52,7 +52,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
 
    L’exemple utilise cette image pour exécuter l’application. Elle contient le runtime ASP.NET Core et les bibliothèques. Elle est optimisée pour l’exécution d’applications en production. Conçue pour la vitesse de déploiement et de démarrage de l’application, elle est relativement petite afin d’optimiser les performances réseau du Registre Docker vers l’hôte Docker. Seuls les binaires et le contenu nécessaires pour exécuter une application sont copiés dans le conteneur. Le contenu est prêt à s’exécuter, ce qui réduit le délai entre `Docker run` et le démarrage de l’application. La compilation de code dynamique n’est pas nécessaire dans le modèle Docker.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 ::: moniker range="< aspnetcore-3.0"
 
 * [Kit SDK .NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core)
@@ -86,7 +86,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
 
 ## <a name="run-the-app-locally"></a>Exécutez l’application localement.
 
-* Accédez au dossier de projet à l’adresse *dotnet-docker/samples/aspnetapp/aspnetapp* .
+* Accédez au dossier de projet à l’adresse *dotnet-docker/samples/aspnetapp/aspnetapp*.
 
 * Exécutez la commande suivante pour générer et exécuter l’application localement :
 
@@ -102,7 +102,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
 
 * Dans le client docker, [basculez vers les conteneurs Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
-* Accédez au dossier Dockerfile à l’adresse *dotnet-docker/samples/aspnetapp* .
+* Accédez au dossier Dockerfile à l’adresse *dotnet-docker/samples/aspnetapp*.
 
 * Exécutez les commandes suivantes pour générer et exécuter l’exemple dans Docker :
 
@@ -158,7 +158,7 @@ Accédez au dossier de fichiers Dockerfile à l’adresse `dotnet-docker/samples
 
 Dans certains scénarios, il peut être intéressant de déployer une application sur un conteneur en y copiant les fichiers d’application nécessaires à l’exécution. Cette section montre comment effectuer un déploiement manuel.
 
-* Accédez au dossier de projet à l’adresse *dotnet-docker/samples/aspnetapp/aspnetapp* .
+* Accédez au dossier de projet à l’adresse *dotnet-docker/samples/aspnetapp/aspnetapp*.
 
 * Exécutez la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) :
 
@@ -168,7 +168,7 @@ Dans certains scénarios, il peut être intéressant de déployer une applicatio
 
   Voici le rôle des arguments de la commande :
   * Générez l’application en mode version finale (la valeur par défaut est le mode débogage).
-  * Créer les fichiers dans le dossier *published* .
+  * Créer les fichiers dans le dossier *published*.
 
 * Exécutez l'application.
 
@@ -263,7 +263,7 @@ Comme indiqué dans le fichier dockerfile précédent, les `*.csproj` fichiers s
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Commande docker build](https://docs.docker.com/engine/reference/commandline/build)
-* [Commande docker run](https://docs.docker.com/engine/reference/commandline/run)
+* [Commande d’exécution de l’ancreur](https://docs.docker.com/engine/reference/commandline/run)
 * [Exemple Docker ASP.NET Core](https://github.com/dotnet/dotnet-docker) (utilisé dans ce tutoriel)
 * [Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge](../proxy-load-balancer.md)
 * [Utilisation des outils Docker dans Visual Studio](./visual-studio-tools-for-docker.md)

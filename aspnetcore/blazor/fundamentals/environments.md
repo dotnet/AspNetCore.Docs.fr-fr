@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/environments
 ms.openlocfilehash: 3d9b0cab42a826c7a5868324d891e597cd9ed986
-ms.sourcegitcommit: b1a0257a93eca34bad0e64d60db4f6b914e03f89
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97678297"
 ---
 # <a name="aspnet-core-no-locblazor-environments"></a>BlazorEnvironnements ASP.net Core

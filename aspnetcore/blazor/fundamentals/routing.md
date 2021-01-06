@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/routing
 ms.openlocfilehash: ec183f4aadc6bafd8e77f9d97291ba3d47bd92f5
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97506927"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Routage de ASP.NET Core Blazor
@@ -200,12 +200,12 @@ Les contraintes de routage indiquées dans le tableau suivant sont disponibles. 
 
 | Contrainte | Exemple           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
-| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | No                               |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Non                               |
 | `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Oui                              |
 | `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Oui                              |
 | `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Oui                              |
 | `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Oui                              |
-| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | No                               |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Non                               |
 | `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Oui                              |
 | `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Oui                              |
 

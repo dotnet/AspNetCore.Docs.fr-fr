@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: aspnetcore-3.1
 ms.openlocfilehash: dd012a2104f574865ed577ab3c0e81dc9cc9596d
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94431015"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>Nouveautés de ASP.NET Core 3,1
@@ -62,7 +62,7 @@ Pour plus d’informations, consultez [intégrer des composants dans Razor des p
 
 ## <a name="breaking-changes-for-samesite-no-loccookies"></a>Modifications avec rupture pour SameSite cookie s
 
-Le comportement de SameSite cookie s a changé pour refléter les modifications de navigateur à venir. Cela peut affecter les scénarios d’authentification tels que AzureAd, OpenIdConnect ou WsFederation. Pour plus d'informations, consultez <xref:security/samesite>.
+Le comportement de SameSite cookie s a changé pour refléter les modifications de navigateur à venir. Cela peut affecter les scénarios d’authentification tels que AzureAd, OpenIdConnect ou WsFederation. Pour plus d’informations, consultez <xref:security/samesite>.
 
 ## <a name="prevent-default-actions-for-events-in-no-locblazor-apps"></a>Empêcher les actions par défaut des événements dans les Blazor applications
 

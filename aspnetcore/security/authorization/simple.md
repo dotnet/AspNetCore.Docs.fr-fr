@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/simple
-ms.openlocfilehash: ae8fb47e58924d559f1c2c4ed7c9545c37141209
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1678f1b4af2c65e3b10c66f7ccdbecf19156a834
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061338"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97865562"
 ---
 # <a name="simple-authorization-in-aspnet-core"></a>Autorisation simple dans ASP.NET Core
 
@@ -64,7 +64,7 @@ public class AccountController : Controller
 
 Désormais, seuls les utilisateurs authentifiés peuvent accéder à la `Logout` fonction.
 
-Vous pouvez également utiliser l' `AllowAnonymous` attribut pour autoriser l’accès par des utilisateurs non authentifiés à des actions individuelles. Exemple :
+Vous pouvez également utiliser l' `AllowAnonymous` attribut pour autoriser l’accès par des utilisateurs non authentifiés à des actions individuelles. Par exemple :
 
 ```csharp
 [Authorize]
@@ -96,7 +96,7 @@ Le <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ne peut **pas** 
 
 Les deux approches suivantes peuvent être utilisées pour appliquer l’autorisation aux Razor méthodes du gestionnaire de page :
 
-_ Utiliser des pages distinctes pour les gestionnaires de pages nécessitant une autorisation différente. Déplacement du contenu partagé dans une ou plusieurs [vues partielles](xref:mvc/views/partial). Dans la mesure du possible, il s’agit de l’approche recommandée.
+_ Utiliser des pages distinctes pour les gestionnaires de pages nécessitant une autorisation différente. Déplacez le contenu partagé dans une ou plusieurs [vues partielles](xref:mvc/views/partial). Dans la mesure du possible, il s’agit de l’approche recommandée.
 * Pour le contenu qui doit partager une page commune, écrivez un filtre qui effectue une autorisation dans le cadre de [IAsyncPageFilter. OnPageHandlerSelectionAsync](xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter.OnPageHandlerSelectionAsync%2A). Le projet GitHub [PageHandlerAuth](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth) illustre cette approche :
   * [AuthorizeIndexPageHandlerFilter](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizeIndexPageHandlerFilter.cs) implémente le filtre d’autorisation :[!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs?name=snippet)]
 

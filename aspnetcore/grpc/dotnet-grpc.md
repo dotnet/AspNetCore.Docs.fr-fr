@@ -19,17 +19,17 @@ no-loc:
 - SignalR
 uid: grpc/dotnet-grpc
 ms.openlocfilehash: f34e1543d9695e138a85db3b79e013cf5fb6d138
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059908"
 ---
 # <a name="manage-protobuf-references-with-dotnet-grpc"></a>Gérer les références Protobuf avec dotnet-GRPC
 
 Par [John Luo](https://github.com/juntaoluo)
 
-`dotnet-grpc` est un outil Global .NET Core pour la gestion des références [Protobuf ( *. proto* )](xref:grpc/basics#proto-file) dans un projet .net gRPC. L’outil peut être utilisé pour ajouter, actualiser, supprimer et répertorier des références Protobuf.
+`dotnet-grpc` est un outil Global .NET Core pour la gestion des références [Protobuf (*. proto*)](xref:grpc/basics#proto-file) dans un projet .net gRPC. L’outil peut être utilisé pour ajouter, actualiser, supprimer et répertorier des références Protobuf.
 
 ## <a name="installation"></a>Installation
 
@@ -138,7 +138,7 @@ dotnet-grpc remove [options] <references>...
 
 ## <a name="refresh"></a>Actualiser
 
-La `refresh` commande est utilisée pour mettre à jour une référence distante avec le contenu le plus récent à partir de l’URL source. Le chemin d’accès au fichier de téléchargement et l’URL source peuvent être utilisés pour spécifier la référence à mettre à jour. Remarque :
+La `refresh` commande est utilisée pour mettre à jour une référence distante avec le contenu le plus récent à partir de l’URL source. Le chemin d’accès au fichier de téléchargement et l’URL source peuvent être utilisés pour spécifier la référence à mettre à jour. Remarque :
 
 * Les hachages du contenu du fichier sont comparés pour déterminer si le fichier local doit être mis à jour.
 * Aucune information d’horodatage n’est comparée.
@@ -164,11 +164,11 @@ dotnet-grpc refresh [options] [<references>...]
 | -p | --projet | Chemin d’accès au fichier projet sur lequel effectuer l’opération. Si aucun fichier n’est spécifié, la commande effectue une recherche dans le répertoire actif.
 | | --à sec-exécution | Génère une liste des fichiers qui seraient mis à jour sans télécharger de nouveau contenu.
 
-## <a name="list"></a>List
+## <a name="list"></a>Liste
 
 La `list` commande est utilisée pour afficher toutes les références Protobuf dans le fichier projet. Si toutes les valeurs d’une colonne sont des valeurs par défaut, la colonne peut être omise.
 
-### <a name="usage"></a>Utilisation
+### <a name="usage"></a>Usage
 
 ```dotnetcli
 dotnet-grpc list [options]

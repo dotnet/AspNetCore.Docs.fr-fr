@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/directory-structure
 ms.openlocfilehash: 918bc11e06b8f2bea5506d3b61f462e15998efa0
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059856"
 ---
 # <a name="aspnet-core-directory-structure"></a>Structure de répertoires ASP.NET Core
@@ -45,9 +45,9 @@ Le répertoire *publier* contient les ressources de l’application qui peuvent 
 
 &dagger;Indique un répertoire
 
-Le répertoire *publish* représente le *chemin racine du contenu* , également appelé *chemin de base de l’application* , du déploiement. Quel que soit le nom donné au répertoire *publish* de l’application déployée sur le serveur, son emplacement sert de chemin physique, sur le serveur, de l’application hébergée.
+Le répertoire *publish* représente le *chemin racine du contenu*, également appelé *chemin de base de l’application*, du déploiement. Quel que soit le nom donné au répertoire *publish* de l’application déployée sur le serveur, son emplacement sert de chemin physique, sur le serveur, de l’application hébergée.
 
-Le répertoire *wwwroot* , s’il existe, contient uniquement des ressources statiques.
+Le répertoire *wwwroot*, s’il existe, contient uniquement des ressources statiques.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -75,9 +75,9 @@ Le répertoire *publier* contient les ressources de l’application qui peuvent 
 
 &dagger;Indique un répertoire
 
-Le répertoire *publish* représente le *chemin racine du contenu* , également appelé *chemin de base de l’application* , du déploiement. Quel que soit le nom donné au répertoire *publish* de l’application déployée sur le serveur, son emplacement sert de chemin physique, sur le serveur, de l’application hébergée.
+Le répertoire *publish* représente le *chemin racine du contenu*, également appelé *chemin de base de l’application*, du déploiement. Quel que soit le nom donné au répertoire *publish* de l’application déployée sur le serveur, son emplacement sert de chemin physique, sur le serveur, de l’application hébergée.
 
-Le répertoire *wwwroot* , s’il existe, contient uniquement des ressources statiques.
+Le répertoire *wwwroot*, s’il existe, contient uniquement des ressources statiques.
 
 La création d’un dossier *Logs* est utile à la [journalisation de débogage améliorée du module ASP.NET Core](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Les dossiers situés dans le chemin fourni pour la valeur `<handlerSetting>` ne sont pas créés automatiquement par le module. Ils doivent préexister dans le déploiement pour permettre au module d’écrire dans le journal de débogage.
 
@@ -96,7 +96,7 @@ Vous pouvez créer le répertoire *Logs* pour le déploiement à l’aide de l�
    </Target>
    ```
 
-   L’élément `<MakeDir>` crée un dossier *Logs* vide dans la sortie publiée. L’élément utilise la propriété `PublishDir` pour déterminer l’emplacement cible en vue de la création du dossier. Plusieurs méthodes de déploiement, telles que Web Deploy, ignorent les dossiers vides pendant le déploiement. L’élément `<WriteLinesToFile>` génère un fichier dans le dossier *Logs* , ce qui garantit le déploiement du dossier sur le serveur. La création d’un dossier à l’aide de cette approche échoue si le processus de travail n’a pas accès en écriture au dossier cible.
+   L’élément `<MakeDir>` crée un dossier *Logs* vide dans la sortie publiée. L’élément utilise la propriété `PublishDir` pour déterminer l’emplacement cible en vue de la création du dossier. Plusieurs méthodes de déploiement, telles que Web Deploy, ignorent les dossiers vides pendant le déploiement. L’élément `<WriteLinesToFile>` génère un fichier dans le dossier *Logs*, ce qui garantit le déploiement du dossier sur le serveur. La création d’un dossier à l’aide de cette approche échoue si le processus de travail n’a pas accès en écriture au dossier cible.
 
 * Créez physiquement le répertoire *Logs* sur le serveur dans le déploiement.
 

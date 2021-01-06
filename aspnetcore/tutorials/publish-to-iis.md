@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: b3c714ea8e741430df1f70b2df258f1e8f1c7ad5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0f70b5f12b9097f8710c9641404b3e085968fc3f
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060506"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97753151"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>Publier une application ASP.NET Core sur IIS
 
@@ -37,18 +37,18 @@ Ce tutoriel couvre les étapes suivantes :
 > * Créer un site IIS dans le gestionnaire IIS
 > * Déployer une application ASP.NET Core
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * Installation du [SDK .NET Core](/dotnet/core/sdk) sur l’ordinateur de développement
-* Configuration de Windows Server avec le rôle serveur **Serveur Web (IIS)** . Si votre serveur n’est pas configuré pour héberger des sites web avec IIS, suivez les instructions qui se trouvent dans la section *Configuration IIS* de l’article <xref:host-and-deploy/iis/index#iis-configuration>, puis revenez à ce tutoriel.
+* Configuration de Windows Server avec le rôle serveur **Serveur Web (IIS)**. Si votre serveur n’est pas configuré pour héberger des sites web avec IIS, suivez les instructions qui se trouvent dans la section *Configuration IIS* de l’article <xref:host-and-deploy/iis/index#iis-configuration>, puis revenez à ce tutoriel.
 
 > [!WARNING]
 > **La configuration d’IIS et la sécurité des sites web impliquent des concepts qui ne sont pas abordés dans ce tutoriel.** Avant d’héberger des applications de production sur IIS, consultez la [documentation IIS de Microsoft](https://www.iis.net/) et cet [article ASP.NET Core concernant l’hébergement sur IIS](xref:host-and-deploy/iis/index).
 >
 > Voici certains scénarios importants concernant l’hébergement sur IIS qui ne sont pas abordés dans ce tutoriel :
 >
-> * [Création d’une ruche de Registre pour la protection des données ASP.NET Core](xref:host-and-deploy/iis/index#data-protection)
-> * [Configuration de la liste de contrôle d’accès (ACL) du pool d’applications](xref:host-and-deploy/iis/index#application-pool-identity)
+> * [Création d’une ruche de Registre pour la protection des données ASP.NET Core](xref:host-and-deploy/iis/advanced#data-protection)
+> * [Configuration de la liste de contrôle d’accès (ACL) du pool d’applications](xref:host-and-deploy/iis/advanced#application-pool-identity)
 > * Pour aborder les concepts de déploiement IIS, ce tutoriel déploie une application pour laquelle aucune sécurité HTTPS n’a été configurée dans IIS. Pour plus d’informations sur l’hébergement d’une application dans laquelle est activé le protocole HTTPS, consultez les rubriques relatives à la sécurité dans la section [Ressources supplémentaires](#additional-resources) de cet article. Vous trouverez des informations supplémentaires sur l’hébergement d’applications ASP.NET Core dans l’article <xref:host-and-deploy/iis/index>.
 
 ## <a name="install-the-net-core-hosting-bundle"></a>Installer le bundle d’hébergement .NET Core
@@ -67,16 +67,16 @@ Téléchargez le programme d’installation à l’aide du lien suivant :
 
 1. Sur le serveur IIS, créez un dossier pour contenir les fichiers et dossiers publiés de l’application. À l’étape suivante, le chemin du dossier est fourni à IIS en tant que chemin d’accès physique à l’application. Pour plus d’informations sur le dossier de déploiement et la disposition d’un fichier d’une application, consultez <xref:host-and-deploy/directory-structure>.
 
-1. Dans le gestionnaire des services Internet, ouvrez le nœud du serveur dans le panneau **connexions** . Cliquez avec le bouton de droite sur le dossier **Sites** . Sélectionnez **Ajouter un site Web** dans le menu contextuel.
+1. Dans le gestionnaire des services Internet, ouvrez le nœud du serveur dans le panneau **connexions** . Cliquez avec le bouton de droite sur le dossier **Sites**. Sélectionnez **Ajouter un site Web** dans le menu contextuel.
 
-1. Spécifiez le **Nom du site** et définissez le **Chemin physique** sur le dossier de déploiement de l’application que vous avez créé. Spécifiez la configuration **Liaison** et créez le site web en sélectionnant **OK** .
+1. Spécifiez le **Nom du site** et définissez le **Chemin physique** sur le dossier de déploiement de l’application que vous avez créé. Spécifiez la configuration **Liaison** et créez le site web en sélectionnant **OK**.
 
    > [!WARNING]
    > Les liaisons génériques de niveau supérieur (`http://*:80/` et `http://+:80`) ne doivent **pas** être utilisées. Les liaisons génériques de niveau supérieur peuvent exposer votre application à des failles de sécurité. Cela s’applique aux caractères génériques forts et faibles. Utilisez des noms d’hôte explicites plutôt que des caractères génériques. Une liaison générique de sous-domaine (par exemple, `*.mysub.com`) ne présente pas ce risque de sécurité si vous contrôlez le domaine parent en entier (par opposition à `*.com`, qui est vulnérable). Consultez la [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) pour plus d’informations.
 
 1. Vérifiez que l’identité de modèle de processus dispose des autorisations appropriées.
 
-   Si l’identité par défaut du pool d’applications ( **modèle de processus**  >  **Identity** ) est remplacée par `ApplicationPoolIdentity` une autre identité, vérifiez que la nouvelle identité dispose des autorisations nécessaires pour accéder au dossier de l’application, à la base de données et à d’autres ressources requises. Par exemple, le pool d’applications nécessite l’accès en lecture et en écriture aux dossiers dans lesquels l’application lit et écrit des fichiers.
+   Si l’identité par défaut du pool d’applications (**modèle de processus**  >  **Identity** ) est remplacée par `ApplicationPoolIdentity` une autre identité, vérifiez que la nouvelle identité dispose des autorisations nécessaires pour accéder au dossier de l’application, à la base de données et à d’autres ressources requises. Par exemple, le pool d’applications nécessite l’accès en lecture et en écriture aux dossiers dans lesquels l’application lit et écrit des fichiers.
 
 ## <a name="create-an-aspnet-core-no-locrazor-pages-app"></a>Créer une Razor application ASP.net Core pages
 
@@ -84,18 +84,19 @@ Suivez le <xref:getting-started> didacticiel pour créer une Razor application p
 
 ## <a name="publish-and-deploy-the-app"></a>Publier et déployer l’application
 
-*Publier une application* signifie que vous créez une application compilée qui peut être hébergée par un serveur. *Déployer une application* signifie que vous déplacez l’application publiée vers un système d’hébergement. L’étape de publication est gérée par le [SDK .NET Core](/dotnet/core/sdk), alors que l’étape de déploiement peut être gérée à l’aide de différentes méthodes. Ce tutoriel utilise la méthode de déploiement par *dossier* , dans laquelle :
+*Publier une application* signifie que vous créez une application compilée qui peut être hébergée par un serveur. *Déployer une application* signifie que vous déplacez l’application publiée vers un système d’hébergement. L’étape de publication est gérée par le [SDK .NET Core](/dotnet/core/sdk), alors que l’étape de déploiement peut être gérée à l’aide de différentes méthodes. Ce tutoriel utilise la méthode de déploiement par *dossier*, dans laquelle :
  
 * L’application est publiée dans un dossier.
 * Le contenu du dossier est déplacé vers le dossier du site IIS (le **chemin physique** du site dans le gestionnaire IIS).
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Cliquez avec le bouton droit sur le projet dans **l’Explorateur de solutions** , puis sélectionnez **Publier** .
-1. Dans la boîte de dialogue **Choisir une cible de publication** , sélectionnez l’option de publication **Dossier** .
-1. Configurez un chemin pour **Dossier ou partage de fichiers** .
+1. Cliquez avec le bouton droit sur le projet dans **l’Explorateur de solutions**, puis sélectionnez **Publier**.
+1. Dans la boîte de dialogue **Choisir une cible de publication**, sélectionnez l’option de publication **Dossier**.
+1. Configurez un chemin pour **Dossier ou partage de fichiers**.
    * Si vous avez créé un dossier pour le site IIS qui est disponible sur l’ordinateur de développement en tant que partage réseau, indiquez le chemin de ce partage. L’utilisateur actuel doit disposer d’un accès en écriture pour publier des données sur le partage.
    * Si vous ne parvenez pas à effectuer le déploiement directement dans le dossier site IIS sur le serveur IIS, publiez-le dans un dossier sur un support amovible et déplacez physiquement l’application publiée dans le dossier du site IIS sur le serveur, qui est le **chemin d’accès physique** du site dans le gestionnaire des services Internet. Déplacez le contenu du `bin/Release/{TARGET FRAMEWORK}/publish` dossier vers le dossier site IIS sur le serveur, qui est le **chemin d’accès physique** du site dans le gestionnaire des services Internet.
+1. Cliquez sur le bouton **Publier**.
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
@@ -109,10 +110,11 @@ Suivez le <xref:getting-started> didacticiel pour créer une Razor application p
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-1. Cliquez avec le bouton droit sur le projet dans **Solution** , puis sélectionnez **Publier** > **Publier sur un dossier** .
-1. Configurez le chemin **Choisir un dossier** .
+1. Cliquez avec le bouton droit sur le projet dans **Solution**, puis sélectionnez **Publier** > **Publier sur un dossier**.
+1. Configurez le chemin **Choisir un dossier**.
    * Si vous avez créé un dossier pour le site IIS qui est disponible sur l’ordinateur de développement en tant que partage réseau, indiquez le chemin de ce partage. L’utilisateur actuel doit disposer d’un accès en écriture pour publier des données sur le partage.
    * Si vous ne parvenez pas à effectuer le déploiement directement dans le dossier du site IIS sur le serveur IIS, publiez l’application dans un dossier situé sur un support amovible et déplacez physiquement l’application publiée vers le dossier du site IIS sur le serveur, qui correspond au **chemin physique** du site dans le gestionnaire IIS. Déplacez le contenu du `bin/Release/{TARGET FRAMEWORK}/publish` dossier vers le dossier site IIS sur le serveur, qui est le **chemin d’accès physique** du site dans le gestionnaire des services Internet.
+1. Cliquez sur le bouton **Publier**.
 
 ---
 

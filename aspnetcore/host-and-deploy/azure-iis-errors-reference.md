@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/azure-iis-errors-reference
 ms.openlocfilehash: b009cc61a94e618a48d96ecbd770ef6371308f6a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059843"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Informations de référence sur les erreurs courantes pour Azure App Service et IIS avec ASP.NET Core
@@ -40,8 +40,8 @@ Collectez les informations suivantes :
 * Entrées du journal des événements de l’application
   * Azure App Service : consultez <xref:test/troubleshoot-azure-iis> .
   * IIS
-    1. Sélectionnez **Démarrer** dans le menu **Windows** , tapez *Observateur d’événements* , puis appuyez sur **Entrée** .
-    1. Une fois l’ **Observateur d’événements** ouvert, développez **Journaux Windows** > **Application** dans la barre latérale.
+    1. Sélectionnez **Démarrer** dans le menu **Windows**, tapez *Observateur d’événements*, puis appuyez sur **Entrée**.
+    1. Une fois l’**Observateur d’événements** ouvert, développez **Journaux Windows** > **Application** dans la barre latérale.
 * Entrées de journal stdout et de débogage du module ASP.NET Core
   * Azure App Service : consultez <xref:test/troubleshoot-azure-iis> .
   * IIS : suivez les instructions des sections [création de journal et redirection](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection) et [journaux de diagnostic améliorés](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) de la rubrique du module ASP.net core.
@@ -87,7 +87,7 @@ Résolution des problèmes :
 
 * Vérifiez que la **plateforme** de l’application dans **Paramètres de l’application** correspond au nombre de bits de l’application.
 
-Pour plus d'informations, consultez <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>.
+Pour plus d’informations, consultez <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>.
 
 ## <a name="an-x86-app-is-deployed-but-the-app-pool-isnt-enabled-for-32-bit-apps"></a>Une application x86 est déployée mais le pool d’applications n’est pas activé pour les applications 32 bits
 
@@ -103,7 +103,7 @@ Ce scénario est intercepté par le kit SDK au moment de la publication d’une 
 
 Résolution des problèmes :
 
-Pour un déploiement dépendant du framework x86 (`<PlatformTarget>x86</PlatformTarget>`), activez le pool d’applications IIS pour les applications 32 bits. Dans le Gestionnaire IIS, ouvrez les **Paramètres avancés** du pool d’applications, puis affectez à l’option **Activer les applications 32 bits** la valeur **Vrai** .
+Pour un déploiement dépendant du framework x86 (`<PlatformTarget>x86</PlatformTarget>`), activez le pool d’applications IIS pour les applications 32 bits. Dans le Gestionnaire IIS, ouvrez les **Paramètres avancés** du pool d’applications, puis affectez à l’option **Activer les applications 32 bits** la valeur **Vrai**.
 
 ## <a name="platform-conflicts-with-rid"></a>Conflits de plateforme avec RID
 
@@ -115,7 +115,7 @@ Pour un déploiement dépendant du framework x86 (`<PlatformTarget>x86</Platfor
 
 Résolution des problèmes :
 
-* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d'informations, consultez <xref:test/troubleshoot-azure-iis>.
+* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d’informations, consultez <xref:test/troubleshoot-azure-iis>.
 
 * Si cette exception se produit pour un déploiement d’applications Azure pendant la mise à niveau d’une application et le déploiement de nouveaux assemblys, supprimez manuellement tous les fichiers du déploiement précédent. Le fait de laisser des assemblys incompatibles peut provoquer une exception `System.BadImageFormatException` lors du déploiement d’une application mise à niveau.
 
@@ -133,7 +133,7 @@ Résolution des problèmes :
 
 * Vérifiez que le point de terminaison d’URI approprié de l’application est en cours d’utilisation. Vérifiez les liaisons.
 
-* Vérifiez que le site web IIS n’est pas à l’état *Arrêté* .
+* Vérifiez que le site web IIS n’est pas à l’état *Arrêté*.
 
 ## <a name="corewebengine-or-w3svc-server-features-disabled"></a>Fonctionnalités de serveur W3SVC ou CoreWebEngine désactivées
 
@@ -171,13 +171,13 @@ Résolution des problèmes :
 
 * Vérifiez que le rôle approprié est activé. Consultez [Configuration d’IIS](xref:host-and-deploy/iis/index#iis-configuration).
 
-* Ouvrez **Programmes et fonctionnalités** ou **Applications et fonctionnalités** , puis vérifiez que **Windows Server Hosting** est installé. Si **Windows Server Hosting** ne figure pas dans la liste des programmes installés, téléchargez et installez le bundle d’hébergement .NET Core.
+* Ouvrez **Programmes et fonctionnalités** ou **Applications et fonctionnalités**, puis vérifiez que **Windows Server Hosting** est installé. Si **Windows Server Hosting** ne figure pas dans la liste des programmes installés, téléchargez et installez le bundle d’hébergement .NET Core.
 
   [Programme d’installation du bundle d’hébergement .NET Core actuel (téléchargement direct)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
   Pour plus d’informations, consultez [Installer le bundle d’hébergement .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
-* Assurez-vous **Application Pool** que le > **modèle de processus** du pool > **Identity** d’applications est défini sur **Identity ApplicationPool** ou que l’identité personnalisée dispose des autorisations appropriées pour accéder au dossier de déploiement de l’application.
+* Assurez-vous  que le > **modèle de processus** du pool > **Identity** d’applications est défini sur **Identity ApplicationPool** ou que l’identité personnalisée dispose des autorisations appropriées pour accéder au dossier de déploiement de l’application.
 
 * Si vous avez désinstallé le bundle d’hébergement ASP.NET Core et installé une version antérieure du bundle d’hébergement, le fichier *applicationHost.config* ne contient pas de section pour le module ASP.NET Core. Ouvrez *applicationHost.config* sur *%windir%/System32/inetsrv/config* et recherchez le groupe de sections `<configuration><configSections><sectionGroup name="system.webServer">`. Si la section pour le module ASP.NET Core ne se trouve pas dans le groupe de sections, ajoutez l’élément de section :
 
@@ -199,13 +199,13 @@ Résolution des problèmes :
 
 Résolution des problèmes :
 
-* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d'informations, consultez <xref:test/troubleshoot-azure-iis>.
+* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d’informations, consultez <xref:test/troubleshoot-azure-iis>.
 
 * Examinez l’attribut *processPath* de l’élément `<aspNetCore>` dans *web.config* afin de vérifier qu’il s’agit de `dotnet` pour un déploiement dépendant du framework ou de `.\{ASSEMBLY}.exe` pour un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd).
 
 * Pour un déploiement dépendant du framework, *dotnet.exe* peut ne pas être accessible via les paramètres PATH. Vérifiez que *C:\Program Files\dotnet\\* existe dans les paramètres PATH du système.
 
-* Dans le cas d’un déploiement dépendant du framework, *dotnet.exe* risque de ne pas être accessible pour l’identité de l’utilisateur du pool d’applications. Vérifiez que l’identité de l’utilisateur du pool d’applications a accès au répertoire *C:\Program Files\dotnet* . Vérifiez qu’aucune règle de refus d’accès n’est configurée pour l’identité de l’utilisateur du pool d’applications sur les répertoires *C:\Program Files\dotnet* et d’application.
+* Dans le cas d’un déploiement dépendant du framework, *dotnet.exe* risque de ne pas être accessible pour l’identité de l’utilisateur du pool d’applications. Vérifiez que l’identité de l’utilisateur du pool d’applications a accès au répertoire *C:\Program Files\dotnet*. Vérifiez qu’aucune règle de refus d’accès n’est configurée pour l’identité de l’utilisateur du pool d’applications sur les répertoires *C:\Program Files\dotnet* et d’application.
 
 * Peut-être qu’un déploiement dépendant du framework a été déployé et que .NET Core a été installé sans redémarrage d’IIS. Redémarrez le serveur ou IIS en exécutant **net stop was /y** suivi de **net start w3svc** à partir d’une invite de commandes.
 
@@ -229,7 +229,7 @@ Résolution des problèmes :
 
 Résolution des problèmes :
 
-* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d'informations, consultez <xref:test/troubleshoot-azure-iis>.
+* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d’informations, consultez <xref:test/troubleshoot-azure-iis>.
 
 * Examinez l’attribut *arguments* de l’élément `<aspNetCore>` dans *web.config* afin de vérifier (a) qu’il s’agit de `.\{ASSEMBLY}.dll` pour un déploiement dépendant du framework, ou (b) qu’il est absent ou qu’il s’agit d’une chaîne vide (`arguments=""`) ou d’une liste d’arguments de l’application (`arguments="{ARGUMENT_1}, {ARGUMENT_2}, ... {ARGUMENT_X}"`) pour un déploiement autonome.
 
@@ -261,7 +261,7 @@ Pour un déploiement dépendant du framework, vérifiez que le runtime appropri�
 
 Résolution des problèmes :
 
-Vérifiez que le pool d’applications n’est pas à l’état *Arrêté* .
+Vérifiez que le pool d’applications n’est pas à l’état *Arrêté*.
 
 ## <a name="sub-application-includes-a-handlers-section"></a>La sous-application contient une \<handlers> section
 
@@ -277,7 +277,7 @@ Résolution des problèmes :
 
 Vérifiez que le fichier *web.config* de la sous-application n’inclut pas de section `<handlers>` ou que la sous-application n’hérite pas des gestionnaires de l’application parente.
 
-La section `<system.webServer>` de l’application parente de *web.config* est placée à l’intérieur d’un élément `<location>`. La <xref:System.Configuration.SectionInformation.InheritInChildApplications*> propriété a la valeur `false` pour indiquer que les paramètres spécifiés dans l' [\<location>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location) élément ne sont pas hérités par les applications qui résident dans un sous-répertoire de l’application parente. Pour plus d'informations, consultez <xref:host-and-deploy/aspnet-core-module>.
+La section `<system.webServer>` de l’application parente de *web.config* est placée à l’intérieur d’un élément `<location>`. La <xref:System.Configuration.SectionInformation.InheritInChildApplications*> propriété a la valeur `false` pour indiquer que les paramètres spécifiés dans l' [\<location>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location) élément ne sont pas hérités par les applications qui résident dans un sous-répertoire de l’application parente. Pour plus d’informations, consultez <xref:host-and-deploy/aspnet-core-module>.
 
 ## <a name="stdout-log-path-incorrect"></a>Chemin du journal stdout incorrect
 
@@ -309,7 +309,7 @@ Résolution des problèmes :
 
 Le processus n’a pas pu démarrer, probablement en raison d’un problème de configuration ou de programmation d’application.
 
-Pour plus d'informations, consultez les rubriques suivantes :
+Pour plus d'informations, voir les rubriques suivantes :
 
 * <xref:test/troubleshoot-azure-iis>
 * <xref:test/troubleshoot>
@@ -328,8 +328,8 @@ Collectez les informations suivantes :
 * Entrées du journal des événements de l’application
   * Azure App Service : consultez <xref:test/troubleshoot-azure-iis> .
   * IIS
-    1. Sélectionnez **Démarrer** dans le menu **Windows** , tapez *Observateur d’événements* , puis appuyez sur **Entrée** .
-    1. Une fois l’ **Observateur d’événements** ouvert, développez **Journaux Windows** > **Application** dans la barre latérale.
+    1. Sélectionnez **Démarrer** dans le menu **Windows**, tapez *Observateur d’événements*, puis appuyez sur **Entrée**.
+    1. Une fois l’**Observateur d’événements** ouvert, développez **Journaux Windows** > **Application** dans la barre latérale.
 * Entrées de journal stdout et de débogage du module ASP.NET Core
   * Azure App Service : consultez <xref:test/troubleshoot-azure-iis> .
   * IIS : suivez les instructions des sections [création de journal et redirection](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection) et [journaux de diagnostic améliorés](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) de la rubrique du module ASP.net core.
@@ -373,7 +373,7 @@ Résolution des problèmes :
 
 * Vérifiez que la **plateforme** de l’application dans **Paramètres de l’application** correspond au nombre de bits de l’application.
 
-Pour plus d'informations, consultez <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>.
+Pour plus d’informations, consultez <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>.
 
 ## <a name="an-x86-app-is-deployed-but-the-app-pool-isnt-enabled-for-32-bit-apps"></a>Une application x86 est déployée mais le pool d’applications n’est pas activé pour les applications 32 bits
 
@@ -387,7 +387,7 @@ Ce scénario est intercepté par le kit SDK au moment de la publication d’une 
 
 Résolution des problèmes :
 
-Pour un déploiement dépendant du framework x86 (`<PlatformTarget>x86</PlatformTarget>`), activez le pool d’applications IIS pour les applications 32 bits. Dans le Gestionnaire IIS, ouvrez les **Paramètres avancés** du pool d’applications, puis affectez à l’option **Activer les applications 32 bits** la valeur **Vrai** .
+Pour un déploiement dépendant du framework x86 (`<PlatformTarget>x86</PlatformTarget>`), activez le pool d’applications IIS pour les applications 32 bits. Dans le Gestionnaire IIS, ouvrez les **Paramètres avancés** du pool d’applications, puis affectez à l’option **Activer les applications 32 bits** la valeur **Vrai**.
 
 ## <a name="platform-conflicts-with-rid"></a>Conflits de plateforme avec RID
 
@@ -399,7 +399,7 @@ Pour un déploiement dépendant du framework x86 (`<PlatformTarget>x86</Platfor
 
 Résolution des problèmes :
 
-* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d'informations, consultez <xref:test/troubleshoot-azure-iis>.
+* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d’informations, consultez <xref:test/troubleshoot-azure-iis>.
 
 * Si cette exception se produit pour un déploiement d’applications Azure pendant la mise à niveau d’une application et le déploiement de nouveaux assemblys, supprimez manuellement tous les fichiers du déploiement précédent. Le fait de laisser des assemblys incompatibles peut provoquer une exception `System.BadImageFormatException` lors du déploiement d’une application mise à niveau.
 
@@ -415,7 +415,7 @@ Résolution des problèmes :
 
 * Vérifiez que le point de terminaison d’URI approprié de l’application est en cours d’utilisation. Vérifiez les liaisons.
 
-* Vérifiez que le site web IIS n’est pas à l’état *Arrêté* .
+* Vérifiez que le site web IIS n’est pas à l’état *Arrêté*.
 
 ## <a name="corewebengine-or-w3svc-server-features-disabled"></a>Fonctionnalités de serveur W3SVC ou CoreWebEngine désactivées
 
@@ -449,13 +449,13 @@ Résolution des problèmes :
 
 * Vérifiez que le rôle approprié est activé. Consultez [Configuration d’IIS](xref:host-and-deploy/iis/index#iis-configuration).
 
-* Ouvrez **Programmes et fonctionnalités** ou **Applications et fonctionnalités** , puis vérifiez que **Windows Server Hosting** est installé. Si **Windows Server Hosting** ne figure pas dans la liste des programmes installés, téléchargez et installez le bundle d’hébergement .NET Core.
+* Ouvrez **Programmes et fonctionnalités** ou **Applications et fonctionnalités**, puis vérifiez que **Windows Server Hosting** est installé. Si **Windows Server Hosting** ne figure pas dans la liste des programmes installés, téléchargez et installez le bundle d’hébergement .NET Core.
 
   [Programme d’installation du bundle d’hébergement .NET Core actuel (téléchargement direct)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
   Pour plus d’informations, consultez [Installer le bundle d’hébergement .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
-* Assurez-vous **Application Pool** que le > **modèle de processus** du pool > **Identity** d’applications est défini sur **Identity ApplicationPool** ou que l’identité personnalisée dispose des autorisations appropriées pour accéder au dossier de déploiement de l’application.
+* Assurez-vous  que le > **modèle de processus** du pool > **Identity** d’applications est défini sur **Identity ApplicationPool** ou que l’identité personnalisée dispose des autorisations appropriées pour accéder au dossier de déploiement de l’application.
 
 * Si vous avez désinstallé le bundle d’hébergement ASP.NET Core et installé une version antérieure du bundle d’hébergement, le fichier *applicationHost.config* ne contient pas de section pour le module ASP.NET Core. Ouvrez *applicationHost.config* sur *%windir%/System32/inetsrv/config* et recherchez le groupe de sections `<configuration><configSections><sectionGroup name="system.webServer">`. Si la section pour le module ASP.NET Core ne se trouve pas dans le groupe de sections, ajoutez l’élément de section :
 
@@ -475,13 +475,13 @@ Résolution des problèmes :
 
 Résolution des problèmes :
 
-* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d'informations, consultez <xref:test/troubleshoot-azure-iis>.
+* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d’informations, consultez <xref:test/troubleshoot-azure-iis>.
 
 * Examinez l’attribut *processPath* de l’élément `<aspNetCore>` dans *web.config* afin de vérifier qu’il s’agit de `dotnet` pour un déploiement dépendant du framework ou de `.\{ASSEMBLY}.exe` pour un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd).
 
 * Pour un déploiement dépendant du framework, *dotnet.exe* peut ne pas être accessible via les paramètres PATH. Vérifiez que *C:\Program Files\dotnet\\* existe dans les paramètres PATH du système.
 
-* Dans le cas d’un déploiement dépendant du framework, *dotnet.exe* risque de ne pas être accessible pour l’identité de l’utilisateur du pool d’applications. Vérifiez que l’identité de l’utilisateur du pool d’applications a accès au répertoire *C:\Program Files\dotnet* . Vérifiez qu’aucune règle de refus d’accès n’est configurée pour l’identité de l’utilisateur du pool d’applications sur les répertoires *C:\Program Files\dotnet* et d’application.
+* Dans le cas d’un déploiement dépendant du framework, *dotnet.exe* risque de ne pas être accessible pour l’identité de l’utilisateur du pool d’applications. Vérifiez que l’identité de l’utilisateur du pool d’applications a accès au répertoire *C:\Program Files\dotnet*. Vérifiez qu’aucune règle de refus d’accès n’est configurée pour l’identité de l’utilisateur du pool d’applications sur les répertoires *C:\Program Files\dotnet* et d’application.
 
 * Peut-être qu’un déploiement dépendant du framework a été déployé et que .NET Core a été installé sans redémarrage d’IIS. Redémarrez le serveur ou IIS en exécutant **net stop was /y** suivi de **net start w3svc** à partir d’une invite de commandes.
 
@@ -503,7 +503,7 @@ Résolution des problèmes :
 
 Résolution des problèmes :
 
-* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d'informations, consultez <xref:test/troubleshoot-azure-iis>.
+* Vérifiez que l’application s’exécute localement sur Kestrel. Un échec de processus peut être dû à un problème au niveau de l’application. Pour plus d’informations, consultez <xref:test/troubleshoot-azure-iis>.
 
 * Examinez l’attribut *arguments* de l’élément `<aspNetCore>` dans *web.config* afin de vérifier (a) qu’il s’agit de `.\{ASSEMBLY}.dll` pour un déploiement dépendant du framework, ou (b) qu’il est absent ou qu’il s’agit d’une chaîne vide (`arguments=""`) ou d’une liste d’arguments de l’application (`arguments="{ARGUMENT_1}, {ARGUMENT_2}, ... {ARGUMENT_X}"`) pour un déploiement autonome.
 
@@ -521,7 +521,7 @@ Pour un déploiement dépendant du framework, vérifiez que le runtime appropri�
 
 Résolution des problèmes :
 
-Vérifiez que le pool d’applications n’est pas à l’état *Arrêté* .
+Vérifiez que le pool d’applications n’est pas à l’état *Arrêté*.
 
 ## <a name="sub-application-includes-a-handlers-section"></a>La sous-application contient une \<handlers> section
 
@@ -561,7 +561,7 @@ Résolution des problèmes :
 
 Le processus n’a pas pu démarrer, probablement en raison d’un problème de configuration ou de programmation d’application.
 
-Pour plus d'informations, consultez les rubriques suivantes :
+Pour plus d'informations, voir les rubriques suivantes :
 
 * <xref:test/troubleshoot-azure-iis>
 * <xref:test/troubleshoot>

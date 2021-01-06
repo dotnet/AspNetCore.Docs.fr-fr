@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/migrations
 ms.openlocfilehash: 7c8f562bcf0b7e2672f2f1ac244e0d9278e4c204
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97485925"
 ---
 # <a name="tutorial-part-5-apply-migrations-to-the-contoso-university-sample"></a>Didacticiel : partie 5, appliquer des migrations à l’exemple Contoso University
@@ -39,7 +39,7 @@ Dans ce tutoriel, vous allez :
 > * En savoir plus sur la capture instantanée du modèle de données
 > * Appliquer la migration
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Tri, filtrage et pagination](sort-filter-page.md)
 

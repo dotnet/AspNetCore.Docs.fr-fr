@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/host/generic-host
 ms.openlocfilehash: 263c7713166005dfdec8ede6bfa9b03b730dede7
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96035812"
 ---
 # <a name="net-generic-host-in-aspnet-core"></a>Hôte générique .NET dans ASP.NET Core
@@ -187,7 +187,7 @@ L’exemple suivant crée la configuration d’hôte :
 
 [!code-csharp[](generic-host/samples-snapshot/3.x/Program.cs?name=snippet_HostConfig)]
 
-## <a name="app-configuration"></a>Configuration de l’application
+## <a name="app-configuration"></a>la configuration d’une application ;
 
 La configuration d’application est créée en appelant <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> sur `IHostBuilder`. `ConfigureAppConfiguration` peut être appelé plusieurs fois avec des résultats additifs. L’application utilise l’option qui définit une valeur en dernier sur une clé donnée. 
 
@@ -229,7 +229,7 @@ Host.CreateDefaultBuilder(args)
     //...
 ```
 
-Pour plus d'informations, consultez les pages suivantes :
+Pour plus d’informations, consultez :
 
 * [Notions de base : racine du contenu](xref:fundamentals/index#content-root)
 * [WebRoot](#webroot)
@@ -424,7 +424,7 @@ webBuilder.UseStartup<Startup>();
 
 ### <a name="urls"></a>URLs
 
-Liste délimitée par des points-virgules d’adresses IP ou d’adresses d’hôte avec les ports et protocoles sur lesquels le serveur doit écouter les requêtes. Par exemple, `http://localhost:123`. Utilisez « \* » pour indiquer que le serveur doit écouter les requêtes sur toutes les adresses IP ou tous les noms d’hôte qui utilisent le port et le protocole spécifiés (par exemple, `http://*:5000`). Le protocole (`http://` ou `https://`) doit être inclus avec chaque URL. Les formats pris en charge varient selon les serveurs.
+Liste délimitée par des points-virgules d’adresses IP ou d’adresses d’hôte avec les ports et protocoles sur lesquels le serveur doit écouter les requêtes. Par exemple : `http://localhost:123`. Utilisez « \* » pour indiquer que le serveur doit écouter les requêtes sur toutes les adresses IP ou tous les noms d’hôte qui utilisent le port et le protocole spécifiés (par exemple, `http://*:5000`). Le protocole (`http://` ou `https://`) doit être inclus avec chaque URL. Les formats pris en charge varient selon les serveurs.
 
 **Clé** : `urls`  
 **Type** : `string`  
@@ -454,7 +454,7 @@ Pour définir cette valeur, utilisez la variable d’environnement ou appelez `U
 webBuilder.UseWebRoot("public");
 ```
 
-Pour plus d'informations, consultez les pages suivantes :
+Pour plus d’informations, consultez :
 
 * [Notions de base : racine Web](xref:fundamentals/index#web-root)
 * [ContentRoot](#contentroot)
@@ -690,7 +690,7 @@ L’exemple suivant crée la configuration d’hôte :
 
 [!code-csharp[](generic-host/samples-snapshot/3.x/Program.cs?name=snippet_HostConfig)]
 
-## <a name="app-configuration"></a>Configuration de l’application
+## <a name="app-configuration"></a>la configuration d’une application ;
 
 La configuration d’application est créée en appelant <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> sur `IHostBuilder`. `ConfigureAppConfiguration` peut être appelé plusieurs fois avec des résultats additifs. L’application utilise l’option qui définit une valeur en dernier sur une clé donnée. 
 
@@ -732,7 +732,7 @@ Host.CreateDefaultBuilder(args)
     //...
 ```
 
-Pour plus d'informations, consultez les pages suivantes :
+Pour plus d’informations, consultez :
 
 * [Notions de base : racine du contenu](xref:fundamentals/index#content-root)
 * [WebRoot](#webroot)
@@ -914,7 +914,7 @@ webBuilder.UseStartup<Startup>();
 
 ### <a name="urls"></a>URLs
 
-Liste délimitée par des points-virgules d’adresses IP ou d’adresses d’hôte avec les ports et protocoles sur lesquels le serveur doit écouter les requêtes. Par exemple, `http://localhost:123`. Utilisez « \* » pour indiquer que le serveur doit écouter les requêtes sur toutes les adresses IP ou tous les noms d’hôte qui utilisent le port et le protocole spécifiés (par exemple, `http://*:5000`). Le protocole (`http://` ou `https://`) doit être inclus avec chaque URL. Les formats pris en charge varient selon les serveurs.
+Liste délimitée par des points-virgules d’adresses IP ou d’adresses d’hôte avec les ports et protocoles sur lesquels le serveur doit écouter les requêtes. Par exemple : `http://localhost:123`. Utilisez « \* » pour indiquer que le serveur doit écouter les requêtes sur toutes les adresses IP ou tous les noms d’hôte qui utilisent le port et le protocole spécifiés (par exemple, `http://*:5000`). Le protocole (`http://` ou `https://`) doit être inclus avec chaque URL. Les formats pris en charge varient selon les serveurs.
 
 **Clé** : `urls`  
 **Type** : `string`  
@@ -944,7 +944,7 @@ Pour définir cette valeur, utilisez la variable d’environnement ou appelez `U
 webBuilder.UseWebRoot("public");
 ```
 
-Pour plus d'informations, consultez les pages suivantes :
+Pour plus d’informations, consultez :
 
 * [Notions de base : racine Web](xref:fundamentals/index#web-root)
 * [ContentRoot](#contentroot)

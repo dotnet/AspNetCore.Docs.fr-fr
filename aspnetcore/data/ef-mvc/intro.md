@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/intro
 ms.openlocfilehash: c0623de3c8031b6dbb518a6d25623b55a6500af5
-ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94703733"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Didacticiel : prise en main de EF Core dans une application Web MVC ASP.NET
@@ -80,7 +80,7 @@ Les utilisateurs peuvent afficher et mettre à jour les informations relatives a
 1. Dans la boîte de dialogue **créer une application web ASP.net Core** , sélectionnez :
     1. **.Net Core** et **ASP.net Core 5,0** dans les listes déroulantes.
     1. **ASP.net Core application Web (Model-View-Controller)**.
-    1. **Create** 
+    1.  
        Créer ![ Boîte de dialogue Nouveau projet de ASP.NET Core](~/data/ef-mvc/intro/_static/new-aspnet5.png)
 
 ## <a name="set-up-the-site-style"></a>Configurer le style du site
@@ -213,7 +213,7 @@ Quand la base de données est créée, EF crée des tables dont les noms sont id
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_TableNames&highlight=16-21)]
 
-## <a name="register-the-schoolcontext"></a>Inscrire la `SchoolContext`
+## <a name="register-the-schoolcontext"></a>Inscrivez `SchoolContext`
 
 ASP.NET Core comprend [l’injection de dépendances](../../fundamentals/dependency-injection.md). Les services, tels que le contexte de base de données EF, sont inscrits avec l’injection de dépendances au démarrage de l’application. Ces services sont fournis par les composants qui requièrent ces services, tels que les contrôleurs MVC, par le biais de paramètres de constructeur. Le code du constructeur de contrôleur qui obtient une instance de contexte est indiqué plus loin dans ce didacticiel.
 

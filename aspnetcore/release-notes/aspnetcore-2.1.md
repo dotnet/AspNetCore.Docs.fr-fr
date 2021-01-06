@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: 62fc9d866adcf05ff024501db68cce8bb8b11a98
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 199ca62f71df5c0ee5ca2f78caf53ad8d6be1179
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059713"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854559"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Nouveautés d’ASP.NET Core 2.1
 
@@ -93,7 +93,7 @@ ASP.NET Core fournit des API et des modèles qui aident à satisfaire à certain
 
 Un nouveau package est introduit qui simplifie la création et l’exécution de tests. Le package [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) gère les tâches suivantes :
 
-* Copie le fichier de dépendance ( *\* . DEPS* ) de l’application testée dans le dossier *bin* du projet de test.
+* Copie le fichier de dépendance (*\* . DEPS*) de l’application testée dans le dossier *bin* du projet de test.
 * Il définit la racine du contenu sur la racine du projet de l’application testée afin que soient trouvés les pages/vues et fichiers statiques quand les tests sont exécutés.
 * Il fournit la classe [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) afin de simplifier l’amorçage de l’application testée avec [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver).
 
@@ -141,9 +141,9 @@ ASP.NET Core 2.1 inclut un nouveau service `IHttpClientFactory` qui facilite la 
 
 Pour plus d’informations, consultez [Lancer des requêtes HTTP](xref:fundamentals/http-requests).
 
-## <a name="kestrel-transport-configuration"></a>Configuration du transport Kestrel
+## <a name="kestrel-libuv-transport-configuration"></a>Configuration du transport Kestrel libuv
 
-Dans ASP.NET Core 2.1, le transport par défaut de Kestrel n’est plus basé sur Libuv, mais sur des sockets managés. Pour plus d’informations, consultez [Implémentation du serveur web Kestrel : configuration du transport](xref:fundamentals/servers/kestrel#transport-configuration).
+Dans ASP.NET Core 2.1, le transport par défaut de Kestrel n’est plus basé sur Libuv, mais sur des sockets managés. Pour plus d’informations, consultez [implémentation du serveur Web Kestrel : configuration du transport Libuv](xref:fundamentals/servers/kestrel#libuv-transport-configuration).
 
 ## <a name="generic-host-builder"></a>Générateur d’hôte générique
 
@@ -157,7 +157,7 @@ Les modèles d’applications monopages pour Angular, React et React avec Redux 
 
 Le modèle Angular est basé sur l’interface CLI Angular, tandis que les modèles React sont basés sur create-react-app.
 
-Pour plus d'informations, consultez les pages suivantes :
+Pour plus d’informations, consultez :
 
 * <xref:spa/angular>
 * <xref:spa/react>
@@ -173,13 +173,13 @@ Dans 2,1, les Razor pages recherchent les Razor ressources (telles que les mises
 
 ## <a name="no-locrazor-pages-in-an-area"></a>Razor Pages dans une zone
 
-Razor Les pages prennent désormais en charge les [zones](xref:mvc/controllers/areas). Pour voir un exemple de zones, créez une Razor application Web de pages avec des comptes d’utilisateur individuels. Une Razor application Web de pages avec des comptes d’utilisateur individuels comprend */Areas/ Identity /pages* .
+Razor Les pages prennent désormais en charge les [zones](xref:mvc/controllers/areas). Pour voir un exemple de zones, créez une Razor application Web de pages avec des comptes d’utilisateur individuels. Une Razor application Web de pages avec des comptes d’utilisateur individuels comprend */Areas/ Identity /pages*.
 
 ## <a name="mvc-compatibility-version"></a>Version de compatibilité MVC
 
 La méthode <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> permet à une application d’accepter ou de refuser les changements de comportement potentiellement cassants introduits dans ASP.NET Core MVC 2.1 ou version ultérieure.
 
-Pour plus d'informations, consultez <xref:mvc/compatibility-version>.
+Pour plus d’informations, consultez <xref:mvc/compatibility-version>.
 
 ## <a name="migrate-from-20-to-21"></a>Migrer depuis la version 2.0 vers la version 2.1
 
