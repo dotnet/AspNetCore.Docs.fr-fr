@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: spa/angular
 ms.openlocfilehash: 2fff0d60b71bbbab9347dbe74cad023264247388
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054565"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>Utiliser le modèle de projet Angular avec ASP.NET Core
@@ -45,7 +45,7 @@ cd my-new-app
 
 Exécutez l’application à partir de Visual Studio ou de CLI .NET Core :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
 Ouvrez le fichier *.csproj* généré, puis exécutez l’application normalement à partir de là.
 
@@ -66,11 +66,11 @@ Now listening on: http://localhost:<port>
 Accédez à cette URL dans un navigateur.
 
 > [!WARNING]
-> L’application démarre une instance du serveur CLI Angular en arrière-plan. Un message semblable au suivant est consigné : *ng Live serveur de développement écoute sur localhost : &lt; otherport &gt; , ouvrez un navigateur sur http://localhost:&lt ; otherport &gt; /* . Ignorez ce message&mdash;ce n’est **pas** l’URL de l’application ASP.NET Core et CLI Angular combinée.
+> L’application démarre une instance du serveur CLI Angular en arrière-plan. Un message semblable au suivant est consigné : *ng Live serveur de développement écoute sur localhost : &lt; otherport &gt; , ouvrez un navigateur sur http://localhost:&lt ; otherport &gt; /*. Ignorez ce message&mdash;ce n’est **pas** l’URL de l’application ASP.NET Core et CLI Angular combinée.
 
 ---
 
-Le modèle de projet crée une application ASP.NET Core et une application Angular. L’application ASP.NET Core est destinée à être utilisée pour tous les aspects liés au serveur, tels que l’accès aux données et l’autorisation. L’application Angular, qui réside dans le sous-répertoire *ClientApp* , est destinée à être utilisée pour tout ce qui touche l’interface utilisateur.
+Le modèle de projet crée une application ASP.NET Core et une application Angular. L’application ASP.NET Core est destinée à être utilisée pour tous les aspects liés au serveur, tels que l’accès aux données et l’autorisation. L’application Angular, qui réside dans le sous-répertoire *ClientApp*, est destinée à être utilisée pour tout ce qui touche l’interface utilisateur.
 
 ## <a name="add-pages-images-styles-modules-etc"></a>Ajouter des pages, des images, des styles, des modules, etc.
 
@@ -80,7 +80,7 @@ Il existe de légères différences entre l’application Angular créée par ce
 
 ## <a name="run-ng-commands"></a>Exécuter des commandes ng
 
-Dans une invite de commandes, basculez vers le sous-répertoire *ClientApp*  :
+Dans une invite de commandes, basculez vers le sous-répertoire *ClientApp* :
 
 ```console
 cd ClientApp
@@ -92,7 +92,7 @@ Si l’outil `ng` n’est pas installé, exécutez `npm run ng` à la place. Par
 
 ## <a name="install-npm-packages"></a>Installer les packages npm
 
-Pour installer des packages npm tiers, utilisez une invite de commandes dans le sous-répertoire *ClientApp* . Exemple :
+Pour installer des packages npm tiers, utilisez une invite de commandes dans le sous-répertoire *ClientApp*. Par exemple :
 
 ```console
 cd ClientApp
@@ -121,9 +121,9 @@ Cette configuration par défaut présente un inconvénient. Chaque fois que vous
     ```
 
     > [!IMPORTANT]
-    > Utilisez `npm start` pour lancer le serveur de développement CLI Angular, et non `ng serve`, de sorte que la configuration dans *package.json* soit respectée. Pour transmettre des paramètres supplémentaires au serveur CLI Angular, ajoutez-les à la ligne `scripts` pertinente dans votre fichier *package.json* .
+    > Utilisez `npm start` pour lancer le serveur de développement CLI Angular, et non `ng serve`, de sorte que la configuration dans *package.json* soit respectée. Pour transmettre des paramètres supplémentaires au serveur CLI Angular, ajoutez-les à la ligne `scripts` pertinente dans votre fichier *package.json*.
 
-2. Modifiez votre application ASP.NET Core afin qu’elle utilise l’instance CLI Angular externe au lieu de lancer une instance propre. Dans votre classe *Startup* , remplacez l’appel `spa.UseAngularCliServer` par ce qui suit :
+2. Modifiez votre application ASP.NET Core afin qu’elle utilise l’instance CLI Angular externe au lieu de lancer une instance propre. Dans votre classe *Startup*, remplacez l’appel `spa.UseAngularCliServer` par ce qui suit :
 
     ```csharp
     spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
@@ -133,7 +133,7 @@ Quand vous démarrez votre application ASP.NET Core, elle ne lance pas un serveu
 
 ### <a name="pass-data-from-net-code-into-typescript-code"></a>Transmettre des données à partir du code .NET dans le code TypeScript
 
-Au cours du rendu côté serveur (SSR), vous pouvez souhaiter transmettre des données par requête à partir de votre application ASP.NET Core dans votre application Angular. Par exemple, vous pouvez transmettre des cookie informations ou des éléments lus à partir d’une base de données. Pour ce faire, modifiez votre classe *Démarrer* . Dans le rappel pour `UseSpaPrerendering`, définissez une valeur pour `options.SupplyData` telle que la suivante :
+Au cours du rendu côté serveur (SSR), vous pouvez souhaiter transmettre des données par requête à partir de votre application ASP.NET Core dans votre application Angular. Par exemple, vous pouvez transmettre des cookie informations ou des éléments lus à partir d’une base de données. Pour ce faire, modifiez votre classe *Démarrer*. Dans le rappel pour `UseSpaPrerendering`, définissez une valeur pour `options.SupplyData` telle que la suivante :
 
 ```csharp
 options.SupplyData = (context, data) =>

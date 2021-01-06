@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: fundamentals/troubleshoot-aspnet-core-localization
 ms.openlocfilehash: 995db4c8c9d0c0f1f77b1fd3665e707975406a7f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053616"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>Résoudre les problèmes liés à la localisation ASP.NET Core
@@ -118,4 +118,4 @@ Si l’espace de noms racine d’un assembly est différent du nom de l’assemb
 
 ## <a name="resources--build-action"></a>Ressources et action de génération
 
-Si vous utilisez des fichiers de ressources pour la localisation, il est important qu’ils disposent d’une action de génération appropriée. Ils doivent être une **ressource incorporée** , sans quoi `ResourceStringLocalizer` n’est pas en mesure de trouver ces ressources.
+Si vous utilisez des fichiers de ressources pour la localisation, il est important qu’ils disposent d’une action de génération appropriée. Ils doivent être une **ressource incorporée**, sans quoi `ResourceStringLocalizer` n’est pas en mesure de trouver ces ressources.

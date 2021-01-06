@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/aspnetcore
 ms.openlocfilehash: b120aa4ab6922445f2c53f3b1cb3bd5c159d8a84
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057828"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Services gRPC avec ASP.NET Core
@@ -51,7 +51,7 @@ Ce document montre comment prendre en main les services gRPC à l’aide de ASP.
 
 [Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/grpc/grpc-start/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Pour obtenir des instructions détaillées sur la création d’un projet gRPC, consultez [prise en main des services gRPC](xref:tutorials/grpc/grpc-start) .
 
@@ -67,7 +67,7 @@ gRPC requiert le package [gRPC. AspNetCore](https://www.nuget.org/packages/Grpc.
 
 ### <a name="configure-grpc"></a>Configurer gRPC
 
-Dans *Startup.cs*  :
+Dans *Startup.cs* :
 
 * gRPC est activé avec la `AddGrpc` méthode.
 * Chaque service gRPC est ajouté au pipeline de routage via la `MapGrpcService` méthode.
@@ -98,7 +98,7 @@ En production, TLS doit être configuré de manière explicite. Dans l' *appsett
 
 [!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 
-Vous pouvez également configurer les points de terminaison Kestrel dans *Program.cs* :
+Vous pouvez également configurer les points de terminaison Kestrel dans *Program.cs*:
 
 [!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 

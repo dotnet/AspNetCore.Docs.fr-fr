@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/change-tokens
 ms.openlocfilehash: f20d44c7767b284f727ce19a46224dae0cf6a5e1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053772"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Détecter les modifications avec des jetons de modification dans ASP.NET Core
@@ -67,7 +67,7 @@ Les jetons de modification sont utilisés dans des zones importantes d’ASP.NET
 
 ## <a name="monitor-for-configuration-changes"></a>Surveiller les modifications de configuration
 
-Par défaut, les modèles de ASP.net Core utilisent des [fichiers de configuration JSON](xref:fundamentals/configuration/index#json-configuration-provider) ( *appsettings.json* , *appsettings.Development.jssous* et *appsettings.Production.js* ) pour charger les paramètres de configuration des applications.
+Par défaut, les modèles de ASP.net Core utilisent des [fichiers de configuration JSON](xref:fundamentals/configuration/index#json-configuration-provider) ( *appsettings.json* , *appsettings.Development.jssous* et *appsettings.Production.js*) pour charger les paramètres de configuration des applications.
 
 Ces fichiers sont configurés avec la méthode d’extension [AddJsonFile(IConfigurationBuilder, chaîne, booléen, booléen)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) sur <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> qui accepte un paramètre `reloadOnChange`. `reloadOnChange` indique si la configuration doit être rechargée en cas de modification d’un fichier. Ce paramètre s’affiche dans la méthode pratique <xref:Microsoft.Extensions.Hosting.Host><xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> :
 
@@ -115,7 +115,7 @@ L’exemple implémente :
 
 L’exemple établit une interface `IConfigurationMonitor`.
 
-*Extensions/Configurationmonitor.cs*  :
+*Extensions/Configurationmonitor.cs* :
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Extensions/ConfigurationMonitor.cs?name=snippet1)]
 
@@ -153,7 +153,7 @@ Quand `OnPostStartMonitoring` est déclenché, la surveillance est activée et l
 
 Des boutons dans l’IU activent et désactivent la surveillance.
 
-*Pages/index. cshtml* :
+*Pages/index. cshtml*:
 
 [!code-cshtml[](change-tokens/samples/3.x/SampleApp/Pages/Index.cshtml?name=snippet_Buttons)]
 
@@ -174,7 +174,7 @@ L’exemple utilise `GetFileContent` pour :
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Utilities/Utilities.cs?name=snippet2)]
 
-Un `FileService` est créé pour gérer les recherches des fichiers mis en cache. L’appel de la méthode `GetFileContent` du service tente d’obtenir le contenu du fichier à partir du cache en mémoire et le retourne à l’appelant ( *Services/FileService.cs* ).
+Un `FileService` est créé pour gérer les recherches des fichiers mis en cache. L’appel de la méthode `GetFileContent` du service tente d’obtenir le contenu du fichier à partir du cache en mémoire et le retourne à l’appelant (*Services/FileService.cs*).
 
 Si le contenu en cache n’est pas trouvé avec la clé du cache, les actions suivantes sont effectuées :
 
@@ -194,7 +194,7 @@ Dans `Startup.ConfigureServices` :
 
 Le modèle de page charge le contenu du fichier en utilisant le service.
 
-Dans la méthode `OnGet` de la page Index ( *Pages/Index.cshtml.cs* ) :
+Dans la méthode `OnGet` de la page Index (*Pages/Index.cshtml.cs*) :
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Pages/Index.cshtml.cs?name=snippet3)]
 
@@ -265,7 +265,7 @@ Les jetons de modification sont utilisés dans des zones importantes d’ASP.NET
 
 ## <a name="monitor-for-configuration-changes"></a>Surveiller les modifications de configuration
 
-Par défaut, les modèles de ASP.net Core utilisent des [fichiers de configuration JSON](xref:fundamentals/configuration/index#json-configuration-provider) ( *appsettings.json* , *appsettings.Development.jssous* et *appsettings.Production.js* ) pour charger les paramètres de configuration des applications.
+Par défaut, les modèles de ASP.net Core utilisent des [fichiers de configuration JSON](xref:fundamentals/configuration/index#json-configuration-provider) ( *appsettings.json* , *appsettings.Development.jssous* et *appsettings.Production.js*) pour charger les paramètres de configuration des applications.
 
 Ces fichiers sont configurés avec la méthode d’extension [AddJsonFile(IConfigurationBuilder, chaîne, booléen, booléen)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) sur <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> qui accepte un paramètre `reloadOnChange`. `reloadOnChange` indique si la configuration doit être rechargée en cas de modification d’un fichier. Ce paramètre s’affiche dans la méthode pratique <xref:Microsoft.AspNetCore.WebHost><xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> :
 
@@ -313,7 +313,7 @@ L’exemple implémente :
 
 L’exemple établit une interface `IConfigurationMonitor`.
 
-*Extensions/Configurationmonitor.cs*  :
+*Extensions/Configurationmonitor.cs* :
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Extensions/ConfigurationMonitor.cs?name=snippet1)]
 
@@ -351,7 +351,7 @@ Quand `OnPostStartMonitoring` est déclenché, la surveillance est activée et l
 
 Des boutons dans l’IU activent et désactivent la surveillance.
 
-*Pages/index. cshtml* :
+*Pages/index. cshtml*:
 
 [!code-cshtml[](change-tokens/samples/2.x/SampleApp/Pages/Index.cshtml?name=snippet_Buttons)]
 
@@ -372,7 +372,7 @@ L’exemple utilise `GetFileContent` pour :
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Utilities/Utilities.cs?name=snippet2)]
 
-Un `FileService` est créé pour gérer les recherches des fichiers mis en cache. L’appel de la méthode `GetFileContent` du service tente d’obtenir le contenu du fichier à partir du cache en mémoire et le retourne à l’appelant ( *Services/FileService.cs* ).
+Un `FileService` est créé pour gérer les recherches des fichiers mis en cache. L’appel de la méthode `GetFileContent` du service tente d’obtenir le contenu du fichier à partir du cache en mémoire et le retourne à l’appelant (*Services/FileService.cs*).
 
 Si le contenu en cache n’est pas trouvé avec la clé du cache, les actions suivantes sont effectuées :
 
@@ -392,7 +392,7 @@ Dans `Startup.ConfigureServices` :
 
 Le modèle de page charge le contenu du fichier en utilisant le service.
 
-Dans la méthode `OnGet` de la page Index ( *Pages/Index.cshtml.cs* ) :
+Dans la méthode `OnGet` de la page Index (*Pages/Index.cshtml.cs*) :
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Pages/Index.cshtml.cs?name=snippet3)]
 

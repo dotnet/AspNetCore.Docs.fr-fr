@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/protobuf
 ms.openlocfilehash: b70a5ee00405eecfce900b86dc631a54682dce1a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058894"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Créer des messages Protobuf pour les applications .NET
@@ -90,7 +90,7 @@ Les valeurs scalaires ont toujours une valeur par défaut et ne peuvent pas êtr
 
 Les [types Wrapper Nullable](#nullable-types) peuvent être utilisés pour prendre en charge les valeurs NULL.
 
-### <a name="dates-and-times"></a>Des dates et heures
+### <a name="dates-and-times"></a>Dates et heures
 
 Les types scalaires natifs ne fournissent pas de valeurs de date et d’heure équivalentes à. Les, <xref:System.DateTimeOffset> <xref:System.DateTime> et <xref:System.TimeSpan> . Ces types peuvent être spécifiés à l’aide d’extensions de *types connus* de Protobuf. Ces extensions fournissent la génération de code et la prise en charge du runtime pour les types de champs complexes sur les plateformes prises en charge.
 
@@ -247,7 +247,7 @@ namespace CustomTypes
 }
 ```
 
-## <a name="collections"></a>Collections
+## <a name="collections"></a>Regroupements
 
 ### <a name="lists"></a>Listes
 

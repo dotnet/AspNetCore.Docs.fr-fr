@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/update-related-data
 ms.openlocfilehash: f41d0b1d7ba46ef4867e0d160dc61f21042ce403
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053941"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Didacticiel : mettre à jour les données associées-ASP.NET MVC avec EF Core
@@ -45,7 +45,7 @@ Dans ce tutoriel, vous allez :
 > * Mettre à jour la page Delete
 > * Ajouter des emplacements de bureau et des cours à la page Create
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Lire les données associées](read-related-data.md)
 
@@ -53,7 +53,7 @@ Dans ce tutoriel, vous allez :
 
 Quand une entité de cours est créée, elle doit avoir une relation à un département existant. Pour faciliter cela, le code du modèle généré automatiquement inclut des méthodes de contrôleur, et des vues Create et Edit qui incluent une liste déroulante pour sélectionner le département. La liste déroulante définit la propriété de clé étrangère `Course.DepartmentID`, qui est tout ce dont Entity Framework a besoin pour charger la propriété de navigation `Department` avec l’entité Department appropriée. Vous utilisez le code du modèle généré automatiquement, mais que vous modifiez un peu pour ajouter la gestion des erreurs et trier la liste déroulante.
 
-Dans *CoursesController.cs* , supprimez les quatre méthodes Create et Edit, et remplacez-les par le code suivant :
+Dans *CoursesController.cs*, supprimez les quatre méthodes Create et Edit, et remplacez-les par le code suivant :
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreateGet)]
 
@@ -89,37 +89,37 @@ Pour optimiser les performances des pages Details et Delete pour les cours, ajou
 
 ### <a name="modify-the-course-views"></a>Modifier les vues des cours
 
-Dans *Views/Courses/Create.cshtml* , ajoutez une option « Select Department » à la liste déroulante **Department** , changez la légende de **DepartmentID** en **Department** et ajoutez un message de validation.
+Dans *Views/Courses/Create.cshtml*, ajoutez une option « Select Department » à la liste déroulante **Department**, changez la légende de **DepartmentID** en **Department** et ajoutez un message de validation.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
 
-Dans *Views/Courses/Edit.cshtml* , faites les mêmes modifications pour le champ Department que ce que vous venez de faire dans *Create.cshtml* .
+Dans *Views/Courses/Edit.cshtml*, faites les mêmes modifications pour le champ Department que ce que vous venez de faire dans *Create.cshtml*.
 
-Également dans *Views/Courses/Edit.cshtml* , ajoutez un champ de numéro de cours avant le champ **Title** . Comme le numéro de cours est la clé primaire, il est affiché mais ne peut pas être modifié.
+Également dans *Views/Courses/Edit.cshtml*, ajoutez un champ de numéro de cours avant le champ **Title**. Comme le numéro de cours est la clé primaire, il est affiché mais ne peut pas être modifié.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
 
-Il existe déjà un champ masqué (`<input type="hidden">`) pour le numéro de cours dans la vue Edit. L’ajout d’un tag helper `<label>` n’élimine la nécessité d’avoir le champ masqué, car cela n’a pas comme effet que le numéro de cours est inclut dans les données envoyées quand l’utilisateur clique sur **Save** dans la page **Edit** .
+Il existe déjà un champ masqué (`<input type="hidden">`) pour le numéro de cours dans la vue Edit. L’ajout d’un tag helper `<label>` n’élimine la nécessité d’avoir le champ masqué, car cela n’a pas comme effet que le numéro de cours est inclut dans les données envoyées quand l’utilisateur clique sur **Save** dans la page **Edit**.
 
-Dans *Views/Courses/Delete.cshtml* , ajoutez un champ pour le numéro de cours en haut et changez l’ID de département en nom de département.
+Dans *Views/Courses/Delete.cshtml*, ajoutez un champ pour le numéro de cours en haut et changez l’ID de département en nom de département.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
 
-Dans *Views/Courses/Details.cshtml* , faites la même modification que celle que vous venez de faire pour *Delete.cshtml* .
+Dans *Views/Courses/Details.cshtml*, faites la même modification que celle que vous venez de faire pour *Delete.cshtml*.
 
 ### <a name="test-the-course-pages"></a>Tester les pages de cours
 
-Exécutez l’application, sélectionnez l’onglet **Courses** , cliquez sur **Create New** et entrez les données pour un nouveau cours :
+Exécutez l’application, sélectionnez l’onglet **Courses**, cliquez sur **Create New** et entrez les données pour un nouveau cours :
 
 ![Page Create pour les cours](update-related-data/_static/course-create.png)
 
-Cliquez sur **Créer** . La page Index des cours est affichée avec le nouveau cours ajouté à la liste. Le nom du département dans la liste de la page Index provient de la propriété de navigation, ce qui montre que la relation a été établie correctement.
+Cliquez sur **Créer**. La page Index des cours est affichée avec le nouveau cours ajouté à la liste. Le nom du département dans la liste de la page Index provient de la propriété de navigation, ce qui montre que la relation a été établie correctement.
 
 Cliquez sur **Edit** pour un cours dans la page Index des cours.
 
 ![Page Edit pour les cours](update-related-data/_static/course-edit.png)
 
-Modifiez les données dans la page et cliquez sur **Save** . La page Index des cours est affichée avec les données du cours mises à jour.
+Modifiez les données dans la page et cliquez sur **Save**. La page Index des cours est affichée avec les données du cours mises à jour.
 
 ## <a name="add-instructors-edit-page"></a>Ajouter une page de modification de formateur
 
@@ -133,7 +133,7 @@ Quand vous modifiez un enregistrement de formateur, vous voulez avoir la possibi
 
 ### <a name="update-the-instructors-controller"></a>Mettre à jour le contrôleur Instructors
 
-Dans *InstructorsController.cs* , modifiez le code de la méthode HttpGet `Edit` afin qu’elle charge la propriété de navigation `OfficeAssignment` de l’entité Instructor et appelle `AsNoTracking` :
+Dans *InstructorsController.cs*, modifiez le code de la méthode HttpGet `Edit` afin qu’elle charge la propriété de navigation `OfficeAssignment` de l’entité Instructor et appelle `AsNoTracking` :
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=8-11&name=snippet_EditGetOA)]
 
@@ -173,11 +173,11 @@ Le code effectue les actions suivantes :
 
 ### <a name="update-the-instructor-edit-view"></a>Mettre à jour la vue de modification des formateurs
 
-Dans *Views/Instructors/Edit.cshtml* , ajoutez un nouveau champ pour la modification de l’emplacement du bureau, à la fin et avant le bouton **Save** :
+Dans *Views/Instructors/Edit.cshtml*, ajoutez un nouveau champ pour la modification de l’emplacement du bureau, à la fin et avant le bouton **Save** :
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
-Exécutez l’application, sélectionnez l’onglet **Instructors** , puis cliquez sur **Edit** pour un formateur. Modifiez **Office Location** et cliquez sur **Save** .
+Exécutez l’application, sélectionnez l’onglet **Instructors**, puis cliquez sur **Edit** pour un formateur. Modifiez **Office Location** et cliquez sur **Save**.
 
 ![Page Edit pour les formateurs](update-related-data/_static/instructor-edit-office.png)
 
@@ -199,7 +199,7 @@ Créez *AssignedCourseData.cs* dans le dossier *SchoolViewModels* et remplacez l
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
-Dans *InstructorsController.cs* , remplacez la méthode HttpGet `Edit` par le code suivant. Les modifications sont mises en surbrillance.
+Dans *InstructorsController.cs*, remplacez la méthode HttpGet `Edit` par le code suivant. Les modifications sont mises en surbrillance.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=10,17,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36&name=snippet_EditGetCourses)]
 
@@ -207,7 +207,7 @@ Le code ajoute un chargement hâtif pour la propriété de navigation `Courses` 
 
 Le code de la méthode`PopulateAssignedCourseData` lit toutes les entités Course pour charger une liste de cours avec la classe de modèle de vue. Pour chaque cours, le code vérifie s’il existe dans la propriété de navigation `Courses` du formateur. Pour créer une recherche efficace quand il est vérifié si un cours est affecté au formateur, les cours affectés au formateur sont placés dans une collection `HashSet`. La propriété `Assigned` est définie sur true pour les cours auxquels le formateur est affecté. La vue utilise cette propriété pour déterminer quelles cases doivent être affichées cochées. Enfin, la liste est passée à la vue dans `ViewData`.
 
-Ensuite, ajoutez le code qui est exécuté quand l’utilisateur clique sur **Save** . Remplacez la méthode `EditPost` par le code suivant et ajoutez une nouvelle méthode qui met à jour la propriété de navigation `Courses` de l’entité Instructor.
+Ensuite, ajoutez le code qui est exécuté quand l’utilisateur clique sur **Save**. Remplacez la méthode `EditPost` par le code suivant et ajoutez une nouvelle méthode qui met à jour la propriété de navigation `Courses` de l’entité Instructor.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=1,3,12,13,25,39-40&name=snippet_EditPostCourses)]
 
@@ -233,7 +233,7 @@ Si la case pour un cours a été cochée mais que le cours est dans la propriét
 
 ### <a name="update-the-instructor-views"></a>Mettre à jour les vues des formateurs
 
-Dans *Views/Instructors/Edit.cshtml* , ajoutez un champ **Courses** avec un tableau de cases à cocher, en ajoutant le code suivant immédiatement après le code les éléments `div` pour le champ **Office** et avant l’élément `div` pour le bouton **Save** .
+Dans *Views/Instructors/Edit.cshtml*, ajoutez un champ **Courses** avec un tableau de cases à cocher, en ajoutant le code suivant immédiatement après le code les éléments `div` pour le champ **Office** et avant l’élément `div` pour le bouton **Save**.
 
 <a id="notepad"></a>
 > [!NOTE]
@@ -245,7 +245,7 @@ Ce code crée un tableau HTML qui a trois colonnes. Dans chaque colonne se trouv
 
 Quand les cases à cocher sont affichées à l’origine, celles qui correspondent à des cours affectés au formateur ont des attributs cochés, qui les sélectionnent (ils les affichent cochées).
 
-Exécutez l’application, sélectionnez l’onglet **Instructors** , puis cliquez sur **Edit** pour un formateur pour voir la page **Edit** .
+Exécutez l’application, sélectionnez l’onglet **Instructors**, puis cliquez sur **Edit** pour un formateur pour voir la page **Edit**.
 
 ![Page de modification de formateur avec des cours](update-related-data/_static/instructor-edit-courses.png)
 
@@ -256,7 +256,7 @@ Changez quelques affectations de cours et cliquez sur Save. Les modifications qu
 
 ## <a name="update-delete-page"></a>Mettre à jour la page Delete
 
-Dans *InstructorsController.cs* , supprimez la méthode `DeleteConfirmed` et insérez à la place le code suivant.
+Dans *InstructorsController.cs*, supprimez la méthode `DeleteConfirmed` et insérez à la place le code suivant.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=5-7,9-12&name=snippet_DeleteConfirmed)]
 
@@ -268,7 +268,7 @@ Ce code apporte les modifications suivantes :
 
 ## <a name="add-office-location-and-courses-to-create-page"></a>Ajouter des emplacements de bureau et des cours à la page Create
 
-Dans *InstructorsController.cs* , supprimez les méthodes HttpGet et HttpPost `Create`, puis ajoutez le code suivant à leur place :
+Dans *InstructorsController.cs*, supprimez les méthodes HttpGet et HttpPost `Create`, puis ajoutez le code suivant à leur place :
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Create&highlight=3-5,12,14-22,29)]
 
@@ -301,7 +301,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 Si vous modifiez la propriété `CourseAssignments` de cette façon, vous pouvez supprimer le code d’initialisation explicite de la propriété dans le contrôleur.
 
-Dans *Views/Instructor/Create.cshtml* , ajoutez une zone de texte pour l’emplacement du bureau et des cases à cocher pour les cours avant le bouton Envoyer. Comme dans le cas de la page Edit, [corrigez la mise en forme si Visual Studio remet en forme le code quand vous le collez](#notepad).
+Dans *Views/Instructor/Create.cshtml*, ajoutez une zone de texte pour l’emplacement du bureau et des cases à cocher pour les cours avant le bouton Envoyer. Comme dans le cas de la page Edit, [corrigez la mise en forme si Visual Studio remet en forme le code quand vous le collez](#notepad).
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 

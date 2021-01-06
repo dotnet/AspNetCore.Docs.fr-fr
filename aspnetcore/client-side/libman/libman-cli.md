@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: client-side/libman/libman-cli
 ms.openlocfilehash: dad9136439b61ad98523061d181fe44d3bf1273d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054747"
 ---
 # <a name="use-the-libman-cli-with-aspnet-core"></a>Utiliser l’interface CLI LibMan avec ASP.NET Core
@@ -31,7 +31,7 @@ Par [Scott Addie](https://twitter.com/Scott_Addie)
 
 L’interface CLI [LibMan](xref:client-side/libman/index) est un outil multiplateforme qui est pris en charge partout où .net Core est pris en charge.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [!INCLUDE [2.1-SDK](../../includes/2.1-SDK.md)]
 
@@ -53,7 +53,7 @@ dotnet tool install -g Microsoft.Web.LibraryManager.Cli --version 1.0.94-g606058
 
 Dans l’exemple précédent, un outil Global .NET Core est installé à partir du fichier *C:\Temp\Microsoft.Web.librarymanager.cli.1.0.94-g606058a278.nupkg* de l’ordinateur Windows local.
 
-## <a name="usage"></a>Utilisation
+## <a name="usage"></a>Usage
 
 Une fois l’installation de l’interface CLI réussie, vous pouvez utiliser la commande suivante :
 
@@ -119,11 +119,11 @@ Les options suivantes sont disponibles pour la commande `libman init` :
 
 * `-d|--default-destination <PATH>`
 
-  Chemin d’accès relatif au dossier actif. Les fichiers de bibliothèque sont installés à cet emplacement si aucune `destination` propriété n’est définie pour une bibliothèque dans *libman.jssur* . La `<PATH>` valeur est écrite dans la `defaultDestination` propriété de *libman.js* .
+  Chemin d’accès relatif au dossier actif. Les fichiers de bibliothèque sont installés à cet emplacement si aucune `destination` propriété n’est définie pour une bibliothèque dans *libman.jssur*. La `<PATH>` valeur est écrite dans la `defaultDestination` propriété de *libman.js*.
 
 * `-p|--default-provider <PROVIDER>`
 
-  Fournisseur à utiliser si aucun fournisseur n’est défini pour une bibliothèque donnée. La `<PROVIDER>` valeur est écrite dans la `defaultProvider` propriété de *libman.js* . Remplacez `<PROVIDER>` par l’une des valeurs suivantes :
+  Fournisseur à utiliser si aucun fournisseur n’est défini pour une bibliothèque donnée. La `<PROVIDER>` valeur est écrite dans la `defaultProvider` propriété de *libman.js*. Remplacez `<PROVIDER>` par l’une des valeurs suivantes :
 
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
@@ -179,7 +179,7 @@ Les options suivantes sont disponibles pour la commande `libman install` :
 
 * `-d|--destination <PATH>`
 
-  Emplacement d’installation de la bibliothèque. S’il n’est pas spécifié, l’emplacement par défaut est utilisé. Si aucune `defaultDestination` propriété n’est spécifiée dans *libman.jssur* , cette option est obligatoire.
+  Emplacement d’installation de la bibliothèque. S’il n’est pas spécifié, l’emplacement par défaut est utilisé. Si aucune `defaultDestination` propriété n’est spécifiée dans *libman.jssur*, cette option est obligatoire.
 
 * `--files <FILE>`
 
@@ -191,7 +191,7 @@ Les options suivantes sont disponibles pour la commande `libman install` :
   
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-  S’il n’est pas spécifié, la `defaultProvider` propriété de *libman.jssur* est utilisée. Si aucune `defaultProvider` propriété n’est spécifiée dans *libman.jssur* , cette option est obligatoire.
+  S’il n’est pas spécifié, la `defaultProvider` propriété de *libman.jssur* est utilisée. Si aucune `defaultProvider` propriété n’est spécifiée dans *libman.jssur*, cette option est obligatoire.
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
@@ -273,7 +273,7 @@ Après avoir accepté la destination par défaut, le *libman.jssur* le fichier r
 
 ## <a name="restore-library-files"></a>Restaurer les fichiers de bibliothèque
 
-La `libman restore` commande installe les fichiers de bibliothèque définis dans *libman.jssur* . Les règles suivantes s’appliquent :
+La `libman restore` commande installe les fichiers de bibliothèque définis dans *libman.jssur*. Les règles suivantes s’appliquent :
 
 * S’il n’existe aucun *libman.jssur* le fichier dans la racine du projet, une erreur est retournée.
 * Si une bibliothèque spécifie un fournisseur, la `defaultProvider` propriété de *libman.jssur* est ignorée.
@@ -294,7 +294,7 @@ Les options suivantes sont disponibles pour la commande `libman restore` :
 
 ### <a name="examples"></a>Exemples
 
-Pour restaurer les fichiers de bibliothèque définis dans *libman.jssur* :
+Pour restaurer les fichiers de bibliothèque définis dans *libman.jssur*:
 
 ```console
 libman restore
@@ -329,8 +329,8 @@ libman clean
 
 `libman uninstall`Commande :
 
-* Supprime de la destination tous les fichiers associés à la bibliothèque spécifiée dans *libman.js* .
-* Supprime la configuration de bibliothèque associée de *libman.js* .
+* Supprime de la destination tous les fichiers associés à la bibliothèque spécifiée dans *libman.js*.
+* Supprime la configuration de bibliothèque associée de *libman.js*.
 
 Une erreur se produit dans les cas suivants :
 

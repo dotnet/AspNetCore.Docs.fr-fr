@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/globalization-localization
 ms.openlocfilehash: f8f261f25d854a9bf36ad3299f4af392d5c4fafd
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93055878"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>BlazorGlobalisation et localisation ASP.net Core
@@ -40,7 +40,7 @@ Un ensemble limité de scénarios de localisation de ASP.NET Core est actuelleme
 * <xref:Microsoft.Extensions.Localization.IStringLocalizer> et <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> *sont pris en charge* dans les Blazor applications.
 * <xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>la <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> localisation des annotations de données, et est ASP.net Core les scénarios MVC et **non pris en charge** dans les Blazor applications.
 
-Pour plus d'informations, consultez <xref:fundamentals/localization>.
+Pour plus d’informations, consultez <xref:fundamentals/localization>.
 
 ## <a name="globalization"></a>Globalisation
 
@@ -110,7 +110,7 @@ Si l’application ne nécessite pas de localisation, vous pouvez configurer l�
 
 ::: moniker range="< aspnetcore-5.0"
 
-Par défaut, la configuration de l’éditeur de liens en langage intermédiaire (IL) pour les Blazor WebAssembly applications supprime les informations d’internationalisation, à l’exception des paramètres régionaux demandés explicitement. Pour plus d'informations, consultez <xref:blazor/host-and-deploy/configure-linker#configure-the-linker-for-internationalization>.
+Par défaut, la configuration de l’éditeur de liens en langage intermédiaire (IL) pour les Blazor WebAssembly applications supprime les informations d’internationalisation, à l’exception des paramètres régionaux demandés explicitement. Pour plus d’informations, consultez <xref:blazor/host-and-deploy/configure-linker#configure-the-linker-for-internationalization>.
 
 ::: moniker-end
 
@@ -207,7 +207,7 @@ public class CultureController : Controller
 ```
 
 > [!WARNING]
-> Utilisez le <xref:Microsoft.AspNetCore.Mvc.ControllerBase.LocalRedirect%2A> résultat de l’action pour empêcher les attaques de redirection ouvertes. Pour plus d'informations, consultez <xref:security/preventing-open-redirects>.
+> Utilisez le <xref:Microsoft.AspNetCore.Mvc.ControllerBase.LocalRedirect%2A> résultat de l’action pour empêcher les attaques de redirection ouvertes. Pour plus d’informations, consultez <xref:security/preventing-open-redirects>.
 
 Si l’application n’est pas configurée pour traiter les actions du contrôleur :
 

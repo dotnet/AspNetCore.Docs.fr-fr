@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: aspnetcore-2.0
 ms.openlocfilehash: f9fad5a63c76a3b21341a12fd40baafcdf2c9dac
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059726"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Nouveautés d’ASP.NET Core 2.0
@@ -64,7 +64,7 @@ Pour plus d’informations sur l’état de la documentation planifiée, consult
 
 ## <a name="logging-update"></a>Mise à jour de la journalisation
 
-Dans ASP.NET Core 2.0, la journalisation est incorporée dans le système d’injection de dépendance par défaut. Vous pouvez ajouter des fournisseurs et configurer le filtrage dans le fichier *Program.cs* plutôt que dans le fichier *Startup.cs* . De plus, le `ILoggerFactory` par défaut prend en charge le filtrage d’une manière qui vous permet d’adopter une approche flexible pour le filtrage entre fournisseurs et le filtrage propre au fournisseur.
+Dans ASP.NET Core 2.0, la journalisation est incorporée dans le système d’injection de dépendance par défaut. Vous pouvez ajouter des fournisseurs et configurer le filtrage dans le fichier *Program.cs* plutôt que dans le fichier *Startup.cs*. De plus, le `ILoggerFactory` par défaut prend en charge le filtrage d’une manière qui vous permet d’adopter une approche flexible pour le filtrage entre fournisseurs et le filtrage propre au fournisseur.
 
 Pour plus d’informations, consultez [Introduction à la journalisation](xref:fundamentals/logging/index).
 
@@ -132,7 +132,7 @@ Pour plus d’informations sur l’état de la documentation planifiée, consult
 
 ASP.NET Core a toujours facilité l’encodage HTML du contenu par défaut, mais la nouvelle version aide encore davantage à prévenir les attaques par falsification de requête intersites (XSRF). ASP.NET Core émet désormais des jetons anti-contrefaçon par défaut, et les valide sur les pages et les actions POST de formulaire sans configuration supplémentaire.
 
-Pour plus d'informations, consultez <xref:security/anti-request-forgery>.
+Pour plus d’informations, consultez <xref:security/anti-request-forgery>.
 
 ## <a name="automatic-precompilation"></a>Précompilation automatique
 

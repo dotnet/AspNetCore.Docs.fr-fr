@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/health-checks
 ms.openlocfilehash: 32b7a4c6722ba45ba998f9430f5d6da6ddca53f9
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058660"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Contrôles d’intégrité dans ASP.NET Core
@@ -64,13 +64,13 @@ Un autre scénario de contrôle d’intégrité montre comment filtrer des contr
 
 ## <a name="basic-health-probe"></a>Sondage d’intégrité de base
 
-Pour de nombreuses applications, un sondage d’intégrité de base qui signale la disponibilité d’une application pour le traitement des requêtes ( *liveness* ) suffit à découvrir l’état de l’application.
+Pour de nombreuses applications, un sondage d’intégrité de base qui signale la disponibilité d’une application pour le traitement des requêtes (*liveness*) suffit à découvrir l’état de l’application.
 
 La configuration de base inscrit les services de contrôle d’intégrité et appelle l’intergiciel (middleware) des contrôles d’intégrité pour répondre à un point de terminaison d’URL avec une réponse d’intégrité. Par défaut, aucun contrôle d’intégrité n’est inscrit pour tester les dépendances ou le sous-système. L’application est considérée comme saine si elle est capable de répondre à l’URL de point de terminaison de contrôle d’intégrité. L’enregistreur de réponse par défaut écrit l’état (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>) sous forme de texte en clair qu’il renvoie au client, indiquant si l’état est [HealthStatus.Healthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus), [HealthStatus.Degraded](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) ou [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus).
 
 Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. Créez un point de terminaison de contrôle d’intégrité en appelant `MapHealthChecks` dans `Startup.Configure` .
 
-Dans l’exemple d’application, le point de terminaison de contrôle d’intégrité est créé au niveau de `/health` ( *BasicStartup.cs* ) :
+Dans l’exemple d’application, le point de terminaison de contrôle d’intégrité est créé au niveau de `/health` (*BasicStartup.cs*) :
 
 ```csharp
 public class BasicStartup
@@ -233,7 +233,7 @@ app.UseEndpoints(endpoints =>
 
 ### <a name="enable-cross-origin-requests-cors"></a>Activer les requêtes d’origines différentes
 
-Bien que l’exécution manuelle de contrôles d’intégrité à partir d’un navigateur ne soit pas un scénario d’utilisation courant, l’intergiciel (middleware) CORS peut être activé en appelant `RequireCors` sur des points de terminaison de contrôle d’intégrité. Une `RequireCors` surcharge accepte un délégué de générateur de stratégie cors ( `CorsPolicyBuilder` ) ou un nom de stratégie. Si aucune stratégie n’est fournie, la stratégie CORS par défaut est utilisée. Pour plus d'informations, consultez <xref:security/cors>.
+Bien que l’exécution manuelle de contrôles d’intégrité à partir d’un navigateur ne soit pas un scénario d’utilisation courant, l’intergiciel (middleware) CORS peut être activé en appelant `RequireCors` sur des points de terminaison de contrôle d’intégrité. Une `RequireCors` surcharge accepte un délégué de générateur de stratégie cors ( `CorsPolicyBuilder` ) ou un nom de stratégie. Si aucune stratégie n’est fournie, la stratégie CORS par défaut est utilisée. Pour plus d’informations, consultez <xref:security/cors>.
 
 ## <a name="health-check-options"></a>Options de contrôle d’intégrité
 
@@ -353,7 +353,7 @@ Fournissez une chaîne de connexion de base de données valide dans le *appsetti
 
 [!code-json[](health-checks/samples/3.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. L’exemple d’application appelle la méthode `AddSqlServer` avec la chaîne de connexion de la base de données ( *DbHealthStartup.cs* ) :
+Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. L’exemple d’application appelle la méthode `AddSqlServer` avec la chaîne de connexion de la base de données (*DbHealthStartup.cs*) :
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -389,7 +389,7 @@ Par défaut :
 * `DbContextHealthCheck` appelle la méthode `CanConnectAsync` d’EF Core. Vous pouvez choisir quelle opération doit être exécutée lors du contrôle d’intégrité à l’aide des surcharges de la méthode `AddDbContextCheck`.
 * Le nom du contrôle d’intégrité correspond à celui du type `TContext`.
 
-Dans l’exemple d’application, `AppDbContext` est fourni à `AddDbContextCheck` et enregistré en tant que service dans `Startup.ConfigureServices` ( *DbContextHealthStartup.cs* ) :
+Dans l’exemple d’application, `AppDbContext` est fourni à `AddDbContextCheck` et enregistré en tant que service dans `Startup.ConfigureServices` (*DbContextHealthStartup.cs*) :
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -453,15 +453,15 @@ Dans certains scénarios d’hébergement, une paire de contrôles d’intégrit
 
 Prenons l’exemple suivant : une application doit télécharger un fichier de configuration volumineux avant de pouvoir traiter les demandes. Nous ne voulons pas que l’application soit redémarrée si le téléchargement initial échoue parce que l’application peut réessayer de télécharger le fichier plusieurs fois. Nous utilisons une *sonde d’activité* pour décrire l’activité du processus, aucune vérification supplémentaire n’est effectuée. Nous voulons également empêcher l’envoi de demandes à l’application avant la réussite du téléchargement du fichier de configuration. Nous utilisons une *sonde de préparation* pour indiquer un État « non prêt » jusqu’à ce que le téléchargement aboutisse et que l’application soit prête à recevoir des demandes.
 
-L’exemple d’application contient un contrôle d’intégrité permettant de signaler l’achèvement d’une tâche de démarrage de longue durée dans un [service hébergé](xref:fundamentals/host/hosted-services). `StartupHostedServiceHealthCheck` expose la propriété `StartupTaskCompleted`, que le service hébergé peut définir sur `true` lorsque sa tâche de longue durée est terminée ( *StartupHostedServiceHealthCheck.cs* ) :
+L’exemple d’application contient un contrôle d’intégrité permettant de signaler l’achèvement d’une tâche de démarrage de longue durée dans un [service hébergé](xref:fundamentals/host/hosted-services). `StartupHostedServiceHealthCheck` expose la propriété `StartupTaskCompleted`, que le service hébergé peut définir sur `true` lorsque sa tâche de longue durée est terminée (*StartupHostedServiceHealthCheck.cs*) :
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/StartupHostedServiceHealthCheck.cs?name=snippet1&highlight=7-11)]
 
-La tâche de longue durée en arrière-plan est démarrée par un [service hébergé](xref:fundamentals/host/hosted-services) ( *Services/StartupHostedService* ). À la fin de la tâche, `StartupHostedServiceHealthCheck.StartupTaskCompleted` est défini sur `true` :
+La tâche de longue durée en arrière-plan est démarrée par un [service hébergé](xref:fundamentals/host/hosted-services) (*Services/StartupHostedService*). À la fin de la tâche, `StartupHostedServiceHealthCheck.StartupTaskCompleted` est défini sur `true` :
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/Services/StartupHostedService.cs?name=snippet1&highlight=18-20)]
 
-Le contrôle d’intégrité est inscrit auprès de <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> dans `Startup.ConfigureServices` en même temps que le service hébergé. Étant donné que le service hébergé doit définir la propriété sur le contrôle d’intégrité, le contrôle d’intégrité est également inscrit dans le conteneur du service ( *LivenessProbeStartup.cs* ) :
+Le contrôle d’intégrité est inscrit auprès de <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> dans `Startup.ConfigureServices` en même temps que le service hébergé. Étant donné que le service hébergé doit définir la propriété sur le contrôle d’intégrité, le contrôle d’intégrité est également inscrit dans le conteneur du service (*LivenessProbeStartup.cs*) :
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices)]
 
@@ -496,7 +496,7 @@ Pour exécuter le scénario de configuration readiness/liveness à l’aide de l
 dotnet run --scenario liveness
 ```
 
-Dans un navigateur, accédez à `/health/ready` plusieurs fois jusqu’à ce que 15 secondes soient écoulées. Le contrôle d’intégrité signale *Unhealthy* pendant les 15 premières secondes. Après 15 secondes, le point de terminaison signale *Healthy* , ce qui reflète l’achèvement de la tâche de longue durée exécutée par le service hébergé.
+Dans un navigateur, accédez à `/health/ready` plusieurs fois jusqu’à ce que 15 secondes soient écoulées. Le contrôle d’intégrité signale *Unhealthy* pendant les 15 premières secondes. Après 15 secondes, le point de terminaison signale *Healthy*, ce qui reflète l’achèvement de la tâche de longue durée exécutée par le service hébergé.
 
 Cet exemple crée également un éditeur de vérification de l’intégrité (implémentation <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>) qui exécute la première vérification de disponibilité avec un délai de deux secondes. Pour plus d’informations, consultez la section [Éditeur de vérification de l’intégrité](#health-check-publisher).
 
@@ -527,7 +527,7 @@ spec:
 
 L’exemple d’application montre un contrôle d’intégrité de mémoire avec un enregistreur de réponse personnalisé.
 
-`MemoryHealthCheck` signale un état détérioré si l’application utilise plus de mémoire que le seuil défini (1 Go dans l’exemple d’application). <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclut des informations de récupérateur de mémoire pour l’application ( *MemoryHealthCheck.cs* ) :
+`MemoryHealthCheck` signale un état détérioré si l’application utilise plus de mémoire que le seuil défini (1 Go dans l’exemple d’application). <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclut des informations de récupérateur de mémoire pour l’application (*MemoryHealthCheck.cs*) :
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
@@ -566,9 +566,9 @@ dotnet run --scenario writer
 
 Appelez `RequireHost` `MapHealthChecks` avec un modèle d’URL qui spécifie un port pour restreindre les demandes de contrôle d’intégrité au port spécifié. Ceci est généralement utilisé dans les environnements de conteneurs pour exposer un port aux services de supervision.
 
-L’exemple d’application configure le port à l’aide du [fournisseur de configuration des variables d’environnement](xref:fundamentals/configuration/index#environment-variables). Le port est défini dans le fichier *launchSettings.json* , puis transmis au fournisseur de configuration via une variable d’environnement. Vous devez également configurer le serveur pour écouter les requêtes qui arrivent au port de gestion.
+L’exemple d’application configure le port à l’aide du [fournisseur de configuration des variables d’environnement](xref:fundamentals/configuration/index#environment-variables). Le port est défini dans le fichier *launchSettings.json*, puis transmis au fournisseur de configuration via une variable d’environnement. Vous devez également configurer le serveur pour écouter les requêtes qui arrivent au port de gestion.
 
-Pour utiliser l’exemple d’application dans le but d’illustrer la configuration du port de gestion, créez le fichier *launchSettings.json* dans un dossier *Propriétés* .
+Pour utiliser l’exemple d’application dans le but d’illustrer la configuration du port de gestion, créez le fichier *launchSettings.json* dans un dossier *Propriétés*.
 
 Les *Propriétés/launchSettings.js* suivantes du fichier dans l’exemple d’application ne sont pas incluses dans les fichiers projet de l’exemple d’application et doivent être créées manuellement :
 
@@ -620,9 +620,9 @@ app.UseEndpoints(endpoints =>
 ```
 
 > [!NOTE]
-> Vous pouvez éviter de créer le *launchSettings.jssur* le fichier dans l’exemple d’application en définissant le port de gestion explicitement dans le code. Dans *Program.cs* où <xref:Microsoft.Extensions.Hosting.HostBuilder> est créé, ajoutez un appel à <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenAnyIP*> et fournissez le point de terminaison du port de gestion de l’application. Dans `Configure` *ManagementPortStartup.cs* , spécifiez le port de gestion avec `RequireHost` :
+> Vous pouvez éviter de créer le *launchSettings.jssur* le fichier dans l’exemple d’application en définissant le port de gestion explicitement dans le code. Dans *Program.cs* où <xref:Microsoft.Extensions.Hosting.HostBuilder> est créé, ajoutez un appel à <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenAnyIP*> et fournissez le point de terminaison du port de gestion de l’application. Dans `Configure` *ManagementPortStartup.cs*, spécifiez le port de gestion avec `RequireHost` :
 >
-> *Program.cs* :
+> *Program.cs*:
 >
 > ```csharp
 > return new HostBuilder()
@@ -638,7 +638,7 @@ app.UseEndpoints(endpoints =>
 >     .Build();
 > ```
 >
-> *ManagementPortStartup.cs*  :
+> *ManagementPortStartup.cs* :
 >
 > ```csharp
 > app.UseEndpoints(endpoints =>
@@ -795,7 +795,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-Pour plus d'informations, consultez <xref:fundamentals/middleware/index#branch-the-middleware-pipeline>.
+Pour plus d’informations, consultez <xref:fundamentals/middleware/index#branch-the-middleware-pipeline>.
 
 ::: moniker-end
 
@@ -833,13 +833,13 @@ Un autre scénario de contrôle d’intégrité montre comment filtrer des contr
 
 ## <a name="basic-health-probe"></a>Sondage d’intégrité de base
 
-Pour de nombreuses applications, un sondage d’intégrité de base qui signale la disponibilité d’une application pour le traitement des requêtes ( *liveness* ) suffit à découvrir l’état de l’application.
+Pour de nombreuses applications, un sondage d’intégrité de base qui signale la disponibilité d’une application pour le traitement des requêtes (*liveness*) suffit à découvrir l’état de l’application.
 
 La configuration de base inscrit les services de contrôle d’intégrité et appelle l’intergiciel (middleware) des contrôles d’intégrité pour répondre à un point de terminaison d’URL avec une réponse d’intégrité. Par défaut, aucun contrôle d’intégrité n’est inscrit pour tester les dépendances ou le sous-système. L’application est considérée comme saine si elle est capable de répondre à l’URL de point de terminaison de contrôle d’intégrité. L’enregistreur de réponse par défaut écrit l’état (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>) sous forme de texte en clair qu’il renvoie au client, indiquant si l’état est [HealthStatus.Healthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus), [HealthStatus.Degraded](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) ou [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus).
 
 Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. Ajoutez un point de terminaison pour l’intergiciel de contrôles d’intégrité avec <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> dans le pipeline de traitement des requêtes de `Startup.Configure` .
 
-Dans l’exemple d’application, le point de terminaison de contrôle d’intégrité est créé au niveau de `/health` ( *BasicStartup.cs* ) :
+Dans l’exemple d’application, le point de terminaison de contrôle d’intégrité est créé au niveau de `/health` (*BasicStartup.cs*) :
 
 ```csharp
 public class BasicStartup
@@ -1072,7 +1072,7 @@ Fournissez une chaîne de connexion de base de données valide dans le *appsetti
 
 [!code-json[](health-checks/samples/2.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. L’exemple d’application appelle la méthode `AddSqlServer` avec la chaîne de connexion de la base de données ( *DbHealthStartup.cs* ) :
+Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. L’exemple d’application appelle la méthode `AddSqlServer` avec la chaîne de connexion de la base de données (*DbHealthStartup.cs*) :
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1105,7 +1105,7 @@ Par défaut :
 * `DbContextHealthCheck` appelle la méthode `CanConnectAsync` d’EF Core. Vous pouvez choisir quelle opération doit être exécutée lors du contrôle d’intégrité à l’aide des surcharges de la méthode `AddDbContextCheck`.
 * Le nom du contrôle d’intégrité correspond à celui du type `TContext`.
 
-Dans l’exemple d’application, `AppDbContext` est fourni à `AddDbContextCheck` et enregistré en tant que service dans `Startup.ConfigureServices` ( *DbContextHealthStartup.cs* ) :
+Dans l’exemple d’application, `AppDbContext` est fourni à `AddDbContextCheck` et enregistré en tant que service dans `Startup.ConfigureServices` (*DbContextHealthStartup.cs*) :
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1166,15 +1166,15 @@ Dans certains scénarios d’hébergement, une paire de contrôles d’intégrit
 
 Prenons l’exemple suivant : une application doit télécharger un fichier de configuration volumineux avant de pouvoir traiter les demandes. Nous ne voulons pas que l’application soit redémarrée si le téléchargement initial échoue parce que l’application peut réessayer de télécharger le fichier plusieurs fois. Nous utilisons une *sonde d’activité* pour décrire l’activité du processus, aucune vérification supplémentaire n’est effectuée. Nous voulons également empêcher l’envoi de demandes à l’application avant la réussite du téléchargement du fichier de configuration. Nous utilisons une *sonde de préparation* pour indiquer un État « non prêt » jusqu’à ce que le téléchargement aboutisse et que l’application soit prête à recevoir des demandes.
 
-L’exemple d’application contient un contrôle d’intégrité permettant de signaler l’achèvement d’une tâche de démarrage de longue durée dans un [service hébergé](xref:fundamentals/host/hosted-services). `StartupHostedServiceHealthCheck` expose la propriété `StartupTaskCompleted`, que le service hébergé peut définir sur `true` lorsque sa tâche de longue durée est terminée ( *StartupHostedServiceHealthCheck.cs* ) :
+L’exemple d’application contient un contrôle d’intégrité permettant de signaler l’achèvement d’une tâche de démarrage de longue durée dans un [service hébergé](xref:fundamentals/host/hosted-services). `StartupHostedServiceHealthCheck` expose la propriété `StartupTaskCompleted`, que le service hébergé peut définir sur `true` lorsque sa tâche de longue durée est terminée (*StartupHostedServiceHealthCheck.cs*) :
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/StartupHostedServiceHealthCheck.cs?name=snippet1&highlight=7-11)]
 
-La tâche de longue durée en arrière-plan est démarrée par un [service hébergé](xref:fundamentals/host/hosted-services) ( *Services/StartupHostedService* ). À la fin de la tâche, `StartupHostedServiceHealthCheck.StartupTaskCompleted` est défini sur `true` :
+La tâche de longue durée en arrière-plan est démarrée par un [service hébergé](xref:fundamentals/host/hosted-services) (*Services/StartupHostedService*). À la fin de la tâche, `StartupHostedServiceHealthCheck.StartupTaskCompleted` est défini sur `true` :
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/Services/StartupHostedService.cs?name=snippet1&highlight=18-20)]
 
-Le contrôle d’intégrité est inscrit auprès de <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> dans `Startup.ConfigureServices` en même temps que le service hébergé. Étant donné que le service hébergé doit définir la propriété sur le contrôle d’intégrité, le contrôle d’intégrité est également inscrit dans le conteneur du service ( *LivenessProbeStartup.cs* ) :
+Le contrôle d’intégrité est inscrit auprès de <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> dans `Startup.ConfigureServices` en même temps que le service hébergé. Étant donné que le service hébergé doit définir la propriété sur le contrôle d’intégrité, le contrôle d’intégrité est également inscrit dans le conteneur du service (*LivenessProbeStartup.cs*) :
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1198,7 +1198,7 @@ Pour exécuter le scénario de configuration readiness/liveness à l’aide de l
 dotnet run --scenario liveness
 ```
 
-Dans un navigateur, accédez à `/health/ready` plusieurs fois jusqu’à ce que 15 secondes soient écoulées. Le contrôle d’intégrité signale *Unhealthy* pendant les 15 premières secondes. Après 15 secondes, le point de terminaison signale *Healthy* , ce qui reflète l’achèvement de la tâche de longue durée exécutée par le service hébergé.
+Dans un navigateur, accédez à `/health/ready` plusieurs fois jusqu’à ce que 15 secondes soient écoulées. Le contrôle d’intégrité signale *Unhealthy* pendant les 15 premières secondes. Après 15 secondes, le point de terminaison signale *Healthy*, ce qui reflète l’achèvement de la tâche de longue durée exécutée par le service hébergé.
 
 Cet exemple crée également un éditeur de vérification de l’intégrité (implémentation <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>) qui exécute la première vérification de disponibilité avec un délai de deux secondes. Pour plus d’informations, consultez la section [Éditeur de vérification de l’intégrité](#health-check-publisher).
 
@@ -1229,13 +1229,13 @@ spec:
 
 L’exemple d’application montre un contrôle d’intégrité de mémoire avec un enregistreur de réponse personnalisé.
 
-`MemoryHealthCheck` signale un État non sain si l’application utilise plus d’un seuil de mémoire donné (1 Go dans l’exemple d’application). <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclut des informations de récupérateur de mémoire pour l’application ( *MemoryHealthCheck.cs* ) :
+`MemoryHealthCheck` signale un État non sain si l’application utilise plus d’un seuil de mémoire donné (1 Go dans l’exemple d’application). <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclut des informations de récupérateur de mémoire pour l’application (*MemoryHealthCheck.cs*) :
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
 Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. Au lieu d’activer le contrôle d’intégrité en le passant à <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>, `MemoryHealthCheck` est inscrit en tant que service. Tous les services <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck> inscrits sont disponibles pour les services de contrôle d’intégrité et le middleware. Nous vous recommandons d’inscrire les services de contrôle d’intégrité en tant que services Singleton.
 
-Dans l’exemple d’application ( *CustomWriterStartup.cs* ) :
+Dans l’exemple d’application (*CustomWriterStartup.cs*) :
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_ConfigureServices&highlight=4)]
 
@@ -1271,9 +1271,9 @@ dotnet run --scenario writer
 
 Si vous appelez <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> avec un port, les requêtes de contrôle d’intégrité seront limitées au port spécifié. Ceci est généralement utilisé dans les environnements de conteneurs pour exposer un port aux services de supervision.
 
-L’exemple d’application configure le port à l’aide du [fournisseur de configuration des variables d’environnement](xref:fundamentals/configuration/index#environment-variables-configuration-provider). Le port est défini dans le fichier *launchSettings.json* , puis transmis au fournisseur de configuration via une variable d’environnement. Vous devez également configurer le serveur pour écouter les requêtes qui arrivent au port de gestion.
+L’exemple d’application configure le port à l’aide du [fournisseur de configuration des variables d’environnement](xref:fundamentals/configuration/index#environment-variables-configuration-provider). Le port est défini dans le fichier *launchSettings.json*, puis transmis au fournisseur de configuration via une variable d’environnement. Vous devez également configurer le serveur pour écouter les requêtes qui arrivent au port de gestion.
 
-Pour utiliser l’exemple d’application dans le but d’illustrer la configuration du port de gestion, créez le fichier *launchSettings.json* dans un dossier *Propriétés* .
+Pour utiliser l’exemple d’application dans le but d’illustrer la configuration du port de gestion, créez le fichier *launchSettings.json* dans un dossier *Propriétés*.
 
 Les *Propriétés/launchSettings.js* suivantes du fichier dans l’exemple d’application ne sont pas incluses dans les fichiers projet de l’exemple d’application et doivent être créées manuellement :
 
@@ -1295,14 +1295,14 @@ Les *Propriétés/launchSettings.js* suivantes du fichier dans l’exemple d’a
 }
 ```
 
-Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. L’appel à <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> spécifie le port de gestion ( *ManagementPortStartup.cs* ) :
+Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. L’appel à <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> spécifie le port de gestion (*ManagementPortStartup.cs*) :
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ManagementPortStartup.cs?name=snippet1&highlight=17)]
 
 > [!NOTE]
 > Vous pouvez éviter de créer le fichier *launchSettings.json* dans l’exemple d’application en définissant explicitement les URL et le port de gestion dans le code. Dans *Program.cs* où <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> est créé, ajoutez un appel à <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*> et fournissez le point de terminaison de réponse normal et le point de terminaison de port de gestion de l’application. Dans *ManagementPortStartup.cs* où <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> est appelé, spécifiez le port de gestion explicitement.
 >
-> *Program.cs* :
+> *Program.cs*:
 >
 > ```csharp
 > return new WebHostBuilder()
@@ -1319,7 +1319,7 @@ Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsof
 >     .Build();
 > ```
 >
-> *ManagementPortStartup.cs*  :
+> *ManagementPortStartup.cs* :
 >
 > ```csharp
 > app.UseHealthChecks("/health", port: 5001);
@@ -1483,6 +1483,6 @@ app.MapWhen(
 app.UseMvc();
 ```
 
-Pour plus d'informations, consultez <xref:fundamentals/middleware/index#use-run-and-map>.
+Pour plus d’informations, consultez <xref:fundamentals/middleware/index#use-run-and-map>.
 
 ::: moniker-end

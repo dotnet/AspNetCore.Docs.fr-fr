@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/concurrency
 ms.openlocfilehash: 573a509041bfb34faf50a227c451824db03f92ee
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053993"
 ---
 # <a name="part-8-no-locrazor-pages-with-ef-core-in-aspnet-core---concurrency"></a>Partie 8, Razor pages avec EF Core dans ASP.net Core-concurrence
@@ -56,7 +56,7 @@ L’accès concurrentiel optimiste autorise la survenance des conflits d’accè
 
 ![Modification de la valeur de budget sur 0](concurrency/_static/change-budget30.png)
 
-Avant que Jane clique sur **Save** , John consulte la même page et change le champ Start Date de 01/09/2007 en 01/09/2013.
+Avant que Jane clique sur **Save**, John consulte la même page et change le champ Start Date de 01/09/2007 en 01/09/2013.
 
 ![Modification de la date de début sur 2013](concurrency/_static/change-date30.png)
 
@@ -74,7 +74,7 @@ John clique sur **Save** dans une page Edit qui affiche toujours un budget de 35
 
 * Vous pouvez laisser les modifications de John remplacer les modifications de Jane.
 
-  La prochaine fois que quelqu’un consultera le département « English », il verra la date 01/09/2013 et la valeur 350 000,00 $ récupérée. Cette approche est un scénario *Priorité au client* ou *Priorité au dernier* . (Toutes les valeurs du client sont prioritaires par rapport à ce qui se trouve dans le magasin de données.) Si vous n’effectuez aucun codage pour la gestion de l’accès concurrentiel, le client WINS se produit automatiquement.
+  La prochaine fois que quelqu’un consultera le département « English », il verra la date 01/09/2013 et la valeur 350 000,00 $ récupérée. Cette approche est un scénario *Priorité au client* ou *Priorité au dernier*. (Toutes les valeurs du client sont prioritaires par rapport à ce qui se trouve dans le magasin de données.) Si vous n’effectuez aucun codage pour la gestion de l’accès concurrentiel, le client WINS se produit automatiquement.
 
 * Vous pouvez empêcher les modifications de John de faire l’objet d’une mise à jour dans la base de données. En règle générale, l’application :
 
@@ -82,7 +82,7 @@ John clique sur **Save** dans une page Edit qui affiche toujours un budget de 35
   * indique l’état actuel des données ;
   * autorise l’utilisateur à réappliquer les modifications.
 
-  Il s’agit alors d’un scénario *Priorité au magasin* . (Les valeurs du magasin de données ont priorité sur les valeurs soumises par le client.) Vous implémentez le scénario de stockage WINS dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.
+  Il s’agit alors d’un scénario *Priorité au magasin*. (Les valeurs du magasin de données ont priorité sur les valeurs soumises par le client.) Vous implémentez le scénario de stockage WINS dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.
 
 ## <a name="conflict-detection-in-ef-core"></a>Détection de conflits dans EF Core
 
@@ -98,7 +98,7 @@ EF Core lève des exceptions `DbConcurrencyException` quand il détecte des conf
 
 ## <a name="add-a-tracking-property"></a>Ajouter une propriété de suivi
 
-Dans *Models/Department.cs* , ajoutez une propriété de suivi nommée RowVersion :
+Dans *Models/Department.cs*, ajoutez une propriété de suivi nommée RowVersion :
 
 [!code-csharp[](intro/samples/cu30/Models/Department.cs?highlight=26,27)]
 
@@ -110,7 +110,7 @@ modelBuilder.Entity<Department>()
   .IsRowVersion();
 ```
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Pour une base de données SQL Server, l’attribut `[Timestamp]` d’une propriété d’entité définie en tant que tableau d’octets :
 
@@ -156,7 +156,7 @@ L’ajout de la propriété `RowVersion` change le modèle de données, ce qui n
 
 Créez le projet. 
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Exécutez la commande suivante dans PMC :
 
@@ -174,14 +174,14 @@ Créez le projet.
 
 ---
 
-Cette commande :
+Cette commande :
 
-* Crée le fichier de migration *Migrations/{horodatage}_RowVersion.cs* .
-* Mettent à jour le fichier *Migrations/SchoolContextModelSnapshot.cs* . La mise à jour ajoute le code en surbrillance suivant à la méthode `BuildModel` :
+* Crée le fichier de migration *Migrations/{horodatage}_RowVersion.cs*.
+* Mettent à jour le fichier *Migrations/SchoolContextModelSnapshot.cs*. La mise à jour ajoute le code en surbrillance suivant à la méthode `BuildModel` :
 
   [!code-csharp[](intro/samples/cu30/Migrations/SchoolContextModelSnapshot.cs?name=snippet_Department&highlight=15-17)]
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Exécutez la commande suivante dans PMC :
 
@@ -212,17 +212,17 @@ Cette commande :
 
 ## <a name="scaffold-department-pages"></a>Générer automatiquement des modèles de pages Department
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Suivez les instructions dans [Générer automatiquement des modèles de pages Student](xref:data/ef-rp/intro#scaffold-student-pages) avec les exceptions suivantes :
 
-* Créez un dossier *Pages/Departments* .  
+* Créez un dossier *Pages/Departments*.  
 * Utilisez `Department` pour la classe de modèle.
   * Utilisez la classe de contexte existante au lieu d’en créer une nouvelle.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Créez un dossier *Pages/Departments* .
+* Créez un dossier *Pages/Departments*.
 
 * Exécutez la commande suivante pour générer automatiquement des modèles de pages Department.
 
@@ -246,7 +246,7 @@ Créez le projet.
 
 L’outil de génération de modèles automatique créé une colonne `RowVersion` pour la page Index, mais ce champ ne s’affiche pas dans une application de production. Dans ce tutoriel, le dernier octet de `RowVersion` est affiché pour montrer comment la gestion de l’accès concurrentiel fonctionne. Il n’est pas garanti que le dernier octet soit unique par lui-même.
 
-Mettre à jour la page *Pages\Departments\Index.cshtml*  :
+Mettre à jour la page *Pages\Departments\Index.cshtml* :
 
 * Remplacez Index par Departments.
 * Modifiez le code contenant `RowVersion` pour afficher uniquement le dernier octet du tableau d’octets.
@@ -280,7 +280,7 @@ Le code suivant ajoute un message d’erreur personnalisé pour chaque colonne d
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_Error)]
 
-Le code en surbrillance suivant affecte à `RowVersion` la nouvelle valeur récupérée à partir de la base de données. La prochaine fois que l’utilisateur cliquera sur **Save** , seules les erreurs d’accès concurrentiel qui se sont produites depuis le dernier affichage de la page Edit seront interceptées.
+Le code en surbrillance suivant affecte à `RowVersion` la nouvelle valeur récupérée à partir de la base de données. La prochaine fois que l’utilisateur cliquera sur **Save**, seules les erreurs d’accès concurrentiel qui se sont produites depuis le dernier affichage de la page Edit seront interceptées.
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_TryUpdateModel&highlight=28)]
 
@@ -304,12 +304,12 @@ Le code précédent :
 Ouvrez deux instances de navigateur de la page Edit sur le département English :
 
 * Exécutez l’application et sélectionnez Departments.
-* Cliquez avec le bouton droit sur le lien hypertexte **Edit** correspondant au département English, puis sélectionnez **Open in new tab** .
+* Cliquez avec le bouton droit sur le lien hypertexte **Edit** correspondant au département English, puis sélectionnez **Open in new tab**.
 * Sous le premier onglet, cliquez sur le lien hypertexte **Edit** correspondant au département English.
 
 Les deux onglets de navigateur affichent les mêmes informations.
 
-Changez le nom sous le premier onglet de navigateur, puis cliquez sur **Save** .
+Changez le nom sous le premier onglet de navigateur, puis cliquez sur **Save**.
 
 ![Page 1 de modification de département après changement](concurrency/_static/edit-after-change-130.png)
 
@@ -319,13 +319,13 @@ Changez un champ différent sous le deuxième onglet du navigateur.
 
 ![Page Edit 2 du département après changement](concurrency/_static/edit-after-change-230.png)
 
-Cliquez sur **Enregistrer** . Des messages d’erreur s’affichent pour tous les champs qui ne correspondent pas aux valeurs de la base de données :
+Cliquez sur **Enregistrer**. Des messages d’erreur s’affichent pour tous les champs qui ne correspondent pas aux valeurs de la base de données :
 
 ![Message d’erreur de page de modification de département](concurrency/_static/edit-error30.png)
 
 Cette fenêtre de navigateur n’avait pas l’intention de changer le champ Name. Copiez et collez la valeur actuelle (Languages) dans le champ Name. Tabulation. La validation côté client supprime le message d’erreur.
 
-Cliquez à nouveau sur **Enregistrer** . La valeur que vous avez entrée sous le deuxième onglet du navigateur est enregistrée. Les valeurs enregistrées sont visibles dans la page Index.
+Cliquez à nouveau sur **Enregistrer**. La valeur que vous avez entrée sous le deuxième onglet du navigateur est enregistrée. Les valeurs enregistrées sont visibles dans la page Index.
 
 ## <a name="update-the-delete-page-model"></a>Mettre à jour le modèle de page de suppression
 
@@ -349,7 +349,7 @@ Le code précédent apporte les modifications suivantes :
 
 * Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int}"`.
 * Il ajoute un message d’erreur.
-* Il remplace FirstMidName par FullName dans le champ **Administrator** .
+* Il remplace FirstMidName par FullName dans le champ **Administrator**.
 * Il change `RowVersion` pour afficher le dernier octet.
 * Ajoute une version de ligne masquée. `RowVersion` doit être ajouté de sorte que la publication (postback) lie la valeur.
 
@@ -360,12 +360,12 @@ Créez un département test.
 Ouvrez deux instances de navigateur de la page Delete sur le département test :
 
 * Exécutez l’application et sélectionnez Departments.
-* Cliquez avec le bouton droit sur le lien hypertexte **Delete** correspondant au département test, puis sélectionnez **Open in new tab** .
+* Cliquez avec le bouton droit sur le lien hypertexte **Delete** correspondant au département test, puis sélectionnez **Open in new tab**.
 * Cliquez sur le lien hypertexte **Edit** correspondant au département test.
 
 Les deux onglets de navigateur affichent les mêmes informations.
 
-Changez le budget sous le premier onglet de navigateur, puis cliquez sur **Save** .
+Changez le budget sous le premier onglet de navigateur, puis cliquez sur **Save**.
 
 Le navigateur affiche la page Index avec la valeur modifiée et un indicateur rowVersion mis à jour. Notez l’indicateur rowVersion mis à jour ; il est affiché sur la deuxième publication (postback) sous l’autre onglet.
 
@@ -408,7 +408,7 @@ L’accès concurrentiel optimiste autorise la survenance des conflits d’accè
 
 ![Modification de la valeur de budget sur 0](concurrency/_static/change-budget.png)
 
-Avant que Jane clique sur **Save** , John consulte la même page et change le champ Start Date de 01/09/2007 en 01/09/2013.
+Avant que Jane clique sur **Save**, John consulte la même page et change le champ Start Date de 01/09/2007 en 01/09/2013.
 
 ![Modification de la date de début sur 2013](concurrency/_static/change-date.png)
 
@@ -430,7 +430,7 @@ L’accès concurrentiel optimiste comprend les options suivantes :
 
 * Vous pouvez laisser les modifications de John remplacer les modifications de Jane.
 
-  La prochaine fois que quelqu’un consultera le département « English », il verra la date 01/09/2013 et la valeur 350 000,00 $ récupérée. Cette approche est un scénario *Priorité au client* ou *Priorité au dernier* . (Toutes les valeurs du client sont prioritaires par rapport à ce qui se trouve dans le magasin de données.) Si vous n’effectuez aucun codage pour la gestion de l’accès concurrentiel, le client WINS se produit automatiquement.
+  La prochaine fois que quelqu’un consultera le département « English », il verra la date 01/09/2013 et la valeur 350 000,00 $ récupérée. Cette approche est un scénario *Priorité au client* ou *Priorité au dernier*. (Toutes les valeurs du client sont prioritaires par rapport à ce qui se trouve dans le magasin de données.) Si vous n’effectuez aucun codage pour la gestion de l’accès concurrentiel, le client WINS se produit automatiquement.
 
 * Vous pouvez empêcher les modifications de John d’être mises à jour dans la base de données. En règle générale, l’application :
 
@@ -438,7 +438,7 @@ L’accès concurrentiel optimiste comprend les options suivantes :
   * indique l’état actuel des données ;
   * autorise l’utilisateur à réappliquer les modifications.
 
-  Il s’agit alors d’un scénario *Priorité au magasin* . (Les valeurs du magasin de données ont priorité sur les valeurs soumises par le client.) Vous implémentez le scénario de stockage WINS dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.
+  Il s’agit alors d’un scénario *Priorité au magasin*. (Les valeurs du magasin de données ont priorité sur les valeurs soumises par le client.) Vous implémentez le scénario de stockage WINS dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.
 
 ## <a name="handling-concurrency"></a>Gestion de l’accès concurrentiel 
 
@@ -472,7 +472,7 @@ Dans EF Core, quand aucune ligne n’a été mise à jour par une commande `Upda
 
 ### <a name="add-a-tracking-property-to-the-department-entity"></a>Ajouter une propriété de suivi à l’entité Department
 
-Dans *Models/Department.cs* , ajoutez une propriété de suivi nommée RowVersion :
+Dans *Models/Department.cs*, ajoutez une propriété de suivi nommée RowVersion :
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
@@ -513,8 +513,8 @@ dotnet ef database update
 
 Les commandes précédentes :
 
-* Ajoutent le fichier de migration *Migrations/{horodatage}_RowVersion.cs* .
-* Mettent à jour le fichier *Migrations/SchoolContextModelSnapshot.cs* . La mise à jour ajoute le code en surbrillance suivant à la méthode `BuildModel` :
+* Ajoutent le fichier de migration *Migrations/{horodatage}_RowVersion.cs*.
+* Mettent à jour le fichier *Migrations/SchoolContextModelSnapshot.cs*. La mise à jour ajoute le code en surbrillance suivant à la méthode `BuildModel` :
 
   [!code-csharp[](intro/samples/cu/Migrations/SchoolContextModelSnapshot.cs?name=snippet_Department&highlight=14-16)]
 
@@ -524,7 +524,7 @@ Les commandes précédentes :
 
 ## <a name="scaffold-the-departments-model"></a>Générer automatiquement le modèle Departments
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 Suivez les instructions fournies dans [Générer automatiquement le modèle d’étudiant](xref:data/ef-rp/intro#scaffold-student-pages) et utilisez `Department` pour la classe de modèle.
 
@@ -576,7 +576,7 @@ Le code suivant ajoute un message d’erreur personnalisé pour chaque colonne d
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_err)]
 
-Le code en surbrillance suivant affecte à `RowVersion` la nouvelle valeur récupérée à partir de la base de données. La prochaine fois que l’utilisateur cliquera sur **Save** , seules les erreurs d’accès concurrentiel qui se sont produites depuis le dernier affichage de la page Edit seront interceptées.
+Le code en surbrillance suivant affecte à `RowVersion` la nouvelle valeur récupérée à partir de la base de données. La prochaine fois que l’utilisateur cliquera sur **Save**, seules les erreurs d’accès concurrentiel qui se sont produites depuis le dernier affichage de la page Edit seront interceptées.
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=23)]
 
@@ -600,12 +600,12 @@ Le balisage précédent :
 Ouvrez deux instances de navigateur de la page Edit sur le département English :
 
 * Exécutez l’application et sélectionnez Departments.
-* Cliquez avec le bouton droit sur le lien hypertexte **Edit** correspondant au département English, puis sélectionnez **Open in new tab** .
+* Cliquez avec le bouton droit sur le lien hypertexte **Edit** correspondant au département English, puis sélectionnez **Open in new tab**.
 * Sous le premier onglet, cliquez sur le lien hypertexte **Edit** correspondant au département English.
 
 Les deux onglets de navigateur affichent les mêmes informations.
 
-Changez le nom sous le premier onglet de navigateur, puis cliquez sur **Save** .
+Changez le nom sous le premier onglet de navigateur, puis cliquez sur **Save**.
 
 ![Page 1 de modification de département après changement](concurrency/_static/edit-after-change-1.png)
 
@@ -615,7 +615,7 @@ Changez un champ différent sous le deuxième onglet du navigateur.
 
 ![Page Edit 2 du département après changement](concurrency/_static/edit-after-change-2.png)
 
-Cliquez sur **Enregistrer** . Des messages d’erreur s’affichent pour tous les champs qui ne correspondent pas aux valeurs de la base de données :
+Cliquez sur **Enregistrer**. Des messages d’erreur s’affichent pour tous les champs qui ne correspondent pas aux valeurs de la base de données :
 
 ![Message d’erreur de page de modification de département](concurrency/_static/edit-error.png)
 
@@ -623,7 +623,7 @@ Cette fenêtre de navigateur n’avait pas l’intention de changer le champ Nam
 
 ![Message d’erreur de page de modification de département](concurrency/_static/cv.png)
 
-Cliquez à nouveau sur **Enregistrer** . La valeur que vous avez entrée sous le deuxième onglet du navigateur est enregistrée. Les valeurs enregistrées sont visibles dans la page Index.
+Cliquez à nouveau sur **Enregistrer**. La valeur que vous avez entrée sous le deuxième onglet du navigateur est enregistrée. Les valeurs enregistrées sont visibles dans la page Index.
 
 ## <a name="update-the-delete-page"></a>Mettre à jour la page Delete
 
@@ -647,7 +647,7 @@ Le code précédent apporte les modifications suivantes :
 
 * Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int}"`.
 * Il ajoute un message d’erreur.
-* Il remplace FirstMidName par FullName dans le champ **Administrator** .
+* Il remplace FirstMidName par FullName dans le champ **Administrator**.
 * Il change `RowVersion` pour afficher le dernier octet.
 * Ajoute une version de ligne masquée. `RowVersion` doit être ajouté afin que la publication lie la valeur.
 
@@ -658,12 +658,12 @@ Créez un département test.
 Ouvrez deux instances de navigateur de la page Delete sur le département test :
 
 * Exécutez l’application et sélectionnez Departments.
-* Cliquez avec le bouton droit sur le lien hypertexte **Delete** correspondant au département test, puis sélectionnez **Open in new tab** .
+* Cliquez avec le bouton droit sur le lien hypertexte **Delete** correspondant au département test, puis sélectionnez **Open in new tab**.
 * Cliquez sur le lien hypertexte **Edit** correspondant au département test.
 
 Les deux onglets de navigateur affichent les mêmes informations.
 
-Changez le budget sous le premier onglet de navigateur, puis cliquez sur **Save** .
+Changez le budget sous le premier onglet de navigateur, puis cliquez sur **Save**.
 
 Le navigateur affiche la page Index avec la valeur modifiée et un indicateur rowVersion mis à jour. Notez l’indicateur rowVersion mis à jour ; il est affiché sur la deuxième publication (postback) sous l’autre onglet.
 

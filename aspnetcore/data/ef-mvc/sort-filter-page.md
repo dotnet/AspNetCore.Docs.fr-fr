@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/sort-filter-page
 ms.openlocfilehash: 8e425d413471912c763c4892a90e9d12039efec4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053980"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Didacticiel : ajouter le tri, le filtrage et l’échange de ASP.NET MVC avec EF Core
@@ -43,7 +43,7 @@ Dans ce tutoriel, vous allez :
 > * Ajouter des liens de pagination
 > * Créer une page À propos
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Implémenter la fonctionnalité CRUD](crud.md)
 
@@ -53,7 +53,7 @@ Pour ajouter le tri à la page d’index des étudiants, vous allez modifier la 
 
 ### <a name="add-sorting-functionality-to-the-index-method"></a>Ajouter la fonctionnalité de tri à la méthode Index
 
-Dans *StudentsController.cs* , remplacez la `Index` méthode par le code suivant :
+Dans *StudentsController.cs*, remplacez la `Index` méthode par le code suivant :
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
 
@@ -86,7 +86,7 @@ Remplacez le code dans *Views/Students/Index.cshtml* par le code suivant pour aj
 
 Ce code utilise les informations figurant dans les propriétés `ViewData` pour configurer des liens hypertexte avec les valeurs de chaîne de requête appropriées.
 
-Exécutez l’application, sélectionnez l’onglet **Students** , puis cliquez sur les en-têtes des colonnes **Last Name** et **Enrollment Date** pour vérifier que le tri fonctionne.
+Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur les en-têtes des colonnes **Last Name** et **Enrollment Date** pour vérifier que le tri fonctionne.
 
 ![Page d’index des étudiants dans l’ordre de leurs noms](sort-filter-page/_static/name-order.png)
 
@@ -96,7 +96,7 @@ Pour ajouter le filtrage à la page d’index des étudiants, vous allez ajouter
 
 ### <a name="add-filtering-functionality-to-the-index-method"></a>Ajouter la fonctionnalité de filtrage à la méthode Index
 
-Dans *StudentsController.cs* , remplacez la méthode `Index` par le code suivant (les modifications apparaissent en surbrillance).
+Dans *StudentsController.cs*, remplacez la méthode `Index` par le code suivant (les modifications apparaissent en surbrillance).
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
 
@@ -105,17 +105,17 @@ Vous avez ajouté un paramètre `searchString` à la méthode `Index`. La valeur
 > [!NOTE]
 > Ici, vous appelez la méthode `Where` sur un objet `IQueryable`, et le filtre sera traité sur le serveur. Dans certains scénarios, vous pouvez appeler la méthode `Where` en tant que méthode d’extension sur une collection en mémoire. (Par exemple, supposons que vous modifiez la référence à `_context.Students` afin qu’à la place d’un EF, `DbSet` elle fasse référence à une méthode de référentiel qui retourne une `IEnumerable` collection.) Le résultat serait normalement le même, mais dans certains cas peut être différent.
 >
->Par exemple, l’implémentation par le .NET Framework de la méthode `Contains` effectue une comparaison respectant la casse par défaut, mais dans SQL Server, cela est déterminé par le paramètre de classement de l’instance SQL Server. Ce paramètre définit par défaut le non-respect de la casse. Vous pouvez appeler la méthode `ToUpper` pour rendre explicitement le test sensible à la casse :  *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())* . Cela garantit que les résultats resteront les mêmes si vous modifiez le code ultérieurement pour utiliser un référentiel qui renverra une collection `IEnumerable` à la place d’un objet `IQueryable`. (Lorsque vous appelez la `Contains` méthode sur une `IEnumerable` collection, vous recevez l’implémentation .NET Framework ; lorsque vous l’appelez sur un `IQueryable` objet, vous recevez l’implémentation du fournisseur de base de données.) Toutefois, il y a une baisse des performances pour cette solution. Le code `ToUpper` place une fonction dans la clause WHERE de l’instruction TSQL SELECT. Elle empêche l’optimiseur d’utiliser un index. Étant donné que SQL est généralement installé comme non sensible à la casse, il est préférable d’éviter le code `ToUpper` jusqu’à ce que vous ayez migré vers un magasin de données qui respecte la casse.
+>Par exemple, l’implémentation par le .NET Framework de la méthode `Contains` effectue une comparaison respectant la casse par défaut, mais dans SQL Server, cela est déterminé par le paramètre de classement de l’instance SQL Server. Ce paramètre définit par défaut le non-respect de la casse. Vous pouvez appeler la méthode `ToUpper` pour rendre explicitement le test sensible à la casse :  *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*. Cela garantit que les résultats resteront les mêmes si vous modifiez le code ultérieurement pour utiliser un référentiel qui renverra une collection `IEnumerable` à la place d’un objet `IQueryable`. (Lorsque vous appelez la `Contains` méthode sur une `IEnumerable` collection, vous recevez l’implémentation .NET Framework ; lorsque vous l’appelez sur un `IQueryable` objet, vous recevez l’implémentation du fournisseur de base de données.) Toutefois, il y a une baisse des performances pour cette solution. Le code `ToUpper` place une fonction dans la clause WHERE de l’instruction TSQL SELECT. Elle empêche l’optimiseur d’utiliser un index. Étant donné que SQL est généralement installé comme non sensible à la casse, il est préférable d’éviter le code `ToUpper` jusqu’à ce que vous ayez migré vers un magasin de données qui respecte la casse.
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>Ajouter une zone de recherche à la vue de l’index des étudiants
 
-Dans *Views/Student/Index.cshtml* , ajoutez le code en surbrillance immédiatement avant la balise d’ouverture de table afin de créer une légende, une zone de texte et un bouton de **recherche** .
+Dans *Views/Student/Index.cshtml*, ajoutez le code en surbrillance immédiatement avant la balise d’ouverture de table afin de créer une légende, une zone de texte et un bouton de **recherche**.
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
 Ce code utilise le  [Tag Helper](xref:mvc/views/tag-helpers/intro)`<form>` pour ajouter le bouton et la zone de texte de recherche. Par défaut, le Tag Helper `<form>` envoie les données de formulaire avec un POST, ce qui signifie que les paramètres sont transmis dans le corps du message HTTP et non pas dans l’URL sous forme de chaînes de requête. Lorsque vous spécifiez HTTP GET, les données de formulaire sont transmises dans l’URL sous forme de chaînes de requête, ce qui permet aux utilisateurs d’ajouter l’URL aux favoris. Les recommandations du W3C stipulent que vous devez utiliser GET quand l’action ne produit pas de mise à jour.
 
-Exécutez l’application, sélectionnez l’onglet **Students** , entrez une chaîne de recherche, puis cliquez sur Rechercher pour vérifier que le filtrage fonctionne.
+Exécutez l’application, sélectionnez l’onglet **Students**, entrez une chaîne de recherche, puis cliquez sur Rechercher pour vérifier que le filtrage fonctionne.
 
 ![Page d’index des étudiants avec filtrage](sort-filter-page/_static/filtering.png)
 
@@ -127,7 +127,7 @@ http://localhost:5813/Students?SearchString=an
 
 Si vous marquez cette page d’un signet, vous obtenez la liste filtrée lorsque vous utilisez le signet. L’ajout de `method="get"` dans la balise `form` est ce qui a provoqué la génération de la chaîne de requête.
 
-À ce stade, si vous cliquez sur un lien de tri d’en-tête de colonne, vous perdez la valeur de filtre que vous avez entrée dans la zone **Rechercher** . Vous corrigerez cela dans la section suivante.
+À ce stade, si vous cliquez sur un lien de tri d’en-tête de colonne, vous perdez la valeur de filtre que vous avez entrée dans la zone **Rechercher**. Vous corrigerez cela dans la section suivante.
 
 ## <a name="add-paging-to-students-index"></a>Ajouter la pagination à l'index des étudiants
 
@@ -139,13 +139,13 @@ Dans le dossier du projet, créez `PaginatedList.cs`, puis remplacez le code du 
 
 [!code-csharp[](intro/samples/cu/PaginatedList.cs)]
 
-La méthode `CreateAsync` de ce code accepte la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées à `IQueryable`. Quand la méthode `ToListAsync` est appelée sur `IQueryable`, elle renvoie une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` peuvent être utilisées pour activer ou désactiver les boutons de changement de page **Précédent** et **Suivant** .
+La méthode `CreateAsync` de ce code accepte la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées à `IQueryable`. Quand la méthode `ToListAsync` est appelée sur `IQueryable`, elle renvoie une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` peuvent être utilisées pour activer ou désactiver les boutons de changement de page **Précédent** et **Suivant**.
 
 Une méthode `CreateAsync` est utilisée à la place d’un constructeur pour créer l’objet `PaginatedList<T>`, car les constructeurs ne peuvent pas exécuter de code asynchrone.
 
 ## <a name="add-paging-to-index-method"></a>Ajouter la pagination à la méthode Index
 
-Dans *StudentsController.cs* , remplacez la méthode `Index` par le code suivant.
+Dans *StudentsController.cs*, remplacez la méthode `Index` par le code suivant.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilterPage&highlight=1-5,7,11-18,45-46)]
 
@@ -188,7 +188,7 @@ La méthode `PaginatedList.CreateAsync` accepte un numéro de page. Les deux poi
 
 ## <a name="add-paging-links"></a>Ajouter des liens de pagination
 
-Dans *Views/Instructors/Index.cshtml* , remplacez le code existant par le code suivant. Les modifications sont mises en surbrillance.
+Dans *Views/Instructors/Index.cshtml*, remplacez le code existant par le code suivant. Les modifications sont mises en surbrillance.
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
 
@@ -228,7 +228,7 @@ Pour la page **About** du site web de Contoso University, vous afficherez le nom
 
 ### <a name="create-the-view-model"></a>Créer le modèle d’affichage
 
-Créez un dossier *SchoolViewModels* dans le dossier *Models* .
+Créez un dossier *SchoolViewModels* dans le dossier *Models*.
 
 Dans le nouveau dossier, ajoutez un fichier de classe *EnrollmentDateGroup.cs* et remplacez le code du modèle par le code suivant :
 
@@ -236,7 +236,7 @@ Dans le nouveau dossier, ajoutez un fichier de classe *EnrollmentDateGroup.cs* e
 
 ### <a name="modify-the-home-controller"></a>Modifier le contrôleur Home
 
-Dans *HomeController.cs* , ajoutez les instructions using suivantes en haut du fichier :
+Dans *HomeController.cs*, ajoutez les instructions using suivantes en haut du fichier :
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings1)]
 

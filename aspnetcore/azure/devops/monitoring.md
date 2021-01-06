@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: azure/devops/monitor
 ms.openlocfilehash: 74e789828bf5d54e3457f235657f8ed7086df80d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93056749"
 ---
 # <a name="monitor-and-debug"></a>Surveiller et déboguer
@@ -49,11 +49,11 @@ App Service applications Web sont facilement surveillées en temps réel. Le Por
 
     ![Capture d’écran montrant le panneau vue d’ensemble](./media/monitoring/overview.png)
 
-    * **Http 5xx** : nombre d’erreurs côté serveur, généralement les exceptions dans ASP.net Core code.
-    * **Données dans** : entrée de données entrant dans votre application Web.
-    * **Données sortantes** : sortie de données de votre application Web vers les clients.
-    * **Demandes** : nombre de requêtes http.
-    * **Temps de réponse moyen** : temps moyen pour que l’application Web réponde aux requêtes http.
+    * **Http 5xx**: nombre d’erreurs côté serveur, généralement les exceptions dans ASP.net Core code.
+    * **Données dans**: entrée de données entrant dans votre application Web.
+    * **Données sortantes**: sortie de données de votre application Web vers les clients.
+    * **Demandes**: nombre de requêtes http.
+    * **Temps de réponse moyen**: temps moyen pour que l’application Web réponde aux requêtes http.
 
     Plusieurs outils libre-service pour le dépannage et l’optimisation sont également disponibles sur cette page.
 
@@ -80,8 +80,8 @@ App Service applications Web sont facilement surveillées en temps réel. Le Por
 
     ![Configuration de Application Insights](./media/monitoring/new-app-insights.png)
 
-1. Pour **Runtime/Framework** , sélectionnez **ASP.net Core** . Acceptez les paramètres par défaut.
-1. Sélectionnez **OK** . Si vous êtes invité à confirmer, sélectionnez **Continuer** .
+1. Pour **Runtime/Framework**, sélectionnez **ASP.net Core**. Acceptez les paramètres par défaut.
+1. Sélectionnez **OK**. Si vous êtes invité à confirmer, sélectionnez **Continuer**.
 1. Une fois la ressource créée, cliquez sur le nom de Application Insights ressource pour accéder directement à la page de Application Insights.
 
     ![La nouvelle ressource de Application Insights est prête](./media/monitoring/new-app-insights-done.png)
@@ -97,14 +97,14 @@ Application Insights fournit des informations utiles côté serveur, sans config
 Les journaux de serveur Web et d’application sont désactivés par défaut dans Azure App Service. Activez les journaux en procédant comme suit :
 
 1. Ouvrez le [portail Azure](https://portal.azure.com), puis accédez au App service *myWebApp \<unique_number\>* .
-1. Dans le menu de gauche, faites défiler jusqu’à la section **surveillance** . Sélectionnez **journaux de diagnostic** .
+1. Dans le menu de gauche, faites défiler jusqu’à la section **surveillance** . Sélectionnez **journaux de diagnostic**.
 
     ![Lien des journaux de diagnostic](./media/monitoring/logging.png)
 
-1. Activez la **journalisation des applications (système de fichiers)** . Si vous y êtes invité, cliquez sur la case pour installer les extensions afin d’activer la journalisation de l’application dans l’application Web.
-1. Définissez la **journalisation du serveur Web** dans le **système de fichiers** .
+1. Activez la **journalisation des applications (système de fichiers)**. Si vous y êtes invité, cliquez sur la case pour installer les extensions afin d’activer la journalisation de l’application dans l’application Web.
+1. Définissez la **journalisation du serveur Web** dans le **système de fichiers**.
 1. Entrez la **période de rétention** en jours. Par exemple, 30.
-1. Cliquez sur **Enregistrer** .
+1. Cliquez sur **Enregistrer**.
 
 Les journaux de ASP.NET Core et de serveur Web (App Service) sont générés pour l’application Web. Ils peuvent être téléchargés à l’aide des informations FTP/FTPS affichées. Le mot de passe est le même que celui des informations d’identification de déploiement créées précédemment dans ce guide. Les journaux peuvent être [transmis en continu directement sur votre machine locale avec PowerShell ou Azure CLI](/azure/app-service/web-sites-enable-diagnostic-log#download). Vous pouvez également consulter les journaux [dans application Insights](/azure/app-service/web-sites-enable-diagnostic-log#how-to-view-logs-in-application-insights).
 
@@ -113,7 +113,7 @@ Les journaux de ASP.NET Core et de serveur Web (App Service) sont générés pou
 Les journaux des applications et des serveurs Web peuvent être diffusés en temps réel via le portail.
 
 1. Ouvrez le [portail Azure](https://portal.azure.com), puis accédez au App service *myWebApp \<unique_number\>* .
-1. Dans le menu de gauche, faites défiler jusqu’à la section **surveillance** , puis sélectionnez **flux de journal** .
+1. Dans le menu de gauche, faites défiler jusqu’à la section **surveillance** , puis sélectionnez **flux de journal**.
 
     ![Capture d’écran montrant le lien du flux de journal](./media/monitoring/log-stream.png)
 

@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: test/troubleshoot
 ms.openlocfilehash: 8e6c640cd775e5d4cbe6e34c1cecc391baf57344
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059570"
 ---
 # <a name="troubleshoot-and-debug-aspnet-core-projects"></a>Résoudre les problèmes et déboguer des projets ASP.NET Core
@@ -50,7 +50,7 @@ Cet avertissement s’affiche lorsque les versions 32 bits (x86) et 64 bits (x64
 * Le kit SDK .NET Core 32 bits a été installé par une autre application.
 * La version incorrecte a été téléchargée et installée.
 
-Désinstallez le kit SDK .NET Core 32 bits pour éviter cet avertissement. Désinstaller dans **le panneau de configuration**  >  **programmes et fonctionnalités**  >  **désinstaller ou modifier un programme** . Si vous comprenez la raison pour laquelle l’avertissement se produit et ses implications, vous pouvez ignorer l’avertissement.
+Désinstallez le kit SDK .NET Core 32 bits pour éviter cet avertissement. Désinstaller dans **le panneau de configuration**  >  **programmes et fonctionnalités**  >  **désinstaller ou modifier un programme**. Si vous comprenez la raison pour laquelle l’avertissement se produit et ses implications, vous pouvez ignorer l’avertissement.
 
 ### <a name="the-net-core-sdk-is-installed-in-multiple-locations"></a>Le kit SDK .NET Core est installé à plusieurs emplacements
 
@@ -58,9 +58,9 @@ Dans la boîte de dialogue **nouveau projet** pour ASP.net Core, l’avertisseme
 
 > Le kit SDK .NET Core est installé à plusieurs emplacements. Seuls les modèles des kits de développement logiciel (SDK) installés à l’adresse « C : \\ Program Files \\ dotnet \\ SDK \\ » s’affichent.
 
-Ce message s’affiche lorsque vous avez au moins une installation du kit SDK .NET Core dans un répertoire en dehors de *C : \\ Program Files \\ dotnet \\ SDK \\* . Cela se produit généralement lorsque le kit SDK .NET Core a été déployé sur un ordinateur à l’aide de la fonction copier/coller au lieu du programme d’installation MSI.
+Ce message s’affiche lorsque vous avez au moins une installation du kit SDK .NET Core dans un répertoire en dehors de *C : \\ Program Files \\ dotnet \\ SDK \\*. Cela se produit généralement lorsque le kit SDK .NET Core a été déployé sur un ordinateur à l’aide de la fonction copier/coller au lieu du programme d’installation MSI.
 
-Désinstallez tous les kits de développement logiciel (SDK) .NET Core 32 bits et les runtimes pour éviter cet avertissement. Désinstaller dans **le panneau de configuration**  >  **programmes et fonctionnalités**  >  **désinstaller ou modifier un programme** . Si vous comprenez la raison pour laquelle l’avertissement se produit et ses implications, vous pouvez ignorer l’avertissement.
+Désinstallez tous les kits de développement logiciel (SDK) .NET Core 32 bits et les runtimes pour éviter cet avertissement. Désinstaller dans **le panneau de configuration**  >  **programmes et fonctionnalités**  >  **désinstaller ou modifier un programme**. Si vous comprenez la raison pour laquelle l’avertissement se produit et ses implications, vous pouvez ignorer l’avertissement.
 
 ### <a name="no-net-core-sdks-were-detected"></a>Aucun SDK .NET Core n’a été détecté
 

@@ -1,6 +1,6 @@
 > [!NOTE]
 > 
-> **Limites SQLite**
+> **Limitations de SQLite**
 >
 > Ce tutoriel utilise la fonctionnalité *Migrations* d’Entity Framework Core lorsque cela est possible. Les migrations mettent à jour le schéma de la base de données pour qu’elle corresponde aux modifications dans le modèle de données. Toutefois, les migrations effectuent uniquement les types de modifications qui sont pris en charge par le moteur de base de données. En outre, les fonctionnalités de modification du schéma SQLite sont limitées. Par exemple, l’ajout d’une colonne est pris en charge, mais pas sa suppression. Si vous créez une migration pour supprimer une colonne, la commande `ef migrations add` réussit mais la commande `ef database update` échoue. 
 >
@@ -15,5 +15,5 @@
 >
 > * [Limites d’un fournisseur de base de données EF Core SQLite](/ef/core/providers/sqlite/limitations)
 > * [Personnaliser le code de migration](/ef/core/managing-schemas/migrations/#customize-migration-code)
-> * [Ensemencement de données](/ef/core/modeling/data-seeding)
+> * [Amorçage des données](/ef/core/modeling/data-seeding)
 > * [Instruction SQLite ALTER TABLE](https://sqlite.org/lang_altertable.html)

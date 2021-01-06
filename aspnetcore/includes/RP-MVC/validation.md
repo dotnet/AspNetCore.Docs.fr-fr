@@ -21,7 +21,7 @@ Les attributs de validation spécifient le comportement que vous souhaitez appli
   * Nécessite que le premier caractère soit une lettre majuscule.
   * Autorise les caractères spéciaux et les chiffres aux emplacements qui suivent. « PG-13 » est valide pour une évaluation, mais échoue pour un « Genre ».
 
-* L’attribut `Range` contraint une valeur à une plage spécifiée.
+* L’attribut `Range` limite une valeur à une plage spécifiée.
 * L’attribut `StringLength` vous permet de définir la longueur maximale d’une propriété de chaîne, et éventuellement sa longueur minimale.
 * Les types valeur (tels que `decimal`, `int`, `float` et `DateTime`) sont obligatoires par nature et n’ont pas besoin de l’attribut `[Required]`.
 

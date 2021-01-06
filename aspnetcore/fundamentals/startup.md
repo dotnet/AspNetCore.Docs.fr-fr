@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/startup
 ms.openlocfilehash: 747b13abb0ce3fed2d1dc018c6dbf82db1ae7130
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93052238"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
@@ -74,7 +74,7 @@ Pour plus d’informations sur l’hôte, consultez [L’hôte](xref:fundamental
 
 La méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> est :
 
-* Optionnel.
+* facultatif.
 * Appelée par l’hôte avant la méthode `Configure` pour configurer les services de l’application
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
@@ -155,7 +155,7 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 
 ## <a name="add-configuration-at-startup-from-an-external-assembly"></a>Ajouter la configuration au démarrage à partir d’un assembly externe
 
-Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d'informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
+Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d’informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -206,7 +206,7 @@ Pour plus d’informations sur l’hôte, consultez [L’hôte](xref:fundamental
 
 La méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> est :
 
-* Optionnel.
+* facultatif.
 * Appelée par l’hôte avant la méthode `Configure` pour configurer les services de l’application
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
@@ -287,7 +287,7 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 
 ## <a name="add-configuration-at-startup-from-an-external-assembly"></a>Ajouter la configuration au démarrage à partir d’un assembly externe
 
-Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d'informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
+Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d’informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/advanced
 ms.openlocfilehash: 386be395399bf4131e4b6c8cac8221f994e8b7c5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054383"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Didacticiel : en savoir plus sur les scénarios avancés-ASP.NET MVC avec EF Core
@@ -63,11 +63,11 @@ Comme c’est toujours le cas lorsque vous exécutez des commandes SQL dans une 
 
 La classe `DbSet<TEntity>` fournit une méthode que vous pouvez utiliser pour exécuter une requête qui renvoie une entité de type `TEntity`. Pour voir comment cela fonctionne vous allez modifier le code dans la méthode `Details` du contrôleur Department.
 
-Dans *DepartmentsController.cs* , dans la méthode `Details`, remplacez le code qui récupère un service par un appel de méthode `FromSql`, comme indiqué dans le code en surbrillance suivant :
+Dans *DepartmentsController.cs*, dans la méthode `Details`, remplacez le code qui récupère un service par un appel de méthode `FromSql`, comme indiqué dans le code en surbrillance suivant :
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10)]
 
-Pour vérifier que le nouveau code fonctionne correctement, sélectionnez l’onglet **Departments** , puis **Details** pour l’un des services.
+Pour vérifier que le nouveau code fonctionne correctement, sélectionnez l’onglet **Departments**, puis **Details** pour l’un des services.
 
 ![Détails du service](advanced/_static/department-details.png)
 
@@ -75,7 +75,7 @@ Pour vérifier que le nouveau code fonctionne correctement, sélectionnez l’on
 
 Précédemment, vous avez créé une grille de statistiques des étudiants pour la page About, qui montrait le nombre d’étudiants pour chaque date d’inscription. Vous avez obtenu les données à partir du jeu d’entités Students (`_context.Students`) et utilisé LINQ pour projeter les résultats dans une liste d’objets de modèle de vue `EnrollmentDateGroup`. Supposons que vous voulez écrire le code SQL lui-même plutôt qu’utiliser LINQ. Pour ce faire, vous avez besoin d’exécuter une requête SQL qui renvoie autre chose que des objets d’entité. Dans EF Core 1.0, une manière de procéder consiste à écrire du code ADO.NET et à obtenir la connexion de base de données à partir d’EF.
 
-Dans *HomeController.cs* , remplacez la méthode `About` par le code suivant :
+Dans *HomeController.cs*, remplacez la méthode `About` par le code suivant :
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseRawSQL&highlight=3-32)]
 
@@ -93,7 +93,7 @@ Supposons que les administrateurs de Contoso University veuillent effectuer des 
 
 ![Page de mise à jour des crédits de cours](advanced/_static/update-credits.png)
 
-Dans *CoursesController.cs* , ajoutez les méthodes UpdateCourseCredits pour HttpGet et HttpPost :
+Dans *CoursesController.cs*, ajoutez les méthodes UpdateCourseCredits pour HttpGet et HttpPost :
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
 
@@ -101,21 +101,21 @@ Dans *CoursesController.cs* , ajoutez les méthodes UpdateCourseCredits pour Htt
 
 Lorsque le contrôleur traite une demande HttpGet, rien n’est renvoyé dans `ViewData["RowsAffected"]` et la vue affiche une zone de texte vide et un bouton d’envoi, comme indiqué dans l’illustration précédente.
 
-Lorsque vous cliquez sur le bouton **Update** , la méthode HttpPost est appelée et le multiplicateur a la valeur entrée dans la zone de texte. Le code exécute alors l’instruction SQL qui met à jour les cours et renvoie le nombre de lignes affectées à la vue dans `ViewData`. Lorsque la vue obtient une valeur `RowsAffected`, elle affiche le nombre de lignes mis à jour.
+Lorsque vous cliquez sur le bouton **Update**, la méthode HttpPost est appelée et le multiplicateur a la valeur entrée dans la zone de texte. Le code exécute alors l’instruction SQL qui met à jour les cours et renvoie le nombre de lignes affectées à la vue dans `ViewData`. Lorsque la vue obtient une valeur `RowsAffected`, elle affiche le nombre de lignes mis à jour.
 
-Dans l’ **Explorateur de solutions** , cliquez avec le bouton droit sur le dossier *Views/Courses* , puis cliquez sur **Ajouter > Nouvel élément** .
+Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Views/Courses*, puis cliquez sur **Ajouter > Nouvel élément**.
 
-Dans la boîte de dialogue **Ajouter un nouvel élément** , cliquez sur **ASP.net Core** sous **installé** dans le volet gauche, cliquez sur **Razor Afficher** , puis nommez la nouvelle vue *UpdateCourseCredits. cshtml* .
+Dans la boîte de dialogue **Ajouter un nouvel élément** , cliquez sur **ASP.net Core** sous **installé** dans le volet gauche, cliquez sur **Razor Afficher**, puis nommez la nouvelle vue *UpdateCourseCredits. cshtml*.
 
-Dans *Views/Courses/UpdateCourseCredits.cshtml* , remplacez le code du modèle par le code suivant :
+Dans *Views/Courses/UpdateCourseCredits.cshtml*, remplacez le code du modèle par le code suivant :
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
 
-Exécutez la méthode `UpdateCourseCredits` en sélectionnant l’onglet **Courses** , puis en ajoutant « /UpdateCourseCredits » à la fin de l’URL dans la barre d’adresse du navigateur (par exemple : `http://localhost:5813/Courses/UpdateCourseCredits`). Entrez un nombre dans la zone de texte :
+Exécutez la méthode `UpdateCourseCredits` en sélectionnant l’onglet **Courses**, puis en ajoutant « /UpdateCourseCredits » à la fin de l’URL dans la barre d’adresse du navigateur (par exemple : `http://localhost:5813/Courses/UpdateCourseCredits`). Entrez un nombre dans la zone de texte :
 
 ![Page de mise à jour des crédits de cours](advanced/_static/update-credits.png)
 
-Cliquez sur **Update** . Vous voyez le nombre de lignes affectées :
+Cliquez sur **Update**. Vous voyez le nombre de lignes affectées :
 
 ![Page de mise à jour des crédits de cours – lignes affectées](advanced/_static/update-credits-rows-affected.png)
 
@@ -159,7 +159,7 @@ Vous pouvez remarquer ici quelque chose susceptible de vous surprendre : l’ins
 * Si la requête retourne plusieurs lignes, la méthode retourne la valeur Null.
 * Pour déterminer si la requête retourne plusieurs lignes, EF doit vérifier s’il retourne au moins 2.
 
-Notez que vous n’êtes pas tenu d’utiliser le mode débogage et de vous arrêter à un point d’arrêt pour obtenir la sortie de journalisation dans la fenêtre **Output** . C’est simplement un moyen pratique d’arrêter la journalisation au stade où vous voulez examiner la sortie. Si vous ne le faites pas, la journalisation se poursuit et vous devez revenir en arrière pour rechercher les parties qui vous intéressent.
+Notez que vous n’êtes pas tenu d’utiliser le mode débogage et de vous arrêter à un point d’arrêt pour obtenir la sortie de journalisation dans la fenêtre **Output**. C’est simplement un moyen pratique d’arrêter la journalisation au stade où vous voulez examiner la sortie. Si vous ne le faites pas, la journalisation se poursuit et vous devez revenir en arrière pour rechercher les parties qui vous intéressent.
 
 ## <a name="create-an-abstraction-layer"></a>Créer une couche d’abstraction
 
@@ -185,7 +185,7 @@ Entity Framework détermine la manière dont une entité a changé (et par cons�
 
 * ChangeTracker.Entries
 
-Si vous effectuez le suivi d’un grand nombre d’entités et que vous appelez l’une de ces méthodes de nombreuses fois dans une boucle, vous pouvez obtenir des améliorations significatives des performances en désactivant temporairement la détection automatique des modifications à l’aide de la propriété `ChangeTracker.AutoDetectChangesEnabled`. Exemple :
+Si vous effectuez le suivi d’un grand nombre d’entités et que vous appelez l’une de ces méthodes de nombreuses fois dans une boucle, vous pouvez obtenir des améliorations significatives des performances en désactivant temporairement la détection automatique des modifications à l’aide de la propriété `ChangeTracker.AutoDetectChangesEnabled`. Par exemple :
 
 ```csharp
 _context.ChangeTracker.AutoDetectChangesEnabled = false;
@@ -225,7 +225,7 @@ Message d’erreur :
 
 Solution :
 
-Arrêtez le site dans IIS Express. Accédez à la barre d’état système de Windows, recherchez IIS Express, cliquez avec le bouton droit sur son icône, sélectionnez le site Contoso University, puis cliquez sur **Arrêter le site** .
+Arrêtez le site dans IIS Express. Accédez à la barre d’état système de Windows, recherchez IIS Express, cliquez avec le bouton droit sur son icône, sélectionnez le site Contoso University, puis cliquez sur **Arrêter le site**.
 
 ### <a name="migration-scaffolded-with-no-code-in-up-and-down-methods"></a>Migration structurée sans code dans les méthodes Up et Down
 
@@ -243,7 +243,7 @@ Vous pouvez obtenir d’autres erreurs en apportant des modifications au schéma
 
 L’approche la plus simple consiste à renommer la base de données dans *appsettings.json* . La prochaine fois que vous exécuterez `database update`, une nouvelle base de données sera créée.
 
-Pour supprimer une base de données dans SSOX, cliquez avec le bouton droit sur la base de données, cliquez sur **Supprimer** , puis, dans la boîte de dialogue **Supprimer la base de données** , sélectionnez **Fermer les connexions existantes** et cliquez sur **OK** .
+Pour supprimer une base de données dans SSOX, cliquez avec le bouton droit sur la base de données, cliquez sur **Supprimer**, puis, dans la boîte de dialogue **Supprimer la base de données**, sélectionnez **Fermer les connexions existantes** et cliquez sur **OK**.
 
 Pour supprimer une base de données à l’aide de l’interface CLI, exécutez la commande CLI `database drop` :
 

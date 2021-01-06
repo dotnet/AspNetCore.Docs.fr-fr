@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: test/middleware
 ms.openlocfilehash: 2dd5fa127af4432c612bb654d50eb4147aea6868
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93051432"
 ---
 # <a name="test-aspnet-core-middleware"></a>Tester l’intergiciel (middleware) ASP.NET Core
@@ -68,7 +68,7 @@ Envoyer une demande à l’aide de <xref:System.Net.Http.HttpClient> :
 
 Déclarez le résultat. Tout d’abord, faites d’une assertion l’inverse du résultat attendu. Une exécution initiale avec une assertion false positive confirme que le test échoue quand l’intergiciel s’exécute correctement. Exécutez le test et vérifiez que le test échoue.
 
-Dans l’exemple suivant, l’intergiciel (middleware) doit retourner un code d’État 404 ( *introuvable* ) quand le point de terminaison racine est demandé. Effectuez la première série de tests avec `Assert.NotEqual( ... );` , qui doit échouer :
+Dans l’exemple suivant, l’intergiciel (middleware) doit retourner un code d’État 404 (*introuvable*) quand le point de terminaison racine est demandé. Effectuez la première série de tests avec `Assert.NotEqual( ... );` , qui doit échouer :
 
 [!code-csharp[](middleware/samples_snapshot/3.x/false-failure-check.cs?highlight=22)]
 
@@ -136,7 +136,7 @@ Comme dans l’exemple précédent qui a testé une réponse *404-introuvable* ,
 TestServer
 
 * A été créé pour répliquer des comportements de serveur pour tester l’intergiciel (middleware).
-* Do * **not** _ tente de répliquer tous les <xref:System.Net.Http.HttpClient> comportements.
+* Do ***not** _ tente de répliquer tous les <xref:System.Net.Http.HttpClient> comportements.
 _ Tente d’accorder au client un accès au plus grand contrôle du serveur que possible et avec autant de visibilité sur ce qui se passe sur le serveur que possible. Par exemple, il peut lever des exceptions qui ne sont normalement pas levées par afin `HttpClient` de communiquer directement l’état du serveur.
 * Ne définit pas certains en-têtes de transport par défaut, car ceux-ci ne sont généralement pas pertinents pour l’intergiciel (middleware). Pour plus d'informations, consultez la section suivante.
 

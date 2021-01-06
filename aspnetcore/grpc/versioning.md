@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/versioning
 ms.openlocfilehash: 38204b16d041f21221862c566b90a6a9571d26a1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058699"
 ---
 # <a name="versioning-grpc-services"></a>Contrôle de version des services gRPC
@@ -94,7 +94,7 @@ Le nom du package est combiné avec le nom du service pour identifier une adress
 * `greet.v1.Greeter`
 * `greet.v2.Greeter`
 
-Les implémentations du service avec version sont inscrites dans *Startup.cs* :
+Les implémentations du service avec version sont inscrites dans *Startup.cs*:
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -117,7 +117,7 @@ La publication de plusieurs versions d’un service le duplique. Pour réduire l
 
 [!code-csharp[](versioning/sample/GreeterServiceV1.cs?highlight=10,19)]
 
-Les services et les messages générés avec des noms de packages différents sont des **types .net différents** . Le déplacement d’une logique métier vers un emplacement centralisé requiert le mappage de messages à des types communs.
+Les services et les messages générés avec des noms de packages différents sont des **types .net différents**. Le déplacement d’une logique métier vers un emplacement centralisé requiert le mappage de messages à des types communs.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

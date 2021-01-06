@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: aspnetcore-3.0
 ms.openlocfilehash: 235daac5c08248ca2052de6b44e66a8162ce23ad
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93051237"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Nouveautés de ASP.NET Core 3,0
@@ -47,7 +47,7 @@ Blazor scénarios pris en charge par l’infrastructure :
 * Créer des bibliothèques de composants avec des Razor bibliothèques de classes
 * Interopérabilité JavaScript
 
-Pour plus d'informations, consultez <xref:blazor/index>.
+Pour plus d’informations, consultez <xref:blazor/index>.
 
 ### Blazor Server
 
@@ -86,7 +86,7 @@ la fonctionnalité gRPC dans ASP.NET Core 3,0 comprend les éléments suivants 
 * [GRPC .net. client](https://www.nuget.org/packages/Grpc.Net.Client): client GRPC pour .net core qui s’appuie sur ce qui vous est familier `HttpClient` .
 * [GRPC .net. ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory): intégration du client GRPC à `HttpClientFactory` .
 
-Pour plus d'informations, consultez <xref:grpc/index>.
+Pour plus d’informations, consultez <xref:grpc/index>.
 
 ## SignalR
 
@@ -219,7 +219,7 @@ public class ChatHub : Hub
 
 La création de la `DomainRestricted` stratégie peut impliquer :
 
-* Dans *Startup.cs* , ajout de la nouvelle stratégie.
+* Dans *Startup.cs*, ajout de la nouvelle stratégie.
 * Fournissez la `DomainRestrictedRequirement` spécification personnalisée sous la forme d’un paramètre.
 * Inscription `DomainRestricted` auprès de l’intergiciel d’autorisation.
 
@@ -374,7 +374,7 @@ Les options d’authentification par certificat incluent la possibilité d’eff
 * Vérifiez la révocation des certificats.
 * Vérifiez que le certificat offerts contient les indicateurs d’utilisation appropriés.
 
-Un principal d’utilisateur par défaut est construit à partir des propriétés du certificat. Le principal d’utilisateur contient un événement qui permet d’ajouter ou de remplacer le principal. Pour plus d'informations, consultez <xref:security/authentication/certauth>.
+Un principal d’utilisateur par défaut est construit à partir des propriétés du certificat. Le principal d’utilisateur contient un événement qui permet d’ajouter ou de remplacer le principal. Pour plus d’informations, consultez <xref:security/authentication/certauth>.
 
 [L’authentification Windows](/windows-server/security/windows-authentication/windows-authentication-overview) a été étendue sur Linux et MacOS. Dans les versions précédentes, l’authentification Windows était limitée à [IIS](xref:host-and-deploy/iis/index) et [HttpSys](xref:fundamentals/servers/httpsys). Dans ASP.NET Core 3,0, [Kestrel](xref:fundamentals/servers/kestrel) a la possibilité d’utiliser Negotiate, [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview)et [NTLM sur Windows](/windows-server/security/kerberos/ntlm-overview), Linux et MacOS pour les hôtes joints à un domaine Windows. La prise en charge Kestrel de ces schémas d’authentification est assurée par le package [NuGet Microsoft. AspNetCore. Authentication. Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) . Comme pour les autres services d’authentification, configurez l’authentification pour l’ensemble de l’application, puis configurez le service :
 
@@ -400,7 +400,7 @@ Configuration requise pour l’ordinateur hôte :
   * Les noms de principal du service doivent être créés pour le processus Web.
   * Les [fichiers keytab](/archive/blogs/pie/all-you-need-to-know-about-keytab-files) doivent être générés et configurés sur l’ordinateur hôte.
 
-Pour plus d'informations, consultez <xref:security/authentication/windowsauth>.
+Pour plus d’informations, consultez <xref:security/authentication/windowsauth>.
 
 ## <a name="template-changes"></a>Modifications du modèle
 
@@ -439,7 +439,7 @@ Tous les services peuvent toujours être injectés directement comme arguments d
 * L’ambiguïté entre les en-têtes et les codes de fin a été résolue en déplaçant les en-têtes de fin vers une nouvelle collection.
 * Les API d’e/s synchrones, telles que `HttpRequest.Body.Read` , sont une source commune de privation de thread conduisant à des blocages d’application. Dans 3,0, `AllowSynchronousIO` est désactivé par défaut.
 
-Pour plus d'informations, consultez <xref:migration/22-to-30#kestrel>.
+Pour plus d’informations, consultez <xref:migration/22-to-30#kestrel>.
 
 ## <a name="http2-enabled-by-default"></a>HTTP/2 activé par défaut
 
@@ -463,7 +463,7 @@ Le routage des points de terminaison, qui permet aux frameworks (par exemple, MV
 * Les points de terminaison peuvent implémenter une stratégie, telle que CORS ou Authorization, dans l’intergiciel et le MVC.
 * Les filtres et les attributs peuvent être placés sur les méthodes dans les contrôleurs.
 
-Pour plus d'informations, consultez <xref:fundamentals/routing#routing-basics>.
+Pour plus d’informations, consultez <xref:fundamentals/routing#routing-basics>.
 
 ## <a name="health-checks"></a>Contrôles d'intégrité
 
@@ -501,7 +501,7 @@ Les erreurs de démarrage lors de l’hébergement d’applications ASP.NET Core
 
 .NET Core 3,0 introduit le nouveau modèle d’application de service Worker. Ce modèle fournit un point de départ pour l’écriture de services à long terme dans .NET Core.
 
-Pour plus d'informations, consultez les pages suivantes :
+Pour plus d’informations, consultez :
 
 * [Les Workers .NET Core en tant que services Windows](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/)
 * <xref:fundamentals/host/hosted-services>
@@ -513,7 +513,7 @@ Dans les versions précédentes de ASP.NET Core, l’appel de <xref:Microsoft.As
 
 Ce scénario est résolu dans ASP.NET Core 3,0. L’hôte active l' [intergiciel d’en-tête transféré](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options) lorsque la `ASPNETCORE_FORWARDEDHEADERS_ENABLED` variable d’environnement a la valeur `true` . `ASPNETCORE_FORWARDEDHEADERS_ENABLED` a la valeur `true` dans nos images de conteneur.
 
-## <a name="performance-improvements"></a>Améliorations des performances
+## <a name="performance-improvements"></a>Amélioration des performances
 
 ASP.NET Core 3,0 comprend de nombreuses améliorations qui réduisent l’utilisation de la mémoire et améliorent le débit :
 

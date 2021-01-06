@@ -1,12 +1,12 @@
-# <a name="blazor-webassembly-sample-app"></a>Blazor WebAssembly Exemple App
+# <a name="blazor-webassembly-sample-app"></a>Exemple d’application de webassembly éblouissant
 
-Cet échantillon illustre l’utilisation des scénarios Blazor décrits dans la documentation Blazor.
+Cet exemple illustre l’utilisation de scénarios éblouissants décrits dans la documentation de éblouissant.
 
-## <a name="call-web-api-example"></a>Appelez l’exemple de l’API web
+## <a name="call-web-api-example"></a>Exemple d’appel d’API Web
 
-L’exemple de l’API Web nécessite une API Web en cours d’exécution basée sur l’application d’échantillon pour la <a href="https://docs.microsoft.com/aspnet/core/tutorials/first-web-api">création d’une API web avec ASP.NET</a> sujet de base, qui par défaut utilise le même port HTTPS (5001) que l’application d’échantillon Blazor. Pour utiliser les deux applications sur la même machine en même temps, modifiez le port de l’API web (par exemple, utilisez le port 10000). L’application d’échantillon fait des `https://localhost:10000/api/TodoItems`demandes à l’API web à . Si une adresse API Web différente `ServiceEndpoint` est utilisée, mettez `@code` à jour la valeur constante du bloc du composant Razor.</p>
+L’exemple d’API Web requiert une API Web en cours d’exécution basée sur l’exemple d’application pour la rubrique <a href="https://docs.microsoft.com/aspnet/core/tutorials/first-web-api">créer une API Web avec ASP.net Core</a> , qui utilise par défaut le même port HTTPS (5001) que l’exemple d’application éblouissant. Pour utiliser les deux applications sur le même ordinateur en même temps, modifiez le port de l’API Web (par exemple, utilisez le port 10000). L’exemple d’application envoie des demandes à l’API Web à l’adresse `https://localhost:10000/api/TodoItems` . Si une autre adresse d’API Web est utilisée, mettez à jour la `ServiceEndpoint` valeur de constante dans le bloc du composant Razor `@code` .</p>
 
-L’application échantillonne fait une demande de partage `http://localhost:5000` `https://localhost:5001` de <a href="https://docs.microsoft.com/aspnet/core/security/cors">ressources inter-origine (CORS)</a> de ou vers l’API Web. Les informations d’identification (cookies d’autorisation/en-têtes) sont autorisées. Ajoutez la configuration suivante du middleware CORS `Startup.Configure` à la méthode de l’API web :</p>
+L’exemple d’application effectue une demande de <a href="https://docs.microsoft.com/aspnet/core/security/cors">partage des ressources Cross-Origin (cors)</a> à partir de `http://localhost:5000` ou `https://localhost:5001` vers l’API Web. Les informations d’identification (cookies d’autorisation/en-têtes) sont autorisées. Ajoutez la configuration de middleware CORS suivante à la méthode de l’API Web `Startup.Configure` :</p>
 
 ```csharp
 app.UseCors(policy => 
@@ -16,6 +16,6 @@ app.UseCors(policy =>
     .AllowCredentials());
 ```
 
-Ajustez les domaines `WithOrigins` et les ports de ce que nécessaire pour l’application Blazor.
+Ajustez les domaines et les ports de `WithOrigins` en fonction des besoins de l’application éblouissante.
 
-L’API Web est configurée pour CORS pour permettre aux cookies d’autorisation / en-têtes et les demandes à partir du code client, mais l’API web tel que créé par le tutoriel n’autorise pas réellement les demandes. Consultez les <a href="https://docs.microsoft.com/aspnet/core/security/">articles ASP.NET Core Security and Identity</a> pour les directives de mise en œuvre.
+L’API Web est configurée pour CORS pour autoriser les cookies/en-têtes d’autorisation et les demandes provenant du code client, mais l’API Web telle qu’elle a été créée par le didacticiel n’autorise pas réellement les demandes. Pour obtenir des conseils d’implémentation, consultez les <a href="https://docs.microsoft.com/aspnet/core/security/">articles ASP.net Core Security and Identity</a> .

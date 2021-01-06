@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/services
 ms.openlocfilehash: cc9fc50871cbad1f2ddf63d3c13c3253f24a995b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058738"
 ---
 # <a name="create-grpc-services-and-methods"></a>Créer des services et méthodes gRPC
@@ -104,7 +104,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-Pour plus d'informations, voir <xref:grpc/aspnetcore>.
+Consultez la rubrique <xref:grpc/aspnetcore> (éventuellement en anglais) pour plus d'informations.
 
 ## <a name="implement-grpc-methods"></a>Implémenter des méthodes gRPC
 

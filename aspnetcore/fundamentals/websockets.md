@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/websockets
 ms.openlocfilehash: 83a41d503b2d56bca3f1bac14eeb9d54a8257642
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057776"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Prise en charge des WebSockets dans ASP.NET Core
@@ -158,13 +158,13 @@ Pour activer la prise en charge du protocole WebSocket sur Windows Server 2012 o
 > [!NOTE]
 > Ces étapes ne sont pas nécessaires si vous utilisez IIS Express
 
-1. Utilisez l’Assistant **Ajouter des rôles et des fonctionnalités** par le biais du menu **Gérer** ou du lien dans **Gestionnaire de serveur** .
-1. Sélectionnez **Installation basée sur un rôle ou une fonctionnalité** . Sélectionnez **Suivant** .
-1. Sélectionnez le serveur approprié (le serveur local est sélectionné par défaut). Sélectionnez **Suivant** .
-1. Développez **Serveur web (IIS)** dans l’arborescence **Rôles** , développez **Serveur Web** , puis développez **Développement d’applications** .
-1. Sélectionnez **Protocole WebSocket** . Sélectionnez **Suivant** .
-1. Si vous n’avez pas besoin d’autres fonctionnalités, sélectionnez **Suivant** .
-1. Sélectionnez **Installer** .
+1. Utilisez l’Assistant **Ajouter des rôles et des fonctionnalités** par le biais du menu **Gérer** ou du lien dans **Gestionnaire de serveur**.
+1. Sélectionnez **Installation basée sur un rôle ou une fonctionnalité**. Sélectionnez **Suivant**.
+1. Sélectionnez le serveur approprié (le serveur local est sélectionné par défaut). Sélectionnez **Suivant**.
+1. Développez **Serveur web (IIS)** dans l’arborescence **Rôles**, développez **Serveur Web**, puis développez **Développement d’applications**.
+1. Sélectionnez **Protocole WebSocket**. Sélectionnez **Suivant**.
+1. Si vous n’avez pas besoin d’autres fonctionnalités, sélectionnez **Suivant**.
+1. Sélectionnez **Installer**.
 1. Une fois l’installation terminée, sélectionnez **Fermer** pour quitter l’Assistant.
 
 Pour activer la prise en charge du protocole WebSocket sur Windows 8 ou ultérieur :
@@ -173,12 +173,12 @@ Pour activer la prise en charge du protocole WebSocket sur Windows 8 ou ultérie
 > Ces étapes ne sont pas nécessaires si vous utilisez IIS Express
 
 1. Accédez à **panneau de configuration**  >  **programmes** programmes  >  **et fonctionnalités**  >  **activer ou désactiver des fonctionnalités Windows** (côté gauche de l’écran).
-1. Ouvrez les nœuds suivants : **Internet Information Services**  >  fonctionnalités de développement d’applications **World Wide Web services**  >  **Application Development Features** .
-1. Sélectionnez la fonctionnalité **Protocole WebSocket** . Sélectionnez **OK** .
+1. Ouvrez les nœuds suivants : **Internet Information Services**  >  fonctionnalités de développement d’applications **World Wide Web services**  >  .
+1. Sélectionnez la fonctionnalité **Protocole WebSocket**. Sélectionnez **OK**.
 
 ### <a name="disable-websocket-when-using-socketio-on-nodejs"></a>Désactiver WebSocket lors de l’utilisation de socket.io sur Node.js
 
-Si vous utilisez la prise en charge de WebSocket dans [Socket.IO](https://socket.io/) sur [Node.js](https://nodejs.org/), désactivez le module WebSocket IIS par défaut à l’aide `webSocket` de l’élément dans *web.config* ou *applicationHost.config* . Si cette étape n’est pas effectuée, le module WebSocket IIS tente de gérer la communication WebSocket plutôt que Node.js et l’application.
+Si vous utilisez la prise en charge de WebSocket dans [Socket.IO](https://socket.io/) sur [Node.js](https://nodejs.org/), désactivez le module WebSocket IIS par défaut à l’aide `webSocket` de l’élément dans *web.config* ou *applicationHost.config*. Si cette étape n’est pas effectuée, le module WebSocket IIS tente de gérer la communication WebSocket plutôt que Node.js et l’application.
 
 ```xml
 <system.webServer>
@@ -186,7 +186,7 @@ Si vous utilisez la prise en charge de WebSocket dans [Socket.IO](https://socket
 </system.webServer>
 ```
 
-## <a name="sample-app"></a>Exemple d’application
+## <a name="sample-app"></a>Exemple d'application
 
 [L’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) qui accompagne cet article est une application d’écho. Elle comporte une page web qui établit des connexions WebSocket, et le serveur renvoie au client les messages qu’il reçoit. Exécutez l’application à partir d’une invite de commandes (elle n’est pas configurée pour s’exécuter à partir de Visual Studio avec IIS Express) et accédez à http://localhost:5000. La page web affiche l’état de la connexion en haut à gauche :
 

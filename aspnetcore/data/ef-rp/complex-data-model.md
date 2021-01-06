@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/complex-data-model
 ms.openlocfilehash: 1ac9d6303daac82f3973c5d027fe1f453dc32e02
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054097"
 ---
 # <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a>Partie 5, Razor pages avec EF Core dans le modèle de données ASP.net Core
@@ -71,7 +71,7 @@ Le code précédent ajoute une propriété `FullName` et les attributs suivants 
 
 Pour les dates d’inscription des étudiants, toutes les pages affichent actuellement l’heure du jour avec la date, alors que seule la date présente un intérêt. Vous pouvez avoir recours aux attributs d’annotation de données pour apporter une modification au code, permettant de corriger le format d’affichage dans chaque page qui affiche ces données. 
 
-L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L' [énumération DataType](/dotnet/api/system.componentmodel.dataannotations.datatype) fournit de nombreux types de données, tels que date, Time, PhoneNumber, Currency, EmailAddress, etc. L' `DataType` attribut peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Exemple :
+L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L' [énumération DataType](/dotnet/api/system.componentmodel.dataannotations.datatype) fournit de nombreux types de données, tels que date, Time, PhoneNumber, Currency, EmailAddress, etc. L' `DataType` attribut peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple :
 
 * Le lien `mailto:` est créé automatiquement pour `DataType.EmailAddress`.
 * Le sélecteur de date est fourni pour `DataType.Date` dans la plupart des navigateurs.
@@ -111,9 +111,9 @@ L’attribut `StringLength` n’empêche pas un utilisateur d’entrer un espace
 [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
 ```
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Dans **l’Explorateur d’objets SQL Server** (SSOX), ouvrez le concepteur de tables Student en double-cliquant sur la table **Student** .
+Dans **l’Explorateur d’objets SQL Server** (SSOX), ouvrez le concepteur de tables Student en double-cliquant sur la table **Student**.
 
 ![Table Students dans SSOX avant les migrations](complex-data-model/_static/ssox-before-migration.png)
 
@@ -169,7 +169,7 @@ L’attribut `Display` indique que la légende des zones de texte doit être «�
 
 Exécutez l’application et accédez à la page des étudiants. Une exception est levée. En raison de l’attribut `[Column]`, EF s’attend à trouver une colonne nommée `FirstName`, mais le nom de la colonne dans la base de données est toujours `FirstMidName`.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Le message d’erreur est semblable à l’exemple suivant :
 
@@ -222,7 +222,7 @@ SqliteException: SQLite Error 1: 'no such column: s.FirstName'.
 
 Pour ce tutoriel, la façon de passer cette erreur consiste à supprimer et à recréer la migration initiale. Pour plus d’informations, consultez la note d’avertissement SQLite au début du [tutoriel sur les migrations](xref:data/ef-rp/migrations).
 
-* Supprimez le dossier *Migrations* .
+* Supprimez le dossier *Migrations*.
 * Exécutez les commandes suivantes pour supprimer la base de données, créer une migration initiale et appliquer la migration :
 
   ```dotnetcli
@@ -473,7 +473,7 @@ Les modèles de données sont simples au début, puis ils augmentent en complexi
 
 ### <a name="composite-key"></a>Clé composite
 
-Ensemble, le deux clés étrangères dans `CourseAssignment` (`InstructorID` et `CourseID`) identifient de façon unique chaque ligne de la table `CourseAssignment`. `CourseAssignment` ne nécessite pas de clé primaire dédiée. Les propriétés `InstructorID` et `CourseID` fonctionnent comme une clé primaire composite. Le seul moyen de spécifier des clés primaires composites dans EF Core consiste à faire appel à l’ *API Fluent* . La section suivante montre comment configurer la clé primaire composite.
+Ensemble, le deux clés étrangères dans `CourseAssignment` (`InstructorID` et `CourseID`) identifient de façon unique chaque ligne de la table `CourseAssignment`. `CourseAssignment` ne nécessite pas de clé primaire dédiée. Les propriétés `InstructorID` et `CourseID` fonctionnent comme une clé primaire composite. Le seul moyen de spécifier des clés primaires composites dans EF Core consiste à faire appel à l’*API Fluent*. La section suivante montre comment configurer la clé primaire composite.
 
 La clé composite garantit que :
 
@@ -496,7 +496,7 @@ Le code précédent ajoute les nouvelles entités et configure la clé primaire 
 
 ## <a name="fluent-api-alternative-to-attributes"></a>Alternative d’API Fluent aux attributs
 
-La méthode `OnModelCreating` du code précédent utilise l’ *API Fluent* pour configurer le comportement d’EF Core. L’API est appelée « Fluent », car elle est souvent utilisée en enchaînant une série d’appels de méthode en une seule instruction. Le [code suivant](/ef/core/modeling/#use-fluent-api-to-configure-a-model) est un exemple de l’API Fluent :
+La méthode `OnModelCreating` du code précédent utilise l’*API Fluent* pour configurer le comportement d’EF Core. L’API est appelée « Fluent », car elle est souvent utilisée en enchaînant une série d’appels de méthode en une seule instruction. Le [code suivant](/ef/core/modeling/#use-fluent-api-to-configure-a-model) est un exemple de l’API Fluent :
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -538,7 +538,7 @@ Le schéma précédent illustre :
 
 ## <a name="seed-the-database"></a>Amorcer la base de données
 
-Mettez à jour le code dans *Data/DbInitializer.cs*  :
+Mettez à jour le code dans *Data/DbInitializer.cs* :
 
 [!code-csharp[](intro/samples/cu30/Data/DbInitializer.cs)]
 
@@ -548,7 +548,7 @@ Le code précédent fournit des données de valeur initiale pour les nouvelles e
 
 Créez le projet.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans PMC, exécutez la commande suivante.
 
@@ -591,7 +591,7 @@ Dans la section suivante, vous allez découvrir comment éviter cette erreur.
 Maintenant que vous disposez d’une base de données, vous devez réfléchir à la façon dont vous y apporterez des modifications. Ce tutoriel présente deux autres solutions :
 
 * [Supprimer et recréer la base de données](#drop). Choisissez cette section si vous utilisez SQLite.
-* [Appliquez la migration à la base de données existante](#applyexisting). Les instructions de cette section valent uniquement pour SQL Server, **pas pour SQLite** . 
+* [Appliquez la migration à la base de données existante](#applyexisting). Les instructions de cette section valent uniquement pour SQL Server, **pas pour SQLite**. 
 
 Les deux options fonctionnent pour SQL Server. Bien que la méthode d’application de la migration soit plus longue et complexe, il s’agit de l’approche privilégiée pour les environnements de production réels. 
 
@@ -603,15 +603,15 @@ Les deux options fonctionnent pour SQL Server. Bien que la méthode d’applicat
 
 Pour forcer EF Core à créer une base de données, supprimez et mettez à jour la base de données :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans la **console du Gestionnaire de package** , exécutez la commande suivante :
+* Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
   ```powershell
   Drop-Database
   ```
 
-* Supprimez le dossier *Migrations* , puis exécutez la commande suivante :
+* Supprimez le dossier *Migrations*, puis exécutez la commande suivante :
 
   ```powershell
   Add-Migration InitialCreate
@@ -620,7 +620,7 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier du projet contient le fichier *ContosoUniversity.csproj* .
+* Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier du projet contient le fichier *ContosoUniversity.csproj*.
 
 * Exécutez la commande suivante :
 
@@ -628,7 +628,7 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
   dotnet ef database drop --force
   ```
 
-* Supprimez le dossier *Migrations* , puis exécutez la commande suivante :
+* Supprimez le dossier *Migrations*, puis exécutez la commande suivante :
 
   ```dotnetcli
   dotnet ef migrations add InitialCreate
@@ -637,20 +637,20 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
 
 ---
 
-Exécutez l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
+Exécutez l'application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ouvrez la base de données dans SSOX :
 
-* Si SSOX était déjà ouvert, cliquez sur le bouton **Actualiser** .
-* Développez le nœud **Tables** . Les tables créées sont affichées.
+* Si SSOX était déjà ouvert, cliquez sur le bouton **Actualiser**.
+* Développez le nœud **Tables**. Les tables créées sont affichées.
 
   ![Tables dans SSOX](complex-data-model/_static/ssox-tables.png)
 
-* Examinez la table **CourseAssignment**  :
+* Examinez la table **CourseAssignment** :
 
-  * Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez **Afficher les données** .
+  * Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez **Afficher les données**.
   * Vérifiez que la table **CourseAssignment** contient des données.
 
   ![Données CourseAssignment dans SSOX](complex-data-model/_static/ssox-ci-data.png)
@@ -660,7 +660,7 @@ Ouvrez la base de données dans SSOX :
 Utilisez votre outil SQLite pour examiner la base de données :
 
 * Nouvelles tables et colonnes.
-* Données amorcées dans des tables, par exemple la table **CourseAssignment** .
+* Données amorcées dans des tables, par exemple la table **CourseAssignment**.
 
 ---
 
@@ -687,7 +687,7 @@ Pour faire en sorte que la migration `ComplexDataModel` fonctionne avec des donn
 
 Dans la classe de migration `ComplexDataModel`, mettez à jour la méthode `Up` :
 
-* Ouvrez le fichier *{timestamp}_ComplexDataModel.cs* .
+* Ouvrez le fichier *{timestamp}_ComplexDataModel.cs*.
 * Commentez la ligne de code qui ajoute la colonne `DepartmentID` à la table `Course`.
 
 [!code-csharp[](intro/samples/cu30snapshots/5-complex/Migrations/ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
@@ -703,9 +703,9 @@ La façon de gérer la situation présentée ici est simplifiée pour ce tutorie
 * Comprendrait du code ou des scripts pour ajouter des lignes `Department` et des lignes `Course` associées aux nouvelles lignes `Department`.
 * N’utiliserait pas le département « Temp » ou la valeur par défaut pour `Course.DepartmentID`.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans la **console du Gestionnaire de package** , exécutez la commande suivante :
+* Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
   ```powershell
   Update-Database
@@ -723,7 +723,7 @@ La méthode `DbInitializer.Initialize` étant conçue pour fonctionner uniquemen
 
 ---
 
-Exécutez l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
+Exécutez l'application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
@@ -761,7 +761,7 @@ Mettez à jour *Models/Student.cs* avec le code en surbrillance suivant :
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L' [énumération DataType](/dotnet/api/system.componentmodel.dataannotations.datatype) fournit de nombreux types de données, tels que date, Time, PhoneNumber, Currency, EmailAddress, etc. L' `DataType` attribut peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Exemple :
+L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L' [énumération DataType](/dotnet/api/system.componentmodel.dataannotations.datatype) fournit de nombreux types de données, tels que date, Time, PhoneNumber, Currency, EmailAddress, etc. L' `DataType` attribut peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple :
 
 * Le lien `mailto:` est créé automatiquement pour `DataType.EmailAddress`.
 * Le sélecteur de date est fourni pour `DataType.Date` dans la plupart des navigateurs.
@@ -785,7 +785,7 @@ L’attribut `DisplayFormat` peut être utilisé seul. Il est généralement pr�
 
 Pour plus d’informations, consultez la [ \<input> documentation tag Helper](xref:mvc/views/working-with-forms#the-input-tag-helper).
 
-Exécutez l’application. Accédez à la page d’index des étudiants. Les heures ne sont plus affichées. Tous les affichages qui utilisent le modèle `Student` affichent la date sans heure.
+Exécutez l'application. Accédez à la page d’index des étudiants. Les heures ne sont plus affichées. Tous les affichages qui utilisent le modèle `Student` affichent la date sans heure.
 
 ![Page d’index des étudiants affichant les dates sans les heures](complex-data-model/_static/dates-no-times.png)
 
@@ -807,11 +807,11 @@ Exécutez l’application :
 
 * Accédez à la page Students.
 * Sélectionnez **Create New** et entrez un nom de plus de 50 caractères.
-* Sélectionnez **Create** . La validation côté client affiche un message d’erreur.
+* Sélectionnez **Create**. La validation côté client affiche un message d’erreur.
 
 ![Page d’index des étudiants affichant des erreurs de longueur de chaîne](complex-data-model/_static/string-length-errors.png)
 
-Dans **l’Explorateur d’objets SQL Server** (SSOX), ouvrez le concepteur de tables Student en double-cliquant sur la table **Student** .
+Dans **l’Explorateur d’objets SQL Server** (SSOX), ouvrez le concepteur de tables Student en double-cliquant sur la table **Student**.
 
 ![Table Students dans SSOX avant les migrations](complex-data-model/_static/ssox-before-migration.png)
 
@@ -842,7 +842,7 @@ Pour mettre à jour la base de données
 * Créez le projet.
 * Ouvrez une fenêtre de commande dans le dossier du projet. Entrez les commandes suivantes pour créer une migration et mettre à jour la base de données :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ```powershell
 Add-Migration ColumnFirstName
@@ -1181,7 +1181,7 @@ Les modèles de données sont simples au début, puis ils augmentent en complexi
 
 ### <a name="composite-key"></a>Clé composite
 
-Les clés étrangères ne sont pas nullables. Ensemble, le deux clés étrangères dans `CourseAssignment` (`InstructorID` et `CourseID`) identifient de façon unique chaque ligne de la table `CourseAssignment`. `CourseAssignment` ne nécessite pas de clé primaire dédiée. Les propriétés `InstructorID` et `CourseID` fonctionnent comme une clé primaire composite. Le seul moyen de spécifier des clés primaires composites dans EF Core consiste à faire appel à l’ *API Fluent* . La section suivante montre comment configurer la clé primaire composite.
+Les clés étrangères ne sont pas nullables. Ensemble, le deux clés étrangères dans `CourseAssignment` (`InstructorID` et `CourseID`) identifient de façon unique chaque ligne de la table `CourseAssignment`. `CourseAssignment` ne nécessite pas de clé primaire dédiée. Les propriétés `InstructorID` et `CourseID` fonctionnent comme une clé primaire composite. Le seul moyen de spécifier des clés primaires composites dans EF Core consiste à faire appel à l’*API Fluent*. La section suivante montre comment configurer la clé primaire composite.
 
 La clé composite garantit que :
 
@@ -1196,7 +1196,7 @@ Comme l’entité de jointure `Enrollment` définit sa propre clé primaire, des
 
 ## <a name="update-the-db-context"></a>Mettre à jour le contexte de base de données
 
-Ajoutez le code en surbrillance suivant à *Data/SchoolContext.cs*  :
+Ajoutez le code en surbrillance suivant à *Data/SchoolContext.cs* :
 
 [!code-csharp[](intro/samples/cu21/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
@@ -1204,7 +1204,7 @@ Le code précédent ajoute les nouvelles entités et configure la clé primaire 
 
 ## <a name="fluent-api-alternative-to-attributes"></a>Alternative d’API Fluent aux attributs
 
-La méthode `OnModelCreating` du code précédent utilise l’ *API Fluent* pour configurer le comportement d’EF Core. L’API est appelée « Fluent », car elle est souvent utilisée en enchaînant une série d’appels de méthode en une seule instruction. Le [code suivant](/ef/core/modeling/#use-fluent-api-to-configure-a-model) est un exemple de l’API Fluent :
+La méthode `OnModelCreating` du code précédent utilise l’*API Fluent* pour configurer le comportement d’EF Core. L’API est appelée « Fluent », car elle est souvent utilisée en enchaînant une série d’appels de méthode en une seule instruction. Le [code suivant](/ef/core/modeling/#use-fluent-api-to-configure-a-model) est un exemple de l’API Fluent :
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -1246,7 +1246,7 @@ Le schéma précédent illustre :
 
 ## <a name="seed-the-db-with-test-data"></a>Amorcer la base de données avec des données de test
 
-Mettez à jour le code dans *Data/DbInitializer.cs*  :
+Mettez à jour le code dans *Data/DbInitializer.cs* :
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Final)]
 
@@ -1256,7 +1256,7 @@ Le code précédent fournit des données de valeur initiale pour les nouvelles e
 
 Créez le projet.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ```powershell
 Add-Migration ComplexDataModel
@@ -1290,7 +1290,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 Disposant à présent d’une base de données, vous devez réfléchir à la façon dont vous y apporterez des modifications. Ce tutoriel montre deux approches :
 
 * [Supprimer et recréer la base de données](#drop)
-* [Appliquez la migration à la base de données existante](#applyexisting). Bien que cette méthode soit plus longue et complexe, elle constitue l’approche privilégiée pour les environnements de production réels. **Remarque**  : Cette section du tutoriel est facultative. Vous pouvez effectuer les étapes de suppression et de recréation et ignorer cette section. Si vous souhaitez suivre les étapes décrites dans cette section, n’effectuez pas les étapes de suppression et de recréation. 
+* [Appliquez la migration à la base de données existante](#applyexisting). Bien que cette méthode soit plus longue et complexe, elle constitue l’approche privilégiée pour les environnements de production réels. **Remarque** : Cette section du tutoriel est facultative. Vous pouvez effectuer les étapes de suppression et de recréation et ignorer cette section. Si vous souhaitez suivre les étapes décrites dans cette section, n’effectuez pas les étapes de suppression et de recréation. 
 
 <a name="drop"></a>
 
@@ -1298,9 +1298,9 @@ Disposant à présent d’une base de données, vous devez réfléchir à la fa�
 
 Le code dans le `DbInitializer` mis à jour ajoute des données de valeur initiale pour les nouvelles entités. Pour forcer EF Core à créer une autre base de données, supprimez et mettez à jour la base de données :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Dans la **console du Gestionnaire de package** , exécutez la commande suivante :
+Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
 ```powershell
 Drop-Database
@@ -1311,7 +1311,7 @@ Exécutez `Get-Help about_EntityFrameworkCore` à partir de la console du Gestio
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier du projet contient le fichier *Startup.cs* .
+Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier du projet contient le fichier *Startup.cs*.
 
 Entrez ce qui suit dans la fenêtre de commande :
 
@@ -1322,18 +1322,18 @@ dotnet ef database update
 
 ---
 
-Exécutez l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
+Exécutez l'application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
 Ouvrez la base de données dans SSOX :
 
-* Si SSOX était déjà ouvert, cliquez sur le bouton **Actualiser** .
-* Développez le nœud **Tables** . Les tables créées sont affichées.
+* Si SSOX était déjà ouvert, cliquez sur le bouton **Actualiser**.
+* Développez le nœud **Tables**. Les tables créées sont affichées.
 
 ![Tables dans SSOX](complex-data-model/_static/ssox-tables.png)
 
-Examinez la table **CourseAssignment**  :
+Examinez la table **CourseAssignment** :
 
-* Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez **Afficher les données** .
+* Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez **Afficher les données**.
 * Vérifiez que la table **CourseAssignment** contient des données.
 
 ![Données CourseAssignment dans SSOX](complex-data-model/_static/ssox-ci-data.png)
@@ -1361,7 +1361,7 @@ Pour faire en sorte que la migration `ComplexDataModel` fonctionne avec des donn
 
 Mettez à jour la méthode `Up` de la classe `ComplexDataModel` :
 
-* Ouvrez le fichier *{timestamp}_ComplexDataModel.cs* .
+* Ouvrez le fichier *{timestamp}_ComplexDataModel.cs*.
 * Commentez la ligne de code qui ajoute la colonne `DepartmentID` à la table `Course`.
 
 [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]

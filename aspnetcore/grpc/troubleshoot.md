@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: grpc/troubleshoot
 ms.openlocfilehash: cbce85caf7ba792253ba62c6be084c8905acd00f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058712"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>Résoudre les problèmes de gRPC sur .NET Core
@@ -109,7 +109,7 @@ Kestrel ne prend pas en charge HTTP/2 avec TLS sur macOS et les anciennes versio
 
 Pour contourner ce problème, configurez Kestrel et le client gRPC pour utiliser HTTP/2 *sans* TLS. Vous ne devez effectuer cette opération qu’au cours du développement. Si vous n’utilisez pas TLS, les messages gRPC sont envoyés sans chiffrement.
 
-Kestrel doit configurer un point de terminaison HTTP/2 sans TLS dans *Program.cs* :
+Kestrel doit configurer un point de terminaison HTTP/2 sans TLS dans *Program.cs*:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>

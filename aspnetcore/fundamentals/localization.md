@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: fundamentals/localization
 ms.openlocfilehash: 07e2f561b0e9db58780d6e8a271e32b00132b1b5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059518"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
@@ -140,27 +140,27 @@ ASP.NET Core vous permet de spécifier deux valeurs de culture, `SupportedCultur
 
 Un fichier de ressources est un mécanisme utile pour séparer les chaînes localisables du code. Les chaînes traduites pour la langue non définie par défaut sont isolées dans les fichiers de ressources *. resx* . Par exemple, vous pouvez avoir besoin de créer un fichier de ressources nommé *Welcome.es.resx* qui contient des chaînes traduites. « es » correspond au code de langue pour l’espagnol. Pour créer ce fichier de ressources dans Visual Studio :
 
-1. Dans l’ **Explorateur de solutions** , cliquez avec le bouton droit sur le dossier qui contient le fichier de ressources > **Ajouter** > **Nouvel élément** .
+1. Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le dossier qui contient le fichier de ressources > **Ajouter** > **Nouvel élément**.
 
    ![Menu contextuel imbriqué : dans l’Explorateur de solutions, un menu contextuel est ouvert pour les ressources. Un second menu contextuel est ouvert pour l’option Ajouter, avec la commande Nouvel élément mise en surbrillance.](localization/_static/newi.png)
 
-1. Dans la zone **Rechercher dans les modèles installés** , entrez « ressource » et nommez le fichier.
+1. Dans la zone **Rechercher dans les modèles installés**, entrez « ressource » et nommez le fichier.
 
    ![Boîte de dialogue Ajouter un nouvel élément](localization/_static/res.png)
 
-1. Entrez la valeur de la clé (chaîne native) dans la colonne **Nom** et la chaîne traduite dans la colonne **Valeur** .
+1. Entrez la valeur de la clé (chaîne native) dans la colonne **Nom** et la chaîne traduite dans la colonne **Valeur**.
 
    ![Le fichier Welcome.es.resx (le fichier de ressources Welcome pour l’espagnol) avec le mot Hello dans la colonne Nom et le mot Hola (bonjour en espagnol) dans la colonne Valeur](localization/_static/hola.png)
 
-   Visual Studio présente le fichier *Welcome.es.resx* .
+   Visual Studio présente le fichier *Welcome.es.resx*.
 
    ![L’Explorateur de solutions montrant le fichier de ressources Welcome pour l’espagnol (es)](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>Nommage du fichier de ressources
 
-Les ressources sont nommées selon le nom de type complet de leur classe moins le nom de l’assembly. Par exemple, une ressource en français dans un projet dont l’assembly principal est `LocalizationWebsite.Web.dll` pour la classe `LocalizationWebsite.Web.Startup` serait nommée *Startup.fr.resx* . Une ressource pour la classe `LocalizationWebsite.Web.Controllers.HomeController` serait nommée *Controllers.HomeController.fr.resx* . Si l’espace de noms de votre classe ciblée n’est pas identique au nom de l’assembly, vous aurez besoin du nom de type complet. Par exemple, dans l’exemple de projet, une ressource pour le type `ExtraNamespace.Tools` serait nommée *ExtraNamespace.Tools.fr.resx* .
+Les ressources sont nommées selon le nom de type complet de leur classe moins le nom de l’assembly. Par exemple, une ressource en français dans un projet dont l’assembly principal est `LocalizationWebsite.Web.dll` pour la classe `LocalizationWebsite.Web.Startup` serait nommée *Startup.fr.resx*. Une ressource pour la classe `LocalizationWebsite.Web.Controllers.HomeController` serait nommée *Controllers.HomeController.fr.resx*. Si l’espace de noms de votre classe ciblée n’est pas identique au nom de l’assembly, vous aurez besoin du nom de type complet. Par exemple, dans l’exemple de projet, une ressource pour le type `ExtraNamespace.Tools` serait nommée *ExtraNamespace.Tools.fr.resx*.
 
-Dans l’exemple de projet, la méthode `ConfigureServices` affecte à `ResourcesPath` la valeur « Resources », si bien que le chemin relatif du projet pour le fichier de ressources en français du contrôleur Home est *Resources/Controllers.HomeController.fr.resx* . Vous pouvez également utiliser des dossiers pour organiser les fichiers de ressources. Pour le contrôleur Home, le chemin serait *Resources/Controllers/HomeController.fr.resx* . Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* se trouve dans le répertoire de base du projet. Le fichier de ressources pour `HomeController` serait nommé *Controllers.HomeController.fr.resx* . Le choix de l’utilisation de la convention d’affectation de noms avec des points ou un chemin dépend de la façon dont vous souhaitez organiser vos fichiers de ressources.
+Dans l’exemple de projet, la méthode `ConfigureServices` affecte à `ResourcesPath` la valeur « Resources », si bien que le chemin relatif du projet pour le fichier de ressources en français du contrôleur Home est *Resources/Controllers.HomeController.fr.resx*. Vous pouvez également utiliser des dossiers pour organiser les fichiers de ressources. Pour le contrôleur Home, le chemin serait *Resources/Controllers/HomeController.fr.resx*. Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* se trouve dans le répertoire de base du projet. Le fichier de ressources pour `HomeController` serait nommé *Controllers.HomeController.fr.resx*. Le choix de l’utilisation de la convention d’affectation de noms avec des points ou un chemin dépend de la façon dont vous souhaitez organiser vos fichiers de ressources.
 
 | Nom de la ressource | Affectation de noms avec des points ou un chemin |
 | ------------   | ------------- |
@@ -213,11 +213,11 @@ Par exemple, si vous supprimez l’indicateur de culture « .fr » alors que l
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Générer des fichiers de ressources avec Visual Studio
 
-Si vous créez un fichier de ressources dans Visual Studio sans culture dans le nom de fichier (par exemple, *Welcome.resx* ), Visual Studio crée une classe C# avec une propriété pour chaque chaîne. Ce n’est généralement pas ce que vous souhaitez avec ASP.NET Core. Vous n’avez habituellement pas de fichier de ressources *.resx* par défaut (un fichier *.resx* sans nom de culture). Nous vous suggérons donc de créer le fichier *.resx* avec un nom de culture (par exemple, *Welcome.fr.resx* ). Lorsque vous créez un fichier *.resx* avec un nom de culture, Visual Studio ne génère pas le fichier de classe.
+Si vous créez un fichier de ressources dans Visual Studio sans culture dans le nom de fichier (par exemple, *Welcome.resx*), Visual Studio crée une classe C# avec une propriété pour chaque chaîne. Ce n’est généralement pas ce que vous souhaitez avec ASP.NET Core. Vous n’avez habituellement pas de fichier de ressources *.resx* par défaut (un fichier *.resx* sans nom de culture). Nous vous suggérons donc de créer le fichier *.resx* avec un nom de culture (par exemple, *Welcome.fr.resx*). Lorsque vous créez un fichier *.resx* avec un nom de culture, Visual Studio ne génère pas le fichier de classe.
 
 ### <a name="add-other-cultures"></a>Ajouter d’autres cultures
 
-Chaque combinaison de langue et de culture (autres que la langue par défaut) nécessite un fichier de ressources unique. Vous créez des fichiers de ressources pour différentes cultures et différents paramètres régionaux en créant des fichiers de ressources dans lesquels les codes de langue ISO font partie du nom de fichier (par exemple, **en-us** , **fr-ca** et **en gb** ). Ces codes ISO sont placés entre le nom de fichier et l’extension de fichier *.resx* , comme dans *Welcome.es-MX.resx* (Espagnol/Mexique).
+Chaque combinaison de langue et de culture (autres que la langue par défaut) nécessite un fichier de ressources unique. Vous créez des fichiers de ressources pour différentes cultures et différents paramètres régionaux en créant des fichiers de ressources dans lesquels les codes de langue ISO font partie du nom de fichier (par exemple, **en-us**, **fr-ca** et **en gb**). Ces codes ISO sont placés entre le nom de fichier et l’extension de fichier *.resx*, comme dans *Welcome.es-MX.resx* (Espagnol/Mexique).
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Implémenter une stratégie de sélection de la langue/culture pour chaque requête
 
@@ -229,7 +229,7 @@ La localisation est configurée dans la méthode `Startup.ConfigureServices` :
 
 * `AddLocalization` Ajoute les services de localisation au conteneur de services. Le code ci-dessus affecte également au chemin des ressources la valeur « Resources ».
 
-* `AddViewLocalization` Ajoute la prise en charge des fichiers de vue localisés. Dans cet exemple d’affichage, la localisation se base sur le suffixe du fichier d’affichage. Par exemple, « fr » dans le fichier *Index.fr.cshtml* .
+* `AddViewLocalization` Ajoute la prise en charge des fichiers de vue localisés. Dans cet exemple d’affichage, la localisation se base sur le suffixe du fichier d’affichage. Par exemple, « fr » dans le fichier *Index.fr.cshtml*.
 
 * `AddDataAnnotationsLocalization` Ajoute la prise en charge des messages de validation localisés `DataAnnotations` via des `IStringLocalizer` abstractions.
 
@@ -281,19 +281,19 @@ L’[en-tête Accept-Language](https://www.w3.org/International/questions/qa-acc
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>Définir l’en-tête HTTP Accept-Language dans IE
 
-1. À partir de l’icône d’engrenage, appuyez sur **Options Internet** .
+1. À partir de l’icône d’engrenage, appuyez sur **Options Internet**.
 
-1. Appuyez sur **Langues** .
+1. Appuyez sur **Langues**.
 
    ![Options Internet](localization/_static/lang.png)
 
-1. Appuyez sur **Définir les langues** .
+1. Appuyez sur **Définir les langues**.
 
-1. Appuyez sur **Ajouter une langue** .
+1. Appuyez sur **Ajouter une langue**.
 
 1. Ajoutez la langue.
 
-1. Tapez sur la langue, puis sur **Monter** .
+1. Tapez sur la langue, puis sur **Monter**.
 
 ### <a name="use-a-custom-provider"></a>Utiliser un fournisseur personnalisé
 
@@ -494,27 +494,27 @@ ASP.NET Core vous permet de spécifier deux valeurs de culture, `SupportedCultur
 
 Un fichier de ressources est un mécanisme utile pour séparer les chaînes localisables du code. Les chaînes traduites pour la langue non définie par défaut sont isolées dans les fichiers de ressources *. resx* . Par exemple, vous pouvez avoir besoin de créer un fichier de ressources nommé *Welcome.es.resx* qui contient des chaînes traduites. « es » correspond au code de langue pour l’espagnol. Pour créer ce fichier de ressources dans Visual Studio :
 
-1. Dans l’ **Explorateur de solutions** , cliquez avec le bouton droit sur le dossier qui contient le fichier de ressources > **Ajouter** > **Nouvel élément** .
+1. Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le dossier qui contient le fichier de ressources > **Ajouter** > **Nouvel élément**.
 
    ![Menu contextuel imbriqué : dans l’Explorateur de solutions, un menu contextuel est ouvert pour les ressources. Un second menu contextuel est ouvert pour l’option Ajouter, avec la commande Nouvel élément mise en surbrillance.](localization/_static/newi.png)
 
-1. Dans la zone **Rechercher dans les modèles installés** , entrez « ressource » et nommez le fichier.
+1. Dans la zone **Rechercher dans les modèles installés**, entrez « ressource » et nommez le fichier.
 
    ![Boîte de dialogue Ajouter un nouvel élément](localization/_static/res.png)
 
-1. Entrez la valeur de la clé (chaîne native) dans la colonne **Nom** et la chaîne traduite dans la colonne **Valeur** .
+1. Entrez la valeur de la clé (chaîne native) dans la colonne **Nom** et la chaîne traduite dans la colonne **Valeur**.
 
    ![Le fichier Welcome.es.resx (le fichier de ressources Welcome pour l’espagnol) avec le mot Hello dans la colonne Nom et le mot Hola (bonjour en espagnol) dans la colonne Valeur](localization/_static/hola.png)
 
-   Visual Studio présente le fichier *Welcome.es.resx* .
+   Visual Studio présente le fichier *Welcome.es.resx*.
 
    ![L’Explorateur de solutions montrant le fichier de ressources Welcome pour l’espagnol (es)](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>Nommage du fichier de ressources
 
-Les ressources sont nommées selon le nom de type complet de leur classe moins le nom de l’assembly. Par exemple, une ressource en français dans un projet dont l’assembly principal est `LocalizationWebsite.Web.dll` pour la classe `LocalizationWebsite.Web.Startup` serait nommée *Startup.fr.resx* . Une ressource pour la classe `LocalizationWebsite.Web.Controllers.HomeController` serait nommée *Controllers.HomeController.fr.resx* . Si l’espace de noms de votre classe ciblée n’est pas identique au nom de l’assembly, vous aurez besoin du nom de type complet. Par exemple, dans l’exemple de projet, une ressource pour le type `ExtraNamespace.Tools` serait nommée *ExtraNamespace.Tools.fr.resx* .
+Les ressources sont nommées selon le nom de type complet de leur classe moins le nom de l’assembly. Par exemple, une ressource en français dans un projet dont l’assembly principal est `LocalizationWebsite.Web.dll` pour la classe `LocalizationWebsite.Web.Startup` serait nommée *Startup.fr.resx*. Une ressource pour la classe `LocalizationWebsite.Web.Controllers.HomeController` serait nommée *Controllers.HomeController.fr.resx*. Si l’espace de noms de votre classe ciblée n’est pas identique au nom de l’assembly, vous aurez besoin du nom de type complet. Par exemple, dans l’exemple de projet, une ressource pour le type `ExtraNamespace.Tools` serait nommée *ExtraNamespace.Tools.fr.resx*.
 
-Dans l’exemple de projet, la méthode `ConfigureServices` affecte à `ResourcesPath` la valeur « Resources », si bien que le chemin relatif du projet pour le fichier de ressources en français du contrôleur Home est *Resources/Controllers.HomeController.fr.resx* . Vous pouvez également utiliser des dossiers pour organiser les fichiers de ressources. Pour le contrôleur Home, le chemin serait *Resources/Controllers/HomeController.fr.resx* . Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* se trouve dans le répertoire de base du projet. Le fichier de ressources pour `HomeController` serait nommé *Controllers.HomeController.fr.resx* . Le choix de l’utilisation de la convention d’affectation de noms avec des points ou un chemin dépend de la façon dont vous souhaitez organiser vos fichiers de ressources.
+Dans l’exemple de projet, la méthode `ConfigureServices` affecte à `ResourcesPath` la valeur « Resources », si bien que le chemin relatif du projet pour le fichier de ressources en français du contrôleur Home est *Resources/Controllers.HomeController.fr.resx*. Vous pouvez également utiliser des dossiers pour organiser les fichiers de ressources. Pour le contrôleur Home, le chemin serait *Resources/Controllers/HomeController.fr.resx*. Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* se trouve dans le répertoire de base du projet. Le fichier de ressources pour `HomeController` serait nommé *Controllers.HomeController.fr.resx*. Le choix de l’utilisation de la convention d’affectation de noms avec des points ou un chemin dépend de la façon dont vous souhaitez organiser vos fichiers de ressources.
 
 | Nom de la ressource | Affectation de noms avec des points ou un chemin |
 | ------------   | ------------- |
@@ -567,11 +567,11 @@ Par exemple, si vous supprimez l’indicateur de culture « .fr » alors que l
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Générer des fichiers de ressources avec Visual Studio
 
-Si vous créez un fichier de ressources dans Visual Studio sans culture dans le nom de fichier (par exemple, *Welcome.resx* ), Visual Studio crée une classe C# avec une propriété pour chaque chaîne. Ce n’est généralement pas ce que vous souhaitez avec ASP.NET Core. Vous n’avez habituellement pas de fichier de ressources *.resx* par défaut (un fichier *.resx* sans nom de culture). Nous vous suggérons donc de créer le fichier *.resx* avec un nom de culture (par exemple, *Welcome.fr.resx* ). Lorsque vous créez un fichier *.resx* avec un nom de culture, Visual Studio ne génère pas le fichier de classe.
+Si vous créez un fichier de ressources dans Visual Studio sans culture dans le nom de fichier (par exemple, *Welcome.resx*), Visual Studio crée une classe C# avec une propriété pour chaque chaîne. Ce n’est généralement pas ce que vous souhaitez avec ASP.NET Core. Vous n’avez habituellement pas de fichier de ressources *.resx* par défaut (un fichier *.resx* sans nom de culture). Nous vous suggérons donc de créer le fichier *.resx* avec un nom de culture (par exemple, *Welcome.fr.resx*). Lorsque vous créez un fichier *.resx* avec un nom de culture, Visual Studio ne génère pas le fichier de classe.
 
 ### <a name="add-other-cultures"></a>Ajouter d’autres cultures
 
-Chaque combinaison de langue et de culture (autres que la langue par défaut) nécessite un fichier de ressources unique. Vous créez des fichiers de ressources pour différentes cultures et différents paramètres régionaux en créant des fichiers de ressources dans lesquels les codes de langue ISO font partie du nom de fichier (par exemple, **en-us** , **fr-ca** et **en gb** ). Ces codes ISO sont placés entre le nom de fichier et l’extension de fichier *.resx* , comme dans *Welcome.es-MX.resx* (Espagnol/Mexique).
+Chaque combinaison de langue et de culture (autres que la langue par défaut) nécessite un fichier de ressources unique. Vous créez des fichiers de ressources pour différentes cultures et différents paramètres régionaux en créant des fichiers de ressources dans lesquels les codes de langue ISO font partie du nom de fichier (par exemple, **en-us**, **fr-ca** et **en gb**). Ces codes ISO sont placés entre le nom de fichier et l’extension de fichier *.resx*, comme dans *Welcome.es-MX.resx* (Espagnol/Mexique).
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Implémenter une stratégie de sélection de la langue/culture pour chaque requête
 
@@ -583,7 +583,7 @@ La localisation est configurée dans la méthode `Startup.ConfigureServices` :
 
 * `AddLocalization` Ajoute les services de localisation au conteneur de services. Le code ci-dessus affecte également au chemin des ressources la valeur « Resources ».
 
-* `AddViewLocalization` Ajoute la prise en charge des fichiers de vue localisés. Dans cet exemple d’affichage, la localisation se base sur le suffixe du fichier d’affichage. Par exemple, « fr » dans le fichier *Index.fr.cshtml* .
+* `AddViewLocalization` Ajoute la prise en charge des fichiers de vue localisés. Dans cet exemple d’affichage, la localisation se base sur le suffixe du fichier d’affichage. Par exemple, « fr » dans le fichier *Index.fr.cshtml*.
 
 * `AddDataAnnotationsLocalization` Ajoute la prise en charge des messages de validation localisés `DataAnnotations` via des `IStringLocalizer` abstractions.
 
@@ -637,19 +637,19 @@ L’[en-tête Accept-Language](https://www.w3.org/International/questions/qa-acc
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>Définir l’en-tête HTTP Accept-Language dans IE
 
-1. À partir de l’icône d’engrenage, appuyez sur **Options Internet** .
+1. À partir de l’icône d’engrenage, appuyez sur **Options Internet**.
 
-1. Appuyez sur **Langues** .
+1. Appuyez sur **Langues**.
 
    ![Options Internet](localization/_static/lang.png)
 
-1. Appuyez sur **Définir les langues** .
+1. Appuyez sur **Définir les langues**.
 
-1. Appuyez sur **Ajouter une langue** .
+1. Appuyez sur **Ajouter une langue**.
 
 1. Ajoutez la langue.
 
-1. Tapez sur la langue, puis sur **Monter** .
+1. Tapez sur la langue, puis sur **Monter**.
 
 ### <a name="use-a-custom-provider"></a>Utiliser un fournisseur personnalisé
 
@@ -849,27 +849,27 @@ ASP.NET Core vous permet de spécifier deux valeurs de culture, `SupportedCultur
 
 Un fichier de ressources est un mécanisme utile pour séparer les chaînes localisables du code. Les chaînes traduites pour la langue non définie par défaut sont isolées dans les fichiers de ressources *. resx* . Par exemple, vous pouvez avoir besoin de créer un fichier de ressources nommé *Welcome.es.resx* qui contient des chaînes traduites. « es » correspond au code de langue pour l’espagnol. Pour créer ce fichier de ressources dans Visual Studio :
 
-1. Dans l’ **Explorateur de solutions** , cliquez avec le bouton droit sur le dossier qui contient le fichier de ressources > **Ajouter** > **Nouvel élément** .
+1. Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le dossier qui contient le fichier de ressources > **Ajouter** > **Nouvel élément**.
 
    ![Menu contextuel imbriqué : dans l’Explorateur de solutions, un menu contextuel est ouvert pour les ressources. Un second menu contextuel est ouvert pour l’option Ajouter, avec la commande Nouvel élément mise en surbrillance.](localization/_static/newi.png)
 
-1. Dans la zone **Rechercher dans les modèles installés** , entrez « ressource » et nommez le fichier.
+1. Dans la zone **Rechercher dans les modèles installés**, entrez « ressource » et nommez le fichier.
 
    ![Boîte de dialogue Ajouter un nouvel élément](localization/_static/res.png)
 
-1. Entrez la valeur de la clé (chaîne native) dans la colonne **Nom** et la chaîne traduite dans la colonne **Valeur** .
+1. Entrez la valeur de la clé (chaîne native) dans la colonne **Nom** et la chaîne traduite dans la colonne **Valeur**.
 
    ![Le fichier Welcome.es.resx (le fichier de ressources Welcome pour l’espagnol) avec le mot Hello dans la colonne Nom et le mot Hola (bonjour en espagnol) dans la colonne Valeur](localization/_static/hola.png)
 
-   Visual Studio présente le fichier *Welcome.es.resx* .
+   Visual Studio présente le fichier *Welcome.es.resx*.
 
    ![L’Explorateur de solutions montrant le fichier de ressources Welcome pour l’espagnol (es)](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>Nommage du fichier de ressources
 
-Les ressources sont nommées selon le nom de type complet de leur classe moins le nom de l’assembly. Par exemple, une ressource en français dans un projet dont l’assembly principal est `LocalizationWebsite.Web.dll` pour la classe `LocalizationWebsite.Web.Startup` serait nommée *Startup.fr.resx* . Une ressource pour la classe `LocalizationWebsite.Web.Controllers.HomeController` serait nommée *Controllers.HomeController.fr.resx* . Si l’espace de noms de votre classe ciblée n’est pas identique au nom de l’assembly, vous aurez besoin du nom de type complet. Par exemple, dans l’exemple de projet, une ressource pour le type `ExtraNamespace.Tools` serait nommée *ExtraNamespace.Tools.fr.resx* .
+Les ressources sont nommées selon le nom de type complet de leur classe moins le nom de l’assembly. Par exemple, une ressource en français dans un projet dont l’assembly principal est `LocalizationWebsite.Web.dll` pour la classe `LocalizationWebsite.Web.Startup` serait nommée *Startup.fr.resx*. Une ressource pour la classe `LocalizationWebsite.Web.Controllers.HomeController` serait nommée *Controllers.HomeController.fr.resx*. Si l’espace de noms de votre classe ciblée n’est pas identique au nom de l’assembly, vous aurez besoin du nom de type complet. Par exemple, dans l’exemple de projet, une ressource pour le type `ExtraNamespace.Tools` serait nommée *ExtraNamespace.Tools.fr.resx*.
 
-Dans l’exemple de projet, la méthode `ConfigureServices` affecte à `ResourcesPath` la valeur « Resources », si bien que le chemin relatif du projet pour le fichier de ressources en français du contrôleur Home est *Resources/Controllers.HomeController.fr.resx* . Vous pouvez également utiliser des dossiers pour organiser les fichiers de ressources. Pour le contrôleur Home, le chemin serait *Resources/Controllers/HomeController.fr.resx* . Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* se trouve dans le répertoire de base du projet. Le fichier de ressources pour `HomeController` serait nommé *Controllers.HomeController.fr.resx* . Le choix de l’utilisation de la convention d’affectation de noms avec des points ou un chemin dépend de la façon dont vous souhaitez organiser vos fichiers de ressources.
+Dans l’exemple de projet, la méthode `ConfigureServices` affecte à `ResourcesPath` la valeur « Resources », si bien que le chemin relatif du projet pour le fichier de ressources en français du contrôleur Home est *Resources/Controllers.HomeController.fr.resx*. Vous pouvez également utiliser des dossiers pour organiser les fichiers de ressources. Pour le contrôleur Home, le chemin serait *Resources/Controllers/HomeController.fr.resx*. Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* se trouve dans le répertoire de base du projet. Le fichier de ressources pour `HomeController` serait nommé *Controllers.HomeController.fr.resx*. Le choix de l’utilisation de la convention d’affectation de noms avec des points ou un chemin dépend de la façon dont vous souhaitez organiser vos fichiers de ressources.
 
 | Nom de la ressource | Affectation de noms avec des points ou un chemin |
 | ------------   | ------------- |
@@ -922,11 +922,11 @@ Par exemple, si vous supprimez l’indicateur de culture « .fr » alors que l
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Générer des fichiers de ressources avec Visual Studio
 
-Si vous créez un fichier de ressources dans Visual Studio sans culture dans le nom de fichier (par exemple, *Welcome.resx* ), Visual Studio crée une classe C# avec une propriété pour chaque chaîne. Ce n’est généralement pas ce que vous souhaitez avec ASP.NET Core. Vous n’avez habituellement pas de fichier de ressources *.resx* par défaut (un fichier *.resx* sans nom de culture). Nous vous suggérons donc de créer le fichier *.resx* avec un nom de culture (par exemple, *Welcome.fr.resx* ). Lorsque vous créez un fichier *.resx* avec un nom de culture, Visual Studio ne génère pas le fichier de classe.
+Si vous créez un fichier de ressources dans Visual Studio sans culture dans le nom de fichier (par exemple, *Welcome.resx*), Visual Studio crée une classe C# avec une propriété pour chaque chaîne. Ce n’est généralement pas ce que vous souhaitez avec ASP.NET Core. Vous n’avez habituellement pas de fichier de ressources *.resx* par défaut (un fichier *.resx* sans nom de culture). Nous vous suggérons donc de créer le fichier *.resx* avec un nom de culture (par exemple, *Welcome.fr.resx*). Lorsque vous créez un fichier *.resx* avec un nom de culture, Visual Studio ne génère pas le fichier de classe.
 
 ### <a name="add-other-cultures"></a>Ajouter d’autres cultures
 
-Chaque combinaison de langue et de culture (autres que la langue par défaut) nécessite un fichier de ressources unique. Vous créez des fichiers de ressources pour différentes cultures et différents paramètres régionaux en créant des fichiers de ressources dans lesquels les codes de langue ISO font partie du nom de fichier (par exemple, **en-us** , **fr-ca** et **en gb** ). Ces codes ISO sont placés entre le nom de fichier et l’extension de fichier *.resx* , comme dans *Welcome.es-MX.resx* (Espagnol/Mexique).
+Chaque combinaison de langue et de culture (autres que la langue par défaut) nécessite un fichier de ressources unique. Vous créez des fichiers de ressources pour différentes cultures et différents paramètres régionaux en créant des fichiers de ressources dans lesquels les codes de langue ISO font partie du nom de fichier (par exemple, **en-us**, **fr-ca** et **en gb**). Ces codes ISO sont placés entre le nom de fichier et l’extension de fichier *.resx*, comme dans *Welcome.es-MX.resx* (Espagnol/Mexique).
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Implémenter une stratégie de sélection de la langue/culture pour chaque requête
 
@@ -938,7 +938,7 @@ La localisation est configurée dans la méthode `Startup.ConfigureServices` :
 
 * `AddLocalization` Ajoute les services de localisation au conteneur de services. Le code ci-dessus affecte également au chemin des ressources la valeur « Resources ».
 
-* `AddViewLocalization` Ajoute la prise en charge des fichiers de vue localisés. Dans cet exemple d’affichage, la localisation se base sur le suffixe du fichier d’affichage. Par exemple, « fr » dans le fichier *Index.fr.cshtml* .
+* `AddViewLocalization` Ajoute la prise en charge des fichiers de vue localisés. Dans cet exemple d’affichage, la localisation se base sur le suffixe du fichier d’affichage. Par exemple, « fr » dans le fichier *Index.fr.cshtml*.
 
 * `AddDataAnnotationsLocalization` Ajoute la prise en charge des messages de validation localisés `DataAnnotations` via des `IStringLocalizer` abstractions.
 
@@ -992,19 +992,19 @@ L’[en-tête Accept-Language](https://www.w3.org/International/questions/qa-acc
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>Définir l’en-tête HTTP Accept-Language dans IE
 
-1. À partir de l’icône d’engrenage, appuyez sur **Options Internet** .
+1. À partir de l’icône d’engrenage, appuyez sur **Options Internet**.
 
-1. Appuyez sur **Langues** .
+1. Appuyez sur **Langues**.
 
    ![Options Internet](localization/_static/lang.png)
 
-1. Appuyez sur **Définir les langues** .
+1. Appuyez sur **Définir les langues**.
 
-1. Appuyez sur **Ajouter une langue** .
+1. Appuyez sur **Ajouter une langue**.
 
 1. Ajoutez la langue.
 
-1. Tapez sur la langue, puis sur **Monter** .
+1. Tapez sur la langue, puis sur **Monter**.
 
 ### <a name="the-content-language-http-header"></a>En-tête HTTP Content-Language
 

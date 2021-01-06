@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/crud
 ms.openlocfilehash: 043fe513f370cf63637733b66ca195e7887faab0
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054292"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Didacticiel : implémenter la fonctionnalité CRUD-ASP.NET MVC avec EF Core
@@ -48,9 +48,9 @@ Dans ce tutoriel, vous allez :
 
 ## <a name="customize-the-details-page"></a>Personnaliser la page Details
 
-Le code du modèle généré automatiquement pour la page Index des étudiants exclut la propriété `Enrollments`, car elle contient une collection. Dans la page **Details** , vous affichez le contenu de la collection dans un tableau HTML.
+Le code du modèle généré automatiquement pour la page Index des étudiants exclut la propriété `Enrollments`, car elle contient une collection. Dans la page **Details**, vous affichez le contenu de la collection dans un tableau HTML.
 
-Dans *Controllers/StudentsController.cs* , la méthode d’action pour la vue Details utilise la méthode `SingleOrDefaultAsync` pour récupérer une seule entité `Student`. Ajoutez du code qui appelle `Include`. Les méthodes `ThenInclude` et `AsNoTracking`, comme indiqué dans le code en surbrillance suivant.
+Dans *Controllers/StudentsController.cs*, la méthode d’action pour la vue Details utilise la méthode `SingleOrDefaultAsync` pour récupérer une seule entité `Student`. Ajoutez du code qui appelle `Include`. Les méthodes `ThenInclude` et `AsNoTracking`, comme indiqué dans le code en surbrillance suivant.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
 
@@ -60,7 +60,7 @@ La méthode `AsNoTracking` améliore les performances dans les scénarios où le
 
 ### <a name="route-data"></a>Données de routage
 
-La valeur de clé qui est passée à la méthode `Details` provient des *données de route* . Les données de route sont des données que le classeur de modèles a trouvées dans un segment de l’URL. Par exemple, la route par défaut spécifie les segments contrôleur, action et ID :
+La valeur de clé qui est passée à la méthode `Details` provient des *données de route*. Les données de route sont des données que le classeur de modèles a trouvées dans un segment de l’URL. Par exemple, la route par défaut spécifie les segments contrôleur, action et ID :
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Route&highlight=5)]
 
@@ -104,7 +104,7 @@ Pour plus d’informations sur les Tag Helpers, consultez <xref:mvc/views/tag-he
 
 ### <a name="add-enrollments-to-the-details-view"></a>Ajouter des inscriptions à la vue Details
 
-Ouvrez *Views/Students/Details.cshtml* . Chaque champ est affiché avec les helpers `DisplayNameFor` et `DisplayFor`, comme montré dans l’exemple suivant :
+Ouvrez *Views/Students/Details.cshtml*. Chaque champ est affiché avec les helpers `DisplayNameFor` et `DisplayFor`, comme montré dans l’exemple suivant :
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
 
@@ -116,13 +116,13 @@ Si l’indentation du code est incorrecte une fois le code collé, appuyez sur C
 
 Ce code parcourt en boucle les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et le niveau. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
 
-Exécutez l’application, sélectionnez l’onglet **Students** , puis cliquez sur le lien **Details** pour un étudiant. Vous voyez la liste des cours et des notes de l’étudiant sélectionné :
+Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. Vous voyez la liste des cours et des notes de l’étudiant sélectionné :
 
 ![Page Details pour les étudiants](crud/_static/student-details.png)
 
 ## <a name="update-the-create-page"></a>Mettre à jour la page Create
 
-Dans *StudentsController.cs* , modifiez la méthode HttpPost `Create` en ajoutant un bloc try-catch et en supprimant l’ID de l’attribut `Bind`.
+Dans *StudentsController.cs*, modifiez la méthode HttpPost `Create` en ajoutant un bloc try-catch et en supprimant l’ID de l’attribut `Bind`.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
@@ -132,7 +132,7 @@ Vous avez supprimé `ID` de l’attribut `Bind`, car ID est la valeur de clé pr
 
 À part l’attribut `Bind`, le bloc try-catch est la seule modification que vous avez apportée au code du modèle généré automatiquement. Si une exception qui dérive de `DbUpdateException` est interceptée lors de l’enregistrement des modifications, un message d’erreur générique est affiché. Les exceptions `DbUpdateException` sont parfois dues à quelque chose d’externe à l’application et non pas à une erreur de programmation : il est donc conseillé à l’utilisateur de réessayer. Bien que ceci ne soit pas implémenté dans cet exemple, une application destinée à la production doit consigner l’exception. Pour plus d’informations, consultez la section **Journal pour obtenir un aperçu** de [Surveillance et télémétrie (génération d’applications Cloud du monde réel avec Azure)](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).
 
-L’attribut `ValidateAntiForgeryToken` aide à éviter les attaques par falsification de requête intersites (CSRF, Cross-Site Request Forgery). Le jeton est automatiquement injecté dans la vue par le [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) et est inclus quand le formulaire est envoyé par l’utilisateur. Le jeton est validé par l’attribut `ValidateAntiForgeryToken`. Pour plus d'informations, consultez <xref:security/anti-request-forgery>.
+L’attribut `ValidateAntiForgeryToken` aide à éviter les attaques par falsification de requête intersites (CSRF, Cross-Site Request Forgery). Le jeton est automatiquement injecté dans la vue par le [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) et est inclus quand le formulaire est envoyé par l’utilisateur. Le jeton est validé par l’attribut `ValidateAntiForgeryToken`. Pour plus d’informations, consultez <xref:security/anti-request-forgery>.
 
 <a id="overpost"></a>
 
@@ -165,7 +165,7 @@ Une autre façon d’empêcher la survalidation qui est préférée par de nombr
 
 Le code dans *views/Students/Create. cshtml* utilise `label` , `input` , et `span` (pour les messages de validation) tag helpers pour chaque champ.
 
-Exécutez l’application, sélectionnez l’onglet **Students** , puis cliquez sur **Create New** .
+Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur **Create New**.
 
 Entrez des noms et une date. Si votre navigateur vous le permet, essayez d’entrer une date non valide. (Certains navigateurs vous obligent à utiliser un sélecteur de dates.) Cliquez ensuite sur **créer** pour afficher le message d’erreur.
 
@@ -175,11 +175,11 @@ Il s’agit de la validation côté serveur que vous obtenez par défaut ; dans 
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=8)]
 
-Changez la date en une valeur valide, puis cliquez sur **Create** pour voir apparaître le nouvel étudiant dans la page **Index** .
+Changez la date en une valeur valide, puis cliquez sur **Create** pour voir apparaître le nouvel étudiant dans la page **Index**.
 
 ## <a name="update-the-edit-page"></a>Mettre à jour la page Edit
 
-Dans *StudentController.cs* , la méthode HttpGet `Edit` (celle sans l’attribut `HttpPost`) utilise la méthode `SingleOrDefaultAsync` pour récupérer l’entité Student sélectionnée, comme vous l’avez vu dans la méthode `Details`. Vous n’avez pas besoin de modifier cette méthode.
+Dans *StudentController.cs*, la méthode HttpGet `Edit` (celle sans l’attribut `HttpPost`) utilise la méthode `SingleOrDefaultAsync` pour récupérer l’entité Student sélectionnée, comme vous l’avez vu dans la méthode `Details`. Vous n’avez pas besoin de modifier cette méthode.
 
 ### <a name="recommended-httppost-edit-code-read-and-update"></a>Code HttpPost Edit recommandé : lire et mettre à jour
 
@@ -231,15 +231,15 @@ Si vous voulez éviter l’approche « lecture en premier », mais que vous voul
 
 ### <a name="test-the-edit-page"></a>Tester la page Edit
 
-Exécutez l’application, sélectionnez l’onglet **Students** , puis cliquez sur un lien hypertexte **Edit** .
+Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur un lien hypertexte **Edit**.
 
 ![Page de modification des étudiants](crud/_static/student-edit.png)
 
-Changez quelques données et cliquez sur **Save** . La page **Index** s’ouvre et affiche les données modifiées.
+Changez quelques données et cliquez sur **Save**. La page **Index** s’ouvre et affiche les données modifiées.
 
 ## <a name="update-the-delete-page"></a>Mettre à jour la page Delete
 
-Dans *StudentController.cs* , le modèle de code pour la méthode HttpGet `Delete` utilise la méthode `SingleOrDefaultAsync` pour récupérer l’entité Student sélectionnée, comme vous l’avez vu dans les méthodes Details et Edit. Cependant, pour implémenter un message d’erreur personnalisé quand l’appel à `SaveChanges` échoue, vous devez ajouter des fonctionnalités à cette méthode et à sa vue correspondante.
+Dans *StudentController.cs*, le modèle de code pour la méthode HttpGet `Delete` utilise la méthode `SingleOrDefaultAsync` pour récupérer l’entité Student sélectionnée, comme vous l’avez vu dans les méthodes Details et Edit. Cependant, pour implémenter un message d’erreur personnalisé quand l’appel à `SaveChanges` échoue, vous devez ajouter des fonctionnalités à cette méthode et à sa vue correspondante.
 
 Comme vous l’avez vu pour les opérations de mise à jour et de création, les opérations de suppression nécessitent deux méthodes d’action. La méthode qui est appelée en réponse à une demande GET affiche une vue qui permet à l’utilisateur d’approuver ou d’annuler l’opération de suppression. Si l’utilisateur l’approuve, une demande POST est créée. Quand cela se produit, la méthode HttpPost `Delete` est appelée, puis cette méthode effectue ensuite l’opération de suppression.
 
@@ -269,21 +269,21 @@ Si l’entité a des données connexes qui doivent également être supprimées,
 
 ### <a name="update-the-delete-view"></a>Mettre à jour la vue Delete
 
-Dans *Views/Student/Delete.cshtml* , ajoutez un message d’erreur entre le titre h2 et le titre h3, comme indiqué dans l’exemple suivant :
+Dans *Views/Student/Delete.cshtml*, ajoutez un message d’erreur entre le titre h2 et le titre h3, comme indiqué dans l’exemple suivant :
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
-Exécutez l’application, sélectionnez l’onglet **Students** , puis cliquez sur un lien hypertexte **Delete** :
+Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur un lien hypertexte **Delete** :
 
 ![Page de confirmation de la suppression](crud/_static/student-delete.png)
 
-Cliquez sur **Supprimer** . La page Index s’affiche sans l’étudiant supprimé. (Vous verrez un exemple du code de gestion des erreurs en action dans le didacticiel sur l’accès concurrentiel.)
+Cliquez sur **Supprimer**. La page Index s’affiche sans l’étudiant supprimé. (Vous verrez un exemple du code de gestion des erreurs en action dans le didacticiel sur l’accès concurrentiel.)
 
 ## <a name="close-database-connections"></a>Fermer les connexions de base de données
 
 Pour libérer les ressources détenues par une connexion de base de données, l’instance du contexte doit être supprimée dès que possible quand vous en avez terminé avec celle-ci. [L’injection de dépendances](../../fundamentals/dependency-injection.md) intégrée d’ASP.NET Core prend en charge cette tâche pour vous.
 
-Dans *Startup.cs* , vous appelez la [méthode d’extension AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) pour provisionner la classe `DbContext` dans le conteneur d’injection de dépendances d’ASP.NET Core. Cette méthode définit par défaut la durée de vie du service sur `Scoped`. `Scoped` signifie que la durée de vie de l’objet de contexte coïncide avec la durée de vie de la demande web, et que la méthode `Dispose` sera appelée automatiquement à la fin de la requête web.
+Dans *Startup.cs*, vous appelez la [méthode d’extension AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) pour provisionner la classe `DbContext` dans le conteneur d’injection de dépendances d’ASP.NET Core. Cette méthode définit par défaut la durée de vie du service sur `Scoped`. `Scoped` signifie que la durée de vie de l’objet de contexte coïncide avec la durée de vie de la demande web, et que la méthode `Dispose` sera appelée automatiquement à la fin de la requête web.
 
 ## <a name="handle-transactions"></a>Gérer les transactions
 

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: client-side/spa-services
 ms.openlocfilehash: 1b9f5b4b4e066cdd3dd5fbfa666c7a087949979f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054643"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Utilisez les services JavaScript pour créer des applications à page unique dans ASP.NET Core
@@ -133,7 +133,7 @@ L’argument received `UserName` est sérialisé à l’aide du sérialiseur JSO
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
-Les noms de propriétés passés dans tag helpers sont représentés par la notation **casse Pascal** . Comparez-le à JavaScript, où les mêmes noms de propriétés sont représentés avec **la casse mixte** . La configuration de sérialisation JSON par défaut est responsable de cette différence.
+Les noms de propriétés passés dans tag helpers sont représentés par la notation **casse Pascal** . Comparez-le à JavaScript, où les mêmes noms de propriétés sont représentés avec **la casse mixte**. La configuration de sérialisation JSON par défaut est responsable de cette différence.
 
 Pour développer l’exemple de code précédent, les données peuvent être transmises du serveur à la vue en mettant en attente la `globals` propriété fournie à la `resolve` fonction :
 
@@ -225,7 +225,7 @@ Une méthode d’extension nommée `MapSpaFallbackRoute` est utilisée dans la `
 
 Les itinéraires sont évalués dans l’ordre dans lequel ils sont configurés. Par conséquent, l' `default` itinéraire dans l’exemple de code précédent est utilisé en premier pour les critères spéciaux.
 
-## <a name="create-a-new-project"></a>Créer un projet
+## <a name="create-a-new-project"></a>Création d'un projet
 
 Les services JavaScript fournissent des modèles d’application préconfigurés. SpaServices est utilisé dans ces modèles conjointement avec différents frameworks et bibliothèques, tels que angulaire, REACT et Redux.
 
@@ -253,10 +253,10 @@ dotnet new angular
 
 Il existe deux modes principaux de configuration du Runtime :
 
-* **Développement** :
+* **Développement**:
   * Comprend des mappages de sources pour faciliter le débogage.
   * N’optimise pas le code côté client pour des performances optimales.
-* **Production** :
+* **Production**:
   * Exclut les mappages de sources.
   * Optimise le code côté client via le regroupement et la minimisation.
 
@@ -282,7 +282,7 @@ L’application démarre sur localhost en fonction du [mode de configuration](#s
 
 Ouvrez le fichier *. csproj* généré par la commande [dotnet New](/dotnet/core/tools/dotnet-new) . Les packages NuGet et NPM requis sont restaurés automatiquement lors de l’ouverture du projet. Ce processus de restauration peut prendre quelques minutes, et l’application est prête à s’exécuter lorsqu’elle se termine. Cliquez sur le bouton vert exécuter ou appuyez sur `Ctrl + F5` , et le navigateur s’ouvre sur la page d’accueil de l’application. L’application s’exécute sur localhost en fonction du [mode de configuration du runtime](#set-the-runtime-configuration-mode).
 
-## <a name="test-the-app"></a>Tester l’application
+## <a name="test-the-app"></a>Test de l'application
 
 Les modèles SpaServices sont préconfigurés pour exécuter des tests côté client à l’aide de [Karma](https://karma-runner.github.io/1.0/index.html) et [Jasmine](https://jasmine.github.io/). Jasmine est un Framework de tests unitaires populaire pour JavaScript, tandis que Karma est un testeur de test pour ces tests. Karma est configuré pour fonctionner avec l' [intergiciel (middleware) WebPack dev](#webpack-dev-middleware) , de sorte que le développeur n’est pas obligé d’arrêter et d’exécuter le test à chaque fois que des modifications sont apportées. S’il s’agit du code qui s’exécute sur le cas de test ou le cas de test lui-même, le test s’exécute automatiquement.
 

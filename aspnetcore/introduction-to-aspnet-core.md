@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: index
 ms.openlocfilehash: 4301e0d59364573767ab4cae25a4818ff84b9abc
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93052225"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
@@ -58,7 +58,7 @@ Le modèle MVC d’ASP.NET Core fournit des fonctionnalités pour créer des [AP
 
 ## <a name="client-side-development"></a>Développement côté client
 
-ASP.NET Core s’intègre de façon transparente aux infrastructures et bibliothèques courantes côté client, notamment [Blazor](xref:blazor/index) , [angulaires](xref:spa/angular), [réactifs](xref:spa/react)et [bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez <xref:blazor/index> et les rubriques connexes sous *Développement côté client* .
+ASP.NET Core s’intègre de façon transparente aux infrastructures et bibliothèques courantes côté client, notamment [Blazor](xref:blazor/index) , [angulaires](xref:spa/angular), [réactifs](xref:spa/react)et [bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez <xref:blazor/index> et les rubriques connexes sous *Développement côté client*.
 
 <a name="target-framework"></a>
 
@@ -85,7 +85,7 @@ Pour une introduction au développement d’applications ASP.NET Core, nous vous
    |Application web                   | Nouveau développement de l’interface utilisateur Web côté serveur |[Prise en main des Razor pages](xref:tutorials/razor-pages/razor-pages-start) |
    |Application web                   | Maintenance d’une application MVC |[Bien démarrer avec MVC](xref:tutorials/first-mvc-app/start-mvc)|
    |Application web                   | Développement de l’interface utilisateur Web côté client |[Prise en main de Blazor](https://dotnet.microsoft.com/learn/aspnet/blazor-tutorial/intro) |
-   |API web                   | Services HTTP RESTful |[Créer une API Web](xref:tutorials/first-web-api)&dagger; |
+   |API Web                   | Services HTTP RESTful |[Créer une API Web](xref:tutorials/first-web-api)&dagger; |
    |Application d’appel de procédure distante | Services contrat en premier à l’aide de mémoires tampons de protocole |[Bien démarrer avec un service gRPC](xref:tutorials/grpc/grpc-start) |
    |Application en temps réel             | Communication bidirectionnelle entre les serveurs et les clients connectés |[Prise en main de SignalR](xref:tutorials/signalr) |
 
@@ -137,7 +137,7 @@ Le modèle MVC d’ASP.NET Core fournit des fonctionnalités pour créer des [AP
 
 ## <a name="client-side-development"></a>Développement côté client
 
-ASP.NET Core s’intègre de façon transparente aux infrastructures et bibliothèques courantes côté client, notamment [Blazor](xref:blazor/index) , [angulaires](xref:spa/angular), [réactifs](xref:spa/react)et [bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez <xref:blazor/index> et les rubriques connexes sous *Développement côté client* .
+ASP.NET Core s’intègre de façon transparente aux infrastructures et bibliothèques courantes côté client, notamment [Blazor](xref:blazor/index) , [angulaires](xref:spa/angular), [réactifs](xref:spa/react)et [bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez <xref:blazor/index> et les rubriques connexes sous *Développement côté client*.
 
 <a name="target-framework"></a>
 
@@ -172,7 +172,7 @@ Nous vous recommandons la séquence de tutoriels et d’articles suivante comme 
    |----------|----------|----------|
    |Application web                   | Pour un nouveau développement        |[Prise en main des Razor pages](xref:tutorials/razor-pages/razor-pages-start) |
    |Application web                   | Pour maintenir une application MVC |[Bien démarrer avec MVC](xref:tutorials/first-mvc-app/start-mvc)|
-   |API web                   |                            |[Créer une API Web](xref:tutorials/first-web-api)&dagger; |
+   |API Web                   |                            |[Créer une API Web](xref:tutorials/first-web-api)&dagger; |
    |Application en temps réel             |                            |[Prise en main de SignalR](xref:tutorials/signalr) |
 
 1. Suivez un didacticiel qui montre comment effectuer un accès aux données de base.
@@ -199,7 +199,7 @@ Pour obtenir un guide de référence sur la migration d’applications ASP.NET v
 La plupart des articles et tutoriels contiennent des liens vers des exemples de code.
 
 1. [Téléchargez le fichier zip du référentiel ASP.NET](https://codeload.github.com/dotnet/AspNetCore.Docs/zip/master).
-1. Décompressez le fichier *Docs-master.zip* .
+1. Décompressez le fichier *Docs-master.zip*.
 1. Utilisez l’URL contenue dans l’exemple de lien pour vous aider à naviguer dans l’exemple de répertoire.
 
 ### <a name="preprocessor-directives-in-sample-code"></a>Directives de préprocesseur dans l’exemple de code

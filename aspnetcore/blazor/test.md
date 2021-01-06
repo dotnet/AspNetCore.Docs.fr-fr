@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/test
 ms.openlocfilehash: cd4aee66fd6df6cc0ce520d8ca66e0a2cf130eff
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054864"
 ---
 # <a name="test-components-in-aspnet-core-no-locblazor"></a>Tester des composants dans ASP.NET Core Blazor
@@ -42,7 +42,7 @@ Pour tester un Blazor composant, le *composant* testé (couper) est :
 
 Deux approches courantes pour tester les composants sont les tests de Blazor bout en bout (E2E) et les tests unitaires :
 
-* **Tests unitaires** : les [tests unitaires](/dotnet/core/testing/) sont écrits à l’aide d’une bibliothèque de tests unitaires qui fournit :
+* **Tests unitaires**: les [tests unitaires](/dotnet/core/testing/) sont écrits à l’aide d’une bibliothèque de tests unitaires qui fournit :
   * Rendu des composants.
   * Inspection de la sortie et de l’état des composants.
   * Déclenchement de gestionnaires d’événements et de méthodes de cycle de vie.
@@ -50,7 +50,7 @@ Deux approches courantes pour tester les composants sont les tests de Blazor bou
 
   [bUnit](https://github.com/egil/bUnit) est un exemple de bibliothèque qui active les Razor tests unitaires de composants.
 
-* **Test E2E** : un testeur exécute une Blazor application contenant la coupe et automatise une instance de navigateur. L’outil de test inspecte et interagit avec la coupe dans le navigateur. Le [sélénium](https://github.com/SeleniumHQ/selenium) est un exemple de Framework de test E2E qui peut être utilisé avec des Blazor applications.
+* **Test E2E**: un testeur exécute une Blazor application contenant la coupe et automatise une instance de navigateur. L’outil de test inspecte et interagit avec la coupe dans le navigateur. Le [sélénium](https://github.com/SeleniumHQ/selenium) est un exemple de Framework de test E2E qui peut être utilisé avec des Blazor applications.
 
 Dans les tests unitaires, seul le Blazor composant ( Razor /c #) est impliqué. Les dépendances externes, telles que les services et l’interopérabilité de JS, doivent être simulées. Dans E2E testing, le Blazor composant et toute l’infrastructure auxiliaire font partie du test, y compris CSS, js et les API DOM et de navigateur.
 
@@ -64,7 +64,7 @@ Les tests E2E impliquent le lancement de plusieurs processus, l’e/s réseau et
 
 Le tableau suivant résume la différence entre les deux approches de test.
 
-| Fonctionnalité                       | Effectuer des tests unitaires                     | Test E2E                             |
+| Fonctionnalité                       | Test unitaire                     | Test E2E                             |
 | -------------------------------- | -------------------------------- | --------------------------------------- |
 | Étendue de test                       | Blazor composant ( Razor /c #) uniquement | Blazor composant ( Razor /c #) avec CSS/js |
 | Durée d’exécution des tests              | Millisecondes                     | Secondes                                 |
@@ -76,10 +76,10 @@ Le tableau suivant résume la différence entre les deux approches de test.
 
 Examinez le scénario lorsque vous choisissez le type de test à effectuer. Certaines considérations sont décrites dans le tableau suivant.
 
-| Scénario | Approche suggérée | Remarques |
+| Scénario | Approche suggérée | Notes |
 | -------- | ------------------ | ------- |
-| Composant sans logique d’interopérabilité JS | Effectuer des tests unitaires | Lorsqu’il n’existe aucune dépendance vis-à-vis de l’interopérabilité de JS dans un Blazor composant, le composant peut être testé sans accès à js ou à l’API DOM. Dans ce scénario, il n’y a aucun inconvénient à choisir des tests unitaires. |
-| Composant avec une logique d’interopérabilité JS simple | Effectuer des tests unitaires | Il est courant que les composants interrogent le DOM ou déclenchent des animations par le biais de l’interopérabilité de JS. Les tests unitaires sont généralement préférés dans ce scénario, car il est facile de simuler l’interaction JS par le biais de l' <xref:Microsoft.JSInterop.IJSRuntime> interface. |
+| Composant sans logique d’interopérabilité JS | Test unitaire | Lorsqu’il n’existe aucune dépendance vis-à-vis de l’interopérabilité de JS dans un Blazor composant, le composant peut être testé sans accès à js ou à l’API DOM. Dans ce scénario, il n’y a aucun inconvénient à choisir des tests unitaires. |
+| Composant avec une logique d’interopérabilité JS simple | Test unitaire | Il est courant que les composants interrogent le DOM ou déclenchent des animations par le biais de l’interopérabilité de JS. Les tests unitaires sont généralement préférés dans ce scénario, car il est facile de simuler l’interaction JS par le biais de l' <xref:Microsoft.JSInterop.IJSRuntime> interface. |
 | Composant qui dépend d’un code JS complexe | Test unitaire et test JS distinct | Si un composant utilise l’interopérabilité JS pour appeler une bibliothèque JS volumineuse ou complexe, mais que l’interaction entre la Blazor bibliothèque Component et js est simple, la meilleure approche consiste à traiter la bibliothèque Component et JS ou le code comme deux parties distinctes et à tester chacune individuellement. Testez le Blazor composant à l’aide d’une bibliothèque de tests unitaires, puis testez js avec une bibliothèque de tests js. |
 | Composant avec une logique qui dépend de la manipulation JS du DOM du navigateur | Test E2E | Lorsque la fonctionnalité d’un composant dépend de JS et de sa manipulation du DOM, vérifiez à la fois le code JS et le Blazor code dans un test E2E. Il s’agit de l’approche Blazor adoptée par les développeurs de l’infrastructure avec la Blazor logique de rendu du navigateur de, qui a un code C# et JS étroitement couplé. Le code C# et JS doit fonctionner ensemble pour restituer correctement les Blazor composants dans un navigateur.
 | Composant qui dépend d’une bibliothèque de composants tiers avec des dépendances difficiles à simuler | Test E2E | Lorsque la fonctionnalité d’un composant dépend d’une bibliothèque de composants tiers qui a des dépendances difficile à simuler, telles que l’interopérabilité de JS, le test E2E peut être la seule option pour tester le composant. |
@@ -143,11 +143,11 @@ public void CounterShouldIncrementWhenSelected()
 
 Les actions suivantes ont lieu à chaque étape du test :
 
-* *Arrange* : le `Counter` composant est rendu à l’aide de bUnit `TestContext` . L’élément de paragraphe de la coupe ( `<p>` ) est trouvé et assigné à `paraElm` .
+* *Arrange*: le `Counter` composant est rendu à l’aide de bUnit `TestContext` . L’élément de paragraphe de la coupe ( `<p>` ) est trouvé et assigné à `paraElm` .
 
-* *Act* : l’élément du bouton ( `<button>` ) est situé puis sélectionné en appelant `Click` , ce qui doit incrémenter le compteur et mettre à jour le contenu de la balise de paragraphe ( `<p>` ). Le contenu du texte de l’élément de paragraphe est obtenu en appelant `TextContent` .
+* *Act*: l’élément du bouton ( `<button>` ) est situé puis sélectionné en appelant `Click` , ce qui doit incrémenter le compteur et mettre à jour le contenu de la balise de paragraphe ( `<p>` ). Le contenu du texte de l’élément de paragraphe est obtenu en appelant `TextContent` .
 
-* *Assert* : `MarkupMatches` est appelé sur le contenu de texte pour vérifier qu’il correspond à la chaîne attendue, qui est `Current count: 1` .
+* *Assert*: `MarkupMatches` est appelé sur le contenu de texte pour vérifier qu’il correspond à la chaîne attendue, qui est `Current count: 1` .
 
 > [!NOTE]
 > La `MarkupMatches` méthode Assert diffère d’une assertion de comparaison de chaînes standard (par exemple, `Assert.Equal("Current count: 1", paraElmText);` ) `MarkupMatches` effectue une comparaison sémantique de l’entrée et du balisage HTML attendu. Une comparaison sémantique est consciente de la sémantique HTML, ce qui signifie que les éléments tels que les espaces blancs non significatifs sont ignorés. Cela aboutit à des tests plus stables. Pour plus d’informations, consultez [Personnalisation de la comparaison HTML sémantique](https://bunit.egilhansen.com/docs/verification/semantic-html-comparison).

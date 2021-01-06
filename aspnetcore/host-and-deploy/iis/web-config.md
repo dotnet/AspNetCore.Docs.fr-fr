@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/iis/web-config
 ms.openlocfilehash: edeef31042547db79fcec98f1236787f78e187a5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057282"
 ---
 # <a name="webconfig-file"></a>Fichier `web.config`
@@ -58,7 +58,7 @@ Pour empêcher le kit de développement logiciel (SDK) Web de transformer le `we
 </PropertyGroup>
 ```
 
-Lorsque vous désactivez le kit de développement logiciel (SDK) Web pour transformer le fichier, `processPath` et `arguments` doit être défini manuellement par le développeur. Pour plus d'informations, consultez <xref:host-and-deploy/aspnet-core-module>.
+Lorsque vous désactivez le kit de développement logiciel (SDK) Web pour transformer le fichier, `processPath` et `arguments` doit être défini manuellement par le développeur. Pour plus d’informations, consultez <xref:host-and-deploy/aspnet-core-module>.
 
 ## <a name="configuration-of-aspnet-core-module-with-webconfig"></a>Configuration de ASP.NET Core Module avec `web.config`
 
@@ -120,9 +120,9 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 | `processesPerApplication` | <p>Attribut entier facultatif.</p><p>Spécifie le nombre d’instances du processus spécifié dans le `processPath` paramètre qui peut être lancé par application.</p><p>&dagger;Pour l’hébergement in-process, la valeur est limitée à `1`.</p><p>Il est déconseillé de définir `processesPerApplication`. Cet attribut sera supprimé dans une version ultérieure.</p> | Valeur par défaut : `1`<br>Min : `1`<br>Max : `100`&dagger; |
 | `processPath` | <p>Attribut de chaîne requis.</p><p>Chemin d’accès au fichier exécutable lançant un processus d’écoute des requêtes HTTP. Les chemins d’accès relatifs sont pris en charge. Si le chemin d’accès commence par `.`, il est considéré comme étant relatif par rapport à la racine du site.</p> | |
 | `rapidFailsPerMinute` | <p>Attribut entier facultatif.</p><p>Spécifie le nombre de fois où le processus spécifié dans `processPath` est autorisé à se bloquer par minute. Si cette limite est dépassée, le module arrête le lancement du processus pour le reste de la minute.</p><p>Non pris en charge avec hébergement in-process.</p> | Valeur par défaut : `10`<br>Min : `0`<br>Max : `100` |
-| `requestTimeout` | <p>Attribut timespan facultatif.</p><p>Spécifie la durée pendant laquelle le module ASP.NET Core attend une réponse de la part du processus à l’écoute sur %ASPNETCORE_PORT%.</p><p>Dans les versions du module ASP.NET Core fournies avec ASP.NET Core 2.1 ou version ultérieure, la valeur `requestTimeout` est spécifiée en heures, minutes et secondes.</p><p>Ne s’applique pas à l’hébergement in-process. Pour l’hébergement in-process, le module attend que l’application traite la requête.</p><p>Les valeurs valides pour les segments de minutes et secondes de la chaîne sont dans la plage de 0 à 59. L’utilisation de `60` dans la valeur de minutes ou de secondes génère une *erreur de serveur 500-Internal* .</p> | Valeur par défaut : `00:02:00`<br>Min : `00:00:00`<br>Max : `360:00:00` |
+| `requestTimeout` | <p>Attribut timespan facultatif.</p><p>Spécifie la durée pendant laquelle le module ASP.NET Core attend une réponse de la part du processus à l’écoute sur %ASPNETCORE_PORT%.</p><p>Dans les versions du module ASP.NET Core fournies avec ASP.NET Core 2.1 ou version ultérieure, la valeur `requestTimeout` est spécifiée en heures, minutes et secondes.</p><p>Ne s’applique pas à l’hébergement in-process. Pour l’hébergement in-process, le module attend que l’application traite la requête.</p><p>Les valeurs valides pour les segments de minutes et secondes de la chaîne sont dans la plage de 0 à 59. L’utilisation de `60` dans la valeur de minutes ou de secondes génère une *erreur de serveur 500-Internal*.</p> | Valeur par défaut : `00:02:00`<br>Min : `00:00:00`<br>Max : `360:00:00` |
 | `shutdownTimeLimit` | <p>Attribut entier facultatif.</p><p>Durée en secondes pendant laquelle le module attend que l’exécutable s’arrête correctement lorsque le `app_offline.htm` fichier est détecté.</p> | Valeur par défaut : `10`<br>Min : `0`<br>Max : `600` |
-| `startupTimeLimit` | <p>Attribut entier facultatif.</p><p>Durée en secondes pendant laquelle le module attend que le fichier exécutable démarre un processus à l’écoute sur le port. Si cette limite de temps est dépassée, le module met fin au processus.</p><p>Lors de l’hébergement *in-process* : le processus n’est **pas** redémarré et n’utilise **pas** le `rapidFailsPerMinute` paramètre.</p><p>En cas *d’hébergement out-of-process* : le module tente de relancer le processus lorsqu’il reçoit une nouvelle demande et continue de tenter de redémarrer le processus lors des demandes entrantes suivantes, à moins que l’application ne démarre pas le `rapidFailsPerMinute` nombre de fois au cours de la dernière minute.</p><p>La valeur 0 (zéro) n’est **pas** considérée comme un délai infini.</p> | Valeur par défaut : `120`<br>Min : `0`<br>Max : `3600` |
+| `startupTimeLimit` | <p>Attribut entier facultatif.</p><p>Durée en secondes pendant laquelle le module attend que le fichier exécutable démarre un processus à l’écoute sur le port. Si cette limite de temps est dépassée, le module met fin au processus.</p><p>Lors de l’hébergement *in-process*: le processus n’est **pas** redémarré et n’utilise **pas** le `rapidFailsPerMinute` paramètre.</p><p>En cas *d’hébergement out-of-process*: le module tente de relancer le processus lorsqu’il reçoit une nouvelle demande et continue de tenter de redémarrer le processus lors des demandes entrantes suivantes, à moins que l’application ne démarre pas le `rapidFailsPerMinute` nombre de fois au cours de la dernière minute.</p><p>La valeur 0 (zéro) n’est **pas** considérée comme un délai infini.</p> | Valeur par défaut : `120`<br>Min : `0`<br>Max : `3600` |
 | `stdoutLogEnabled` | <p>Attribut booléen facultatif.</p><p>Si la valeur `stdout` est true, et `stderr` pour le processus spécifié dans `processPath` sont redirigés vers le fichier spécifié dans `stdoutLogFile` .</p> | `false` |
 | `stdoutLogFile` | <p>Attribut de chaîne facultatif.</p><p>Spécifie le chemin d’accès relatif ou absolu pour lequel `stdout` et `stderr` à partir du processus spécifié dans `processPath` sont journalisés. Les chemins d’accès relatifs sont relatifs par rapport à la racine du site. Tout chemin d’accès commençant par `.` est relatif par rapport à la racine du site et tous les autres chemins d’accès sont traités comme des chemins d’accès absolus. Tous les dossiers fournis dans le chemin sont créés par le module au moment de la création du fichier journal. À l’aide de délimiteurs de trait de soulignement, un horodateur, un ID de processus et une extension de fichier ( `.log` ) sont ajoutés au dernier segment du `stdoutLogFile` chemin d’accès. Si `.\logs\stdout` est fourni en tant que valeur, un exemple de journal stdout est enregistré en tant que `stdout_20180205194132_1934.log` dans le `logs` dossier lorsqu’il est enregistré sur 2/5/2018 à 19:41:32 avec l’ID de processus 1934.</p> | `aspnetcore-stdout` |
 
@@ -161,7 +161,7 @@ L’exemple suivant définit deux variables d’environnement dans `web.config` 
 
 La configuration d’IIS est influencée par la `<system.webServer>` section de `web.config` pour les scénarios IIS qui sont fonctionnels pour ASP.net Core applications avec le module ASP.net core. Par exemple, la configuration IIS est fonctionnelle pour la compression dynamique. Si IIS est configuré au niveau du serveur pour utiliser la compression dynamique, l' `<urlCompression>` élément dans le fichier de l’application `web.config` peut le désactiver pour une application ASP.net core.
 
-Pour plus d'informations, consultez les rubriques suivantes :
+Pour plus d'informations, voir les rubriques suivantes :
 
 * [Référence de configuration pour `<system.webServer>`](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>

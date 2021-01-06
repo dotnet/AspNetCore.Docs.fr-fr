@@ -1,4 +1,4 @@
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ## <a name="visual-studio-help"></a>Aide de Visual Studio
 

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: test/integration-tests
 ms.openlocfilehash: f1ce6a209ef3ca85abe0a6f1ac61d85bec52d17a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93050821"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
@@ -58,7 +58,7 @@ Ces tests plus larges sont utilisés pour tester l’infrastructure de l’appli
 * Appliances réseau
 * Pipeline de requête-réponse
 
-Les tests unitaires utilisent des composants fabriqués, appelés objets *substituts* ou *factices* , à la place des composants d’infrastructure.
+Les tests unitaires utilisent des composants fabriqués, appelés objets *substituts* ou *factices*, à la place des composants d’infrastructure.
 
 Contrairement aux tests unitaires, les tests d’intégration :
 
@@ -84,7 +84,7 @@ Les tests d’intégration dans ASP.NET Core requièrent les éléments suivants
 * Le projet de test crée un hôte Web de test pour le St et utilise un client de serveur de test pour gérer les demandes et les réponses avec le St.
 * Un testeur de test est utilisé pour exécuter les tests et signaler les résultats des tests.
 
-Les tests d’intégration suivent une séquence d’événements qui incluent les étapes de test *arrange* , *Act* et *Assert* habituelles :
+Les tests d’intégration suivent une séquence d’événements qui incluent les étapes de test *arrange*, *Act* et *Assert* habituelles :
 
 1. L’hôte Web de St est configuré.
 1. Un client de serveur de test est créé pour envoyer des demandes à l’application.
@@ -100,7 +100,7 @@ Les composants d’infrastructure, tels que l’hôte Web de test et le serveur 
 
 Le `Microsoft.AspNetCore.Mvc.Testing` package gère les tâches suivantes :
 
-* Copie le fichier de dépendances ( *. DEPS* ) à partir du St dans le répertoire *bin* du projet de test.
+* Copie le fichier de dépendances (*. DEPS*) à partir du St dans le répertoire *bin* du projet de test.
 * Définit la racine du [contenu](xref:fundamentals/index#content-root) sur la racine du projet St pour que les fichiers et les pages statiques soient trouvés lors de l’exécution des tests.
 * Fournit la classe [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) pour simplifier l’amorçage du St avec `TestServer` .
 
@@ -140,7 +140,7 @@ Si l' [environnement](xref:fundamentals/environments) de St n’est pas défini,
 
 [WebApplicationFactory \<TEntryPoint> ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée de St, généralement la `Startup` classe.
 
-Les classes de test implémentent une interface de *contexte de classe* ( [IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) pour indiquer que la classe contient des tests et fournir des instances d’objet partagé dans les tests de la classe.
+Les classes de test implémentent une interface de *contexte de classe* ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) pour indiquer que la classe contient des tests et fournir des instances d’objet partagé dans les tests de la classe.
 
 La classe de test suivante, `BasicTests` , utilise le `WebApplicationFactory` pour démarrer le St et fournir un [httpclient](/dotnet/api/system.net.http.httpclient) à une méthode de test, `Get_EndpointsReturnSuccessAndCorrectContentType` . La méthode vérifie si le code d’état de réponse a réussi (codes d’État dans la plage 200-299) et si l' `Content-Type` en-tête est `text/html; charset=utf-8` pour plusieurs pages d’application.
 
@@ -162,7 +162,7 @@ La configuration d’hôte Web peut être créée indépendamment des classes de
 
    Le contexte de base de données de St est inscrit dans sa `Startup.ConfigureServices` méthode. Le rappel de l’application de test `builder.ConfigureServices` est exécuté *après* l’exécution du code de l’application `Startup.ConfigureServices` . L’ordre d’exécution est une modification avec rupture pour l' [hôte générique](xref:fundamentals/host/generic-host) avec la version de ASP.net Core 3,0. Pour utiliser une base de données différente pour les tests que la base de données de l’application, le contexte de base de données de l’application doit être remplacé dans `builder.ConfigureServices` .
 
-   Pour les SUTs qui utilisent toujours l' [hôte Web](xref:fundamentals/host/web-host), le rappel de l’application de test `builder.ConfigureServices` est exécuté *avant* le code du St `Startup.ConfigureServices` . Le rappel de l’application de test `builder.ConfigureTestServices` est exécuté *après* .
+   Pour les SUTs qui utilisent toujours l' [hôte Web](xref:fundamentals/host/web-host), le rappel de l’application de test `builder.ConfigureServices` est exécuté *avant* le code du St `Startup.ConfigureServices` . Le rappel de l’application de test `builder.ConfigureTestServices` est exécuté *après*.
 
    L’exemple d’application recherche le descripteur de service pour le contexte de base de données et utilise le descripteur pour supprimer l’inscription du service. Ensuite, la fabrique ajoute un nouveau `ApplicationDbContext` qui utilise une base de données en mémoire pour les tests.
 
@@ -195,7 +195,7 @@ Toute demande de publication à l’St doit être conforme à la vérification a
 1. Analysez l’anti-contrefaçon cookie et le jeton de validation de demande à partir de la réponse.
 1. Effectuez la demande de publication avec l’anti-contrefaçon cookie et le jeton de validation de demande en place.
 
-Les `SendAsync` méthodes d’extension d’assistance ( *helpers/HttpClientExtensions. cs* ) et la `GetDocumentAsync` méthode d’assistance ( *helpers/HtmlHelper. cs* ) dans l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) utilisent l’analyseur [AngleSharp](https://anglesharp.github.io/) pour gérer la vérification anti-falsification avec les méthodes suivantes :
+Les `SendAsync` méthodes d’extension d’assistance (*helpers/HttpClientExtensions. cs*) et la `GetDocumentAsync` méthode d’assistance (*helpers/HtmlHelper. cs*) dans l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) utilisent l’analyseur [AngleSharp](https://anglesharp.github.io/) pour gérer la vérification anti-falsification avec les méthodes suivantes :
 
 * `GetDocumentAsync`: Reçoit le [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) et retourne un `IHtmlDocument` . `GetDocumentAsync` utilise une fabrique qui prépare une *réponse virtuelle* en fonction de l’original `HttpResponseMessage` . Pour plus d’informations, consultez la [documentation AngleSharp](https://github.com/AngleSharp/AngleSharp#documentation).
 * `SendAsync` les méthodes d’extension pour `HttpClient` compose un [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) et appellent [SendAsync (HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) pour envoyer des demandes au St. Les surcharges pour `SendAsync` acceptent le formulaire HTML ( `IHtmlFormElement` ) et les éléments suivants :
@@ -246,15 +246,15 @@ Les services peuvent être substitués dans un test à l’aide d’un appel à 
 
 L’exemple de St comprend un service étendu qui retourne un guillemet. Le guillemet est incorporé dans un champ masqué sur la page d’index lorsque la page d’index est demandée.
 
-*Services/IQuoteService. cs* :
+*Services/IQuoteService. cs*:
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Services/IQuoteService.cs?name=snippet1)]
 
-*Services/QuoteService. cs* :
+*Services/QuoteService. cs*:
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Services/QuoteService.cs?name=snippet1)]
 
-*Startup.cs* :
+*Startup.cs*:
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet2)]
 
@@ -262,7 +262,7 @@ L’exemple de St comprend un service étendu qui retourne un guillemet. Le guil
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml.cs?name=snippet1&highlight=4,9,20,26)]
 
-*Pages/index. cs* :
+*Pages/index. cs*:
 
 [!code-cshtml[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml?name=snippet_Quote)]
 
@@ -275,7 +275,7 @@ Le balisage suivant est généré lors de l’exécution de l’application St 
 
 Pour tester l’injection de service et de guillemets dans un test d’intégration, un service fictif est injecté dans le St par le test. Le service factice remplace l’application par `QuoteService` un service fourni par l’application de test, appelé `TestQuoteService` :
 
-*IntegrationTests.IndexPageTests.cs* :
+*IntegrationTests.IndexPageTests.cs*:
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet4)]
 
@@ -343,7 +343,7 @@ protected override IWebHostBuilder CreateWebHostBuilder() =>
 
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>Comment l’infrastructure de test déduit le chemin racine du contenu de l’application
 
-Le `WebApplicationFactory` constructeur déduit le chemin d’accès [racine du contenu](xref:fundamentals/index#content-root) de l’application en recherchant un [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) sur l’assembly contenant les tests d’intégration avec une clé égale à l' `TEntryPoint` assembly `System.Reflection.Assembly.FullName` . Si un attribut avec la clé correcte est introuvable, revient `WebApplicationFactory` à la recherche d’un fichier solution ( *. sln* ) et ajoute le `TEntryPoint` nom de l’assembly au répertoire de la solution. Le répertoire racine de l’application (chemin racine du contenu) est utilisé pour découvrir les affichages et les fichiers de contenu.
+Le `WebApplicationFactory` constructeur déduit le chemin d’accès [racine du contenu](xref:fundamentals/index#content-root) de l’application en recherchant un [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) sur l’assembly contenant les tests d’intégration avec une clé égale à l' `TEntryPoint` assembly `System.Reflection.Assembly.FullName` . Si un attribut avec la clé correcte est introuvable, revient `WebApplicationFactory` à la recherche d’un fichier solution (*. sln*) et ajoute le `TEntryPoint` nom de l’assembly au répertoire de la solution. Le répertoire racine de l’application (chemin racine du contenu) est utilisé pour découvrir les affichages et les fichiers de contenu.
 
 ## <a name="disable-shadow-copying"></a>Désactiver les clichés instantanés
 
@@ -380,10 +380,10 @@ dotnet test
 
 Le St est un Razor système de messagerie des pages avec les caractéristiques suivantes :
 
-* La page d’index de l’application ( *pages/index. cshtml* et *pages/index. cshtml. cs* ) fournit une interface utilisateur et des méthodes de modèle de page pour contrôler l’ajout, la suppression et l’analyse de messages (mots moyens par message).
-* Un message est décrit par la `Message` classe ( *Data/message. cs* ) avec deux propriétés : `Id` (Key) et `Text` (message). La `Text` propriété est obligatoire et limitée à 200 caractères.
+* La page d’index de l’application (*pages/index. cshtml* et *pages/index. cshtml. cs*) fournit une interface utilisateur et des méthodes de modèle de page pour contrôler l’ajout, la suppression et l’analyse de messages (mots moyens par message).
+* Un message est décrit par la `Message` classe (*Data/message. cs*) avec deux propriétés : `Id` (Key) et `Text` (message). La `Text` propriété est obligatoire et limitée à 200 caractères.
 * Les messages sont stockés à l’aide [de la base de données en mémoire de Entity Framework](/ef/core/providers/in-memory/)&#8224;.
-* L’application contient une couche d’accès aux données (DAL) dans sa classe de contexte de base de données, `AppDbContext` ( *Data/AppDbContext. cs* ).
+* L’application contient une couche d’accès aux données (DAL) dans sa classe de contexte de base de données, `AppDbContext` (*Data/AppDbContext. cs*).
 * Si la base de données est vide au démarrage de l’application, la Banque de messages est initialisée avec trois messages.
 * L’application comprend un `/SecurePage` qui n’est accessible qu’à un utilisateur authentifié.
 
@@ -414,7 +414,7 @@ L’exemple d’application amorce la base de données avec trois messages dans 
 
 Le contexte de base de données de St est inscrit dans sa `Startup.ConfigureServices` méthode. Le rappel de l’application de test `builder.ConfigureServices` est exécuté *après* l’exécution du code de l’application `Startup.ConfigureServices` . Pour utiliser une base de données différente pour les tests, le contexte de base de données de l’application doit être remplacé dans `builder.ConfigureServices` . Pour plus d’informations, consultez la section [personnaliser WebApplicationFactory](#customize-webapplicationfactory) .
 
-Pour les SUTs qui utilisent toujours l' [hôte Web](xref:fundamentals/host/web-host), le rappel de l’application de test `builder.ConfigureServices` est exécuté *avant* le code du St `Startup.ConfigureServices` . Le rappel de l’application de test `builder.ConfigureTestServices` est exécuté *après* .
+Pour les SUTs qui utilisent toujours l' [hôte Web](xref:fundamentals/host/web-host), le rappel de l’application de test `builder.ConfigureServices` est exécuté *avant* le code du St `Startup.ConfigureServices` . Le rappel de l’application de test `builder.ConfigureTestServices` est exécuté *après*.
 
 ::: moniker-end
 
@@ -446,7 +446,7 @@ Ces tests plus larges sont utilisés pour tester l’infrastructure de l’appli
 * Appliances réseau
 * Pipeline de requête-réponse
 
-Les tests unitaires utilisent des composants fabriqués, appelés objets *substituts* ou *factices* , à la place des composants d’infrastructure.
+Les tests unitaires utilisent des composants fabriqués, appelés objets *substituts* ou *factices*, à la place des composants d’infrastructure.
 
 Contrairement aux tests unitaires, les tests d’intégration :
 
@@ -472,7 +472,7 @@ Les tests d’intégration dans ASP.NET Core requièrent les éléments suivants
 * Le projet de test crée un hôte Web de test pour le St et utilise un client de serveur de test pour gérer les demandes et les réponses avec le St.
 * Un testeur de test est utilisé pour exécuter les tests et signaler les résultats des tests.
 
-Les tests d’intégration suivent une séquence d’événements qui incluent les étapes de test *arrange* , *Act* et *Assert* habituelles :
+Les tests d’intégration suivent une séquence d’événements qui incluent les étapes de test *arrange*, *Act* et *Assert* habituelles :
 
 1. L’hôte Web de St est configuré.
 1. Un client de serveur de test est créé pour envoyer des demandes à l’application.
@@ -488,7 +488,7 @@ Les composants d’infrastructure, tels que l’hôte Web de test et le serveur 
 
 Le `Microsoft.AspNetCore.Mvc.Testing` package gère les tâches suivantes :
 
-* Copie le fichier de dépendances ( *. DEPS* ) à partir du St dans le répertoire *bin* du projet de test.
+* Copie le fichier de dépendances (*. DEPS*) à partir du St dans le répertoire *bin* du projet de test.
 * Définit la racine du [contenu](xref:fundamentals/index#content-root) sur la racine du projet St pour que les fichiers et les pages statiques soient trouvés lors de l’exécution des tests.
 * Fournit la classe [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) pour simplifier l’amorçage du St avec `TestServer` .
 
@@ -522,7 +522,7 @@ Si l' [environnement](xref:fundamentals/environments) de St n’est pas défini,
 
 [WebApplicationFactory \<TEntryPoint> ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée de St, généralement la `Startup` classe.
 
-Les classes de test implémentent une interface de *contexte de classe* ( [IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) pour indiquer que la classe contient des tests et fournir des instances d’objet partagé dans les tests de la classe.
+Les classes de test implémentent une interface de *contexte de classe* ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) pour indiquer que la classe contient des tests et fournir des instances d’objet partagé dans les tests de la classe.
 
 La classe de test suivante, `BasicTests` , utilise le `WebApplicationFactory` pour démarrer le St et fournir un [httpclient](/dotnet/api/system.net.http.httpclient) à une méthode de test, `Get_EndpointsReturnSuccessAndCorrectContentType` . La méthode vérifie si le code d’état de réponse a réussi (codes d’État dans la plage 200-299) et si l' `Content-Type` en-tête est `text/html; charset=utf-8` pour plusieurs pages d’application.
 
@@ -558,7 +558,7 @@ Toute demande de publication à l’St doit être conforme à la vérification a
 1. Analysez l’anti-contrefaçon cookie et le jeton de validation de demande à partir de la réponse.
 1. Effectuez la demande de publication avec l’anti-contrefaçon cookie et le jeton de validation de demande en place.
 
-Les `SendAsync` méthodes d’extension d’assistance ( *helpers/HttpClientExtensions. cs* ) et la `GetDocumentAsync` méthode d’assistance ( *helpers/HtmlHelper. cs* ) dans l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) utilisent l’analyseur [AngleSharp](https://anglesharp.github.io/) pour gérer la vérification anti-falsification avec les méthodes suivantes :
+Les `SendAsync` méthodes d’extension d’assistance (*helpers/HttpClientExtensions. cs*) et la `GetDocumentAsync` méthode d’assistance (*helpers/HtmlHelper. cs*) dans l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) utilisent l’analyseur [AngleSharp](https://anglesharp.github.io/) pour gérer la vérification anti-falsification avec les méthodes suivantes :
 
 * `GetDocumentAsync`: Reçoit le [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) et retourne un `IHtmlDocument` . `GetDocumentAsync` utilise une fabrique qui prépare une *réponse virtuelle* en fonction de l’original `HttpResponseMessage` . Pour plus d’informations, consultez la [documentation AngleSharp](https://github.com/AngleSharp/AngleSharp#documentation).
 * `SendAsync` les méthodes d’extension pour `HttpClient` compose un [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) et appellent [SendAsync (HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) pour envoyer des demandes au St. Les surcharges pour `SendAsync` acceptent le formulaire HTML ( `IHtmlFormElement` ) et les éléments suivants :
@@ -609,15 +609,15 @@ Les services peuvent être substitués dans un test à l’aide d’un appel à 
 
 L’exemple de St comprend un service étendu qui retourne un guillemet. Le guillemet est incorporé dans un champ masqué sur la page d’index lorsque la page d’index est demandée.
 
-*Services/IQuoteService. cs* :
+*Services/IQuoteService. cs*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Services/IQuoteService.cs?name=snippet1)]
 
-*Services/QuoteService. cs* :
+*Services/QuoteService. cs*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Services/QuoteService.cs?name=snippet1)]
 
-*Startup.cs* :
+*Startup.cs*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet2)]
 
@@ -625,7 +625,7 @@ L’exemple de St comprend un service étendu qui retourne un guillemet. Le guil
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml.cs?name=snippet1&highlight=4,9,20,26)]
 
-*Pages/index. cs* :
+*Pages/index. cs*:
 
 [!code-cshtml[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml?name=snippet_Quote)]
 
@@ -638,7 +638,7 @@ Le balisage suivant est généré lors de l’exécution de l’application St 
 
 Pour tester l’injection de service et de guillemets dans un test d’intégration, un service fictif est injecté dans le St par le test. Le service factice remplace l’application par `QuoteService` un service fourni par l’application de test, appelé `TestQuoteService` :
 
-*IntegrationTests.IndexPageTests.cs* :
+*IntegrationTests.IndexPageTests.cs*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet4)]
 
@@ -724,7 +724,7 @@ public class CustomWebApplicationFactory<TStartup>
 
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>Comment l’infrastructure de test déduit le chemin racine du contenu de l’application
 
-Le `WebApplicationFactory` constructeur déduit le chemin d’accès [racine du contenu](xref:fundamentals/index#content-root) de l’application en recherchant un [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) sur l’assembly contenant les tests d’intégration avec une clé égale à l' `TEntryPoint` assembly `System.Reflection.Assembly.FullName` . Si un attribut avec la clé correcte est introuvable, revient `WebApplicationFactory` à la recherche d’un fichier solution ( *. sln* ) et ajoute le `TEntryPoint` nom de l’assembly au répertoire de la solution. Le répertoire racine de l’application (chemin racine du contenu) est utilisé pour découvrir les affichages et les fichiers de contenu.
+Le `WebApplicationFactory` constructeur déduit le chemin d’accès [racine du contenu](xref:fundamentals/index#content-root) de l’application en recherchant un [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) sur l’assembly contenant les tests d’intégration avec une clé égale à l' `TEntryPoint` assembly `System.Reflection.Assembly.FullName` . Si un attribut avec la clé correcte est introuvable, revient `WebApplicationFactory` à la recherche d’un fichier solution (*. sln*) et ajoute le `TEntryPoint` nom de l’assembly au répertoire de la solution. Le répertoire racine de l’application (chemin racine du contenu) est utilisé pour découvrir les affichages et les fichiers de contenu.
 
 ## <a name="disable-shadow-copying"></a>Désactiver les clichés instantanés
 
@@ -738,7 +738,7 @@ Ajoutez le *xunit.runner.jssur* le fichier à la racine du projet de test avec l
 }
 ```
 
-Si vous utilisez Visual Studio, définissez la propriété **copier dans le répertoire de sortie** du fichier sur **toujours copier** . Si vous n’utilisez pas Visual Studio, ajoutez une `Content` cible au fichier projet de l’application de test :
+Si vous utilisez Visual Studio, définissez la propriété **copier dans le répertoire de sortie** du fichier sur **toujours copier**. Si vous n’utilisez pas Visual Studio, ajoutez une `Content` cible au fichier projet de l’application de test :
 
 ```xml
 <ItemGroup>
@@ -771,10 +771,10 @@ dotnet test
 
 Le St est un Razor système de messagerie des pages avec les caractéristiques suivantes :
 
-* La page d’index de l’application ( *pages/index. cshtml* et *pages/index. cshtml. cs* ) fournit une interface utilisateur et des méthodes de modèle de page pour contrôler l’ajout, la suppression et l’analyse de messages (mots moyens par message).
-* Un message est décrit par la `Message` classe ( *Data/message. cs* ) avec deux propriétés : `Id` (Key) et `Text` (message). La `Text` propriété est obligatoire et limitée à 200 caractères.
+* La page d’index de l’application (*pages/index. cshtml* et *pages/index. cshtml. cs*) fournit une interface utilisateur et des méthodes de modèle de page pour contrôler l’ajout, la suppression et l’analyse de messages (mots moyens par message).
+* Un message est décrit par la `Message` classe (*Data/message. cs*) avec deux propriétés : `Id` (Key) et `Text` (message). La `Text` propriété est obligatoire et limitée à 200 caractères.
 * Les messages sont stockés à l’aide [de la base de données en mémoire de Entity Framework](/ef/core/providers/in-memory/)&#8224;.
-* L’application contient une couche d’accès aux données (DAL) dans sa classe de contexte de base de données, `AppDbContext` ( *Data/AppDbContext. cs* ).
+* L’application contient une couche d’accès aux données (DAL) dans sa classe de contexte de base de données, `AppDbContext` (*Data/AppDbContext. cs*).
 * Si la base de données est vide au démarrage de l’application, la Banque de messages est initialisée avec trois messages.
 * L’application comprend un `/SecurePage` qui n’est accessible qu’à un utilisateur authentifié.
 

@@ -2,4 +2,4 @@
 
 Cet exemple montre comment héberger une application ASP.NET Core en tant que service Windows sans utiliser IIS. Cet exemple illustre le scénario décrit dans la section [Héberger ASP.NET Core dans un service Windows](https://docs.microsoft.com/aspnet/core/host-and-deploy/windows-service).
 
-Après avoir établi et commencé le service, `http://localhost:5000/`accédez à l’application dans un navigateur à .
+Après avoir établi et démarré le service, accédez à l’application dans un navigateur à l’adresse `http://localhost:5000/` .

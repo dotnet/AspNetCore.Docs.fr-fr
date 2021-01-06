@@ -9,10 +9,10 @@ products:
 - vs
 urlFragment: aspnetcore-webapi-mongodb
 ms.openlocfilehash: 95a2a6fcda0a4f7148183981f7dbacd06388329d
-ms.sourcegitcommit: 58722eb309767e462bdbf3082bd38737a4ef168f
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "84106518"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Créer une API web avec ASP.NET Core et MongoDB
@@ -27,7 +27,7 @@ Dans ce tutoriel, vous allez apprendre à :
 * Effectuer des opérations CRUD MongoDB à partir d’une API web
 * Personnaliser la sérialisation JSON
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [SDK .NET Core 3.0 ou ultérieur](https://dotnet.microsoft.com/download/dotnet-core)
 * [Préversion de Visual Studio 2019](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=community&ch=pre&rel=16&utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019preview) avec la charge de travail **ASP.NET et développement web**
@@ -206,7 +206,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
     }
     ```
 
-    La classe `BookstoreDatabaseSettings` précédente est utilisée pour stocker les valeurs de propriété `BookstoreDatabaseSettings` du fichier * appsettings.json*. Les noms de propriétés JSON et C# sont nommés de manière identique pour faciliter le processus de mappage.
+    La classe `BookstoreDatabaseSettings` précédente est utilisée pour stocker les valeurs de propriété `BookstoreDatabaseSettings` du fichier *appsettings.json*. Les noms de propriétés JSON et C# sont nommés de manière identique pour faciliter le processus de mappage.
 
 1. Ajoutez le code en surbrillance suivant à `Startup.ConfigureServices` :
 
@@ -223,7 +223,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
     }
     ```
 
-    Dans le code précédent :
+    Dans le code précédent :
 
     * L’instance de configuration à laquelle la section `BookstoreDatabaseSettings` du fichier *appsettings.json* est liée est inscrite dans le conteneur d’injection de dépendances. Par exemple, la propriété `ConnectionString` d’un objet `BookstoreDatabaseSettings` est peuplée avec la propriété `BookstoreDatabaseSettings:ConnectionString` dans *appsettings.json*.
     * L’interface `IBookstoreDatabaseSettings` est inscrite auprès de l’injection de dépendances avec une [durée de vie de service](xref:fundamentals/dependency-injection#service-lifetimes) de singleton. Une fois injectée, l’instance d’interface est résolue en objet `BookstoreDatabaseSettings`.
@@ -336,7 +336,7 @@ La classe `BookService` utilise les membres `MongoDB.Driver` suivants pour effec
 * [InsertOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm): insère l’objet fourni sous la forme d’un nouveau document dans la collection.
 * [ReplaceOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm): remplace le document unique qui correspond aux critères de recherche fournis par l’objet fourni.
 
-## <a name="add-a-controller"></a>Ajouter un contrôleur
+## <a name="add-a-controller"></a>Ajout d'un contrôleur
 
 Ajoutez une classe `BooksController` au répertoire *Controllers* avec le code suivant :
 

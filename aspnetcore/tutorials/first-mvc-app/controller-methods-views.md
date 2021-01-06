@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
 ms.openlocfilehash: b4850821317b6907452793ef09194844c90c0137
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93050769"
 ---
 # <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>Partie 6, méthodes et vues de contrôleur dans ASP.NET Core
@@ -32,7 +32,7 @@ Nous avons une bonne ébauche de l’application de films, mais sa présentation
 
 ![Vue d’index : Release Date apparaît en un seul mot (sans espace) et chaque date de sortie d’un film a comme heure « 12 AM »](working-with-sql/_static/m55.png)
 
-Ouvrez le fichier *Models/Movie.cs* , puis ajoutez les lignes en surbrillance ci-dessous :
+Ouvrez le fichier *Models/Movie.cs*, puis ajoutez les lignes en surbrillance ci-dessous :
 
 [!code-csharp[](start-mvc/sample/MvcMovie22/Models/MovieDateFixed.cs?name=snippet_1&highlight=2,3,12-13,17)]
 
@@ -44,7 +44,7 @@ Accédez au contrôleur `Movies` et maintenez le pointeur de la souris sur un li
 
 ![Fenêtre de navigateur avec la souris sur le lien Edit et l’URL de lien https://localhost:5001/Movies/Edit/5 affichée](~/tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-Les liens **Edit** , **Details** et **Delete** sont générés par le Tag Helper Anchor Core MVC dans le fichier *Views/Movies/Index.cshtml* .
+Les liens **Edit**, **Details** et **Delete** sont générés par le Tag Helper Anchor Core MVC dans le fichier *Views/Movies/Index.cshtml*.
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
@@ -108,11 +108,11 @@ Notez que la deuxième méthode d’action `Edit` est précédée de l’attribu
 
 L’attribut `HttpPost` indique que cette méthode `Edit` peut être appelée *uniquement* pour les requêtes `POST`. Vous pouvez appliquer l’attribut `[HttpGet]` à la première méthode Edit, mais cela n’est pas nécessaire car `[HttpGet]` est la valeur par défaut.
 
-L’attribut `ValidateAntiForgeryToken` est utilisé pour [lutter contre la falsification de requête](xref:security/anti-request-forgery). Il est associé à un jeton anti-contrefaçon généré dans le fichier de la vue Edit ( *Views/Movies/Edit.cshtml* ). Le fichier de la vue Edit génère le jeton anti-contrefaçon avec le [Tag Helper Form](xref:mvc/views/working-with-forms).
+L’attribut `ValidateAntiForgeryToken` est utilisé pour [lutter contre la falsification de requête](xref:security/anti-request-forgery). Il est associé à un jeton anti-contrefaçon généré dans le fichier de la vue Edit (*Views/Movies/Edit.cshtml*). Le fichier de la vue Edit génère le jeton anti-contrefaçon avec le [Tag Helper Form](xref:mvc/views/working-with-forms).
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 
-Le [Tag Helper Form](xref:mvc/views/working-with-forms) génère un jeton anti-contrefaçon masqué qui doit correspondre au jeton anti-contrefaçon généré par `[ValidateAntiForgeryToken]` dans la méthode `Edit` du contrôleur Movies. Pour plus d'informations, consultez <xref:security/anti-request-forgery>.
+Le [Tag Helper Form](xref:mvc/views/working-with-forms) génère un jeton anti-contrefaçon masqué qui doit correspondre au jeton anti-contrefaçon généré par `[ValidateAntiForgeryToken]` dans la méthode `Edit` du contrôleur Movies. Pour plus d’informations, consultez <xref:security/anti-request-forgery>.
 
 La méthode `HttpGet Edit` prend le paramètre `ID` du film, recherche le film à l’aide de la méthode Entity Framework `FindAsync`, et retourne le film sélectionné à la vue Edit. Si un film est introuvable, l’erreur `NotFound` (HTTP 404) est retournée.
 

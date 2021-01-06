@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: client-side/using-grunt
 ms.openlocfilehash: 374c23f440dcf301b3a1e1e9e6684dd050f218c6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054552"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>Utiliser grunt dans ASP.NET Core
@@ -32,17 +32,17 @@ Cet exemple utilise un projet de ASP.NET Core vide comme point de départ pour m
 
 L’exemple terminé nettoie le répertoire de déploiement cible, combine des fichiers JavaScript, vérifie la qualité du code, condense le contenu du fichier JavaScript et le déploie à la racine de votre application Web. Nous utiliserons les packages suivants :
 
-* **grunt** : le package grunt Task Runner.
+* **grunt**: le package grunt Task Runner.
 
-* **grunt-contrib-Clean** : plug-in qui supprime des fichiers ou des répertoires.
+* **grunt-contrib-Clean**: plug-in qui supprime des fichiers ou des répertoires.
 
-* **grunt-contrib-jshint** : plug-in qui vérifie la qualité du code JavaScript.
+* **grunt-contrib-jshint**: plug-in qui vérifie la qualité du code JavaScript.
 
-* **grunt-concontribution-Concat** : plug-in qui joint des fichiers dans un fichier unique.
+* **grunt-concontribution-Concat**: plug-in qui joint des fichiers dans un fichier unique.
 
-* **grunt-contrib-uglify** : plug-in qui minimise JavaScript pour réduire la taille.
+* **grunt-contrib-uglify**: plug-in qui minimise JavaScript pour réduire la taille.
 
-* **grunt-contrib-Watch** : un plug-in qui surveille l’activité des fichiers.
+* **grunt-contrib-Watch**: un plug-in qui surveille l’activité des fichiers.
 
 ## <a name="preparing-the-application"></a>Préparation de l’application
 
@@ -58,7 +58,7 @@ Pour commencer, configurez une nouvelle application Web vide et ajoutez des exem
 
 4. Ajoutez un nouveau dossier nommé `TypeScript` dans le répertoire de votre projet.
 
-5. Avant d’ajouter des fichiers, assurez-vous que Visual Studio a l’option « compiler à l’enregistrement » pour les fichiers de machine à écrire activée. Accédez à **Outils**  >  **options**  >  **éditeur de texte**  >  projet de **machine à écrire**  >  **Project** :
+5. Avant d’ajouter des fichiers, assurez-vous que Visual Studio a l’option « compiler à l’enregistrement » pour les fichiers de machine à écrire activée. Accédez à **Outils**  >  **options**  >  **éditeur de texte**  >  projet de **machine à écrire**  >  :
 
     ![options configuration de la compilation automatique des fichiers de définition d’une machine](using-grunt/_static/typescript-options.png)
 
@@ -99,7 +99,7 @@ Pour commencer, configurez une nouvelle application Web vide et ajoutez des exem
 
 Ensuite, configurez NPM pour télécharger grunt et grunt-Tasks.
 
-1. Dans le Explorateur de solutions, cliquez avec le bouton droit sur le projet et sélectionnez **ajouter > nouvel élément** dans le menu contextuel. Sélectionnez l’élément de **fichier de configuration NPM** , laissez le nom par défaut, *package.jssur* , puis cliquez sur le bouton **Ajouter** .
+1. Dans le Explorateur de solutions, cliquez avec le bouton droit sur le projet et sélectionnez **ajouter > nouvel élément** dans le menu contextuel. Sélectionnez l’élément de **fichier de configuration NPM** , laissez le nom par défaut, *package.jssur*, puis cliquez sur le bouton **Ajouter** .
 
 2. Dans le fichier *package.js* , à l’intérieur des `devDependencies` accolades d’objet, entrez « grunt ». Sélectionnez `grunt` dans la liste IntelliSense et appuyez sur la touche entrée. Visual Studio indiquera le nom du package grunt et ajoutera un signe deux-points. À droite du signe deux-points, sélectionnez la dernière version stable du package en haut de la liste IntelliSense (appuyez sur `Ctrl-Space` si IntelliSense n’apparaît pas).
 
@@ -108,7 +108,7 @@ Ensuite, configurez NPM pour télécharger grunt et grunt-Tasks.
     > [!NOTE]
     > NPM utilise le contrôle de [version sémantique](https://semver.org/) pour organiser les dépendances. Le contrôle de version sémantique, également appelé SemVer, identifie les packages avec le schéma de numérotation \<major> .. \<minor> \<patch> . IntelliSense simplifie le contrôle de version sémantique en n’apparaissant que quelques choix courants. L’élément supérieur dans la liste IntelliSense (0.4.5 dans l’exemple ci-dessus) est considéré comme la dernière version stable du package. Le signe insertion (^) correspond à la version principale la plus récente et le tilde (~) correspond à la version mineure la plus récente. Consultez la [référence de l’analyseur de version NPM semver](https://www.npmjs.com/package/semver) en tant que guide de l’expression complète fournie par semver.
 
-3. Ajoutez d’autres dépendances pour charger grunt-contrib- \* packages pour *Clean* , *jshint* , *concat* , *uglify* et *Watch* comme indiqué dans l’exemple ci-dessous. Les versions n’ont pas besoin de correspondre à l’exemple.
+3. Ajoutez d’autres dépendances pour charger grunt-contrib- \* packages pour *Clean*, *jshint*, *concat*, *uglify* et *Watch* comme indiqué dans l’exemple ci-dessous. Les versions n’ont pas besoin de correspondre à l’exemple.
 
     ```json
     "devDependencies": {
@@ -121,9 +121,9 @@ Ensuite, configurez NPM pour télécharger grunt et grunt-Tasks.
     }
     ```
 
-4. Enregistrez le fichier *package.json* .
+4. Enregistrez le fichier *package.json*.
 
-Les packages pour chaque `devDependencies` élément seront téléchargés, ainsi que tous les fichiers requis par chaque package. Vous pouvez trouver les fichiers du package dans le répertoire *node_modules* en activant le bouton **Afficher tous les fichiers** dans **Explorateur de solutions** .
+Les packages pour chaque `devDependencies` élément seront téléchargés, ainsi que tous les fichiers requis par chaque package. Vous pouvez trouver les fichiers du package dans le répertoire *node_modules* en activant le bouton **Afficher tous les fichiers** dans **Explorateur de solutions**.
 
 ![grunt node_modules](using-grunt/_static/node-modules.png)
 
@@ -136,9 +136,9 @@ Les packages pour chaque `devDependencies` élément seront téléchargés, ains
 
 Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui définit, charge et inscrit des tâches qui peuvent être exécutées manuellement ou configurées pour s’exécuter automatiquement en fonction des événements dans Visual Studio.
 
-1. Cliquez avec le bouton droit sur le projet et sélectionnez **Ajouter**  >  **un nouvel élément** . Sélectionnez le modèle d’élément de **fichier JavaScript** , remplacez le nom par *Gruntfile.js* , puis cliquez sur le bouton **Ajouter** .
+1. Cliquez avec le bouton droit sur le projet et sélectionnez **Ajouter**  >  **un nouvel élément**. Sélectionnez le modèle d’élément de **fichier JavaScript** , remplacez le nom par *Gruntfile.js*, puis cliquez sur le bouton **Ajouter** .
 
-1. Ajoutez le code suivant à *Gruntfile.js* . La `initConfig` fonction définit les options pour chaque package, et le reste du module charge et inscrit les tâches.
+1. Ajoutez le code suivant à *Gruntfile.js*. La `initConfig` fonction définit les options pour chaque package, et le reste du module charge et inscrit les tâches.
 
    ```javascript
    module.exports = function (grunt) {
@@ -163,7 +163,7 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
     grunt.loadNpmTasks("grunt-contrib-clean");
     ```
 
-1. Enregistrez *Gruntfile.js* . Le fichier doit ressembler à la capture d’écran ci-dessous.
+1. Enregistrez *Gruntfile.js*. Le fichier doit ressembler à la capture d’écran ci-dessous.
 
     ![gruntfile initial](using-grunt/_static/gruntfile-js-initial.png)
 
@@ -216,7 +216,7 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
 
 1. Ajoutez la `uglify` tâche à l’aide du code ci-dessous.
 
-    La tâche minimise le fichier *combined.js* situé dans le répertoire temporaire et crée le fichier de résultats dans wwwroot/lib conformément à la Convention d’affectation de noms standard *\<file name\>.min.js* .
+    La tâche minimise le fichier *combined.js* situé dans le répertoire temporaire et crée le fichier de résultats dans wwwroot/lib conformément à la Convention d’affectation de noms standard *\<file name\>.min.js*.
 
     ```javascript
     uglify: {
@@ -235,15 +235,15 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
     grunt.loadNpmTasks('grunt-contrib-uglify');
     ```
 
-1. Enregistrez *Gruntfile.js* . Le fichier doit ressembler à l’exemple ci-dessous.
+1. Enregistrez *Gruntfile.js*. Le fichier doit ressembler à l’exemple ci-dessous.
 
     ![exemple de fichier grunt complet](using-grunt/_static/gruntfile-js-complete.png)
 
-1. Notez que la liste tâches de l' **Explorateur de tâche Runner** comprend `clean` des `concat` tâches, `jshint` et `uglify` . Exécutez chaque tâche dans l’ordre et observez les résultats dans **Explorateur de solutions** . Chaque tâche doit s’exécuter sans erreur.
+1. Notez que la liste tâches de l' **Explorateur de tâche Runner** comprend `clean` des `concat` tâches, `jshint` et `uglify` . Exécutez chaque tâche dans l’ordre et observez les résultats dans **Explorateur de solutions**. Chaque tâche doit s’exécuter sans erreur.
 
     ![l’Explorateur de tâche Runner exécute chaque tâche](using-grunt/_static/task-runner-explorer-run-each-task.png)
 
-    La tâche Concat crée un fichier de *combined.js* et le place dans le répertoire Temp. La `jshint` tâche s’exécute simplement et ne produit pas de sortie. La `uglify` tâche crée un nouveau *combined.min.js* fichier et le place dans *wwwroot/lib* . Une fois l’opération terminée, la solution devrait ressembler à la capture d’écran ci-dessous :
+    La tâche Concat crée un fichier de *combined.js* et le place dans le répertoire Temp. La `jshint` tâche s’exécute simplement et ne produit pas de sortie. La `uglify` tâche crée un nouveau *combined.min.js* fichier et le place dans *wwwroot/lib*. Une fois l’opération terminée, la solution devrait ressembler à la capture d’écran ci-dessous :
 
     ![Explorateur de solutions après toutes les tâches](using-grunt/_static/solution-explorer-after-all-tasks.png)
 
@@ -285,7 +285,7 @@ Cliquez avec le bouton droit sur la tâche espion dans l’Explorateur de tâche
 
 ## <a name="binding-to-visual-studio-events"></a>Lier à des événements Visual Studio
 
-À moins que vous ne souhaitiez démarrer vos tâches manuellement chaque fois que vous travaillez dans Visual Studio, liez des tâches à **avant la génération** , après les événements de **génération** , de **nettoyage** et d' **ouverture de projet** .
+À moins que vous ne souhaitiez démarrer vos tâches manuellement chaque fois que vous travaillez dans Visual Studio, liez des tâches à **avant la génération**, après les événements de **génération**, de **nettoyage** et d' **ouverture de projet** .
 
 Liez `watch` afin qu’il s’exécute chaque fois que Visual Studio s’ouvre. Dans l’Explorateur de l’exécuteur de tâches, cliquez avec le bouton droit sur la tâche espion, puis sélectionnez **liaisons**  >  **projet ouvert** dans le menu contextuel.
 

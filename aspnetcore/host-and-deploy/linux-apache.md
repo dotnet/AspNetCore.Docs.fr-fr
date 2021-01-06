@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/linux-apache
 ms.openlocfilehash: 0bae3f888a1b7a3c2860b85754779189c636d86f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057698"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Héberger ASP.NET Core sur Linux avec Apache
@@ -38,7 +38,7 @@ Par [Shayne Boyer](https://github.com/spboyer)
 * Installez le runtime .NET Core sur le serveur.
    1. Visitez la [page Télécharger .net Core](https://dotnet.microsoft.com/download/dotnet-core).
    1. Sélectionnez la dernière version non préliminaire de .NET Core.
-   1. Téléchargez le dernier Runtime non Preview dans le tableau sous **exécuter des applications-Runtime** .
+   1. Téléchargez le dernier Runtime non Preview dans le tableau sous **exécuter des applications-Runtime**.
    1. Sélectionnez le lien **des instructions du gestionnaire de package** Linux et suivez les instructions CentOS.
 * Une application ASP.NET Core existante.
 
@@ -51,9 +51,9 @@ Configurez l’application pour un [déploiement dépendant du framework](/dotne
 Si l’application est exécutée localement et n’est pas configurée pour établir des connexions sécurisées (HTTPS), adoptez l’une des approches suivantes :
 
 * Configurez l’application pour gérer les connexions locales sécurisées. Pour plus d’informations, consultez la section [Configuration HTTPS](#https-configuration).
-* Supprimez `https://localhost:5001` (le cas échéant) de la propriété `applicationUrl` dans le fichier *Properties/launchSettings.json* .
+* Supprimez `https://localhost:5001` (le cas échéant) de la propriété `applicationUrl` dans le fichier *Properties/launchSettings.json*.
 
-Exécutez [dotnet publish](/dotnet/core/tools/dotnet-publish) à partir de l’environnement de développement pour empaqueter une application dans un répertoire (par exemple, *bin/Release/&lt;moniker_framework_target&gt;/publish* ) exécutable sur le serveur :
+Exécutez [dotnet publish](/dotnet/core/tools/dotnet-publish) à partir de l’environnement de développement pour empaqueter une application dans un répertoire (par exemple, *bin/Release/&lt;moniker_framework_target&gt;/publish*) exécutable sur le serveur :
 
 ```dotnetcli
 dotnet publish --configuration Release
@@ -61,7 +61,7 @@ dotnet publish --configuration Release
 
 L’application peut également être publiée en tant que [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) si vous préférez ne pas gérer le runtime .NET Core sur le serveur.
 
-Copiez l’application ASP.NET Core sur le serveur à l’aide d’un outil qui s’intègre au flux de travail de l’organisation (par exemple, SCP ou SFTP). Il est courant de placer les applications web sous le répertoire *var* (par exemple, *var/www/helloapp* ).
+Copiez l’application ASP.NET Core sur le serveur à l’aide d’un outil qui s’intègre au flux de travail de l’organisation (par exemple, SCP ou SFTP). Il est courant de placer les applications web sous le répertoire *var* (par exemple, *var/www/helloapp*).
 
 > [!NOTE]
 > Dans un scénario de déploiement en production, un workflow d’intégration continue effectue le travail de publication de l’application et de copie des composants sur le serveur.
@@ -104,7 +104,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
+Pour plus d’informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
 ### <a name="install-apache"></a>Installer Apache
 
@@ -145,7 +145,7 @@ Complete!
 
 Les fichiers de configuration pour Apache se trouvent dans le répertoire `/etc/httpd/conf.d/`. Les fichiers avec l’extension *.conf* sont traités par ordre alphabétique en plus des fichiers de configuration des modules dans `/etc/httpd/conf.modules.d/`, qui contient tous les fichiers de configuration nécessaires au chargement des modules.
 
-Créez un fichier de configuration nommé *helloapp.conf* , pour l’application :
+Créez un fichier de configuration nommé *helloapp.conf*, pour l’application :
 
 ```
 <VirtualHost *:*>
@@ -218,7 +218,7 @@ WantedBy=multi-user.target
 
 Dans l’exemple précédent, l’utilisateur qui gère le service est spécifié par l' `User` option. L’utilisateur ( `apache` ) doit exister et avoir la propriété correcte des fichiers de l’application.
 
-Utilisez `TimeoutStopSec` pour configurer la durée d’attente de l’arrêt de l’application après la réception du signal d’interruption initial. Si l’application ne s’arrête pas pendant cette période, le signal SIGKILL est émis pour mettre fin à l’application. Indiquez la valeur en secondes sans unité (par exemple, `150`), une valeur d’intervalle de temps (par exemple, `2min 30s`) ou `infinity` pour désactiver le délai d’attente. `TimeoutStopSec` prend la valeur par défaut de `DefaultTimeoutStopSec` dans le fichier de configuration du gestionnaire ( *systemd-system.conf* , *system.conf.d* , *systemd-user.conf* , *user.conf.d* ). Le délai d’expiration par défaut pour la plupart des distributions est de 90 secondes.
+Utilisez `TimeoutStopSec` pour configurer la durée d’attente de l’arrêt de l’application après la réception du signal d’interruption initial. Si l’application ne s’arrête pas pendant cette période, le signal SIGKILL est émis pour mettre fin à l’application. Indiquez la valeur en secondes sans unité (par exemple, `150`), une valeur d’intervalle de temps (par exemple, `2min 30s`) ou `infinity` pour désactiver le délai d’attente. `TimeoutStopSec` prend la valeur par défaut de `DefaultTimeoutStopSec` dans le fichier de configuration du gestionnaire (*systemd-system.conf*, *system.conf.d*, *systemd-user.conf*, *user.conf.d*). Le délai d’expiration par défaut pour la plupart des distributions est de 90 secondes.
 
 ```
 # The default value is 90 seconds for most distributions.
@@ -266,7 +266,7 @@ Main PID: 9021 (dotnet)
             └─9021 /usr/local/bin/dotnet /var/www/helloapp/helloapp.dll
 ```
 
-Le proxy inverse étant configuré et Kestrel étant géré via *systemd* , l’application web est maintenant entièrement configurée et accessible à partir d’un navigateur sur la machine locale à l’adresse `http://localhost`. Comme l’indiquent les en-têtes de réponse, l’en-tête **Server** montre que l’application ASP.NET Core est traitée par Kestrel :
+Le proxy inverse étant configuré et Kestrel étant géré via *systemd*, l’application web est maintenant entièrement configurée et accessible à partir d’un navigateur sur la machine locale à l’adresse `http://localhost`. Comme l’indiquent les en-têtes de réponse, l’en-tête **Server** montre que l’application ASP.NET Core est traitée par Kestrel :
 
 ```
 HTTP/1.1 200 OK
@@ -279,7 +279,7 @@ Transfer-Encoding: chunked
 
 ### <a name="view-logs"></a>Afficher les journaux d’activité
 
-Puisque l’application web utilisant Kestrel est gérée à l’aide de *systemd* , les processus et les événements sont enregistrés dans un journal centralisé. Cependant, ce journal comprend les entrées de tous les services et processus gérés par *systemd* . Pour afficher les éléments propres à `kestrel-helloapp.service`, utilisez la commande suivante :
+Puisque l’application web utilisant Kestrel est gérée à l’aide de *systemd*, les processus et les événements sont enregistrés dans un journal centralisé. Cependant, ce journal comprend les entrées de tous les services et processus gérés par *systemd*. Pour afficher les éléments propres à `kestrel-helloapp.service`, utilisez la commande suivante :
 
 ```bash
 sudo journalctl -fu kestrel-helloapp.service
@@ -350,12 +350,12 @@ La commande [dotnet run](/dotnet/core/tools/dotnet-run) utilise le fichier *Prop
 
 Configurez l’application pour utiliser un certificat en développement pour la commande `dotnet run` ou l’environnement de développement (F5 ou Ctrl+F5 dans Visual Studio Code) en adoptant l’une de ces approches :
 
-* [Remplacer le certificat par défaut dans la configuration](xref:fundamentals/servers/kestrel#configuration) ( *recommandé* )
+* [Remplacer le certificat par défaut dans la configuration](xref:fundamentals/servers/kestrel#configuration) (*recommandé*)
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **Configurer le proxy inverse pour les connexions clientes sécurisées (HTTPS)**
 
-Pour configurer Apache pour HTTPS, vous utilisez le module *mod_ssl* . Le module *mod_ssl* a été installé parallèlement au module *httpd* . S’il n’a pas été installé, utilisez `yum` pour l’ajouter à la configuration.
+Pour configurer Apache pour HTTPS, vous utilisez le module *mod_ssl*. Le module *mod_ssl* a été installé parallèlement au module *httpd*. S’il n’a pas été installé, utilisez `yum` pour l’ajouter à la configuration.
 
 ```bash
 sudo yum install mod_ssl
@@ -425,7 +425,7 @@ sudo yum install mod_headers
 
 #### <a name="secure-apache-from-clickjacking-attacks"></a>Sécuriser Apache contre les attaques par détournement de clic
 
-Le [détournement de clic](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), également appelé *UI redress attack* , est une attaque malveillante qui amène le visiteur d’un site web à cliquer sur un lien ou un bouton sur une page différente de celle qu’il est en train de visiter. Utilisez `X-FRAME-OPTIONS` pour sécuriser le site.
+Le [détournement de clic](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), également appelé *UI redress attack*, est une attaque malveillante qui amène le visiteur d’un site web à cliquer sur un lien ou un bouton sur une page différente de celle qu’il est en train de visiter. Utilisez `X-FRAME-OPTIONS` pour sécuriser le site.
 
 Pour atténuer les attaques par détournement de clic :
 
@@ -436,7 +436,7 @@ Pour atténuer les attaques par détournement de clic :
    ```
 
    Ajoutez la ligne `Header append X-FRAME-OPTIONS "SAMEORIGIN"`.
-1. Enregistrez le fichier.
+1. Enregistrez le fichier .
 1. Redémarrez Apache.
 
 #### <a name="mime-type-sniffing"></a>Détection de type MIME
@@ -449,7 +449,7 @@ Modifiez le fichier *httpd.conf* :
 sudo nano /etc/httpd/conf/httpd.conf
 ```
 
-Ajoutez la ligne `Header set X-Content-Type-Options "nosniff"`. Enregistrez le fichier. Redémarrez Apache.
+Ajoutez la ligne `Header set X-Content-Type-Options "nosniff"`. Enregistrez le fichier . Redémarrez Apache.
 
 ### <a name="load-balancing"></a>Équilibrage de la charge.
 
@@ -459,7 +459,7 @@ Cet exemple montre comment installer et configurer Apache sur CentOS 7 et Kestre
 sudo yum install mod_proxy_balancer
 ```
 
-Dans le fichier de configuration illustré ci-dessous, une instance supplémentaire de `helloapp` est configurée pour s’exécuter sur le port 5001. La section *Proxy* est définie avec une configuration d’équilibreur qui comprend deux membres pour équilibrer la charge selon la méthode *byrequests* .
+Dans le fichier de configuration illustré ci-dessous, une instance supplémentaire de `helloapp` est configurée pour s’exécuter sur le port 5001. La section *Proxy* est définie avec une configuration d’équilibreur qui comprend deux membres pour équilibrer la charge selon la méthode *byrequests*.
 
 ```
 <VirtualHost *:*>
@@ -499,7 +499,7 @@ Dans le fichier de configuration illustré ci-dessous, une instance supplémenta
 
 ### <a name="rate-limits"></a>Limites du débit
 
-Vous pouvez utiliser *mod_ratelimit* , qui est inclus dans le module *httpd* , pour limiter la bande passante des clients :
+Vous pouvez utiliser *mod_ratelimit*, qui est inclus dans le module *httpd*, pour limiter la bande passante des clients :
 
 ```bash
 sudo nano /etc/httpd/conf.d/ratelimit.conf

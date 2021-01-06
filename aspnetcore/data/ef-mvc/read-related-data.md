@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/read-related-data
 ms.openlocfilehash: 610a9e9b0007fb468ea9cdae6fadd2e756de4290
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054055"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Didacticiel : lire les données associées-ASP.NET MVC avec EF Core
@@ -43,7 +43,7 @@ Dans ce tutoriel, vous allez :
 > * Créer une page Instructors
 > * En savoir plus sur le chargement explicite
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Créer un modèle de données complexe](complex-data-model.md)
 
@@ -59,7 +59,7 @@ Il existe plusieurs façons de permettre à un logiciel de mappage relationnel o
 
   ![Exemple de requêtes distinctes](read-related-data/_static/separate-queries.png)
 
-* Chargement explicite. Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous écrivez un code qui récupère les données associées si elles sont nécessaires. Comme dans le cas du chargement hâtif avec des requêtes distinctes, le chargement explicite génère plusieurs requêtes envoyées à la base de données. La différence tient au fait qu’avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Dans Entity Framework Core 1.1, vous pouvez utiliser la méthode `Load` pour effectuer le chargement explicite. Exemple :
+* Chargement explicite. Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous écrivez un code qui récupère les données associées si elles sont nécessaires. Comme dans le cas du chargement hâtif avec des requêtes distinctes, le chargement explicite génère plusieurs requêtes envoyées à la base de données. La différence tient au fait qu’avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Dans Entity Framework Core 1.1, vous pouvez utiliser la méthode `Load` pour effectuer le chargement explicite. Par exemple :
 
   ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
 
@@ -123,7 +123,7 @@ Cette page lit et affiche les données associées comme suit :
 
 La page Instructors affiche des données de trois tables différentes. Par conséquent, vous allez créer un modèle de vue qui comprend trois propriétés, chacune contenant les données d’une des tables.
 
-Dans le dossier *SchoolViewModels* , créez *InstructorIndexData.cs* et remplacez le code existant par le code suivant :
+Dans le dossier *SchoolViewModels*, créez *InstructorIndexData.cs* et remplacez le code existant par le code suivant :
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
@@ -181,7 +181,7 @@ Ensuite, si un cours a été sélectionné, le cours sélectionné est récupér
 
 ### <a name="modify-the-instructor-index-view"></a>Modifier la vue d’index des formateurs
 
-Dans *Views/Instructors/Index.cshtml* , remplacez le code du modèle par le code suivant. Les modifications sont mises en surbrillance.
+Dans *Views/Instructors/Index.cshtml*, remplacez le code du modèle par le code suivant. Les modifications sont mises en surbrillance.
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
 
@@ -189,7 +189,7 @@ Vous avez apporté les modifications suivantes au code existant :
 
 * Vous avez changé la classe de modèle en `InstructorIndexData`.
 
-* Vous avez changé le titre de la page en remplaçant **Index** par **Instructors** .
+* Vous avez changé le titre de la page en remplaçant **Index** par **Instructors**.
 
 * Il ajoute une colonne **Office** qui affiche `item.OfficeAssignment.Location` uniquement si `item.OfficeAssignment` n’est pas Null. (Comme il s’agit d’une relation un-à-zéro-ou-un, il se peut qu’il n’y ait pas d’entité OfficeAssignment associée.)
 
@@ -223,7 +223,7 @@ Exécutez l’application et sélectionnez l’onglet **Instructors** . La page 
 
 ![Page d’index des formateurs sans aucun élément sélectionné](read-related-data/_static/instructors-index-no-selection.png)
 
-Dans le fichier *Views/Instructors/Index.cshtml* , après l’élément de fermeture de table (à la fin du fichier), ajoutez le code suivant. Ce code affiche la liste des cours associés à un formateur quand un formateur est sélectionné.
+Dans le fichier *Views/Instructors/Index.cshtml*, après l’élément de fermeture de table (à la fin du fichier), ajoutez le code suivant. Ce code affiche la liste des cours associés à un formateur quand un formateur est sélectionné.
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=66-101)]
 
@@ -245,7 +245,7 @@ Actualisez la page à nouveau et sélectionnez un formateur. Ensuite, sélection
 
 ## <a name="about-explicit-loading"></a>À propos du chargement explicite
 
-Lorsque vous avez récupéré la liste des formateurs dans *InstructorsController.cs* , vous avez spécifié un chargement hâtif pour la propriété de navigation `CourseAssignments`.
+Lorsque vous avez récupéré la liste des formateurs dans *InstructorsController.cs*, vous avez spécifié un chargement hâtif pour la propriété de navigation `CourseAssignments`.
 
 Supposons que vous vous attendiez à ce que les utilisateurs ne souhaitent que rarement voir les inscriptions pour un formateur et un cours sélectionnés. Dans ce cas, vous pouvez charger les données d’inscription uniquement si elles sont demandées. Pour voir un exemple illustrant comment effectuer un chargement explicite, remplacez la méthode `Index` par le code suivant, qui supprime le chargement hâtif pour Enrollments et charge explicitement cette propriété. Les modifications du code apparaissent en surbrillance.
 

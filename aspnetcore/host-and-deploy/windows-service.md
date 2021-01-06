@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/windows-service
 ms.openlocfilehash: 31a738e7aa8779171dfa09a5678d7240b8f62343
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057230"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
@@ -34,7 +34,7 @@ Une application ASP.NET Core peut être hébergée sur Windows en tant que [serv
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Kit de développement logiciel (SDK) ASP.NET Core 2.1 ou plus](https://dotnet.microsoft.com/download)
 * [PowerShell 6,2 ou version ultérieure](https://github.com/PowerShell/PowerShell)
@@ -62,7 +62,7 @@ L’application requiert une référence de package pour [Microsoft. extensions.
   * Remplacez le niveau de journalisation par défaut par la `Logging:EventLog:LogLevel:Default` clé dans *appsettings.json* / *appSettings. { Environment}. JSON* ou un autre fournisseur de configuration.
   * Seuls les administrateurs peuvent créer des sources d’événement. Si une source d’événement ne peut pas être créée en utilisant le nom de l’application, un avertissement est consigné dans la source *Application* source et les journaux d’événements sont désactivés.
 
-Dans `CreateHostBuilder` de *Program.cs* :
+Dans `CreateHostBuilder` de *Program.cs*:
 
 ```csharp
 Host.CreateDefaultBuilder(args)
@@ -97,9 +97,9 @@ Si le service exécute uniquement des tâches en arrière-plan (par exemple, les
 
 ### <a name="framework-dependent-deployment-fdd"></a>Déploiement dépendant du framework
 
-Un déploiement dépendant du framework s’appuie sur la présence d’une version partagée à l’échelle du système de .NET Core sur le système cible. Lorsque vous effectuez le scénario de déploiement dépendant du framework en suivant les conseils du présent article, le Kit de développement logiciel (SDK) produit un fichier exécutable ( *.exe* ), appelé *fichier exécutable dépendant du framework* .
+Un déploiement dépendant du framework s’appuie sur la présence d’une version partagée à l’échelle du système de .NET Core sur le système cible. Lorsque vous effectuez le scénario de déploiement dépendant du framework en suivant les conseils du présent article, le Kit de développement logiciel (SDK) produit un fichier exécutable (*.exe*), appelé *fichier exécutable dépendant du framework*.
 
-Si vous utilisez le [Kit de développement logiciel (SDK) Web](#sdk), un fichier de *web.config* , qui est normalement généré lors de la publication d’une application ASP.net Core, n’est pas nécessaire pour une application de services Windows. Pour désactiver la création d’un fichier *web.config* , ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.
+Si vous utilisez le [Kit de développement logiciel (SDK) Web](#sdk), un fichier de *web.config* , qui est normalement généré lors de la publication d’une application ASP.net Core, n’est pas nécessaire pour une application de services Windows. Pour désactiver la création d’un fichier *web.config*, ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.
 
 ```xml
 <PropertyGroup>
@@ -153,13 +153,13 @@ Une approche alternative à la gestion des utilisateurs lors de l’utilisation 
 
 Pour établir des droits *d’ouverture de session en tant que service* pour un compte d’utilisateur de service, procédez comme suit :
 
-1. Ouvrez l’éditeur de stratégie de sécurité locale en exécutant le fichier *secpool.msc* .
-1. Développez le nœud **Stratégies locales** et sélectionnez **Attribution des droits utilisateur** .
-1. Ouvrez la stratégie **Ouvrir une session en tant que service** .
-1. Sélectionnez **Ajouter un utilisateur ou un groupe** .
+1. Ouvrez l’éditeur de stratégie de sécurité locale en exécutant le fichier *secpool.msc*.
+1. Développez le nœud **Stratégies locales** et sélectionnez **Attribution des droits utilisateur**.
+1. Ouvrez la stratégie **Ouvrir une session en tant que service**.
+1. Sélectionnez **Ajouter un utilisateur ou un groupe**.
 1. Fournissez le nom d’objet (compte d’utilisateur) avec l’une des approches suivantes :
    1. Tapez le compte d’utilisateur (`{DOMAIN OR COMPUTER NAME\USER}`) dans le champ du nom d’objet et sélectionnez **OK** pour ajouter l’utilisateur à la stratégie.
-   1. Sélectionnez **Avancé** . Sélectionnez **Rechercher maintenant** . Sélectionnez le compte d’utilisateur dans la liste. Sélectionnez **OK** . Cliquez à nouveau sur **OK** pour ajouter l’utilisateur à la stratégie.
+   1. Sélectionnez **Avancé**. Sélectionnez **Rechercher maintenant**. Sélectionnez le compte d’utilisateur dans la liste. Sélectionnez **OK**. Cliquez à nouveau sur **OK** pour ajouter l’utilisateur à la stratégie.
 1. Sélectionnez **OK** ou **Appliquer** pour accepter les modifications.
 
 ## <a name="create-and-manage-the-windows-service"></a>Créer et gérer le service Windows
@@ -228,7 +228,7 @@ Remove-Service -Name {SERVICE NAME}
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Scénarios avec un serveur proxy et un équilibreur de charge
 
-Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
+Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d’informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
 ## <a name="configure-endpoints"></a>Configuration des points de terminaison
 
@@ -254,7 +254,7 @@ Utilisez les éléments [IHostEnvironment.ContentRootPath](xref:Microsoft.Extens
 
 Lorsque l’application s’exécute en tant que service, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> définit <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> sur [AppContext. BaseDirectory](xref:System.AppContext.BaseDirectory).
 
-Les fichiers de paramètres par défaut de l’application, *appsettings.json* et *appSettings. { Environment}. JSON* , sont chargés à partir de la racine de contenu de l’application en appelant [CreateDefaultBuilder lors](xref:fundamentals/host/generic-host#set-up-a-host)de la construction de l’hôte.
+Les fichiers de paramètres par défaut de l’application, *appsettings.json* et *appSettings. { Environment}. JSON*, sont chargés à partir de la racine de contenu de l’application en appelant [CreateDefaultBuilder lors](xref:fundamentals/host/generic-host#set-up-a-host)de la construction de l’hôte.
 
 Pour les autres fichiers de paramètres chargés par le code du développeur dans <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> , il n’est pas nécessaire d’appeler <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> . Dans l’exemple suivant, la *custom_settings.jssur* le fichier existe dans la racine de contenu de l’application et est chargée sans définir explicitement un chemin d’accès de base :
 
@@ -277,7 +277,7 @@ Pour dépanner une application de service Windows, consultez <xref:test/troubles
   * *bin/Release/{Target Framework}/Publish* (FDD)
   * *bin/Release/{Target Framework}/{Runtime identificateur}/Publish* (SCD)
 * Le service n’est pas à l’État en cours d’exécution.
-* Les chemins d’accès aux ressources que l’application utilise (par exemple, les certificats) sont incorrects. Le chemin d’accès de base d’un service Windows est *c : \\ Windows \\ system32* .
+* Les chemins d’accès aux ressources que l’application utilise (par exemple, les certificats) sont incorrects. Le chemin d’accès de base d’un service Windows est *c : \\ Windows \\ system32*.
 * L’utilisateur ne dispose pas de droits *d’ouverture de session en tant que service* .
 * Le mot de passe de l’utilisateur a expiré ou a été transmis de manière incorrecte lors de l’exécution de la `New-Service` commande PowerShell.
 * L’application requiert l’authentification ASP.NET Core, mais elle n’est pas configurée pour les connexions sécurisées (HTTPs).
@@ -287,8 +287,8 @@ Pour dépanner une application de service Windows, consultez <xref:test/troubles
 
 Accédez aux journaux des événements système et des applications :
 
-1. Ouvrez le menu Démarrer, recherchez *Observateur d’événements* , puis sélectionnez l’application **Observateur d’événements** .
-1. Dans **Observateur d’événements** , ouvrez le nœud **Journaux Windows** .
+1. Ouvrez le menu Démarrer, recherchez *Observateur d’événements*, puis sélectionnez l’application **Observateur d’événements** .
+1. Dans **Observateur d’événements**, ouvrez le nœud **Journaux Windows**.
 1. Sélectionnez **système** pour ouvrir le journal des événements système. Sélectionnez **Application** pour ouvrir le Journal des événements de l’application.
 1. Recherchez les erreurs liées à l’application défectueuse.
 
@@ -300,7 +300,7 @@ De nombreuses erreurs de démarrage ne produisent pas d’informations utiles da
 
 Une application fonctionnelle peut échouer immédiatement après la mise à niveau de la kit SDK .NET Core sur l’ordinateur de développement ou la modification des versions de package dans l’application. Dans certains cas, les packages incohérents peuvent bloquer une application quand vous effectuez des mises à niveau majeures. Vous pouvez résoudre la plupart de ces problèmes en suivant les instructions suivantes :
 
-1. Supprimez les dossiers *bin* et *obj* .
+1. Supprimez les dossiers *bin* et *obj*.
 1. Effacez les caches de package en exécutant [dotnet NuGet LOCALS tout--Clear](/dotnet/core/tools/dotnet-nuget-locals) dans une interface de commande.
 
    L’effacement des caches de package peut également être effectué à l’aide de l’outil [nuget.exe](https://www.nuget.org/downloads) et en exécutant la commande `nuget locals all -clear` . *NuGet.exe* n’étant pas une installation fournie avec le système d’exploitation de bureau Windows, il doit être obtenu séparément à partir du [site web de NuGet](https://www.nuget.org/downloads).
@@ -357,7 +357,7 @@ Une application ASP.NET Core peut être hébergée sur Windows en tant que [serv
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Kit de développement logiciel (SDK) ASP.NET Core 2.1 ou plus](https://dotnet.microsoft.com/download)
 * [PowerShell 6,2 ou version ultérieure](https://github.com/PowerShell/PowerShell)
@@ -373,7 +373,7 @@ Pour effectuer des tests et un débogage lors de l’exécution en dehors d’un
 
 Étant donné que le [fournisseur de configuration de ligne de commande](xref:fundamentals/configuration/index#command-line-configuration-provider) nécessite des paires nom/valeur pour les arguments de ligne de commande, le switch `--console` est supprimé des arguments avant que <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> ne les reçoive.
 
-Pour consigner des informations dans le journal des événements Windows, ajoutez le fournisseur EventLog à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>. Définissez le niveau de journalisation à l’aide de clé `Logging:LogLevel:Default` dans le fichier *appsettings.Production.json* .
+Pour consigner des informations dans le journal des événements Windows, ajoutez le fournisseur EventLog à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>. Définissez le niveau de journalisation à l’aide de clé `Logging:LogLevel:Default` dans le fichier *appsettings.Production.json*.
 
 Dans l’exemple suivant, qui provient de l’exemple d’application, l’élément `RunAsCustomService` est appelé à la place de l’élément <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> afin de gérer les événements de durée de vie au sein de l’application. Pour plus d’informations, consultez la section [Gérer les événements de démarrage et d’arrêt](#handle-starting-and-stopping-events).
 
@@ -399,11 +399,11 @@ Si le service exécute uniquement des tâches en arrière-plan (par exemple, les
 
 ### <a name="framework-dependent-deployment-fdd"></a>Déploiement dépendant du framework
 
-Un déploiement dépendant du framework s’appuie sur la présence d’une version partagée à l’échelle du système de .NET Core sur le système cible. Lorsque vous effectuez le scénario de déploiement dépendant du framework en suivant les conseils du présent article, le Kit de développement logiciel (SDK) produit un fichier exécutable ( *.exe* ), appelé *fichier exécutable dépendant du framework* .
+Un déploiement dépendant du framework s’appuie sur la présence d’une version partagée à l’échelle du système de .NET Core sur le système cible. Lorsque vous effectuez le scénario de déploiement dépendant du framework en suivant les conseils du présent article, le Kit de développement logiciel (SDK) produit un fichier exécutable (*.exe*), appelé *fichier exécutable dépendant du framework*.
 
-L' [identificateur Windows Runtime (RID)](/dotnet/core/rid-catalog) ( [\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier) ) contient la version cible de .NET Framework. Dans l’exemple suivant, le RID est défini sur `win7-x64`. La propriété `<SelfContained>` a la valeur `false`. Ces propriétés demandent au Kit de développement logiciel (SDK) de générer un fichier exécutable ( *.exe* ) pour Windows et une application qui dépend du framework .NET Core partagé.
+L' [identificateur Windows Runtime (RID)](/dotnet/core/rid-catalog) ( [\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier) ) contient la version cible de .NET Framework. Dans l’exemple suivant, le RID est défini sur `win7-x64`. La propriété `<SelfContained>` est définie sur `false`. Ces propriétés demandent au Kit de développement logiciel (SDK) de générer un fichier exécutable (*.exe*) pour Windows et une application qui dépend du framework .NET Core partagé.
 
-Un fichier *web.config* , qui est normalement produit lors de la publication d’une application ASP.NET Core, n’est pas nécessaire pour une application de Windows Services. Pour désactiver la création d’un fichier *web.config* , ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.
+Un fichier *web.config*, qui est normalement produit lors de la publication d’une application ASP.NET Core, n’est pas nécessaire pour une application de Windows Services. Pour désactiver la création d’un fichier *web.config*, ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.
 
 ```xml
 <PropertyGroup>
@@ -465,13 +465,13 @@ Une approche alternative à la gestion des utilisateurs lors de l’utilisation 
 
 Pour établir des droits *d’ouverture de session en tant que service* pour un compte d’utilisateur de service, procédez comme suit :
 
-1. Ouvrez l’éditeur de stratégie de sécurité locale en exécutant le fichier *secpool.msc* .
-1. Développez le nœud **Stratégies locales** et sélectionnez **Attribution des droits utilisateur** .
-1. Ouvrez la stratégie **Ouvrir une session en tant que service** .
-1. Sélectionnez **Ajouter un utilisateur ou un groupe** .
+1. Ouvrez l’éditeur de stratégie de sécurité locale en exécutant le fichier *secpool.msc*.
+1. Développez le nœud **Stratégies locales** et sélectionnez **Attribution des droits utilisateur**.
+1. Ouvrez la stratégie **Ouvrir une session en tant que service**.
+1. Sélectionnez **Ajouter un utilisateur ou un groupe**.
 1. Fournissez le nom d’objet (compte d’utilisateur) avec l’une des approches suivantes :
    1. Tapez le compte d’utilisateur (`{DOMAIN OR COMPUTER NAME\USER}`) dans le champ du nom d’objet et sélectionnez **OK** pour ajouter l’utilisateur à la stratégie.
-   1. Sélectionnez **Avancé** . Sélectionnez **Rechercher maintenant** . Sélectionnez le compte d’utilisateur dans la liste. Sélectionnez **OK** . Cliquez à nouveau sur **OK** pour ajouter l’utilisateur à la stratégie.
+   1. Sélectionnez **Avancé**. Sélectionnez **Rechercher maintenant**. Sélectionnez le compte d’utilisateur dans la liste. Sélectionnez **OK**. Cliquez à nouveau sur **OK** pour ajouter l’utilisateur à la stratégie.
 1. Sélectionnez **OK** ou **Appliquer** pour accepter les modifications.
 
 ## <a name="create-and-manage-the-windows-service"></a>Créer et gérer le service Windows
@@ -560,7 +560,7 @@ Pour gérer les événements <xref:Microsoft.AspNetCore.Hosting.WindowsServices.
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Scénarios avec un serveur proxy et un équilibreur de charge
 
-Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
+Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d’informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
 ## <a name="configure-endpoints"></a>Configuration des points de terminaison
 
@@ -611,7 +611,7 @@ Pour dépanner une application de service Windows, consultez <xref:test/troubles
   * *bin/Release/{Target Framework}/Publish* (FDD)
   * *bin/Release/{Target Framework}/{Runtime identificateur}/Publish* (SCD)
 * Le service n’est pas à l’État en cours d’exécution.
-* Les chemins d’accès aux ressources que l’application utilise (par exemple, les certificats) sont incorrects. Le chemin d’accès de base d’un service Windows est *c : \\ Windows \\ system32* .
+* Les chemins d’accès aux ressources que l’application utilise (par exemple, les certificats) sont incorrects. Le chemin d’accès de base d’un service Windows est *c : \\ Windows \\ system32*.
 * L’utilisateur ne dispose pas de droits *d’ouverture de session en tant que service* .
 * Le mot de passe de l’utilisateur a expiré ou a été transmis de manière incorrecte lors de l’exécution de la `New-Service` commande PowerShell.
 * L’application requiert l’authentification ASP.NET Core, mais elle n’est pas configurée pour les connexions sécurisées (HTTPs).
@@ -621,8 +621,8 @@ Pour dépanner une application de service Windows, consultez <xref:test/troubles
 
 Accédez aux journaux des événements système et des applications :
 
-1. Ouvrez le menu Démarrer, recherchez *Observateur d’événements* , puis sélectionnez l’application **Observateur d’événements** .
-1. Dans **Observateur d’événements** , ouvrez le nœud **Journaux Windows** .
+1. Ouvrez le menu Démarrer, recherchez *Observateur d’événements*, puis sélectionnez l’application **Observateur d’événements** .
+1. Dans **Observateur d’événements**, ouvrez le nœud **Journaux Windows**.
 1. Sélectionnez **système** pour ouvrir le journal des événements système. Sélectionnez **Application** pour ouvrir le Journal des événements de l’application.
 1. Recherchez les erreurs liées à l’application défectueuse.
 
@@ -634,7 +634,7 @@ De nombreuses erreurs de démarrage ne produisent pas d’informations utiles da
 
 Une application fonctionnelle peut échouer immédiatement après la mise à niveau de la kit SDK .NET Core sur l’ordinateur de développement ou la modification des versions de package dans l’application. Dans certains cas, les packages incohérents peuvent bloquer une application quand vous effectuez des mises à niveau majeures. Vous pouvez résoudre la plupart de ces problèmes en suivant les instructions suivantes :
 
-1. Supprimez les dossiers *bin* et *obj* .
+1. Supprimez les dossiers *bin* et *obj*.
 1. Effacez les caches de package en exécutant [dotnet NuGet LOCALS tout--Clear](/dotnet/core/tools/dotnet-nuget-locals) dans une interface de commande.
 
    L’effacement des caches de package peut également être effectué à l’aide de l’outil [nuget.exe](https://www.nuget.org/downloads) et en exécutant la commande `nuget locals all -clear` . *NuGet.exe* n’étant pas une installation fournie avec le système d’exploitation de bureau Windows, il doit être obtenu séparément à partir du [site web de NuGet](https://www.nuget.org/downloads).
@@ -691,7 +691,7 @@ Une application ASP.NET Core peut être hébergée sur Windows en tant que [serv
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Kit de développement logiciel (SDK) ASP.NET Core 2.1 ou plus](https://dotnet.microsoft.com/download)
 * [PowerShell 6,2 ou version ultérieure](https://github.com/PowerShell/PowerShell)
@@ -707,7 +707,7 @@ Pour effectuer des tests et un débogage lors de l’exécution en dehors d’un
 
 Étant donné que le [fournisseur de configuration de ligne de commande](xref:fundamentals/configuration/index#command-line-configuration-provider) nécessite des paires nom/valeur pour les arguments de ligne de commande, le switch `--console` est supprimé des arguments avant que <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> ne les reçoive.
 
-Pour consigner des informations dans le journal des événements Windows, ajoutez le fournisseur EventLog à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>. Définissez le niveau de journalisation à l’aide de clé `Logging:LogLevel:Default` dans le fichier *appsettings.Production.json* .
+Pour consigner des informations dans le journal des événements Windows, ajoutez le fournisseur EventLog à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>. Définissez le niveau de journalisation à l’aide de clé `Logging:LogLevel:Default` dans le fichier *appsettings.Production.json*.
 
 Dans l’exemple suivant, qui provient de l’exemple d’application, l’élément `RunAsCustomService` est appelé à la place de l’élément <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> afin de gérer les événements de durée de vie au sein de l’application. Pour plus d’informations, consultez la section [Gérer les événements de démarrage et d’arrêt](#handle-starting-and-stopping-events).
 
@@ -733,13 +733,13 @@ Si le service exécute uniquement des tâches en arrière-plan (par exemple, les
 
 ### <a name="framework-dependent-deployment-fdd"></a>Déploiement dépendant du framework
 
-Un déploiement dépendant du framework s’appuie sur la présence d’une version partagée à l’échelle du système de .NET Core sur le système cible. Lorsque vous effectuez le scénario de déploiement dépendant du framework en suivant les conseils du présent article, le Kit de développement logiciel (SDK) produit un fichier exécutable ( *.exe* ), appelé *fichier exécutable dépendant du framework* .
+Un déploiement dépendant du framework s’appuie sur la présence d’une version partagée à l’échelle du système de .NET Core sur le système cible. Lorsque vous effectuez le scénario de déploiement dépendant du framework en suivant les conseils du présent article, le Kit de développement logiciel (SDK) produit un fichier exécutable (*.exe*), appelé *fichier exécutable dépendant du framework*.
 
-L' [identificateur Windows Runtime (RID)](/dotnet/core/rid-catalog) ( [\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier) ) contient la version cible de .NET Framework. Dans l’exemple suivant, le RID est défini sur `win7-x64`. La propriété `<SelfContained>` a la valeur `false`. Ces propriétés demandent au Kit de développement logiciel (SDK) de générer un fichier exécutable ( *.exe* ) pour Windows et une application qui dépend du framework .NET Core partagé.
+L' [identificateur Windows Runtime (RID)](/dotnet/core/rid-catalog) ( [\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier) ) contient la version cible de .NET Framework. Dans l’exemple suivant, le RID est défini sur `win7-x64`. La propriété `<SelfContained>` est définie sur `false`. Ces propriétés demandent au Kit de développement logiciel (SDK) de générer un fichier exécutable (*.exe*) pour Windows et une application qui dépend du framework .NET Core partagé.
 
-La propriété `<UseAppHost>` a la valeur `true`. Cette propriété fournit au service un chemin d’activation (un fichier exécutable *.exe* ) pour un déploiement dépendant du framework (FDD).
+La propriété `<UseAppHost>` est définie sur `true`. Cette propriété fournit au service un chemin d’activation (un fichier exécutable *.exe*) pour un déploiement dépendant du framework (FDD).
 
-Un fichier *web.config* , qui est normalement produit lors de la publication d’une application ASP.NET Core, n’est pas nécessaire pour une application de Windows Services. Pour désactiver la création d’un fichier *web.config* , ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.
+Un fichier *web.config*, qui est normalement produit lors de la publication d’une application ASP.NET Core, n’est pas nécessaire pour une application de Windows Services. Pour désactiver la création d’un fichier *web.config*, ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.
 
 ```xml
 <PropertyGroup>
@@ -802,13 +802,13 @@ Une approche alternative à la gestion des utilisateurs lors de l’utilisation 
 
 Pour établir des droits *d’ouverture de session en tant que service* pour un compte d’utilisateur de service, procédez comme suit :
 
-1. Ouvrez l’éditeur de stratégie de sécurité locale en exécutant le fichier *secpool.msc* .
-1. Développez le nœud **Stratégies locales** et sélectionnez **Attribution des droits utilisateur** .
-1. Ouvrez la stratégie **Ouvrir une session en tant que service** .
-1. Sélectionnez **Ajouter un utilisateur ou un groupe** .
+1. Ouvrez l’éditeur de stratégie de sécurité locale en exécutant le fichier *secpool.msc*.
+1. Développez le nœud **Stratégies locales** et sélectionnez **Attribution des droits utilisateur**.
+1. Ouvrez la stratégie **Ouvrir une session en tant que service**.
+1. Sélectionnez **Ajouter un utilisateur ou un groupe**.
 1. Fournissez le nom d’objet (compte d’utilisateur) avec l’une des approches suivantes :
    1. Tapez le compte d’utilisateur (`{DOMAIN OR COMPUTER NAME\USER}`) dans le champ du nom d’objet et sélectionnez **OK** pour ajouter l’utilisateur à la stratégie.
-   1. Sélectionnez **Avancé** . Sélectionnez **Rechercher maintenant** . Sélectionnez le compte d’utilisateur dans la liste. Sélectionnez **OK** . Cliquez à nouveau sur **OK** pour ajouter l’utilisateur à la stratégie.
+   1. Sélectionnez **Avancé**. Sélectionnez **Rechercher maintenant**. Sélectionnez le compte d’utilisateur dans la liste. Sélectionnez **OK**. Cliquez à nouveau sur **OK** pour ajouter l’utilisateur à la stratégie.
 1. Sélectionnez **OK** ou **Appliquer** pour accepter les modifications.
 
 ## <a name="create-and-manage-the-windows-service"></a>Créer et gérer le service Windows
@@ -897,7 +897,7 @@ Pour gérer les événements <xref:Microsoft.AspNetCore.Hosting.WindowsServices.
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Scénarios avec un serveur proxy et un équilibreur de charge
 
-Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
+Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d’informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
 ## <a name="configure-endpoints"></a>Configuration des points de terminaison
 
@@ -948,7 +948,7 @@ Pour dépanner une application de service Windows, consultez <xref:test/troubles
   * *bin/Release/{Target Framework}/Publish* (FDD)
   * *bin/Release/{Target Framework}/{Runtime identificateur}/Publish* (SCD)
 * Le service n’est pas à l’État en cours d’exécution.
-* Les chemins d’accès aux ressources que l’application utilise (par exemple, les certificats) sont incorrects. Le chemin d’accès de base d’un service Windows est *c : \\ Windows \\ system32* .
+* Les chemins d’accès aux ressources que l’application utilise (par exemple, les certificats) sont incorrects. Le chemin d’accès de base d’un service Windows est *c : \\ Windows \\ system32*.
 * L’utilisateur ne dispose pas de droits *d’ouverture de session en tant que service* .
 * Le mot de passe de l’utilisateur a expiré ou a été transmis de manière incorrecte lors de l’exécution de la `New-Service` commande PowerShell.
 * L’application requiert l’authentification ASP.NET Core, mais elle n’est pas configurée pour les connexions sécurisées (HTTPs).
@@ -958,8 +958,8 @@ Pour dépanner une application de service Windows, consultez <xref:test/troubles
 
 Accédez aux journaux des événements système et des applications :
 
-1. Ouvrez le menu Démarrer, recherchez *Observateur d’événements* , puis sélectionnez l’application **Observateur d’événements** .
-1. Dans **Observateur d’événements** , ouvrez le nœud **Journaux Windows** .
+1. Ouvrez le menu Démarrer, recherchez *Observateur d’événements*, puis sélectionnez l’application **Observateur d’événements** .
+1. Dans **Observateur d’événements**, ouvrez le nœud **Journaux Windows**.
 1. Sélectionnez **système** pour ouvrir le journal des événements système. Sélectionnez **Application** pour ouvrir le Journal des événements de l’application.
 1. Recherchez les erreurs liées à l’application défectueuse.
 
@@ -971,7 +971,7 @@ De nombreuses erreurs de démarrage ne produisent pas d’informations utiles da
 
 Une application fonctionnelle peut échouer immédiatement après la mise à niveau de la kit SDK .NET Core sur l’ordinateur de développement ou la modification des versions de package dans l’application. Dans certains cas, les packages incohérents peuvent bloquer une application quand vous effectuez des mises à niveau majeures. Vous pouvez résoudre la plupart de ces problèmes en suivant les instructions suivantes :
 
-1. Supprimez les dossiers *bin* et *obj* .
+1. Supprimez les dossiers *bin* et *obj*.
 1. Effacez les caches de package en exécutant [dotnet NuGet LOCALS tout--Clear](/dotnet/core/tools/dotnet-nuget-locals) dans une interface de commande.
 
    L’effacement des caches de package peut également être effectué à l’aide de l’outil [nuget.exe](https://www.nuget.org/downloads) et en exécutant la commande `nuget locals all -clear` . *NuGet.exe* n’étant pas une installation fournie avec le système d’exploitation de bureau Windows, il doit être obtenu séparément à partir du [site web de NuGet](https://www.nuget.org/downloads).

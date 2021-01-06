@@ -4,7 +4,7 @@ Ce document aborde le processus de contribution aux articles et exemples de code
 
 ## <a name="how-to-make-a-simple-correction-or-suggestion"></a>Comment apporter une correction ou suggestion simple
 
-Les articles sont stockés dans le dépôt en tant que fichiers Markdown. Pour apporter des modifications simples au contenu d’un fichier Markdown, dans le navigateur, vous devez sélectionner le lien **Modifier** dans le coin supérieur droit de la fenêtre du navigateur. (Dans une fenêtre de navigateur étroite, étendre la barre **d’options** pour voir le lien **Edit.)** Suivez les instructions pour créer une demande de traction (PR). Nous examinerons la demande de tirage et l’accepterons ou suggérerons des modifications.
+Les articles sont stockés dans le dépôt en tant que fichiers Markdown. Pour apporter des modifications simples au contenu d’un fichier Markdown, dans le navigateur, vous devez sélectionner le lien **Modifier** dans le coin supérieur droit de la fenêtre du navigateur. (Dans une fenêtre de navigateur fine, développez la barre d' **options** pour afficher le lien **modifier** .) Suivez les instructions pour créer une demande de tirage (pull request). Nous examinerons la demande de tirage et l’accepterons ou suggérerons des modifications.
 
 ## <a name="how-to-make-a-more-complex-submission"></a>Comment effectuer une soumission plus complexe
 
@@ -147,7 +147,7 @@ DocFX nécessite :
 
 * Dans un navigateur, accédez à `http://localhost:8080/group1-dest/`.
 
-## <a name="voice-and-tone"></a>Style et ton
+## <a name="voice-and-tone"></a>Voix et ton
 
 Notre objectif est d’écrire une documentation facile à comprendre par le plus grand nombre. À cette fin, nous avons établi des instructions sur le style que nos collaborateurs sont invités à suivre. Pour plus d’informations, consultez [Voice and tone guidelines](https://github.com/dotnet/docs/blob/master/styleguide/voice-tone.md) dans le dépôt .NET.
 
@@ -155,6 +155,6 @@ Notre objectif est d’écrire une documentation facile à comprendre par le plu
 
 Le [Guide de style d’écriture Microsoft](https://docs.microsoft.com/style-guide/welcome/) fournit des instructions sur le style et la terminologie pour toutes les formes de communication au sujet d’une technologie, notamment la documentation ASP.NET Core.
 
-## <a name="redirects"></a>Redirections
+## <a name="redirects"></a>Redirection
 
 Si vous supprimez un article, changez son nom de fichier ou déplacez-le vers un autre dossier, créez une redirection afin que les personnes qui ont créé un signet pour l’article ne reçoivent pas une erreur *404 Non trouvé*. Ajoutez les redirections au [fichier de redirection dans la branche master](https://github.com/dotnet/AspNetCore.Docs/blob/master/.openpublishing.redirection.json).

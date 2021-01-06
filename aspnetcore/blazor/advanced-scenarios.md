@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/advanced-scenarios
 ms.openlocfilehash: 95714b3c0d21d3b348a9a8a984e2a42e7708499e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93056554"
 ---
 # <a name="aspnet-core-no-locblazor-advanced-scenarios"></a>ASP.NET Core des Blazor scénarios avancés
@@ -141,7 +141,7 @@ Dans l’exemple suivant, la boucle de la `CreateComponent` méthode génère tr
 
 Razor les fichiers de composants ( `.razor` ) sont toujours compilés. La compilation est un avantage potentiel de l’interprétation du code, car l’étape de compilation peut être utilisée pour injecter des informations qui améliorent les performances de l’application au moment de l’exécution.
 
-Un exemple clé de ces améliorations concerne les *numéros de séquence* . Les numéros de séquence indiquent au runtime que les sorties proviennent de lignes de code distinctes et ordonnées. Le runtime utilise ces informations pour générer des différences d’arborescence efficaces en temps linéaire, ce qui est beaucoup plus rapide qu’un algorithme de comparaison d’arborescence générale.
+Un exemple clé de ces améliorations concerne les *numéros de séquence*. Les numéros de séquence indiquent au runtime que les sorties proviennent de lignes de code distinctes et ordonnées. Le runtime utilise ces informations pour générer des différences d’arborescence efficaces en temps linéaire, ce qui est beaucoup plus rapide qu’un algorithme de comparaison d’arborescence générale.
 
 Prenons le Razor fichier composant ( `.razor` ) suivant :
 

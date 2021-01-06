@@ -20,22 +20,22 @@ no-loc:
 - SignalR
 uid: host-and-deploy/web-farm
 ms.openlocfilehash: ee78e80a4eda3089943765700aa6bb62c6c1e07d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057516"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>Héberger ASP.NET Core dans une batterie de serveurs web
 
 Par [Chris Ross](https://github.com/Tratcher)
 
-Une *batterie de serveurs Web* est un groupe d’au moins deux serveurs web (ou *nœuds* ) qui héberge plusieurs instances d’une application. Lorsque les requêtes des utilisateurs arrivent à une batterie de serveurs web, un *équilibreur de charge* les répartit sur les nœuds de la batterie de serveurs web. Les batteries de serveurs web apportent les améliorations suivantes :
+Une *batterie de serveurs Web* est un groupe d’au moins deux serveurs web (ou *nœuds*) qui héberge plusieurs instances d’une application. Lorsque les requêtes des utilisateurs arrivent à une batterie de serveurs web, un *équilibreur de charge* les répartit sur les nœuds de la batterie de serveurs web. Les batteries de serveurs web apportent les améliorations suivantes :
 
-* **Fiabilité/disponibilité** : en cas d’échec d’un ou de plusieurs nœuds, l’équilibreur de charge peut acheminer les demandes vers d’autres nœuds opérationnels pour poursuivre le traitement des demandes.
-* **Capacité/performances** : plusieurs nœuds peuvent traiter plus de demandes qu’un seul serveur. L’équilibreur de charge équilibre la charge de travail en répartissant les requêtes sur les nœuds.
-* **Évolutivité** : lorsque la capacité est plus ou moins importante, le nombre de nœuds actifs peut être augmenté ou réduit pour correspondre à la charge de travail. Les technologies de plateformes de batterie de serveurs web, telles qu’[Azure App Service](https://azure.microsoft.com/services/app-service/), peuvent automatiquement ajouter ou supprimer des nœuds, à la demande de l’administrateur système ou automatiquement, sans intervention humaine.
-* **Maintenabilité** : les nœuds d’une batterie de serveurs Web peuvent reposer sur un ensemble de services partagés, ce qui facilite la gestion du système. Par exemple, les nœuds d’une batterie de serveurs web peuvent reposer sur un serveur de base de données unique et un emplacement réseau commun pour les ressources statiques, telles que les images et les fichiers téléchargeables.
+* **Fiabilité/disponibilité**: en cas d’échec d’un ou de plusieurs nœuds, l’équilibreur de charge peut acheminer les demandes vers d’autres nœuds opérationnels pour poursuivre le traitement des demandes.
+* **Capacité/performances**: plusieurs nœuds peuvent traiter plus de demandes qu’un seul serveur. L’équilibreur de charge équilibre la charge de travail en répartissant les requêtes sur les nœuds.
+* **Évolutivité**: lorsque la capacité est plus ou moins importante, le nombre de nœuds actifs peut être augmenté ou réduit pour correspondre à la charge de travail. Les technologies de plateformes de batterie de serveurs web, telles qu’[Azure App Service](https://azure.microsoft.com/services/app-service/), peuvent automatiquement ajouter ou supprimer des nœuds, à la demande de l’administrateur système ou automatiquement, sans intervention humaine.
+* **Maintenabilité**: les nœuds d’une batterie de serveurs Web peuvent reposer sur un ensemble de services partagés, ce qui facilite la gestion du système. Par exemple, les nœuds d’une batterie de serveurs web peuvent reposer sur un serveur de base de données unique et un emplacement réseau commun pour les ressources statiques, telles que les images et les fichiers téléchargeables.
 
 Cette rubrique décrit la configuration et les dépendances des applications ASP.NET Core hébergées dans une batterie de serveurs web qui s’appuie sur des ressources partagées.
 
@@ -58,13 +58,13 @@ Quand une application est à mise l’échelle pour plusieurs instances, l’ét
 
 La protection des données et la mise en cache nécessitent une configuration des applications déployées sur une batterie de serveurs web.
 
-### <a name="data-protection"></a>Protection des données
+### <a name="data-protection"></a>Data Protection
 
-Le [système de Protection des données ASP.NET Core](xref:security/data-protection/introduction) est utilisé par les applications pour protéger les données. La protection des données repose sur un ensemble de clés de chiffrement stockées dans un fichier *Key Ring* . Lorsque le système de Protection des données est initialisé, il applique des [paramètres par défaut](xref:security/data-protection/configuration/default-settings) qui stockent le fichier Key Ring localement. Dans la configuration par défaut, un Key Ring unique est stocké sur chaque nœud de la batterie de serveurs web. Par conséquent, chaque nœud de la batterie de serveurs web ne peut pas déchiffrer des données chiffrées par une application sur un autre nœud. La configuration par défaut ne convient généralement pas à l’hébergement des applications dans une batterie de serveurs web. Une alternative à l’implémentation d’un fichier Key Ring partagé consiste à toujours acheminer les requêtes de l’utilisateur vers le même nœud. Pour plus d’informations sur la configuration du système de protection des données pour les déploiements sur des batteries de serveurs web, consultez <xref:security/data-protection/configuration/overview>.
+Le [système de Protection des données ASP.NET Core](xref:security/data-protection/introduction) est utilisé par les applications pour protéger les données. La protection des données repose sur un ensemble de clés de chiffrement stockées dans un fichier *Key Ring*. Lorsque le système de Protection des données est initialisé, il applique des [paramètres par défaut](xref:security/data-protection/configuration/default-settings) qui stockent le fichier Key Ring localement. Dans la configuration par défaut, un Key Ring unique est stocké sur chaque nœud de la batterie de serveurs web. Par conséquent, chaque nœud de la batterie de serveurs web ne peut pas déchiffrer des données chiffrées par une application sur un autre nœud. La configuration par défaut ne convient généralement pas à l’hébergement des applications dans une batterie de serveurs web. Une alternative à l’implémentation d’un fichier Key Ring partagé consiste à toujours acheminer les requêtes de l’utilisateur vers le même nœud. Pour plus d’informations sur la configuration du système de protection des données pour les déploiements sur des batteries de serveurs web, consultez <xref:security/data-protection/configuration/overview>.
 
 ### <a name="caching"></a>Mise en cache
 
-Dans un environnement de batterie de serveurs web, le mécanisme de mise en cache doit partager des éléments mis en cache sur les nœuds de la batterie de serveurs web. La mise en cache doit reposer sur un cache Redis commun, sur une base de données SQL Server partagée, ou sur une implémentation de mise en cache personnalisée qui partage les éléments mis en cache sur la batterie de serveurs web. Pour plus d'informations, consultez <xref:performance/caching/distributed>.
+Dans un environnement de batterie de serveurs web, le mécanisme de mise en cache doit partager des éléments mis en cache sur les nœuds de la batterie de serveurs web. La mise en cache doit reposer sur un cache Redis commun, sur une base de données SQL Server partagée, ou sur une implémentation de mise en cache personnalisée qui partage les éléments mis en cache sur la batterie de serveurs web. Pour plus d’informations, consultez <xref:performance/caching/distributed>.
 
 ## <a name="dependent-components"></a>Composants dépendants
 
@@ -73,10 +73,10 @@ Les scénarios suivants ne nécessitent pas une configuration supplémentaire, m
 | Scénario | Dépend de &hellip; |
 | -------- | ------------------- |
 | Authentification | Protection des données (voir <xref:security/data-protection/configuration/overview>).<br><br>Pour plus d’informations, consultez <xref:security/authentication/cookie> et <xref:security/cookie-sharing>. |
-| Identity | Authentification et configuration de la base de données.<br><br>Pour plus d'informations, consultez <xref:security/authentication/identity>. |
+| Identity | Authentification et configuration de la base de données.<br><br>Pour plus d’informations, consultez <xref:security/authentication/identity>. |
 | session | Protection des données (chiffrement cookie des s) (voir <xref:security/data-protection/configuration/overview> ) et mise en cache (consultez <xref:performance/caching/distributed> ).<br><br>Pour plus d’informations, consultez [session and State Management : état de session](xref:fundamentals/app-state#session-state). |
 | TempData | Protection des données (chiffrement cookie s) (consultez <xref:security/data-protection/configuration/overview> ) ou session (voir la rubrique [gestion de session et d’État : état de session](xref:fundamentals/app-state#session-state)).<br><br>Pour plus d’informations, consultez [session and State Management : TempData](xref:fundamentals/app-state#tempdata). |
-| Anti-contrefaçon | Protection des données (voir <xref:security/data-protection/configuration/overview>).<br><br>Pour plus d'informations, consultez <xref:security/anti-request-forgery>. |
+| Anti-contrefaçon | Protection des données (voir <xref:security/data-protection/configuration/overview>).<br><br>Pour plus d’informations, consultez <xref:security/anti-request-forgery>. |
 
 ## <a name="troubleshoot"></a>Dépanner
 
@@ -86,7 +86,7 @@ Lorsque la protection des données ou la mise en cache ne sont pas configurées 
 
 Prenons l’exemple d’un utilisateur qui se connecte à l’application à l’aide de l' cookie authentification. L’utilisateur se connecte à l’application sur un nœud de batterie de serveurs web. Si la requête suivante arrive sur le même nœud où elle s’est connectée, l’application est en mesure de déchiffrer l’authentification cookie et autorise l’accès à la ressource de l’application. Si la requête suivante arrive sur un nœud différent, l’application ne peut pas déchiffrer l’authentification cookie du nœud sur lequel l’utilisateur s’est connecté et l’autorisation pour la ressource demandée échoue.
 
-Lorsque l’un des symptômes suivants se produit par **intermittence** , le problème est généralement lié à une configuration de protection des données ou de mise en cache incorrecte pour un environnement de batterie de serveurs Web :
+Lorsque l’un des symptômes suivants se produit par **intermittence**, le problème est généralement lié à une configuration de protection des données ou de mise en cache incorrecte pour un environnement de batterie de serveurs Web :
 
 * Arrêts d’authentification : l’authentification cookie est mal configurée ou ne peut pas être déchiffrée. OAuth (Facebook, Microsoft, Twitter) ou les connexions OpenIdConnect échouent avec l’erreur « Échec de la corrélation ».
 * Interruptions d’autorisation : Identity est perdu.

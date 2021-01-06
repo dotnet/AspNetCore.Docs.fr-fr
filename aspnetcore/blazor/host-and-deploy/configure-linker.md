@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
 ms.openlocfilehash: 0c99056053356133e901d6cf468fec8034dfb845
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93055826"
 ---
 # <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a>Configurer l’éditeur de liens pour ASP.NET Core Blazor
@@ -126,7 +126,7 @@ Pour contrôler les assemblys I18N qui sont conservés, définissez la `<BlazorW
 | `all`            | Tous les assemblys inclus |
 | `cjk`            | `I18N.CJK.dll`          |
 | `mideast`        | `I18N.MidEast.dll`      |
-| `none` (valeur par défaut) | Aucun                    |
+| `none` (valeur par défaut) | None                    |
 | `other`          | `I18N.Other.dll`        |
 | `rare`           | `I18N.Rare.dll`         |
 | `west`           | `I18N.West.dll`         |

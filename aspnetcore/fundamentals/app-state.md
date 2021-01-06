@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/app-state
 ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93051406"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Gestion de session et d’état dans ASP.NET Core
@@ -81,14 +81,14 @@ L’état de session présente les comportements suivants :
   * Où les données ne nécessitent pas de stockage permanent entre les sessions.
 * Les données de session sont supprimées lorsque l' <xref:Microsoft.AspNetCore.Http.ISession.Clear%2A?displayProperty=nameWithType> implémentation est appelée ou lorsque la session expire.
 * Il n’existe pas de mécanisme par défaut pour informer le code de l’application qu’un navigateur client a été fermé ou lorsque la session cookie est supprimée ou a expiré sur le client.
-* Les États cookie de session s ne sont pas marqués comme essentiels par défaut. L’état de session n’est pas fonctionnel, sauf si le suivi est autorisé par le visiteur du site. Pour plus d'informations, consultez <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
+* Les États cookie de session s ne sont pas marqués comme essentiels par défaut. L’état de session n’est pas fonctionnel, sauf si le suivi est autorisé par le visiteur du site. Pour plus d’informations, consultez <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
 
 > [!WARNING]
 > Ne stockez pas de données sensibles dans l’état de session. Il se peut que l’utilisateur ne ferme pas le navigateur et n’efface pas la session cookie . Certains navigateurs maintiennent des sessions valides cookie entre les fenêtres de navigateur. Une session peut ne pas être restreinte à un seul utilisateur. L’utilisateur suivant peut continuer à parcourir l’application avec la même session cookie .
 
 Le fournisseur de cache en mémoire stocke les données de session dans la mémoire du serveur où réside l’application. Dans un scénario de batterie de serveurs :
 
-* Utilisez des *sessions persistantes* pour lier chaque session à une instance d’application spécifique sur un serveur donné. [Azure App Service](https://azure.microsoft.com/services/app-service/) utilise [Application Request Routing (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) pour appliquer les sessions persistantes par défaut. Toutefois, les sessions rémanentes peuvent impacter l’extensibilité et compliquer les mises à jour des applications web. Une meilleure approche consiste à utiliser le cache distribué Redis ou SQL Server, qui ne nécessite pas de sessions persistantes. Pour plus d'informations, consultez <xref:performance/caching/distributed>.
+* Utilisez des *sessions persistantes* pour lier chaque session à une instance d’application spécifique sur un serveur donné. [Azure App Service](https://azure.microsoft.com/services/app-service/) utilise [Application Request Routing (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) pour appliquer les sessions persistantes par défaut. Toutefois, les sessions rémanentes peuvent impacter l’extensibilité et compliquer les mises à jour des applications web. Une meilleure approche consiste à utiliser le cache distribué Redis ou SQL Server, qui ne nécessite pas de sessions persistantes. Pour plus d’informations, consultez <xref:performance/caching/distributed>.
 * La session cookie est chiffrée via <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> . La protection des données doit être correctement configurée pour lire cookie les sessions sur chaque ordinateur. Pour plus d’informations, consultez <xref:security/data-protection/introduction> et [Fournisseurs de stockage de clés](xref:security/data-protection/implementation/key-storage-providers).
 
 ### <a name="configure-session-state"></a>Configurer l’état de session
@@ -100,7 +100,7 @@ Le package [Microsoft. AspNetCore. session](https://www.nuget.org/packages/Micro
 
 Pour activer le middleware Session, `Startup` doit contenir les éléments suivants :
 
-* L’un des <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> caches de mémoire. L’implémentation `IDistributedCache` est utilisée comme magasin de stockage pour la session. Pour plus d'informations, consultez <xref:performance/caching/distributed>.
+* L’un des <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> caches de mémoire. L’implémentation `IDistributedCache` est utilisée comme magasin de stockage pour la session. Pour plus d’informations, consultez <xref:performance/caching/distributed>.
 * Appel à <xref:Microsoft.Extensions.DependencyInjection.SessionServiceCollectionExtensions.AddSession%2A> dans `ConfigureServices` .
 * Appel à <xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession%2A> dans `Configure` .
 
@@ -142,7 +142,7 @@ Pour remplacer les cookie valeurs par défaut de la session, utilisez <xref:Micr
 
 L’application utilise la <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> propriété pour déterminer la durée pendant laquelle une session peut être inactive avant que son contenu dans le cache du serveur soit abandonné. Cette propriété est indépendante de l' cookie expiration. Chaque requête qui passe par le [middleware Session](xref:Microsoft.AspNetCore.Session.SessionMiddleware) réinitialise le délai d’expiration.
 
-L’état de session est *sans verrouillage* . Si deux requêtes tentent simultanément de modifier le contenu d’une session, la dernière requête remplace la première. `Session` est implémentée comme une *session cohérente* , ce qui signifie que tout le contenu est stocké au même emplacement. Quand deux requêtes tentent de modifier différentes valeurs de session, la dernière requête peut remplacer les modifications de session effectuées par la première.
+L’état de session est *sans verrouillage*. Si deux requêtes tentent simultanément de modifier le contenu d’une session, la dernière requête remplace la première. `Session` est implémentée comme une *session cohérente*, ce qui signifie que tout le contenu est stocké au même emplacement. Quand deux requêtes tentent de modifier différentes valeurs de session, la dernière requête peut remplacer les modifications de session effectuées par la première.
 
 ### <a name="set-and-get-session-values"></a>Définir et obtenir des valeurs Session
 
@@ -241,7 +241,7 @@ Pour activer le fournisseur TempData basé sur une session, utilisez la <xref:Mi
 
 Vous pouvez passer une quantité limitée de données d’une requête à une autre en l’ajoutant à la chaîne de la nouvelle requête. Cela est utile pour capturer l’état de manière persistante et permettre ainsi le partage de liens avec état incorporé par e-mail ou sur les réseaux sociaux. Les chaînes de requête URL étant publiques, vous ne devez jamais utiliser de chaînes de requête pour des données sensibles.
 
-En plus du partage inattendu, les données des chaînes de requête peuvent exposer l’application à des attaques de [falsification de requête intersites (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) . Tout état de session préservé doit se protéger contre les attaques CSRF. Pour plus d'informations, consultez <xref:security/anti-request-forgery>.
+En plus du partage inattendu, les données des chaînes de requête peuvent exposer l’application à des attaques de [falsification de requête intersites (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) . Tout état de session préservé doit se protéger contre les attaques CSRF. Pour plus d’informations, consultez <xref:security/anti-request-forgery>.
 
 ## <a name="hidden-fields"></a>Champs masqués
 
@@ -267,7 +267,7 @@ Cette approche a également l’avantage d’éliminer l’utilisation des chaî
 
 ## <a name="cache"></a>Cache
 
-La mise en cache est un moyen efficace de stocker et récupérer des données. L’application peut contrôler la durée de vie des éléments mis en cache. Pour plus d'informations, consultez <xref:performance/caching/response>.
+La mise en cache est un moyen efficace de stocker et récupérer des données. L’application peut contrôler la durée de vie des éléments mis en cache. Pour plus d’informations, consultez <xref:performance/caching/response>.
 
 Les données mises en cache ne sont pas associées à une requête, un utilisateur ou une session spécifique. **Ne mettez pas en cache les données spécifiques à l’utilisateur qui peuvent être récupérées par d’autres demandes de l’utilisateur.**
 
@@ -348,21 +348,21 @@ L’état de session présente les comportements suivants :
 * L’application conserve une session pendant une période limitée après la dernière requête. L’application définit le délai d’expiration d’une session ou utilise la valeur par défaut de 20 minutes. L’état de session est idéal pour le stockage des données utilisateur qui sont propres à une session particulière, mais où les données ne nécessitent pas un stockage permanent entre les sessions.
 * Les données de session sont supprimées lorsque l' <xref:Microsoft.AspNetCore.Http.ISession.Clear%2A?displayProperty=nameWithType> implémentation est appelée ou lorsque la session expire.
 * Il n’existe pas de mécanisme par défaut pour informer le code de l’application qu’un navigateur client a été fermé ou lorsque la session cookie est supprimée ou a expiré sur le client.
-* Les modèles MVC et Razor pages ASP.net Core incluent la prise en charge de règlement général sur la protection des données (RGPD). Les États cookie de session ne sont pas marqués comme étant essentiels par défaut, l’état de session ne fonctionne pas, sauf si le suivi est autorisé par le visiteur du site. Pour plus d'informations, consultez <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
+* Les modèles MVC et Razor pages ASP.net Core incluent la prise en charge de règlement général sur la protection des données (RGPD). Les États cookie de session ne sont pas marqués comme étant essentiels par défaut, l’état de session ne fonctionne pas, sauf si le suivi est autorisé par le visiteur du site. Pour plus d’informations, consultez <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
 
 > [!WARNING]
 > Ne stockez pas de données sensibles dans l’état de session. Il se peut que l’utilisateur ne ferme pas le navigateur et n’efface pas la session cookie . Certains navigateurs maintiennent des sessions valides cookie entre les fenêtres de navigateur. Une session peut ne pas être restreinte à un seul utilisateur &mdash; . l’utilisateur suivant peut continuer à parcourir l’application avec la même session cookie .
 
 Le fournisseur de cache en mémoire stocke les données de session dans la mémoire du serveur où réside l’application. Dans un scénario de batterie de serveurs :
 
-* Utilisez des *sessions persistantes* pour lier chaque session à une instance d’application spécifique sur un serveur donné. [Azure App Service](https://azure.microsoft.com/services/app-service/) utilise [Application Request Routing (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) pour appliquer les sessions persistantes par défaut. Toutefois, les sessions rémanentes peuvent impacter l’extensibilité et compliquer les mises à jour des applications web. Une meilleure approche consiste à utiliser le cache distribué Redis ou SQL Server, qui ne nécessite pas de sessions persistantes. Pour plus d'informations, consultez <xref:performance/caching/distributed>.
+* Utilisez des *sessions persistantes* pour lier chaque session à une instance d’application spécifique sur un serveur donné. [Azure App Service](https://azure.microsoft.com/services/app-service/) utilise [Application Request Routing (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) pour appliquer les sessions persistantes par défaut. Toutefois, les sessions rémanentes peuvent impacter l’extensibilité et compliquer les mises à jour des applications web. Une meilleure approche consiste à utiliser le cache distribué Redis ou SQL Server, qui ne nécessite pas de sessions persistantes. Pour plus d’informations, consultez <xref:performance/caching/distributed>.
 * La session cookie est chiffrée via <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> . La protection des données doit être correctement configurée pour lire cookie les sessions sur chaque ordinateur. Pour plus d’informations, consultez <xref:security/data-protection/introduction> et [Fournisseurs de stockage de clés](xref:security/data-protection/implementation/key-storage-providers).
 
 ### <a name="configure-session-state"></a>Configurer l’état de session
 
 Le package [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/), qui est inclus dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app), fournit un middleware (intergiciel) pour gérer l’état de session. Pour activer le middleware Session, `Startup` doit contenir les éléments suivants :
 
-* L’un des <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> caches de mémoire. L’implémentation `IDistributedCache` est utilisée comme magasin de stockage pour la session. Pour plus d'informations, consultez <xref:performance/caching/distributed>.
+* L’un des <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> caches de mémoire. L’implémentation `IDistributedCache` est utilisée comme magasin de stockage pour la session. Pour plus d’informations, consultez <xref:performance/caching/distributed>.
 * Appel à <xref:Microsoft.Extensions.DependencyInjection.SessionServiceCollectionExtensions.AddSession%2A> dans `ConfigureServices` .
 * Appel à <xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession%2A> dans `Configure` .
 
@@ -402,7 +402,7 @@ Pour remplacer les cookie valeurs par défaut de la session, utilisez `SessionOp
 
 L’application utilise la <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> propriété pour déterminer la durée pendant laquelle une session peut être inactive avant que son contenu dans le cache du serveur soit abandonné. Cette propriété est indépendante de l' cookie expiration. Chaque requête qui passe par le [middleware Session](xref:Microsoft.AspNetCore.Session.SessionMiddleware) réinitialise le délai d’expiration.
 
-L’état de session est *sans verrouillage* . Si deux requêtes tentent simultanément de modifier le contenu d’une session, la dernière requête remplace la première. `Session` est implémentée comme une *session cohérente* , ce qui signifie que tout le contenu est stocké au même emplacement. Quand deux requêtes tentent de modifier différentes valeurs de session, la dernière requête peut remplacer les modifications de session effectuées par la première.
+L’état de session est *sans verrouillage*. Si deux requêtes tentent simultanément de modifier le contenu d’une session, la dernière requête remplace la première. `Session` est implémentée comme une *session cohérente*, ce qui signifie que tout le contenu est stocké au même emplacement. Quand deux requêtes tentent de modifier différentes valeurs de session, la dernière requête peut remplacer les modifications de session effectuées par la première.
 
 ### <a name="set-and-get-session-values"></a>Définir et obtenir des valeurs Session
 
@@ -504,7 +504,7 @@ L’ordre des middlewares est important. Dans l’exemple précédent, une excep
 
 Vous pouvez passer une quantité limitée de données d’une requête à une autre en l’ajoutant à la chaîne de la nouvelle requête. Cela est utile pour capturer l’état de manière persistante et permettre ainsi le partage de liens avec état incorporé par e-mail ou sur les réseaux sociaux. Les chaînes de requête URL étant publiques, vous ne devez jamais utiliser de chaînes de requête pour des données sensibles.
 
-En plus du partage accidentel, l’ajout de données dans des chaînes de requête peut favoriser les attaques par [falsification de requête intersites (CSRF, Cross Site Request Forgery)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) et conduire des utilisateurs authentifiés à visiter des sites malveillants. Les attaquants peuvent ensuite dérober des données utilisateur à partir de l’application ou effectuer des actions malveillantes en utilisant un compte d’utilisateur. Chaque état de session ou d’application conservé doit garantir une protection contre les attaques CSRF. Pour plus d'informations, consultez <xref:security/anti-request-forgery>.
+En plus du partage accidentel, l’ajout de données dans des chaînes de requête peut favoriser les attaques par [falsification de requête intersites (CSRF, Cross Site Request Forgery)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) et conduire des utilisateurs authentifiés à visiter des sites malveillants. Les attaquants peuvent ensuite dérober des données utilisateur à partir de l’application ou effectuer des actions malveillantes en utilisant un compte d’utilisateur. Chaque état de session ou d’application conservé doit garantir une protection contre les attaques CSRF. Pour plus d’informations, consultez <xref:security/anti-request-forgery>.
 
 ## <a name="hidden-fields"></a>Champs masqués
 
@@ -550,7 +550,7 @@ La mise en cache est un moyen efficace de stocker et récupérer des données. L
 
 Les données mises en cache ne sont pas associées à une requête, un utilisateur ou une session spécifique. **Veillez à ne pas mettre en cache des données propres à l’utilisateur susceptibles d’être récupérées par les requêtes d’autres utilisateurs.**
 
-Pour plus d'informations, consultez <xref:performance/caching/response>.
+Pour plus d’informations, consultez <xref:performance/caching/response>.
 
 ## <a name="dependency-injection"></a>Injection de dépendances
 

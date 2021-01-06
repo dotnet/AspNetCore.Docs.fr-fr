@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/concurrency
 ms.openlocfilehash: d476c836e8d497ca1291992dda38da1fc9f59ed2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054370"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Didacticiel : gérer la concurrence-ASP.NET MVC avec EF Core
@@ -69,7 +69,7 @@ La solution alternative à l’accès concurrentiel pessimiste est l’accès co
 
 ![Modification de la valeur de budget sur 0](concurrency/_static/change-budget.png)
 
-Avant que Jane clique sur **Save** , John consulte la même page et change le champ Start Date de 01/09/2007 en 01/09/2013.
+Avant que Jane clique sur **Save**, John consulte la même page et change le champ Start Date de 01/09/2007 en 01/09/2013.
 
 ![Modification de la date de début sur 2013](concurrency/_static/change-date.png)
 
@@ -91,7 +91,7 @@ Voici quelques-unes des options :
 
 * Vous pouvez empêcher les modifications de John de faire l’objet d’une mise à jour dans la base de données.
 
-     En règle générale, vous affichez un message d’erreur, vous lui montrez l’état actuel des données et vous lui permettez de réappliquer ses modifications s’il veut toujours les faire. Il s’agit alors d’un scénario *Priorité au magasin* . (Les valeurs du magasin de données ont priorité sur les valeurs soumises par le client.) Vous allez implémenter le scénario de stockage WINS dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti de ce qui se passe.
+     En règle générale, vous affichez un message d’erreur, vous lui montrez l’état actuel des données et vous lui permettez de réappliquer ses modifications s’il veut toujours les faire. Il s’agit alors d’un scénario *Priorité au magasin*. (Les valeurs du magasin de données ont priorité sur les valeurs soumises par le client.) Vous allez implémenter le scénario de stockage WINS dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti de ce qui se passe.
 
 ### <a name="detecting-concurrency-conflicts"></a>Détection des conflits d’accès concurrentiel
 
@@ -111,13 +111,13 @@ Dans le reste de ce didacticiel, vous ajoutez une propriété de suivi `rowversi
 
 ## <a name="add-a-tracking-property"></a>Ajouter une propriété de suivi
 
-Dans *Models/Department.cs* , ajoutez une propriété de suivi nommée RowVersion :
+Dans *Models/Department.cs*, ajoutez une propriété de suivi nommée RowVersion :
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
 L’attribut `Timestamp` spécifie que cette colonne sera incluse dans la clause WHERE des commandes UPDATE et DELETE envoyées à la base de données. L’attribut est nommé `Timestamp`, car les versions précédentes de SQL Server utilisaient un type de données SQL `timestamp` avant son remplacement par le type SQL `rowversion`. Le type .NET pour `rowversion` est un tableau d’octets.
 
-Si vous préférez utiliser l’API actuelle, vous pouvez utiliser la méthode `IsConcurrencyToken` (dans *Data/SchoolContext.cs* ) pour spécifier la propriété de suivi, comme indiqué dans l’exemple suivant :
+Si vous préférez utiliser l’API actuelle, vous pouvez utiliser la méthode `IsConcurrencyToken` (dans *Data/SchoolContext.cs*) pour spécifier la propriété de suivi, comme indiqué dans l’exemple suivant :
 
 ```csharp
 modelBuilder.Entity<Department>()
@@ -142,7 +142,7 @@ Générez automatiquement un modèle de contrôleur Departments et des vues, com
 
 ![Générer automatiquement un modèle Department](concurrency/_static/add-departments-controller.png)
 
-Dans le fichier *DepartmentsController.cs* , changez les quatre occurrences de « FirstMidName » en « FullName », de façon que les listes déroulantes de l’administrateur du département contiennent le nom complet de l’enseignant et non pas simplement son nom de famille.
+Dans le fichier *DepartmentsController.cs*, changez les quatre occurrences de « FirstMidName » en « FullName », de façon que les listes déroulantes de l’administrateur du département contiennent le nom complet de l’enseignant et non pas simplement son nom de famille.
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_Dropdown)]
 
@@ -188,7 +188,7 @@ Le code ajoute un message d’erreur personnalisé pour chaque colonne dont les 
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=174-178)]
 
-Enfin, le code affecte la nouvelle valeur récupérée auprès de la base de données à `RowVersion` pour `departmentToUpdate`. Cette nouvelle valeur de `RowVersion` est stockée dans le champ masqué quand la page Edit est réaffichée et, la prochaine fois que l’utilisateur clique sur **Save** , seules les erreurs d’accès concurrentiel qui se produisent depuis le réaffichage de la page Edit sont interceptées.
+Enfin, le code affecte la nouvelle valeur récupérée auprès de la base de données à `RowVersion` pour `departmentToUpdate`. Cette nouvelle valeur de `RowVersion` est stockée dans le champ masqué quand la page Edit est réaffichée et, la prochaine fois que l’utilisateur clique sur **Save**, seules les erreurs d’accès concurrentiel qui se produisent depuis le réaffichage de la page Edit sont interceptées.
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=199-200)]
 
@@ -196,7 +196,7 @@ L’instruction `ModelState.Remove` est nécessaire car `ModelState` contient l�
 
 ## <a name="update-edit-view"></a>Mettre à jour la vue Edit
 
-Dans *Views/Departments/Edit.cshtml* , faites les modifications suivantes :
+Dans *Views/Departments/Edit.cshtml*, faites les modifications suivantes :
 
 * Ajoutez un champ masqué pour enregistrer la valeur de la propriété `RowVersion`, immédiatement après le champ masqué pour la propriété `DepartmentID`.
 
@@ -206,9 +206,9 @@ Dans *Views/Departments/Edit.cshtml* , faites les modifications suivantes :
 
 ## <a name="test-concurrency-conflicts"></a>Tester les conflits d'accès concurrentiel
 
-Exécutez l’application et accédez à la page Index des départements. Cliquez avec le bouton droit sur le lien hypertexte **Edit** pour le département « English », sélectionnez **Ouvrir dans un nouvel onglet** , puis cliquez sur le lien hypertexte **Edit** pour le département « English ». Les deux onglets du navigateur affichent maintenant les mêmes informations.
+Exécutez l’application et accédez à la page Index des départements. Cliquez avec le bouton droit sur le lien hypertexte **Edit** pour le département « English », sélectionnez **Ouvrir dans un nouvel onglet**, puis cliquez sur le lien hypertexte **Edit** pour le département « English ». Les deux onglets du navigateur affichent maintenant les mêmes informations.
 
-Changez un champ sous le premier onglet du navigateur, puis cliquez sur **Save** .
+Changez un champ sous le premier onglet du navigateur, puis cliquez sur **Save**.
 
 ![Page 1 de modification de département après changement](concurrency/_static/edit-after-change-1.png)
 
@@ -218,11 +218,11 @@ Changez un champ sous le deuxième onglet du navigateur.
 
 ![Page Edit 2 du département après changement](concurrency/_static/edit-after-change-2.png)
 
-Cliquez sur **Enregistrer** . Vous voyez un message d’erreur :
+Cliquez sur **Enregistrer**. Vous voyez un message d’erreur :
 
 ![Message d’erreur de page de modification de département](concurrency/_static/edit-error.png)
 
-Cliquez à nouveau sur **Enregistrer** . La valeur que vous avez entrée sous le deuxième onglet du navigateur est enregistrée. Vous voyez les valeurs enregistrées quand la page Index apparaît.
+Cliquez à nouveau sur **Enregistrer**. La valeur que vous avez entrée sous le deuxième onglet du navigateur est enregistrée. Vous voyez les valeurs enregistrées quand la page Index apparaît.
 
 ## <a name="update-the-delete-page"></a>Mettre à jour la page Delete
 
@@ -230,7 +230,7 @@ Pour la page Delete, Entity Framework détecte les conflits d’accès concurren
 
 ### <a name="update-the-delete-methods-in-the-departments-controller"></a>Mettre à jour les méthodes Delete dans le contrôleur Departments
 
-Dans *DepartmentsController.cs* , remplacez la méthode HttpGet `Delete` par le code suivant :
+Dans *DepartmentsController.cs*, remplacez la méthode HttpGet `Delete` par le code suivant :
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeleteGet&highlight=1,10,14-17,21-29)]
 
@@ -260,7 +260,7 @@ Si une erreur d’accès concurrentiel est interceptée, le code réaffiche la p
 
 ### <a name="update-the-delete-view"></a>Mettre à jour la vue Delete
 
-Dans *Views/Departments/Delete.cshtml* , remplacez le code du modèle généré automatiquement par le code suivant, qui ajoute un champ de message d’erreur et des champs masqués pour les propriétés DepartmentID et RowVersion. Les modifications sont mises en surbrillance.
+Dans *Views/Departments/Delete.cshtml*, remplacez le code du modèle généré automatiquement par le code suivant, qui ajoute un champ de message d’erreur et des champs masqués pour les propriétés DepartmentID et RowVersion. Les modifications sont mises en surbrillance.
 
 [!code-cshtml[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
 
@@ -268,7 +268,7 @@ Ceci apporte les modifications suivantes :
 
 * Ajoute un message d’erreur entre les titres `h2` et `h3`.
 
-* Il remplace FirstMidName par FullName dans le champ **Administrator** .
+* Il remplace FirstMidName par FullName dans le champ **Administrator**.
 
 * Supprime le champ RowVersion.
 
@@ -280,11 +280,11 @@ Dans la première fenêtre, changez une des valeurs, puis cliquez sur **Save** :
 
 ![Page Edit pour les départements après modification avant la suppression](concurrency/_static/edit-after-change-for-delete.png)
 
-Sous le deuxième onglet, cliquez sur **Delete** . Vous voyez le message d’erreur d’accès concurrentiel et les valeurs du département sont actualisées avec ce qui est actuellement dans la base de données.
+Sous le deuxième onglet, cliquez sur **Delete**. Vous voyez le message d’erreur d’accès concurrentiel et les valeurs du département sont actualisées avec ce qui est actuellement dans la base de données.
 
 ![Page de confirmation de suppression du département avec erreur d’accès concurrentiel](concurrency/_static/delete-error.png)
 
-Si vous recliquez sur **Delete** , vous êtes redirigé vers la page Index, qui montre que le département a été supprimé.
+Si vous recliquez sur **Delete**, vous êtes redirigé vers la page Index, qui montre que le département a été supprimé.
 
 ## <a name="update-details-and-create-views"></a>Mettre à jour les vues Details et Create
 
