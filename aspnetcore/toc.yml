@@ -193,7 +193,7 @@
           href: /learn/modules/secure-aspnet-core-identity/
 - name: Notions de base
   items:
-    - name: Vue d’ensemble
+    - name: Vue d'ensemble
       uid: fundamentals/index
     - name: Classe Startup
       uid: fundamentals/startup
@@ -334,7 +334,7 @@
               uid: blazor/fundamentals/additional-scenarios
         - name: Composants
           items:
-            - name: Vue d'ensemble
+            - name: Vue d’ensemble
               uid: blazor/components/index
             - name: Valeurs et paramètres en cascade
               uid: blazor/components/cascading-values-and-parameters
@@ -370,7 +370,7 @@
           uid: blazor/call-web-api
         - name: Sécurité et identité
           items:
-            - name: Vue d’ensemble
+            - name: Vue d'ensemble
               uid: blazor/security/index
             - name: WebAssembly Blazor
               items:
@@ -766,6 +766,8 @@
       uid: grpc/interprocess
     - name: Créer des API web JSON à partir de gRPC
       uid: grpc/httpapi
+    - name: Clients et services gRPC Code First
+      uid: grpc/code-first
     - name: Gérer les références Protobuf avec dotnet-GRPC
       uid: grpc/dotnet-grpc
     - name: Tester les services gRPC avec gRPCurl
