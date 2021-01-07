@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/Microsoft.dotnet-openapi
-ms.openlocfilehash: 28a71c7040667c7544cc17c1184c09b5b39959b9
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5d9f1684aa333c38c73673138a703b04d318c6df
+ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052550"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97972026"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>Développer des applications ASP.NET Core à l’aide des outils OpenAPI
 
@@ -88,7 +88,7 @@ La référence précédente est requise pour que l’application appelle le code
 |-------|------|-------------|---------|
 | -p|--updateProject | Projet sur lequel effectuer l’opération. |Ajouter une URL dotnet openapi *--updateProject .\Ref.csproj*`https://contoso.com/openapi.json` |
 | -o|--fichier de sortie | Où placer la copie locale du fichier OpenAPI. |dotnet openapi Add URL `https://contoso.com/openapi.json` *--output-file myclient.json* |
-| -c|--Code-Generator| Générateur de code à appliquer à la référence. Les options sont `NSwagCSharp` et `NSwagTypeScript`. |.\OpenApi.jsdotnet openapi ajouter un fichier sur--Code-Generator
+| -c|--Code-Generator| Générateur de code à appliquer à la référence. Les options sont `NSwagCSharp` et `NSwagTypeScript`. |Ajouter une URL dotnet openapi `https://contoso.com/openapi.json` --Code-Generator
 | -H|--help|Afficher les informations d’aide|Ajouter une URL dotnet openapi--Help|
 
 #### <a name="arguments"></a>Arguments
@@ -97,7 +97,7 @@ La référence précédente est requise pour que l’application appelle le code
 |-------------|-------------|---------|
 | URL source | Source à partir de laquelle créer une référence. Doit être une URL. |URL d’ajout de dotnet openapi `https://contoso.com/openapi.json` |
 
-## <a name="remove"></a>Supprimer
+## <a name="remove"></a>Remove
 
 Supprime la référence OpenAPI correspondant au nom de fichier donné du fichier *. csproj* . Lorsque la référence OpenAPI est supprimée, les clients ne sont pas générés. Les fichiers local *. JSON* et *. YAML* sont supprimés.
 
