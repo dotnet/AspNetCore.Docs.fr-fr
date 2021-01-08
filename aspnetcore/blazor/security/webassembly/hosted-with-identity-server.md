@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 80196945bc6891d5517d7da0e07ca1b0debddd28
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: fdd7eb3c4a3b07022760a43cbde80838bfaf7c84
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97854681"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024793"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Sécuriser une Blazor WebAssembly application hébergée ASP.net core avec le Identity serveur
 
@@ -575,3 +575,6 @@ Get-ChildItem -path Cert:\CurrentUser\My -Recurse | Format-List DnsNameList, Sub
 * [Importer un certificat à partir d’Key Vault (documentation Azure)](/azure/app-service/configure-ssl-certificate#import-a-certificate-from-key-vault)
 * <xref:blazor/security/webassembly/additional-scenarios>
 * [Demandes d’API Web non authentifiées ou non autorisées dans une application avec un client par défaut sécurisé](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
+* <xref:host-and-deploy/proxy-load-balancer>: Fournit des conseils sur :
+  * Utilisation de l’intergiciel d’en-têtes transférés pour conserver les informations de schéma HTTPs entre les serveurs proxy et les réseaux internes.
+  * Scénarios et cas d’utilisation supplémentaires, y compris la configuration manuelle du schéma, les modifications du chemin des demandes pour le routage des demandes correct et le transfert du modèle de demande pour les proxys inversés Linux et non-IIS.

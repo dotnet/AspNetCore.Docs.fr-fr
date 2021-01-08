@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: 051721b62397b582f1ffdaba08ffefe5d0c9ae03
-ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
+ms.openlocfilehash: 706564bb8607d0bb25c092c31a72e5790c825ee4
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97972013"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024676"
 ---
 # <a name="aspnet-core-no-locblazor-component-virtualization"></a>BlazorVirtualisation des composants ASP.net Core
 
@@ -32,16 +32,21 @@ Par [Daniel Roth](https://github.com/danroth27)
 
 Améliorez les performances perçues du rendu des composants à l’aide de la Blazor prise en charge intégrée de la virtualisation du Framework. La virtualisation est une technique qui permet de limiter le rendu de l’interface utilisateur uniquement aux parties qui sont actuellement visibles. Par exemple, la virtualisation est utile lorsque l’application doit afficher une longue liste d’éléments et que seul un sous-ensemble d’éléments doit être visible à un moment donné. Blazorfournit le [ `Virtualize` composant](xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601) qui peut être utilisé pour ajouter la virtualisation aux composants d’une application.
 
+Le `Virtualize` composant peut être utilisé dans les cas suivants :
+
+* Rendu d’un ensemble d’éléments de données dans une boucle.
+* La plupart des éléments ne sont pas visibles en raison du défilement.
+* Les éléments rendus ont exactement la même taille. Lorsque l’utilisateur fait défiler jusqu’à un point arbitraire, le composant peut calculer les éléments visibles à afficher.
+
 Sans virtualisation, une liste standard peut utiliser une boucle C# [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) pour afficher chaque élément de la liste :
 
 ```razor
-@foreach (var employee in employees)
-{
-    <p>
-        @employee.FirstName @employee.LastName has the 
-        job title of @employee.JobTitle.
-    </p>
-}
+<div class="all-flights" style="height:500px;overflow-y:scroll">
+    @foreach (var flight in allFlights)
+    {
+        <FlightSummary @key="flight.FlightId" Flight="@flight" />
+    }
+</div>
 ```
 
 Si la liste contient des milliers d’éléments, le rendu de la liste peut prendre beaucoup de temps. L’utilisateur peut rencontrer un décalage de l’interface utilisateur notable.
@@ -49,26 +54,36 @@ Si la liste contient des milliers d’éléments, le rendu de la liste peut pren
 Au lieu de restituer tous les éléments de la liste en même temps, remplacez la [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) boucle par le `Virtualize` composant et spécifiez une source d’élément fixe avec <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Items%2A?displayProperty=nameWithType> . Seuls les éléments qui sont actuellement visibles sont rendus :
 
 ```razor
-<Virtualize Context="employee" Items="@employees">
-    <p>
-        @employee.FirstName @employee.LastName has the 
-        job title of @employee.JobTitle.
-    </p>
-</Virtualize>
+<div class="all-flights" style="height:500px;overflow-y:scroll">
+    <Virtualize Items="@allFlights" Context="flight">
+        <FlightSummary @key="flight.FlightId" Details="@flight.Summary" />
+    </Virtualize>
+</div>
 ```
 
-Si vous ne spécifiez pas de contexte pour le composant avec `Context` , utilisez la `context` valeur ( `@context.{PROPERTY}` ) dans le modèle de contenu de l’élément :
+Si vous ne spécifiez pas de contexte pour le composant avec `Context` , utilisez la `context` valeur ( `context.{PROPERTY}` / `@context.{PROPERTY}` ) dans le modèle de contenu de l’élément :
 
 ```razor
-<Virtualize Items="@employees">
-    <p>
-        @context.FirstName @context.LastName has the 
-        job title of @context.JobTitle.
-    </p>
-</Virtualize>
+<div class="all-flights" style="height:500px;overflow-y:scroll">
+    <Virtualize Items="@allFlights">
+        <FlightSummary @key="context.FlightId" Details="@context.Summary" />
+    </Virtualize>
+</div>
 ```
 
-Le `Virtualize` composant calcule le nombre d’éléments à afficher en fonction de la hauteur du conteneur et de la taille des éléments rendus.
+> [!NOTE]
+> Le processus de mappage des objets de modèle aux éléments et aux composants peut être contrôlé à l’aide de l' `@key` attribut de directive [] [XREF : MVC/views/Razor # clé]. `@key` force l’algorithme de comparaison à garantir la préservation des éléments ou des composants en fonction de la valeur de la clé.
+>
+> Pour plus d’informations, consultez les articles suivants :
+>
+> <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>
+> <xref:mvc/views/razor#key>
+
+Le `Virtualize` composant :
+
+* Calcule le nombre d’éléments à afficher en fonction de la hauteur du conteneur et de la taille des éléments rendus.
+* Recalcule et restitue les éléments à mesure que l’utilisateur fait défiler.
+* Extrait uniquement la tranche d’enregistrements d’une API externe qui correspond à la région visible actuelle, au lieu de télécharger toutes les données de la collection.
 
 Le contenu de l’élément pour le `Virtualize` composant peut inclure les éléments suivants :
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: cc090b4e56745e6b010e4a7ee17332b0d3a95560
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 0753ef0f1cde7bbb45ecc09b97fecb5ce364811c
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "95417381"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024650"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyMeilleures pratiques en matière de performances de ASP.net Core
 
@@ -43,16 +43,16 @@ Les sections suivantes fournissent des recommandations pour réduire la charge d
 
 Au moment de l’exécution, les composants existent sous la forme d’une hiérarchie. Un composant racine a des composants enfants. À son tour, les enfants de la racine ont leurs propres composants enfants, et ainsi de suite. Lorsqu’un événement se produit, tel qu’un utilisateur qui sélectionne un bouton, c’est la méthode Blazor qui détermine les composants à restituer :
 
- 1. L’événement lui-même est distribué à n’importe quel composant qui rend le gestionnaire de l’événement. Après l’exécution du gestionnaire d’événements, ce composant est rerendu.
- 1. Chaque fois qu’un composant est rerendu, il fournit une nouvelle copie des valeurs de paramètre à chacun de ses composants enfants.
- 1. Lors de la réception d’un nouvel ensemble de valeurs de paramètres, chaque composant choisit s’il faut effectuer un nouveau rendu. Par défaut, les composants sont rerendus si les valeurs des paramètres ont pu être modifiées (par exemple, s’il s’agit d’objets mutables).
+1. L’événement lui-même est distribué à n’importe quel composant qui rend le gestionnaire de l’événement. Après l’exécution du gestionnaire d’événements, ce composant est rerendu.
+1. Chaque fois qu’un composant est rerendu, il fournit une nouvelle copie des valeurs de paramètre à chacun de ses composants enfants.
+1. Lors de la réception d’un nouvel ensemble de valeurs de paramètres, chaque composant choisit s’il faut effectuer un nouveau rendu. Par défaut, les composants sont rerendus si les valeurs des paramètres ont pu être modifiées (par exemple, s’il s’agit d’objets mutables).
 
 Les deux dernières étapes de cette séquence continuent de manière récursive la hiérarchie des composants. Dans de nombreux cas, l’ensemble de la sous-arborescence est rerendu. Cela signifie que les événements ciblant des composants de haut niveau peuvent entraîner des processus de rerendu coûteux, car tout ce qui se trouve au-dessous de ce point doit être rerendu.
 
 Si vous souhaitez interrompre ce processus et empêcher la récursivité du rendu dans une sous-arborescence particulière, vous pouvez soit :
 
- * Assurez-vous que tous les paramètres d’un certain composant sont de types immuables primitifs (par exemple,,,, `string` `int` `bool` `DateTime` et autres). La logique intégrée pour la détection des modifications ignore automatiquement le rerendu si aucune de ces valeurs de paramètre n’a changé. Si vous affichez un composant enfant avec `<Customer CustomerId="@item.CustomerId" />` , où `CustomerId` est une `int` valeur, il n’est pas rerendu, sauf en cas de `item.CustomerId` modification.
- * Si vous avez besoin d’accepter des valeurs de paramètre non primitives, telles que des types de modèles personnalisés, des rappels d’événements ou des <xref:Microsoft.AspNetCore.Components.RenderFragment> valeurs, vous pouvez substituer <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> pour contrôler la décision relative à l’affichage, qui est décrit dans l' [utilisation `ShouldRender` de](#use-of-shouldrender) la section.
+* Assurez-vous que tous les paramètres d’un certain composant sont de types immuables primitifs (par exemple,,,, `string` `int` `bool` `DateTime` et autres). La logique intégrée pour la détection des modifications ignore automatiquement le rerendu si aucune de ces valeurs de paramètre n’a changé. Si vous affichez un composant enfant avec `<Customer CustomerId="@item.CustomerId" />` , où `CustomerId` est une `int` valeur, il n’est pas rerendu, sauf en cas de `item.CustomerId` modification.
+* Si vous avez besoin d’accepter des valeurs de paramètre non primitives, telles que des types de modèles personnalisés, des rappels d’événements ou des <xref:Microsoft.AspNetCore.Components.RenderFragment> valeurs, vous pouvez substituer <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> pour contrôler la décision relative à l’affichage, qui est décrit dans l' [utilisation `ShouldRender` de](#use-of-shouldrender) la section.
 
 En ignorant le rerendu des sous-arborescences entières, vous pouvez supprimer la grande majorité du coût de rendu lorsqu’un événement se produit.
 
@@ -101,7 +101,7 @@ Dans le code précédent, un gestionnaire d’événements peut également `shou
 
 Pour la plupart des composants, ce niveau de contrôle manuel n’est pas nécessaire. Vous devez uniquement vous préoccuper du fait que vous ignorez le rendu des sous-arborescences si ces sous-arborescences sont particulièrement coûteuses à afficher et sont à l’origine du décalage de l’interface utilisateur.
 
-Pour plus d’informations, consultez <xref:blazor/components/lifecycle>.
+Pour plus d'informations, consultez <xref:blazor/components/lifecycle>.
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -109,40 +109,9 @@ Pour plus d’informations, consultez <xref:blazor/components/lifecycle>.
 
 Lors du rendu de grandes quantités d’IU au sein d’une boucle, par exemple une liste ou une grille avec des milliers d’entrées, la quantité importante d’opérations de rendu peut entraîner un décalage de l’interface utilisateur et donc une expérience utilisateur médiocre. Étant donné que l’utilisateur ne peut voir qu’un petit nombre d’éléments à la fois sans faire défiler la liste, il semblerait gaspiller de perdre du temps à afficher des éléments qui ne sont pas actuellement visibles.
 
-Pour résoudre ce Blazor problème, fournit un [ `<Virtualize>` composant](xref:blazor/components/virtualization) intégré qui crée les comportements d’apparence et de défilement d’une liste arbitrairement grande, mais qui affiche en fait uniquement les éléments de liste qui se trouvent dans la fenêtre d’affichage de défilement en cours. Par exemple, cela signifie que l’application peut avoir une liste avec 100 000 entrées, mais uniquement le coût de rendu de 20 éléments visibles à un moment donné. L’utilisation du `<Virtualize>` composant peut mettre à l’échelle les performances de l’interface utilisateur par ordre de grandeur.
+Pour résoudre ce Blazor problème, fournit le `Virtualize` composant qui crée les comportements d’apparence et de défilement d’une liste arbitrairement grande, mais qui restitue uniquement les éléments de liste qui se trouvent dans la fenêtre d’affichage de défilement en cours. Par exemple, cela signifie que l’application peut avoir une liste avec 100 000 entrées, mais uniquement le coût de rendu de 20 éléments visibles à un moment donné. L’utilisation du `Virtualize` composant peut mettre à l’échelle les performances de l’interface utilisateur par ordre de grandeur.
 
-`<Virtualize>` peut être utilisé dans les cas suivants :
-
- * Rendu d’un ensemble d’éléments de données dans une boucle.
- * La plupart des éléments ne sont pas visibles en raison du défilement.
- * Les éléments rendus ont exactement la même taille. Lorsque l’utilisateur fait défiler jusqu’à un point arbitraire, le composant peut calculer les éléments visibles à afficher.
-
-L’exemple suivant illustre une liste non virtualisée :
-
-```razor
-<div class="all-flights" style="height:500px;overflow-y:scroll">
-    @foreach (var flight in allFlights)
-    {
-        <FlightSummary @key="flight.FlightId" Flight="@flight" />
-    }
-</div>
-```
-
-Si la `allFlights` collection contient 10 000 éléments, elle instancie et restitue les `<FlightSummary>` instances de composant 10 000. En comparaison, le code suivant montre un exemple de liste virtualisée :
-
-```razor
-<div class="all-flights" style="height:500px;overflow-y:scroll">
-    <Virtualize Items="@allFlights" Context="flight">
-        <FlightSummary @key="flight.FlightId" Flight="@flight" />
-    </Virtualize>
-</div>
-```
-
-Même si l’interface utilisateur résultante est similaire à un utilisateur, en arrière-plan, le composant instancie et affiche uniquement autant d' `<FlightSummary>` instances que nécessaire pour remplir la région défilante. L’ensemble des `<FlightSummary>` instances affichées est recalculé et restitué lorsque l’utilisateur fait défiler.
-
-`<Virtualize>` offre également d’autres avantages. Par exemple, lorsqu’un composant demande des données à partir d’une API externe, `<Virtualize>` permet au composant d’extraire uniquement le segment des enregistrements qui correspondent à la région visible actuelle, au lieu de télécharger toutes les données de la collection.
-
-Pour plus d’informations, consultez <xref:blazor/components/virtualization>.
+Pour plus d'informations, consultez <xref:blazor/components/virtualization>.
 
 ::: moniker-end
 
@@ -152,9 +121,9 @@ La plupart des Blazor composants ne nécessitent pas d’effort d’optimisation
 
 Toutefois, il existe également des scénarios courants dans lesquels vous créez des composants qui doivent être répétés à l’échelle. Par exemple :
 
- * Les grands formulaires imbriqués peuvent avoir des centaines d’entrées individuelles, d’étiquettes et d’autres éléments.
- * Les grilles peuvent avoir des milliers de cellules.
- * Les nuages de points peuvent comporter des millions de points de données.
+* Les grands formulaires imbriqués peuvent avoir des centaines d’entrées individuelles, d’étiquettes et d’autres éléments.
+* Les grilles peuvent avoir des milliers de cellules.
+* Les nuages de points peuvent comporter des millions de points de données.
 
 En cas de modélisation de chaque unité comme des instances de composant distinctes, il y aura autant d’entre elles que leurs performances de rendu deviennent critiques. Cette section fournit des conseils sur la façon de rendre ces composants légers afin que l’interface utilisateur reste rapide et réactive.
 
@@ -162,8 +131,8 @@ En cas de modélisation de chaque unité comme des instances de composant distin
 
 Chaque composant est un îlot distinct qui peut être rendu indépendamment de ses parents et de ses enfants. En choisissant comment fractionner l’interface utilisateur en une hiérarchie de composants, vous prenez le contrôle de la granularité du rendu de l’interface utilisateur. Il peut s’agir d’une valeur correcte ou d’une mauvaise performance.
 
- * En fractionnant l’interface utilisateur en plusieurs composants, vous pouvez avoir des parties plus petites du rendu de l’interface utilisateur lorsque des événements se produisent. Par exemple, lorsqu’un utilisateur clique sur un bouton dans une ligne de table, vous pouvez être en mesure d’avoir uniquement ce rerendu de ligne unique à la place de la page ou de la table entière.
- * Toutefois, chaque composant supplémentaire implique des surcharges mémoire et processeur supplémentaires pour gérer son cycle de vie d’État et de rendu indépendant.
+* En fractionnant l’interface utilisateur en plusieurs composants, vous pouvez avoir des parties plus petites du rendu de l’interface utilisateur lorsque des événements se produisent. Par exemple, lorsqu’un utilisateur clique sur un bouton dans une ligne de table, vous pouvez être en mesure d’avoir uniquement ce rerendu de ligne unique à la place de la page ou de la table entière.
+* Toutefois, chaque composant supplémentaire implique des surcharges mémoire et processeur supplémentaires pour gérer son cycle de vie d’État et de rendu indépendant.
 
 Lors du réglage des performances de Blazor WebAssembly sur .net 5, nous avons mesuré une surcharge de rendu d’environ 0,06 ms par instance de composant. Elle est basée sur un composant simple qui accepte trois paramètres s’exécutant sur un ordinateur portable standard. En interne, la surcharge est principalement due à la récupération de l’État par composant à partir de dictionnaires et au passage et à la réception de paramètres. Par multiplication, vous pouvez constater que l’ajout d’instances de composants supplémentaires 2 000 ajoute 0,12 secondes à l’heure de rendu et que l’interface utilisateur a commencé à être trop lente pour les utilisateurs.
 
@@ -297,8 +266,8 @@ Dans l’exemple précédent, `Data` est différent pour chaque cellule, mais `O
 
 Le `<CascadingValue>` composant a un paramètre facultatif appelé `IsFixed` .
 
- * Si la `IsFixed` valeur est `false` (valeur par défaut), chaque destinataire de la valeur en cascade configure un abonnement pour recevoir des notifications de modification. Dans ce cas, chaque `[CascadingParameter]` est **beaucoup plus coûteuse** qu’un normal `[Parameter]` en raison du suivi des abonnements.
- * Si la `IsFixed` valeur est `true` (par exemple, `<CascadingValue Value="@someValue" IsFixed="true">` ), destinataires reçoit la valeur initiale, mais ne configure *pas* d’abonnement pour recevoir des mises à jour. Dans ce cas, chacune `[CascadingParameter]` est légère et **n’est pas plus coûteuse** qu’une normale `[Parameter]` .
+* Si la `IsFixed` valeur est `false` (valeur par défaut), chaque destinataire de la valeur en cascade configure un abonnement pour recevoir des notifications de modification. Dans ce cas, chaque `[CascadingParameter]` est **beaucoup plus coûteuse** qu’un normal `[Parameter]` en raison du suivi des abonnements.
+* Si la `IsFixed` valeur est `true` (par exemple, `<CascadingValue Value="@someValue" IsFixed="true">` ), destinataires reçoit la valeur initiale, mais ne configure *pas* d’abonnement pour recevoir des mises à jour. Dans ce cas, chacune `[CascadingParameter]` est légère et **n’est pas plus coûteuse** qu’une normale `[Parameter]` .
 
 Par conséquent, dans la mesure du possible, vous devez utiliser `IsFixed="true"` des valeurs en cascade. Vous pouvez effectuer cette opération chaque fois que la valeur fournie ne change pas au fil du temps. Dans le modèle commun où un composant passe `this` comme une valeur en cascade, vous devez utiliser `IsFixed="true"` :
 
@@ -308,7 +277,7 @@ Par conséquent, dans la mesure du possible, vous devez utiliser `IsFixed="true"
 </CascadingValue>
 ```
 
-Cela fait une énorme différence s’il y a un grand nombre d’autres composants qui reçoivent la valeur en cascade. Pour plus d’informations, consultez <xref:blazor/components/cascading-values-and-parameters>.
+Cela fait une énorme différence s’il y a un grand nombre d’autres composants qui reçoivent la valeur en cascade. Pour plus d'informations, consultez <xref:blazor/components/cascading-values-and-parameters>.
 
 #### <a name="avoid-attribute-splatting-with-captureunmatchedvalues"></a>Éviter la projection d’attributs avec `CaptureUnmatchedValues`
 
@@ -330,7 +299,7 @@ Cette approche permet de passer des attributs supplémentaires arbitraires à l�
 
 N’hésitez pas à utiliser <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> des composants non critiques pour les performances, tels que ceux qui ne sont pas fréquemment répétés. Toutefois, pour les composants qui restituent à l’échelle, tels que les éléments d’une grande liste ou les cellules d’une grille, essayez d’éviter la projection d’attributs.
 
-Pour plus d’informations, consultez <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters>.
+Pour plus d'informations, consultez <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters>.
 
 #### <a name="implement-setparametersasync-manually"></a>Implémenter `SetParametersAsync` manuellement
 
@@ -338,9 +307,9 @@ L’un des principaux aspects de la surcharge de rendu par composant consiste à
 
 Dans certains cas extrêmes, vous souhaiterez peut-être éviter la réflexion et implémenter manuellement votre propre logique de paramétrage de paramètres. Cela peut s’appliquer dans les cas suivants :
 
- * Vous disposez d’un composant qui effectue un rendu extrêmement fréquent (par exemple, il y a des centaines voire des milliers de copies dans l’interface utilisateur).
- * Il accepte un grand nombre de paramètres.
- * Vous constatez que la surcharge liée à la réception de paramètres a un impact observable sur la réactivité de l’interface utilisateur.
+* Vous disposez d’un composant qui effectue un rendu extrêmement fréquent (par exemple, il y a des centaines voire des milliers de copies dans l’interface utilisateur).
+* Il accepte un grand nombre de paramètres.
+* Vous constatez que la surcharge liée à la réception de paramètres a un impact observable sur la réactivité de l’interface utilisateur.
 
 Dans ce cas, vous pouvez remplacer la méthode virtuelle du composant <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> et implémenter votre propre logique propre au composant. L’exemple suivant évite délibérément les recherches dans les dictionnaires :
 
@@ -452,8 +421,8 @@ Cette technique peut être encore plus importante pour Blazor Server , puisque c
 
 Les appels entre .NET et JavaScript impliquent une surcharge supplémentaire, car :
 
- * Par défaut, les appels sont asynchrones.
- * Par défaut, les paramètres et les valeurs de retour sont sérialisés au format JSON. Cela permet de fournir un mécanisme de conversion facile à comprendre entre les types .NET et JavaScript.
+* Par défaut, les appels sont asynchrones.
+* Par défaut, les paramètres et les valeurs de retour sont sérialisés au format JSON. Cela permet de fournir un mécanisme de conversion facile à comprendre entre les types .NET et JavaScript.
 
 En outre Blazor Server , ces appels sont transmis sur le réseau.
 
@@ -528,7 +497,7 @@ Les appels synchrones fonctionnent dans les cas suivants :
 * L’application est en cours d’exécution sur Blazor WebAssembly , et non Blazor Server .
 * La fonction appelée retourne une valeur de façon synchrone (il ne s’agit pas d’une `async` méthode et ne retourne pas de .NET <xref:System.Threading.Tasks.Task> ou JavaScript `Promise` ).
 
-Pour plus d’informations, consultez <xref:blazor/call-javascript-from-dotnet>.
+Pour plus d'informations, consultez <xref:blazor/call-javascript-from-dotnet>.
 
 ::: moniker range=">= aspnetcore-5.0"
  
@@ -589,9 +558,9 @@ Pour obtenir des conseils sur la migration, consultez [Comment migrer de `Newton
 
 ### <a name="lazy-load-assemblies"></a>Charger des assemblys en différé
 
-Chargez les assemblys au moment de l’exécution lorsque les assemblys sont requis par un itinéraire. Pour plus d’informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
+Chargez les assemblys au moment de l’exécution lorsque les assemblys sont requis par un itinéraire. Pour plus d'informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
 
-### <a name="compression"></a>Compression
+### <a name="compression"></a>compression ;
 
 Quand une Blazor WebAssembly application est publiée, la sortie est compressée de manière statique lors de la publication afin de réduire la taille de l’application et de supprimer la surcharge liée à la compression du Runtime. Blazor s’appuie sur le serveur pour effectuer des negotation de contenu et traiter des fichiers compressés statiquement.
 

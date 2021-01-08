@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/java-client
-ms.openlocfilehash: da6876e0540579dac5fb9e92362b38a398bca4d5
-ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
+ms.openlocfilehash: 92941d21820de90eb2ae8fb76c21c588ed9f1ffb
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97972078"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024754"
 ---
 # <a name="aspnet-core-no-locsignalr-java-client"></a>SignalRClient Java ASP.net Core
 
@@ -108,12 +108,43 @@ HubConnection hubConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
     })).build();
 ```
 
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="passing-class-information-in-java"></a>Transmission d’informations de classe en Java
+
+Lors de l’appel des `on` `invoke` méthodes, ou `stream` de `HubConnection` dans le client Java, les utilisateurs doivent passer un `Type` objet plutôt qu’un `Class<?>` objet pour décrire tout générique `Object` passé à la méthode. Une `Type` peut être acquise à l’aide de la `TypeReference` classe fournie. Par exemple, à l’aide d’une classe générique personnalisée nommée `Foo<T>` , le code suivant obtient `Type` :
+
+```java
+Type fooType = new TypeReference<Foo<String>>() { }).getType();
+```
+
+Pour les non génériques, tels que les primitives ou d’autres types non paramétrables tels que `String` , vous pouvez simplement utiliser le intégré `.class` .
+
+Quand vous appelez l’une de ces méthodes avec un ou plusieurs types d’objet, utilisez la syntaxe des génériques lors de l’appel de la méthode. Par exemple, lors de l’inscription d’un `on` Gestionnaire pour une méthode nommée `func` , qui prend comme arguments une chaîne et un `Foo<String>` objet, utilisez le code suivant pour définir une action pour imprimer les arguments :
+
+```java
+hubConnection.<String, Foo<String>>on("func", (param1, param2) ->{
+    System.out.println(param1);
+    System.out.println(param2);
+}, String.class, fooType);
+```
+
+Cette Convention est nécessaire, car nous ne pouvons pas récupérer des informations complètes sur les types complexes à l’aide de la `Object.getClass` méthode en raison de l’effacement de type dans Java. Par exemple, `getClass` l’appel de sur un ne `ArrayList<String>` retourne pas `Class<ArrayList<String>>` , mais `Class<ArrayList>` à la place, qui ne donne pas suffisamment d’informations au désérialiseur pour désérialiser correctement un message entrant. Il en va de même pour les objets personnalisés.
+
+::: moniker-end
+
 ## <a name="known-limitations"></a>Limitations connues
 
-::: moniker range=">= aspnetcore-3.0"
+::: moniker range=">= aspnetcore-5.0"
 
-* Seul le protocole JSON est pris en charge.
 * Le transport de secours et le transport des événements envoyés par le serveur ne sont pas pris en charge.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
+* Le transport de secours et le transport des événements envoyés par le serveur ne sont pas pris en charge.
+* Seul le protocole JSON est pris en charge.
 
 ::: moniker-end
 

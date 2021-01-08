@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 108fb3a8a24295cad43fd8c83303abd95a7ecd33
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: aa24def1a003a2c2608691e6168066c740f47205
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055475"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024624"
 ---
 # <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Sécuriser les Blazor Server applications ASP.net Core
 
@@ -36,11 +36,11 @@ Blazor Server les applications sont configurées pour la sécurité de la même 
 
 Le Blazor Server modèle de projet peut être configuré pour l’authentification lors de la création du projet.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Suivez les instructions de Visual Studio dans <xref:blazor/tooling> pour créer un nouveau Blazor Server projet avec un mécanisme d’authentification.
 
-Après avoir choisi le modèle d' **Blazor Server application** dans la boîte de dialogue **créer une application Web ASP.net Core** , sélectionnez **modifier** sous **authentification** .
+Après avoir choisi le modèle d' **Blazor Server application** dans la boîte de dialogue **créer une application Web ASP.net Core** , sélectionnez **modifier** sous **authentification**.
 
 Une boîte de dialogue s’ouvre pour offrir le même ensemble de mécanismes d’authentification que ceux disponibles pour les autres projets ASP.NET Core :
 
@@ -131,3 +131,6 @@ Génération Identity de modèles automatique dans un Blazor Server projet :
 
 * [Démarrage rapide : Ajouter la connexion avec Microsoft à une application web ASP.NET Core](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp)
 * [Démarrage rapide : Protéger une API web ASP.NET Core avec la plateforme d’identités Microsoft](/azure/active-directory/develop/quickstart-v2-aspnet-core-web-api)
+* <xref:host-and-deploy/proxy-load-balancer>: Fournit des conseils sur :
+  * Utilisation de l’intergiciel d’en-têtes transférés pour conserver les informations de schéma HTTPs entre les serveurs proxy et les réseaux internes.
+  * Scénarios et cas d’utilisation supplémentaires, y compris la configuration manuelle du schéma, les modifications du chemin des demandes pour le routage des demandes correct et le transfert du modèle de demande pour les proxys inversés Linux et non-IIS.

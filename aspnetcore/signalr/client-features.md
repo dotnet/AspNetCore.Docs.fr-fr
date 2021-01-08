@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/client-features
-ms.openlocfilehash: 1d1778f95c53179ca05eaced3d1913f208220df4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 65ad619bb943a0e5ffbaec7ec80243972dafc49f
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050977"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024663"
 ---
 # <a name="aspnet-core-no-locsignalr-clients"></a>SignalRClients ASP.net Core
 
@@ -57,7 +57,7 @@ Le tableau ci-dessous présente les fonctionnalités et la prise en charge des c
 | Transport d’événements de Server-Sent |2.1.0|1.0.0|1.0.0|❌|
 | Transport d’interrogation longue |2.1.0|1.0.0|1.0.0|3.0.0|
 | Protocole JSON Hub |2.1.0|1.0.0|1.0.0|1.0.0|
-| Protocole MessagePack Hub |2.1.0|1.0.0|1.0.0|❌|
+| Protocole MessagePack Hub |2.1.0|1.0.0|1.0.0|5.0.0|
 
 La prise en charge de l’activation de fonctionnalités supplémentaires du client est suivie dans [notre suivi des problèmes](https://github.com/dotnet/AspNetCore/issues).
 
