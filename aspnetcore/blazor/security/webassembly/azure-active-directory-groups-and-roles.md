@@ -19,19 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: ded70f028b3021574ba260838837d9b23abd72f1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 96a7dde9a5a756e40125ffda4c54fbf24fdc616a
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94981880"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058257"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Groupes Azure Active Directory (AAD), rôles d’administrateur et rôles définis par l’utilisateur
 
 Par [Luke Latham](https://github.com/guardrex) et [Javier Calvarro Nelson](https://github.com/javiercn)
 
 > [!NOTE]
-> Cet article s’applique à Blazor ASP.net Core Apps version 3,1 avec Microsoft Identity v 1.0 et est prévu pour la mise à jour de 5,0 avec Identity v 2.0. Pour plus d’informations, voir [ Blazor WASM with AAD/B2C Groups and Roles (dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683).
+> Cet article s’applique à Blazor ASP.net Core Apps version 3,1 avec Microsoft Identity 1,0 et sera mis à jour à 5,0 avec Identity 2,0. Pour plus d’informations, consultez le problème GitHub suivant et la demande de tirage (pull request). L’onglet **fichiers modifiés** de la requête de tirage contient le texte brouillon et des exemples pour les mises à jour de l’article. Après la révision et les mises à jour finales, la requête de tirage sera fusionnée dans le jeu de documentation en direct.
+>
+> * Problème : [ Blazor WASM avec les groupes et rôles AAD (dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683)
+> * Requête de tirage : [ Blazor groupes et rôles AAD, rubrique 5,0 (dotnet/AspNetCore.Docs #20856)](https://github.com/dotnet/AspNetCore.Docs/pull/20856)
 
 Azure Active Directory (AAD) fournit plusieurs approches d’autorisation qui peuvent être combinées avec ASP.NET Core Identity :
 
@@ -535,7 +538,7 @@ Dans le fichier de paramètres d’application ( `appsettings.json` ou `appsetti
 },
 ```
 
-Par exemple :
+Exemple :
 
 ```json
 "AzureAd": {
@@ -583,7 +586,7 @@ Par exemple :
 > > [!NOTE]
 > > La configuration d’une en `Audience` général n’est **pas** obligatoire pour les applications avec un domaine d’éditeur vérifié qui a une `api://` étendue d’API basée sur.
 >
-> Pour plus d’informations, consultez <xref:blazor/security/webassembly/hosted-with-azure-active-directory#app-settings>.
+> Pour plus d'informations, consultez <xref:blazor/security/webassembly/hosted-with-azure-active-directory#app-settings>.
 
 ::: moniker-end
 
@@ -601,7 +604,7 @@ services.AddAuthorization(options =>
 });
 ```
 
-Pour plus d’informations, consultez <xref:security/authorization/policies>.
+Pour plus d'informations, consultez <xref:security/authorization/policies>.
 
 ### <a name="controller-access"></a>Accès du contrôleur
 
@@ -621,7 +624,7 @@ public class BillingDataController : ControllerBase
 
 ::: moniker range=">= aspnetcore-5.0"
 
-### <a name="packages"></a>Paquets
+### <a name="packages"></a>Packages
 
 Ajoutez des références de package à l’application *serveur* pour les packages suivants :
 
@@ -752,7 +755,7 @@ Dans le code précédent, la gestion des erreurs de jeton suivantes est facultat
 
 ::: moniker range="< aspnetcore-5.0"
 
-### <a name="packages"></a>Paquets
+### <a name="packages"></a>Packages
 
 Ajoutez des références de package à l’application *serveur* pour les packages suivants :
 

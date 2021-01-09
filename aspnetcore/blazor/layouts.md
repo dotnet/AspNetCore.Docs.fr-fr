@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 3cb7c6184c13a003b4f4294f887d8938caa42f97
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 417f69e797296cdcd01fc4ce326388512a406368
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506901"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058270"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>Dispositions de ASP.NET Core Blazor
 
@@ -32,7 +32,7 @@ Par [Rainer Stropek](https://www.timecockpit.com) et [Luke Latham](https://githu
 
 Certains éléments de l’application, tels que les menus, les messages de copyright et les logos de l’entreprise, font généralement partie de la mise en page globale de l’application et sont utilisés par chaque composant de l’application. La copie du code de ces éléments dans tous les composants d’une application n’est pas une approche efficace. Chaque fois que l’un des éléments requiert une mise à jour, chaque composant doit être mis à jour. Une telle duplication est difficile à gérer et peut entraîner une incohérence du contenu au fil du temps. Les *dispositions* résolvent ce problème.
 
-Techniquement, une disposition est simplement un autre composant. Une disposition est définie dans un Razor modèle ou dans du code C# et peut utiliser la [liaison de données](xref:blazor/components/data-binding), l' [injection de dépendances](xref:blazor/fundamentals/dependency-injection)et d’autres scénarios de composants.
+Techniquement, une disposition est simplement un autre composant. Une disposition est définie dans un Razor modèle ou dans du code C# et peut utiliser la [liaison de données](xref:blazor/components/data-binding), l' [injection de dépendances](xref:blazor/fundamentals/dependency-injection)et d’autres scénarios de composants. Les dispositions s’appliquent uniquement aux Razor composants routables qui possèdent des [`@page`](xref:mvc/views/razor#page) directives.
 
 Pour convertir un composant en disposition :
 
@@ -79,7 +79,7 @@ La spécification de la disposition comme disposition par défaut dans le routeu
 
 ## <a name="specify-a-layout-in-a-component"></a>Spécifier une disposition dans un composant
 
-Utilisez la Razor directive `@layout` pour appliquer une disposition à un composant. Le compilateur convertit `@layout` en <xref:Microsoft.AspNetCore.Components.LayoutAttribute> , qui est appliqué à la classe de composant.
+Utilisez la [`@layout`](xref:mvc/views/razor#layout) Razor directive pour appliquer une disposition à un composant routable Razor qui possède également une [`@page`](xref:mvc/views/razor#page) directive. Le compilateur convertit `@layout` en <xref:Microsoft.AspNetCore.Components.LayoutAttribute> , qui est appliqué à la classe de composant.
 
 Le contenu du composant suivant `MasterList` est inséré dans le `MasterLayout` à la position de `@Body` :
 
@@ -106,6 +106,9 @@ La spécification d’une disposition dans `_Imports.razor` remplace une disposi
 > [!WARNING]
 > N’ajoutez **pas** de Razor `@layout` directive au fichier racine `_Imports.razor` , ce qui entraîne une boucle infinie de dispositions dans l’application. Pour contrôler la disposition de l’application par défaut, spécifiez la disposition dans le `Router` composant. Pour plus d’informations, consultez la section [disposition par défaut](#default-layout) .
 
+> [!NOTE]
+> La [`@layout`](xref:mvc/views/razor#layout) Razor directive applique uniquement une disposition aux composants routables Razor avec des [`@page`](xref:mvc/views/razor#page) directives.
+
 ## <a name="nested-layouts"></a>Dispositions imbriquées
 
 Les applications peuvent se composer de dispositions imbriquées. Un composant peut faire référence à une disposition qui, à son tour, fait référence à une autre disposition. Par exemple, les dispositions d’imbrication sont utilisées pour créer une structure de menus à plusieurs niveaux.
@@ -124,7 +127,7 @@ Enfin, `MasterLayout` dans `MasterLayout.razor` contient les éléments de dispo
 
 ## <a name="share-a-no-locrazor-pages-layout-with-integrated-components"></a>Partager une Razor disposition de pages avec des composants intégrés
 
-Lorsque des composants routables sont intégrés à une Razor application pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d’informations, consultez <xref:blazor/components/prerendering-and-integration>.
+Lorsque des composants routables sont intégrés à une Razor application pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d'informations, consultez <xref:blazor/components/prerendering-and-integration>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

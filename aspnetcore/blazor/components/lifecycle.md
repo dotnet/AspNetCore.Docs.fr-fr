@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: b01b1c70be010ba0ad9bbd2c1114e5d8341b3261
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e5f9a07db742ce2e26f03c0b6e1caa1904e4e0d9
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506862"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058231"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>BlazorCycle de vie ASP.net Core
 
@@ -53,7 +53,9 @@ Traitement des événements Document Object Model (DOM) :
 
 Le `Render` cycle de vie :
 
-1. Si ce n’est pas le premier rendu du composant ou [`ShouldRender`](#suppress-ui-refreshing) s’il est évalué comme `false` , n’effectuez pas d’opérations supplémentaires sur le composant.
+1. Arrêter d’autres opérations de rendu sur le composant :
+   * Après le premier rendu.
+   * Lorsque [`ShouldRender`](#suppress-ui-refreshing) est `false` .
 1. Générez la diffation de l’arborescence de rendu (différence) et le rendu du composant.
 1. Attendez le DOM à mettre à jour.
 1. Appelez [`OnAfterRender{Async}`](#after-component-render) .
@@ -206,13 +208,13 @@ protected override bool ShouldRender()
 
 Même si <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> est substitué, le composant est toujours restitué initialement.
 
-Pour plus d’informations, consultez <xref:blazor/webassembly-performance-best-practices#avoid-unnecessary-rendering-of-component-subtrees>.
+Pour plus d'informations, consultez <xref:blazor/webassembly-performance-best-practices#avoid-unnecessary-rendering-of-component-subtrees>.
 
 ## <a name="state-changes"></a>Modifications d'état
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> notifie le composant que son état a changé. Le cas échéant, <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> l’appel de entraîne le rerendu du composant.
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> est appelé automatiquement pour les <xref:Microsoft.AspNetCore.Components.EventCallback> méthodes. Pour plus d’informations, consultez <xref:blazor/components/event-handling#eventcallback>.
+<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> est appelé automatiquement pour les <xref:Microsoft.AspNetCore.Components.EventCallback> méthodes. Pour plus d'informations, consultez <xref:blazor/components/event-handling#eventcallback>.
 
 ## <a name="handle-incomplete-async-actions-at-render"></a>Gérer les actions asynchrones incomplètes au rendu
 

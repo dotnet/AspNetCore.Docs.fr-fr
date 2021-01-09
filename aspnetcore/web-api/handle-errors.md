@@ -5,7 +5,7 @@ description: En savoir plus sur la gestion des erreurs avec ASP.NET Core API Web
 monikerRange: '>= aspnetcore-2.1'
 ms.author: prkrishn
 ms.custom: mvc
-ms.date: 07/23/2020
+ms.date: 1/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/handle-errors
-ms.openlocfilehash: 0efcf1bbeeb65cf7f4420f8c50fb4adf7d1d016d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 92e9350a7892f8f38f64d4ebd68d54a97ec7e994
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052524"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058374"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>Gérer les erreurs dans les API Web ASP.NET Core
 
@@ -127,7 +127,9 @@ La réponse au format HTML devient utile lors des tests par le biais d’outils 
 ::: moniker-end
 
 > [!WARNING]
-> Activez la page exception du développeur **uniquement lorsque l’application s’exécute dans l’environnement de développement** . Il n’est pas souhaitable de partager publiquement des informations détaillées sur les exceptions quand l’application s’exécute en production. Pour plus d’informations sur la configuration des environnements, consultez <xref:fundamentals/environments>.
+> Activez la page exception du développeur **uniquement lorsque l’application s’exécute dans l’environnement de développement**. Ne partagez pas des informations d’exception détaillées publiquement lorsque l’application s’exécute en production. Pour plus d’informations sur la configuration des environnements, consultez <xref:fundamentals/environments>.
+>
+> Ne Marquez pas la méthode d’action du gestionnaire d’erreurs avec des attributs de méthode HTTP, tels que `HttpGet` . Les verbes explicites empêchent certaines demandes d’atteindre la méthode d’action. Autorisez l’accès anonyme à la méthode si les utilisateurs non authentifiés doivent voir l’erreur.
 
 ## <a name="exception-handler"></a>Gestionnaire d’exceptions
 
@@ -222,6 +224,8 @@ L’intergiciel (middleware) de gestion des exceptions peut également fournir u
 
     ::: moniker-end
 
+    Le code précédent appelle [ControllerBase. Problem](xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A) pour créer une <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> réponse.
+
 ## <a name="use-exceptions-to-modify-the-response"></a>Utiliser des exceptions pour modifier la réponse
 
 Le contenu de la réponse peut être modifié à partir de l’extérieur du contrôleur. Dans l’API Web ASP.NET 4. x, l’une des méthodes permettant d’effectuer cette opération était d’utiliser le <xref:System.Web.Http.HttpResponseException> type. ASP.NET Core n’inclut pas de type équivalent. La prise en charge de `HttpResponseException` peut être ajoutée avec les étapes suivantes :
@@ -234,7 +238,7 @@ Le contenu de la réponse peut être modifié à partir de l’extérieur du con
 
     [!code-csharp[](handle-errors/samples/3.x/Filters/HttpResponseExceptionFilter.cs?name=snippet_HttpResponseExceptionFilter)]
 
-    Dans le filtre précédent, le nombre magique 10 est soustrait de la valeur entière maximale. Le fait de soustraire ce nombre permet à d’autres filtres de s’exécuter à la fin du pipeline.
+    Le filtre précédent spécifie un `Order` de la valeur entière maximale moins 10. Cela permet à d’autres filtres de s’exécuter à la fin du pipeline.
 
 1. Dans `Startup.ConfigureServices` , ajoutez le filtre d’action à la collection de filtres :
 
@@ -337,3 +341,7 @@ Utilisez la propriété <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.Client
 [!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=9-10)]
 
 ::: moniker-end
+
+## <a name="custom-middleware-to-handle-exceptions"></a>Intergiciel (middleware) personnalisé pour gérer les exceptions
+
+Les valeurs par défaut de l’intergiciel (middleware) de gestion des exceptions fonctionnent bien pour la plupart des applications. Pour les applications qui nécessitent une gestion spécialisée des exceptions, pensez à [personnaliser l’intergiciel (middleware) de gestion des exceptions](xref:fundamentals/error-handling#exception-handler-lambda).

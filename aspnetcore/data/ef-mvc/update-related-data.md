@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: f41d0b1d7ba46ef4867e0d160dc61f21042ce403
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 9ad0de9984b42c2b14dfaf48c74660915de93be1
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93053941"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058322"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Didacticiel : mettre à jour les données associées-ASP.NET MVC avec EF Core
 
@@ -34,7 +34,7 @@ Les illustrations suivantes montrent quelques-unes des pages que vous allez util
 
 ![Page Edit pour les cours](update-related-data/_static/course-edit.png)
 
-![Page Edit pour les formateurs](update-related-data/_static/instructor-edit-courses.png)
+![Modifier la page de l’instructeur](update-related-data/_static/instructor-edit-courses.png)
 
 Dans ce tutoriel, vous allez :
 
@@ -45,7 +45,7 @@ Dans ce tutoriel, vous allez :
 > * Mettre à jour la page Delete
 > * Ajouter des emplacements de bureau et des cours à la page Create
 
-## <a name="prerequisites"></a>Conditions préalables requises
+## <a name="prerequisites"></a>Prérequis
 
 * [Lire les données associées](read-related-data.md)
 
@@ -91,7 +91,7 @@ Pour optimiser les performances des pages Details et Delete pour les cours, ajou
 
 Dans *Views/Courses/Create.cshtml*, ajoutez une option « Select Department » à la liste déroulante **Department**, changez la légende de **DepartmentID** en **Department** et ajoutez un message de validation.
 
-[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-35)]
 
 Dans *Views/Courses/Edit.cshtml*, faites les mêmes modifications pour le champ Department que ce que vous venez de faire dans *Create.cshtml*.
 
