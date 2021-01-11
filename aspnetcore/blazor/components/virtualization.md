@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: 706564bb8607d0bb25c092c31a72e5790c825ee4
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: afd2da19641b41871f06426934c39348daa54b1f
+ms.sourcegitcommit: 2fea9bfe6127bbbdbb438406c82529b2bc331944
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024676"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065530"
 ---
 # <a name="aspnet-core-no-locblazor-component-virtualization"></a>BlazorVirtualisation des composants ASP.net Core
 
@@ -41,10 +41,10 @@ Le `Virtualize` composant peut être utilisé dans les cas suivants :
 Sans virtualisation, une liste standard peut utiliser une boucle C# [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) pour afficher chaque élément de la liste :
 
 ```razor
-<div class="all-flights" style="height:500px;overflow-y:scroll">
+<div style="height:500px;overflow-y:scroll">
     @foreach (var flight in allFlights)
     {
-        <FlightSummary @key="flight.FlightId" Flight="@flight" />
+        <FlightSummary @key="flight.FlightId" Details="@flight.Summary" />
     }
 </div>
 ```
@@ -54,17 +54,17 @@ Si la liste contient des milliers d’éléments, le rendu de la liste peut pren
 Au lieu de restituer tous les éléments de la liste en même temps, remplacez la [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) boucle par le `Virtualize` composant et spécifiez une source d’élément fixe avec <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Items%2A?displayProperty=nameWithType> . Seuls les éléments qui sont actuellement visibles sont rendus :
 
 ```razor
-<div class="all-flights" style="height:500px;overflow-y:scroll">
+<div style="height:500px;overflow-y:scroll">
     <Virtualize Items="@allFlights" Context="flight">
         <FlightSummary @key="flight.FlightId" Details="@flight.Summary" />
     </Virtualize>
 </div>
 ```
 
-Si vous ne spécifiez pas de contexte pour le composant avec `Context` , utilisez la `context` valeur ( `context.{PROPERTY}` / `@context.{PROPERTY}` ) dans le modèle de contenu de l’élément :
+Si vous ne spécifiez pas de contexte pour le composant avec `Context` , utilisez la `context` valeur dans le modèle de contenu de l’élément :
 
 ```razor
-<div class="all-flights" style="height:500px;overflow-y:scroll">
+<div style="height:500px;overflow-y:scroll">
     <Virtualize Items="@allFlights">
         <FlightSummary @key="context.FlightId" Details="@context.Summary" />
     </Virtualize>
@@ -72,12 +72,12 @@ Si vous ne spécifiez pas de contexte pour le composant avec `Context` , utilise
 ```
 
 > [!NOTE]
-> Le processus de mappage des objets de modèle aux éléments et aux composants peut être contrôlé à l’aide de l' `@key` attribut de directive [] [XREF : MVC/views/Razor # clé]. `@key` force l’algorithme de comparaison à garantir la préservation des éléments ou des composants en fonction de la valeur de la clé.
+> Le processus de mappage des objets de modèle aux éléments et aux composants peut être contrôlé à l’aide de l' [`@key`](xref:mvc/views/razor#key) attribut directive. `@key` force l’algorithme de comparaison à garantir la préservation des éléments ou des composants en fonction de la valeur de la clé.
 >
 > Pour plus d’informations, consultez les articles suivants :
 >
-> <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>
-> <xref:mvc/views/razor#key>
+> * <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>
+> * <xref:mvc/views/razor#key>
 
 Le `Virtualize` composant :
 
@@ -93,7 +93,7 @@ Le contenu de l’élément pour le `Virtualize` composant peut inclure les él�
 
 ## <a name="item-provider-delegate"></a>Délégué du fournisseur d’éléments
 
-Si vous ne souhaitez pas charger tous les éléments dans la mémoire, vous pouvez spécifier une méthode déléguée du fournisseur items pour le paramètre du composant <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemsProvider%2A?displayProperty=nameWithType> qui récupère de manière asynchrone les éléments demandés à la demande :
+Si vous ne souhaitez pas charger tous les éléments dans la mémoire, vous pouvez spécifier une méthode déléguée du fournisseur items pour le paramètre du composant <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemsProvider%2A?displayProperty=nameWithType> qui récupère de manière asynchrone les éléments demandés à la demande. Dans l’exemple suivant, la `LoadEmployees` méthode fournit les éléments au `Virtualize` composant :
 
 ```razor
 <Virtualize Context="employee" ItemsProvider="@LoadEmployees">
@@ -108,7 +108,7 @@ Le fournisseur items reçoit un <xref:Microsoft.AspNetCore.Components.Web.Virtua
 
 Un `Virtualize` composant ne peut accepter qu' **une seule source d’élément** à partir de ses paramètres. par conséquent, n’essayez pas d’utiliser simultanément un fournisseur d’éléments et d’affecter une collection à `Items` . Si les deux sont assignés, une <xref:System.InvalidOperationException> exception est levée lorsque les paramètres du composant sont définis au moment de l’exécution.
 
-L’exemple suivant charge des employés à partir d’un `EmployeeService` :
+L' `LoadEmployees` exemple de méthode suivant charge des employés à partir d’un `EmployeeService` (non affiché) :
 
 ```csharp
 private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
@@ -149,7 +149,7 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 
 ## <a name="item-size"></a>Taille de l’élément
 
-La taille de chaque élément en pixels peut être définie avec <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType> (valeur par défaut : 50px) :
+La taille de chaque élément en pixels peut être définie avec <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType> (valeur par défaut : 50) :
 
 ```razor
 <Virtualize Context="employee" Items="@employees" ItemSize="25">
