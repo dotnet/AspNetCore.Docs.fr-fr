@@ -37,7 +37,7 @@ Le composant suivant montre comment utiliser l’interopérabilité JavaScript d
 
 Où <xref:Microsoft.JSInterop.JSRuntime.InvokeAsync%2A?displayProperty=nameWithType> est appelé, `ElementRef` est utilisé uniquement dans <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> et non dans une méthode de cycle de vie antérieure, car il n’y a pas d’élément JavaScript tant que le composant n’est pas rendu.
 
-[StateHasChanged](xref:blazor/components/lifecycle#state-changes) est appelé pour rerestituer le composant avec le nouvel état obtenu à partir de l’appel JavaScript Interop. Le code ne crée pas de boucle infinie, car `StateHasChanged` est appelé uniquement lorsque `infoFromJs` est `null` .
+[StateHasChanged](xref:blazor/components/lifecycle#state-changes) est appelé pour rerestituer le composant avec le nouvel état obtenu à partir de l’appel JavaScript Interop (pour plus d’informations, consultez <xref:blazor/components/rendering> ). Le code ne crée pas de boucle infinie, car `StateHasChanged` est appelé uniquement lorsque `infoFromJs` est `null` .
 
 ```cshtml
 @page "/prerendered-interop"

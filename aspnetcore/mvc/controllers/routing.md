@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: a163c87fdb9a02c1b074ab32c19c11932c66cfd4
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: 44c507fb5e0ff4477a84bfc1e4d0c62180c8dd37
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854533"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252836"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Routage vers les actions du contrôleur dans ASP.NET Core
 
@@ -30,7 +30,7 @@ Par [Ryan Nowak](https://github.com/rynowak), [Kirk Larkin](https://twitter.com/
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Les contrôleurs de ASP.NET Core utilisent l' [intergiciel (middleware](xref:fundamentals/middleware/index) ) de routage pour faire correspondre les URL des demandes entrantes et les mapper aux [actions](#action).  Itinéraires des modèles :
+Les contrôleurs de ASP.NET Core utilisent l' [intergiciel (middleware](xref:fundamentals/middleware/index) ) de routage pour faire correspondre les URL des demandes entrantes et les mapper aux [actions](#action).  Modèles de routage :
 
 * Sont définis dans le code de démarrage ou les attributs.
 * Décrivez comment les chemins d’URL sont mis en correspondance avec les [actions](#action).
@@ -43,7 +43,7 @@ Ce document :
 * Explique les interactions entre MVC et le routage :
   * Comment les applications MVC classiques utilisent les fonctionnalités de routage.
   * Couvre les deux :
-    * Le [routage conventionnel](#cr) est généralement utilisé avec les contrôleurs et les vues.
+    * [Routage conventionnel](#cr) généralement utilisé avec les contrôleurs et les vues.
     * *Routage d’attribut* utilisé avec les API REST. Si vous êtes principalement intéressé par le routage des API REST, passez à la section relative à l' [acheminement des attributs pour les API REST](#ar) .
   * Consultez [routage](xref:fundamentals/routing) pour plus d’informations sur le routage avancé.
 * Fait référence au système de routage par défaut ajouté dans ASP.NET Core 3,0, appelé routage de point de terminaison. Il est possible d’utiliser des contrôleurs avec la version précédente du routage pour des raisons de compatibilité. Pour obtenir des instructions, consultez le [Guide de migration 2.2-3.0](xref:migration/22-to-30) . Reportez-vous à la [version 2,2 de ce document](xref:mvc/controllers/routing?view=aspnetcore-2.2) pour obtenir des documents de référence sur le système de routage hérité.
@@ -220,7 +220,7 @@ Lorsque deux points de terminaison correspondent au routage, le routage doit eff
 * Choisissez le meilleur candidat.
 * Levée d'une exception.
 
-Par exemple :
+Exemple :
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet9)]
 
@@ -435,7 +435,7 @@ Le tableau suivant décrit les `[Route]` attributs dans le code précédent :
 | `[Route("")]` | Oui | `"Home"` |
 | `[Route("Index")]` | Oui | `"Home/Index"` |
 | `[Route("/")]` | **Non** | `""` |
-| `[Route("About")]` | Yes | `"Home/About"` |
+| `[Route("About")]` | Oui | `"Home/About"` |
 
 <a name="routing-ordering-ref-label"></a>
 <a name="oar"></a>
@@ -570,7 +570,7 @@ Les routes d’attribut prennent en charge la même syntaxe inline que les route
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet8&highlight=3)]
 
-Dans le code précédent, `[HttpPost("product/{id:int}")]` applique une contrainte d’itinéraire. L' `ProductsController.ShowProduct` action est mise en correspondance uniquement par les chemins d’accès d’URL tels que `/product/3` . La partie de modèle `{id:int}` de routage limite ce segment à des entiers uniquement.
+Dans le code précédent, `[HttpPost("product14/{id:int}")]` applique une contrainte d’itinéraire. L' `Products14Controller.ShowProduct` action est mise en correspondance uniquement par les chemins d’accès d’URL tels que `/product14/3` . La partie de modèle `{id:int}` de routage limite ce segment à des entiers uniquement.
 
 Pour une description détaillée de la syntaxe du modèle de route, consultez [Informations de référence sur le modèle de route](xref:fundamentals/routing#route-template-reference).
 
@@ -720,7 +720,7 @@ Si la valeur `{ d = Donovan }` est ajoutée :
 
 Vous pouvez vous attendre à rencontrer ce problème avec l’itinéraire par défaut `{controller}/{action}/{id?}` . Ce problème est rare dans la pratique, car `Url.Action` spécifie toujours explicitement une `controller` `action` valeur et.
 
-Plusieurs surcharges d' [URL. action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) acceptent un objet de valeurs d’itinéraire pour fournir des valeurs pour les paramètres de routage autres que `controller` et `action` . L’objet de valeurs d’itinéraire est fréquemment utilisé avec `id` . Par exemple : `Url.Action("Buy", "Products", new { id = 17 })`. Objet de valeurs d’itinéraire :
+Plusieurs surcharges d' [URL. action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) acceptent un objet de valeurs d’itinéraire pour fournir des valeurs pour les paramètres de routage autres que `controller` et `action` . L’objet de valeurs d’itinéraire est fréquemment utilisé avec `id` . Par exemple, `Url.Action("Buy", "Products", new { id = 17 })`. Objet de valeurs d’itinéraire :
 
 * Par Convention, est généralement un objet de type anonyme.
 * Il peut s’agir d’un `IDictionary<>` ou d’un [poco](https://wikipedia.org/wiki/Plain_old_CLR_object)).
@@ -1008,7 +1008,7 @@ Dans le cadre du traitement des requêtes, MVC vérifie que les valeurs de route
 
 ### <a name="disambiguating-actions"></a>Résolution des ambiguïtés pour les actions
 
-Quand deux actions correspondent via le routage, MVC doit résoudre l’ambiguïté pour choisir le « meilleur » candidat ou sinon lever une exception. Par exemple :
+Quand deux actions correspondent via le routage, MVC doit résoudre l’ambiguïté pour choisir le « meilleur » candidat ou sinon lever une exception. Exemple :
 
 ```csharp
 public class ProductsController : Controller

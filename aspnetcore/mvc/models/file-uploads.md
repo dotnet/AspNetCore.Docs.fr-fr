@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 14561bace565c104d0a9c926cad3105c4865e72a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c32d20d4616650db004c78fb4d8ea9a4d5a3beab
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061169"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252797"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Charger des fichiers dans ASP.NET Core
 
@@ -113,7 +113,7 @@ Les ressources (disque, mémoire) utilisées par les chargements de fichiers dé
 La mise en mémoire tampon de petits fichiers est traitée dans les sections suivantes de cette rubrique :
 
 * [Stockage physique](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Sauvegarde de la base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -125,7 +125,7 @@ La diffusion en continu de fichiers volumineux est traitée dans la section [cha
 
 Pour télécharger des fichiers de petite taille, utilisez un formulaire en plusieurs parties ou créez une requête de publication à l’aide de JavaScript.
 
-L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier ( *pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
+L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier (*pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -436,7 +436,7 @@ La `StreamingController.UploadDatabase` méthode complète pour la diffusion en 
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper. cs* ) :
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*) :
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -651,7 +651,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 
 ### <a name="kestrel-maximum-request-body-size"></a>Taille maximale du corps de la demande Kestrel
 
-Pour les applications hébergées par Kestrel, la taille de corps de requête maximale par défaut est de 30 millions octets, soit environ 28,6 Mo. Personnaliser la limite à l’aide de l’option de serveur [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) Kestrel :
+Pour les applications hébergées par Kestrel, la taille de corps de requête maximale par défaut est de 30 millions octets, soit environ 28,6 Mo. Personnaliser la limite à l’aide de l’option de serveur [MaxRequestBodySize](xref:fundamentals/servers/kestrel/options#maximum-request-body-size) Kestrel :
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -667,7 +667,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> est utilisé pour définir le [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) pour une seule page ou action.
+<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> est utilisé pour définir le [MaxRequestBodySize](xref:fundamentals/servers/kestrel/options#maximum-request-body-size) pour une seule page ou action.
 
 Dans une Razor application pages, appliquez le filtre avec une [Convention](xref:razor-pages/razor-pages-conventions) dans `Startup.ConfigureServices` :
 
@@ -706,8 +706,8 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 
 D’autres limites Kestrel peuvent s’appliquer aux applications hébergées par Kestrel :
 
-* [Nombre maximale de connexions client](xref:fundamentals/servers/kestrel#maximum-client-connections)
-* [Taux de données de demande et de réponse](xref:fundamentals/servers/kestrel#minimum-request-body-data-rate)
+* [Nombre maximale de connexions client](xref:fundamentals/servers/kestrel/options#maximum-client-connections)
+* [Taux de données de demande et de réponse](xref:fundamentals/servers/kestrel/options#minimum-request-body-data-rate)
 
 ### <a name="iis"></a>IIS
 
@@ -837,7 +837,7 @@ Les ressources (disque, mémoire) utilisées par les chargements de fichiers dé
 La mise en mémoire tampon de petits fichiers est traitée dans les sections suivantes de cette rubrique :
 
 * [Stockage physique](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Sauvegarde de la base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -849,7 +849,7 @@ La diffusion en continu de fichiers volumineux est traitée dans la section [cha
 
 Pour télécharger des fichiers de petite taille, utilisez un formulaire en plusieurs parties ou créez une requête de publication à l’aide de JavaScript.
 
-L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier ( *pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
+L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier (*pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1160,7 +1160,7 @@ La `StreamingController.UploadDatabase` méthode complète pour la diffusion en 
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper. cs* ) :
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*) :
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1572,7 +1572,7 @@ Les ressources (disque, mémoire) utilisées par les chargements de fichiers dé
 La mise en mémoire tampon de petits fichiers est traitée dans les sections suivantes de cette rubrique :
 
 * [Stockage physique](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Sauvegarde de la base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -1584,7 +1584,7 @@ La diffusion en continu de fichiers volumineux est traitée dans la section [cha
 
 Pour télécharger des fichiers de petite taille, utilisez un formulaire en plusieurs parties ou créez une requête de publication à l’aide de JavaScript.
 
-L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier ( *pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
+L’exemple suivant illustre l’utilisation d’un Razor formulaire de pages pour télécharger un seul fichier (*pages/BufferedSingleFileUploadPhysical. cshtml* dans l’exemple d’application) :
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1895,7 +1895,7 @@ La `StreamingController.UploadDatabase` méthode complète pour la diffusion en 
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper. cs* ) :
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*) :
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -2222,7 +2222,13 @@ Les exemples de cette rubrique reposent sur <xref:System.IO.MemoryStream> pour s
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
+::: moniker range="< aspnetcore-5.0"
 * [Vidange des demandes de connexion HTTP](xref:fundamentals/servers/kestrel#http11-request-draining)
+::: moniker-end
+::: moniker range=">= aspnetcore-5.0"
+* [Vidange des demandes de connexion HTTP](xref:fundamentals/servers/kestrel/request-draining)
+::: moniker-end
+
 * [Unrestricted File Upload](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload) (Chargement de fichiers illimité)
 * [Sécurité Azure : frame de sécurité : validation des entrées | Atténuations](/azure/security/azure-security-threat-modeling-tool-input-validation)
 * [Modèles de conception de Cloud Azure : modèle de clé valet](/azure/architecture/patterns/valet-key)

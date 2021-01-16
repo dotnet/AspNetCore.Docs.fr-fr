@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/index
-ms.openlocfilehash: 4f3d4c29a189cf6aa14eb10f570f0b35d8ff9abc
-ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
+ms.openlocfilehash: 05d04a9c95910c805ea28578aba21a0658dd779a
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96556617"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252966"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Héberger et déployer ASP.NET Core
 
@@ -57,7 +57,7 @@ Le dossier *publish* contient un ou plusieurs fichiers d’assembly d’applicat
 
 Une application .NET Core peut être publiée en tant que *déploiement autonome* ou *déploiement dépendant du framework*. Si l’application est autonome, les fichiers d’assembly qui contiennent le runtime .NET sont inclus dans le dossier *publish*. Si l’application dépend du framework, les fichiers du runtime .NET ne sont pas inclus, car l’application a une référence à une version de .NET installée sur le serveur. Le modèle de déploiement par défaut est « dépendante du framework ». Pour plus d’informations, consultez [Déploiement d’applications .NET Core](/dotnet/core/deploying/).
 
-En plus des fichiers *.exe* et *.dll*, le dossier *publish* d’une application ASP.NET Core contient généralement des fichiers de configuration, des ressources statiques et des vues MVC. Pour plus d’informations, consultez <xref:host-and-deploy/directory-structure>.
+En plus des fichiers *.exe* et *.dll*, le dossier *publish* d’une application ASP.NET Core contient généralement des fichiers de configuration, des ressources statiques et des vues MVC. Pour plus d'informations, consultez <xref:host-and-deploy/directory-structure>.
 
 ## <a name="set-up-a-process-manager"></a>Configurer un gestionnaire de processus
 
@@ -74,7 +74,17 @@ Une application ASP.NET Core est une application console qui doit être démarr�
 
 Si l’application utilise le serveur [Kestrel](xref:fundamentals/servers/kestrel), vous pouvez utiliser [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache) ou [IIS](xref:host-and-deploy/iis/index) comme serveur proxy inverse. Un serveur proxy inverse reçoit les requêtes HTTP en provenance d’Internet et les transmet à Kestrel.
 
+::: moniker-end 
+
+::: moniker range=">= aspnetcore-5.0"
+Les deux configurations, &mdash;avec ou sans serveur proxy inverse&mdash;, sont des configurations d’hébergement prises en charge. Pour plus d’informations, consultez [Quand utiliser Kestrel avec un proxy inverse ?](xref:fundamentals/servers/kestrel/when-to-use-a-reverse-proxy).
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2 < aspnetcore-5.0"
 Les deux configurations, &mdash;avec ou sans serveur proxy inverse&mdash;, sont des configurations d’hébergement prises en charge. Pour plus d’informations, consultez [Quand utiliser Kestrel avec un proxy inverse ?](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Scénarios avec un serveur proxy et un équilibreur de charge
 
@@ -104,11 +114,11 @@ Pour plus d’informations sur la configuration pour héberger des applications 
 
 ## <a name="host-on-docker"></a>Héberger sur l’ancrage
 
-Pour plus d’informations, consultez <xref:host-and-deploy/docker/index>.
+Pour plus d'informations, consultez <xref:host-and-deploy/docker/index>.
 
 ## <a name="perform-health-checks"></a>Effectuer des contrôles d’intégrité
 
-Utilisez Health Check Middleware pour effectuer des contrôles d’intégrité sur une application et ses dépendances. Pour plus d’informations, consultez <xref:host-and-deploy/health-checks>.
+Utilisez Health Check Middleware pour effectuer des contrôles d’intégrité sur une application et ses dépendances. Pour plus d'informations, consultez <xref:host-and-deploy/health-checks>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -135,7 +145,7 @@ Le dossier *publish* contient un ou plusieurs fichiers d’assembly d’applicat
 
 Une application .NET Core peut être publiée en tant que *déploiement autonome* ou *déploiement dépendant du framework*. Si l’application est autonome, les fichiers d’assembly qui contiennent le runtime .NET sont inclus dans le dossier *publish*. Si l’application dépend du framework, les fichiers du runtime .NET ne sont pas inclus, car l’application a une référence à une version de .NET installée sur le serveur. Le modèle de déploiement par défaut est « dépendante du framework ». Pour plus d’informations, consultez [Déploiement d’applications .NET Core](/dotnet/core/deploying/).
 
-En plus des fichiers *.exe* et *.dll*, le dossier *publish* d’une application ASP.NET Core contient généralement des fichiers de configuration, des ressources statiques et des vues MVC. Pour plus d’informations, consultez <xref:host-and-deploy/directory-structure>.
+En plus des fichiers *.exe* et *.dll*, le dossier *publish* d’une application ASP.NET Core contient généralement des fichiers de configuration, des ressources statiques et des vues MVC. Pour plus d'informations, consultez <xref:host-and-deploy/directory-structure>.
 
 ## <a name="set-up-a-process-manager"></a>Configurer un gestionnaire de processus
 
@@ -182,7 +192,7 @@ Pour plus d’informations sur la configuration pour héberger des applications 
 
 ## <a name="host-on-docker"></a>Héberger sur l’ancrage
 
-Pour plus d’informations, consultez <xref:host-and-deploy/docker/index>.
+Pour plus d'informations, consultez <xref:host-and-deploy/docker/index>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

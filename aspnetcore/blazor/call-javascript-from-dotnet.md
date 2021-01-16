@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 11312a34dc62dd3bace791819f62379bffbb1c49
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 2502f43f4eaf245996827f704462ec340bbb8e07
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97592832"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252537"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Appeler des fonctions JavaScript à partir de méthodes .NET dans ASP.NET Core Blazor
 
@@ -527,7 +527,7 @@ var module = await js.InvokeAsync<IJSObjectReference>(
     "import", "./_content/MyComponents/exampleJsInterop.js");
 ```
 
-L' `import` identificateur dans l’exemple précédent est un identificateur spécial utilisé spécifiquement pour l’importation d’un module JavaScript. Spécifiez le module à l’aide de son chemin d’accès aux ressources Web statiques stable : `_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}` . L’espace réservé `{LIBRARY NAME}` est le nom de la bibliothèque. L’espace réservé `{PATH UNDER WWWROOT}` est le chemin d’accès au script sous `wwwroot` .
+L' `import` identificateur dans l’exemple précédent est un identificateur spécial utilisé spécifiquement pour l’importation d’un module JavaScript. Spécifiez le module à l’aide de son chemin d’accès aux ressources Web statiques stable : `./_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}` . Le segment de chemin d’accès du répertoire actif ( `./` ) est requis pour créer le chemin d’accès d’élément statique correct au fichier JavaScript. L’espace réservé `{LIBRARY NAME}` est le nom de la bibliothèque. L’espace réservé `{PATH UNDER WWWROOT}` est le chemin d’accès au script sous `wwwroot` .
 
 <xref:Microsoft.JSInterop.IJSRuntime> importe le module en tant que `IJSObjectReference` , qui représente une référence à un objet JavaScript à partir du code .net. Utilisez `IJSObjectReference` pour appeler les fonctions JavaScript exportées à partir du module :
 
@@ -655,29 +655,9 @@ En outre, l’exemple précédent montre comment il est possible d’encapsuler 
 
 ## <a name="size-limits-on-js-interop-calls"></a>Limites de taille sur les appels d’interopérabilité JS
 
-Dans Blazor WebAssembly , l’infrastructure n’impose pas de limites sur la taille des entrées et des sorties des appels d’interopérabilité js.
+Dans Blazor WebAssembly , l’infrastructure n’impose pas de limite sur la taille des entrées et sorties d’interopérabilité js.
 
-Dans Blazor Server , le résultat d’un appel d’interopérabilité js est limité par la taille maximale de charge utile appliquée par SignalR ( <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize> ), qui est par défaut de 32 Ko. Les applications qui tentent de répondre à un appel d’interopérabilité JS avec une charge utile supérieure à <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize> génèrent une erreur. Une limite plus grande peut être configurée en modifiant <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize> . L’exemple suivant définit la taille maximale des messages de réception sur 64 Ko (64 * 1024 * 1024) :
-
-```csharp
-services.AddServerSideBlazor()
-   .AddHubOptions(options => options.MaximumReceiveMessageSize = 64 * 1024 * 1024);
-```
-
-L’augmentation de la SignalR limite survient au détriment de l’utilisation de ressources serveur supplémentaires et expose le serveur à des risques accrus d’un utilisateur malveillant. En outre, la lecture d’une grande quantité de contenu dans la mémoire en tant que chaînes ou tableaux d’octets peut également entraîner des allocations qui fonctionnent mal avec le garbage collector, ce qui entraîne des pénalités en matière de performances. L’une des options de lecture des charges utiles volumineuses consiste à entourer le contenu de plus petits segments et à traiter la charge utile sous la forme d’un <xref:System.IO.Stream> . Cela peut être utilisé lors de la lecture de charges utiles JSON volumineuses ou si les données sont disponibles en tant qu’octets bruts dans JavaScript. Pour obtenir un exemple qui montre comment envoyer des charges utiles binaires volumineuses dans Blazor Server qui utilise des techniques similaires au `InputFile` composant, consultez l' [exemple d’application de soumission binaire](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor/BinarySubmit).
-
-Tenez compte des conseils suivants lors du développement de code qui transfère une grande quantité de données entre JavaScript et Blazor :
-
-* Découpez les données en éléments plus petits et envoyez les segments de données de façon séquentielle jusqu’à ce que toutes les données soient reçues par le serveur.
-* N’allouez pas d’objets volumineux dans du code JavaScript et C#.
-* Ne bloquez pas le thread d’interface utilisateur principal pendant de longues périodes lors de l’envoi ou de la réception de données.
-* Libérez la mémoire consommée lorsque le processus est terminé ou annulé.
-* Appliquer les exigences supplémentaires suivantes pour des raisons de sécurité :
-  * Déclarez la taille maximale du fichier ou des données qui peut être passée.
-  * Déclarez le taux de téléchargement minimal du client au serveur.
-* Une fois les données reçues par le serveur, les données peuvent être :
-  * Stocké temporairement dans une mémoire tampon jusqu’à ce que tous les segments soient collectés.
-  * Consommé immédiatement. Par exemple, les données peuvent être stockées immédiatement dans une base de données ou écrites sur le disque à mesure que chaque segment est reçu.
+Dans Blazor Server , les appels d’interopérabilité js ont une taille limitée par la SignalR taille maximale autorisée pour les méthodes de concentrateur, qui est appliquée par <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize?displayProperty=nameWithType> (valeur par défaut : 32 Ko). JS en SignalR messages .net plus grands que ne <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize> génèrent une erreur. L’infrastructure n’impose pas de limite sur la taille d’un SignalR message du concentrateur à un client. Pour plus d'informations, consultez <xref:blazor/call-dotnet-from-javascript#size-limits-on-js-interop-calls>.
   
 ## <a name="js-modules"></a>Modules JS
 
@@ -724,7 +704,7 @@ window.returnJSObjectReference = () => {
 ```
 
 > [!WARNING]
-> Le `js_string_to_mono_string` nom, le comportement et l’existence de la fonction sont susceptibles d’être modifiés dans une prochaine version de .net. Par exemple :
+> Le `js_string_to_mono_string` nom, le comportement et l’existence de la fonction sont susceptibles d’être modifiés dans une prochaine version de .net. Exemple :
 >
 > * La fonction est susceptible d’être renommée.
 > * La fonction elle-même peut être supprimée en faveur de la conversion automatique des chaînes par l’infrastructure.

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: afd2da19641b41871f06426934c39348daa54b1f
-ms.sourcegitcommit: 2fea9bfe6127bbbdbb438406c82529b2bc331944
+ms.openlocfilehash: c2b16f4bc8e69265b1d59082c3f029541f277d8b
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065530"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252287"
 ---
 # <a name="aspnet-core-no-locblazor-component-virtualization"></a>BlazorVirtualisation des composants ASP.net Core
 
@@ -74,10 +74,10 @@ Si vous ne spécifiez pas de contexte pour le composant avec `Context` , utilise
 > [!NOTE]
 > Le processus de mappage des objets de modèle aux éléments et aux composants peut être contrôlé à l’aide de l' [`@key`](xref:mvc/views/razor#key) attribut directive. `@key` force l’algorithme de comparaison à garantir la préservation des éléments ou des composants en fonction de la valeur de la clé.
 >
-> Pour plus d’informations, consultez les articles suivants :
+> Pour plus d’informations, consultez les articles suivants :
 >
 > * <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>
-> * <xref:mvc/views/razor#key>
+> * [Razor Référence de syntaxe pour ASP.NET Core](xref:mvc/views/razor#key)
 
 Le `Virtualize` composant :
 
@@ -169,4 +169,4 @@ La taille de chaque élément en pixels peut être définie avec <xref:Microsoft
 
 ## <a name="state-changes"></a>Modifications d'état
 
-Lorsque vous apportez des modifications aux éléments restitués par le `Virtualize` composant, appelez <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> pour forcer la réévaluation et le rerendu du composant.
+Lorsque vous apportez des modifications aux éléments restitués par le `Virtualize` composant, appelez <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> pour forcer la réévaluation et le rerendu du composant. Pour plus d'informations, consultez <xref:blazor/components/rendering>.

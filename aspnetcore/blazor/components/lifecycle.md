@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: e5f9a07db742ce2e26f03c0b6e1caa1904e4e0d9
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: acaa276efda9fb4d09a5c1b1ca59c6abde1b64ec
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058231"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252386"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>BlazorCycle de vie ASP.net Core
 
@@ -53,7 +53,7 @@ Traitement des événements Document Object Model (DOM) :
 
 Le `Render` cycle de vie :
 
-1. Arrêter d’autres opérations de rendu sur le composant :
+1. Évitez les opérations de rendu supplémentaires sur le composant :
    * Après le premier rendu.
    * Lorsque [`ShouldRender`](#suppress-ui-refreshing) est `false` .
 1. Générez la diffation de l’arborescence de rendu (différence) et le rendu du composant.
@@ -62,7 +62,7 @@ Le `Render` cycle de vie :
 
 ![Cycle de vie du rendu](lifecycle/_static/lifecycle3.png)
 
-Les développeurs appellent pour [`StateHasChanged`](#state-changes) générer un rendu.
+Les développeurs appellent pour [`StateHasChanged`](#state-changes) générer un rendu. Pour plus d'informations, consultez <xref:blazor/components/rendering>.
 
 ## <a name="lifecycle-methods"></a>Méthodes de cycle de vie
 
@@ -215,6 +215,8 @@ Pour plus d'informations, consultez <xref:blazor/webassembly-performance-best-pr
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> notifie le composant que son état a changé. Le cas échéant, <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> l’appel de entraîne le rerendu du composant.
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> est appelé automatiquement pour les <xref:Microsoft.AspNetCore.Components.EventCallback> méthodes. Pour plus d'informations, consultez <xref:blazor/components/event-handling#eventcallback>.
+
+Pour plus d'informations, consultez <xref:blazor/components/rendering>.
 
 ## <a name="handle-incomplete-async-actions-at-render"></a>Gérer les actions asynchrones incomplètes au rendu
 

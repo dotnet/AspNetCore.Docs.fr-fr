@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: d7ffcb67637593ab2909885a9e1f6de74a78361b
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5caa412773bf9c8e3bed5ebc529d48b886de6956
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96855493"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253070"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Nouveautés de ASP.NET Core 5,0
 
@@ -136,31 +136,31 @@ Pour .NET 5, nous avons apporté des améliorations significatives aux Blazor We
 
 ### <a name="css-isolation"></a>Isolation CSS
 
-Blazor prend désormais en charge la définition de styles CSS dont la portée est limitée à un composant donné. Les styles CSS spécifiques aux composants permettent de mieux comprendre les styles dans une application et d’éviter les effets secondaires involontaires des styles globaux. Pour plus d’informations, consultez <xref:blazor/components/css-isolation>.
+Blazor prend désormais en charge la définition de styles CSS dont la portée est limitée à un composant donné. Les styles CSS spécifiques aux composants permettent de mieux comprendre les styles dans une application et d’éviter les effets secondaires involontaires des styles globaux. Pour plus d'informations, consultez <xref:blazor/components/css-isolation>.
 
 ### <a name="new-inputfile-component"></a>Nouveau `InputFile` composant
 
-Le `InputFile` composant permet de lire un ou plusieurs fichiers sélectionnés par un utilisateur pour le téléchargement. Pour plus d’informations, consultez <xref:blazor/file-uploads>.
+Le `InputFile` composant permet de lire un ou plusieurs fichiers sélectionnés par un utilisateur pour le téléchargement. Pour plus d'informations, consultez <xref:blazor/file-uploads>.
 
 ### <a name="new-inputradio-and-inputradiogroup-components"></a>Nouveaux `InputRadio` `InputRadioGroup` composants et
 
-Blazor a des composants intégrés `InputRadio` et `InputRadioGroup` qui simplifient la liaison de données aux groupes de cases d’option avec validation intégrée. Pour plus d’informations, consultez <xref:blazor/forms-validation>.
+Blazor a des composants intégrés `InputRadio` et `InputRadioGroup` qui simplifient la liaison de données aux groupes de cases d’option avec validation intégrée. Pour plus d'informations, consultez <xref:blazor/forms-validation>.
 
 ### <a name="component-virtualization"></a>Virtualisation de composant
 
-Améliorez les performances perçues du rendu des composants à l’aide de la Blazor prise en charge intégrée de la virtualisation du Framework. Pour plus d’informations, consultez <xref:blazor/components/virtualization>.
+Améliorez les performances perçues du rendu des composants à l’aide de la Blazor prise en charge intégrée de la virtualisation du Framework. Pour plus d'informations, consultez <xref:blazor/components/virtualization>.
 
 ### <a name="ontoggle-event-support"></a>`ontoggle` prise en charge des événements
 
-Blazor les événements prennent désormais en charge l' `ontoggle` événement DOM. Pour plus d’informations, consultez <xref:blazor/components/event-handling#event-argument-types>.
+Blazor les événements prennent désormais en charge l' `ontoggle` événement DOM. Pour plus d'informations, consultez <xref:blazor/components/event-handling#event-argument-types>.
 
 ### <a name="set-ui-focus-in-no-locblazor-apps"></a>Définir le focus de l’interface utilisateur dans les Blazor applications
 
-Utilisez la `FocusAsync` méthode pratique sur les références d’éléments pour définir le focus de l’interface utilisateur sur cet élément. Pour plus d’informations, consultez <xref:blazor/components/event-handling#focus-an-element>.
+Utilisez la `FocusAsync` méthode pratique sur les références d’éléments pour définir le focus de l’interface utilisateur sur cet élément. Pour plus d'informations, consultez <xref:blazor/components/event-handling#focus-an-element>.
 
 ### <a name="custom-validation-class-attributes"></a>Attributs de classe de validation personnalisée
 
-Les noms des classes de validation personnalisées sont utiles lors de l’intégration avec des frameworks CSS, tels que bootstrap. Pour plus d’informations, consultez <xref:blazor/forms-validation#custom-validation-class-attributes>.
+Les noms des classes de validation personnalisées sont utiles lors de l’intégration avec des frameworks CSS, tels que bootstrap. Pour plus d'informations, consultez <xref:blazor/forms-validation#custom-validation-class-attributes>.
 
 ### <a name="iasyncdisposable-support"></a>Support IAsyncDisposable
 
@@ -168,7 +168,7 @@ Blazor les composants prennent désormais en charge l' <xref:System.IAsyncDispos
 
 ### <a name="javascript-isolation-and-object-references"></a>Isolation JavaScript et références d’objets
 
-Blazor active l’isolation JavaScript dans les [modules JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)standard. Pour plus d’informations, consultez <xref:blazor/call-javascript-from-dotnet#blazor-javascript-isolation-and-object-references>.
+Blazor active l’isolation JavaScript dans les [modules JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)standard. Pour plus d'informations, consultez <xref:blazor/call-javascript-from-dotnet#blazor-javascript-isolation-and-object-references>.
 
 ### <a name="form-components-support-display-name"></a>Nom complet de la prise en charge des composants de formulaire
 
@@ -178,15 +178,15 @@ Les composants intégrés suivants prennent en charge les noms complets avec le 
 * `InputNumber`
 * `InputSelect`
 
-Pour plus d’informations, consultez <xref:blazor/forms-validation#display-name-support>.
+Pour plus d'informations, consultez <xref:blazor/forms-validation#display-name-support>.
 
 ### <a name="catch-all-route-parameters"></a>Paramètres d’itinéraire de rattrapage
 
-Les paramètres d’itinéraire Catch-All, qui capturent les chemins d’accès dans plusieurs limites de dossiers, sont pris en charge dans les composants. Pour plus d’informations, consultez <xref:blazor/fundamentals/routing#catch-all-route-parameters>.
+Les paramètres d’itinéraire Catch-All, qui capturent les chemins d’accès dans plusieurs limites de dossiers, sont pris en charge dans les composants. Pour plus d'informations, consultez <xref:blazor/fundamentals/routing#catch-all-route-parameters>.
 
 ### <a name="debugging-improvements"></a>Améliorations du débogage
 
-Le débogage Blazor WebAssembly des applications est amélioré dans ASP.NET Core 5,0. En outre, le débogage est désormais pris en charge sur Visual Studio pour Mac. Pour plus d’informations, consultez <xref:blazor/debug>.
+Le débogage Blazor WebAssembly des applications est amélioré dans ASP.NET Core 5,0. En outre, le débogage est désormais pris en charge sur Visual Studio pour Mac. Pour plus d'informations, consultez <xref:blazor/debug>.
 
 ### <a name="microsoft-no-locidentity-v20-and-msal-v20"></a>Microsoft Identity v 2.0 et MSAL v 2.0
 
@@ -194,7 +194,7 @@ Blazor la sécurité utilise désormais Microsoft Identity v 2.0 ( [`Microsoft.I
 
 ### <a name="protected-browser-storage-for-no-locblazor-server"></a>Stockage du navigateur protégé pour Blazor Server
 
-Blazor Server les applications peuvent désormais utiliser la prise en charge intégrée pour le stockage de l’état de l’application dans le navigateur qui a été protégé contre la falsification à l’aide de la protection des données ASP.NET Core. Les données peuvent être stockées dans le stockage du navigateur local ou dans un stockage de session. Pour plus d’informations, consultez <xref:blazor/state-management>.
+Blazor Server les applications peuvent désormais utiliser la prise en charge intégrée pour le stockage de l’état de l’application dans le navigateur qui a été protégé contre la falsification à l’aide de la protection des données ASP.NET Core. Les données peuvent être stockées dans le stockage du navigateur local ou dans un stockage de session. Pour plus d'informations, consultez <xref:blazor/state-management>.
 
 ### <a name="no-locblazor-webassembly-prerendering"></a>Blazor WebAssembly préaffichant
 
@@ -206,15 +206,15 @@ Blazor WebAssembly effectue le découpage/la liaison de langage intermédiaire a
 
 ### <a name="browser-compatibility-analyzer"></a>Analyseur de compatibilité des navigateurs
 
-Blazor WebAssembly les applications ciblent la surface d’exposition complète de l’API .NET, mais toutes les API .NET ne sont pas prises en charge sur webassembly en raison des contraintes du bac à sable (sandbox). Les API non prises en charge sont levées <xref:System.PlatformNotSupportedException> lors de l’exécution sur Webassembly. Un analyseur de compatibilité de plateforme avertit le développeur lorsque l’application utilise des API qui ne sont pas prises en charge par les plateformes cibles de l’application. Pour plus d’informations, consultez <xref:blazor/components/class-libraries#browser-compatibility-analyzer-for-blazor-webassembly>.
+Blazor WebAssembly les applications ciblent la surface d’exposition complète de l’API .NET, mais toutes les API .NET ne sont pas prises en charge sur webassembly en raison des contraintes du bac à sable (sandbox). Les API non prises en charge sont levées <xref:System.PlatformNotSupportedException> lors de l’exécution sur Webassembly. Un analyseur de compatibilité de plateforme avertit le développeur lorsque l’application utilise des API qui ne sont pas prises en charge par les plateformes cibles de l’application. Pour plus d'informations, consultez <xref:blazor/components/class-libraries#browser-compatibility-analyzer-for-blazor-webassembly>.
 
 ### <a name="lazy-load-assemblies"></a>Charger des assemblys en différé
 
-Blazor WebAssembly les performances de démarrage de l’application peuvent être améliorées en différant le chargement de certains assemblys d’application jusqu’à ce qu’ils soient nécessaires. Pour plus d’informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
+Blazor WebAssembly les performances de démarrage de l’application peuvent être améliorées en différant le chargement de certains assemblys d’application jusqu’à ce qu’ils soient nécessaires. Pour plus d'informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
 
 ### <a name="updated-globalization-support"></a>Support de globalisation mis à jour
 
-La prise en charge de la globalisation est disponible pour Blazor WebAssembly basée sur les composants internationaux pour Unicode (ICU). Pour plus d’informations, consultez <xref:blazor/globalization-localization>.
+La prise en charge de la globalisation est disponible pour Blazor WebAssembly basée sur les composants internationaux pour Unicode (ICU). Pour plus d'informations, consultez <xref:blazor/globalization-localization>.
 
 ## <a name="grpc"></a>gRPC
 
@@ -333,7 +333,7 @@ Indication du nom du serveur (SNI) est une extension TLS pour inclure un domaine
 ### <a name="http2"></a>HTTP/2
 
 * Réductions significatives des allocations dans le chemin de code HTTP/2.
-* Prise en charge de la [compression dynamique HPack](https://tools.ietf.org/html/rfc7541) des en-têtes de réponse http/2 dans [Kestrel](xref:fundamentals/servers/kestrel) . Pour plus d’informations, consultez [taille de table d’en-tête](xref:fundamentals/servers/kestrel#header-table-size) et [HPACK : la fonctionnalité de désinstallation sans assistance (fonctionnalité) de http/2](https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2/).
+* Prise en charge de la [compression dynamique HPack](https://tools.ietf.org/html/rfc7541) des en-têtes de réponse http/2 dans [Kestrel](xref:fundamentals/servers/kestrel) . Pour plus d’informations, consultez [taille de table d’en-tête](xref:fundamentals/servers/kestrel/options#header-table-size) et [HPACK : la fonctionnalité de désinstallation sans assistance (fonctionnalité) de http/2](https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2/).
 * Envoi de trames PING HTTP/2 : HTTP/2 est un mécanisme permettant d’envoyer des trames PING pour s’assurer qu’une connexion inactive est toujours fonctionnelle. Garantir une connexion viable est particulièrement utile lorsque vous travaillez avec des flux à long terme qui sont souvent inactifs, mais qui ne voient que l’activité de façon intermittente, par exemple, les flux gRPC. Les applications peuvent envoyer des images PING périodiques dans [Kestrel](xref:fundamentals/servers/kestrel) en définissant des limites sur <xref:Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions> :
 
    ```csharp
