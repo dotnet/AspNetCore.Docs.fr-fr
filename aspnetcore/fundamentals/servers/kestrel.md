@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 268a6e71d3bd290ed614e70d963d653924cdcc43
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: d53cafb605939fd85bdbb71b2fbf13e7bd7a9b7b
+ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252732"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98571000"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
@@ -55,7 +55,7 @@ Les modèles de projet ASP.NET Core utilisent Kestrel par défaut. Dans *Program
 
 Pour plus d’informations sur la génération de l’hôte, consultez les sections *configurer un hôte* et les *paramètres du générateur par défaut* de <xref:fundamentals/host/generic-host#set-up-a-host> .
 
-## <a name="additional-resournces"></a>Resournces supplémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 <a name="endpoint-configuration"></a>
 * <xref:fundamentals/servers/kestrel/endpoints>
@@ -746,7 +746,7 @@ Quand l’application est exécutée, la sortie de la fenêtre de console indiqu
 Listening on the following addresses: http://127.0.0.1:48508
 ```
 
-### <a name="limitations"></a>Limitations
+### <a name="limitations"></a>Limites
 
 Configurez des points de terminaison avec les approches suivantes :
 
@@ -1785,7 +1785,7 @@ Quand l’application est exécutée, la sortie de la fenêtre de console indiqu
 Listening on the following addresses: http://127.0.0.1:48508
 ```
 
-### <a name="limitations"></a>Limitations
+### <a name="limitations"></a>Limites
 
 Configurez des points de terminaison avec les approches suivantes :
 
@@ -2736,7 +2736,7 @@ Quand l’application est exécutée, la sortie de la fenêtre de console indiqu
 Listening on the following addresses: http://127.0.0.1:48508
 ```
 
-### <a name="limitations"></a>Limitations
+### <a name="limitations"></a>Limites
 
 Configurez des points de terminaison avec les approches suivantes :
 
