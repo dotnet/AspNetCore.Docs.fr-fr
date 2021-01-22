@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: 0fb50f07153f5f9953b667fe32062ad24b2bd66d
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1ec553d54a9cad170cb322bc186bb67ac8bbded4
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059947"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658727"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Comparer les services gRPC avec les API HTTP
 
@@ -38,7 +38,7 @@ Le tableau suivant présente une comparaison de haut niveau des fonctionnalités
 | Fonctionnalité          | gRPC                                               | API HTTP avec JSON           |
 | ---------------- | -------------------------------------------------- | ----------------------------- |
 | Contrat         | Obligatoire (*. proto*)                                | Facultatif (OpenAPI)            |
-| Protocol         | HTTP/2                                             | HTTP                          |
+| Protocole         | HTTP/2                                             | HTTP                          |
 | Payload          | [Protobuf (petit, binaire)](#performance)           | JSON (grand, lisible par l’utilisateur)  |
 | Prescriptiveness | [Spécification stricte](#strict-specification)      | Compatibilité. Tout HTTP est valide.     |
 | Diffusion en continu        | [Client, serveur, bidirectionnel](#streaming)       | Client, serveur                |
@@ -61,7 +61,7 @@ HTTP/2 n’est pas exclusif à gRPC. De nombreux types de demandes, y compris le
 
 ### <a name="code-generation"></a>Génération de code
 
-Toutes les infrastructures gRPC fournissent une prise en charge de première classe pour la génération de code. Un fichier de base pour le développement gRPC est le [fichier. proto](https://developers.google.com/protocol-buffers/docs/proto3), qui définit le contrat de services et de messages gRPC. À partir de ce fichier, gRPC frameworks code générera une classe de base de service, des messages et un client complet.
+Toutes les infrastructures gRPC fournissent une prise en charge de première classe pour la génération de code. Un fichier de base pour le développement gRPC est le [ `.proto` fichier](https://developers.google.com/protocol-buffers/docs/proto3), qui définit le contrat de services et de messages gRPC. À partir de ce fichier, les frameworks gRPC génèrent une classe de base de service, des messages et un client complet.
 
 En partageant le fichier *. proto* entre le serveur et le client, les messages et le code client peuvent être générés de bout en bout. La génération de code du client élimine la duplication des messages sur le client et le serveur, et crée un client fortement typé pour vous. Le fait de ne pas avoir à écrire un client permet d’économiser beaucoup de temps de développement dans les applications avec de nombreux services.
 
@@ -96,7 +96,7 @@ gRPC est bien adapté aux scénarios suivants :
 * **Communication en temps réel point à point**: gRPC offre une excellente prise en charge de la diffusion bidirectionnelle. les services gRPC peuvent envoyer des messages en temps réel sans interrogation.
 * **Environnements polyglotte**: les outils gRPC prennent en charge tous les langages de développement populaires, ce qui fait de gRPC un bon choix pour les environnements multilingues.
 * **Environnements réseau restreints**: les messages gRPC sont sérialisés avec Protobuf, un format de message léger. Un message gRPC est toujours plus petit qu’un message JSON équivalent.
-* **Communication entre processus (IPC)**: les transports IPC, tels que les sockets de domaine UNIX et les canaux nommés, peuvent être utilisés avec gRPC pour communiquer entre les applications sur le même ordinateur. Pour plus d’informations, consultez <xref:grpc/interprocess>.
+* **Communication entre processus (IPC)**: les transports IPC, tels que les sockets de domaine UNIX et les canaux nommés, peuvent être utilisés avec gRPC pour communiquer entre les applications sur le même ordinateur. Pour plus d'informations, consultez <xref:grpc/interprocess>.
 
 ## <a name="grpc-weaknesses"></a>faiblesses gRPC
 
@@ -108,11 +108,11 @@ Il existe deux approches courantes pour placer les gRPC dans les applications de
 
 * [gRPC-Web](https://grpc.io/docs/tutorials/basic/web.html) est une technologie supplémentaire de l’équipe gRPC qui fournit la prise en charge de gRPC dans le navigateur. gRPC-Web permet aux applications de navigateur de tirer parti de la haute performance et de la faible utilisation du réseau de gRPC. Les fonctionnalités de gRPC ne sont pas toutes prises en charge par gRPC-Web. Le client et la diffusion bidirectionnelle ne sont pas pris en charge, et la prise en charge de la diffusion de serveur est limitée.
 
-  .NET Core prend en charge gRPC-Web. Pour plus d’informations, consultez <xref:grpc/browser>.
+  .NET Core prend en charge gRPC-Web. Pour plus d'informations, consultez <xref:grpc/browser>.
 
 * Les API Web JSON RESTful peuvent être créées automatiquement à partir des services gRPC en annotant le fichier *. proto* avec les [métadonnées http](https://cloud.google.com/service-infrastructure/docs/service-management/reference/rpc/google.api#google.api.HttpRule). Cela permet à une application de prendre en charge à la fois les API Web gRPC et JSON, sans dupliquer l’effort de création de services distincts pour les deux.
 
-  .NET Core offre une prise en charge expérimentale de la création d’API Web JSON à partir de services gRPC. Pour plus d’informations, consultez <xref:grpc/httpapi>.
+  .NET Core offre une prise en charge expérimentale de la création d’API Web JSON à partir de services gRPC. Pour plus d'informations, consultez <xref:grpc/httpapi>.
 
 ### <a name="not-human-readable"></a>Non lisible par l’homme
 

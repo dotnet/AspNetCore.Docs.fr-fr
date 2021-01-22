@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 979e2615080a4f07b6091f0498fc7efa62ea1563
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1287ab5ce61e58848329c96393c3ee8c37610245
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96320068"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658688"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor les formulaires et la validation
 
@@ -294,7 +294,7 @@ Dans l' `InputDate` exemple de composant suivant :
 * Le composant est lié à la `BirthDate` propriété en tant que `DateTime` type.
 
 ```razor
-<InputDate @bind-Value="@BirthDate" DisplayName="birthday" />
+<InputDate @bind-Value="BirthDate" DisplayName="birthday" />
 
 @code {
     public DateTime BirthDate { get; set; }
@@ -319,7 +319,7 @@ L' Blazor infrastructure fournit le <xref:Microsoft.AspNetCore.Components.Forms.
 * [Validation du serveur](#server-validation)
 
 > [!NOTE]
-> Les attributs de validation d’annotation de données personnalisées peuvent être utilisés à la place des composants de validateur personnalisés dans de nombreux cas. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, tous les attributs personnalisés appliqués au modèle doivent être exécutables sur le serveur. Pour plus d’informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+> Les attributs de validation d’annotation de données personnalisées peuvent être utilisés à la place des composants de validateur personnalisés dans de nombreux cas. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, tous les attributs personnalisés appliqués au modèle doivent être exécutables sur le serveur. Pour plus d'informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
 
 Créez un composant de validateur à partir de <xref:Microsoft.AspNetCore.Components.ComponentBase> :
 
@@ -439,7 +439,7 @@ Lorsque des messages de validation sont définis dans le composant, ils sont ajo
 ```
 
 > [!NOTE]
-> En guise d’alternative à l’utilisation de [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d’informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+> En guise d’alternative à l’utilisation de [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d'informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
 
 ## <a name="server-validation"></a>Validation du serveur
 
@@ -579,7 +579,7 @@ services.AddControllersWithViews()
     });
 ```
 
-Pour plus d’informations, consultez <xref:web-api/handle-errors#validation-failure-error-response>.
+Pour plus d'informations, consultez <xref:web-api/handle-errors#validation-failure-error-response>.
 
 Dans le projet client, ajoutez le composant validateur présenté dans la section [composants du validateur](#validator-components) .
 
@@ -716,7 +716,7 @@ Dans le projet client, le formulaire *de base de données Starfleet Starship* es
 ```
 
 > [!NOTE]
-> Comme alternative aux [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d’informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+> Comme alternative aux [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d'informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
 
 > [!NOTE]
 > L’approche de validation côté serveur de cette section convient à l’un des Blazor WebAssembly exemples de solutions hébergées dans cet ensemble de documentation :
@@ -1124,7 +1124,7 @@ Pour activer et désactiver le bouton Envoyer en fonction de la validation de fo
 
 * Utilisez le du formulaire <xref:Microsoft.AspNetCore.Components.Forms.EditContext> pour assigner le modèle lorsque le composant est initialisé.
 * Validez le formulaire dans le rappel du contexte <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> pour activer et désactiver le bouton Envoyer.
-* Décrochez le gestionnaire d’événements dans la `Dispose` méthode. Pour plus d’informations, consultez <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
+* Décrochez le gestionnaire d’événements dans la `Dispose` méthode. Pour plus d'informations, consultez <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
 > [!NOTE]
 > Quand vous utilisez un <xref:Microsoft.AspNetCore.Components.Forms.EditContext> , n’assignez pas également <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> à <xref:Microsoft.AspNetCore.Components.Forms.EditForm> .

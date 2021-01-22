@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 196e19528341e98ac06cefb08ba92f9e47d265ea
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 1706d3502dc68f1c25e0c35ba8f5dd44b55ce690
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252472"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658649"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Créez des applications Web progressifs avec ASP.NET Core Blazor WebAssembly
 
@@ -272,10 +272,20 @@ Remplacez le code par ce qui suit :
 
 ```javascript
 const shouldServeIndexHtml = event.request.mode === 'navigate'
-    && !event.request.url.includes('/Identity/');
+  && !event.request.url.includes('/Identity/');
 ```
 
 Si vous n’effectuez pas cette opération, quelle que soit la connectivité réseau, le service Worker intercepte les demandes de ces URL et les résout à l’aide de `/index.html` .
+
+Ajoutez des points de terminaison supplémentaires pour les fournisseurs d’authentification externes à la vérification. Dans l’exemple suivant, l' `/signin-google` authentification Google est ajoutée à la vérification :
+
+```javascript
+const shouldServeIndexHtml = event.request.mode === 'navigate'
+  && !event.request.url.includes('/Identity/')
+  && !event.request.url.includes('/signin-google');
+```
+
+Aucune action n’est requise pour l’environnement de développement, où le contenu est toujours extrait à partir du réseau.
 
 ### <a name="control-asset-caching"></a>Contrôler la mise en cache des ressources
 

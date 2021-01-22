@@ -19,30 +19,30 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 8acc34c88bf62b3da1b920acc7318c94435c100e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5a6c160ebdda3ec600980aa839770f4f22a9c2fc
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051978"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658662"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Authentification et autorisation pour SPAs
 
 Les modèles ASP.NET Core 3,1 et versions ultérieures offrent une authentification dans les applications à page unique (SPAs) à l’aide de la prise en charge de l’autorisation de l’API. ASP.NET Core Identitypour l’authentification et le stockage des utilisateurs est associé au [ Identity serveur](https://identityserver.io/) pour l’implémentation de OpenID Connect.
 
-Un paramètre d’authentification a été ajouté aux modèles de projet **angulaire** et **REACT** qui est similaire au paramètre d’authentification dans les modèles de projet **application Web (Model-View-Controller)** et **application Web** ( Razor pages). Les valeurs de paramètre autorisées sont **None** et **Individual** . Le modèle de projet **React.js et Redux** ne prend pas en charge le paramètre d’authentification pour l’instant.
+Un paramètre d’authentification a été ajouté aux modèles de projet **angulaire** et **REACT** qui est similaire au paramètre d’authentification dans les modèles de projet **application Web (Model-View-Controller)** et **application Web** ( Razor pages). Les valeurs de paramètre autorisées sont **None** et **Individual**. Le modèle de projet **React.js et Redux** ne prend pas en charge le paramètre d’authentification pour l’instant.
 
 ## <a name="create-an-app-with-api-authorization-support"></a>Créer une application avec prise en charge des autorisations d’API
 
 L’authentification et l’autorisation de l’utilisateur peuvent être utilisées avec les deux types d’angle et de réaction. Ouvrez une interface de commande, puis exécutez la commande suivante :
 
-**Angulaire** :
+**Angulaire**:
 
 ```dotnetcli
 dotnet new angular -o <output_directory_name> -au Individual
 ```
 
-**Réaction** :
+**Réaction**:
 
 ```dotnetcli
 dotnet new react -o <output_directory_name> -au Individual
@@ -98,6 +98,27 @@ La `Startup` classe comporte les ajouts suivants :
     app.UseIdentityServer();
     ```
 
+### <a name="azure-app-service-on-linux"></a>Azure App Service sur Linux
+
+Pour les déploiements de Azure App Service sur Linux, spécifiez l’émetteur de manière explicite dans `Startup.ConfigureServices` :
+
+```csharp
+services.Configure<JwtBearerOptions>(
+    IdentityServerJwtConstants.IdentityServerJwtBearerScheme, 
+    options =>
+    {
+        options.Authority = "{AUTHORITY}";
+    });
+```
+
+Dans le code précédent, l' `{AUTHORITY}` espace réservé est le <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions.Authority> à utiliser pour effectuer des appels OpenID Connect.
+
+Exemple :
+
+```csharp
+options.Authority = "https://contoso-service.azurewebsites.net";
+```
+
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
 Cette méthode d’assistance configure le Identity serveur pour qu’il utilise notre configuration prise en charge. IdentityLe serveur est un Framework puissant et extensible pour gérer les problèmes de sécurité des applications. En même temps, cela expose une complexité inutile pour les scénarios les plus courants. Par conséquent, un ensemble de conventions et d’options de configuration qui vous sont fournies est considéré comme un bon point de départ. Une fois vos besoins d’authentification modifiés, toute la puissance du Identity serveur est toujours disponible pour personnaliser l’authentification en fonction de vos besoins.
@@ -151,9 +172,9 @@ Dans le *appsettings.Development.js* fichier de la racine du projet, il existe u
 L’authentification et la prise en charge de l’autorisation d’API dans le modèle angulaire résident dans son propre module angulaire dans le répertoire *ClientApp\src\api-Authorization* . Le module est composé des éléments suivants :
 
 * 3 composants :
-  * *login. Component. TS* : gère le déroulement de la connexion de l’application.
-  * *logout. Component. TS* : gère le déroulement de la déconnexion de l’application.
-  * *login-menu. Component. TS* : un widget qui affiche l’un des ensembles de liens suivants :
+  * *login. Component. TS*: gère le déroulement de la connexion de l’application.
+  * *logout. Component. TS*: gère le déroulement de la déconnexion de l’application.
+  * *login-menu. Component. TS*: un widget qui affiche l’un des ensembles de liens suivants :
     * Gestion des profils utilisateur et déconnexion des liens lorsque l’utilisateur est authentifié.
     * Enregistrement et connexion des liens lorsque l’utilisateur n’est pas authentifié.
 * Une protection de routage `AuthorizeGuard` qui peut être ajoutée aux itinéraires et requiert qu’un utilisateur soit authentifié avant de visiter l’itinéraire.
@@ -166,12 +187,12 @@ L’authentification et la prise en charge de l’autorisation d’API dans le m
 La prise en charge de l’authentification et de l’autorisation d’API dans le modèle REACT réside dans le répertoire *ClientApp\src\components\api-Authorization* . Il se compose des éléments suivants :
 
 * 4 composants :
-  * *Login.js* : gère le déroulement de la connexion de l’application.
-  * *Logout.js* : gère le déroulement de la déconnexion de l’application.
-  * *LoginMenu.js* : un widget qui affiche l’un des ensembles de liens suivants :
+  * *Login.js*: gère le déroulement de la connexion de l’application.
+  * *Logout.js*: gère le déroulement de la déconnexion de l’application.
+  * *LoginMenu.js*: un widget qui affiche l’un des ensembles de liens suivants :
     * Gestion des profils utilisateur et déconnexion des liens lorsque l’utilisateur est authentifié.
     * Enregistrement et connexion des liens lorsque l’utilisateur n’est pas authentifié.
-  * *AuthorizeRoute.js* : composant de routage qui requiert l’authentification d’un utilisateur avant le rendu du composant indiqué dans le `Component` paramètre.
+  * *AuthorizeRoute.js*: composant de routage qui requiert l’authentification d’un utilisateur avant le rendu du composant indiqué dans le `Component` paramètre.
 * Instance exportée `authService` de la classe `AuthorizeService` qui gère les détails de niveau inférieur du processus d’authentification et expose des informations sur l’utilisateur authentifié au reste de l’application à des fins de consommation.
 
 Maintenant que vous avez vu les principaux composants de la solution, vous pouvez examiner de manière plus détaillée les scénarios individuels de l’application.
@@ -198,7 +219,7 @@ services.Configure<JwtBearerOptions>(
 
 Le gestionnaire JWT de l’API déclenche des événements qui permettent de contrôler le processus d’authentification à l’aide de `JwtBearerEvents` . Pour assurer la prise en charge de l’autorisation d’API, `AddIdentityServerJwt` inscrit ses propres gestionnaires d’événements.
 
-Pour personnaliser la gestion d’un événement, encapsulez le gestionnaire d’événements existant avec une logique supplémentaire, le cas échéant. Exemple :
+Pour personnaliser la gestion d’un événement, encapsulez le gestionnaire d’événements existant avec une logique supplémentaire, le cas échéant. Par exemple :
 
 ```csharp
 services.Configure<JwtBearerOptions>(
@@ -285,7 +306,7 @@ Pour déployer l’application en production, vous devez configurer les ressourc
 
 ### <a name="example-deploy-to-a-non-azure-web-hosting-provider"></a>Exemple : déployer sur un fournisseur d’hébergement Web non Azure
 
-Dans le volet d’hébergement Web, créez ou chargez votre certificat. Ensuite, dans le fichier de l’application *appsettings.json* , modifiez la `IdentityServer` section pour inclure les détails de la clé. Exemple :
+Dans le volet d’hébergement Web, créez ou chargez votre certificat. Ensuite, dans le fichier de l’application *appsettings.json* , modifiez la `IdentityServer` section pour inclure les détails de la clé. Par exemple :
 
 ```json
 "IdentityServer": {

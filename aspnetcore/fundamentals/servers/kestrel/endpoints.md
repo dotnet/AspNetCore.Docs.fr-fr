@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel/endpoints
-ms.openlocfilehash: 780250feab456fa3eedee4e023c9bc774e748291
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 5fec573013da5bcb5039b7a189fd84d964349b3a
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253958"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658740"
 ---
 # <a name="configure-endpoints-for-the-aspnet-core-kestrel-web-server"></a>Configurer des points de terminaison pour le serveur Web ASP.NET Core Kestrel
 
@@ -169,7 +169,7 @@ Un schéma de configuration des paramètres d’application HTTPS par défaut es
 Dans l' *appsettings.json* exemple suivant :
 
 * Affectez `AllowInvalid` `true` la valeur pour autoriser l’utilisation de certificats non valides (par exemple, des certificats auto-signés).
-* Tout point de terminaison HTTPS qui ne spécifie pas de certificat ( `HttpsDefaultCert` dans l’exemple ci-dessous) revient au certificat défini sous `Certificates`  >  `Default` ou au certificat de développement.
+* Tout point de terminaison HTTPs qui ne spécifie pas de certificat ( `HttpsDefaultCert` dans l’exemple ci-dessous) revient au certificat défini sous `Certificates:Default` ou au certificat de développement.
 
 ```json
 {
@@ -185,8 +185,16 @@ Dans l' *appsettings.json* exemple suivant :
           "Password": "<certificate password>"
         }
       },
-      "HttpsInlineCertStore": {
+      "HttpsInlineCertAndKeyFile": {
         "Url": "https://localhost:5002",
+        "Certificate": {
+          "Path": "<path to .pem/.crt file>",
+          "KeyPath": "<path to .key file>",
+          "Password": "<certificate password>"
+        }
+      },
+      "HttpsInlineCertStore": {
+        "Url": "https://localhost:5003",
         "Certificate": {
           "Subject": "<subject; required>",
           "Store": "<certificate store; required>",
@@ -195,14 +203,7 @@ Dans l' *appsettings.json* exemple suivant :
         }
       },
       "HttpsDefaultCert": {
-        "Url": "https://localhost:5003"
-      },
-      "Https": {
-        "Url": "https://*:5004",
-        "Certificate": {
-          "Path": "<path to .pfx file>",
-          "Password": "<certificate password>"
-        }
+        "Url": "https://localhost:5004"
       }
     },
     "Certificates": {
@@ -215,7 +216,24 @@ Dans l' *appsettings.json* exemple suivant :
 }
 ```
 
-Une alternative à l’utilisation de `Path` et `Password` pour n’importe quel nœud de certificat consiste à spécifier le certificat à l’aide des champs du magasin de certificats. Par exemple, le `Certificates`  >  `Default` certificat peut être spécifié comme suit :
+Notes de schéma :
+
+* Les noms de points [de](xref:fundamentals/configuration/index#configuration-keys-and-values)terminaison ne respectent pas la casse. Par exemple, `HTTPS` and `Https` sont équivalentes.
+* Le paramètre `Url` est obligatoire pour chaque point de terminaison. Le format de ce paramètre est le même que celui du paramètre de configuration `Urls` du plus haut niveau, sauf qu’il est limité à une seule valeur.
+* Ces points de terminaison remplacent ceux qui sont définis dans le paramètre de configuration `Urls` du plus haut niveau configuration, au lieu de s’y ajouter. Les points de terminaison définis dans le code via `Listen` sont cumulatifs avec les points de terminaison définis dans la section de configuration.
+* La section `Certificate` est facultative. Si la `Certificate` section n’est pas spécifiée, les valeurs par défaut définies dans `Certificates:Default` sont utilisées. Si aucune valeur par défaut n’est disponible, le certificat de développement est utilisé. S’il n’existe aucune valeur par défaut et que le certificat de développement n’est pas présent, le serveur lève une exception et ne démarre pas.
+* La `Certificate` section prend en charge plusieurs [sources de certificats](#certificate-sources).
+* Un nombre quelconque de points de terminaison peuvent être définis dans la [configuration](xref:fundamentals/configuration/index) , à condition qu’ils ne provoquent pas de conflits de port.
+
+#### <a name="certificate-sources"></a>Sources de certificat
+
+Les nœuds de certificat peuvent être configurés pour charger des certificats à partir de plusieurs sources :
+
+* `Path` et `Password` pour charger des fichiers *. pfx* .
+* `Path`, `KeyPath` et `Password` pour charger les fichiers *. pem* / *. CRT* et *. Key* .
+* `Subject` et `Store` le chargement à partir du magasin de certificats.
+
+Par exemple, le `Certificates:Default` certificat peut être spécifié comme suit :
 
 ```json
 "Default": {
@@ -226,15 +244,9 @@ Une alternative à l’utilisation de `Path` et `Password` pour n’importe quel
 }
 ```
 
-Notes de schéma :
+#### <a name="configurationloader"></a>ConfigurationLoader
 
-* Les noms des points de terminaison ne respectent pas la casse. Par exemple, `HTTPS` et `Https` sont valides.
-* Le paramètre `Url` est obligatoire pour chaque point de terminaison. Le format de ce paramètre est le même que celui du paramètre de configuration `Urls` du plus haut niveau, sauf qu’il est limité à une seule valeur.
-* Ces points de terminaison remplacent ceux qui sont définis dans le paramètre de configuration `Urls` du plus haut niveau configuration, au lieu de s’y ajouter. Les points de terminaison définis dans le code via `Listen` sont cumulatifs avec les points de terminaison définis dans la section de configuration.
-* La section `Certificate` est facultative. Si la section `Certificate` n’est pas spécifiée, les valeurs par défaut définies dans les scénarios précédents sont utilisées. Si aucune valeur par défaut n’est disponible, le serveur lève une exception et son démarrage échoue.
-* La `Certificate` section prend en charge les `Path` &ndash; `Password` `Subject` &ndash; `Store` certificats et.
-* Vous pouvez définir un nombre quelconque de points de terminaison de cette façon, pour autant qu’ils ne provoquent pas de conflits de port.
-* `options.Configure(context.Configuration.GetSection("{SECTION}"))` retourne un `KestrelConfigurationLoader` avec une méthode `.Endpoint(string name, listenOptions => { })` qui peut être utilisée pour compléter les paramètres d’un point de terminaison configuré :
+`options.Configure(context.Configuration.GetSection("{SECTION}"))` retourne un <xref:Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader> avec une méthode `.Endpoint(string name, listenOptions => { })` qui peut être utilisée pour compléter les paramètres d’un point de terminaison configuré :
 
 ```csharp
 webBuilder.UseKestrel((context, serverOptions) =>

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: fdd7eb3c4a3b07022760a43cbde80838bfaf7c84
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: d35dd0acf626a6305f00e295e7918c82c7d6a912
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024793"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658701"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Sécuriser une Blazor WebAssembly application hébergée ASP.net core avec le Identity serveur
 
@@ -129,6 +129,10 @@ La `Startup` classe a les ajouts suivants.
     app.UseAuthentication();
     app.UseAuthorization();
     ```
+
+### <a name="azure-app-service-on-linux"></a>Azure App Service sur Linux
+
+Spécifiez l’émetteur de manière explicite lors du déploiement sur Azure App Service sur Linux. Pour plus d'informations, consultez <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
 
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
@@ -468,9 +472,12 @@ Dans l' *`Client`* application, les approches d’autorisation des composants so
 
 [!INCLUDE[](~/blazor/includes/security/usermanager-signinmanager.md)]
 
-## <a name="host-in-azure-app-service-with-a-custom-domain"></a>Héberger dans Azure App Service avec un domaine personnalisé
+## <a name="host-in-azure-app-service-with-a-custom-domain-and-certificate"></a>Héberger dans Azure App Service avec un domaine et un certificat personnalisés
 
-Les instructions suivantes expliquent comment déployer une application hébergée Blazor WebAssembly avec le Identity serveur pour [Azure App service](https://azure.microsoft.com/services/app-service/) avec un domaine personnalisé.
+Les instructions suivantes expliquent :
+
+* Comment déployer une application hébergée Blazor WebAssembly avec le Identity serveur pour [Azure App service](https://azure.microsoft.com/services/app-service/) avec un domaine personnalisé.
+* Comment créer et utiliser un certificat TLS pour la communication du protocole HTTPs avec les navigateurs. Bien que les instructions se concentrent sur l’utilisation du certificat avec un domaine personnalisé, les instructions sont également applicables à l’utilisation d’un domaine Azure Apps par défaut, par exemple `contoso.azurewebsites.net` .
 
 Pour ce scénario d’hébergement, n’utilisez **pas** le même certificat pour la [ Identity clé de signature de jeton du serveur](https://docs.identityserver.io/en/latest/topics/crypto.html#token-signing-and-validation) et la communication sécurisée HTTPS du site avec les navigateurs :
 
