@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: 2e25af03a8a6aaff5b343885711c6ebb68340fac
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d97caeffc6e8beebddb01a5bd126d61ba988de65
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057854"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689290"
 ---
 # <a name="static-files-in-aspnet-core"></a>Fichiers statiques dans ASP.NET Core
 
@@ -54,7 +54,7 @@ Envisagez de créer le dossier *wwwroot/images* et d’ajouter le fichier *wwwro
 
 ### <a name="serve-files-in-web-root"></a>Traiter les fichiers dans la racine Web
 
-Les modèles d’application Web par défaut appellent la <xref:Owin.StaticFileExtensions.UseStaticFiles%2A> méthode dans, qui permet la prise en charge des `Startup.Configure` fichiers statiques :
+Les modèles d’application Web par défaut appellent la <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> méthode dans, qui permet la prise en charge des `Startup.Configure` fichiers statiques :
 
 [!code-csharp[](~/fundamentals/static-files/samples/3.x/StaticFilesSample/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -104,23 +104,31 @@ Les fichiers statiques sont publiquement mis en cache pendant 600 secondes :
 
 ## <a name="static-file-authorization"></a>Autorisations des fichiers statiques
 
-Le middleware de fichiers statiques ne fournit pas de vérification des autorisations. Tous les fichiers desservis par celui-ci, y compris ceux sous `wwwroot` , sont accessibles publiquement. Pour délivrer des fichiers en fonction d’une autorisation :
+Les modèles ASP.NET Core appellent <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> avant d’appeler <xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A> . La plupart des applications suivent ce modèle. Lorsque l’intergiciel de fichiers statiques est appelé avant l’intergiciel (middleware) d’autorisation :
 
-* Stockez-les en dehors de `wwwroot` et de tout répertoire accessible à l’intergiciel de fichiers statiques par défaut.
-* Appelez `UseStaticFiles` après `UseAuthorization` et spécifiez le chemin d’accès :
-
-  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet2)]
+  * Aucune vérification d’autorisation n’est effectuée sur les fichiers statiques.
+  * Les fichiers statiques pris en charge par l’intergiciel de fichiers statiques, tels que ceux sous `wwwroot` , sont accessibles publiquement.
   
-  L’approche précédente nécessite l’authentification des utilisateurs :
+Pour traiter les fichiers statiques en fonction de l’autorisation :
 
-  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-99)]
+  * Stockez-les en dehors de `wwwroot` .
+  * Appelez `UseStaticFiles` , en spécifiant un chemin d’accès, après avoir appelé `UseAuthorization` .
+  * Définissez la [stratégie d’autorisation de secours](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy).
 
-   [!INCLUDE[](~/includes/requireAuth.md)]
+  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet2&highlight=24-29)]
+  
+  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-25)]
 
-Une autre approche pour traiter les fichiers en fonction de l’autorisation :
+  Dans le code précédent, la stratégie d’autorisation de secours requiert l’authentification de ***All** _ Users. Les points de terminaison tels que les contrôleurs, Razor les pages, etc. qui spécifient leurs propres exigences d’autorisation n’utilisent pas la stratégie d’autorisation de secours. Par exemple, les Razor pages, les contrôleurs ou les méthodes d’action avec `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` utilisent l’attribut d’autorisation appliqué plutôt que la stratégie d’autorisation de secours.
 
-* Stockez-les en dehors de `wwwroot` et de tout répertoire accessible à l’intergiciel de fichiers statiques.
-* Servez-vous via une méthode d’action à laquelle l’autorisation est appliquée et retournez un <xref:Microsoft.AspNetCore.Mvc.FileResult> objet :
+  <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> Ajoute <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> à l’instance actuelle, ce qui garantit que l’utilisateur actuel est authentifié.
+
+  Les ressources statiques sous `wwwroot` sont accessibles publiquement, car l’intergiciel de fichiers statiques par défaut ( `app.UseStaticFiles();` ) est appelé avant `UseAuthentication` . Les ressources statiques dans le dossier _MyStaticFiles * nécessitent une authentification. L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) illustre cela.
+
+Une autre approche pour traiter les fichiers en fonction de l’autorisation consiste à :
+
+  * Stockez-les en dehors de `wwwroot` et de tout répertoire accessible à l’intergiciel de fichiers statiques.
+  * Servez-vous via une méthode d’action à laquelle l’autorisation est appliquée et retournez un <xref:Microsoft.AspNetCore.Mvc.FileResult> objet :
 
   [!code-csharp[](static-files/samples/3.x/StaticFilesSample/Controllers/HomeController.cs?name=snippet_BannerImage)]
 
