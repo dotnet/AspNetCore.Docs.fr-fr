@@ -57,8 +57,6 @@
         - name: MVC
           displayName: tutorial
           items:
-            - name: Vue d'ensemble
-              uid: tutorials/first-mvc-app/index
             - name: Prise en main
               uid: tutorials/first-mvc-app/start-mvc
             - name: Ajouter un contrôleur
@@ -262,8 +260,6 @@
           uid: mvc/overview
         - name: Didacticiel
           items:
-            - name: Vue d'ensemble
-              uid: tutorials/first-mvc-app/index
             - name: Prise en main
               uid: tutorials/first-mvc-app/start-mvc
             - name: Ajouter un contrôleur
@@ -1169,7 +1165,7 @@
     - name: Protection des données
       displayName: encryption
       items:
-        - name: Vue d’ensemble
+        - name: Vue d'ensemble
           uid: security/data-protection/introduction
         - name: API de protection des données
           uid: security/data-protection/using-data-protection
