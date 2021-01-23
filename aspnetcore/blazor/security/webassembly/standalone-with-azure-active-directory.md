@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory
-ms.openlocfilehash: 557c700ffd24d4d6c85848ad360690d583e05321
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: eb5bdb046c4360d1cd33a81c569c86b991e7729d
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97854472"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710536"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory"></a>Sécuriser une Blazor WebAssembly application ASP.net Core autonome avec Azure Active Directory
 
@@ -47,7 +47,7 @@ Inscrire une application AAD dans la  > zone de **inscriptions d’applications*
 1. Choisissez un **type de compte pris en charge**. Vous ne pouvez sélectionner des **comptes dans cet annuaire d’organisation que** pour cette expérience.
 1. Définissez la liste déroulante **URI de redirection** sur **une application à page unique (Spa)** et fournissez l’URI de redirection suivante : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque s’affiche plus loin dans cette rubrique pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Inscription**.
+1. Sélectionnez **Enregistrer**.
 
 Notez les informations suivantes :
 
@@ -71,7 +71,7 @@ Inscrire une application AAD dans la  > zone de **inscriptions d’applications*
 1. Choisissez un **type de compte pris en charge**. Vous ne pouvez sélectionner des **comptes dans cet annuaire d’organisation que** pour cette expérience.
 1. Laissez la liste déroulante **URI de redirection** définie sur **Web** et indiquez l’URI de redirection suivant : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque s’affiche plus loin dans cette rubrique pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Inscription**.
+1. Sélectionnez **Enregistrer**.
 
 Notez les informations suivantes :
 
@@ -117,7 +117,7 @@ L’emplacement de sortie spécifié avec l’option `-o|--output` crée un doss
 Après avoir créé l’application, vous devez être en mesure d’effectuer les opérations suivantes :
 
 * Connectez-vous à l’application à l’aide d’un compte d’utilisateur AAD.
-* Demander des jetons d’accès pour les API Microsoft. Pour plus d’informations, consultez :
+* Demander des jetons d’accès pour les API Microsoft. Pour plus d'informations, consultez les pages suivantes :
   * [Étendues de jeton d’accès](#access-token-scopes)
   * [Démarrage rapide : configurer une application pour exposer des API Web](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis).
 
@@ -241,6 +241,7 @@ Pour plus d’informations, consultez les sections suivantes de l’article rela
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:blazor/security/webassembly/additional-scenarios>
+* [Créer une version personnalisée de la bibliothèque JavaScript Authentication. MSAL](xref:blazor/security/webassembly/additional-scenarios#build-a-custom-version-of-the-authenticationmsal-javascript-library)
 * [Demandes d’API Web non authentifiées ou non autorisées dans une application avec un client par défaut sécurisé](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:blazor/security/webassembly/aad-groups-roles>
 * <xref:security/authentication/azure-active-directory/index>

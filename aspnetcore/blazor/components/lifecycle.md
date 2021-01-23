@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: acaa276efda9fb4d09a5c1b1ca59c6abde1b64ec
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 7152f45cd799128b668ec5002fb20b4f30e69585
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252386"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710657"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>BlazorCycle de vie ASP.net Core
 
@@ -62,7 +62,7 @@ Le `Render` cycle de vie :
 
 ![Cycle de vie du rendu](lifecycle/_static/lifecycle3.png)
 
-Les développeurs appellent pour [`StateHasChanged`](#state-changes) générer un rendu. Pour plus d'informations, consultez <xref:blazor/components/rendering>.
+Les développeurs appellent pour [`StateHasChanged`](#state-changes) générer un rendu. Pour plus d’informations, consultez <xref:blazor/components/rendering>.
 
 ## <a name="lifecycle-methods"></a>Méthodes de cycle de vie
 
@@ -208,15 +208,15 @@ protected override bool ShouldRender()
 
 Même si <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> est substitué, le composant est toujours restitué initialement.
 
-Pour plus d'informations, consultez <xref:blazor/webassembly-performance-best-practices#avoid-unnecessary-rendering-of-component-subtrees>.
+Pour plus d’informations, consultez <xref:blazor/webassembly-performance-best-practices#avoid-unnecessary-rendering-of-component-subtrees>.
 
 ## <a name="state-changes"></a>Modifications d'état
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> notifie le composant que son état a changé. Le cas échéant, <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> l’appel de entraîne le rerendu du composant.
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> est appelé automatiquement pour les <xref:Microsoft.AspNetCore.Components.EventCallback> méthodes. Pour plus d'informations, consultez <xref:blazor/components/event-handling#eventcallback>.
+<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> est appelé automatiquement pour les <xref:Microsoft.AspNetCore.Components.EventCallback> méthodes. Pour plus d’informations, consultez <xref:blazor/components/event-handling#eventcallback>.
 
-Pour plus d'informations, consultez <xref:blazor/components/rendering>.
+Pour plus d’informations, consultez <xref:blazor/components/rendering>.
 
 ## <a name="handle-incomplete-async-actions-at-render"></a>Gérer les actions asynchrones incomplètes au rendu
 
@@ -296,9 +296,9 @@ Pour plus d’informations sur le <xref:Microsoft.AspNetCore.Mvc.TagHelpers.Comp
 
 [!INCLUDE[](~/blazor/includes/prerendering.md)]
 
-## <a name="component-disposal-with-idisposable"></a>Suppression de composant avec IDisposable
+## <a name="component-disposal-with-idisposable"></a>Élimination des composants avec `IDisposable`
 
-Si un composant implémente <xref:System.IDisposable> , la [ `Dispose` méthode](/dotnet/standard/garbage-collection/implementing-dispose) est appelée lorsque le composant est supprimé de l’interface utilisateur. La suppression peut avoir lieu à tout moment, y compris lors de [l’initialisation du composant](#component-initialization-methods). Le composant suivant utilise `@implements IDisposable` et la `Dispose` méthode :
+Si un composant implémente <xref:System.IDisposable> , l’infrastructure appelle la [méthode de suppression](/dotnet/standard/garbage-collection/implementing-dispose) lorsque le composant est supprimé de l’interface utilisateur, où les ressources non managées peuvent être libérées. La suppression peut avoir lieu à tout moment, y compris lors de [l’initialisation du composant](#component-initialization-methods). Le composant suivant implémente <xref:System.IDisposable> avec la [`@implements`](xref:mvc/views/razor#implements) Razor directive :
 
 ```razor
 @using System
@@ -314,6 +314,15 @@ Si un composant implémente <xref:System.IDisposable> , la [ `Dispose` méthode]
 }
 ```
 
+Pour les tâches de suppression asynchrones, utilisez `DisposeAsync` au lieu de `Dispose` dans l’exemple précédent :
+
+```csharp
+public async ValueTask DisposeAsync()
+{
+    ...
+}
+```
+
 > [!NOTE]
 > <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>L’appel de dans `Dispose` n’est pas pris en charge. <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> peut être appelé dans le cadre du détachement du convertisseur, donc demander des mises à jour de l’interface utilisateur à ce stade n’est pas pris en charge.
 
@@ -326,6 +335,8 @@ Annule l’abonnement des gestionnaires d’événements des événements .NET. 
 * Approche de la méthode privée
 
   [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
+  
+Pour plus d’informations, consultez [nettoyage des ressources non managées](/dotnet/standard/garbage-collection/unmanaged) et les rubriques qui le suivent sur l’implémentation des `Dispose` `DisposeAsync` méthodes et.
 
 ## <a name="cancelable-background-work"></a>Travail en arrière-plan annulable
 

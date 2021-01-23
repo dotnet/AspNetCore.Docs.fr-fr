@@ -1,5 +1,5 @@
 ---
-title: Types de retour de l’action du contrôleur dans ASP.NET Core API Web
+title: Types de retour des actions des contrôleurs dans l’API web ASP.NET Core
 author: scottaddie
 description: En savoir plus sur l’utilisation des différents types de retour de méthode d’action de contrôleur dans une API Web ASP.NET Core.
 ms.author: scaddie
@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/action-return-types
-ms.openlocfilehash: a2866970a20785ae8fa306d484972697817b7f92
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 62c8227ca770a3a9adbe780685b140bc0e86841e
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058946"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710696"
 ---
-# <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Types de retour de l’action du contrôleur dans ASP.NET Core API Web
+# <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Types de retour des actions des contrôleurs dans l’API web ASP.NET Core
 
 Par [Scott Addie](https://github.com/scottaddie)
 
@@ -92,11 +92,11 @@ Envisagez de déclarer le type de retour de la signature d’action en tant que 
 
 Examinez l’action suivante, qui retourne les enregistrements de produit facturés sur la vente comme `IEnumerable<Product>` suit :
 
-[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.30/Controllers/ProductsController.cs?name=snippet_GetOnSaleProducts)]
+[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.31/Controllers/ProductsController.cs?name=snippet_GetOnSaleProducts)]
 
 L' `IAsyncEnumerable<Product>` équivalent de l’action précédente est le suivant :
 
-[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.30/Controllers/ProductsController.cs?name=snippet_GetOnSaleProductsAsync)]
+[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.31/Controllers/ProductsController.cs?name=snippet_GetOnSaleProductsAsync)]
 
 Les deux actions précédentes sont non bloquantes à partir de ASP.NET Core 3,0.
 

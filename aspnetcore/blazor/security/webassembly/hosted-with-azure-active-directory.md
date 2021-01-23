@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: e65be6e2ddc1a9de6f0ba20fe50f63b650e0bff5
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: f0c7723e8de7167b4fe5021ea1ca26e7cf198581
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97792044"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710566"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Sécuriser une Blazor WebAssembly application hébergée ASP.net core avec Azure Active Directory
 
@@ -58,7 +58,7 @@ Inscrire une application AAD pour l' *application API serveur*:
 1. Choisissez un **type de compte pris en charge**. Pour cette expérience, vous pouvez sélectionner des **comptes dans ce répertoire d’organisation uniquement** (un seul locataire).
 1. L' *application API serveur* ne requiert pas d' **URI de redirection** dans ce scénario, laissez la liste déroulante définie sur **Web** et n’entrez pas d’URI de redirection.
 1. Désactivez **la case**  >  à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Inscription**.
+1. Sélectionnez **Enregistrer**.
 
 Notez les informations suivantes :
 
@@ -94,7 +94,7 @@ Inscrire une application AAD pour l' *application cliente*:
 1. Choisissez un **type de compte pris en charge**. Pour cette expérience, vous pouvez sélectionner des **comptes dans ce répertoire d’organisation uniquement** (un seul locataire).
 1. Définissez la liste déroulante **URI de redirection** sur **une application à page unique (Spa)** et fournissez l’URI de redirection suivante : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les *`Server`* Propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque apparaît dans la section [créer une application](#create-the-app) pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Inscription**.
+1. Sélectionnez **Enregistrer**.
 
 Enregistrez l' *`Client`* ID de l’application (client) de l’application (par exemple, `4369008b-21fa-427c-abaa-9b53bf58e538` ).
 
@@ -114,7 +114,7 @@ Dans configurations de plateforme **d’authentification** , >  > **application 
 1. Choisissez un **type de compte pris en charge**. Pour cette expérience, vous pouvez sélectionner des **comptes dans ce répertoire d’organisation uniquement** (un seul locataire).
 1. Laissez la liste déroulante **URI de redirection** définie sur **Web** et indiquez l’URI de redirection suivant : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les *`Server`* Propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque apparaît dans la section [créer une application](#create-the-app) pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Inscription**.
+1. Sélectionnez **Enregistrer**.
 
 Enregistrez l' *`Client`* ID de l’application (client) de l’application (par exemple, `4369008b-21fa-427c-abaa-9b53bf58e538` ).
 
@@ -137,7 +137,7 @@ Dans **autorisations d’API**:
 1. Sélectionnez **Ajouter des autorisations**.
 1. Sélectionnez le bouton **accorder le consentement de l’administrateur pour {nom du locataire}** . Sélectionnez **Oui** pour confirmer.
 
-### <a name="create-the-app"></a>Créer l’application
+### <a name="create-the-app"></a>Créer l'application
 
 Dans un dossier vide, remplacez les espaces réservés dans la commande suivante par les informations enregistrées précédemment et exécutez la commande dans une interface de commande :
 
@@ -559,6 +559,7 @@ Exécutez l’application à partir du projet serveur. Lorsque vous utilisez Vis
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:blazor/security/webassembly/additional-scenarios>
+* [Créer une version personnalisée de la bibliothèque JavaScript Authentication. MSAL](xref:blazor/security/webassembly/additional-scenarios#build-a-custom-version-of-the-authenticationmsal-javascript-library)
 * [Demandes d’API Web non authentifiées ou non autorisées dans une application avec un client par défaut sécurisé](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:blazor/security/webassembly/aad-groups-roles>
 * <xref:security/authentication/azure-active-directory/index>

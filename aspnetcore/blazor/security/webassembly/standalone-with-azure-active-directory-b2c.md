@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 679f14642f4a611a5e65a7f472c68663fc1fb16b
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 68b1162ea35b401c47f89b7a930b6f0d5c3ab6c5
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97764691"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710525"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Sécuriser une Blazor WebAssembly application ASP.net Core autonome avec Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Inscrire une application AAD B2C :
 1. Pour les **types de comptes pris en charge**, sélectionnez l’option multi-locataire : **comptes dans n’importe quel annuaire d’organisation ou n’importe quel fournisseur d’identité. Pour authentifier les utilisateurs avec Azure AD B2C.**
 1. Définissez la liste déroulante **URI de redirection** sur **une application à page unique (Spa)** et fournissez l’URI de redirection suivante : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque s’affiche plus loin dans cette rubrique pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Vérifiez que  > **les autorisations accordent le consentement de l’administrateur à OpenID et offline_access autorisations** sont sélectionnées.
-1. Sélectionnez **Inscription**.
+1. Sélectionnez **Enregistrer**.
 
 Enregistrez l’ID de l’application (client) (par exemple, `41451fa7-82d9-4673-8fa5-69eff5a761fd` ).
 
@@ -68,7 +68,7 @@ Dans configurations de plateforme **d’authentification** , >  > **application 
 1. Pour les **types de comptes pris en charge**, sélectionnez l’option multi-locataire : **comptes dans n’importe quel annuaire d’organisation ou n’importe quel fournisseur d’identité. Pour authentifier les utilisateurs avec Azure AD B2C.**
 1. Laissez la liste déroulante **URI de redirection** définie sur **Web** et indiquez l’URI de redirection suivant : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque s’affiche plus loin dans cette rubrique pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Vérifiez que  > **les autorisations accordent le consentement de l’administrateur à OpenID et offline_access autorisations** sont sélectionnées.
-1. Sélectionnez **Inscription**.
+1. Sélectionnez **Enregistrer**.
 
 Enregistrez l’ID de l’application (client) (par exemple, `41451fa7-82d9-4673-8fa5-69eff5a761fd` ).
 
@@ -121,7 +121,7 @@ L’emplacement de sortie spécifié avec l’option `-o|--output` crée un doss
 Après avoir créé l’application, vous devez être en mesure d’effectuer les opérations suivantes :
 
 * Connectez-vous à l’application à l’aide d’un compte d’utilisateur AAD.
-* Demander des jetons d’accès pour les API Microsoft. Pour plus d’informations, consultez :
+* Demander des jetons d’accès pour les API Microsoft. Pour plus d'informations, consultez les pages suivantes :
   * [Étendues de jeton d’accès](#access-token-scopes)
   * [Démarrage rapide : configurer une application pour exposer des API Web](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis).
 
@@ -241,6 +241,7 @@ Pour plus d’informations, consultez les sections suivantes de l’article rela
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:blazor/security/webassembly/additional-scenarios>
+* [Créer une version personnalisée de la bibliothèque JavaScript Authentication. MSAL](xref:blazor/security/webassembly/additional-scenarios#build-a-custom-version-of-the-authenticationmsal-javascript-library)
 * [Demandes d’API Web non authentifiées ou non autorisées dans une application avec un client par défaut sécurisé](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:security/authentication/azure-ad-b2c>
 * [Tutoriel : Créer un locataire Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-create-tenant)
