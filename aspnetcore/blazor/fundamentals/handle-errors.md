@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: c789928252417ef1cf95c60deb7edef24d58126e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5a255c2d3535311cecd6b7219447e80d1ae78877
+ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93055995"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758253"
 ---
 # <a name="handle-errors-in-aspnet-core-no-locblazor-apps"></a>Gérer les erreurs dans les Blazor applications ASP.net Core
 
@@ -88,6 +88,35 @@ L' `blazor-error-ui` élément est masqué par les styles inclus dans les Blazor
     top: 0.5rem;
 }
 ```
+
+## <a name="no-locblazor-server-detailed-circuit-errors"></a>Blazor Server Erreurs de circuit détaillées
+
+Les erreurs côté client n’incluent pas la pile des appels et ne fournissent pas de détails sur la cause de l’erreur, mais les journaux du serveur contiennent ces informations. À des fins de développement, des informations sur les erreurs de circuit sensible peuvent être mises à la disposition du client en activant des erreurs détaillées.
+
+Activez Blazor Server les erreurs détaillées à l’aide des approches suivantes :
+
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DetailedErrors?displayProperty=nameWithType>.
+* La `DetailedErrors` clé de configuration définie sur `true` , qui peut être définie dans le fichier de paramètres de développement de l’application ( `appsettings.Development.json` ). La clé peut également être définie à l’aide `ASPNETCORE_DETAILEDERRORS` de la variable d’environnement avec la valeur `true` .
+* la [ SignalR journalisation côté serveur](xref:signalr/diagnostics#server-side-logging) ( `Microsoft.AspNetCore.SignalR` ) peut être définie sur [Déboguer](xref:Microsoft.Extensions.Logging.LogLevel) ou sur [suivi](xref:Microsoft.Extensions.Logging.LogLevel) pour la SignalR journalisation détaillée.
+
+`appsettings.Development.json`:
+
+```json
+{
+  "DetailedErrors": true,
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information",
+      "Microsoft.AspNetCore.SignalR": "Debug"
+    }
+  }
+}
+```
+
+> [!WARNING]
+> L’exposition des informations sur les erreurs aux clients sur Internet est un risque de sécurité qui doit toujours être évité.
 
 ## <a name="how-a-no-locblazor-server-app-reacts-to-unhandled-exceptions"></a>Comment une Blazor Server application réagit aux exceptions non gérées
 

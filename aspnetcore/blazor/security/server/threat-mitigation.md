@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: d0ed36731d78d3e98aa294aca50492f0a3ac8174
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 4256e90ca5f185992a73d1e43460ca5d27159d6f
+ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506693"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758277"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>Guide d’atténuation des menaces pour ASP.NET Core Blazor Server
 
@@ -114,7 +114,7 @@ Les attaques par déni de service (DoS) impliquent un client qui oblige le serve
 | --- | --- | --- |
 | <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitMaxRetained> | Nombre maximal de circuits déconnectés qu’un serveur donné détient en mémoire à la fois. | 100 |
 | <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitRetentionPeriod> | Durée maximale pendant laquelle un circuit déconnecté est maintenu en mémoire avant d’être détruit. | 3 minutes |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout> | Durée maximale pendant laquelle le serveur attend avant d’expirer un appel de fonction JavaScript asynchrone. | 1 minute |
+| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout> | Durée maximale pendant laquelle le serveur attend avant d’expirer un appel de fonction JavaScript asynchrone. | 1 minute |
 | <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches> | Nombre maximal de lots de rendu sans accusé de réception le serveur conserve en mémoire par circuit à un moment donné pour prendre en charge une reconnexion fiable. Après avoir atteint la limite, le serveur cesse de produire de nouveaux lots de rendu jusqu’à ce qu’un ou plusieurs lots aient été reconnus par le client. | 10 |
 
 Définir la taille maximale de message d’un seul message Hub entrant <xref:Microsoft.AspNetCore.SignalR.HubConnectionContextOptions> .
@@ -306,12 +306,7 @@ Les interactions d’interopérabilité JS entre le client et le serveur sont en
 
 Lorsqu’une erreur se produit sur le serveur, le Framework avertit le client et ferme la session. Par défaut, le client reçoit un message d’erreur générique qui peut être affiché dans les outils de développement du navigateur.
 
-L’erreur côté client n’inclut pas la pile des appels et ne fournit pas de détails sur la cause de l’erreur, mais les journaux du serveur contiennent ces informations. À des fins de développement, les informations d’erreur sensibles peuvent être mises à la disposition du client en activant les erreurs détaillées.
-
-Activez les erreurs détaillées dans JavaScript avec :
-
-* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DetailedErrors?displayProperty=nameWithType>.
-* La `DetailedErrors` clé de configuration définie sur `true` , qui peut être définie dans le fichier de paramètres de l’application ( `appsettings.json` ). La clé peut également être définie à l’aide `ASPNETCORE_DETAILEDERRORS` de la variable d’environnement avec la valeur `true` .
+L’erreur côté client n’inclut pas la pile des appels et ne fournit pas de détails sur la cause de l’erreur, mais les journaux du serveur contiennent ces informations. À des fins de développement, les informations d’erreur sensibles peuvent être mises à la disposition du client en [activant les erreurs détaillées](xref:blazor/fundamentals/handle-errors#blazor-server-detailed-circuit-errors).
 
 > [!WARNING]
 > L’exposition des informations sur les erreurs aux clients sur Internet est un risque de sécurité qui doit toujours être évité.
