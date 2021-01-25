@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: ad9920ccd830b93d083f3c5ede03702164842b6e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e65983fb1a440057283111ea5a79a79b765607b7
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97753112"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751690"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Gérer les erreurs dans ASP.NET Core
 
@@ -68,7 +68,14 @@ Dans l’exemple suivant, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExt
 
 Le Razor modèle d’application pages fournit une page d’erreur (*. cshtml*) et une <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> classe ( `ErrorModel` ) dans le dossier *pages* . Pour une application MVC, le modèle de projet comprend une `Error` méthode d’action et un affichage des erreurs pour le contrôleur d’hébergement.
 
-Ne Marquez pas la méthode d’action du gestionnaire d’erreurs avec des attributs de méthode HTTP, tels que `HttpGet` . Les verbes explicites empêchent certaines demandes d’atteindre la méthode d’action. Autorisez l’accès anonyme à la méthode si les utilisateurs non authentifiés doivent voir l’affichage des erreurs.
+L’intergiciel (middleware) de gestion des exceptions réexécute la demande à l’aide de la méthode http *d’origine* . Si un point de terminaison de gestionnaire d’erreurs est limité à un ensemble spécifique de méthodes HTTP, il s’exécute uniquement pour ces méthodes HTTP. Par exemple, une action du contrôleur MVC qui utilise l' `[HttpGet]` attribut s’exécute uniquement pour les demandes d’extraction. Pour vous assurer que *toutes les* demandes atteignent la page de gestion des erreurs personnalisée, ne les limitez pas à un ensemble spécifique de méthodes http.
+
+Pour gérer les exceptions différemment en fonction de la méthode HTTP d’origine :
+
+* Pour les Razor pages, créez plusieurs méthodes de gestionnaire. Par exemple, utilisez `OnGet` pour gérer les exceptions d’extraction et utiliser `OnPost` pour gérer les exceptions de publication.
+* Pour MVC, appliquez des attributs de verbe HTTP à plusieurs actions. Par exemple, utilisez `[HttpGet]` pour gérer les exceptions d’extraction et utiliser `[HttpPost]` pour gérer les exceptions de publication.
+
+Pour autoriser les utilisateurs non authentifiés à afficher la page de gestion des erreurs personnalisée, assurez-vous qu’il prend en charge l’accès anonyme.
 
 ### <a name="access-the-exception"></a>Accéder à l'exception
 

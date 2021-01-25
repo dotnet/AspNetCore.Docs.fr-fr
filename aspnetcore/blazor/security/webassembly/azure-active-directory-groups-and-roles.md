@@ -2,10 +2,10 @@
 title: ASP.NET Core Blazor WebAssembly avec des groupes et des rôles Azure Active Directory
 author: guardrex
 description: Découvrez comment configurer Blazor WebAssembly pour utiliser des groupes et des rôles Azure Active Directory.
-monikerRange: '>= aspnetcore-3.1'
+monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: devx-track-csharp, mvc
-ms.date: 10/27/2020
+ms.date: 01/24/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 96a7dde9a5a756e40125ffda4c54fbf24fdc616a
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 8d18a8f9282e83c3b3ef5b9c7c6651c9b525a21f
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058257"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751582"
 ---
-# <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Groupes Azure Active Directory (AAD), rôles d’administrateur et rôles définis par l’utilisateur
+# <a name="azure-active-directory-aad-groups-administrator-roles-and-app-roles"></a>Groupes Azure Active Directory (AAD), rôles d’administrateur et rôles d’application
 
 Par [Luke Latham](https://github.com/guardrex) et [Javier Calvarro Nelson](https://github.com/javiercn)
 
@@ -38,13 +38,13 @@ Par [Luke Latham](https://github.com/guardrex) et [Javier Calvarro Nelson](https
 
 Azure Active Directory (AAD) fournit plusieurs approches d’autorisation qui peuvent être combinées avec ASP.NET Core Identity :
 
-* Groupes définis par l’utilisateur
+* Groupes
   * Sécurité
   * Microsoft 365
   * Distribution
 * Rôles
   * Rôles d’administrateur AAD
-  * Rôles définis par l’utilisateur
+  * Rôles d’application
 
 Les instructions de cet article s’appliquent aux Blazor WebAssembly scénarios de déploiement AAD décrits dans les rubriques suivantes :
 
@@ -52,68 +52,96 @@ Les instructions de cet article s’appliquent aux Blazor WebAssembly scénarios
 * [Autonome avec AAD](xref:blazor/security/webassembly/standalone-with-azure-active-directory)
 * [Hébergé avec AAD](xref:blazor/security/webassembly/hosted-with-azure-active-directory)
 
+L’aide de l’article fournit des instructions pour les applications client et serveur :
+
+* **Client**: applications autonomes Blazor WebAssembly ou *`Client`* application d’une solution hébergée Blazor .
+* **Serveur**: autonome ASP.net Core les applications API serveur/API Web ou l' *`Server`* application d’une Blazor solution hébergée.
+
 ## <a name="scopes"></a>Étendues
 
-Un appel d' [API Microsoft Graph](/graph/use-the-api) est requis pour tout utilisateur d’application disposant de plus de cinq appartenances de groupe de sécurité et de rôle d’administrateur AAD.
+Pour autoriser [Microsoft Graph](/graph/use-the-api) appels d’API pour les données de profil utilisateur, d’attribution de rôle et d’appartenance au groupe, le **client** est configuré avec ( `https://graph.microsoft.com/User.Read` ) [API Graph autorisation (étendue)](/graph/permissions-reference) dans le portail Azure.
 
-Pour autoriser les appels API Graph, attribuez à l’application autonome ou à *`Client`* une solution hébergée l' Blazor une des [autorisations API Graph suivantes (étendues)](/graph/permissions-reference) dans le portail Azure :
+Une application **serveur** qui appelle API Graph pour les données d’appartenance aux rôles et aux groupes est fournie `GroupMember.Read.All` ( `https://graph.microsoft.com/GroupMember.Read.All` ) [API Graph autorisation (étendue)](/graph/permissions-reference) dans le portail Azure.
 
-* `Directory.Read.All`
-* `Directory.ReadWrite.All`
-* `Directory.AccessAsUser.All`
+Ces étendues sont requises en plus des étendues requises dans les scénarios de déploiement AAD décrits dans les rubriques répertoriées dans la première section de cet article.
 
-`Directory.Read.All` est l’étendue la moins privilégiée et est l’étendue utilisée pour l’exemple décrit dans cet article.
+> [!NOTE]
+> Les mots « autorisation » et « étendue » sont utilisés de manière interchangeable dans le Portail Azure et dans divers ensembles de documentation Microsoft et externes. Cet article utilise le mot « Scope » dans les limites des autorisations affectées à une application dans le Portail Azure.
 
-## <a name="user-defined-groups-and-administrator-roles"></a>Groupes définis par l’utilisateur et rôles d’administrateur
+## <a name="group-membership-claims-attribute"></a>Attribut revendications d’appartenance au groupe
 
-Pour configurer l’application dans le Portail Azure pour fournir une `groups` revendication d’appartenance, consultez les articles Azure suivants. Affecter des utilisateurs à des groupes AAD définis par l’utilisateur et des rôles d’administrateur AAD.
+Dans le manifeste de l’application dans le Portail Azure pour les applications **clientes** et **serveur** , affectez à l' [ `groupMembershipClaims` attribut](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute) la valeur `All` . La valeur `All` permet d’obtenir tous les groupes de sécurité, groupes de distribution et rôles dont l’utilisateur connecté est membre.
 
-* [Rôles utilisant les groupes de sécurité Azure AD](/azure/architecture/multitenant-identity/app-roles#roles-using-azure-ad-security-groups)
-* [`groupMembershipClaims` attribut](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute)
+1. Ouvrez l’inscription de l’application Portail Azure.
+1. Sélectionnez **gérer**  >  le **manifeste** dans la barre latérale.
+1. Recherchez l' `groupMembershipClaims` attribut.
+1. Définissez la valeur sur `All`.
+1. Sélectionnez le bouton **Enregistrer**.
 
-Les exemples suivants partent du principe qu’un utilisateur est affecté au rôle d' *administrateur de facturation* AAD.
+```json
+"groupMembershipClaims": "All",
+```
 
-La `groups` revendication unique envoyée par AAD présente les groupes et les rôles de l’utilisateur en tant qu’ID d’objet (Guid) dans un tableau JSON. L’application doit convertir le tableau JSON de groupes et de rôles en `group` revendications individuelles pour lesquelles l’application peut créer des [stratégies](xref:security/authorization/policies) .
+## <a name="custom-user-account"></a>Compte d’utilisateur personnalisé
 
-Lorsque le nombre de rôles d’administrateur AAD attribués et de groupes définis par l’utilisateur est supérieur à cinq, AAD envoie une `hasgroups` revendication avec une `true` valeur au lieu d’envoyer une `groups` revendication. Toute application pouvant comporter plus de cinq rôles et groupes affectés à ses utilisateurs doit effectuer un appel de API Graph séparé pour obtenir les rôles et les groupes d’un utilisateur. L’exemple d’implémentation fourni dans cet article s’adresse à ce scénario. Pour plus d’informations, consultez `groups` l' `hasgroups` article et les informations sur les revendications dans les jetons d’accès de la [plateforme Microsoft Identity : revendications de charge utile](/azure/active-directory/develop/access-tokens#payload-claims) .
+Affectez des utilisateurs aux groupes de sécurité AAD et aux rôles d’administrateur AAD dans le Portail Azure.
 
-Étendez <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> pour inclure les propriétés de tableau pour les groupes et les rôles. Assignez un tableau vide à chaque propriété afin qu' `null` il ne soit pas nécessaire de vérifier si ces propriétés sont utilisées ultérieurement dans les `foreach` boucles.
+Les exemples de cet article sont les suivants :
+
+* Supposons qu’un utilisateur est affecté au rôle d' *administrateur de facturation* AAD dans le locataire portail Azure AAD pour l’autorisation d’accéder aux données de l’API du serveur.
+* Utilisez des [stratégies d’autorisation](xref:security/authorization/policies) pour contrôler l’accès au sein des applications **clientes** et **serveur** .
+
+Dans l’application **cliente** , étendez <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> pour inclure les propriétés de :
+
+* `Roles`: Tableau des rôles d’application AAD (abordé dans la section [rôles d’application](#app-roles) )
+* `Wids`: Rôles d’administrateur AAD dans des [revendications d’ID bien connues ( `wids` )](/azure/active-directory/develop/access-tokens#payload-claims)
+* `Oid`: Revendication d' [identificateur d’objet immuable ( `oid` )](/azure/active-directory/develop/id-tokens#payload-claims) (identifie de façon unique un utilisateur dans et entre les locataires)
+
+Assignez un tableau vide à chaque propriété de tableau afin que la vérification de `null` ne soit pas requise lorsque ces propriétés sont utilisées dans les `foreach` boucles.
 
 `CustomUserAccount.cs`:
 
 ```csharp
+using System;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 public class CustomUserAccount : RemoteUserAccount
 {
-    [JsonPropertyName("groups")]
-    public string[] Groups { get; set; } = new string[] { };
-
     [JsonPropertyName("roles")]
-    public string[] Roles { get; set; } = new string[] { };
+    public string[] Roles { get; set; } = Array.Empty<string>();
+
+    [JsonPropertyName("wids")]
+    public string[] Wids { get; set; } = Array.Empty<string>();
+
+    [JsonPropertyName("oid")]
+    public string Oid { get; set; }
 }
 ```
 
-::: moniker range=">= aspnetcore-5.0"
+Ajoutez une référence de package au fichier projet de l’application **cliente** pour [`Microsoft.Graph`](https://www.nuget.org/packages/Microsoft.Graph) .
 
-Utilisez l' **une** des approches suivantes pour créer des revendications pour les groupes et rôles AAD :
+Ajoutez les classes et la configuration de l’utilitaire du SDK Graph dans la section *Kit de développement logiciel (SDK) Graph* de l' <xref:blazor/security/webassembly/graph-api#graph-sdk> article. Dans la `GraphClientExtensions` classe, spécifiez l' `User.Read` étendue du jeton d’accès dans la `AuthenticateRequestAsync` méthode :
 
-* [Utiliser le kit de développement logiciel (SDK) Graph](#use-the-graph-sdk)
-* [Utiliser un nommé `HttpClient`](#use-a-named-httpclient)
+```csharp
+var result = await TokenProvider.RequestAccessToken(
+    new AccessTokenRequestOptions()
+    {
+        Scopes = new[] { "https://graph.microsoft.com/User.Read" }
+    });
+```
 
-### <a name="use-the-graph-sdk"></a>Utiliser le kit de développement logiciel (SDK) Graph
+Ajoutez la fabrique de comptes d’utilisateur personnalisée suivante à l’application **cliente** . La fabrique d’utilisateurs personnalisée est utilisée pour établir les éléments suivants :
 
-Ajoutez une référence de package à l’application autonome ou à l' *`Client`* application d’une solution hébergée Blazor pour [`Microsoft.Graph`](https://www.nuget.org/packages/Microsoft.Graph) .
+* Revendications de rôle d’application ( `appRole` ) (traitées dans la section [rôles d’application](#app-roles) )
+* Revendications de rôle d’administrateur AAD ( `directoryRole` )
+* Exemple de revendication de données de profil utilisateur pour le numéro de téléphone mobile de l’utilisateur ( `mobilePhone` )
+* Revendications de groupe AAD ( `directoryGroup` )
 
-Ajoutez les classes et la configuration de l’utilitaire du SDK Graph dans la section *Kit de développement logiciel (SDK) Graph* de l' <xref:blazor/security/webassembly/graph-api#graph-sdk> article.
-
-Ajoutez la fabrique de comptes d’utilisateur personnalisée suivante à l’APPO autonome ou à l' *`Client`* application d’une solution hébergée Blazor ( `CustomAccountFactory.cs` ). La fabrique d’utilisateurs personnalisée est utilisée pour traiter les revendications de rôles et de groupes. Le `roles` tableau de revendications est abordé dans la section [rôles définis par l’utilisateur](#user-defined-roles) . Si la `hasgroups` revendication est présente, le kit de développement logiciel (SDK) Graph est utilisé pour effectuer une demande autorisée à API Graph pour obtenir les rôles et les groupes de l’utilisateur :
+`CustomAccountFactory.cs`:
 
 ```csharp
 using System;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -128,7 +156,7 @@ public class CustomAccountFactory
     private readonly ILogger<CustomAccountFactory> logger;
     private readonly IServiceProvider serviceProvider;
 
-    public CustomAccountFactory(IAccessTokenProviderAccessor accessor, 
+    public CustomAccountFactory(IAccessTokenProviderAccessor accessor,
         IServiceProvider serviceProvider,
         ILogger<CustomAccountFactory> logger)
         : base(accessor)
@@ -136,7 +164,6 @@ public class CustomAccountFactory
         this.serviceProvider = serviceProvider;
         this.logger = logger;
     }
-
     public async override ValueTask<ClaimsPrincipal> CreateUserAsync(
         CustomUserAccount account,
         RemoteAuthenticationUserOptions options)
@@ -149,233 +176,47 @@ public class CustomAccountFactory
 
             foreach (var role in account.Roles)
             {
-                userIdentity.AddClaim(new Claim("role", role));
+                userIdentity.AddClaim(new Claim("appRole", role));
             }
 
-            if (userIdentity.HasClaim(c => c.Type == "hasgroups"))
+            foreach (var wid in account.Wids)
             {
-                IUserMemberOfCollectionWithReferencesPage groupsAndAzureRoles = 
-                    null;
+                userIdentity.AddClaim(new Claim("directoryRole", wid));
+            }
 
-                try
+            try
+            {
+                var graphClient = ActivatorUtilities
+                    .CreateInstance<GraphServiceClient>(serviceProvider);
+
+                var requestMe = graphClient.Me.Request();
+                var user = await requestMe.GetAsync();
+
+                if (user != null)
                 {
-                    var graphClient = ActivatorUtilities
-                        .CreateInstance<GraphServiceClient>(serviceProvider);
-                    var oid = userIdentity.Claims.FirstOrDefault(x => x.Type == "oid")?
-                        .Value;
+                    userIdentity.AddClaim(new Claim("mobilePhone",
+                        user.MobilePhone));
+                }
 
-                    if (!string.IsNullOrEmpty(oid))
+                var requestMemberOf = graphClient.Users[account.Oid].MemberOf;
+                var memberships = await requestMemberOf.Request().GetAsync();
+
+                if (memberships != null)
+                {
+                    foreach (var entry in memberships)
                     {
-                        groupsAndAzureRoles = await graphClient.Users[oid].MemberOf
-                            .Request().GetAsync();
-                    }
-                }
-                catch (ServiceException serviceException)
-                {
-                    // Optional: Log the error
-                }
-
-                if (groupsAndAzureRoles != null)
-                {
-                    foreach (var entry in groupsAndAzureRoles)
-                    {
-                        userIdentity.AddClaim(new Claim("group", entry.Id));
-                    }
-                }
-
-                var claim = userIdentity.Claims.FirstOrDefault(
-                    c => c.Type == "hasgroups");
-
-                userIdentity.RemoveClaim(claim);
-            }
-            else
-            {
-                foreach (var group in account.Groups)
-                {
-                    userIdentity.AddClaim(new Claim("group", group));
-                }
-            }
-        }
-
-        return initialUser;
-    }
-}
-```
-
-Le code précédent n’inclut pas les appartenances transitives. Si l’application requiert des revendications d’appartenance de groupe directe et transitive :
-
-* Remplacez le `IUserMemberOfCollectionWithReferencesPage` type par `groupsAndAzureRoles` `IUserTransitiveMemberOfCollectionWithReferencesPage` .
-* Lorsque vous demandez les groupes et les rôles de l’utilisateur, remplacez la `MemberOf` propriété par `TransitiveMemberOf` .
-
-Dans `Program.Main` ( `Program.cs` ), configurez l’authentification MSAL pour utiliser la fabrique de comptes d’utilisateur personnalisée : si l’application utilise une classe de compte d’utilisateur personnalisée qui étend <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> , échangez la classe de compte d’utilisateur personnalisée pour <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> dans le code suivant :
-
-```csharp
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using Microsoft.Extensions.Configuration;
-
-...
-
-builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
-    CustomUserAccount>(options =>
-{
-    builder.Configuration.Bind("AzureAd", 
-        options.ProviderOptions.Authentication);
-    options.ProviderOptions.DefaultAccessTokenScopes.Add("...");
-
-    options.ProviderOptions.AdditionalScopesToConsent.Add(
-        "https://graph.microsoft.com/Directory.Read.All");
-})
-.AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, CustomUserAccount, 
-    CustomUserFactory>();
-```
-
-### <a name="use-a-named-httpclient"></a>Utiliser un nommé `HttpClient`
-
-::: moniker-end
-
-Dans l’application autonome ou l' *`Client`* application d’une solution hébergée Blazor , créez une <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> classe personnalisée. Utilisez l’étendue appropriée pour les appels de API Graph qui obtiennent des informations sur les rôles et les groupes.
-
-`GraphAPIAuthorizationMessageHandler.cs`:
-
-```csharp
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-
-public class GraphAPIAuthorizationMessageHandler : AuthorizationMessageHandler
-{
-    public GraphAPIAuthorizationMessageHandler(IAccessTokenProvider provider,
-        NavigationManager navigationManager)
-        : base(provider, navigationManager)
-    {
-        ConfigureHandler(
-            authorizedUrls: new[] { "https://graph.microsoft.com" },
-            scopes: new[] { "https://graph.microsoft.com/Directory.Read.All" });
-    }
-}
-```
-
-Dans `Program.Main` ( `Program.cs` ), ajoutez le <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> service d’implémentation et ajoutez un nommé <xref:System.Net.Http.HttpClient> pour effectuer des demandes de API Graph. L’exemple suivant nomme le client `GraphAPI` :
-
-```csharp
-builder.Services.AddScoped<GraphAPIAuthorizationMessageHandler>();
-
-builder.Services.AddHttpClient("GraphAPI",
-        client => client.BaseAddress = new Uri("https://graph.microsoft.com"))
-    .AddHttpMessageHandler<GraphAPIAuthorizationMessageHandler>();
-```
-
-Créez des classes d’objets d’annuaire AAD pour recevoir les groupes et rôles Open Data Protocol (OData) d’un appel de API Graph. OData arrive au format JSON, et un appel à <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> remplit une instance de la `DirectoryObjects` classe.
-
-`DirectoryObjects.cs`:
-
-```csharp
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-
-public class DirectoryObjects
-{
-    [JsonPropertyName("@odata.context")]
-    public string Context { get; set; }
-
-    [JsonPropertyName("value")]
-    public List<Value> Values { get; set; }
-}
-
-public class Value
-{
-    [JsonPropertyName("@odata.type")]
-    public string Type { get; set; }
-
-    [JsonPropertyName("id")]
-    public string Id { get; set; }
-}
-```
-
-Créez une fabrique d’utilisateurs personnalisée pour traiter les revendications de rôles et de groupes. L’exemple d’implémentation suivant gère également le `roles` tableau de revendications, qui est abordé dans la section [rôles définis par l’utilisateur](#user-defined-roles) . Si la `hasgroups` revendication est présente, le nommé <xref:System.Net.Http.HttpClient> est utilisé pour effectuer une demande autorisée à API Graph pour obtenir les rôles et les groupes de l’utilisateur. Cette implémentation utilise le Identity point de terminaison Microsoft Platform v 1.0 `https://graph.microsoft.com/v1.0/me/memberOf` (documentation de l'[API](/graph/api/user-list-memberof)).
-
-`CustomAccountFactory.cs`:
-
-```csharp
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
-using Microsoft.Extensions.Logging;
-
-public class CustomUserFactory
-    : AccountClaimsPrincipalFactory<CustomUserAccount>
-{
-    private readonly ILogger<CustomUserFactory> logger;
-    private readonly IHttpClientFactory clientFactory;
-
-    public CustomUserFactory(IAccessTokenProviderAccessor accessor, 
-        IHttpClientFactory clientFactory, 
-        ILogger<CustomUserFactory> logger)
-        : base(accessor)
-    {
-        this.clientFactory = clientFactory;
-        this.logger = logger;
-    }
-
-    public async override ValueTask<ClaimsPrincipal> CreateUserAsync(
-        CustomUserAccount account,
-        RemoteAuthenticationUserOptions options)
-    {
-        var initialUser = await base.CreateUserAsync(account, options);
-
-        if (initialUser.Identity.IsAuthenticated)
-        {
-            var userIdentity = (ClaimsIdentity)initialUser.Identity;
-
-            foreach (var role in account.Roles)
-            {
-                userIdentity.AddClaim(new Claim("role", role));
-            }
-
-            if (userIdentity.HasClaim(c => c.Type == "hasgroups"))
-            {
-                try
-                {
-                    var client = clientFactory.CreateClient("GraphAPI");
-
-                    var response = await client.GetAsync("v1.0/me/memberOf");
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var userObjects = await response.Content
-                            .ReadFromJsonAsync<DirectoryObjects>();
-
-                        foreach (var obj in userObjects?.Values)
+                        if (entry.ODataType == "#microsoft.graph.group")
                         {
-                            userIdentity.AddClaim(new Claim("group", obj.Id));
+                            userIdentity.AddClaim(
+                                new Claim("directoryGroup", entry.Id));
                         }
-
-                        var claim = userIdentity.Claims.FirstOrDefault(
-                            c => c.Type == "hasgroups");
-
-                        userIdentity.RemoveClaim(claim);
                     }
-                    else
-                    {
-                        logger.LogError("Graph API request failure: {REASON}", 
-                            response.ReasonPhrase);
-                    }
-                }
-                catch (AccessTokenNotAvailableException exception)
-                {
-                    logger.LogError("Graph API access token failure: {Message}", 
-                        exception.Message);
                 }
             }
-            else
+            catch (ServiceException exception)
             {
-                foreach (var group in account.Groups)
-                {
-                    userIdentity.AddClaim(new Claim("group", group));
-                }
+                logger.LogError("Graph API service failure: {Message}",
+                    exception.Message);
             }
         }
 
@@ -384,18 +225,13 @@ public class CustomUserFactory
 }
 ```
 
-Il n’est pas nécessaire de fournir du code pour supprimer la revendication d’origine `groups` , le cas échéant, car elle est automatiquement supprimée par l’infrastructure.
+Le code précédent n’inclut pas les appartenances transitives. Si l’application requiert des revendications d’appartenance de groupe directe et transitive, remplacez la `MemberOf` propriété ( `IUserMemberOfCollectionWithReferencesRequestBuilder` ) par `TransitiveMemberOf` ( `IUserTransitiveMemberOfCollectionWithReferencesRequestBuilder` ).
 
-> [!NOTE]
-> L’approche dans cet exemple :
->
-> * Ajoute une <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> classe personnalisée pour joindre des jetons d’accès aux demandes sortantes.
-> * Ajoute un nommé <xref:System.Net.Http.HttpClient> pour effectuer des demandes d’API Web à un point de terminaison d’API Web sécurisé et externe.
-> * Utilise le nommé <xref:System.Net.Http.HttpClient> pour effectuer des demandes autorisées.
->
-> La couverture générale de cette approche est disponible dans l' <xref:blazor/security/webassembly/additional-scenarios#custom-authorizationmessagehandler-class> article.
+Le code précédent ignore les revendications d’appartenance à un groupe ( `groups` ) qui sont des rôles d’administrateur AAD ( `#microsoft.graph.directoryRole` type), car les valeurs GUID retournées par la Identity plateforme Microsoft 2,0 sont des **ID d’entité** de rôle d’administrateur AAD et non des ID de modèle de [**rôle**](/azure/active-directory/roles/permissions-reference#role-template-ids). Les ID d’entité ne sont pas stables entre les locataires dans la Identity plate-forme Microsoft 2,0 et ne doivent pas être utilisés pour créer des stratégies d’autorisation pour les utilisateurs dans les applications. Utilisez toujours les **ID de modèle de rôle** pour les rôles d’administrateur AAD **fournis par les `wids` revendications**.
 
-Inscrire la fabrique dans `Program.Main` ( `Program.cs` ) de l’application autonome ou *`Client`* de l’application d’une solution hébergée Blazor . Consentement à l' `Directory.Read.All` étendue comme étendue supplémentaire pour l’application :
+Dans `Program.Main` de l’application **cliente** , configurez l’authentification MSAL pour utiliser la fabrique de comptes d’utilisateurs personnalisée.
+
+`Program.cs`:
 
 ```csharp
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -403,35 +239,35 @@ using Microsoft.Extensions.Configuration;
 
 ...
 
-builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
+builder.Services.AddMsalAuthentication<RemoteAuthenticationState,
     CustomUserAccount>(options =>
 {
-    builder.Configuration.Bind("AzureAd", 
-        options.ProviderOptions.Authentication);
-    options.ProviderOptions.DefaultAccessTokenScopes.Add("...");
-
-    options.ProviderOptions.AdditionalScopesToConsent.Add(
-        "https://graph.microsoft.com/Directory.Read.All");
+    ...
 })
-.AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, CustomUserAccount, 
-    CustomUserFactory>();
+.AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, CustomUserAccount,
+    CustomAccountFactory>();
+
+...
+
+builder.Services.AddGraphClient();
 ```
 
 ## <a name="authorization-configuration"></a>Configuration de l’autorisation
 
-Créez une [stratégie](xref:security/authorization/policies) pour chaque groupe ou rôle dans `Program.Main` . L’exemple suivant crée une stratégie pour le rôle d' *administrateur de facturation* AAD :
+Dans l’application **cliente** , créez une [stratégie](xref:security/authorization/policies) pour chaque [rôle d’application](#app-roles), rôle d’administrateur AAD ou groupe de sécurité dans `Program.Main` . L’exemple suivant crée une stratégie pour le rôle d' *administrateur de facturation* AAD :
 
 ```csharp
 builder.Services.AddAuthorizationCore(options =>
 {
     options.AddPolicy("BillingAdministrator", policy => 
-        policy.RequireClaim("group", "69ff516a-b57d-4697-a429-9de4af7b5609"));
+        policy.RequireClaim("directoryRole", 
+            "b0f54661-2d74-4c50-afa3-1ec803f12efe"));
 });
 ```
 
-Pour obtenir la liste complète des ID d’objet de rôle AAD, consultez la section [ID d’objet de rôle d’administrateur AAD](#aad-administrator-role-object-ids) .
+Pour obtenir la liste complète des ID des rôles d’administrateur AAD, consultez [ID de modèle de rôle](/azure/active-directory/roles/permissions-reference#role-template-ids) dans la documentation Azure. Pour plus d’informations sur les stratégies d’autorisation, consultez <xref:security/authorization/policies> .
 
-Dans les exemples suivants, l’application utilise la stratégie précédente pour autoriser l’utilisateur.
+Dans les exemples suivants, l’application **cliente** utilise la stratégie précédente pour autoriser l’utilisateur.
 
 Le [ `AuthorizeView` composant](xref:blazor/security/index#authorizeview-component) fonctionne avec la stratégie :
 
@@ -452,7 +288,7 @@ Le [ `AuthorizeView` composant](xref:blazor/security/index#authorizeview-compone
 </AuthorizeView>
 ```
 
-L’accès à un composant entier peut être basé sur la stratégie à l’aide de la [ `[Authorize]` directive d’attribut](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ) :
+L’accès à un composant entier peut être basé sur la stratégie à l’aide d’une [ `[Authorize]` directive d’attribut](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ) :
 
 ```razor
 @page "/"
@@ -462,7 +298,9 @@ L’accès à un composant entier peut être basé sur la stratégie à l’aide
 
 Si l’utilisateur n’est pas connecté, il est redirigé vers la page de connexion AAD, puis renvoyé au composant une fois qu’il se connecte.
 
-Une vérification de stratégie peut également être [effectuée dans le code avec la logique procédurale](xref:blazor/security/index#procedural-logic):
+Une vérification de stratégie peut également être [effectuée dans le code avec la logique procédurale](xref:blazor/security/index#procedural-logic).
+
+`Pages/CheckPolicy.razor`:
 
 ```razor
 @page "/checkpolicy"
@@ -500,120 +338,29 @@ Une vérification de stratégie peut également être [effectuée dans le code a
 }
 ```
 
-## <a name="authorize-server-api-access-for-user-defined-groups-and-administrator-roles"></a>Autoriser l’accès à l’API serveur pour les groupes définis par l’utilisateur et les rôles d’administrateur
+## <a name="authorize-server-apiweb-api-access"></a>Autoriser l’accès à l’API serveur/API Web
 
-Outre l’autorisation des utilisateurs dans l’application webassembly côté client pour accéder aux pages et aux ressources, l’API serveur peut autoriser les utilisateurs à accéder aux points de terminaison d’API sécurisés. Une fois que l’application *serveur* a validé le jeton d’accès de l’utilisateur :
-
-* L’application API serveur utilise la revendication d’identificateur d’objet immuable de l’utilisateur [( `oid` )](/azure/active-directory/develop/id-tokens#payload-claims) à partir de son jeton d’accès pour obtenir un jeton d’accès pour API Graph.
-* Un appel de API Graph obtient le groupe de sécurité défini par l’utilisateur Azure et les appartenances de rôle d’administrateur en appelant [`memberOf`](/graph/api/user-list-memberof) l’utilisateur.
-* Les appartenances sont utilisées pour établir des `group` revendications.
-* Les [stratégies d’autorisation](xref:security/authorization/policies) peuvent être utilisées pour limiter l’accès utilisateur aux points de terminaison de l’API serveur au sein de l’application.
-
-> [!NOTE]
-> Ce guide n’inclut pas actuellement l’autorisation des utilisateurs sur la base de leurs [rôles AAD définis par l’utilisateur](#user-defined-roles).
-
-Les instructions de cette section configurent l’application API serveur en tant qu' [*application démon*](/azure/active-directory/develop/scenario-daemon-overview) pour l’appel d’API Microsoft Graph. Cette approche n’effectue **pas** les opérations suivantes :
-
-* Exiger la `access_as_user` portée.
-* Accédez API Graph pour le compte de l’utilisateur/client qui effectue la demande d’API.
-
-L’appel à API Graph par l’application API serveur nécessite uniquement une **application** API de serveur API Graph étendue pour `Directory.Read.All` dans le portail Azure. Cette approche empêche absolument l’application cliente d’accéder aux données d’annuaire que l’API serveur n’autorise pas explicitement. L’application cliente peut uniquement accéder aux points de terminaison de contrôleur de l’application API serveur.
-
-### <a name="azure-configuration"></a>Configuration Azure
-
-* Vérifiez que l’inscription de l’application *serveur* est donnée à l' **application** (non **déléguée**) API Graph pour `Directory.Read.All` , qui est le niveau d’accès le moins privilégié pour les groupes de sécurité. Confirmez que le consentement de l’administrateur est appliqué à l’étendue après avoir effectué l’attribution de l’étendue.
-* Attribuez une nouvelle clé secrète client à l’application *serveur* . Notez le secret de la configuration de l’application dans la section paramètres de l' [application](#app-settings) .
-
-### <a name="app-settings"></a>Paramètres de l’application
-
-Dans le fichier de paramètres d’application ( `appsettings.json` ou `appsettings.Production.json` ), créez une `ClientSecret` entrée avec la clé secrète client de l’application *serveur* à partir de la portail Azure :
-
-```json
-"AzureAd": {
-  "Instance": "https://login.microsoftonline.com/",
-  "Domain": "XXXXXXXXXXXX.onmicrosoft.com",
-  "TenantId": "{GUID}",
-  "ClientId": "{GUID}",
-  "ClientSecret": "{CLIENT SECRET}"
-},
-```
-
-Exemple :
-
-```json
-"AzureAd": {
-  "Instance": "https://login.microsoftonline.com/",
-  "Domain": "contoso.onmicrosoft.com",
-  "TenantId": "34bf0ec1-7aeb-4b5d-ba42-82b059b3abe8",
-  "ClientId": "05d198e0-38c6-4efc-a67c-8ee87ed9bd3d",
-  "ClientSecret": "54uE~9a.-wW91fe8cRR25ag~-I5gEq_92~"
-},
-```
-
-::: moniker range=">= aspnetcore-5.0"
-
-> [!NOTE]
-> Si le domaine de l’éditeur du locataire n’est pas vérifié, l’étendue de l’API serveur pour l’accès utilisateur/client utilise un `https://` URI basé sur. Dans ce scénario, l’application API serveur requiert une `Audience` configuration dans le `appsettings.json` fichier. Dans la configuration suivante, la fin de la `Audience` valeur n’inclut **pas** l’étendue par défaut `/{DEFAULT SCOPE}` , où l’espace réservé `{DEFAULT SCOPE}` est l’étendue par défaut :
->
-> ```json
-> {
->   "AzureAd": {
->     ...
->
->     "Audience": "https://{TENANT}.onmicrosoft.com/{SERVER API APP CLIENT ID OR CUSTOM VALUE}"
->   }
-> }
->
-> In the preceding configuration, the placeholder `{TENANT}` is the app's tenant, and the placeholder `{SERVER API APP CLIENT ID OR CUSTOM VALUE}` is the server API app's `ClientId` or custom value provided in the Azure portal's app registration.
->
-> Example:
->
-> ```json
-> {
->   "AzureAd": {
->     ...
->
->     "Audience": "https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd"
->   }
-> }
-> ```
->
-> Dans l’exemple de configuration précédent :
->
-> * Le domaine du locataire est `contoso.onmicrosoft.com` .
-> * L’application API serveur `ClientId` est `41451fa7-82d9-4673-8fa5-69eff5a761fd` .
->
-> > [!NOTE]
-> > La configuration d’une en `Audience` général n’est **pas** obligatoire pour les applications avec un domaine d’éditeur vérifié qui a une `api://` étendue d’API basée sur.
->
-> Pour plus d'informations, consultez <xref:blazor/security/webassembly/hosted-with-azure-active-directory#app-settings>.
-
-::: moniker-end
-
-### <a name="authorization-policies"></a>Vous pouvez également utiliser les stratégies d'autorisation
-
-Créer des [stratégies d’autorisation](xref:security/authorization/policies) pour les groupes de sécurité AAD et les rôles d’administrateur AAD dans les applications *serveur* `Startup.ConfigureServices` ( `Startup.cs` ) en fonction des ID d’objet de groupe et des [ID d’objet de rôle d’administrateur AAD](#aad-administrator-role-object-ids).
-
-Par exemple, une stratégie de rôle d’administrateur de facturation Azure a la configuration suivante :
+Une application API **serveur** peut autoriser les utilisateurs à accéder à des points de terminaison d’API sécurisés avec des [stratégies d’autorisation](xref:security/authorization/policies) pour les groupes de sécurité, les rôles d’administrateur AAD et les rôles d’application lorsqu’un jeton d’accès contient des `groups` `wids` revendications, et `http://schemas.microsoft.com/ws/2008/06/identity/claims/role` . L’exemple suivant crée une stratégie pour le rôle d' *administrateur de facturation* AAD dans `Startup.ConfigureServices` à l’aide des `wids` revendications (ID de modèle de rôle/ID de rôle) :
 
 ```csharp
 services.AddAuthorization(options =>
 {
-    options.AddPolicy("BillingAdmin", policy => 
-        policy.RequireClaim("group", "69ff516a-b57d-4697-a429-9de4af7b5609"));
+    options.AddPolicy("BillingAdministrator", policy => 
+        policy.RequireClaim("wids", "b0f54661-2d74-4c50-afa3-1ec803f12efe"));
 });
 ```
 
-Pour plus d'informations, consultez <xref:security/authorization/policies>.
+Pour obtenir la liste complète des ID des rôles d’administrateur AAD, consultez [ID de modèle de rôle](/azure/active-directory/roles/permissions-reference#role-template-ids) dans la documentation Azure. Pour plus d’informations sur les stratégies d’autorisation, consultez <xref:security/authorization/policies> .
 
-### <a name="controller-access"></a>Accès du contrôleur
+L’accès à un contrôleur dans l’application **serveur** peut être basé sur l’utilisation d’un [ `[Authorize]` attribut](xref:security/authorization/simple) avec le nom de la stratégie (documentation de l’API : <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ).
 
-Exiger des stratégies sur les contrôleurs de l’application *serveur* .
-
-L’exemple suivant limite l’accès aux données de facturation du `BillingDataController` à des administrateurs de facturation Azure avec le nom de stratégie `BillingAdmin` , tel que configuré dans la section [stratégies d’autorisation](#authorization-policies) :
+L’exemple suivant limite l’accès aux données de facturation des `BillingDataController` administrateurs de facturation Azure avec le nom de stratégie `BillingAdministrator` :
 
 ```csharp
-[Authorize(Policy = "BillingAdmin")]
+...
+using Microsoft.AspNetCore.Authorization;
+
+[Authorize(Policy = "BillingAdministrator")]
 [ApiController]
 [Route("[controller]")]
 public class BillingDataController : ControllerBase
@@ -622,431 +369,207 @@ public class BillingDataController : ControllerBase
 }
 ```
 
-::: moniker range=">= aspnetcore-5.0"
+Pour plus d’informations, consultez <xref:security/authorization/policies>.
 
-### <a name="packages"></a>Packages
+## <a name="app-roles"></a>Rôles d’application
 
-Ajoutez des références de package à l’application *serveur* pour les packages suivants :
+Pour configurer l’application dans le Portail Azure pour fournir des revendications d’appartenance à des rôles d’application, consultez [Comment : ajouter des rôles d’application dans votre application et les recevoir dans le jeton](/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) dans la documentation Azure.
 
-* [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)
-* [Microsoft. Identity . Client](https://www.nuget.org/packages/Microsoft.Identity.Client)
-
-### <a name="services"></a>Services
-
-Dans la méthode de l’application *serveur* `Startup.ConfigureServices` , des espaces de noms supplémentaires sont requis pour le code de la `Startup` classe de l’application *serveur* . Ajoutez les espaces de noms suivants à `Startup.cs` :
-
-```csharp
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http.Headers;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.Graph;
-using Microsoft.Identity.Client;
-using Microsoft.IdentityModel.Logging;
-```
-
-Lors de la configuration <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents> :
-
-* Incluez éventuellement le traitement de <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnAuthenticationFailed?displayProperty=nameWithType> . Par exemple, l’application peut consigner l’échec de l’authentification.
-* Dans <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated?displayProperty=nameWithType> , effectuez un appel API Graph pour obtenir les groupes et les rôles de l’utilisateur.
-
-> [!WARNING]
-> <xref:Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII?displayProperty=nameWithType> fournit des informations d’identification personnelle (PII) dans la journalisation des messages. Activez uniquement les PII pour le débogage avec les comptes d’utilisateur de test.
-
-Dans `Startup.ConfigureServices` :
-
-```csharp
-JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
-
-#if DEBUG
-IdentityModelEventSource.ShowPII = true;
-#endif
-
-var scopes = new string[] { "https://graph.microsoft.com/.default" };
-
-var app = ConfidentialClientApplicationBuilder.Create(Configuration["AzureAd:ClientId"])
-   .WithClientSecret(Configuration["AzureAd:ClientSecret"])
-   .WithAuthority(new Uri(Configuration["AzureAd:Instance"] + Configuration["AzureAd:Domain"]))
-   .Build();
-
-services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddMicrosoftIdentityWebApi(options =>
-{
-    Configuration.Bind("AzureAd", options);
-
-    options.Events = new JwtBearerEvents()
-    {
-        OnTokenValidated = async context =>
-        {
-            var accessToken = context.SecurityToken as JwtSecurityToken;
-
-            var oid = accessToken.Claims.FirstOrDefault(x => x.Type == "oid")?
-                .Value;
-
-            if (!string.IsNullOrEmpty(oid))
-            {
-                var userIdentity = (ClaimsIdentity)context.Principal.Identity;
-
-                AuthenticationResult authResult = null;
-
-                try
-                {
-                    authResult = await app.AcquireTokenForClient(scopes)
-                        .ExecuteAsync();
-                }
-                catch (MsalUiRequiredException ex)
-                {
-                    // Optional: Log the exception
-                }
-                catch (MsalServiceException ex)
-                {
-                    // Optional: Log the exception
-                }
-
-                var graphClient = new GraphServiceClient(
-                    new DelegateAuthenticationProvider(async requestMessage => {
-                        requestMessage.Headers.Authorization =
-                            new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
-
-                        await Task.CompletedTask;
-                    }));
-
-                IUserMemberOfCollectionWithReferencesPage groupsAndAzureRoles = 
-                    null;
-
-                try
-                {
-                    groupsAndAzureRoles = await graphClient.Users[oid].MemberOf.Request()
-                        .GetAsync();
-                }
-                catch (ServiceException serviceException)
-                {
-                    // Optional: Log the exception
-                }
-
-                if (groupsAndAzureRoles != null)
-                {
-                    foreach (var entry in groupsAndAzureRoles)
-                    {
-                        userIdentity.AddClaim(new Claim("group", entry.Id));
-                    }
-                }
-            }
-
-            await Task.FromResult(0);
-        }
-    };
-}, 
-options =>
-{
-    Configuration.Bind("AzureAd", options);
-});
-```
-
-Dans le code précédent, la gestion des erreurs de jeton suivantes est facultative :
-
-* `MsalUiRequiredException`: L’application n’a pas les autorisations suffisantes (étendues).
-  * Déterminez si les étendues de l’application API serveur dans le Portail Azure incluent une autorisation d' **application** pour `Directory.Read.All` .
-  * Confirmez que l’administrateur client a accordé des autorisations à l’application.
-* `MsalServiceException` ( `AADSTS70011` ) : Confirmez que l’étendue est `https://graph.microsoft.com/.default` .
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-5.0"
-
-### <a name="packages"></a>Packages
-
-Ajoutez des références de package à l’application *serveur* pour les packages suivants :
-
-* [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)
-* [Microsoft. Identity Model. clients. ActiveDirectory](https://www.nuget.org/packages?q=Microsoft.IdentityModel.Clients.ActiveDirectory)
-
-### <a name="service-configuration"></a>Configuration de service
-
-Dans la méthode de l’application *serveur* , `Startup.ConfigureServices` Ajoutez une logique pour que les API Graph appellent et établissent `group` des revendications d’utilisateur pour les groupes de sécurité et les rôles de l’utilisateur.
-
-> [!NOTE]
-> L’exemple de code dans cette section utilise le Bibliothèque d’authentification Active Directory (ADAL), qui est basé sur Microsoft Identity Platform v 1.0.
-
-Des espaces de noms supplémentaires sont requis pour le code de la `Startup` classe de l’application *serveur* . L’ensemble d' `using` instructions suivant contient les espaces de noms requis pour le code qui suit dans cette section :
-
-```csharp
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.AzureAD.UI;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Graph;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.IdentityModel.Logging;
-```
-
-Lors de la configuration <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents> :
-
-* Incluez éventuellement le traitement de <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnAuthenticationFailed?displayProperty=nameWithType> . Par exemple, l’application peut consigner l’échec de l’authentification.
-* Dans <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated?displayProperty=nameWithType> , effectuez un appel API Graph pour obtenir les groupes et les rôles de l’utilisateur.
-
-> [!WARNING]
-> <xref:Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII?displayProperty=nameWithType> fournit des informations d’identification personnelle (PII) dans la journalisation des messages. Activez uniquement les PII pour le débogage avec les comptes d’utilisateur de test.
-
-Dans `Startup.ConfigureServices` :
-
-```csharp
-#if DEBUG
-IdentityModelEventSource.ShowPII = true;
-#endif
-
-services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
-    .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
-
-services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, 
-    options =>
-{
-    options.Events = new JwtBearerEvents()
-    {
-        OnTokenValidated = async context =>
-        {
-            var accessToken = context.SecurityToken as JwtSecurityToken;
-            var oid = accessToken.Claims.FirstOrDefault(x => x.Type == "oid")?
-                .Value;
-
-            if (!string.IsNullOrEmpty(oid))
-            {
-                var authContext = new AuthenticationContext(
-                    Configuration["AzureAd:Instance"] +
-                    Configuration["AzureAd:TenantId"]);
-                AuthenticationResult authResult = null;
-
-                try
-                {
-                    authResult = await authContext.AcquireTokenSilentAsync(
-                        "https://graph.microsoft.com", 
-                        Configuration["AzureAd:ClientId"]);
-                }
-                catch (AdalException adalException)
-                {
-                    if (adalException.ErrorCode == 
-                        AdalError.FailedToAcquireTokenSilently || 
-                        adalException.ErrorCode == 
-                        AdalError.UserInteractionRequired)
-                    {
-                        var userAssertion = new UserAssertion(accessToken.RawData,
-                            "urn:ietf:params:oauth:grant-type:jwt-bearer", oid);
-                        var clientCredential = new ClientCredential(
-                            Configuration["AzureAd:ClientId"],
-                            Configuration["AzureAd:ClientSecret"]);
-                        authResult = await authContext.AcquireTokenAsync(
-                            "https://graph.microsoft.com", clientCredential, 
-                            userAssertion);
-                    }
-                }
-
-                var graphClient = new GraphServiceClient(
-                    new DelegateAuthenticationProvider(async requestMessage => {
-                        requestMessage.Headers.Authorization =
-                            new AuthenticationHeaderValue("Bearer", 
-                                authResult.AccessToken);
-
-                        await Task.CompletedTask;
-                    }));
-
-                var userIdentity = (ClaimsIdentity)context.Principal.Identity;
-
-                IUserMemberOfCollectionWithReferencesPage groupsAndAzureRoles = 
-                    null;
-
-                try
-                {
-                    groupsAndAzureRoles = await graphClient.Users[oid].MemberOf
-                        .Request().GetAsync();
-                }
-                catch (ServiceException serviceException)
-                {
-                    // Optional: Log the error
-                }
-
-                if (groupsAndAzureRoles != null)
-                {
-                    foreach (var entry in groupsAndAzureRoles)
-                    {
-                        userIdentity.AddClaim(new Claim("group", entry.Id));
-                    }
-                }
-            }
-
-            await Task.FromResult(0);
-        }
-    };
-});
-```
-
-Dans l’exemple précédent :
-
-* L’acquisition du jeton silencieux ( <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A> ) est tentée en premier, car le jeton d’accès a peut-être déjà été stocké dans le cache de jetons Adal. Il est plus rapide d’obtenir le jeton à partir du cache que de demander un nouveau jeton.
-* Si le jeton d’accès n’est pas acquis à partir du cache ( <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FailedToAcquireTokenSilently?displayProperty=nameWithType> ou <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserInteractionRequired?displayProperty=nameWithType> est levé), une assertion utilisateur ( <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion> ) est effectuée avec les informations d’identification du client ( <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential> ) pour obtenir le jeton pour le compte de l’utilisateur ( <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync%2A> ). Ensuite, le `Microsoft.Graph.GraphServiceClient` peut continuer à utiliser le jeton pour effectuer l’appel de API Graph. Le jeton est placé dans le cache de jetons ADAL. Pour les appels de API Graph ultérieurs pour le même utilisateur, le jeton est acquis à partir du cache en mode silencieux avec <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A> .
-
-::: moniker-end
-
-Le code de <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated> n’obtient pas les appartenances transitives. Pour modifier le code afin d’obtenir les appartenances directes et transitives :
-
-* Pour la ligne de code :
-
-  ```csharp
-  IUserMemberOfCollectionWithReferencesPage groupsAndAzureRoles = null;
-  ```
-
-  Remplacez la ligne précédente par :
-
-  ```csharp
-  IUserTransitiveMemberOfCollectionWithReferencesPage groupsAndAzureRoles = null;
-  ```
-
-* Pour la ligne de code :
-
-  ```csharp
-  groupsAndAzureRoles = await graphClient.Users[oid].MemberOf.Request().GetAsync();
-  ```
-
-  Remplacez la ligne précédente par :
-
-  ```csharp
-  groupsAndAzureRoles = await graphClient.Users[oid].TransitiveMemberOf.Request()
-      .GetAsync();
-  ```
-
-Le code dans <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated> ne fait pas la distinction entre les groupes de sécurité AAD et les rôles d’administrateur AAD lors de la création de revendications. Pour que l’application fasse la distinction entre les groupes et les rôles, activez la case à cocher lors de l' `entry.ODataType` itération des groupes et des rôles. Pour créer des revendications de rôle et de groupe de sécurité distinctes, utilisez un code similaire à ce qui suit :
-
-```csharp
-foreach (var entry in groupsAndAzureRoles)
-{
-    if (entry.ODataType == "#microsoft.graph.group")
-    {
-        userIdentity.AddClaim(new Claim("group", entry.Id));
-    }
-    else
-    {
-        // entry.ODataType == "#microsoft.graph.directoryRole"
-        userIdentity.AddClaim(new Claim("role", entry.Id));
-    }
-}
-```
-
-## <a name="user-defined-roles"></a>Rôles définis par l’utilisateur
-
-Une application inscrite à AAD peut également être configurée pour utiliser des rôles définis par l’utilisateur.
-
-Pour configurer l’application dans le Portail Azure pour fournir une `roles` revendication d’appartenance, consultez [Comment : ajouter des rôles d’application dans votre application et les recevoir dans le jeton](/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) de la documentation Azure.
-
-L’exemple suivant suppose qu’une application est configurée avec deux rôles :
+L’exemple suivant suppose que les applications **client** et **serveur** sont configurées avec deux rôles, et que les rôles sont attribués à un utilisateur de test :
 
 * `admin`
 * `developer`
 
 > [!NOTE]
-> Bien que vous ne puissiez pas attribuer des rôles à des groupes de sécurité sans compte Azure AD Premium, vous pouvez affecter des utilisateurs à des rôles et recevoir une `roles` revendication pour les utilisateurs disposant d’un compte Azure standard. Les instructions de cette section ne nécessitent pas de compte Azure AD Premium.
+> Lors du développement d’une application hébergée Blazor WebAssembly ou d’une paire client-serveur d’applications autonomes (une Blazor WebAssembly application autonome et une application API Web/API ASP.net Core Server autonome), la `appRoles` propriété de manifeste du client et du serveur portail Azure inscriptions d’applications doit inclure les mêmes rôles configurés. Après avoir établi les rôles dans le manifeste de l’application cliente, copiez-les dans leur intégralité dans le manifeste de l’application serveur. Si vous ne mettez pas en miroir le manifeste `appRoles` entre les inscriptions d’applications clientes et serveur, les revendications de rôle ne sont pas établies pour les utilisateurs authentifiés de l’API serveur/API Web, même si leur jeton d’accès a les revendications de rôles appropriées.
+
+> [!NOTE]
+> Bien que vous ne puissiez pas attribuer des rôles à des groupes sans compte Azure AD Premium, vous pouvez attribuer des rôles aux utilisateurs et recevoir une revendication de rôle pour les utilisateurs disposant d’un compte Azure standard. Les instructions de cette section ne nécessitent pas de compte AAD Premium.
 >
 > Plusieurs rôles sont affectés dans le Portail Azure en **_rajoutant un utilisateur_** pour chaque attribution de rôle supplémentaire.
 
-La `roles` revendication unique envoyée par AAD présente les rôles définis par l’utilisateur en tant que `appRoles` `value` s dans un tableau JSON. L’application doit convertir le tableau JSON de rôles en `role` revendications individuelles.
+Le `CustomAccountFactory` affiché dans la section [compte d’utilisateur personnalisé](#custom-user-account) est configuré pour agir sur une `roles` revendication avec une valeur de tableau JSON. Ajoutez et inscrivez `CustomAccountFactory` dans l’application **cliente** , comme indiqué dans la section [compte d’utilisateur personnalisé](#custom-user-account) . Il n’est pas nécessaire de fournir du code pour supprimer la revendication d’origine `roles` , car elle est automatiquement supprimée par l’infrastructure.
 
-La `CustomUserFactory` section des [groupes définis par l’utilisateur et des rôles d’administrateur AAD](#user-defined-groups-and-administrator-roles) est configurée pour agir sur une `roles` revendication avec une valeur de tableau JSON. Ajoutez et inscrivez `CustomUserFactory` dans l’application autonome ou dans l' *`Client`* application d’une Blazor solution hébergée, comme indiqué dans la section [groupes définis par l’utilisateur et rôles d’administrateur AAD](#user-defined-groups-and-administrator-roles) . Il n’est pas nécessaire de fournir du code pour supprimer la revendication d’origine `roles` , car elle est automatiquement supprimée par l’infrastructure.
-
-Dans `Program.Main` l’application autonome ou l' *`Client`* application d’une solution hébergée Blazor , spécifiez la revendication nommée « `role` » comme revendication de rôle :
+Dans `Program.Main` une application **cliente** , spécifiez la revendication nommée « `appRole` » comme revendication de rôle pour les <xref:System.Security.Claims.ClaimsPrincipal.IsInRole%2A?displayProperty=nameWithType> Vérifications :
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>
 {
     ...
 
-    options.UserOptions.RoleClaim = "role";
+    options.UserOptions.RoleClaim = "appRole";
 });
 ```
 
-Les approches d’autorisation des composants sont fonctionnelles à ce stade. L’un des mécanismes d’autorisation des composants peut utiliser le `admin` rôle pour autoriser l’utilisateur :
+> [!NOTE]
+> Si vous préférez utiliser la `directoryRoles` revendication (ajouter des rôles d’administrateur), assignez « `directoryRoles` » à <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticationUserOptions.RoleClaim?displayProperty=nameWithType> .
 
-* [ `AuthorizeView` composant](xref:blazor/security/index#authorizeview-component) (exemple : `<AuthorizeView Roles="admin">` )
-* [ `[Authorize]` directive d’attribut](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ) (exemple : `@attribute [Authorize(Roles = "admin")]` )
-* [Logique procédurale](xref:blazor/security/index#procedural-logic) (exemple : `if (user.IsInRole("admin")) { ... }` )
+Dans `Startup.ConfigureServices` une application **serveur** , spécifiez la revendication nommée « `http://schemas.microsoft.com/ws/2008/06/identity/claims/role` » comme revendication de rôle pour les <xref:System.Security.Claims.ClaimsPrincipal.IsInRole%2A?displayProperty=nameWithType> Vérifications :
 
-  Plusieurs tests de rôle sont pris en charge :
+```csharp
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApi(options =>
+    {
+        Configuration.Bind("AzureAd", options);
+        options.TokenValidationParameters.RoleClaimType = 
+            "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
+    },
+    options => { Configuration.Bind("AzureAd", options); });
+```
+
+> [!NOTE]
+> Si vous préférez utiliser la `wids` revendication (ajouter des rôles d’administrateur), assignez « `wids` » à <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.RoleClaimType?displayProperty=nameWithType> .
+
+Les approches d’autorisation des composants sont fonctionnelles à ce stade. L’un des mécanismes d’autorisation des composants de l’application **cliente** peut utiliser le `admin` rôle pour autoriser l’utilisateur :
+
+* [`AuthorizeView` -](xref:blazor/security/index#authorizeview-component)
+
+  ```razor
+  <AuthorizeView Roles="admin">
+  ```
+
+* [ `[Authorize]` directive d’attribut](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> )
+
+  ```razor
+  @attribute [Authorize(Roles = "admin")]
+  ```
+
+* [Logique procédurale](xref:blazor/security/index#procedural-logic)
 
   ```csharp
-  if (user.IsInRole("admin") && user.IsInRole("developer"))
-  {
+  var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+  var user = authState.User;
+
+  if (user.IsInRole("admin")) { ... }
+  ```
+
+Plusieurs tests de rôle sont pris en charge :
+
+* Exigez **que l’utilisateur soit dans** le `admin` **rôle ou** `developer` avec le `AuthorizeView` composant :
+
+  ```razor
+  <AuthorizeView Roles="admin, developer">
       ...
+  </AuthorizeView>
+  ```
+
+* Exiger que l’utilisateur se trouve à la **fois** dans les `admin`  `developer` rôles et avec le `AuthorizeView` composant :
+
+  ```razor
+  <AuthorizeView Roles="admin">
+      <AuthorizeView Roles="developer">
+          ...
+      </AuthorizeView>
+  </AuthorizeView>
+  ```
+
+* Exigez **que l’utilisateur soit dans** le `admin` **rôle ou** `developer` avec l' `[Authorize]` attribut :
+
+  ```razor
+  @attribute [Authorize(Roles = "admin, developer")]
+  ```
+
+* Exiger que l’utilisateur soit à la **fois** dans les `admin`  `developer` rôles et avec l' `[Authorize]` attribut :
+
+  ```razor
+  @attribute [Authorize(Roles = "admin")]
+  @attribute [Authorize(Roles = "developer")]
+  ```
+
+* Exiger **que l’utilisateur soit dans le** rôle `admin` **ou** `developer` avec le code procédural :
+
+  ```razor
+  @code {
+      private async Task DoSomething()
+      {
+          var authState = await AuthenticationStateProvider
+              .GetAuthenticationStateAsync();
+          var user = authState.User;
+
+          if (user.IsInRole("admin") || user.IsInRole("developer"))
+          {
+              ...
+          }
+          else
+          {
+              ...
+          }
+      }
   }
   ```
 
-## <a name="aad-administrator-role-object-ids"></a>ID d’objet du rôle administrateur AAD
+* Exigez que l’utilisateur se trouve à la **fois** dans les `admin` rôles **et** `developer` avec le code procédural en remplaçant le [ou conditionnel ( `||` )](/dotnet/csharp/language-reference/operators/boolean-logical-operators) par un [conditionnel and ( `&&` )](/dotnet/csharp/language-reference/operators/boolean-logical-operators) dans l’exemple précédent :
 
-Les ID d’objet présentés dans le tableau suivant sont utilisés pour créer des [stratégies](xref:security/authorization/policies) pour les `group` revendications. Les stratégies permettent à une application d’autoriser les utilisateurs à effectuer différentes activités dans une application. Pour plus d’informations, consultez la section [groupes définis par l’utilisateur et rôles d’administrateur AAD](#user-defined-groups-and-administrator-roles) .
+  ```csharp
+  if (user.IsInRole("admin") && user.IsInRole("developer"))
+  ```
 
-Rôle administrateur AAD | ID de l'objet
---- | ---
-Administrateur d’application | fa11557b-4f15-4ddd-85d5-313c7cd74047
-Développeur d’applications | 68adcbb8-9504-44f6-89f2-5cd48dc74a2c
-Administrateur d’authentification | 02d110a1-96b1-419e-af87-746461b60ed7
-Administrateur Azure DevOps | a5311ace-ca41-44cd-b833-8d22caa0b34f
-Administrateur Azure Information Protection | 18632dce-f9b5-4f01-abb5-37051f06860e
-Administrateur de jeux de clés IEF B2C | 0c2e87e5-94f9-4adb-ae8c-bcafe11bd368
-Administrateur de la stratégie B2C IEF | bfcab36c-10c6-4b13-b63c-4d8b62c0c44e
-Administrateur de workflow utilisateur B2C | baa531b7-8cf0-44ad-8f98-eded88dae827
-Administrateur de l’attribut de workflow de l’utilisateur B2C | dd0baca0-a535-48c1-b871-8431abe16452
-Administrateur de facturation | 69ff516a-B57D-4697-A429-9de4af7b5609
-Administrateur d’application cloud | 250b5fe3-b553-458d-9a53-b782c13c34bf
-Administrateur d’appareil cloud | 26cd4b44-2636-4ddb-bdfa-27feae66f86d
-Administrateur de conformité | 9d6e1dd0-c9f8-45f8-b558-b134f700116c
-Administrateur des données de conformité | 4c0ca3a2-231e-416c-9411-4abe57d5cb9d
-Administrateur de l’accès conditionnel | 8f71a611-137d-49af-87ad-e97f1fd5da76
-Approbateur d’accès au référentiel sécurisé client | c18d54a8-b13e-4954-a1a4-7deaf2e4f184
-Administrateur Desktop Analytics | c62c4ac5-e4c6-4096-8a2f-1ee3cbaaae15
-Lecteurs d’annuaires | e1fc84a6-7762-4b9b-8e29-518b4adbc23b
-Administrateur Dynamics 365 | f20a9cfa-9fdf-49a8-a977-1afe446a1d6e
-Administrateur Exchange | b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652
-IdentityAdministrateur du fournisseur externe | febfaeb4-e478-407a-b4b3-f4d9716618a2
-Administrateur général | a45ba61b-44db-462c-924b-3b2719152588
-Lecteur général | f6903b21-6aba-4124-B44C-76671796b9d5
-Administrateur de groupes | 158b3e5a-d89d-460b-92b5-3b34985f0197
-Inviteur d’invités | 4c730a1d-cc22-44af-8f9f-4eec635c7502
-Administrateur du support technique | 108678c8-6628-44e1-8d01-caf598a6a5f5
-Administrateur Intune | 79950741-23fa-4189-b2cb-46640601c497
-Administrateur Kaizala | d6322af2-48e7-42e0-8c68-0bbe31af3412
-Administrateur de licence | 3355458a-e423-44bf-8b98-4ac5e572cea5
-Lecteur de confidentialité du Centre de messages | 6395db95-9fb8-42b9-b1ed-30a2405eee6f
-Lecteur du Centre de messages | fd5d37b8-4e24-434b-9e63-70ed3b759a16
-Administrateur d’applications Office | 5f3870cd-b042-4f93-86d7-c9d77c664dc7
-Administrateur de mots de passe | 466e48b7-5d66-4ae5-8911-1a118de74941
-Administrateur Power BI | 984e83b8-8337-4255-91a1-acb663175ab4
-Administrateur de plateforme Power | 76d6f95e-9a15-4d7d-8d21-00de00faf9fd
-Administrateur d’authentification privilégié | 0829f731-b46d-419F-9742-aeb122367d11
-Administrateur de rôle privilégié | f20a725a-d1c8-4107-83ea-1171c97d00c7
-Lecteur de rapports | 54635450-e8ed-4f2d-9632-07db2517b4de
-Administrateur de recherche | c770a2f1-c9ba-4e60-9176-9f52b1eb1a31
-Éditeur de recherche | 6a6858c6-5f0d-44ac-87c7-0190fbedd271
-Administrateur de sécurité | 20fa50e3-6531-44d8-bd39-b251420568ad
-Opérateur de sécurité | 43aae017-8e51-4188-91ab-e6debd572800
-Lecteur de sécurité | 45035cd3-fd97-4250-8197-3a53d3562d9b
-Administrateur de support de service | 2c92cf45-c914-48f8-9bf9-fc14b28818ab
-Administrateur SharePoint | e1c32229-875e-461d-ae24-3cb99116e86c
-Administrateur Skype Entreprise | 0a8cee12-e21d-43ef-abd9-f1ea85710e30
-Administrateur des communications Teams | 2393e455-6e13-4743-9f52-63fcec2b6a9c
-Ingénieur de support des communications Teams | 802dd94e-d717-46f6-af98-b9167071e9fc
-Spécialiste des communications des équipes | ef547281-cf46-4cc6-bcaa-f5eac3f030c9
-Administrateur du service Teams | 8846a0be-197b-443a-b13c-11192691fa24
-Administrateur d’utilisateurs | 1f6eed58-7dd3-460b-a298-666f975427a1
+L’un des mécanismes d’autorisation des contrôleurs de l’application **serveur** peut utiliser le `admin` rôle pour autoriser l’utilisateur :
+
+* [ `[Authorize]` directive d’attribut](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> )
+
+  ```csharp
+  [Authorize(Roles = "admin")]
+  ```
+
+* [Logique procédurale](xref:blazor/security/index#procedural-logic)
+
+  ```csharp
+  if (User.IsInRole("admin")) { ... }
+  ```
+
+Plusieurs tests de rôle sont pris en charge :
+
+* Exigez **que l’utilisateur soit dans** le `admin` **rôle ou** `developer` avec l' `[Authorize]` attribut :
+
+  ```csharp
+  [Authorize(Roles = "admin, developer")]
+  ```
+
+* Exiger que l’utilisateur soit à la **fois** dans les `admin`  `developer` rôles et avec l' `[Authorize]` attribut :
+
+  ```csharp
+  [Authorize(Roles = "admin")]
+  [Authorize(Roles = "developer")]
+  ```
+
+* Exiger **que l’utilisateur soit dans le** rôle `admin` **ou** `developer` avec le code procédural :
+
+  ```csharp
+  static readonly string[] scopeRequiredByApi = new string[] { "API.Access" };
+
+  ...
+
+  [HttpGet]
+  public IEnumerable<ReturnType> Get()
+  {
+      HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
+
+      if (User.IsInRole("admin") || User.IsInRole("developer"))
+      {
+          ...
+      }
+      else
+      {
+          ...
+      }
+
+      return ...
+  }
+  ```
+
+* Exigez que l’utilisateur se trouve à la **fois** dans les `admin` rôles **et** `developer` avec le code procédural en remplaçant le [ou conditionnel ( `||` )](/dotnet/csharp/language-reference/operators/boolean-logical-operators) par un [conditionnel and ( `&&` )](/dotnet/csharp/language-reference/operators/boolean-logical-operators) dans l’exemple précédent :
+
+  ```csharp
+  if (User.IsInRole("admin") && User.IsInRole("developer"))
+  ```
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
+* [ID de modèle de rôle (documentation Azure)](/azure/active-directory/roles/permissions-reference#role-template-ids)
+* [`groupMembershipClaims` attribute (documentation Azure)](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute)
+* [Comment : ajouter des rôles d’application dans votre application et les recevoir dans le jeton (documentation Azure)](/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)
+* [Rôles d’application (documentation Azure)](/azure/architecture/multitenant-identity/app-roles)
 * <xref:security/authorization/claims>
+* <xref:security/authorization/roles>
 * <xref:blazor/security/index>

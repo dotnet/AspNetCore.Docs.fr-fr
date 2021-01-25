@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 2502f43f4eaf245996827f704462ec340bbb8e07
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 53b702cddca778e06e617df3798bffb21677d36b
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252537"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751640"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Appeler des fonctions JavaScript à partir de méthodes .NET dans ASP.NET Core Blazor
 
@@ -35,6 +35,9 @@ Une Blazor application peut appeler des fonctions JavaScript à partir de métho
 Cet article traite de l’appel de fonctions JavaScript à partir de .NET. Pour plus d’informations sur la façon d’appeler des méthodes .NET à partir de JavaScript, consultez <xref:blazor/call-dotnet-from-javascript> .
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+
+> [!NOTE]
+> Ajoutez des fichiers JS ( `<script>` balises) avant la `</body>` balise de fermeture dans le fichier `wwwroot/index.html` ( Blazor WebAssembly ) ou le `Pages/_Host.cshtml` fichier ( Blazor Server ). Assurez-vous que les fichiers JS avec les méthodes d’interopérabilité JS sont inclus avant les Blazor fichiers Framework js.
 
 Pour appeler JavaScript à partir de .NET, utilisez l' <xref:Microsoft.JSInterop.IJSRuntime> abstraction. Pour émettre des appels d’interopérabilité JS, injectez l' <xref:Microsoft.JSInterop.IJSRuntime> abstraction dans votre composant. <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> prend un identificateur pour la fonction JavaScript que vous souhaitez appeler, ainsi que n’importe quel nombre d’arguments sérialisables JSON. L’identificateur de fonction est relatif à la portée globale ( `window` ). Si vous souhaitez appeler `window.someScope.someFunction` , l’identificateur est `someScope.someFunction` . Il n’est pas nécessaire d’inscrire la fonction avant qu’elle ne soit appelée. Le type de retour `T` doit également être sérialisable JSON. `T` doit correspondre au type .NET qui correspond le mieux au type JSON retourné.
 
@@ -657,7 +660,7 @@ En outre, l’exemple précédent montre comment il est possible d’encapsuler 
 
 Dans Blazor WebAssembly , l’infrastructure n’impose pas de limite sur la taille des entrées et sorties d’interopérabilité js.
 
-Dans Blazor Server , les appels d’interopérabilité js ont une taille limitée par la SignalR taille maximale autorisée pour les méthodes de concentrateur, qui est appliquée par <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize?displayProperty=nameWithType> (valeur par défaut : 32 Ko). JS en SignalR messages .net plus grands que ne <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize> génèrent une erreur. L’infrastructure n’impose pas de limite sur la taille d’un SignalR message du concentrateur à un client. Pour plus d'informations, consultez <xref:blazor/call-dotnet-from-javascript#size-limits-on-js-interop-calls>.
+Dans Blazor Server , les appels d’interopérabilité js ont une taille limitée par la SignalR taille maximale autorisée pour les méthodes de concentrateur, qui est appliquée par <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize?displayProperty=nameWithType> (valeur par défaut : 32 Ko). JS en SignalR messages .net plus grands que ne <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize> génèrent une erreur. L’infrastructure n’impose pas de limite sur la taille d’un SignalR message du concentrateur à un client. Pour plus d’informations, consultez <xref:blazor/call-dotnet-from-javascript#size-limits-on-js-interop-calls>.
   
 ## <a name="js-modules"></a>Modules JS
 
@@ -704,7 +707,7 @@ window.returnJSObjectReference = () => {
 ```
 
 > [!WARNING]
-> Le `js_string_to_mono_string` nom, le comportement et l’existence de la fonction sont susceptibles d’être modifiés dans une prochaine version de .net. Exemple :
+> Le `js_string_to_mono_string` nom, le comportement et l’existence de la fonction sont susceptibles d’être modifiés dans une prochaine version de .net. Par exemple :
 >
 > * La fonction est susceptible d’être renommée.
 > * La fonction elle-même peut être supprimée en faveur de la conversion automatique des chaînes par l’infrastructure.
