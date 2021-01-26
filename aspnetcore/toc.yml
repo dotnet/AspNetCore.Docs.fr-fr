@@ -461,9 +461,9 @@
             - name: MainLayout
               href: blazor/layouts.md#mainlayout-component
             - name: NavLink
-              href: blazor/fundamentals/routing.md#navlink-component
+              href: blazor/fundamentals/routing.md#navlink-and-navmenu-components
             - name: NavMenu
-              href: blazor/fundamentals/routing.md#navlink-component
+              href: blazor/fundamentals/routing.md#navlink-and-navmenu-components
             - name: Routeur
               href: blazor/fundamentals/routing.md#route-templates
             - name: Virtualiser
@@ -1165,7 +1165,7 @@
     - name: Protection des données
       displayName: encryption
       items:
-        - name: Vue d'ensemble
+        - name: Vue d’ensemble
           uid: security/data-protection/introduction
         - name: API de protection des données
           uid: security/data-protection/using-data-protection
