@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 2df938f3ace47472536020f9848e954fc4446f15
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: 0b555ad7befe882c4ffd06e2505a9edc1263eee2
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658584"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057081"
 ---
 # <a name="secure-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core sécurisé Blazor WebAssembly
 
@@ -98,7 +98,7 @@ Appliquez l' [ `[Authorize]` attribut](xref:blazor/security/index#authorize-attr
 
 Les jetons d’actualisation ne peuvent pas être sécurisés côté client dans les Blazor WebAssembly applications. Par conséquent, les jetons d’actualisation ne doivent pas être envoyés à l’application pour une utilisation directe.
 
-Les jetons d’actualisation peuvent être conservés et utilisés par l’application côté serveur dans une solution hébergée Blazor WebAssembly pour accéder aux API tierces. Pour plus d'informations, consultez <xref:blazor/security/webassembly/additional-scenarios#authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party>.
+Les jetons d’actualisation peuvent être conservés et utilisés par l’application côté serveur dans une solution hébergée Blazor WebAssembly pour accéder aux API tierces. Pour plus d’informations, consultez <xref:blazor/security/webassembly/additional-scenarios#authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party>.
 
 ## <a name="establish-claims-for-users"></a>Établir des revendications pour les utilisateurs
 
@@ -109,7 +109,15 @@ Les applications requièrent souvent des revendications pour les utilisateurs en
 
 ## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Azure App Service sur Linux avec Identity serveur
 
-Spécifiez l’émetteur de manière explicite lors du déploiement sur Azure App Service sur Linux avec le Identity serveur. Pour plus d'informations, consultez <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
+Spécifiez l’émetteur de manière explicite lors du déploiement sur Azure App Service sur Linux avec le Identity serveur. Pour plus d’informations, consultez <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
+
+## <a name="windows-authentication"></a>Authentification Windows
+
+Nous vous déconseillons d’utiliser l’authentification Windows avec Blazor webassembly ou avec n’importe quel autre Framework Spa. Nous vous recommandons d’utiliser des protocoles basés sur des jetons au lieu de l’authentification Windows, tels que OIDC avec services de fédération Active Directory (AD FS) (ADFS).
+
+Si l’authentification Windows est utilisée avec Blazor webassembly ou avec tout autre Framework Spa, des mesures supplémentaires sont requises pour protéger l’application des jetons de falsification de requête intersites (CSRF). Les mêmes préoccupations que celles qui s’appliquent à s' cookie appliquent à l’authentification Windows avec l’ajout que l’authentification Windows n’offre aucun mécanisme pour empêcher le partage du contexte d’authentification entre les origines. Les applications qui utilisent l’authentification Windows sans protection supplémentaire à partir de CSRF doivent être au moins limitées à l’intranet d’une organisation et ne pas être utilisées sur Internet.
+
+Pour plus d’informations, consultez <xref:security/anti-request-forgery> .
 
 ## <a name="implementation-guidance"></a>Conseils d’implémentation
 

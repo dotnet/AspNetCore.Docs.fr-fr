@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 6a70183ce4b1a129ef213300473b233a5ef822f9
-ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
+ms.openlocfilehash: e4cf10d09c1629afb298aef0c2b86ad3bf7b646c
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94463884"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057367"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>Fournisseurs de stockage de clés dans ASP.NET Core
 
@@ -123,7 +123,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-Pour plus d'informations, consultez les rubriques suivantes :
+Pour plus d'informations, voir les rubriques suivantes :
 
 * [StackExchange. Redims ConnectionMultiplexer](https://github.com/StackExchange/StackExchange.Redis/blob/master/docs/Basics.md)
 * [Cache Redis Azure](/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache#connect-to-the-cache)
@@ -133,13 +133,13 @@ Pour plus d'informations, consultez les rubriques suivantes :
 
 **S’applique uniquement aux déploiements Windows.**
 
-Il arrive parfois que l’application ne dispose pas d’un accès en écriture au système de fichiers. Imaginez un scénario dans lequel une application s’exécute en tant que compte de service virtuel (par exemple, l’identité du pool d’applications de *w3wp.exe* ). Dans ce cas, l’administrateur peut configurer une clé de Registre accessible par l’identité du compte de service. Appelez la méthode d’extension [PersistKeysToRegistry](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystoregistry) comme indiqué ci-dessous. Fournissez un [RegistryKey](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository.registrykey) pointant vers l’emplacement où les clés de chiffrement doivent être stockées :
+Il arrive parfois que l’application ne dispose pas d’un accès en écriture au système de fichiers. Imaginez un scénario dans lequel une application s’exécute en tant que compte de service virtuel (par exemple, l’identité du pool d’applications de *w3wp.exe*). Dans ce cas, l’administrateur peut configurer une clé de Registre accessible par l’identité du compte de service. Appelez la méthode d’extension [PersistKeysToRegistry](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystoregistry) comme indiqué ci-dessous. Fournissez un [RegistryKey](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository.registrykey) pointant vers l’emplacement où les clés de chiffrement doivent être stockées :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddDataProtection()
-        .PersistKeysToRegistry(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Sample\keys"));
+        .PersistKeysToRegistry(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Sample\keys", true));
 }
 ```
 
@@ -166,7 +166,7 @@ Le paramètre générique, `TContext` , doit hériter de [DbContext](/dotnet/api
 
 Créez la table `DataProtectionKeys`.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez les commandes suivantes dans la fenêtre **console du gestionnaire de package** (PMC) :
 

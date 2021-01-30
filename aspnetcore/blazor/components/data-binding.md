@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: e873fdd201cf0cdc809030fde30c6a8da2899861
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 67a63f1b4f705a4857dea2e6d1a942d4f21469f5
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751553"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057094"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>BlazorLiaison de données ASP.net Core
 
@@ -146,7 +146,7 @@ La spécification d’un format pour le `date` type de champ n’est pas recomma
 
 Un scénario courant consiste à lier une propriété dans un composant enfant à une propriété dans son parent. Ce scénario est appelé *liaison chaînée* car plusieurs niveaux de liaison se produisent simultanément.
 
-Les [paramètres de composant](xref:blazor/components/index#component-parameters) autorisent les propriétés de liaison et les champs d’un composant parent avec la `@bind-{PROPERTY OR FIELD}` syntaxe.
+Les [paramètres de composant](xref:blazor/components/index#component-parameters) autorisent les propriétés de liaison d’un composant parent avec la `@bind-{PROPERTY}` syntaxe.
 
 Les liaisons chaînées ne peuvent pas être implémentées avec [`@bind`](xref:mvc/views/razor#bind) la syntaxe dans le composant enfant. Un gestionnaire d’événements et une valeur doivent être spécifiés séparément pour prendre en charge la mise à jour de la propriété dans le parent à partir du composant enfant.
 

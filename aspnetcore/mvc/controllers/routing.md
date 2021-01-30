@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 44c507fb5e0ff4477a84bfc1e4d0c62180c8dd37
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 04ece9628265135efd0dd92d29c8b14fc897329e
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252836"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057354"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Routage vers les actions du contrôleur dans ASP.NET Core
 
@@ -120,7 +120,7 @@ Le routage conventionnel est utilisé avec les contrôleurs et les vues. La rout
 
 [!code-csharp[](routing/samples/3.x/main/StartupDefaultMVC.cs?name=snippet2)]
 
-est un exemple de *routage conventionnel*. Il s’agit du *routage conventionnel* , car il établit une *Convention* pour les chemins d’URL :
+Le précédent est un exemple d' *itinéraire conventionnel*. Il s’agit du *routage conventionnel* , car il établit une *Convention* pour les chemins d’URL :
 
 * Le premier segment de chemin d’accès, `{controller=Home}` , correspond au nom du contrôleur.
 * Le deuxième segment, `{action=Index}` , correspond au nom de l' [action](#action) .
@@ -220,7 +220,7 @@ Lorsque deux points de terminaison correspondent au routage, le routage doit eff
 * Choisissez le meilleur candidat.
 * Levée d'une exception.
 
-Exemple :
+Par exemple :
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet9)]
 
@@ -720,7 +720,7 @@ Si la valeur `{ d = Donovan }` est ajoutée :
 
 Vous pouvez vous attendre à rencontrer ce problème avec l’itinéraire par défaut `{controller}/{action}/{id?}` . Ce problème est rare dans la pratique, car `Url.Action` spécifie toujours explicitement une `controller` `action` valeur et.
 
-Plusieurs surcharges d' [URL. action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) acceptent un objet de valeurs d’itinéraire pour fournir des valeurs pour les paramètres de routage autres que `controller` et `action` . L’objet de valeurs d’itinéraire est fréquemment utilisé avec `id` . Par exemple, `Url.Action("Buy", "Products", new { id = 17 })`. Objet de valeurs d’itinéraire :
+Plusieurs surcharges d' [URL. action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) acceptent un objet de valeurs d’itinéraire pour fournir des valeurs pour les paramètres de routage autres que `controller` et `action` . L’objet de valeurs d’itinéraire est fréquemment utilisé avec `id` . Par exemple : `Url.Action("Buy", "Products", new { id = 17 })`. Objet de valeurs d’itinéraire :
 
 * Par Convention, est généralement un objet de type anonyme.
 * Il peut s’agir d’un `IDictionary<>` ou d’un [poco](https://wikipedia.org/wiki/Plain_old_CLR_object)).
@@ -791,7 +791,7 @@ Les [itinéraires conventionnels dédiés](#dcr) s’appuient sur un comportemen
 
 <a name="routing-areas-ref-label"></a>
 
-## <a name="areas"></a>Régions
+## <a name="areas"></a>Zones (Areas)
 
 Les [zones](xref:mvc/controllers/areas) sont une fonctionnalité MVC utilisée pour organiser les fonctionnalités associées dans un groupe sous la forme d’un groupe distinct :
 
@@ -1008,7 +1008,7 @@ Dans le cadre du traitement des requêtes, MVC vérifie que les valeurs de route
 
 ### <a name="disambiguating-actions"></a>Résolution des ambiguïtés pour les actions
 
-Quand deux actions correspondent via le routage, MVC doit résoudre l’ambiguïté pour choisir le « meilleur » candidat ou sinon lever une exception. Exemple :
+Quand deux actions correspondent via le routage, MVC doit résoudre l’ambiguïté pour choisir le « meilleur » candidat ou sinon lever une exception. Par exemple :
 
 ```csharp
 public class ProductsController : Controller
@@ -1522,7 +1522,7 @@ Les routes conventionnelles dédiées s’appuient sur un comportement spécial 
 
 <a name="routing-areas-ref-label"></a>
 
-## <a name="areas"></a>Régions
+## <a name="areas"></a>Zones (Areas)
 
 Les [zones](areas.md) sont une fonctionnalité de MVC utilisée pour organiser des fonctionnalités connexes dans un groupe sous la forme d’un espace de noms de routage distinct (pour les actions de contrôleur) et d’une structure de dossiers (pour les vues). L’utilisation de zones permet à une application d’avoir plusieurs contrôleurs portant le même nom, pour autant qu’ils soient dans des *zones* différentes. L’utilisation de zones crée une hiérarchie qui permet le routage par ajout d’un autre paramètre de route, `area`, à `controller` et à `action`. Cette section explique comment le routage interagit avec les zones. Pour plus d’informations sur l’utilisation des zones avec des vues, consultez [Zones](areas.md).
 

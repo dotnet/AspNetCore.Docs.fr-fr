@@ -4,7 +4,7 @@ author: juntaoluo
 description: Découvrez les concepts de base liés à l’écriture de services gRPC avec ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 01/14/2021
+ms.date: 01/29/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/aspnetcore
-ms.openlocfilehash: 44a6f1d2a25314460fa4bce469f697a2fa4c0825
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 57edfa31079cb3fca6e9e8d0fa55bcbb8bbfefca
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252849"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057476"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Services gRPC avec ASP.NET Core
 
@@ -51,7 +51,7 @@ Ce document montre comment prendre en main les services gRPC à l’aide de ASP.
 
 [Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/grpc/grpc-start/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Pour obtenir des instructions détaillées sur la création d’un projet gRPC, consultez [prise en main des services gRPC](xref:tutorials/grpc/grpc-start) .
 
@@ -77,22 +77,39 @@ Dans *Startup.cs* :
 
 ASP.NET Core middleware et les fonctionnalités partagent le pipeline de routage. par conséquent, une application peut être configurée pour servir des gestionnaires de demandes supplémentaires. Les gestionnaires de demandes supplémentaires, tels que les contrôleurs MVC, fonctionnent en parallèle avec les services gRPC configurés.
 
+## <a name="server-options"></a>Options de serveur
+
+les services gRPC peuvent être hébergés par tous les serveurs ASP.NET Core intégrés.
+
+> [!div class="checklist"]
+>
+> * Kestrel
+> * TestServer
+> * IIS&dagger;
+> * HTTP.sys&dagger;
+
+&dagger;IIS et HTTP.sys requièrent .NET 5 et Windows 10 Build 20241 ou version ultérieure.
+
+Pour plus d’informations sur le choix du serveur approprié pour une application ASP.NET Core, consultez <xref:fundamentals/servers/index> .
+
 ::: moniker range=">= aspnetcore-5.0"
 
-### <a name="configure-kestrel"></a>Configurer Kestrel
+## <a name="kestrel"></a>Kestrel
+
+[Kestrel](xref:fundamentals/servers/kestrel) est un serveur Web multiplateforme pour ASP.net core. Kestrel fournit les meilleures performances et l’utilisation de la mémoire, mais il ne dispose pas de certaines des fonctionnalités avancées de HTTP.sys telles que le partage de ports.
 
 Points de terminaison Kestrel gRPC :
 
 * Nécessite HTTP/2.
 * Doit être sécurisé avec [TLS (Transport Layer Security)](https://tools.ietf.org/html/rfc5246).
 
-#### <a name="http2"></a>HTTP/2
+### <a name="http2"></a>HTTP/2
 
 gRPC requiert HTTP/2. gRPC pour ASP.NET Core valide [HttpRequest. Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol%2A) est `HTTP/2` .
 
 Kestrel [prend en charge http/2](xref:fundamentals/servers/kestrel/http2) sur la plupart des systèmes d’exploitation modernes. Les points de terminaison Kestrel sont configurés pour prendre en charge les connexions HTTP/1.1 et HTTP/2 par défaut.
 
-#### <a name="tls"></a>TLS
+### <a name="tls"></a>TLS
 
 Les points de terminaison Kestrel utilisés pour gRPC doivent être sécurisés avec TLS. En cours de développement, un point de terminaison sécurisé avec TLS est automatiquement créé `https://localhost:5001` lorsque le certificat de développement ASP.net Core est présent. Aucune configuration n'est requise. Un `https` préfixe vérifie que le point de terminaison Kestrel utilise TLS.
 
@@ -104,7 +121,7 @@ Vous pouvez également configurer les points de terminaison Kestrel dans *Progra
 
 [!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 
-#### <a name="protocol-negotiation"></a>Négociation de protocole
+### <a name="protocol-negotiation"></a>Négociation de protocole
 
 TLS est utilisé pour davantage que la sécurisation de la communication. La négociation de [négociation de protocole de couche d’application (ALPN)](https://tools.ietf.org/html/rfc7301#section-3) TLS est utilisée pour négocier le protocole de connexion entre le client et le serveur lorsqu’un point de terminaison prend en charge plusieurs protocoles. Cette négociation détermine si la connexion utilise HTTP/1.1 ou HTTP/2.
 
@@ -115,24 +132,38 @@ Pour plus d’informations sur l’activation de HTTP/2 et de TLS avec Kestrel, 
 > [!NOTE]
 > MacOS ne prend pas en charge ASP.NET Core gRPC avec TLS. Une configuration supplémentaire est nécessaire pour exécuter correctement les services gRPC sur MacOS. Pour plus d’informations, consultez [Impossible de démarrer l’application ASP.NET Core gRPC sur MacOS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).
 
+## <a name="iis"></a>IIS
+
+[Internet Information Services (IIS)](xref:host-and-deploy/iis/index) est un serveur Web flexible, sécurisé et facile à gérer pour héberger des applications Web, y compris des ASP.net core. .NET 5 et Windows 10 Build 20241 ou version ultérieure sont requis pour héberger les services gRPC avec IIS.
+
+IIS doit être configuré pour utiliser TLS et HTTP/2. Pour plus d’informations, consultez <xref:host-and-deploy/iis/protocols>.
+
+## <a name="httpsys"></a>HTTP.sys
+
+[HTTP.sys](xref:fundamentals/servers/httpsys) est un serveur web pour ASP.NET Core qui s’exécute uniquement sous Windows. .NET 5 et Windows 10 Build 20241 ou version ultérieure sont requis pour héberger les services gRPC avec HTTP.sys.
+
+Les HTTP.sys doivent être configurés pour utiliser TLS et HTTP/2. Pour plus d’informations, consultez  [HTTP.sys la prise en charge http/2 du serveur Web](xref:fundamentals/servers/httpsys#http2-support).
+
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-### <a name="configure-kestrel"></a>Configurer Kestrel
+## <a name="kestrel"></a>Kestrel
+
+[Kestrel](xref:fundamentals/servers/kestrel) est un serveur Web multiplateforme pour ASP.net core. Kestrel fournit les meilleures performances et l’utilisation de la mémoire, mais il ne dispose pas de certaines des fonctionnalités avancées de HTTP.sys telles que le partage de ports.
 
 Points de terminaison Kestrel gRPC :
 
 * Nécessite HTTP/2.
 * Doit être sécurisé avec [TLS (Transport Layer Security)](https://tools.ietf.org/html/rfc5246).
 
-#### <a name="http2"></a>HTTP/2
+### <a name="http2"></a>HTTP/2
 
 gRPC requiert HTTP/2. gRPC pour ASP.NET Core valide [HttpRequest. Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol%2A) est `HTTP/2` .
 
 Kestrel [prend en charge http/2](xref:fundamentals/servers/kestrel#http2-support) sur la plupart des systèmes d’exploitation modernes. Les points de terminaison Kestrel sont configurés pour prendre en charge les connexions HTTP/1.1 et HTTP/2 par défaut.
 
-#### <a name="tls"></a>TLS
+### <a name="tls"></a>TLS
 
 Les points de terminaison Kestrel utilisés pour gRPC doivent être sécurisés avec TLS. En cours de développement, un point de terminaison sécurisé avec TLS est automatiquement créé `https://localhost:5001` lorsque le certificat de développement ASP.net Core est présent. Aucune configuration n'est requise. Un `https` préfixe vérifie que le point de terminaison Kestrel utilise TLS.
 
@@ -144,7 +175,7 @@ Vous pouvez également configurer les points de terminaison Kestrel dans *Progra
 
 [!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 
-#### <a name="protocol-negotiation"></a>Négociation de protocole
+### <a name="protocol-negotiation"></a>Négociation de protocole
 
 TLS est utilisé pour davantage que la sécurisation de la communication. La négociation de [négociation de protocole de couche d’application (ALPN)](https://tools.ietf.org/html/rfc7301#section-3) TLS est utilisée pour négocier le protocole de connexion entre le client et le serveur lorsqu’un point de terminaison prend en charge plusieurs protocoles. Cette négociation détermine si la connexion utilise HTTP/1.1 ou HTTP/2.
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: e7bd5f4d61661dd23eb0907f896d0d32b7799aac
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 55993f951bfe910fb179fdb25b8d04f81d4ee2c9
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93061299"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057458"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Intergiciel (middleware) de réécriture d’URL dans ASP.NET Core
 
@@ -290,7 +290,7 @@ Si vous avez un module de réécriture IIS actif pour lequel des règles au nive
 
 #### <a name="unsupported-features"></a>Fonctionnalités non prises en charge
 
-L’intergiciel intégré à ASP.NET Core 2.x ne prend pas en charge les fonctionnalités de module de réécriture d’URL IIS suivantes :
+L’intergiciel ne prend pas en charge les fonctionnalités de module de réécriture d’URL IIS suivantes :
 
 * Règles de trafic sortant
 * Variables serveur personnalisées

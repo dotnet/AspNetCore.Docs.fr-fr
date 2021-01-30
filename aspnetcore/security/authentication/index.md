@@ -4,7 +4,7 @@ author: mjrousos
 description: En savoir plus sur l’authentification dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/03/2020
+ms.date: 1/24/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/index
-ms.openlocfilehash: e9e4ca11d20557666c75b84e56af825d002df0f1
-ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
+ms.openlocfilehash: 72036e9c4c92ee5dd82ac4a67e766fb0e5c8f924
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94464001"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057289"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Vue d’ensemble de l’authentification ASP.NET Core
 
@@ -62,7 +62,19 @@ L’intergiciel d’authentification est ajouté dans `Startup.Configure` en app
 
 ## <a name="authentication-concepts"></a>Concepts d’authentification
 
+L’authentification est chargée de fournir le <xref:System.Security.Claims.ClaimsPrincipal> pour l’autorisation pour prendre des décisions d’autorisation. Il existe plusieurs approches de schéma d’authentification pour sélectionner le gestionnaire d’authentification responsable de la génération de l’ensemble correct de revendications :
+
+  * [Schéma d’authentification](xref:security/authorization/limitingidentitybyscheme), également abordé dans la section suivante.
+  * Le schéma d’authentification par défaut, présenté dans la section suivante.
+  * Définissez directement [HttpContext. User](xref:Microsoft.AspNetCore.Http.HttpContext.User).
+
+Il n’existe pas de détection automatique des schémas. Si le schéma par défaut n’est pas spécifié, le schéma doit être spécifié dans l’attribut Authorize. dans le cas contraire, l’erreur suivante est levée :
+
+  InvalidOperationException : aucun authenticationScheme n’a été spécifié, et aucun DefaultAuthenticateScheme n’a été trouvé. Les schémas par défaut peuvent être définis à l’aide de AddAuthentication (String defaultScheme) ou AddAuthentication (action &lt; AuthenticationOptions &gt; configureOptions).
+
 ### <a name="authentication-scheme"></a>Schéma d'authentification
+
+Le [schéma d’authentification](xref:security/authorization/limitingidentitybyscheme) peut sélectionner le gestionnaire d’authentification chargé de générer l’ensemble correct de revendications. Pour plus d’informations, consultez [Authorize with a specific Scheme](xref:security/authorization/limitingidentitybyscheme).
 
 Un schéma d’authentification est un nom qui correspond à :
 
@@ -97,7 +109,7 @@ L’action d’authentification d’un schéma d’authentification est responsa
 * Un cookie schéma d’authentification qui construit l’identité de l’utilisateur à partir de cookie s.
 * Un modèle de porteur JWT qui désérialise et valide un jeton de porteur JWT pour construire l’identité de l’utilisateur.
 
-### <a name="challenge"></a>Défi à relever
+### <a name="challenge"></a>Problème
 
 Une demande d’authentification est appelée par l’autorisation lorsqu’un utilisateur non authentifié demande un point de terminaison qui requiert une authentification. Une demande d’authentification est émise, par exemple, lorsqu’un utilisateur anonyme demande une ressource restreinte ou clique sur un lien de connexion. L’autorisation appelle un défi à l’aide du ou des schémas d’authentification spécifiés, ou la valeur par défaut si aucun n’est spécifié. Consultez <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ChallengeAsync%2A>. Les exemples de demande d’authentification sont les suivants :
 

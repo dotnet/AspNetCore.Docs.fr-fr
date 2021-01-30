@@ -5,7 +5,7 @@ description: Découvrez plus d’informations sur l’utilisation de l’interfa
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/09/2020
+ms.date: 1/21/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/http-requests
-ms.openlocfilehash: 34c35daac3da845bac9156fe96078df7902a4cd0
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1cf3029452f87a396847f969f0f3136a75874752
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059492"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057328"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Effectuer des requêtes HTTP en utilisant IHttpClientFactory dans ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Par [Glenn Condron](https://github.com/glennc), [Ryan Nowak](https://github.com/rynowak),  [Steve Gordon](https://github.com/stevejgordon), [Rick Anderson](https://twitter.com/RickAndMSFT)et [Kirk Larkin](https://github.com/serpent5)
+Par [Kirk Larkin](https://github.com/serpent5), [Steve Gordon](https://github.com/stevejgordon), [Glenn Condron](https://github.com/glennc)et [Ryan Nowak](https://github.com/rynowak).
 
 Une <xref:System.Net.Http.IHttpClientFactory> peut être inscrite et utilisée pour configurer et créer des instances de <xref:System.Net.Http.HttpClient> dans une application. `IHttpClientFactory` offre les avantages suivants :
 
@@ -58,7 +58,7 @@ La meilleure approche dépend des exigences de l’application.
 
 `IHttpClientFactory` peut être inscrit en appelant `AddHttpClient` :
 
-[!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
+[!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1&highlight=13)]
 
 Un `IHttpClientFactory` peut être demandé à l’aide [de l’injection de dépendances (di)](xref:fundamentals/dependency-injection). Le code suivant utilise `IHttpClientFactory` pour créer une `HttpClient` instance :
 
@@ -238,16 +238,15 @@ Pour en savoir plus sur l’utilisation de différents verbes HTTP avec `HttpCli
 
 `HttpClient` présente le concept de délégation de gestionnaires qui peuvent être liés entre eux pour les requêtes HTTP sortantes. `IHttpClientFactory`:
 
-* Simplifie la définition des gestionnaires à appliquer pour chaque client nommé.
-* Prend en charge l’inscription et le chaînage de plusieurs gestionnaires pour générer un pipeline d’intergiciel (middleware) de demande sortante. Chacun de ces gestionnaires peut effectuer un travail avant et après la requête sortante. Ce modèle :
-
-  * Est semblable au pipeline d’intergiciel (middleware) entrant dans ASP.NET Core.
-  * Fournit un mécanisme permettant de gérer les problèmes transversaux autour des requêtes HTTP, par exemple :
-
-    * caching
-    * gestion des erreurs
-    * sérialisation
-    * journalisation
+  * Simplifie la définition des gestionnaires à appliquer pour chaque client nommé.
+  * Prend en charge l’inscription et le chaînage de plusieurs gestionnaires pour générer un pipeline d’intergiciel (middleware) de demande sortante. Chacun de ces gestionnaires est en mesure d’effectuer un travail avant et après la demande sortante. Ce modèle :
+  
+    * Est semblable au pipeline d’intergiciel (middleware) entrant dans ASP.NET Core.
+    * Fournit un mécanisme permettant de gérer les problèmes transversaux autour des requêtes HTTP, par exemple :
+      * caching
+      * gestion des erreurs
+      * sérialisation
+      * journalisation
 
 Pour créer un gestionnaire de délégation :
 
@@ -262,13 +261,31 @@ Plusieurs gestionnaires peuvent être ajoutés à la configuration d’un `HttpC
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup2.cs?name=snippet1)]
 
-Dans le code précédent, le `ValidateHeaderHandler` est inscrit avec une injection de dépendances. `IHttpClientFactory` crée une étendue DI distincte pour chaque gestionnaire. Les gestionnaires peuvent dépendre des services de toute portée. Les services dont dépendent les gestionnaires sont supprimés lorsque le gestionnaire est supprimé.
-
-Une fois inscrit, <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*> peut être appelé en passant en entrée le type pour le gestionnaire.
+Dans le code précédent, le `ValidateHeaderHandler` est inscrit avec une injection de dépendances. Une fois inscrit, <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*> peut être appelé en passant en entrée le type pour le gestionnaire.
 
 Vous pouvez inscrire plusieurs gestionnaires dans l’ordre où ils doivent être exécutés. Chaque gestionnaire wrappe le gestionnaire suivant jusqu’à ce que le dernier `HttpClientHandler` exécute la requête :
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet6)]
+
+### <a name="use-di-in-outgoing-request-middleware"></a>Utiliser l’injection de trafic dans l’intergiciel (middleware) des demandes sortantes
+
+Lorsque `IHttpClientFactory` crée un gestionnaire de délégation, il utilise di pour accomplir les paramètres du constructeur du gestionnaire. `IHttpClientFactory` crée une étendue di **distincte** pour chaque gestionnaire, ce qui peut entraîner un comportement étonnant lorsqu’un gestionnaire consomme un service *étendu* .
+
+Par exemple, considérez l’interface suivante et son implémentation, qui représente une tâche comme une opération avec un identificateur, `OperationId` :
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Models/OperationScoped.cs?name=snippet_Types)]
+
+Comme son nom l' `IOperationScoped` indique, est inscrit avec di à l’aide d’une durée de vie *limitée* :
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Startup.cs?name=snippet_IOperationScoped&highlight=18,26)]
+
+Le gestionnaire de délégation suivant consomme et utilise `IOperationScoped` pour définir l' `X-OPERATION-ID` en-tête de la demande sortante :
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Handlers/OperationHandler.cs?name=snippet_Class&highlight=13)]
+
+Dans le [ `HttpRequestsSample` Téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples/3.x/HttpRequestsSample)], accédez à `/Operation` la page et actualisez-la. La valeur de l’étendue de la demande change pour chaque demande, mais la valeur de la portée du gestionnaire change uniquement toutes les 5 secondes.
+
+Les gestionnaires peuvent dépendre des services de toute portée. Les services dont dépendent les gestionnaires sont supprimés lorsque le gestionnaire est supprimé.
 
 Utilisez l’une des approches suivantes pour partager l’état de chaque requête avec les gestionnaires de messages :
 

@@ -18,14 +18,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: a5f2dff7b0e0d4f209ba445b2efb6fb261cbaab1
-ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
+ms.openlocfilehash: c4cbec1b829fb8fd47f7b6924b6870bd5dd7097d
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94464014"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057302"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>Autorisation avec un schéma spécifique dans ASP.NET Core
+
+Pour obtenir une présentation des schémas d’authentification dans ASP.NET Core, consultez [schéma d’authentification](xref:security/authentication/index#authentication-scheme).
 
 Dans certains scénarios, tels que les applications à page unique (SPAs), il est courant d’utiliser plusieurs méthodes d’authentification. Par exemple, l’application peut utiliser l' cookie authentification basée sur pour se connecter et l’authentification du porteur JWT pour les demandes JavaScript. Dans certains cas, l’application peut avoir plusieurs instances d’un gestionnaire d’authentification. Par exemple, deux cookie gestionnaires où l’un contient une identité de base et l’autre est créé lorsqu’une authentification multifacteur (MFA) a été déclenchée. L’authentification multifacteur peut être déclenchée, car l’utilisateur a demandé une opération nécessitant une sécurité supplémentaire. Pour plus d’informations sur l’application de l’authentification MFA lorsqu’un utilisateur demande une ressource qui requiert l’authentification MFA, consultez la section GitHub issue [protection avec MFA](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195).
 
@@ -104,7 +106,7 @@ public class RegistrationController : Controller
 
 ## <a name="use-multiple-authentication-schemes"></a>Utiliser plusieurs schémas d’authentification
 
-Certaines applications peuvent avoir besoin de prendre en charge plusieurs types d’authentification. Par exemple, votre application peut authentifier les utilisateurs à partir de Azure Active Directory et à partir d’une base de données utilisateurs. Un autre exemple est une application qui authentifie les utilisateurs à la fois Services ADFS et Azure Active Directory B2C. Dans ce cas, l’application doit accepter un jeton de porteur JWT de plusieurs émetteurs.
+Certaines applications peuvent avoir besoin de prendre en charge plusieurs types d’authentification. Par exemple, votre application peut authentifier les utilisateurs à partir de Azure Active Directory et à partir d’une base de données utilisateurs. Un autre exemple est une application qui authentifie les utilisateurs à la fois services de fédération Active Directory (AD FS) et Azure Active Directory B2C. Dans ce cas, l’application doit accepter un jeton de porteur JWT de plusieurs émetteurs.
 
 Ajoutez tous les schémas d’authentification que vous souhaitez accepter. Par exemple, le code suivant dans `Startup.ConfigureServices` ajoute deux schémas d’authentification de porteur JWT avec différents émetteurs :
 

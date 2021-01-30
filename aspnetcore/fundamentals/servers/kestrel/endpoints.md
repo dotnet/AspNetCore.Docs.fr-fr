@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel/endpoints
-ms.openlocfilehash: 5fec573013da5bcb5039b7a189fd84d964349b3a
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: f9d82409f4b31a5564c7cdfa48beb303d784e213
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658740"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057146"
 ---
 # <a name="configure-endpoints-for-the-aspnet-core-kestrel-web-server"></a>Configurer des points de terminaison pour le serveur Web ASP.NET Core Kestrel
 
@@ -76,24 +76,6 @@ webBuilder.ConfigureKestrel(serverOptions =>
 > [!NOTE]
 > <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen%2A>  <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults%2A> Les valeurs par défaut sont appliquées aux points de terminaison créés en appelant avant d’appeler.
 
-## <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults (action \<HttpsConnectionAdapterOptions> )
-
-Spécifie une `Action` de configuration à exécuter pour chaque point de terminaison HTTPS. Le fait d’appeler `ConfigureHttpsDefaults` plusieurs fois remplace les `Action`s précédentes par la dernière `Action` spécifiée.
-
-```csharp
-webBuilder.ConfigureKestrel(serverOptions =>
-{
-    serverOptions.ConfigureHttpsDefaults(listenOptions =>
-    {
-        // certificate is an X509Certificate2
-        listenOptions.ServerCertificate = certificate;
-    });
-});
-```
-
-> [!NOTE]
-> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen%2A>  <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults%2A> Les valeurs par défaut sont appliquées aux points de terminaison créés en appelant avant d’appeler.
-
 ## <a name="configureiconfiguration"></a>Configure(IConfiguration)
 
 Crée un chargeur de configuration pour configurer Kestrel, qui prend en entrée une <xref:Microsoft.Extensions.Configuration.IConfiguration>. La configuration doit être limitée à la section de configuration pour Kestrel.
@@ -118,6 +100,24 @@ Par défaut, `CreateDefaultBuilder` appelle `Configure(context.Configuration.Get
   }
 }
 ```
+
+## <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults (action \<HttpsConnectionAdapterOptions> )
+
+Spécifie une `Action` de configuration à exécuter pour chaque point de terminaison HTTPS. Le fait d’appeler `ConfigureHttpsDefaults` plusieurs fois remplace les `Action`s précédentes par la dernière `Action` spécifiée.
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ConfigureHttpsDefaults(listenOptions =>
+    {
+        // certificate is an X509Certificate2
+        listenOptions.ServerCertificate = certificate;
+    });
+});
+```
+
+> [!NOTE]
+> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen%2A>  <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults%2A> Les valeurs par défaut sont appliquées aux points de terminaison créés en appelant avant d’appeler.
 
 ## <a name="listenoptionsusehttps"></a>ListenOptions.UseHttps
 
@@ -335,6 +335,21 @@ La prise en charge de SNI nécessite les points suivants :
 * Exécution sur la version cible de .NET Framework `netcoreapp2.1` ou version ultérieure. Sur `net461` ou version ultérieure, le rappel est appelé, mais `name` est toujours `null` . `name` est également `null` si le client ne fournit pas le paramètre du nom d’hôte dans la négociation TLS.
 * Tous les sites web s’exécutent sur la même instance Kestrel. Kestrel ne prend pas en charge le partage d’une adresse IP et d’un port entre plusieurs instances sans un proxy inverse.
 
+## <a name="ssltls-protocols"></a>Protocoles SSL/TLS
+
+Les protocoles SSL sont des protocoles utilisés pour chiffrer et déchiffrer le trafic entre deux homologues, traditionnellement un client et un serveur.
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ConfigureHttpsDefaults(listenOptions =>
+    {
+        listenOptions.SslProtocols = SslProtocols.Tls13;
+    });
+});
+```
+
+La valeur par défaut, `SslProtocols.None` , force Kestrel à utiliser les valeurs par défaut du système d’exploitation pour choisir le meilleur protocole. À moins que vous n’ayez une raison spécifique de sélectionner un protocole, utilisez la valeur par défaut.
 ## <a name="connection-logging"></a>Journalisation des connexions
 
 Appelez <xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging%2A> pour émettre des journaux au niveau du débogage pour la communication au niveau de l’octet sur une connexion. La journalisation des connexions est utile pour résoudre les problèmes de communication de bas niveau, par exemple lors du chiffrement TLS et derrière les proxies. Si `UseConnectionLogging` est placé avant `UseHttps` , le trafic chiffré est journalisé. Si `UseConnectionLogging` est placé après `UseHttps` , le trafic déchiffré est journalisé. Il s’agit d’un [intergiciel de connexion](#connection-middleware)intégré.

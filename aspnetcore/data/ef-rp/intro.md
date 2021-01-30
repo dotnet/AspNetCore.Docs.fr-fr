@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 86b57a9cad27673b72ad174a18741f5528f9f78a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 2f6299511b568a70c638dd5d4c735bf22adb5e95
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97011856"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057423"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages avec Entity Framework Core dans ASP.NET Core-didacticiel 1 sur 8
 
@@ -35,7 +35,7 @@ Il s’agit de la première d’une série de didacticiels qui montrent comment 
 
 [Télécharger ou afficher l’application terminée.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Instructions de téléchargement](xref:index#how-to-download-a-sample).
 
-## <a name="prerequisites"></a>Conditions préalables requises
+## <a name="prerequisites"></a>Prérequis
 
 * Si vous Razor débutez avec des pages, consultez la série de didacticiels [prise en main des Razor pages](xref:tutorials/razor-pages/razor-pages-start) avant de commencer celle-ci.
 
@@ -117,7 +117,7 @@ To run the app after downloading the completed project:
 
 ## <a name="create-the-web-app-project"></a>Créer le projet d’application web
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Démarrez Visual Studio et sélectionnez **Créer un projet**.
 1. Dans la boîte de dialogue **créer un nouveau projet** , sélectionnez **ASP.net Core application Web** > **suivant**.
@@ -127,7 +127,7 @@ To run the app after downloading the completed project:
     1. **.Net Core** et **ASP.net Core 5,0** dans les listes déroulantes.
     1. **ASP.net Core application Web**.
     1.  
-       Créer ![ Boîte de dialogue Nouveau projet de ASP.NET Core](~/data/ef-mvc/intro/_static/new-aspnet5.png)
+       Créer ![ Boîte de dialogue Nouveau projet de ASP.NET Core](~/data/ef-rp/intro/_static/new-aspnet5.png)
     
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -226,7 +226,7 @@ Dans cette section, vous allez utiliser l’outil de génération de modèles au
 * Classe EF Core `DbContext` . Le contexte est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données déterminé. Il dérive de la classe <xref:Microsoft.EntityFrameworkCore.DbContext?displayProperty=fullName>.
 * Razor les pages qui gèrent les opérations de création, lecture, mise à jour et suppression (CRUD) pour l' `Student` entité.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Créez un dossier *Pages/Students*.
 * Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages/Students*, puis sélectionnez **Ajouter** > **Nouvel élément généré automatiquement**.
@@ -304,7 +304,7 @@ Le processus de génération de modèles automatique :
 
 L’outil de génération de modèles automatique génère une chaîne de connexion dans le *appsettings.json* fichier.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 La chaîne de connexion spécifie [SQL Server](/sql/database-engine/configure-windows/sql-server-2016-express-localdb)base de données locale :
 
@@ -353,7 +353,7 @@ ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependen
 
 L’outil de génération de modèles automatique a inscrit automatiquement la classe du contexte dans le conteneur d’injection de dépendances.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Les lignes en surbrillance suivantes ont été ajoutées par le générateur de modèles :
 
@@ -375,7 +375,7 @@ Le nom de la chaîne de connexion est transmis au contexte en appelant une méth
 
 Ajoutez <xref:Microsoft.Extensions.DependencyInjection.DatabaseDeveloperPageExceptionFilterServiceExtensions.AddDatabaseDeveloperPageExceptionFilter%2A> à `ConfigureServices` , comme indiqué dans le code suivant :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!code-csharp[Main](intro/samples/cu50/Startup.cs?name=snippet_ConfigureServices&highlight=8)]
 
@@ -414,7 +414,7 @@ Ce workflow fonctionne bien à un stade précoce du développement, quand le sch
 
 Plus tard dans cette série de tutoriels, vous supprimerez la base de données créée par `EnsureCreated` et procéderez à des migrations. Une base de données créée par `EnsureCreated` ne peut pas être mise à jour via des migrations.
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 * Exécutez l'application.
 * Sélectionnez le lien **Students**, puis **Créer nouveau**.
@@ -437,7 +437,7 @@ Dans *Program.cs*, remplacez l’appel `EnsureCreated` par un appel `DbInitializ
   DbInitializer.Initialize(context);
   ```
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Arrêtez l’application si elle est en cours d’exécution et exécutez la commande suivante dans la **Console du gestionnaire de package** :
 
@@ -458,7 +458,7 @@ Répondre avec `Y` pour supprimer la base de données.
 
 ## <a name="view-the-database"></a>Afficher la base de données
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Ouvrez **l’Explorateur d’objets SQL Server** (SSOX) à partir du menu **Affichage** de Visual Studio.
 * Dans SSOX, sélectionnez **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}**. Le nom de la base de données est généré à partir du nom de contexte indiqué précédemment, ainsi que d’un tiret et d’un GUID.
@@ -532,7 +532,7 @@ Il s’agit de la première d’une série de didacticiels qui montrent comment 
 
 [Télécharger ou afficher l’application terminée.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Instructions de téléchargement](xref:index#how-to-download-a-sample).
 
-## <a name="prerequisites"></a>Conditions préalables requises
+## <a name="prerequisites"></a>Prérequis
 
 * Si vous Razor débutez avec des pages, consultez la série de didacticiels [prise en main des Razor pages](xref:tutorials/razor-pages/razor-pages-start) avant de commencer celle-ci.
 
@@ -570,7 +570,7 @@ Le style de l’interface utilisateur de ce site repose sur les modèles de proj
 
 Suivez le lien en haut de la page pour obtenir le code source du projet terminé. Le dossier *cu30* contient le code de la version 3.0 d’ASP.NET Core. Les fichiers qui reflètent l’état du code pour les tutoriels 1-7 se trouvent dans le dossier *cu30snapshots*.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Pour exécuter l’application après avoir téléchargé le projet terminé :
 
@@ -613,7 +613,7 @@ Pour exécuter l’application après avoir téléchargé le projet terminé :
 
 ## <a name="create-the-web-app-project"></a>Créer le projet d’application web
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
 * Sélectionnez **Application web ASP.NET Core**.
@@ -715,7 +715,7 @@ Dans cette section, vous allez utiliser l’outil de génération de modèles au
 * Une classe de *contexte* EF Core. Le contexte est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données déterminé. Il dérive de la classe `Microsoft.EntityFrameworkCore.DbContext`.
 * Razor les pages qui gèrent les opérations de création, lecture, mise à jour et suppression (CRUD) pour l' `Student` entité.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Créez un dossier *Students* dans le dossier *Pages*.
 * Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages/Students*, puis sélectionnez **Ajouter** > **Nouvel élément généré automatiquement**.
@@ -791,7 +791,7 @@ Le processus de génération de modèles automatique :
 
 ## <a name="database-connection-string"></a>Chaîne de connexion de base de données
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Le *appsettings.json* fichier spécifie la chaîne de connexion [SQL Server](/sql/database-engine/configure-windows/sql-server-2016-express-localdb)la base de données locale.
 
@@ -832,7 +832,7 @@ ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependen
 
 L’outil de génération de modèles automatique a inscrit automatiquement la classe du contexte dans le conteneur d’injection de dépendances.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans `ConfigureServices`, les lignes en surbrillance ont été ajoutées par l’outil de génération de modèles automatique :
 
@@ -865,7 +865,7 @@ Ce workflow fonctionne bien à un stade précoce du développement, quand le sch
 
 Plus tard dans cette série de tutoriels, vous supprimerez la base de données créée par `EnsureCreated` et procéderez à des migrations. Une base de données créée par `EnsureCreated` ne peut pas être mise à jour via des migrations.
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 * Exécutez l'application.
 * Sélectionnez le lien **Students**, puis **Créer nouveau**.
@@ -888,7 +888,7 @@ Créez *Data/DbInitializer.cs* avec le code suivant :
   DbInitializer.Initialize(context);
   ```
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Arrêtez l’application si elle est en cours d’exécution et exécutez la commande suivante dans la **Console du gestionnaire de package** :
 
@@ -908,7 +908,7 @@ Drop-Database
 
 ## <a name="view-the-database"></a>Afficher la base de données
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Ouvrez **l’Explorateur d’objets SQL Server** (SSOX) à partir du menu **Affichage** de Visual Studio.
 * Dans SSOX, sélectionnez **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}**. Le nom de la base de données est généré à partir du nom de contexte indiqué précédemment, ainsi que d’un tiret et d’un GUID.
@@ -1001,7 +1001,7 @@ Le style de l’interface utilisateur de ce site est proche de ce qui est géné
 
 ## <a name="create-the-contosouniversity-no-locrazor-pages-web-app"></a>Créer l' Razor application Web ContosoUniversity pages
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
 * Créez une application web ASP.NET Core. Nommez le projet **ContosoUniversity**. Il est important de nommer le projet *ContosoUniversity* afin que les espaces de noms correspondent quand le code est copié/collé.
@@ -1097,7 +1097,7 @@ Dans cette section, le modèle d’étudiant est généré automatiquement. Autr
 * Créez le projet.
 * Créez le dossier *Pages/Students*.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages/Students* > **Ajouter** > **Nouvel élément généré automatiquement**.
 * Dans la boîte de dialogue **Ajouter une structure** , sélectionnez **Razor pages à l’aide de Entity Framework (CRUD)** > **Ajouter**.
@@ -1172,7 +1172,7 @@ Le code suivant montre le fichier *Program.cs* mis à jour.
 
 `EnsureCreated` est pratique au début du développement quand le schéma évolue rapidement. Plus loin dans le tutoriel, la base de données est supprimée et les migrations sont utilisées.
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 Exécutez l’application et acceptez la cookie stratégie. Cette application ne conserve pas les informations personnelles. Pour en savoir plus sur la cookie stratégie au niveau de la [prise en charge de l’union européenne règlement général sur la protection des données (RGPD)](xref:security/gdpr).
 
@@ -1216,7 +1216,7 @@ Dans *Program.cs*, modifiez la méthode `Main` pour appeler `Initialize` :
 
 [!code-csharp[](intro/samples/cu21/Program.cs?name=snippet2&highlight=14-15)]
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Arrêtez l’application si elle est en cours d’exécution et exécutez la commande suivante dans la **Console du gestionnaire de package** :
 

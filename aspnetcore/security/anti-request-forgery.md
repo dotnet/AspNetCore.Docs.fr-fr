@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 197954965ee57b2a44ad0217d79ba142114e7df6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 3bb3c059eafa8e948fe2e719207927c009902e59
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060844"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057445"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Empêcher les attaques de falsification de requête intersites (XSRF/CSRF) dans ASP.NET Core
 
@@ -91,7 +91,7 @@ Lorsqu’un utilisateur s’authentifie à l’aide de son nom d’utilisateur e
 
 ### <a name="token-based-authentication"></a>Authentification basée sur un jeton
 
-Lorsqu’un utilisateur est authentifié, il reçoit un jeton (et non un jeton anti-contrefaçon). Le jeton contient des informations utilisateur sous la forme de [revendications](/dotnet/framework/security/claims-based-identity-model) ou d’un jeton de référence qui fait pointer l’application vers l’état utilisateur géré dans l’application. Lorsqu’un utilisateur tente d’accéder à une ressource nécessitant une authentification, le jeton est envoyé à l’application avec un en-tête d’autorisation supplémentaire sous forme de jeton du porteur. Cela rend l’application sans État. Dans chaque requête suivante, le jeton est transmis dans la demande de validation côté serveur. Ce jeton n’est pas *chiffré* . elle est *encodée* . Sur le serveur, le jeton est décodé pour accéder à ses informations. Pour envoyer le jeton sur les demandes suivantes, stockez le jeton dans le stockage local du navigateur. Ne vous inquiétez pas de la vulnérabilité CSRF si le jeton est stocké dans le stockage local du navigateur. CSRF est un problème lorsque le jeton est stocké dans un cookie . Pour plus d’informations, consultez l’exemple de code GitHub problème [Spa ajoute deux cookie s](https://github.com/dotnet/AspNetCore.Docs/issues/13369).
+Lorsqu’un utilisateur est authentifié, il reçoit un jeton (et non un jeton anti-contrefaçon). Le jeton contient des informations utilisateur sous la forme de [revendications](/dotnet/framework/security/claims-based-identity-model) ou d’un jeton de référence qui fait pointer l’application vers l’état utilisateur géré dans l’application. Lorsqu’un utilisateur tente d’accéder à une ressource nécessitant une authentification, le jeton est envoyé à l’application avec un en-tête d’autorisation supplémentaire sous forme de jeton du porteur. Cela rend l’application sans État. Dans chaque requête suivante, le jeton est transmis dans la demande de validation côté serveur. Ce jeton n’est pas *chiffré*. elle est *encodée*. Sur le serveur, le jeton est décodé pour accéder à ses informations. Pour envoyer le jeton sur les demandes suivantes, stockez le jeton dans le stockage local du navigateur. Ne vous inquiétez pas de la vulnérabilité CSRF si le jeton est stocké dans le stockage local du navigateur. CSRF est un problème lorsque le jeton est stocké dans un cookie . Pour plus d’informations, consultez l’exemple de code GitHub problème [Spa ajoute deux cookie s](https://github.com/dotnet/AspNetCore.Docs/issues/13369).
 
 ### <a name="multiple-apps-hosted-at-one-domain"></a>Plusieurs applications hébergées sur un domaine
 
@@ -250,8 +250,8 @@ services.AddAntiforgery(options =>
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Détermine les paramètres utilisés pour créer les anti-falsifications cookie . |
 | [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Domaine du cookie . La valeur par défaut est `null`. Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée est Cookie . Domain. |
-| [CookieNomme](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Nom de l'objet cookie. Si la valeur n’est pas définie, le système génère un nom unique commençant par le [ Cookie préfixe par défaut](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) («». AspNetCore. anti-contrefaçon.»). Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée est Cookie . Nomme. |
-| [CookieD](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Chemin d’accès défini sur le cookie . Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée est Cookie . D. |
+| [CookieNom](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Nom de l'objet cookie. Si la valeur n’est pas définie, le système génère un nom unique commençant par le [ Cookie préfixe par défaut](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) («». AspNetCore. anti-contrefaçon.»). Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée est Cookie . Nomme. |
+| [CookieChemin d’accès](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Chemin d’accès défini sur le cookie . Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée est Cookie . D. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Nom du champ de formulaire masqué utilisé par le système anti-contrefaçon pour le rendu des jetons anti-contrefaçon dans les vues. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Nom de l’en-tête utilisé par le système anti-contrefaçon. Si `null` la condition est, le système considère uniquement les données de formulaire. |
 | [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Spécifie si le système anti-contrefaçon exige le protocole HTTPs. Si la `true` , les demandes non-HTTPS échouent. La valeur par défaut est `false`. Cette propriété est obsolète et sera supprimée dans une version ultérieure. L’alternative recommandée consiste à définir Cookie . SecurePolicy. |
@@ -488,6 +488,10 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 [Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+
+## <a name="windows-authentication-and-antiforgery-no-loccookies"></a>Authentification Windows et anti-contrefaçon cookie
+
+Lors de l’utilisation de l’authentification Windows, les points de terminaison d’application doivent être protégés contre les attaques CSRF de la même façon que pour les cookie .  Le navigateur envoie implicitement le contexte d’authentification au serveur, par conséquent les points de terminaison doivent être protégés contre les attaques CSRF.
 
 ## <a name="extend-antiforgery"></a>Étendre l’anti-contrefaçon
 
