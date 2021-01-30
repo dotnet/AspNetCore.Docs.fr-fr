@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cross-site-scripting
-ms.openlocfilehash: 1c90a786efe8c3c205a729a2da9d3a99d0222012
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a7a0c0ff44de5b04d7fa9a8f2f16f7c9f786f64b
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053083"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057068"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Empêcher les scripts entre sites (XSS) dans ASP.NET Core
 
@@ -69,7 +69,7 @@ Cette vue renvoie le contenu de la variable *untrustedInput* . Cette variable co
 
 ## <a name="javascript-encoding-using-no-locrazor"></a>Encodage JavaScript à l’aide de Razor
 
-Il peut arriver que vous souhaitiez insérer une valeur dans JavaScript à traiter dans votre vue. Il existe deux façons d'effectuer cette opération. Le moyen le plus sûr d’insérer des valeurs consiste à placer la valeur dans un attribut de données d’une balise et à la récupérer dans votre code JavaScript. Exemple :
+Il peut arriver que vous souhaitiez insérer une valeur dans JavaScript à traiter dans votre vue. Il existe deux façons d'effectuer cette opération. Le moyen le plus sûr d’insérer des valeurs consiste à placer la valeur dans un attribut de données d’une balise et à la récupérer dans votre code JavaScript. Par exemple :
 
 ```cshtml
 @{
@@ -162,9 +162,9 @@ Le code précédent génère la sortie suivante :
 ```
 
 >[!WARNING]
-> Do * **not** _ concaténer une entrée non fiable dans JavaScript pour créer des éléments DOM ou utiliser `document.write()` sur du contenu généré dynamiquement.
+> Do ***not** _ concaténer une entrée non fiable dans JavaScript pour créer des éléments DOM ou utiliser `document.write()` sur du contenu généré dynamiquement.
 >
-> Utilisez l’une des approches suivantes pour empêcher le code d’être exposé au code XSS basé sur DOM : _ `createElement()` et assigner des valeurs de propriété avec des méthodes ou des propriétés appropriées telles que `node.textContent=` ou node. InnerText = '.
+> Utilisez l’une des approches suivantes pour empêcher le code d’être exposé au code XSS basé sur DOM : _ `createElement()` et assignez des valeurs de propriété avec des méthodes ou des propriétés appropriées, telles que `node.textContent=` ou `node.InnerText=` .
 > * `document.CreateTextNode()` et l’ajouter à l’emplacement DOM approprié.
 > * `element.SetAttribute()`
 > * `element[attribute]=`
@@ -173,7 +173,7 @@ Le code précédent génère la sortie suivante :
 
 Les encodeurs HTML, JavaScript et d’URL sont disponibles pour votre code de deux manières, vous pouvez les injecter via l' [injection de dépendances](xref:fundamentals/dependency-injection) ou vous pouvez utiliser les encodeurs par défaut contenus dans l' `System.Text.Encodings.Web` espace de noms. Si vous utilisez les encodeurs par défaut, tout ce que vous avez appliqué aux plages de caractères à traiter comme sécurisé ne prendra pas effet : les encodeurs par défaut utilisent les règles d’encodage les plus sûres possibles.
 
-Pour utiliser les encodeurs configurables via l’injection de code, les constructeurs doivent accepter un paramètre *HtmlEncoder* , *JavaScriptEncoder* et *UrlEncoder* , selon le cas. Par exemple :
+Pour utiliser les encodeurs configurables via l’injection de code, les constructeurs doivent accepter un paramètre *HtmlEncoder*, *JavaScriptEncoder* et *UrlEncoder* , selon le cas. Par exemple :
 
 ```csharp
 public class HomeController : Controller
