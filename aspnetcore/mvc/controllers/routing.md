@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 04ece9628265135efd0dd92d29c8b14fc897329e
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 0863b5758f33b720636f3b927fcb9014cd106c21
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057354"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217542"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Routage vers les actions du contrôleur dans ASP.NET Core
 
@@ -826,7 +826,7 @@ L’attribut [[Area]](xref:Microsoft.AspNetCore.Mvc.AreaAttribute) désigne un c
 
 [!code-csharp[](routing/samples/3.x/AreasRouting/Controllers/UsersController.cs)]
 
-L’espace de noms de chaque contrôleur est indiqué ici par exhaustivité. Si les contrôleurs précédents utilisent le même espace de noms, une erreur de compilateur est générée. Les espaces de noms de classe n’ont pas d’effet sur le routage de MVC.
+L’espace de noms de chaque contrôleur est indiqué ici par exhaustivité. Si les contrôleurs précédents utilisaient le même espace de noms, une erreur de compilateur est générée. Les espaces de noms de classe n’ont pas d’effet sur le routage de MVC.
 
 Les deux premiers contrôleurs sont membres de zones, et ils sont trouvés en correspondance seulement quand le nom de leur zone respective est fourni par la valeur de route `area`. Le troisième contrôleur n’est membre d’aucune zone et peut être trouvé en correspondance seulement quand aucune valeur pour `area` n’est fournie par le routage.
 

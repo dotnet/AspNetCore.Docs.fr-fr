@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/index
-ms.openlocfilehash: 91d1373d764644820d1fac6064ee503e1ef4455c
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 2acddd212639ac0a82b3c46f2225ff66d0999dd0
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057341"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217555"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -38,7 +38,7 @@ Une application ASP.NET Core s’exécute avec une implémentation de serveur HT
 
 ASP.NET Core est fourni avec les composants suivants :
 
-* [Serveur Kestrel](xref:fundamentals/servers/kestrel) : implémentation de serveur HTTP multiplateforme par défaut. Kestrel fournit les meilleures performances et l’utilisation de la mémoire, mais il ne dispose pas de certaines fonctionnalités avancées, `Http.Sys` telles que le partage de ports.
+* [Serveur Kestrel](xref:fundamentals/servers/kestrel) : implémentation de serveur HTTP multiplateforme par défaut. Kestrel fournit les meilleures performances et l’utilisation de la mémoire, mais il ne dispose pas de certaines des fonctionnalités avancées de HTTP.sys. Pour plus d’informations, consultez [Kestrel et HTTP.sys](#korh) dans ce document.
 * Le serveur HTTP IIS est un [serveur in-process](#hosting-models) pour IIS.
 * [Serveur HTTP.sys](xref:fundamentals/servers/httpsys) : serveur HTTP exclusivement Windows basé sur le [pilote de noyau HTTP.Sys et l’API Serveur HTTP](/windows/desktop/Http/http-api-start-page).
 
@@ -48,6 +48,26 @@ Lorsque vous utilisez [IIS](/iis/get-started/introduction-to-iis/introduction-to
 * Ou dans un processus séparé du processus Worker IIS (le [mode d’hébergement out-of-process](#hosting-models)) avec le [serveur Kestrel](#kestrel).
 
 Le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) est un module IIS natif qui gère les requêtes IIS natives entre IIS et le serveur HTTP IIS in-process ou Kestrel. Pour plus d’informations, consultez <xref:host-and-deploy/aspnet-core-module>.
+
+<a name="korh"></a>
+
+## <a name="kestrel-vs-httpsys"></a>Kestrel et HTTP.sys
+
+Kestrel présente les avantages suivants par rapport à HTTP.sys :
+
+  * Meilleures performances et utilisation de la mémoire.
+  * Multiplateforme
+  * L’agilité, elle est développée et corrigée indépendamment du système d’exploitation.
+  * Configuration du port et du protocole TLS par programmation
+  * Extensibilité qui autorise les protocoles tels que [PPv2](https://github.com/aspnet/AspLabs/blob/master/src/ProxyProtocol/ProxyProtocol.Sample/ProxyProtocol.cs) et les transports alternatifs.
+
+Http.Sys fonctionne comme un composant partagé en mode noyau avec les fonctionnalités suivantes que Kestrel n’a pas :
+
+  * Partage de port
+  * Authentification Windows en mode noyau. [Kestrel prend en charge uniquement l’authentification en mode utilisateur](xref:security/authentication/windowsauth#kestrel).
+  * Proxy rapide via les transferts de file d’attente
+  * Transmission de fichier directe
+  * Mise en cache des réponses
 
 ## <a name="hosting-models"></a>Modèles d'hébergement
 
@@ -74,8 +94,8 @@ ASP.NET Core est fourni avec le [serveur Kestrel](xref:fundamentals/servers/kest
 
 ## <a name="kestrel"></a>Kestrel
 
- [Serveur Kestrel](xref:fundamentals/servers/kestrel) : implémentation de serveur HTTP multiplateforme par défaut. Kestrel fournit les meilleures performances et l’utilisation de la mémoire, mais il ne dispose pas de certaines fonctionnalités avancées, `Http.Sys` telles que le partage de ports.
- 
+ [Serveur Kestrel](xref:fundamentals/servers/kestrel) : implémentation de serveur HTTP multiplateforme par défaut. Kestrel fournit les meilleures performances et l’utilisation de la mémoire, mais il ne dispose pas de certaines des fonctionnalités avancées de HTTP.sys. Pour plus d’informations, consultez [Kestrel et HTTP.sys](#korh) dans ce document.
+
 Utilisez Kestrel :
 
 * Par lui même, c’est-à-dire en tant que serveur de périphérie traitant les requêtes en provenance directe d’un réseau, notamment d’Internet.

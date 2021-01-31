@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/interprocess
-ms.openlocfilehash: d806a340d8540fce8af6ccc6ff68325e4b733922
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 8c0f8fb1468e61d5aa2e7f42cb5da33c01819124
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059882"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217464"
 ---
 # <a name="inter-process-communication-with-grpc"></a>Communication entre processus avec gRPC
 
@@ -64,9 +64,6 @@ Kestrel offre une prise en charge intégrée des points de terminaison UDS. Les 
 ## <a name="client-configuration"></a>Configuration de client
 
 `GrpcChannel` prend en charge l’exécution d’appels gRPC sur des transports personnalisés. Lorsqu’un canal est créé, il peut être configuré avec un `SocketsHttpHandler` qui a un personnalisé `ConnectCallback` . Le rappel permet au client d’établir des connexions sur des transports personnalisés, puis d’envoyer des requêtes HTTP sur ce transport.
-
-> [!IMPORTANT]
-> `SocketsHttpHandler.ConnectCallback` est une nouvelle API dans .NET 5 Release Candidate 2.
 
 Exemple de fabrique de connexion de sockets de domaine UNIX :
 

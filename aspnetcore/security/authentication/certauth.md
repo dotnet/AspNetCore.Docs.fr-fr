@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 71f05163c075a2ef88d5c606814925cdcef879d2
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: c862bc8bff6c4cc80696d92067e814889d6e7782
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253044"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217529"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Configurer l’authentification par certificat dans ASP.NET Core
 
@@ -40,7 +40,7 @@ L’authentification par certificat est un scénario avec état principalement u
 
 Une alternative à l’authentification par certificat dans les environnements où les proxies et les équilibreurs de charge sont utilisés est Active Directory Services fédérés (ADFS) avec OpenID Connect (OIDC).
 
-## <a name="get-started"></a>Bien démarrer
+## <a name="get-started"></a>Prendre en main
 
 Obtenez un certificat HTTPs, appliquez-le et [configurez votre serveur](#configure-your-server-to-require-certificates) pour exiger des certificats.
 
@@ -48,7 +48,7 @@ Dans votre application Web, ajoutez une référence au package [Microsoft. AspNe
 
 Si l’authentification échoue, ce gestionnaire renvoie une `403 (Forbidden)` réponse plutôt `401 (Unauthorized)` qu’un, comme vous pouvez l’imaginer. Le raisonnement est que l’authentification doit se produire pendant la connexion TLS initiale. Au moment où il atteint le gestionnaire, il est trop tard. Il n’existe aucun moyen de mettre à niveau la connexion d’une connexion anonyme à une avec un certificat.
 
-Ajoutez également `app.UseAuthentication();` dans la `Startup.Configure` méthode. Dans le cas contraire, le `HttpContext.User` n’est pas défini à `ClaimsPrincipal` créé à partir du certificat. Exemple :
+Ajoutez également `app.UseAuthentication();` dans la `Startup.Configure` méthode. Dans le cas contraire, le `HttpContext.User` n’est pas défini à `ClaimsPrincipal` créé à partir du certificat. Par exemple :
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -618,7 +618,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-L’implémentation de la mise en cache par défaut stocke les résultats en mémoire. Vous pouvez fournir votre propre cache en l’implémentant et en l' `ICertificateValidationCache` inscrivant avec l’injection de dépendances. Par exemple, `services.AddSingleton<ICertificateValidationCache, YourCache>()`.
+L’implémentation de la mise en cache par défaut stocke les résultats en mémoire. Vous pouvez fournir votre propre cache en l’implémentant et en l' `ICertificateValidationCache` inscrivant avec l’injection de dépendances. Par exemple : `services.AddSingleton<ICertificateValidationCache, YourCache>()`.
 
 ::: moniker-end
 
@@ -642,7 +642,7 @@ L’approche suivante prend en charge les certificats clients facultatifs :
 
 * Configuration de la liaison pour le domaine et le sous-domaine :
   * Par exemple, configurez des liaisons sur `contoso.com` et `myClient.contoso.com` . L' `contoso.com` hôte n’a pas besoin d’un certificat client, mais ce `myClient.contoso.com` n’est pas le cas.
-  * Pour plus d’informations, consultez :
+  * Pour plus d'informations, consultez les pages suivantes :
     * [Kestrel](/fundamentals/servers/kestrel):
       * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel/endpoints#listenoptionsusehttps)
       * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>
@@ -650,7 +650,7 @@ L’approche suivante prend en charge les certificats clients facultatifs :
     * IIS
       * [Hébergement d’IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Configurer la sécurité sur IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
-    * Http.Sys : [configurer Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+    * HTTP.sys : [configurer Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
 
 ::: moniker-end
 
@@ -658,7 +658,7 @@ L’approche suivante prend en charge les certificats clients facultatifs :
 
 * Configuration de la liaison pour le domaine et le sous-domaine :
   * Par exemple, configurez des liaisons sur `contoso.com` et `myClient.contoso.com` . L' `contoso.com` hôte n’a pas besoin d’un certificat client, mais ce `myClient.contoso.com` n’est pas le cas.
-  * Pour plus d’informations, consultez :
+  * Pour plus d'informations, consultez les pages suivantes :
     * [Kestrel](/fundamentals/servers/kestrel):
       * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel#listenoptionsusehttps)
       * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>
@@ -666,14 +666,14 @@ L’approche suivante prend en charge les certificats clients facultatifs :
     * IIS
       * [Hébergement d’IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Configurer la sécurité sur IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
-    * Http.Sys : [configurer Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+    * HTTP.sys : [configurer Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
 
 ::: moniker-end
 
 * Pour les demandes adressées à l’application Web qui requièrent un certificat client et n’en ont pas :
   * Rediriger vers la même page à l’aide du sous-domaine protégé par certificat du client.
   * Par exemple, redirigez vers `myClient.contoso.com/requestedPage` . Étant donné que la demande à `myClient.contoso.com/requestedPage` est un nom d’hôte différent de `contoso.com/requestedPage` , le client établit une connexion différente et le certificat client est fourni.
-  * Pour plus d'informations, consultez <xref:security/authorization/introduction>.
+  * Pour plus d’informations, consultez <xref:security/authorization/introduction>.
 
 Laissez des questions, des commentaires et d’autres commentaires sur les certificats clients facultatifs dans ce problème de [discussion GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/18720) .
 

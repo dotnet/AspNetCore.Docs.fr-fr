@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/application-model
-ms.openlocfilehash: a7a654eb43c0dbf375af911d8d5353ac4c04a825
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cf16536284ee9c88913257607df837ad6e50ea2c
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060935"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217373"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>Utiliser le modèle d’application dans ASP.NET Core
 
@@ -32,7 +32,7 @@ ASP.NET Core MVC définit un *modèle d’application* représentant les composa
 
 ## <a name="models-and-providers"></a>Modèles et fournisseurs
 
-Le modèle d’application ASP.NET Core MVC inclut des les interfaces abstraites et des classes d’implémentation concrètes qui décrivent une application MVC. Ce modèle est le résultat de la découverte par MVC des contrôleurs, des actions, des paramètres d’action, des routes et des filtres de l’application en fonction de conventions par défaut. Grâce au modèle d’application, vous pouvez modifier votre application pour suivre des conventions différentes du comportement de MVC par défaut. Les paramètres, les noms, les routes et les filtres sont utilisés comme données de configuration pour les actions et les contrôleurs.
+Le modèle d’application ASP.NET Core MVC comprend des interfaces abstraites et des classes d’implémentation concrètes qui décrivent une application MVC. Ce modèle est le résultat de la découverte par MVC des contrôleurs, des actions, des paramètres d’action, des routes et des filtres de l’application en fonction de conventions par défaut. Grâce au modèle d’application, vous pouvez modifier votre application pour suivre des conventions différentes du comportement de MVC par défaut. Les paramètres, les noms, les routes et les filtres sont utilisés comme données de configuration pour les actions et les contrôleurs.
 
 Le modèle d’application ASP.NET Core MVC a la structure suivante :
 

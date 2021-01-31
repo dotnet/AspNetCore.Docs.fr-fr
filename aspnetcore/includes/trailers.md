@@ -1,4 +1,4 @@
-Les codes de fin HTTP sont similaires aux en-têtes HTTP, sauf qu’ils sont envoyés après l’envoi du corps de la réponse. Pour IIS et HTTP.SYS, seules les codes de fin de réponse HTTP/2 sont pris en charge.
+Les codes de fin HTTP sont similaires aux en-têtes HTTP, sauf qu’ils sont envoyés après l’envoi du corps de la réponse. Pour IIS et HTTP.sys, seules les codes de fin de réponse HTTP/2 sont pris en charge.
 
 ```csharp
 if (httpContext.Response.SupportsTrailers())

@@ -1,5 +1,5 @@
 ---
-title: gRPC pour les plateformes .NET prises en charge
+title: gRPC sur les plateformes prises en charge par .NET
 author: jamesnk
 description: En savoir plus sur les plateformes prises en charge pour gRPC sur .NET.
 monikerRange: '>= aspnetcore-3.0'
@@ -18,29 +18,29 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/supported-platforms
-ms.openlocfilehash: 92ca38875c6618c8630a66af16548d32bc469a62
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 88d371f460839261b618a32564a723c257b0b119
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057714"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217490"
 ---
-# <a name="grpc-for-net-supported-platforms"></a>gRPC pour les plateformes .NET prises en charge
+# <a name="grpc-on-net-supported-platforms"></a>gRPC sur les plateformes prises en charge par .NET
 
 Par [James Newton-King](https://twitter.com/jamesnk)
 
 Cet article décrit la configuration requise et les plateformes prises en charge pour l’utilisation de gRPC avec .NET.
 
-gRPC est conçu pour utiliser HTTP/2 pour certaines de ses fonctionnalités plus avancées. HTTP/2 n’est pas pris en charge partout où il est possible d’empêcher l’utilisation de gRPC. C’est la seconde qui est compatible avec HTTP/1.1 pour l’envoi des appels gRPC entre les clients et les serveurs :
+gRPC tire parti des fonctionnalités avancées disponibles dans HTTP/2. HTTP/2 n’est pas pris en charge dans tous les pays, mais un deuxième format filaire à l’aide de HTTP/1.1 est disponible pour gRPC :
 
 * [`application/grpc`](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) -gRPC sur HTTP/2 indique comment gRPC est généralement utilisé.
 * [`application/grpc-web`](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md) -gRPC-Web modifie le protocole gRPC pour qu’il soit compatible avec HTTP/1.1. gRPC-Web peut être utilisé à d’autres endroits, notamment s’il peut être appelé par des applications de navigateur. Deux fonctionnalités gRPC avancées ne sont plus prises en charge : la diffusion en continu du client et la diffusion bidirectionnelle.
 
-gRPC pour .NET prend en charge les formats câblés. Pour plus d’informations sur la configuration de gRPC-Web, consultez <xref:grpc/browser> .
+gRPC sur .NET prend en charge les formats câblés. gRPC sur HTTP/2 est utilisé par défaut. Pour plus d’informations sur la configuration de gRPC-Web, consultez <xref:grpc/browser> .
 
 ## <a name="device-requirements"></a>Exigences relatives aux appareils
 
-gRPC pour .NET prend en charge tous les appareils que .NET Core prend en charge.
+gRPC sur .NET prend en charge tous les appareils que .NET Core prend en charge.
 
 > [!div class="checklist"]
 >
@@ -49,7 +49,7 @@ gRPC pour .NET prend en charge tous les appareils que .NET Core prend en charge.
 > * macOS&dagger;
 > * Navigateurs&Dagger;
 
-&dagger;Les applications ASP.NET Core hébergées sur macOS ne prennent pas en charge le protocole HTTPs. les clients gRPC sur macOS peuvent toujours utiliser le protocole HTTPs lors de l’appel de services distants.
+&dagger;[MacOS ne prend pas en charge l’hébergement d’applications ASP.net core avec HTTPS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos). les clients gRPC sur macOS peuvent appeler des services distants qui utilisent le protocole HTTPs.
 
 &Dagger;Blazor WebAssembly les applications peuvent appeler gRPC services avec gRPC-Web.
 
@@ -70,14 +70,14 @@ Pour plus d’informations, consultez <xref:grpc/aspnetcore>.
 
 ## <a name="net-version-requirements"></a>Configuration requise pour la version .NET
 
-gRPC pour .NET prend en charge .NET Core 3 et .NET 5 ou version ultérieure.
+gRPC sur .NET prend en charge .NET Core 3 et .NET 5 ou version ultérieure.
 
 > [!div class="checklist"]
 >
 > * .NET 5 ou version ultérieure
 > * .NET Core 3
 
-gRPC pour .NET ne prend pas en charge l’exécution sur .NET Framework et Xamarin. [GRPC C# Core-Library](https://grpc.io/docs/languages/csharp/quickstart/) est une bibliothèque tierce qui prend en charge .NET Framework et Xamarin. gRPC C-Core n’est pas pris en charge par Microsoft.
+gRPC sur .NET ne prend pas en charge l’exécution sur .NET Framework et Xamarin. [GRPC C# Core-Library](https://grpc.io/docs/languages/csharp/quickstart/) est une bibliothèque tierce qui prend en charge .NET Framework et Xamarin. gRPC C-Core n’est pas pris en charge par Microsoft.
 
 ## <a name="azure-services"></a>Services Azure
 
