@@ -5,7 +5,7 @@ description: Découvrez comment créer une Blazor application Web progressive (P
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/11/2020
+ms.date: 01/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 1706d3502dc68f1c25e0c35ba8f5dd44b55ce690
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: fcf06295deb41f304b92caa82535a1197c909898
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658649"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238244"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Créez des applications Web progressifs avec ASP.NET Core Blazor WebAssembly
 
@@ -189,7 +189,7 @@ Par défaut, les applications créées à l’aide de l’option de modèle PWA 
 
 Pour voir comment fonctionne la prise en charge hors connexion :
 
-1. Publiez l’application. Pour plus d'informations, consultez <xref:blazor/host-and-deploy/index#publish-the-app>.
+1. Publiez l’application. Pour plus d’informations, consultez <xref:blazor/host-and-deploy/index#publish-the-app>.
 1. Déployez l’application sur un serveur qui prend en charge le protocole HTTPs, et accédez à l’application dans un navigateur à son adresse HTTPs sécurisée.
 1. Ouvrez les outils de développement du navigateur, puis vérifiez qu’un *Worker service* est inscrit pour l’ordinateur hôte sous l’onglet **application** :
 
@@ -318,7 +318,7 @@ Les `AssetUrl` métadonnées spécifient l’URL relative de base que le navigat
 > [!IMPORTANT]
 > L’ajout de `ServiceWorkerAssetsManifestItem` n’entraîne pas la publication du fichier dans le répertoire de l’application `wwwroot` . La sortie de publication doit être contrôlée séparément. Le `ServiceWorkerAssetsManifestItem` seul fait apparaître une entrée supplémentaire dans le manifeste des ressources du Worker.
 
-## <a name="push-notifications"></a>Notifications Push
+## <a name="push-notifications"></a>Notifications push
 
 Comme tout autre PWA, Blazor WebAssembly PWA peut recevoir des notifications push à partir d’un serveur principal. Le serveur peut envoyer des notifications push à tout moment, même lorsque l’utilisateur n’utilise pas activement l’application. Par exemple, les notifications push peuvent être envoyées lorsqu’un autre utilisateur effectue une action appropriée.
 
