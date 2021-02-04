@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 51f76bc33d2da6097d26c1ffe17b1c93046a7b88
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 03debcb211a8cb8f0ebd6d5e67fbc8de7b574e27
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052459"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551666"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Créer des API web avec ASP.NET Core
 
@@ -76,7 +76,7 @@ L’espace de noms <xref:Microsoft.AspNetCore.Mvc> fournit des attributs qui peu
 
 Voici d’autres exemples d’attributs disponibles.
 
-|Attribut|Notes|
+|Attribut|Remarques|
 |---------|-----|
 |[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |Spécifie le modèle d’URL pour un contrôleur ou une action.|
 |[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |Spécifie le préfixe et les propriétés à inclure pour la liaison de modèle.|
@@ -164,7 +164,7 @@ namespace WebApiSample
 
 ## <a name="attribute-routing-requirement"></a>Exigence du routage d’attribut
 
-L’attribut `[ApiController]` rend nécessaire le routage d’attributs. Exemple :
+L’attribut `[ApiController]` rend nécessaire le routage d’attributs. Par exemple :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -379,7 +379,7 @@ Prenons le code suivant dans une action de contrôleur :
 
 [!code-csharp[](index/samples/2.x/2.2/Controllers/PetsController.cs?name=snippet_ProblemDetailsStatusCode)]
 
-La `NotFound` méthode génère un code d’état HTTP 404 avec un `ProblemDetails` corps. Exemple :
+La `NotFound` méthode génère un code d’état HTTP 404 avec un `ProblemDetails` corps. Par exemple :
 
 ```json
 {
@@ -440,3 +440,4 @@ L' `[Consumes]` attribut est appliqué aux deux actions. L' `PostJson` action g�
 * <xref:web-api/advanced/formatting>
 * <xref:tutorials/web-api-help-pages-using-swagger>
 * <xref:mvc/controllers/routing>
+* [Microsoft Learn : créer une API Web avec ASP.NET Core](/learn/modules/build-web-api-aspnet-core/)

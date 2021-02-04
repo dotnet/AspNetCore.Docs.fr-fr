@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 7a6ceea09bde8999b9e64796c0ba5fc6f3f45a2d
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 68601333cbd49a1d667337021de246a73f536600
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530227"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551641"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Bien démarrer avec Swashbuckle et ASP.NET Core
 
@@ -505,3 +505,7 @@ app.UseSwaggerUI(c =>
      c.InjectStylesheet("/swagger-ui/custom.css");
 }
 ```
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Microsoft Learn : améliorer l’expérience de développement d’une API avec la documentation Swagger](/learn/modules/improve-api-developer-experience-with-swagger/)

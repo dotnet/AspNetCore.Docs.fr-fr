@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 97ee00dd37ed4eef1c013e0f45b598a79f3f260c
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: 62c9d1a58e0f771d91e2bc57f39ec5ebb25baaed
+ms.sourcegitcommit: 37186f76e4a50d7fb7389026dd0e5e234b51ebb2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035864"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541366"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -98,7 +98,7 @@ La configuration par défaut <xref:Microsoft.Extensions.Configuration.Json.JsonC
 
 [!INCLUDE[](~/includes/bind.md)]
 
-À l’aide de la configuration [par défaut](#default) , de *appsettings.json* et de *appSettings.* `Environment` les fichiers *. JSON* sont activés avec [reloadOnChange : true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75). Modifications apportées *appsettings.json* aux *appSettings et.* `Environment` fichier *. JSON* ***après** _ le démarrage de l’application est lu par le [fournisseur de configuration JSON](#jcp).
+À l’aide de la configuration [par défaut](#default) , de *appsettings.json* et de *appSettings.* `Environment` les fichiers *. JSON* sont activés avec [reloadOnChange : true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75). Modifications apportées *appsettings.json* aux *appSettings et.* `Environment` le fichier *. JSON* ***après*** le démarrage de l’application est lu par le [fournisseur de configuration JSON](#jcp).
 
 Pour plus d’informations sur l’ajout de fichiers de configuration JSON supplémentaires, consultez [fournisseur de configuration JSON](#jcp) dans ce document.
 
@@ -112,7 +112,7 @@ Pour plus d’informations sur l’ajout de fichiers de configuration JSON suppl
 
 Instructions relatives aux données de configuration :
 
-_ Ne stockez jamais les mots de passe ou d’autres données sensibles dans le code du fournisseur de configuration ou dans les fichiers de configuration en texte brut. L’outil [Gestionnaire de secret](xref:security/app-secrets) peut être utilisé pour stocker les secrets en développement.
+* Ne stockez jamais des mots de passe ou d’autres données sensibles dans le code du fournisseur de configuration ou dans les fichiers de configuration en texte clair. L’outil [Gestionnaire de secret](xref:security/app-secrets) peut être utilisé pour stocker les secrets en développement.
 * N’utilisez aucun secret de production dans les environnements de développement ou de test.
 * Spécifiez les secrets en dehors du projet afin qu’ils ne puissent pas être validés par inadvertance dans un référentiel de code source.
 
@@ -271,7 +271,7 @@ dotnet run --MyKey "Using --" --Position:Title=Cmd-- --Position:Name=Cmd--Rick
 Valeur de la clé :
 
 * Doit suivre `=` ou la clé doit avoir un préfixe `--` ou `/` lorsque la valeur suit un espace.
-* N’est pas obligatoire si `=` est utilisé. Par exemple, `MySetting=`.
+* N’est pas obligatoire si `=` est utilisé. Par exemple : `MySetting=`.
 
 Dans la même commande, ne mélangez pas les paires clé-valeur d’argument de ligne de commande qui utilisent `=` des paires clé-valeur utilisant un espace.
 
@@ -355,7 +355,7 @@ Le tableau suivant présente les fournisseurs de configuration disponibles pour 
 | [Fournisseur de configuration de fichier](#file-configuration-provider) | Fichiers INI, JSON et XML |
 | [Fournisseur de configuration de clé par fichier](#key-per-file-configuration-provider) | Fichiers de répertoire |
 | [Fournisseur de configuration de la mémoire](#memory-configuration-provider) | Collections en mémoire |
-| [Secrets de l’utilisateur](xref:security/app-secrets) | Fichier dans le répertoire de profil utilisateur |
+| [Secrets utilisateur](xref:security/app-secrets) | Fichier dans le répertoire de profil utilisateur |
 
 Les sources de configuration sont lues dans l’ordre dans lequel leurs fournisseurs de configuration sont spécifiés. Commandez des fournisseurs de configuration dans le code pour répondre aux priorités des sources de configuration sous-jacentes requises par l’application.
 
@@ -363,7 +363,7 @@ Une séquence type des fournisseurs de configuration est la suivante :
 
 1. *appsettings.json*
 1. *appSettings*. `Environment` . *JSON*
-1. [Secrets de l’utilisateur](xref:security/app-secrets)
+1. [Secrets utilisateur](xref:security/app-secrets)
 1. Variables d’environnement à l’aide du [fournisseur de configuration des variables d’environnement](#evcp).
 1. Arguments de ligne de commande à l’aide du [fournisseur de configuration de ligne de commande](#command-line-configuration-provider).
 
@@ -449,13 +449,13 @@ Le code précédent :
   * `reloadOnChange: true` : Le fichier est rechargé lorsque des modifications sont enregistrées.
 * Lit les [fournisseurs de configuration par défaut](#default) avant l' *MyConfig.jssur* le fichier. Les paramètres dans le *MyConfig.js* paramètre de remplacement de fichier dans les fournisseurs de configuration par défaut, y compris le [fournisseur de configuration des variables d’environnement](#evcp) et le fournisseur de configuration de ligne de [commande](#clcp).
 
-En règle générale, vous **ne souhaitez pas** que les valeurs de substitution de fichier JSON personnalisées soient définies dans le fournisseur de configuration des [variables d’environnement](#evcp) et dans le fournisseur de configuration de [ligne de commande](#clcp).
+En général, vous ***ne souhaitez pas*** qu’une valeur de substitution de fichier JSON personnalisée soit définie dans le fournisseur de configuration des [variables d’environnement](#evcp) et dans le fournisseur de configuration de [ligne de commande](#clcp).
 
 Le code suivant efface tous les fournisseurs de configuration et ajoute plusieurs fournisseurs de configuration :
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramJSON2.cs?name=snippet)]
 
-Dans le code précédent, les paramètres de la _MyConfig.jssur * et  *MyConfig*. `Environment` . fichiers *JSON* :
+Dans le code précédent, les paramètres de la *MyConfig.jssur* et  *MyConfig*. `Environment` . fichiers *JSON* :
 
 * Substituez les paramètres dans *appsettings.json* et *appSettings*. `Environment` fichiers *JSON* .
 * Sont remplacées par les paramètres dans le [fournisseur de configuration des variables d’environnement](#evcp) et le fournisseur de configuration de ligne de [commande](#clcp).
@@ -727,7 +727,7 @@ Le code suivant affiche les données de configuration dans les `Startup` méthod
 
 Pour obtenir un exemple d’accès à la configuration à l’aide des méthodes pratiques de démarrage, consultez [Démarrage de l’application : méthodes pratiques](xref:fundamentals/startup#convenience-methods).
 
-## <a name="access-configuration-in-no-locrazor-pages"></a>Configuration de l’accès dans les Razor pages
+## <a name="access-configuration-in-razor-pages"></a>Configuration de l’accès dans les Razor pages
 
 Le code suivant affiche les données de configuration dans une Razor page :
 
@@ -805,7 +805,7 @@ Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> perme
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Code source de configuration](https://github.com/dotnet/extensions/tree/master/src/Configuration)
+* [Code source de configuration](https://github.com/dotnet/runtime/tree/master/src/libraries/Microsoft.Extensions.Configuration)
 * <xref:fundamentals/configuration/options>
 * <xref:blazor/fundamentals/configuration>
 
@@ -1839,7 +1839,7 @@ public class Startup
 
 Pour obtenir un exemple d’accès à la configuration à l’aide des méthodes pratiques de démarrage, consultez [Démarrage de l’application : méthodes pratiques](xref:fundamentals/startup#convenience-methods).
 
-## <a name="access-configuration-in-a-no-locrazor-pages-page-or-mvc-view"></a>Configuration de l’accès dans une Razor page pages ou une vue MVC
+## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>Configuration de l’accès dans une Razor page pages ou une vue MVC
 
 Pour accéder aux paramètres de configuration dans une Razor page pages ou une vue MVC, ajoutez une [directive using](xref:mvc/views/razor#using) ([référence C# : directive using](/dotnet/csharp/language-reference/keywords/using-directive)) pour l' [ espace de nomsMicrosoft.Extensions.Configfiguration](xref:Microsoft.Extensions.Configuration) et injectez <xref:Microsoft.Extensions.Configuration.IConfiguration> dans la page ou la vue.
 
