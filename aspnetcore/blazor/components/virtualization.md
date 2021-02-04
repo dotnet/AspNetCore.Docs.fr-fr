@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: c2b16f4bc8e69265b1d59082c3f029541f277d8b
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 72b33bc3c2861380551915b1e8caab49122e8fab
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252287"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529915"
 ---
-# <a name="aspnet-core-no-locblazor-component-virtualization"></a>BlazorVirtualisation des composants ASP.net Core
+# <a name="aspnet-core-blazor-component-virtualization"></a>BlazorVirtualisation des composants ASP.net Core
 
 Par [Daniel Roth](https://github.com/danroth27)
 
@@ -74,7 +74,7 @@ Si vous ne spécifiez pas de contexte pour le composant avec `Context` , utilise
 > [!NOTE]
 > Le processus de mappage des objets de modèle aux éléments et aux composants peut être contrôlé à l’aide de l' [`@key`](xref:mvc/views/razor#key) attribut directive. `@key` force l’algorithme de comparaison à garantir la préservation des éléments ou des composants en fonction de la valeur de la clé.
 >
-> Pour plus d’informations, consultez les articles suivants :
+> Pour plus d’informations, consultez les articles suivants :
 >
 > * <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>
 > * [Razor Référence de syntaxe pour ASP.NET Core](xref:mvc/views/razor#key)
@@ -149,7 +149,7 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 
 ## <a name="item-size"></a>Taille de l’élément
 
-La taille de chaque élément en pixels peut être définie avec <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType> (valeur par défaut : 50) :
+La hauteur de chaque élément en pixels peut être définie avec <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType> (valeur par défaut : 50) :
 
 ```razor
 <Virtualize Context="employee" Items="@employees" ItemSize="25">
@@ -169,4 +169,4 @@ La taille de chaque élément en pixels peut être définie avec <xref:Microsoft
 
 ## <a name="state-changes"></a>Modifications d'état
 
-Lorsque vous apportez des modifications aux éléments restitués par le `Virtualize` composant, appelez <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> pour forcer la réévaluation et le rerendu du composant. Pour plus d'informations, consultez <xref:blazor/components/rendering>.
+Lorsque vous apportez des modifications aux éléments restitués par le `Virtualize` composant, appelez <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> pour forcer la réévaluation et le rerendu du composant. Pour plus d’informations, consultez <xref:blazor/components/rendering>.

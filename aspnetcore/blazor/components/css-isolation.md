@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/css-isolation
-ms.openlocfilehash: 92545eab4004f6b67080f79d64b94bb424d5a102
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 0748f606314963788e6733ca2ae2ca2123d839b3
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96320081"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529980"
 ---
-# <a name="aspnet-core-no-locblazor-css-isolation"></a>ASP.NET Core l' Blazor isolation CSS
+# <a name="aspnet-core-blazor-css-isolation"></a>ASP.NET Core l' Blazor isolation CSS
 
 Par [Dave Brock](https://twitter.com/daveabrock)
 
@@ -34,11 +34,19 @@ L’isolation CSS simplifie l’empreinte CSS d’une application en empêchant 
 
 ## <a name="enable-css-isolation"></a>Activer l’isolation CSS 
 
-Pour définir des styles spécifiques au composant, créez un `.razor.css` fichier correspondant au nom du `.razor` fichier du composant. Ce `.razor.css` fichier est un *fichier CSS étendu*. 
+Pour définir des styles spécifiques au composant, créez un `.razor.css` fichier correspondant au nom du `.razor` fichier du composant dans le même dossier. Le `.razor.css` fichier est un *fichier CSS étendu*. 
 
-Pour un `MyComponent` composant qui possède un `MyComponent.razor` fichier, créez un fichier avec le composant appelé `MyComponent.razor.css` . La `MyComponent` valeur dans le `.razor.css` nom de fichier n’est **pas** sensible à la casse.
+Pour un `Example` composant dans un `Example.razor` fichier, créez un fichier avec le composant nommé `Example.razor.css` . Le `Example.razor.css` fichier doit résider dans le même dossier que le `Example` composant ( `Example.razor` ). Le `Example` nom de base du fichier n’est **pas** sensible à la casse.
 
-Par exemple, pour ajouter l’isolement CSS au `Counter` composant dans le Blazor modèle de projet par défaut, ajoutez un nouveau fichier nommé à `Counter.razor.css` côté du `Counter.razor` fichier, puis ajoutez le code CSS suivant :
+`Pages/Example.razor`:
+
+```razor
+@page "/example"
+
+<h1>Scoped CSS Example</h1>
+```
+
+`Pages/Example.razor.css`:
 
 ```css
 h1 { 
@@ -47,10 +55,10 @@ h1 {
 }
 ```
 
-Les styles définis dans `Counter.razor.css` sont appliqués uniquement à la sortie rendue du `Counter` composant. Les `h1` déclarations CSS définies ailleurs dans l’application ne sont pas en conflit avec les `Counter` styles.
+**Les styles définis dans `Example.razor.css` sont appliqués uniquement à la sortie rendue du `Example` composant.** L’isolation CSS est appliquée aux éléments HTML dans le Razor fichier correspondant. Les `h1` déclarations CSS définies ailleurs dans l’application ne sont pas en conflit avec les `Example` styles du composant.
 
 > [!NOTE]
-> Afin de garantir l’isolement du style lors du regroupement, `@import` Razor les blocs ne sont pas pris en charge avec les fichiers CSS délimités.
+> Pour garantir l’isolement du style lors du regroupement, l’importation de CSS dans des Razor blocs de code n’est pas prise en charge.
 
 ## <a name="css-isolation-bundling"></a>Regroupement d’isolation CSS
 
@@ -59,7 +67,7 @@ L’isolation CSS se produit au moment de la génération. Pendant ce processus,
 Ces fichiers statiques sont référencés à partir du chemin d’accès racine de l’application par défaut. Dans l’application, référencez le fichier groupé en inspectant la référence à l’intérieur `<head>` de la balise du code HTML généré :
 
 ```html
-<link href="MyProjectName.styles.css" rel="stylesheet">
+<link href="ProjectName.styles.css" rel="stylesheet">
 ```
 
 Dans le fichier groupé, chaque composant est associé à un identificateur d’étendue. Pour chaque composant stylisé, un attribut HTML est ajouté avec le format `b-<10-character-string>` . L’identificateur est unique et différent pour chaque application. Dans le `Counter` composant rendu, Blazor ajoute un identificateur de portée à l' `h1` élément :
@@ -68,7 +76,7 @@ Dans le fichier groupé, chaque composant est associé à un identificateur d’
 <h1 b-3xxtam6d07>
 ```
 
-Le `MyProjectName.styles.css` fichier utilise l’identificateur de portée pour regrouper une déclaration de style avec son composant. L’exemple suivant fournit le style de l' `<h1>` élément précédent :
+Le `ProjectName.styles.css` fichier utilise l’identificateur de portée pour regrouper une déclaration de style avec son composant. L’exemple suivant fournit le style de l' `<h1>` élément précédent :
 
 ```css
 /* /Pages/Counter.razor.rz.scp.css */
@@ -77,7 +85,7 @@ h1[b-3xxtam6d07] {
 }
 ```
 
-Au moment de la génération, un bundle de projet est créé avec la convention `{STATIC WEB ASSETS BASE PATH}/MyProject.lib.scp.css` , où l’espace réservé `{STATIC WEB ASSETS BASE PATH}` est le chemin de base des ressources Web statiques.
+Au moment de la génération, un bundle de projet est créé avec la convention `{STATIC WEB ASSETS BASE PATH}/Project.lib.scp.css` , où l’espace réservé `{STATIC WEB ASSETS BASE PATH}` est le chemin de base des ressources Web statiques.
 
 Si d’autres projets sont utilisés, tels que des packages NuGet ou des [ Razor bibliothèques de classes](xref:blazor/components/class-libraries), le fichier groupé :
 
@@ -90,7 +98,7 @@ Par défaut, l’isolation CSS s’applique uniquement au composant que vous ass
 
 L’exemple suivant montre un composant parent appelé `Parent` avec un composant enfant appelé `Child` .
 
-`Parent.razor`:
+`Pages/Parent.razor`:
 
 ```razor
 @page "/parent"
@@ -102,13 +110,15 @@ L’exemple suivant montre un composant parent appelé `Parent` avec un composan
 </div>
 ```
 
-`Child.razor`:
+`Shared/Child.razor`:
 
 ```razor
 <h1>Child Component</h1>
 ```
 
-Mettez à jour la `h1` déclaration dans `Parent.razor.css` avec le `::deep` combinateur pour signifier que la `h1` déclaration de style doit s’appliquer au composant parent et à ses enfants :
+Mettez à jour la `h1` déclaration dans `Parent.razor.css` avec le `::deep` combinateur pour signifier que la `h1` déclaration de style doit s’appliquer au composant parent et à ses enfants.
+
+`Pages/Parent.razor.css`:
 
 ```css
 ::deep h1 { 
@@ -118,26 +128,27 @@ Mettez à jour la `h1` déclaration dans `Parent.razor.css` avec le `::deep` com
 
 Le `h1` style s’applique désormais aux `Parent` `Child` composants et sans qu’il soit nécessaire de créer un fichier CSS délimité distinct pour le composant enfant.
 
-> [!NOTE]
-> `::deep`Combin ne fonctionne qu’avec les éléments descendants. La structure HTML suivante applique les `h1` styles aux composants comme prévu :
-> 
-> ```razor
-> <div>
->     <h1>Parent</h1>
->
->     <Child />
-> </div>
-> ```
->
-> Dans ce scénario, ASP.NET Core applique l’identificateur de portée du composant parent à l' `div` élément, de sorte que le navigateur sache qu’il doit hériter des styles du composant parent.
->
-> Toutefois, l’exclusion de l' `div` élément supprime la relation descendante et le style n’est **pas** appliqué au composant enfant :
->
-> ```razor
-> <h1>Parent</h1>
->
-> <Child />
-> ```
+`::deep`Combin ne fonctionne qu’avec les éléments descendants. La balise suivante applique les `h1` styles aux composants comme prévu. L’identificateur de portée du composant parent est appliqué à l' `div` élément, de sorte que le navigateur sait qu’il doit hériter des styles du composant parent.
+
+`Pages/Parent.razor`:
+
+```razor
+<div>
+    <h1>Parent</h1>
+
+    <Child />
+</div>
+```
+
+Toutefois, l’exclusion de l' `div` élément supprime la relation descendante. Dans l’exemple suivant, le style n’est **pas** appliqué au composant enfant.
+
+`Pages/Parent.razor`:
+
+```razor
+<h1>Parent</h1>
+
+<Child />
+```
 
 ## <a name="css-preprocessor-support"></a>Prise en charge du préprocesseur CSS
 
@@ -155,11 +166,28 @@ Par défaut, les identificateurs d’étendue utilisent le format `b-<10-charact
 
 ```xml
 <ItemGroup>
-    <None Update="MyComponent.razor.css" CssScope="my-custom-scope-identifier" />
+  <None Update="Pages/Example.razor.css" CssScope="my-custom-scope-identifier" />
 </ItemGroup>
 ```
 
-Dans l’exemple précédent, le code CSS généré pour `MyComponent.Razor.css` remplace son identificateur de portée `b-<10-character-string>` par `my-custom-scope-identifier` .
+Dans l’exemple précédent, le code CSS généré pour `Example.Razor.css` remplace son identificateur de portée `b-<10-character-string>` par `my-custom-scope-identifier` .
+
+Utilisez des identificateurs d’étendue pour obtenir un héritage avec les fichiers CSS délimités. Dans l’exemple de fichier projet suivant, un `BaseComponent.razor.css` fichier contient des styles communs entre les composants. Un `DerivedComponent.razor.css` fichier hérite de ces styles.
+
+```xml
+<ItemGroup>
+  <None Update="Pages/BaseComponent.razor.css" CssScope="my-custom-scope-identifier" />
+  <None Update="Pages/DerivedComponent.razor.css" CssScope="my-custom-scope-identifier" />
+</ItemGroup>
+```
+
+Utilisez l’opérateur générique ( `*` ) pour partager des identificateurs d’étendue sur plusieurs fichiers :
+
+```xml
+<ItemGroup>
+  <None Update="Pages/*.razor.css" CssScope="my-custom-scope-identifier" />
+</ItemGroup>
+```
 
 ### <a name="change-base-path-for-static-web-assets"></a>Modifier le chemin de base des ressources Web statiques
 
@@ -181,7 +209,7 @@ Pour désactiver la manière dont Blazor publie et charge les fichiers délimit�
 </PropertyGroup>
 ```
 
-## <a name="no-locrazor-class-library-rcl-support"></a>Razor prise en charge de la bibliothèque de classes (RCL)
+## <a name="razor-class-library-rcl-support"></a>Razor prise en charge de la bibliothèque de classes (RCL)
 
 Quand une [ Razor bibliothèque de classes (RCL)](xref:razor-pages/ui-class) fournit des styles isolés, l' `<link>` attribut de la balise `href` pointe vers `{STATIC WEB ASSET BASE PATH}/{ASSEMBLY NAME}.bundle.scp.css` , où les espaces réservés sont :
 
@@ -192,6 +220,8 @@ Dans l’exemple suivant :
 
 * Le chemin d’accès de base des ressources Web statiques est `_content/ClassLib` .
 * Le nom de l’assembly de la bibliothèque de classes est `ClassLib` .
+
+`wwwroot/index.html` ( Blazor WebAssembly ) ou `Pages_Host.cshtml` (Blazor Server):
 
 ```html
 <link href="_content/ClassLib/ClassLib.bundle.scp.css" rel="stylesheet">

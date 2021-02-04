@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/supported-platforms
-ms.openlocfilehash: 88d371f460839261b618a32564a723c257b0b119
-ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
+ms.openlocfilehash: 6e48a19027f79b75edeebde9c584419871fba533
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217490"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530162"
 ---
 # <a name="grpc-on-net-supported-platforms"></a>gRPC sur les plateformes prises en charge par .NET
 
@@ -62,11 +62,13 @@ les services gRPC peuvent être hébergés sur tous les serveurs ASP.NET Core in
 > * Kestrel
 > * TestServer
 > * IIS&dagger;
-> * HTTP.sys&dagger;
+> * HTTP.sys&Dagger;
 
-&dagger;IIS et HTTP.sys requièrent .NET 5 et Windows 10 Build 20241 ou version ultérieure.
+&dagger;IIS requiert .NET 5 et Windows 10 Build 20241 ou version ultérieure.
 
-Pour plus d’informations, consultez <xref:grpc/aspnetcore>.
+&Dagger;HTTP.sys nécessite .NET 5 et Windows 10 Build 19529 ou version ultérieure.
+
+Pour plus d’informations sur la configuration des serveurs ASP.NET Core pour exécuter gRPC, consultez <xref:grpc/aspnetcore#server-options> .
 
 ## <a name="net-version-requirements"></a>Configuration requise pour la version .NET
 

@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 2f6299511b568a70c638dd5d4c735bf22adb5e95
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: e797228d498ec9b269e718c099a0532bbb4504d3
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057423"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530240"
 ---
-# <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages avec Entity Framework Core dans ASP.NET Core-didacticiel 1 sur 8
+# <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages avec Entity Framework Core dans ASP.NET Core-didacticiel 1 sur 8
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -384,7 +384,7 @@ Ajoutez le package NuGet [Microsoft. AspNetCore. Diagnostics. EntityFrameworkCor
 Dans le PMC, entrez ce qui suit pour ajouter le package NuGet :
 
 ```powershell
-Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.0.0-rc.2.20475.17
+Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
 ```
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -414,7 +414,7 @@ Ce workflow fonctionne bien à un stade précoce du développement, quand le sch
 
 Plus tard dans cette série de tutoriels, vous supprimerez la base de données créée par `EnsureCreated` et procéderez à des migrations. Une base de données créée par `EnsureCreated` ne peut pas être mise à jour via des migrations.
 
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a>Test de l'application
 
 * Exécutez l'application.
 * Sélectionnez le lien **Students**, puis **Créer nouveau**.
@@ -865,7 +865,7 @@ Ce workflow fonctionne bien à un stade précoce du développement, quand le sch
 
 Plus tard dans cette série de tutoriels, vous supprimerez la base de données créée par `EnsureCreated` et procéderez à des migrations. Une base de données créée par `EnsureCreated` ne peut pas être mise à jour via des migrations.
 
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a>Test de l'application
 
 * Exécutez l'application.
 * Sélectionnez le lien **Students**, puis **Créer nouveau**.
@@ -999,7 +999,7 @@ Les utilisateurs peuvent afficher et mettre à jour les informations relatives a
 
 Le style de l’interface utilisateur de ce site est proche de ce qui est généré par les modèles prédéfinis. Ce didacticiel se concentre sur EF Core avec Razor les pages, et non sur l’interface utilisateur.
 
-## <a name="create-the-contosouniversity-no-locrazor-pages-web-app"></a>Créer l' Razor application Web ContosoUniversity pages
+## <a name="create-the-contosouniversity-razor-pages-web-app"></a>Créer l' Razor application Web ContosoUniversity pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -1172,7 +1172,7 @@ Le code suivant montre le fichier *Program.cs* mis à jour.
 
 `EnsureCreated` est pratique au début du développement quand le schéma évolue rapidement. Plus loin dans le tutoriel, la base de données est supprimée et les migrations sont utilisées.
 
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a>Test de l'application
 
 Exécutez l’application et acceptez la cookie stratégie. Cette application ne conserve pas les informations personnelles. Pour en savoir plus sur la cookie stratégie au niveau de la [prise en charge de l’union européenne règlement général sur la protection des données (RGPD)](xref:security/gdpr).
 

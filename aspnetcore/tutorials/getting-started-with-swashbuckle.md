@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 9fbd4bc5e91d8f05afc99a4f04c706399f83a518
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 7a6ceea09bde8999b9e64796c0ba5fc6f3f45a2d
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057607"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530227"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Bien démarrer avec Swashbuckle et ASP.NET Core
 
@@ -43,7 +43,7 @@ Swashbuckle repose sur trois composants principaux :
 
 Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
 
-### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * À partir de la fenêtre **Console du Gestionnaire de package** :
   * Accéder à **la**  >  console du gestionnaire de  >  **package** Windows
@@ -51,7 +51,7 @@ Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
   * Exécutez la commande suivante :
 
     ```powershell
-    Install-Package Swashbuckle.AspNetCore -Version 5.5.0
+    Install-Package Swashbuckle.AspNetCore -Version 5.6.3
     ```
 
 * À partir de la boîte de dialogue **Gérer les packages NuGet** :
@@ -74,7 +74,7 @@ Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
 Exécutez la commande suivante à partir du **Terminal intégré** :
 
 ```dotnetcli
-dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.6.3
 ```
 
 ### <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
@@ -82,7 +82,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
 Exécutez la commande suivante :
 
 ```dotnetcli
-dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.6.3
 ```
 
 ---
@@ -176,7 +176,7 @@ L’IU Swagger affiche les informations de la version :
 
 Vous pouvez activer les commentaires XML en adoptant l’une des approches suivantes :
 
-#### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+#### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 

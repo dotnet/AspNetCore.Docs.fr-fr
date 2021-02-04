@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 0753ef0f1cde7bbb45ecc09b97fecb5ce364811c
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 58a87bc5413523fdf052a9e1c41196bb8b0ab457
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024650"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529967"
 ---
-# <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyMeilleures pratiques en matière de performances de ASP.net Core
+# <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyMeilleures pratiques en matière de performances de ASP.net Core
 
 Par [Pranav Krishnamoorthy](https://github.com/pranavkm) et [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -101,7 +101,7 @@ Dans le code précédent, un gestionnaire d’événements peut également `shou
 
 Pour la plupart des composants, ce niveau de contrôle manuel n’est pas nécessaire. Vous devez uniquement vous préoccuper du fait que vous ignorez le rendu des sous-arborescences si ces sous-arborescences sont particulièrement coûteuses à afficher et sont à l’origine du décalage de l’interface utilisateur.
 
-Pour plus d'informations, consultez <xref:blazor/components/lifecycle>.
+Pour plus d’informations, consultez <xref:blazor/components/lifecycle>.
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -111,7 +111,7 @@ Lors du rendu de grandes quantités d’IU au sein d’une boucle, par exemple u
 
 Pour résoudre ce Blazor problème, fournit le `Virtualize` composant qui crée les comportements d’apparence et de défilement d’une liste arbitrairement grande, mais qui restitue uniquement les éléments de liste qui se trouvent dans la fenêtre d’affichage de défilement en cours. Par exemple, cela signifie que l’application peut avoir une liste avec 100 000 entrées, mais uniquement le coût de rendu de 20 éléments visibles à un moment donné. L’utilisation du `Virtualize` composant peut mettre à l’échelle les performances de l’interface utilisateur par ordre de grandeur.
 
-Pour plus d'informations, consultez <xref:blazor/components/virtualization>.
+Pour plus d’informations, consultez <xref:blazor/components/virtualization>.
 
 ::: moniker-end
 
@@ -191,7 +191,7 @@ Vous pouvez prendre en compte les composants enfants comme un moyen de réutilis
 @RenderWelcomeInfo
 
 @code {
-    RenderFragment RenderWelcomeInfo = __builder =>
+    private RenderFragment RenderWelcomeInfo = __builder =>
     {
         <div>
             <p>Welcome to your new app!</p>
@@ -221,12 +221,12 @@ Cela peut maintenant être appelé à partir d’un composant non lié. Cette te
 <div class="chat">
     @foreach (var message in messages)
     {
-        @DisplayChatMessage(message)
+        @ChatMessageDisplay(message)
     }
 </div>
 
 @code {
-    RenderFragment<ChatMessage> DisplayChatMessage = message => __builder =>
+    private RenderFragment<ChatMessage> ChatMessageDisplay = message => __builder =>
     {
         <div class="chat-message">
             <span class="author">@message.Author</span>
@@ -237,6 +237,17 @@ Cela peut maintenant être appelé à partir d’un composant non lié. Cette te
 ```
 
 Cette approche offre l’avantage de réutiliser la logique de rendu sans surcharge par composant. Toutefois, il n’a pas l’avantage de pouvoir actualiser sa sous-arborescence de l’interface utilisateur de manière indépendante, pas plus qu’il ne peut ignorer le rendu de cette sous-arborescence de l’interface utilisateur lors du rendu de son parent, car il n’y a pas de limite de composant.
+
+Pour un champ, une méthode ou une propriété non statique qui ne peut pas être référencée par un initialiseur de champ, comme `TitleTemplate` dans l’exemple suivant, utilisez une propriété au lieu d’un champ pour le <xref:Microsoft.AspNetCore.Components.RenderFragment> :
+
+```csharp
+protected RenderFragment DisplayTitle => __builder =>
+{
+    <div>
+        @TitleTemplate
+    </div>   
+};
+```
 
 #### <a name="dont-receive-too-many-parameters"></a>Ne pas recevoir un trop grand nombre de paramètres
 
@@ -277,7 +288,7 @@ Par conséquent, dans la mesure du possible, vous devez utiliser `IsFixed="true"
 </CascadingValue>
 ```
 
-Cela fait une énorme différence s’il y a un grand nombre d’autres composants qui reçoivent la valeur en cascade. Pour plus d'informations, consultez <xref:blazor/components/cascading-values-and-parameters>.
+Cela fait une énorme différence s’il y a un grand nombre d’autres composants qui reçoivent la valeur en cascade. Pour plus d’informations, consultez <xref:blazor/components/cascading-values-and-parameters>.
 
 #### <a name="avoid-attribute-splatting-with-captureunmatchedvalues"></a>Éviter la projection d’attributs avec `CaptureUnmatchedValues`
 
@@ -299,7 +310,7 @@ Cette approche permet de passer des attributs supplémentaires arbitraires à l�
 
 N’hésitez pas à utiliser <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> des composants non critiques pour les performances, tels que ceux qui ne sont pas fréquemment répétés. Toutefois, pour les composants qui restituent à l’échelle, tels que les éléments d’une grande liste ou les cellules d’une grille, essayez d’éviter la projection d’attributs.
 
-Pour plus d'informations, consultez <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters>.
+Pour plus d’informations, consultez <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters>.
 
 #### <a name="implement-setparametersasync-manually"></a>Implémenter `SetParametersAsync` manuellement
 
@@ -497,7 +508,7 @@ Les appels synchrones fonctionnent dans les cas suivants :
 * L’application est en cours d’exécution sur Blazor WebAssembly , et non Blazor Server .
 * La fonction appelée retourne une valeur de façon synchrone (il ne s’agit pas d’une `async` méthode et ne retourne pas de .NET <xref:System.Threading.Tasks.Task> ou JavaScript `Promise` ).
 
-Pour plus d'informations, consultez <xref:blazor/call-javascript-from-dotnet>.
+Pour plus d’informations, consultez <xref:blazor/call-javascript-from-dotnet>.
 
 ::: moniker range=">= aspnetcore-5.0"
  
@@ -558,7 +569,7 @@ Pour obtenir des conseils sur la migration, consultez [Comment migrer de `Newton
 
 ### <a name="lazy-load-assemblies"></a>Charger des assemblys en différé
 
-Chargez les assemblys au moment de l’exécution lorsque les assemblys sont requis par un itinéraire. Pour plus d'informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
+Chargez les assemblys au moment de l’exécution lorsque les assemblys sont requis par un itinéraire. Pour plus d’informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
 
 ### <a name="compression"></a>compression ;
 

@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: 77d49710b9d69f6fbbe92970f1c455de32489444
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d6fa7e4524a8afdc23d4ad46354d9d8b395656a3
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056957"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530188"
 ---
-# <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a>Validation de modèle dans ASP.NET Core MVC et les Razor pages
+# <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validation de modèle dans ASP.NET Core MVC et les Razor pages
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -76,13 +76,13 @@ Vous trouverez la liste complète des attributs de validation dans l’espace de
 
 ### <a name="error-messages"></a>Messages d’erreur
 
-Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Exemple :
+Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Exemple :
+En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Par exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -92,9 +92,27 @@ Appliqué à une propriété `Name`, le message d’erreur créé par le code pr
 
 Pour savoir quels paramètres sont passés à `String.Format` pour le message d’erreur d’un attribut particulier, consultez le [code source de DataAnnotations](https://github.com/dotnet/runtime/tree/master/src/libraries/System.ComponentModel.Annotations/src/System/ComponentModel/DataAnnotations).
 
-## <a name="required-attribute"></a>Attribut [Required]
+## <a name="non-nullable-reference-types-and-required-attribute"></a>Types de référence non Nullable et attribut [required]
 
-Le système de validation dans .NET Core 3,0 et versions ultérieures traite les paramètres non Nullable ou les propriétés liées comme s’ils avaient un `[Required]` attribut. Les [types valeur](/dotnet/csharp/language-reference/keywords/value-types) comme `decimal` et `int` n’acceptent pas les valeurs Null. Vous pouvez désactiver ce comportement en configurant <xref:Microsoft.AspNetCore.Mvc.MvcOptions.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes> dans `Startup.ConfigureServices` :
+Le système de validation traite les paramètres n’acceptant pas les valeurs null ou les propriétés liées comme s’ils avaient un `[Required]` attribut. En [activant des `Nullable` contextes](/dotnet/csharp/nullable-references#nullable-contexts), MVC démarre implicitement la validation de propriétés ou de paramètres non Nullable comme s’ils avaient été attribués à l' `[Required]` attribut. Considérez le code suivant :
+
+```csharp
+public class Person
+{
+    public string Name { get; set; }
+}
+```
+
+Si l’application a été générée avec `<Nullable>enable</Nullable>` , une valeur manquante pour `Name` dans une publication JSON ou de formulaire génère une erreur de validation. Utilisez un type de référence Nullable pour autoriser la spécification de valeurs null ou manquantes pour la `Name` propriété :
+
+```csharp
+public class Person
+{
+    public string? Name { get; set; }
+}
+```
+
+. Vous pouvez désactiver ce comportement en configurant <xref:Microsoft.AspNetCore.Mvc.MvcOptions.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes> dans `Startup.ConfigureServices` :
 
 ```csharp
 services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
@@ -176,7 +194,7 @@ Si vous avez besoin d’une validation non fournie par les attributs prédéfini
 
 Pour les scénarios non gérés par les attributs de validation prédéfinis, vous pouvez créer des attributs de validation personnalisés. Créez une classe qui hérite de <xref:System.ComponentModel.DataAnnotations.ValidationAttribute> et substituez la méthode <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
 
-La méthode `IsValid` accepte un objet nommé *value* , qui est l’entrée à valider. Une surcharge accepte également un objet `ValidationContext`, qui fournit des informations supplémentaires telles que l’instance de modèle créée par la liaison de modèle.
+La méthode `IsValid` accepte un objet nommé *value*, qui est l’entrée à valider. Une surcharge accepte également un objet `ValidationContext`, qui fournit des informations supplémentaires telles que l’instance de modèle créée par la liaison de modèle.
 
 L’exemple suivant vérifie que la date de sortie d’un film appartenant au genre *Classic* n’est pas ultérieure à une année spécifiée. L' `[ClassicMovie]` attribut :
 
@@ -210,7 +228,7 @@ Les nœuds de niveau supérieur peuvent utiliser <xref:Microsoft.AspNetCore.Mvc.
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAgeSignature)]
 
-Dans la page de vérification de l’âge ( *CheckAge.cshtml* ), il existe deux formulaires. Le premier formulaire envoie une `Age` valeur sous la `99` forme d’un paramètre de chaîne de requête : `https://localhost:5001/Users/CheckAge?Age=99` .
+Dans la page de vérification de l’âge (*CheckAge.cshtml*), il existe deux formulaires. Le premier formulaire envoie une `Age` valeur sous la `99` forme d’un paramètre de chaîne de requête : `https://localhost:5001/Users/CheckAge?Age=99` .
 
 Quand un paramètre `age` au format approprié est envoyé à partir de la chaîne de requête, le formulaire est validé.
 
@@ -357,7 +375,7 @@ Comme mentionné plus haut, les [Tag Helpers](xref:mvc/views/tag-helpers/intro) 
 
 Cette méthode de rendu des attributs `data-` en HTML est utilisée par l’attribut `ClassicMovie` dans l’exemple d’application. Pour ajouter la validation côté client à l’aide de cette méthode
 
-1. Créez une classe d’adaptateurs d’attributs pour l’attribut de validation personnalisé. Dérivez la classe de [AttributeAdapterBase \<T> ](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2). Créez une méthode `AddValidation` qui ajoute des attributs `data-` à la sortie restituée, comme illustré dans cet exemple :
+1. Créez une classe d’adaptateurs d’attributs pour l’attribut de validation personnalisé. Dérivez la classe de <xref:Microsoft.AspNetCore.Mvc.DataAnnotations.AttributeAdapterBase%601>. Créez une méthode `AddValidation` qui ajoute des attributs `data-` à la sortie restituée, comme illustré dans cet exemple :
 
    [!code-csharp[](validation/samples/3.x/ValidationSample/Validation/ClassicMovieAttributeAdapter.cs?name=snippet_Class)]
 
@@ -388,7 +406,7 @@ Autres options pour désactiver la validation côté client :
 * Commentez la référence à `_ValidationScriptsPartial` dans tous les fichiers *. cshtml* .
 * Supprimez le contenu du fichier *Pages\Shared \_ ValidationScriptsPartial. cshtml* .
 
-L’approche précédente n’empêchera pas la validation côté client de la ASP.NET Core Identity Razor bibliothèque de classes. Pour plus d'informations, consultez <xref:security/authentication/scaffold-identity>.
+L’approche précédente n’empêchera pas la validation côté client de la ASP.NET Core Identity Razor bibliothèque de classes. Pour plus d’informations, consultez <xref:security/authentication/scaffold-identity>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -446,13 +464,13 @@ Vous trouverez la liste complète des attributs de validation dans l’espace de
 
 ### <a name="error-messages"></a>Messages d’erreur
 
-Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Exemple :
+Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Exemple :
+En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Par exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -542,9 +560,9 @@ Si vous avez besoin d’une validation non fournie par les attributs prédéfini
 
 Pour les scénarios non gérés par les attributs de validation prédéfinis, vous pouvez créer des attributs de validation personnalisés. Créez une classe qui hérite de <xref:System.ComponentModel.DataAnnotations.ValidationAttribute> et substituez la méthode <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
 
-La méthode `IsValid` accepte un objet nommé *value* , qui est l’entrée à valider. Une surcharge accepte également un objet `ValidationContext`, qui fournit des informations supplémentaires telles que l’instance de modèle créée par la liaison de modèle.
+La méthode `IsValid` accepte un objet nommé *value*, qui est l’entrée à valider. Une surcharge accepte également un objet `ValidationContext`, qui fournit des informations supplémentaires telles que l’instance de modèle créée par la liaison de modèle.
 
-L’exemple suivant vérifie que la date de sortie d’un film appartenant au genre *Classic* n’est pas ultérieure à une année spécifiée. L’attribut `[ClassicMovie2]` vérifie d’abord le genre, et continue uniquement s’il s’agit de *Classic* . Pour les films identifiés comme des classiques, il vérifie si la date de sortie n’est pas ultérieure à la limite passée au constructeur d’attribut.
+L’exemple suivant vérifie que la date de sortie d’un film appartenant au genre *Classic* n’est pas ultérieure à une année spécifiée. L’attribut `[ClassicMovie2]` vérifie d’abord le genre, et continue uniquement s’il s’agit de *Classic*. Pour les films identifiés comme des classiques, il vérifie si la date de sortie n’est pas ultérieure à la limite passée au constructeur d’attribut.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
 
@@ -573,7 +591,7 @@ Les nœuds de niveau supérieur peuvent utiliser <xref:Microsoft.AspNetCore.Mvc.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAge)]
 
-Dans la page de vérification de l’âge ( *CheckAge.cshtml* ), il existe deux formulaires. Le premier formulaire envoie une valeur `Age` égale à `99` en tant que chaîne de requête : `https://localhost:5001/Users/CheckAge?Age=99`.
+Dans la page de vérification de l’âge (*CheckAge.cshtml*), il existe deux formulaires. Le premier formulaire envoie une valeur `Age` égale à `99` en tant que chaîne de requête : `https://localhost:5001/Users/CheckAge?Age=99`.
 
 Quand un paramètre `age` au format approprié est envoyé à partir de la chaîne de requête, le formulaire est validé.
 
@@ -728,7 +746,7 @@ Comme mentionné plus haut, les [Tag Helpers](xref:mvc/views/tag-helpers/intro) 
 
 Cette méthode de rendu des attributs `data-` en HTML est utilisée par l’attribut `ClassicMovie` dans l’exemple d’application. Pour ajouter la validation côté client à l’aide de cette méthode
 
-1. Créez une classe d’adaptateurs d’attributs pour l’attribut de validation personnalisé. Dérivez la classe de [AttributeAdapterBase \<T> ](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2). Créez une méthode `AddValidation` qui ajoute des attributs `data-` à la sortie restituée, comme illustré dans cet exemple :
+1. Créez une classe d’adaptateurs d’attributs pour l’attribut de validation personnalisé. Dérivez la classe de <xref:Microsoft.AspNetCore.Mvc.DataAnnotations.AttributeAdapterBase%601>. Créez une méthode `AddValidation` qui ajoute des attributs `data-` à la sortie restituée, comme illustré dans cet exemple :
 
    [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttributeAdapter.cs?name=snippet_ClassicMovieAttributeAdapter)]
 
@@ -758,7 +776,7 @@ Et dans les Razor pages :
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup3.cs?name=snippet_DisableClientValidation)]
 
-Une autre option permettant de désactiver la validation côté client consiste à commenter la référence à `_ValidationScriptsPartial` dans votre fichier *.cshtml* .
+Une autre option permettant de désactiver la validation côté client consiste à commenter la référence à `_ValidationScriptsPartial` dans votre fichier *.cshtml*.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
