@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: a6f1c88b8e93c0d8ccfebca482895ebab8d18a81
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c60191cc8822dd875db613fb70516beb08a659d8
+ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506914"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99578280"
 ---
-# <a name="aspnet-core-no-locblazor-hosting-models"></a>BlazorModèles d’hébergement ASP.net Core
+# <a name="aspnet-core-blazor-hosting-models"></a>BlazorModèles d’hébergement ASP.net Core
 
 Par [Daniel Roth](https://github.com/danroth27)
 
@@ -38,7 +38,7 @@ Le Blazor modèle d’hébergement principal exécute côté client dans le navi
 
 ![::: No-Loc (éblouissant webassembly) :::::::: No-Loc (éblouissant) ::: app s’exécute sur un thread d’interface utilisateur dans le navigateur.](hosting-models/_static/blazor-webassembly.png)
 
-Lorsque l' Blazor WebAssembly application est créée pour le déploiement sans ASP.net Core application principale pour servir ses fichiers, l’application est appelée application *autonome* Blazor WebAssembly . Lorsque l’application est créée pour le déploiement avec une application principale pour servir ses fichiers, l’application est appelée application *hébergée* Blazor WebAssembly . Une application hébergée Blazor WebAssembly interagit généralement avec le serveur sur le réseau à l’aide d’appels d’API Web ou [SignalR](xref:signalr/introduction) ( <xref:tutorials/signalr-blazor-webassembly> ).
+Lorsque l' Blazor WebAssembly application est créée pour le déploiement sans ASP.net Core application principale pour servir ses fichiers, l’application est appelée application *autonome* Blazor WebAssembly . Lorsque l’application est créée pour le déploiement avec une application principale pour servir ses fichiers, l’application est appelée application *hébergée* Blazor WebAssembly . Une application hébergée Blazor WebAssembly interagit généralement avec le serveur sur le réseau à l’aide d’appels d’API Web ou [SignalR](xref:signalr/introduction) ( <xref:tutorials/signalr-blazor> ).
 
 Le `blazor.webassembly.js` script est fourni par l’infrastructure et les handles :
 
@@ -161,4 +161,4 @@ Lorsque vous utilisez IIS, les sessions rémanentes sont activées avec *applica
 * <xref:blazor/tooling>
 * <xref:signalr/introduction>
 * <xref:blazor/fundamentals/additional-scenarios>
-* <xref:tutorials/signalr-blazor-webassembly>
+* <xref:tutorials/signalr-blazor>
