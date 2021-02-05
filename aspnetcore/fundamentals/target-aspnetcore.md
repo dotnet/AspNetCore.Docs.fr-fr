@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/target-aspnetcore
 ms.openlocfilehash: c012658a6f48247af60c8bfd56a7d987f6aa8a68
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 02/05/2021
 ms.locfileid: "93061507"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>Utiliser des API ASP.NET Core dans une bibliothèque de classes
@@ -52,7 +52,7 @@ Pour référencer ASP.NET Core, ajoutez l' `<FrameworkReference>` élément suiv
 
 Le fait de référencer ASP.NET Core de cette manière est pris en charge uniquement pour les projets ciblant .NET Core 3. x.
 
-## <a name="include-no-locblazor-extensibility"></a>Inclure l' Blazor extensibilité
+## <a name="include-blazor-extensibility"></a>Inclure l' Blazor extensibilité
 
 Blazor prend en charge webassembly (WASM) et les [modèles d’hébergement](xref:blazor/hosting-models)de serveur. À moins qu’il y ait une raison spécifique de ne pas le faire, une bibliothèque de [ Razor composants](xref:blazor/components/index) doit prendre en charge les deux modèles d’hébergement. Une Razor bibliothèque de composants doit utiliser le [Kit de développement logiciel (SDK) Razor Microsoft. net. SDK](xref:razor-pages/sdk).
 
@@ -60,7 +60,7 @@ Blazor prend en charge webassembly (WASM) et les [modèles d’hébergement](xre
 
 Pour prendre en charge la Razor consommation des composants à partir des [Blazor Server](xref:blazor/hosting-models#blazor-server) projets et [ Blazor WASM](xref:blazor/hosting-models#blazor-webassembly) , utilisez les instructions suivantes pour votre éditeur.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Utilisez le modèle de projet **Razor bibliothèque de classes** . La case à cocher **pages de prise en charge et vues** du modèle doit être désélectionnée.
 
@@ -113,7 +113,7 @@ Cette section décrit les recommandations pour les bibliothèques qui incluent 
 
 Cette section n’aborde pas le multi-ciblage pour prendre en charge plusieurs versions de MVC. Pour obtenir des conseils sur la prise en charge de plusieurs versions de ASP.NET Core, consultez [prise en charge de plusieurs versions de ASP.net Core](#support-multiple-aspnet-core-versions).
 
-### <a name="no-locrazor-views-or-no-locrazor-pages"></a>Razor vues ou Razor pages
+### <a name="razor-views-or-razor-pages"></a>Razor vues ou Razor pages
 
 Un projet qui comprend des [ Razor affichages](xref:mvc/views/overview) ou des [ Razor pages](xref:razor-pages/index) doit utiliser le [Kit de développement logiciel (SDK) Razor Microsoft. net. SDK](xref:razor-pages/sdk).
 
@@ -124,7 +124,7 @@ Si le projet cible .NET Core 3. x, il requiert :
 
 Le modèle de projet **Razor bibliothèque de classes** remplit les conditions précédentes pour les projets ciblant .net Core 3. x. Utilisez les instructions suivantes pour votre éditeur.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Utilisez le modèle de projet **Razor bibliothèque de classes** . La case à cocher **pages de prise en charge et vues** du modèle doit être activée.
 

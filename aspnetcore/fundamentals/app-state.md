@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/app-state
 ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 02/05/2021
 ms.locfileid: "93051406"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Gestion de session et d’état dans ASP.NET Core
@@ -49,7 +49,7 @@ L’état peut être stocké à l’aide de plusieurs approches. Chacune d’ell
 | [HttpContext.Items](#httpcontextitems) | Code d’application côté serveur |
 | [Cache](#cache) | Code d’application côté serveur |
 
-## <a name="no-loccookies"></a>Cookies
+## <a name="cookies"></a>Cookies
 
 Cookiestocke les données entre les demandes. Étant donné que les cookie sont envoyés avec chaque demande, leur taille doit être réduite à un minimum. Dans l’idéal, seul un identificateur doit être stocké dans un cookie avec les données stockées par l’application. La plupart des navigateurs limitent la cookie taille à 4096 octets. Seul un nombre limité de cookie s est disponible pour chaque domaine.
 
@@ -288,7 +288,7 @@ L’intergiciel de session ne peut pas conserver une session si le magasin de st
 
 L’approche recommandée pour rechercher des erreurs consiste à appeler `await feature.Session.CommitAsync` lorsque l’application a terminé l’écriture dans la session. <xref:Microsoft.AspNetCore.Http.ISession.CommitAsync*> lève une exception si le magasin de stockage n’est pas disponible. Si `CommitAsync` échoue, l’application peut traiter l’exception. <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync*> lève une exception dans les mêmes conditions lorsque le magasin de données n’est pas disponible.
   
-## <a name="no-locsignalr-and-session-state"></a>SignalR et état de session
+## <a name="signalr-and-session-state"></a>SignalR et état de session
 
 SignalR les applications ne doivent pas utiliser l’état de session pour stocker des informations. SignalR les applications peuvent stocker par État de connexion dans `Context.Items` le Hub. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
@@ -320,7 +320,7 @@ L’état peut être stocké à l’aide de plusieurs approches. Chacune d’ell
 | [Cache](#cache) | Code d’application côté serveur |
 | [Injection de dépendances](#dependency-injection) | Code d’application côté serveur |
 
-## <a name="no-loccookies"></a>Cookies
+## <a name="cookies"></a>Cookies
 
 Cookiestocke les données entre les demandes. Étant donné que les cookie sont envoyés avec chaque demande, leur taille doit être réduite à un minimum. Dans l’idéal, seul un identificateur doit être stocké dans un cookie avec les données stockées par l’application. La plupart des navigateurs limitent la cookie taille à 4096 octets. Seul un nombre limité de cookie s est disponible pour chaque domaine.
 
@@ -599,7 +599,7 @@ Utilisez [l’injection de dépendances](xref:fundamentals/dependency-injection)
 
   L’approche recommandée pour rechercher les erreurs de ce type consiste à appeler `await feature.Session.CommitAsync();` à partir du code d’application quand l’application a terminé d’écrire dans la session. `CommitAsync` lève une exception si le magasin de stockage n’est pas disponible. Si `CommitAsync` échoue, l’application peut traiter l’exception. `LoadAsync` lève une exception dans les mêmes conditions, quand le magasin de données n’est pas disponible.
   
-## <a name="no-locsignalr-and-session-state"></a>SignalR et état de session
+## <a name="signalr-and-session-state"></a>SignalR et état de session
 
 SignalR les applications ne doivent pas utiliser l’état de session pour stocker des informations. SignalR les applications peuvent stocker par État de connexion dans `Context.Items` le Hub. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 

@@ -20,13 +20,13 @@ no-loc:
 - SignalR
 uid: blazor/globalization-localization
 ms.openlocfilehash: f8f261f25d854a9bf36ad3299f4af392d5c4fafd
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 02/05/2021
 ms.locfileid: "93055878"
 ---
-# <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>BlazorGlobalisation et localisation ASP.net Core
+# <a name="aspnet-core-blazor-globalization-and-localization"></a>BlazorGlobalisation et localisation ASP.net Core
 
 Par [Luke Latham](https://github.com/guardrex) et [Daniel Roth](https://github.com/danroth27)
 
@@ -127,7 +127,7 @@ La culture peut être définie à l’aide de l’une des approches suivantes :
 
 Pour plus d’informations et d’exemples, consultez <xref:fundamentals/localization>.
 
-#### <a name="no-loccookies"></a>Cookies
+#### <a name="cookies"></a>Cookies
 
 Une culture cookie de localisation peut conserver la culture de l’utilisateur. L’intergiciel (middleware) de localisation lit les cookie sur les demandes suivantes pour définir la culture de l’utilisateur. 
 
