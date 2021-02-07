@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 58a87bc5413523fdf052a9e1c41196bb8b0ab457
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 28fe6a114f767246f49ac275d02c28f4572ce4e4
+ms.sourcegitcommit: 19a004ff2be73876a9ef0f1ac44d0331849ad159
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99529967"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804511"
 ---
 # <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyMeilleures pratiques en matière de performances de ASP.net Core
 
@@ -91,7 +91,7 @@ Si le composant nécessite uniquement un rerendu lorsque ses valeurs de paramèt
         prevInboundFlightId = InboundFlight.FlightId;
     }
 
-    protected override void ShouldRender() => shouldRender;
+    protected override bool ShouldRender() => shouldRender;
 
     // Note that 
 }
@@ -571,7 +571,7 @@ Pour obtenir des conseils sur la migration, consultez [Comment migrer de `Newton
 
 Chargez les assemblys au moment de l’exécution lorsque les assemblys sont requis par un itinéraire. Pour plus d’informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
 
-### <a name="compression"></a>compression ;
+### <a name="compression"></a>Compression
 
 Quand une Blazor WebAssembly application est publiée, la sortie est compressée de manière statique lors de la publication afin de réduire la taille de l’application et de supprimer la surcharge liée à la compression du Runtime. Blazor s’appuie sur le serveur pour effectuer des negotation de contenu et traiter des fichiers compressés statiquement.
 

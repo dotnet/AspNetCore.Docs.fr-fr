@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 2b464c2b6ca434ce4c3b559480da69945266ff69
-ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
+ms.openlocfilehash: 67d7ed9656b2236ffe4f6b65899b807c0ba46ebb
+ms.sourcegitcommit: 19a004ff2be73876a9ef0f1ac44d0331849ad159
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570971"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804524"
 ---
-# <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Héberger et déployer des ASP.NET Core Blazor WebAssembly
+# <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Héberger et déployer des ASP.NET Core Blazor WebAssembly
 
 Par [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com), [Daniel Roth](https://github.com/danroth27), [Ben Adams](https://twitter.com/ben_a_adams)et [safia Abdalla](https://safia.rocks)
 
@@ -52,12 +52,15 @@ Blazor s’appuie sur l’hôte pour servir les fichiers compressés appropriés
 * Pour `web.config` la configuration de la compression IIS, consultez la section [IIS : Brotli et compression gzip](#brotli-and-gzip-compression) . 
 * Lors de l’hébergement sur des solutions d’hébergement statiques qui ne prennent pas en charge la négociation de contenu de fichier compressée statiquement, telles que les pages GitHub, envisagez de configurer l’application pour extraire et décoder les fichiers compressés Brotli :
 
-  * Obtenez le décodeur Brotli JavaScript à partir du [référentiel GitHub Google/Brotli](https://github.com/google/brotli). Le fichier du décodeur est nommé `decode.min.js` et se trouve dans le [ `js` dossier](https://github.com/google/brotli/tree/master/js)du référentiel.
+  * Obtenez le décodeur Brotli JavaScript à partir du [référentiel GitHub Google/Brotli](https://github.com/google/brotli). Le fichier du décodeur est nommé `decode.js` et se trouve dans le [ `js` dossier](https://github.com/google/brotli/tree/master/js)du référentiel.
+  
+    > [!NOTE]
+    > Une régression est présente dans la version minimisés du `decode.js` script ( `decode.min.js` ) dans le [référentiel GitHub Google/brotli](https://github.com/google/brotli). Vous pouvez soit réduire le script par vous-même, soit utiliser le [package NPM](https://www.npmjs.com/package/brotli) jusqu’à ce que le problème [TypeError dans decode.min.js (google/brotli #881)](https://github.com/google/brotli/issues/881) soit résolu. L’exemple de code dans cette section utilise la version **unminified** du script.
 
   * Mettez à jour l’application pour utiliser le décodeur. Remplacez le balisage dans la `<body>` balise de fermeture par `wwwroot/index.html` ce qui suit :
   
     ```html
-    <script src="decode.min.js"></script>
+    <script src="decode.js"></script>
     <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
       Blazor.start({
@@ -128,7 +131,7 @@ Pour plus d’informations sur l’hébergement et le déploiement d’applicati
 
 Pour plus d’informations concernant le déploiement sur Azure App Service, consultez <xref:tutorials/publish-to-azure-webapp-using-vs>.
 
-## <a name="hosted-deployment-with-multiple-no-locblazor-webassembly-apps"></a>Déploiement hébergé avec plusieurs Blazor WebAssembly applications
+## <a name="hosted-deployment-with-multiple-blazor-webassembly-apps"></a>Déploiement hébergé avec plusieurs Blazor WebAssembly applications
 
 ### <a name="app-configuration"></a>la configuration d’une application ;
 
@@ -552,7 +555,7 @@ Une configuration supplémentaire de l’exemple de `web.config` fichier peut ê
   * Service des fichiers compressés configurés par l’exemple `web.config` de fichier dans un format non compressé.
 * La configuration IIS du serveur (par exemple, `applicationHost.config` ) fournit des paramètres IIS par défaut au niveau du serveur. Selon la configuration au niveau du serveur, l’application peut nécessiter une configuration IIS différente de celle contenue dans l’exemple de `web.config` fichier.
 
-#### <a name="troubleshooting"></a>Résolution des problèmes
+#### <a name="troubleshooting"></a>Dépannage
 
 Si vous recevez un message *500 – Erreur interne du serveur* et que le Gestionnaire IIS lève des erreurs quand vous tentez d’accéder à la configuration du site web, vérifiez que le module de réécriture d’URL est installé. Lorsque le module n’est pas installé, le `web.config` fichier ne peut pas être analysé par IIS. Cela empêche le gestionnaire des services Internet de charger la configuration du site Web et le site Web à partir des Blazor fichiers statiques de service.
 
