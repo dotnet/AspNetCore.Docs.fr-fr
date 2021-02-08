@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 74886eae7431045e56de535b5221040bd56cdc2d
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: c53263ea48bc2900fd811f6e159aca97cdff26f7
+ms.sourcegitcommit: 50d3e939a90c5480df480f651dda032901468dd5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751566"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819027"
 ---
-# <a name="aspnet-core-no-locblazor-routing"></a>Routage de ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-routing"></a>Routage de ASP.NET Core Blazor
 
 Par [Luke Latham](https://github.com/guardrex)
 
@@ -164,7 +164,7 @@ Les paramètres facultatifs ne sont pas pris en charge. Dans l’exemple suivant
 
 ::: moniker-end
 
-Utilisez sur [`OnParametersSet`](xref:blazor/components/lifecycle#after-parameters-are-set) au lieu de [`OnInitialized`](xref:blazor/components/lifecycle#component-initialization-methods) pour autoriser la navigation de l’application vers le même composant avec une valeur de paramètre facultative différente. En fonction de l’exemple précédent, utilisez `OnParametersSet` lorsque l’utilisateur doit pouvoir naviguer de `/RouteParameter` vers `/RouteParameter/amazing` ou de `/RouteParameter/amazing` vers `/RouteParameter` :
+Utilisez [`OnParametersSet`](xref:blazor/components/lifecycle#after-parameters-are-set) [`OnInitialized`](xref:blazor/components/lifecycle#component-initialization-methods) à la place de pour autoriser la navigation d’application vers le même composant avec une valeur de paramètre facultative différente. En fonction de l’exemple précédent, utilisez `OnParametersSet` lorsque l’utilisateur doit pouvoir naviguer de `/RouteParameter` vers `/RouteParameter/amazing` ou de `/RouteParameter/amazing` vers `/RouteParameter` :
 
 ```csharp
 protected override void OnParametersSet()
@@ -198,7 +198,7 @@ Dans l’exemple suivant, l’itinéraire vers le `User` composant correspond un
 
 Les contraintes de routage indiquées dans le tableau suivant sont disponibles. Pour plus d’informations sur les contraintes d’itinéraire qui correspondent à la culture dite indifférente, consultez l’avertissement sous le tableau.
 
-| Contrainte | Exemples           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
+| Contrainte | Exemple           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
 | `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Non                               |
 | `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Oui                              |
