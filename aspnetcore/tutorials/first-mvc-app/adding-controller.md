@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 1f8291cca1923d42eeb1ce689b268a23b60537ba
-ms.sourcegitcommit: 19a004ff2be73876a9ef0f1ac44d0331849ad159
+ms.openlocfilehash: 47bb9b96bd5565a3a67f3cbdf9a4b6bc1f987447
+ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804658"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975259"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Partie 2 : ajouter un contrôleur à une application ASP.NET Core MVC
 
@@ -49,13 +49,13 @@ Dans une application MVC, la vue affiche uniquement des informations. Le contrô
 
 Les données d’itinéraire sont expliquées plus loin dans le didacticiel.
 
-le modèle architectural MVC sépare une application en trois groupes principaux de composants : les modèles, les vues et les contrôleurs. Ce modèle permet de séparer les préoccupations : la logique de l’interface utilisateur appartient à la vue. La logique d’entrée appartient au contrôleur. La logique métier appartient au modèle. Cette séparation permet de gérer la complexité lors de la création d’une application, car elle permet de travailler sur un aspect de l’implémentation à la fois sans affecter le code d’un autre. Par exemple, vous pouvez travailler sur le code des vues de façon indépendante du code de la logique métier.
+Le modèle architectural MVC sépare une application en trois groupes principaux de composants : les modèles, les vues et les contrôleurs. Ce modèle permet de séparer les préoccupations : la logique de l’interface utilisateur appartient à la vue. La logique d’entrée appartient au contrôleur. La logique métier appartient au modèle. Cette séparation permet de gérer la complexité lors de la création d’une application, car elle permet de travailler sur un aspect de l’implémentation à la fois sans affecter le code d’un autre. Par exemple, vous pouvez travailler sur le code des vues de façon indépendante du code de la logique métier.
 
 Ces concepts sont présentés et présentés dans cette série de didacticiels lors de la création d’une application de film. Le projet MVC contient des dossiers pour les *contrôleurs* et pour les *vues*.
 
 ## <a name="add-a-controller"></a>Ajouter un contrôleur
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans le **Explorateur de solutions**, cliquez avec le bouton droit sur **contrôleurs > ajouter un contrôleur de >**.
 
@@ -131,7 +131,7 @@ La méthode `Welcome` s’exécute et retourne la chaîne `This is the Welcome a
 
 ![Fenêtre de navigateur montrant une réponse de la méthode d’action « This is the Welcome action »](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 
-Modifiez le code pour passer des informations sur les paramètres de l’URL au contrôleur. Par exemple, `/HelloWorld/Welcome?name=Rick&numtimes=4`.
+Modifiez le code pour passer des informations sur les paramètres de l’URL au contrôleur. Par exemple : `/HelloWorld/Welcome?name=Rick&numtimes=4`.
 
 Modifiez la méthode `Welcome` en y incluant les deux paramètres, comme indiqué dans le code suivant.
 
@@ -198,7 +198,7 @@ Nous présentons ces concepts dans cette série de didacticiels et nous vous mon
 
 ## <a name="add-a-controller"></a>Ajouter un contrôleur
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans **Explorateur de solutions**, cliquez avec le bouton droit sur **contrôleurs > ajouter un contrôleur de >**
 
@@ -265,7 +265,7 @@ Accédez à `https://localhost:{PORT}/HelloWorld/Welcome`. La méthode `Welcome`
 
 ![Fenêtre de navigateur montrant une réponse de la méthode d’action « This is the Welcome action »](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 
-Modifiez le code pour passer des informations sur les paramètres de l’URL au contrôleur. Par exemple, `/HelloWorld/Welcome?name=Rick&numtimes=4`. Modifiez la méthode `Welcome` en y incluant les deux paramètres, comme indiqué dans le code suivant.
+Modifiez le code pour passer des informations sur les paramètres de l’URL au contrôleur. Par exemple : `/HelloWorld/Welcome?name=Rick&numtimes=4`. Modifiez la méthode `Welcome` en y incluant les deux paramètres, comme indiqué dans le code suivant.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_2)]
 

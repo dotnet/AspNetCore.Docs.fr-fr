@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 28fe6a114f767246f49ac275d02c28f4572ce4e4
-ms.sourcegitcommit: 19a004ff2be73876a9ef0f1ac44d0331849ad159
+ms.openlocfilehash: 64eb69ba597b1e48489733275ac3bed96c6c3241
+ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804511"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975233"
 ---
 # <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyMeilleures pratiques en matière de performances de ASP.net Core
 
@@ -545,7 +545,7 @@ function jsInteropCall() {
 
 ### <a name="intermediate-language-il-trimming"></a>Découpage en langage intermédiaire (IL)
 
-Le [découpage des assemblys inutilisés d’une Blazor WebAssembly application](xref:blazor/host-and-deploy/configure-trimmer) réduit la taille de l’application en supprimant le code inutilisé dans les fichiers binaires de l’application. Par défaut, le massicot est exécuté lors de la publication d’une application. Pour tirer parti de la suppression, publiez l’application pour le déploiement à l’aide de la [`dotnet publish`](/dotnet/core/tools/dotnet-publish) commande avec l’option [-c |--configuration](/dotnet/core/tools/dotnet-publish#options) définie sur `Release` :
+Le découpage des assemblys inutilisés d’une Blazor WebAssembly application réduit la taille de l’application en supprimant le code inutilisé dans les fichiers binaires de l’application. Pour plus d’informations, consultez <xref:blazor/host-and-deploy/configure-trimmer>.
 
 ::: moniker-end
 
@@ -555,11 +555,11 @@ Le [découpage des assemblys inutilisés d’une Blazor WebAssembly application]
 
 La [liaison d’une Blazor WebAssembly application](xref:blazor/host-and-deploy/configure-linker) réduit la taille de l’application en découpant le code inutilisé dans les fichiers binaires de l’application. Par défaut, l’éditeur de liens de langage intermédiaire (IL) est activé uniquement lors de la génération de la `Release` Configuration. Pour tirer parti de ce, publiez l’application pour le déploiement à l’aide de la [`dotnet publish`](/dotnet/core/tools/dotnet-publish) commande avec l’option [-c |--configuration](/dotnet/core/tools/dotnet-publish#options) définie sur `Release` :
 
-::: moniker-end
-
 ```dotnetcli
 dotnet publish -c Release
 ```
+
+::: moniker-end
 
 ### <a name="use-systemtextjson"></a>Utiliser System.Text.Jssur
 
