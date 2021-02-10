@@ -28,7 +28,7 @@
       uid: aspnetcore-2.0
     - name: "Nouveautés de la version\_1.1"
       uid: aspnetcore-1.1
-- name: Tutoriels
+- name: Didacticiels
   displayName: tutorial
   items:
     - name: Applications web
@@ -326,8 +326,10 @@
               uid: blazor/fundamentals/logging
             - name: Gérer les erreurs
               uid: blazor/fundamentals/handle-errors
-            - name: Autres cas de figure
-              uid: blazor/fundamentals/additional-scenarios
+            - name: SignalR
+              uid: blazor/fundamentals/signalr
+            - name: Fichiers statiques
+              uid: blazor/fundamentals/static-files
         - name: Composants
           items:
             - name: Vue d’ensemble
@@ -440,6 +442,8 @@
               href: blazor/security/webassembly/index.md#authentication-component
             - name: AuthorizeView
               href: blazor/security/index.md#authorizeview-component
+            - name: CascadingValue
+              href: blazor/components/cascading-values-and-parameters.md#cascadingvalue-component
             - name: InputCheckbox
               href: blazor/forms-validation.md#built-in-forms-components
             - name: InputDate
@@ -1072,7 +1076,7 @@
           uid: security/authentication/identity-custom-storage-providers
         - name: 'Google, Facebook ...'
           items:
-            - name: Vue d’ensemble
+            - name: Vue d'ensemble
               uid: security/authentication/social/index
             - name: Authentification Google
               uid: security/authentication/google-logins
