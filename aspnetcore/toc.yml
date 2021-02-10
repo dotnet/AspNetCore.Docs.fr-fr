@@ -28,7 +28,7 @@
       uid: aspnetcore-2.0
     - name: "Nouveautés de la version\_1.1"
       uid: aspnetcore-1.1
-- name: Didacticiels
+- name: Tutoriels
   displayName: tutorial
   items:
     - name: Applications web
@@ -105,9 +105,9 @@
         - name: SignalR avec TypeScript
           displayName: tutorial
           uid: tutorials/signalr-typescript-webpack
-        - name: SignalR avec Blazor WebAssembly
+        - name: Signalr avec éblouissant
           displayName: tutorial
-          uid: tutorials/signalr-blazor-webassembly
+          uid: tutorials/signalr-blazor
     - name: Applications d’appel de procédure distante
       items:
         - name: Bien démarrer avec un service gRPC
@@ -308,8 +308,8 @@
           items:
             - name: Créer une application de liste de tâches Blazor
               uid: tutorials/build-a-blazor-app
-            - name: SignalR avec Blazor WebAssembly
-              uid: tutorials/signalr-blazor-webassembly
+            - name: Signalr avec éblouissant
+              uid: tutorials/signalr-blazor
         - name: Structure du projet
           uid: blazor/project-structure
         - name: Notions de base
@@ -625,8 +625,8 @@
           uid: tutorials/signalr
         - name: SignalR avec TypeScript
           uid: tutorials/signalr-typescript-webpack
-        - name: SignalR avec Blazor WebAssembly
-          uid: tutorials/signalr-blazor-webassembly
+        - name: Signalr avec éblouissant
+          uid: tutorials/signalr-blazor
     - name: Exemples
       href: 'https://github.com/aspnet/SignalR-samples'
       displayName: signalr
@@ -1072,7 +1072,7 @@
           uid: security/authentication/identity-custom-storage-providers
         - name: 'Google, Facebook ...'
           items:
-            - name: Vue d'ensemble
+            - name: Vue d’ensemble
               uid: security/authentication/social/index
             - name: Authentification Google
               uid: security/authentication/google-logins
