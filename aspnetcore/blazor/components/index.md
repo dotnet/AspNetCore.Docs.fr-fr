@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: efc73022d0bd8c29595f9bed1c06fe07002eb54a
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 111512916cb7f0a4fc1f17648e2f9c69e366dff3
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530097"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107049"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des Razor composants ASP.net Core
 
@@ -268,7 +268,7 @@ Pour plus d’informations sur les paramètres d’itinéraire Catch-All ( `{*pa
 
 ### <a name="component-parameters"></a>Paramètres de composant
 
-Les composants peuvent avoir des *paramètres de composant*, qui sont définis à l’aide de propriétés publiques simples ou complexes sur la classe de composant avec l' [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) attribut. Utilisez des attributs pour spécifier des arguments pour un composant dans le balisage.
+Les composants peuvent avoir des *paramètres de composant*, qui sont définis à l’aide de propriétés publiques simples ou complexes sur la classe de composant avec l' [ `[Parameter]` attribut](xref:Microsoft.AspNetCore.Components.ParameterAttribute). Utilisez des attributs pour spécifier des arguments pour un composant dans le balisage.
 
 `Components/ChildComponent.razor`:
 
@@ -396,7 +396,7 @@ Les éléments rendus `<input>` à l’aide des deux approches sont identiques 
        size="50">
 ```
 
-Pour accepter des attributs arbitraires, définissez un paramètre de composant à l’aide de l' [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) attribut avec la <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> propriété définie sur `true` :
+Pour accepter des attributs arbitraires, définissez un paramètre de composant à l’aide de l' [ `[Parameter]` attribut](xref:Microsoft.AspNetCore.Components.ParameterAttribute) avec la <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> propriété définie sur `true` :
 
 ```razor
 @code {
@@ -584,7 +584,10 @@ Utilisez `NotifierService` pour mettre à jour un composant :
 }
 ```
 
-Dans l’exemple précédent, `NotifierService` appelle la méthode du composant `OnNotify` en dehors du Blazor contexte de synchronisation de. `InvokeAsync` est utilisé pour basculer vers le contexte correct et pour la mise en file d’attente d’un rendu. Pour plus d’informations, consultez <xref:blazor/components/rendering>.
+Dans l’exemple précédent :
+
+* `NotifierService` appelle la méthode du composant `OnNotify` en dehors du Blazor contexte de synchronisation de. `InvokeAsync` est utilisé pour basculer vers le contexte correct et pour la mise en file d’attente d’un rendu. Pour plus d’informations, consultez <xref:blazor/components/rendering>.
+* Le composant implémente <xref:System.IDisposable> , et le `OnNotify` délégué est désabonné dans la `Dispose` méthode, qui est appelée par le Framework lorsque le composant est supprimé. Pour plus d’informations, consultez <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>Utiliser \@ la clé pour contrôler la conservation des éléments et des composants
 
@@ -772,7 +775,7 @@ Pour plus d’informations, consultez [ Blazor erreur de liaison bidirectionnell
 
 ## <a name="apply-an-attribute"></a>Appliquer un attribut
 
-Les attributs peuvent être appliqués aux Razor composants avec la [`@attribute`][7] directive. L’exemple suivant applique l' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut à la classe de composant :
+Les attributs peuvent être appliqués aux Razor composants avec la [`@attribute`][7] directive. L’exemple suivant applique l' [ `[Authorize]` attribut](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) à la classe de composant :
 
 ```razor
 @page "/"

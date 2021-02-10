@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 0b555ad7befe882c4ffd06e2505a9edc1263eee2
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: fc2ebae6e88e312aafec790229f978c3130e64de
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057081"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106685"
 ---
-# <a name="secure-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core sécurisé Blazor WebAssembly
+# <a name="secure-aspnet-core-blazor-webassembly"></a>ASP.NET Core sécurisé Blazor WebAssembly
 
 Par [Javier Calvarro Nelson](https://github.com/javiercn)
 
@@ -52,7 +52,7 @@ D’autres options d’authentification de la fonction de déSameSitement sont d
 
 La [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) bibliothèque propose plusieurs primitives pour implémenter l’authentification et l’autorisation à l’aide de OIDC. En général, l’authentification fonctionne comme suit :
 
-* Lorsqu’un utilisateur anonyme sélectionne le bouton de connexion ou demande une page pour laquelle l' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut est appliqué, l’utilisateur est redirigé vers la page de connexion de l’application ( `/authentication/login` ).
+* Lorsqu’un utilisateur anonyme sélectionne le bouton de connexion ou demande une page pour laquelle l' [ `[Authorize]` attribut](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) est appliqué, l’utilisateur est redirigé vers la page de connexion de l’application ( `/authentication/login` ).
 * Dans la page de connexion, la bibliothèque d’authentification prépare une redirection vers le point de terminaison d’autorisation. Le point de terminaison d’autorisation est en dehors de l' Blazor WebAssembly application et peut être hébergé à une origine distincte. Le point de terminaison est chargé de déterminer si l’utilisateur est authentifié et d’émettre un ou plusieurs jetons en réponse. La bibliothèque d’authentification fournit un rappel de connexion pour recevoir la réponse d’authentification.
   * Si l’utilisateur n’est pas authentifié, l’utilisateur est redirigé vers le système d’authentification sous-jacent, ce qui est généralement le cas ASP.NET Core Identity .
   * Si l’utilisateur a déjà été authentifié, le point de terminaison d’autorisation génère les jetons appropriés et redirige le navigateur vers le point de terminaison de rappel de connexion ( `/authentication/login-callback` ).
@@ -107,7 +107,7 @@ Les applications requièrent souvent des revendications pour les utilisateurs en
 * [Scénarios supplémentaires : personnaliser l’utilisateur](xref:blazor/security/webassembly/additional-scenarios#customize-the-user)
 * <xref:blazor/security/webassembly/aad-groups-roles>
 
-## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Azure App Service sur Linux avec Identity serveur
+## <a name="azure-app-service-on-linux-with-identity-server"></a>Azure App Service sur Linux avec Identity serveur
 
 Spécifiez l’émetteur de manière explicite lors du déploiement sur Azure App Service sur Linux avec le Identity serveur. Pour plus d’informations, consultez <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
 

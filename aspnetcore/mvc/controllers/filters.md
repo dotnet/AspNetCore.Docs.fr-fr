@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: ee30ef89c5d7aeae83f23a81eb02235397c89ac2
-ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
+ms.openlocfilehash: 79457d55e0dcda342bc0017bb386c23525666657
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99238321"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107192"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -403,7 +403,7 @@ Les filtres de ressources sont utiles pour court-circuiter la majeure partie du 
 Exemples de filtre de ressources :
 
 * [Le filtre de ressources de court-circuit](#short-circuiting-resource-filter) illustré précédemment.
-* [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/rel/2.0.0-preview2/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs) :
+* [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs) :
 
   * Il empêche la liaison de données d’accéder aux données de formulaire.
   * Il est utilisé pour les chargements de fichiers volumineux et pour empêcher que le formulaire de données ne soit lu en mémoire.
@@ -558,11 +558,11 @@ L'objet <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory> implémente l'obj
 `IFilterFactory.IsReusable`:
 
 * Est un indicateur par la fabrique que l’instance de filtre créée par la fabrique peut être réutilisée en dehors de la portée de la demande dans laquelle elle a été créée.
-* ***Not** _ doit être utilisé avec un filtre qui dépend de services dont la durée de vie n’est pas le singleton.
+* ***Ne doit pas*** être utilisé avec un filtre qui dépend de services avec une durée de vie autre que singleton.
 
 Le runtime ASP.NET Core ne garantit pas :
 
-_ Qu’une seule instance du filtre sera créée.
+* Qu’une seule instance du filtre sera créée.
 * Le filtre ne sera pas demandé à nouveau à partir du conteneur d’injection de dépendance à un stade ultérieur.
 
 > [!WARNING] 
@@ -763,7 +763,7 @@ Cette séquence montre que :
 * Le filtre de méthode est imbriqué dans le filtre de contrôleur.
 * Le filtre de contrôleur est imbriqué dans le filtre global.
 
-### <a name="controller-and-no-locrazor-page-level-filters"></a>Filtres au niveau du contrôleur et de la Razor page
+### <a name="controller-and-razor-page-level-filters"></a>Filtres au niveau du contrôleur et de la Razor page
 
 Chaque contrôleur qui hérite de la classe de base <xref:Microsoft.AspNetCore.Mvc.Controller> inclut les méthodes [Controller.OnActionExecuting](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuting*), [Controller.OnActionExecutionAsync](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*) et [ Controller.OnActionExecuted](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuted*)
 `OnActionExecuted`. Ces méthodes :

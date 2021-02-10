@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: 14370f9bbf45079fd3654d3e55af4178691cf4f5
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 9562d06cbb8c60cd5a3b01f7c382b70c50038363
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252550"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107062"
 ---
-# <a name="aspnet-core-no-locrazor-components-class-libraries"></a>RazorBibliothèques de classes des composants ASP.net Core
+# <a name="aspnet-core-razor-components-class-libraries"></a>RazorBibliothèques de classes des composants ASP.net Core
 
 Par [Simon Timms](https://github.com/stimms)
 
@@ -127,7 +127,7 @@ Pour les composants de bibliothèque qui utilisent l' [isolation CSS](xref:blazo
 
 <!-- REACTIVATE WHEN HEAD COMPONENTS COME BACK AT 6.0
 
-To provide additional library component styles from stylesheets in the library's `wwwroot` folder, link the stylesheets using the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) in `Component1.razor`:
+To provide additional library component styles from stylesheets in the library's `wwwroot` folder, link the stylesheets using the framework's [`Link` component](xref:blazor/fundamentals/signalr#influence-html-head-tag-elements) in `Component1.razor`:
 
 ```razor
 <div class="my-component">
@@ -176,17 +176,17 @@ Pour fournir `Component1` la `my-component` classe CSS de, liez-la à la feuille
 
 ::: moniker-end
 
-## <a name="create-a-no-locrazor-components-class-library-with-static-assets"></a>Créer une Razor bibliothèque de classes de composants avec des ressources statiques
+## <a name="create-a-razor-components-class-library-with-static-assets"></a>Créer une Razor bibliothèque de classes de composants avec des ressources statiques
 
-Un RCL peut inclure des ressources statiques. Les ressources statiques sont disponibles pour toutes les applications qui consomment la bibliothèque. Pour plus d'informations, consultez <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
+Un RCL peut inclure des ressources statiques. Les ressources statiques sont disponibles pour toutes les applications qui consomment la bibliothèque. Pour plus d’informations, consultez <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
 
-## <a name="supply-components-and-static-assets-to-multiple-hosted-no-locblazor-apps"></a>Fournir des composants et des ressources statiques à plusieurs applications hébergées Blazor
+## <a name="supply-components-and-static-assets-to-multiple-hosted-blazor-apps"></a>Fournir des composants et des ressources statiques à plusieurs applications hébergées Blazor
 
-Pour plus d'informations, consultez <xref:blazor/host-and-deploy/webassembly#static-assets-and-class-libraries>.
+Pour plus d’informations, consultez <xref:blazor/host-and-deploy/webassembly#static-assets-and-class-libraries>.
 
 ::: moniker range=">= aspnetcore-5.0"
 
-## <a name="browser-compatibility-analyzer-for-no-locblazor-webassembly"></a>Analyseur de compatibilité des navigateurs pour Blazor WebAssembly
+## <a name="browser-compatibility-analyzer-for-blazor-webassembly"></a>Analyseur de compatibilité des navigateurs pour Blazor WebAssembly
 
 Blazor WebAssembly les applications ciblent la surface d’exposition complète de l’API .NET, mais toutes les API .NET ne sont pas prises en charge sur webassembly en raison des contraintes du bac à sable (sandbox). Les API non prises en charge sont levées <xref:System.PlatformNotSupportedException> lors de l’exécution sur Webassembly. Un analyseur de compatibilité de plateforme avertit le développeur lorsque l’application utilise des API qui ne sont pas prises en charge par les plateformes cibles de l’application. Pour les Blazor WebAssembly applications, cela signifie que les API sont prises en charge dans les navigateurs. L’annotation des API .NET Framework pour l’analyseur de compatibilité est un processus continu, donc toutes les API .NET Framework ne sont pas annotées actuellement.
 
@@ -210,14 +210,14 @@ private static string GetLoggingDirectory()
 
 Pour plus d’informations, consultez [annotation des API comme non prises en charge sur des plateformes spécifiques (référentiel GitHub dotnet/conceptions](https://github.com/dotnet/designs/blob/main/accepted/2020/platform-exclusion/platform-exclusion.md#build-configuration-for-platforms)).
 
-## <a name="no-locblazor-javascript-isolation-and-object-references"></a>Blazor Isolation JavaScript et références d’objets
+## <a name="blazor-javascript-isolation-and-object-references"></a>Blazor Isolation JavaScript et références d’objets
 
 Blazor active l’isolation JavaScript dans les [modules JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)standard. L’isolation JavaScript offre les avantages suivants :
 
 * Le JavaScript importé ne pollue plus l’espace de noms global.
 * Les consommateurs de la bibliothèque et des composants ne sont pas requis pour importer manuellement le code JavaScript associé.
 
-Pour plus d'informations, consultez <xref:blazor/call-javascript-from-dotnet#blazor-javascript-isolation-and-object-references>.
+Pour plus d’informations, consultez <xref:blazor/call-javascript-from-dotnet#blazor-javascript-isolation-and-object-references>.
 
 ::: moniker-end
 

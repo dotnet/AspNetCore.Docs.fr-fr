@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: tutorials/signalr-blazor
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 5bf80bd9147b6210fd2b115f7c009cc518f6f5cb
-ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
+ms.openlocfilehash: 226813f3b975e207a51eba24d6cbb57f00464073
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579125"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107205"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor"></a>Utiliser ASP.NET Core SignalR avec Blazor
 
@@ -100,7 +100,7 @@ Ce didacticiel enseigne les bases de la création d’une application en temps r
 
 Suivez les instructions de votre choix d’outils :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -178,7 +178,7 @@ L' `-o|--output` option crée un dossier pour la solution. Si vous avez créé u
 
 ## <a name="add-the-signalr-client-library"></a>Ajouter la SignalR bibliothèque cliente
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
 1. Dans **Explorateur de solutions**, cliquez avec le bouton droit sur le `BlazorWebAssemblySignalRApp.Client` projet et sélectionnez **gérer les packages NuGet**.
 
@@ -236,7 +236,7 @@ En raison d’un problème de résolution de package lors de l’utilisation [`S
 
 Pour ajouter [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web) au `BlazorWebAssemblySignalRApp.Server` projet de la solution ASP.net Core hébergée 3,1 Blazor , suivez les instructions de votre choix d’outils :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
 1. Dans **Explorateur de solutions**, cliquez avec le bouton droit sur le `BlazorWebAssemblySignalRApp.Server` projet et sélectionnez **gérer les packages NuGet**.
 
@@ -366,7 +366,7 @@ Dans le `BlazorWebAssemblySignalRApp.Server` projet, créez un `Hubs` dossier (p
 
 Suivez les instructions pour vos outils :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Dans **Explorateur de solutions**, sélectionnez le `BlazorWebAssemblySignalRApp.Server` projet. Appuyez sur <kbd>F5</kbd> pour exécuter l’application avec débogage ou sur <kbd>CTRL</kbd> + <kbd>F5</kbd> pour exécuter l’application sans débogage.
 
@@ -429,7 +429,7 @@ Suivez les instructions pour vos outils :
 
 Suivez les instructions de votre choix d’outils :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -501,7 +501,7 @@ L' `-o|--output` option crée un dossier pour le projet. Si vous avez créé un 
 
 ## <a name="add-the-signalr-client-library"></a>Ajouter la SignalR bibliothèque cliente
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
 1. Dans **Explorateur de solutions**, cliquez avec le bouton droit sur le `BlazorServerSignalRApp` projet et sélectionnez **gérer les packages NuGet**.
 
@@ -559,7 +559,7 @@ En raison d’un problème de résolution de package lors de l’utilisation [`S
 
 Pour ajouter [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web) au projet, suivez les instructions de votre choix d’outils :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
 1. Dans **Explorateur de solutions**, cliquez avec le bouton droit sur le `BlazorServerSignalRApp` projet et sélectionnez **gérer les packages NuGet**.
 
@@ -690,7 +690,7 @@ Créez un `Hubs` dossier (pluriel) et ajoutez la `ChatHub` classe suivante ( `Hu
 
 Suivez les instructions pour vos outils :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Appuyez sur <kbd>F5</kbd> pour exécuter l’application avec débogage ou sur <kbd>CTRL</kbd> + <kbd>F5</kbd> pour exécuter l’application sans débogage.
 
@@ -766,6 +766,6 @@ Pour en savoir plus sur Blazor la création d’applications, consultez la Blazo
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:signalr/introduction>
-* [SignalR négociation Cross-Origin pour l’authentification](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)
+* [SignalR négociation Cross-Origin pour l’authentification](xref:blazor/fundamentals/signalr#signalr-cross-origin-negotiation-for-authentication)
 * <xref:blazor/debug>
 * <xref:blazor/security/server/threat-mitigation>

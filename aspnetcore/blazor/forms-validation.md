@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 1287ab5ce61e58848329c96393c3ee8c37610245
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: c0c672167680cbe2490c7e5b6ff028ca1893d5aa
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658688"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106958"
 ---
-# <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor les formulaires et la validation
+# <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor les formulaires et la validation
 
 Par [Daniel Roth](https://github.com/danroth27), [Rémi Bourgarel](https://remibou.github.io/)et [Luke Latham](https://github.com/guardrex)
 
@@ -319,7 +319,7 @@ L' Blazor infrastructure fournit le <xref:Microsoft.AspNetCore.Components.Forms.
 * [Validation du serveur](#server-validation)
 
 > [!NOTE]
-> Les attributs de validation d’annotation de données personnalisées peuvent être utilisés à la place des composants de validateur personnalisés dans de nombreux cas. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, tous les attributs personnalisés appliqués au modèle doivent être exécutables sur le serveur. Pour plus d'informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+> Les attributs de validation d’annotation de données personnalisées peuvent être utilisés à la place des composants de validateur personnalisés dans de nombreux cas. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, tous les attributs personnalisés appliqués au modèle doivent être exécutables sur le serveur. Pour plus d’informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
 
 Créez un composant de validateur à partir de <xref:Microsoft.AspNetCore.Components.ComponentBase> :
 
@@ -381,6 +381,9 @@ public class CustomValidator : ComponentBase
 }
 ```
 
+> [!NOTE]
+> Les expressions lambda anonymes sont des gestionnaires d’événements inscrits pour <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> et <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> dans l’exemple précédent. Il n’est pas nécessaire d’implémenter <xref:System.IDisposable> et de désabonner les délégués d’événements dans ce scénario. Pour plus d’informations, consultez <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
+
 ## <a name="business-logic-validation"></a>Validation de la logique métier
 
 La validation de la logique métier peut être accomplie à l’aide d’un [composant validateur](#validator-components) qui reçoit des erreurs de formulaire dans un dictionnaire.
@@ -439,7 +442,7 @@ Lorsque des messages de validation sont définis dans le composant, ils sont ajo
 ```
 
 > [!NOTE]
-> En guise d’alternative à l’utilisation de [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d'informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+> En guise d’alternative à l’utilisation de [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d’informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
 
 ## <a name="server-validation"></a>Validation du serveur
 
@@ -579,7 +582,7 @@ services.AddControllersWithViews()
     });
 ```
 
-Pour plus d'informations, consultez <xref:web-api/handle-errors#validation-failure-error-response>.
+Pour plus d’informations, consultez <xref:web-api/handle-errors#validation-failure-error-response>.
 
 Dans le projet client, ajoutez le composant validateur présenté dans la section [composants du validateur](#validator-components) .
 
@@ -716,7 +719,7 @@ Dans le projet client, le formulaire *de base de données Starfleet Starship* es
 ```
 
 > [!NOTE]
-> Comme alternative aux [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d'informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+> Comme alternative aux [composants de validation](#validator-components), les attributs de validation d’annotation de données peuvent être utilisés. Les attributs personnalisés appliqués au modèle du formulaire s’activent avec l’utilisation du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Lorsqu’ils sont utilisés avec la validation côté serveur, les attributs doivent être exécutables sur le serveur. Pour plus d’informations, consultez <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
 
 > [!NOTE]
 > L’approche de validation côté serveur de cette section convient à l’un des Blazor WebAssembly exemples de solutions hébergées dans cet ensemble de documentation :
@@ -1052,7 +1055,7 @@ private class MyFieldClassProvider : FieldCssClassProvider
 
 ::: moniker-end
 
-### <a name="no-locblazor-data-annotations-validation-package"></a>Blazor package de validation des annotations de données
+### <a name="blazor-data-annotations-validation-package"></a>Blazor package de validation des annotations de données
 
 Le [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) est un package qui remplit les lacunes de l’expérience de validation à l’aide du <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant. Le package est actuellement *expérimental*.
 
@@ -1063,7 +1066,7 @@ Le [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nu
 
 ### <a name="compareproperty-attribute"></a>Attribut `[CompareProperty]`
 
-Le <xref:System.ComponentModel.DataAnnotations.CompareAttribute> ne fonctionne pas correctement avec le <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant, car il n’associe pas le résultat de la validation à un membre spécifique. Cela peut entraîner un comportement incohérent entre la validation au niveau du champ et le moment où la totalité du modèle est validée sur une soumission. Le [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) package *expérimental* introduit un attribut de validation supplémentaire, `ComparePropertyAttribute` , qui contourne ces limitations. Dans une Blazor application, `[CompareProperty]` est un remplacement direct de l' [`[Compare]`](xref:System.ComponentModel.DataAnnotations.CompareAttribute) attribut.
+Le <xref:System.ComponentModel.DataAnnotations.CompareAttribute> ne fonctionne pas correctement avec le <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant, car il n’associe pas le résultat de la validation à un membre spécifique. Cela peut entraîner un comportement incohérent entre la validation au niveau du champ et le moment où la totalité du modèle est validée sur une soumission. Le [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) package *expérimental* introduit un attribut de validation supplémentaire, `ComparePropertyAttribute` , qui contourne ces limitations. Dans une Blazor application, `[CompareProperty]` est un remplacement direct de l' [ `[Compare]` attribut](xref:System.ComponentModel.DataAnnotations.CompareAttribute).
 
 ::: moniker-end
 
@@ -1124,7 +1127,7 @@ Pour activer et désactiver le bouton Envoyer en fonction de la validation de fo
 
 * Utilisez le du formulaire <xref:Microsoft.AspNetCore.Components.Forms.EditContext> pour assigner le modèle lorsque le composant est initialisé.
 * Validez le formulaire dans le rappel du contexte <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> pour activer et désactiver le bouton Envoyer.
-* Décrochez le gestionnaire d’événements dans la `Dispose` méthode. Pour plus d'informations, consultez <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
+* Implémentez <xref:System.IDisposable> et annulez l’abonnement du gestionnaire d’événements dans la `Dispose` méthode. Pour plus d’informations, consultez <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
 > [!NOTE]
 > Quand vous utilisez un <xref:Microsoft.AspNetCore.Components.Forms.EditContext> , n’assignez pas également <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> à <xref:Microsoft.AspNetCore.Components.Forms.EditForm> .
@@ -1197,7 +1200,7 @@ L’un des effets secondaires de l’approche précédente est qu’un <xref:Mic
 }
 ```
 
-## <a name="troubleshoot"></a>Dépanner
+## <a name="troubleshoot"></a>Résoudre des problèmes
 
 > InvalidOperationException : EditForm requiert un paramètre de modèle, ou un paramètre EditContext, mais pas les deux.
 

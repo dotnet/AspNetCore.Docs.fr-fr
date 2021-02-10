@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: fb5b6f75959d9933e228b0288e70498ef05efc4a
-ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
+ms.openlocfilehash: 964f72e4611798d30e15112297730b98608f608f
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98710631"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106724"
 ---
-# <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly des scénarios de sécurité supplémentaires
+# <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly des scénarios de sécurité supplémentaires
 
 Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)
 
@@ -303,7 +303,7 @@ Un composant crée le <xref:System.Net.Http.HttpClient> à partir du <xref:Syste
 ```
 
 > [!NOTE]
-> Dans l’exemple précédent, le contrôleur de l’API serveur `WeatherForecastNoAuthenticationController` n’est pas marqué avec l' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut.
+> Dans l’exemple précédent, le contrôleur de l’API serveur `WeatherForecastNoAuthenticationController` n’est pas marqué avec l' [ `[Authorize]` attribut](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute).
 
 Le développeur doit décider s’il faut utiliser un client sécurisé ou un client non sécurisé comme instance par défaut <xref:System.Net.Http.HttpClient> . L’une des façons de prendre cette décision est de prendre en compte le nombre de points de terminaison authentifiés et non authentifiés que l’application contacte. Si la majorité des demandes de l’application sont de sécuriser les points de terminaison d’API, utilisez l’instance authentifiée <xref:System.Net.Http.HttpClient> comme valeur par défaut. Sinon, inscrivez l’instance non authentifiée <xref:System.Net.Http.HttpClient> comme valeur par défaut.
 

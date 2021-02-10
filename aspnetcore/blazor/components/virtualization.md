@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: 72b33bc3c2861380551915b1e8caab49122e8fab
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 5e058c33dcf52faf722b27e361491dd8dbc47dc1
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99529915"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107023"
 ---
 # <a name="aspnet-core-blazor-component-virtualization"></a>BlazorVirtualisation des composants ASP.net Core
 
@@ -156,6 +156,8 @@ La hauteur de chaque élément en pixels peut être définie avec <xref:Microsof
     ...
 </Virtualize>
 ```
+
+Par défaut, le `Virtualize` composant mesure la taille réelle du rendu *une fois* le rendu initial effectué. Utilisez <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A> pour fournir une taille d’élément exacte à l’avance afin d’aider à obtenir des performances de rendu initiales précises et à garantir la position de défilement correcte pour les rechargements de pages. Si la valeur par défaut <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A> provoque le rendu de certains éléments en dehors de l’affichage actuellement visible, un deuxième rendu est déclenché. Pour conserver correctement la position de défilement du navigateur dans une liste virtualisée, le rendu initial doit être correct. Si ce n’est pas le cas, les utilisateurs peuvent afficher les éléments incorrects. 
 
 ## <a name="overscan-count"></a>Nombre de suranalyses
 

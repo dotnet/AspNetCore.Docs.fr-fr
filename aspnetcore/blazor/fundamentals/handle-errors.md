@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: 5a255c2d3535311cecd6b7219447e80d1ae78877
-ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
+ms.openlocfilehash: cb3c64ab7340a67a6730d98af8a91c4e9837acf1
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98758253"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106945"
 ---
-# <a name="handle-errors-in-aspnet-core-no-locblazor-apps"></a>Gérer les erreurs dans les Blazor applications ASP.net Core
+# <a name="handle-errors-in-aspnet-core-blazor-apps"></a>Gérer les erreurs dans les Blazor applications ASP.net Core
 
 Par [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -89,7 +89,7 @@ L' `blazor-error-ui` élément est masqué par les styles inclus dans les Blazor
 }
 ```
 
-## <a name="no-locblazor-server-detailed-circuit-errors"></a>Blazor Server Erreurs de circuit détaillées
+## <a name="blazor-server-detailed-circuit-errors"></a>Blazor Server Erreurs de circuit détaillées
 
 Les erreurs côté client n’incluent pas la pile des appels et ne fournissent pas de détails sur la cause de l’erreur, mais les journaux du serveur contiennent ces informations. À des fins de développement, des informations sur les erreurs de circuit sensible peuvent être mises à la disposition du client en activant des erreurs détaillées.
 
@@ -118,7 +118,7 @@ Activez Blazor Server les erreurs détaillées à l’aide des approches suivant
 > [!WARNING]
 > L’exposition des informations sur les erreurs aux clients sur Internet est un risque de sécurité qui doit toujours être évité.
 
-## <a name="how-a-no-locblazor-server-app-reacts-to-unhandled-exceptions"></a>Comment une Blazor Server application réagit aux exceptions non gérées
+## <a name="how-a-blazor-server-app-reacts-to-unhandled-exceptions"></a>Comment une Blazor Server application réagit aux exceptions non gérées
 
 Blazor Server est une infrastructure avec état. Tandis que les utilisateurs interagissent avec une application, ils maintiennent une connexion au serveur appelé « *circuit*». Le circuit contient des instances de composant actives, ainsi que de nombreux autres aspects de l’État, tels que :
 
@@ -173,7 +173,7 @@ Les exceptions non gérées précédentes sont décrites dans les sections suiva
 Lorsque Blazor crée une instance d’un composant :
 
 * Le constructeur du composant est appelé.
-* Les constructeurs de tous les services d’injection de code non Singleton fournis au constructeur du composant via la [`@inject`](xref:mvc/views/razor#inject) directive ou l' [`[Inject]`](xref:blazor/fundamentals/dependency-injection#request-a-service-in-a-component) attribut sont appelés.
+* Les constructeurs de tous les services d’injection de code non Singleton fournis au constructeur du composant via la [`@inject`](xref:mvc/views/razor#inject) directive ou l' [ `[Inject]` attribut](xref:blazor/fundamentals/dependency-injection#request-a-service-in-a-component) sont appelés.
 
 Un Blazor Server circuit échoue quand un constructeur exécuté ou une méthode setter pour une `[Inject]` propriété lève une exception non gérée. L’exception est irrécupérable, car l’infrastructure ne peut pas instancier le composant. Si la logique du constructeur peut lever des exceptions, l’application doit intercepter les exceptions à l’aide d’une [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) instruction avec la gestion des erreurs et la journalisation.
 
@@ -242,7 +242,7 @@ Les conditions suivantes s’appliquent à la gestion des erreurs avec <xref:Mic
 * Si un appel à <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> échoue de manière asynchrone, le .NET <xref:System.Threading.Tasks.Task> échoue. Un appel à <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> peut échouer, par exemple, parce que le code côté JavaScript lève une exception ou retourne un `Promise` qui s’est terminé comme `rejected` . Le code du développeur doit intercepter l’exception. Si vous utilisez l' [`await`](/dotnet/csharp/language-reference/keywords/await) opérateur, encapsulez l’appel de méthode dans une [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) instruction avec la gestion des erreurs et la journalisation. Dans le cas contraire, le code défaillant entraîne une exception non gérée qui est irrécupérable pour un Blazor Server circuit.
 * Par défaut, les appels à <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> doivent se terminer dans un laps de temps donné, sinon l’appel expire. Le délai d’expiration par défaut est d’une minute. Le délai d’attente protège le code contre toute perte de connectivité réseau ou de code JavaScript qui ne renvoie jamais de message d’achèvement. Si l’appel expire, le résultant <xref:System.Threading.Tasks> échoue avec un <xref:System.OperationCanceledException> . Interceptez et traitez l’exception avec la journalisation.
 
-De même, le code JavaScript peut initier des appels à des méthodes .NET indiquées par l' [`[JSInvokable]`](xref:blazor/call-dotnet-from-javascript) attribut. Si ces méthodes .NET lèvent une exception non gérée :
+De même, le code JavaScript peut initier des appels à des méthodes .NET indiquées par l' [ `[JSInvokable]` attribut](xref:blazor/call-dotnet-from-javascript). Si ces méthodes .NET lèvent une exception non gérée :
 
 * L’exception n’est pas traitée comme étant irrécupérable pour un Blazor Server circuit.
 * Le côté JavaScript `Promise` est rejeté.
@@ -254,7 +254,7 @@ Pour plus d’informations, consultez les articles suivants :
 * <xref:blazor/call-javascript-from-dotnet>
 * <xref:blazor/call-dotnet-from-javascript>
 
-### <a name="no-locblazor-server-prerendering"></a>Blazor Server préaffichant
+### <a name="blazor-server-prerendering"></a>Blazor Server préaffichant
 
 Blazor les composants peuvent être prérendus à l’aide du [tag Helper du composant](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper) , afin que le balisage HTML rendu soit renvoyé dans le cadre de la requête http initiale de l’utilisateur. Cela fonctionne de la façon suivante :
 

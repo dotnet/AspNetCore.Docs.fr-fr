@@ -16,7 +16,7 @@ Vous devez avoir une connaissance élémentaire de [Git et GitHub.com](https://g
 * Si votre demande de tirage se voit attribuer l’étiquette « cla-required », [signez le contrat CLA (Contribution License Agreement)](https://cla.dotnetfoundation.org/).
 * Répondez aux commentaires sur la demande de tirage.
 
-Pour obtenir un exemple où ce processus a conduit à la publication d’un nouvel article, consultez le [problème &num;67](https://github.com/dotnet/docs/issues/67) et la [demande de tirage &num;798](https://github.com/dotnet/docs/pull/798) dans le dépôt .NET Docs. Le nouvel article est [Documentation de votre code](https://docs.microsoft.com/dotnet/articles/csharp/codedoc).
+Pour obtenir un exemple dans lequel ce processus a entraîné la publication d’un nouvel article, consultez le [problème 1477](https://github.com/dotnet/docs/issues/1477) et la [demande de tirage (Pull request) 18955](https://github.com/dotnet/docs/pull/18955) dans le référentiel docs .net. Le nouvel article [utilise la couverture du code pour les tests unitaires](/dotnet/core/testing/unit-testing-code-coverage).
 
 ## <a name="docs-authoring-pack-extension-in-visual-studio-code"></a>Extension Docs Authoring Pack dans Visual Studio Code
 

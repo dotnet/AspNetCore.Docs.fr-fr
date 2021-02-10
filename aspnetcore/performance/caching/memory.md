@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/memory
-ms.openlocfilehash: 9b19c782d1d42ddaba590f05bab31899402f681a
-ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
+ms.openlocfilehash: 19e8dc0ae4d5f8fd28d03d5be87c0b1bbf32d940
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96901221"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107218"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Cache en mémoire dans ASP.NET Core
 
@@ -285,7 +285,7 @@ Le code [suivant appelle la commande pour récupérer le](/dotnet/api/microsoft.
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_gct)]
 
-<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>, <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*> et sont [Get](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.get#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_) des méthodes d’extension qui font partie de la classe [CacheExtensions](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) qui étend la fonctionnalité de <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache> . Pour obtenir une description des autres méthodes de cache, consultez [méthodes IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache) et [méthodes CacheExtensions](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) .
+<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>, <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*> et sont [](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.get#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_) des méthodes d’extension qui font partie de la classe [CacheExtensions](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) qui étend la fonctionnalité de <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache> . Pour obtenir une description des autres méthodes de cache, consultez [méthodes IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache) et [méthodes CacheExtensions](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) .
 
 ## <a name="memorycacheentryoptions"></a>MemoryCacheEntryOptions
 
