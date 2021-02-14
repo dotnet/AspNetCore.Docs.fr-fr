@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 1c87330dec069e05f274206d2d35f50f489f9623
-ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
+ms.openlocfilehash: c67f8e8d81fbdbd8a1f103dd1bd258212efe014f
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98710618"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280951"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Sécuriser une Blazor WebAssembly application hébergée ASP.net core avec Azure Active Directory B2C
-
-Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Sécuriser une Blazor WebAssembly application hébergée ASP.net core avec Azure Active Directory B2C
 
 Cet article explique comment créer une [ Blazor WebAssembly application hébergée](xref:blazor/hosting-models#blazor-webassembly) qui utilise [Azure Active Directory (AAD) B2C](/azure/active-directory-b2c/overview) pour l’authentification.
 
@@ -49,7 +47,7 @@ Inscrire une application AAD B2C pour l' *application API serveur*:
 1. Pour les **types de comptes pris en charge**, sélectionnez l’option multi-locataire : **comptes dans n’importe quel fournisseur d’identité ou annuaire d’organisation (pour authentifier les utilisateurs avec des flux utilisateur)**
 1. L' *application API serveur* ne requiert pas d' **URI de redirection** dans ce scénario, laissez la liste déroulante définie sur **Web** et n’entrez pas d’URI de redirection.
 1. Vérifiez que   >  **les autorisations accordent le consentement de l’administrateur à OpenID et offline_access autorisations** sont sélectionnées.
-1. Sélectionnez **Enregistrer**.
+1. Sélectionnez **Inscription**.
 
 Notez les informations suivantes :
 
@@ -82,7 +80,7 @@ Inscrire une application AAD B2C pour l' *application cliente*:
 1. Pour les **types de comptes pris en charge**, sélectionnez l’option multi-locataire : **comptes dans n’importe quel fournisseur d’identité ou annuaire d’organisation (pour authentifier les utilisateurs avec des flux utilisateur)**
 1. Définissez la liste déroulante **URI de redirection** sur **une application à page unique (Spa)** et fournissez l’URI de redirection suivante : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les *`Server`* Propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque apparaît dans la section [créer une application](#create-the-app) pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Vérifiez que  > **les autorisations accordent le consentement de l’administrateur à OpenID et offline_access autorisations** sont sélectionnées.
-1. Sélectionnez **Enregistrer**.
+1. Sélectionnez **Inscription**.
 
 1. Enregistrez l’ID de l’application (client) (par exemple, `4369008b-21fa-427c-abaa-9b53bf58e538` ).
 
@@ -102,7 +100,7 @@ Dans configurations de plateforme **d’authentification** , >  > **application 
 1. Pour les **types de comptes pris en charge**, sélectionnez l’option multi-locataire : **comptes dans n’importe quel fournisseur d’identité ou annuaire d’organisation (pour authentifier les utilisateurs avec des flux utilisateur)**
 1. Laissez la liste déroulante **URI de redirection** définie sur **Web** et indiquez l’URI de redirection suivant : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les *`Server`* Propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque apparaît dans la section [créer une application](#create-the-app) pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Vérifiez que  > **les autorisations accordent le consentement de l’administrateur à OpenID et offline_access autorisations** sont sélectionnées.
-1. Sélectionnez **Enregistrer**.
+1. Sélectionnez **Inscription**.
 
 Enregistrez l’ID de l’application (client) (par exemple, `4369008b-21fa-427c-abaa-9b53bf58e538` ).
 
@@ -132,7 +130,7 @@ Au minimum, sélectionnez l'   >  attribut utilisateur **nom complet** des reven
 
 Notez le nom du workflow d’inscription et de connexion de l’utilisateur créé pour l’application (par exemple, `B2C_1_signupsignin` ).
 
-### <a name="create-the-app"></a>Créer l'application
+### <a name="create-the-app"></a>Créer l’application
 
 Remplacez les espaces réservés dans la commande suivante par les informations enregistrées précédemment et exécutez la commande dans une interface de commande :
 
@@ -234,7 +232,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 ```
 
-### <a name="userno-locidentityname"></a>Utilisateur. Identity . Nomme
+### <a name="useridentityname"></a>Utilisateur. Identity . Nomme
 
 Par défaut, le `User.Identity.Name` n’est pas rempli.
 
@@ -304,10 +302,10 @@ Exemple :
 
 ### <a name="weatherforecast-controller"></a>Contrôleur WeatherForecast
 
-Le contrôleur WeatherForecast (*Controllers/WeatherForecastController. cs*) expose une API protégée avec l' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut appliqué au contrôleur. Il est **important** de comprendre que :
+Le contrôleur WeatherForecast (*Controllers/WeatherForecastController. cs*) expose une API protégée avec l' [ `[Authorize]` attribut](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) appliqué au contrôleur. Il est **important** de comprendre que :
 
-* L' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut dans ce contrôleur d’API est la seule chose qui protège cette API contre tout accès non autorisé.
-* L' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut utilisé dans l' Blazor WebAssembly application sert uniquement d’indicateur à l’application que l’utilisateur doit être autorisé à utiliser correctement pour l’application.
+* L' [ `[Authorize]` attribut](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) dans ce contrôleur d’API est la seule chose qui protège cette API contre tout accès non autorisé.
+* L' [ `[Authorize]` attribut](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) utilisé dans l' Blazor WebAssembly application sert uniquement d’indicateur à l’application que l’utilisateur doit être autorisé à utiliser correctement pour l’application.
 
 ```csharp
 [Authorize]

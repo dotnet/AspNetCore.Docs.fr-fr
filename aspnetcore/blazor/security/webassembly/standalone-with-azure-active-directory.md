@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory
-ms.openlocfilehash: eb5bdb046c4360d1cd33a81c569c86b991e7729d
-ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
+ms.openlocfilehash: 21d6e6fd9859cf4daf28e0bc3cf70562192844dd
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98710536"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280922"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory"></a>Sécuriser une Blazor WebAssembly application ASP.net Core autonome avec Azure Active Directory
-
-Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-azure-active-directory"></a>Sécuriser une Blazor WebAssembly application ASP.net Core autonome avec Azure Active Directory
 
 Cet article explique comment créer une [ Blazor WebAssembly application autonome](xref:blazor/hosting-models#blazor-webassembly) qui utilise [Azure Active Directory (AAD)](https://azure.microsoft.com/services/active-directory/) pour l’authentification.
 
@@ -47,7 +45,7 @@ Inscrire une application AAD dans la  > zone de **inscriptions d’applications*
 1. Choisissez un **type de compte pris en charge**. Vous ne pouvez sélectionner des **comptes dans cet annuaire d’organisation que** pour cette expérience.
 1. Définissez la liste déroulante **URI de redirection** sur **une application à page unique (Spa)** et fournissez l’URI de redirection suivante : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque s’affiche plus loin dans cette rubrique pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Enregistrer**.
+1. Sélectionnez **Inscription**.
 
 Notez les informations suivantes :
 
@@ -71,7 +69,7 @@ Inscrire une application AAD dans la  > zone de **inscriptions d’applications*
 1. Choisissez un **type de compte pris en charge**. Vous ne pouvez sélectionner des **comptes dans cet annuaire d’organisation que** pour cette expérience.
 1. Laissez la liste déroulante **URI de redirection** définie sur **Web** et indiquez l’URI de redirection suivant : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque s’affiche plus loin dans cette rubrique pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Enregistrer**.
+1. Sélectionnez **Inscription**.
 
 Notez les informations suivantes :
 
@@ -117,7 +115,7 @@ L’emplacement de sortie spécifié avec l’option `-o|--output` crée un doss
 Après avoir créé l’application, vous devez être en mesure d’effectuer les opérations suivantes :
 
 * Connectez-vous à l’application à l’aide d’un compte d’utilisateur AAD.
-* Demander des jetons d’accès pour les API Microsoft. Pour plus d'informations, consultez les pages suivantes :
+* Demander des jetons d’accès pour les API Microsoft. Pour plus d’informations, consultez :
   * [Étendues de jeton d’accès](#access-token-scopes)
   * [Démarrage rapide : configurer une application pour exposer des API Web](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis).
 

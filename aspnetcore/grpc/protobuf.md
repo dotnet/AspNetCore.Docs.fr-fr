@@ -4,7 +4,7 @@ author: jamesnk
 description: Découvrez comment créer des messages Protobuf pour les applications .NET.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 08/23/2020
+ms.date: 02/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: b70a5ee00405eecfce900b86dc631a54682dce1a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: adb048c9b20e172ef8a7bc13f9b56928b1d4bf77
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058894"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280290"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Créer des messages Protobuf pour les applications .NET
 
@@ -48,6 +48,8 @@ message Person {
 ```
 
 La définition du message précédent spécifie trois champs en tant que paires nom-valeur. Comme les propriétés sur les types .NET, chaque champ a un nom et un type. Le type de champ peut être un [type valeur scalaire Protobuf](#scalar-value-types), par exemple `int32` , ou un autre message.
+
+Le [Guide de style Protobuf](https://developers.google.com/protocol-buffers/docs/style) recommande l’utilisation `underscore_separated_names` de pour les noms de champs. Les nouveaux messages Protobuf créés pour les applications .NET doivent suivre les instructions de style Protobuf. Les outils .NET génèrent automatiquement des types .NET qui utilisent les normes d’affectation de noms .NET. Par exemple, un `first_name` champ Protobuf génère une `FirstName` propriété .net.
 
 En plus d’un nom, chaque champ de la définition de message a un numéro unique. Les numéros de champ sont utilisés pour identifier les champs lorsque le message est sérialisé vers Protobuf. La sérialisation d’un petit nombre est plus rapide que la sérialisation de l’intégralité du nom de champ. Comme les numéros de champ identifient un champ, il est important de prendre soin de les modifier. Pour plus d’informations sur la modification des messages Protobuf <xref:grpc/versioning> , consultez.
 
@@ -247,7 +249,7 @@ namespace CustomTypes
 }
 ```
 
-## <a name="collections"></a>Regroupements
+## <a name="collections"></a>Collections
 
 ### <a name="lists"></a>Listes
 

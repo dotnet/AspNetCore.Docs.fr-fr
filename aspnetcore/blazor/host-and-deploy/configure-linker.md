@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: 0c99056053356133e901d6cf468fec8034dfb845
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c720747983da4ef6997d95d77c3f5305cfd7d3c0
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93055826"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279925"
 ---
-# <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a>Configurer l’éditeur de liens pour ASP.NET Core Blazor
-
-Par [Luke Latham](https://github.com/guardrex)
+# <a name="configure-the-linker-for-aspnet-core-blazor"></a>Configurer l’éditeur de liens pour ASP.NET Core Blazor
 
 Blazor WebAssembly effectue une liaison [il (Intermediate Language)](/dotnet/standard/managed-code#intermediate-language--execution) au cours d’une génération pour supprimer l’il inutile des assemblys de sortie de l’application. L’éditeur de liens est désactivé lors de la génération dans la configuration Debug. Les applications doivent être générées dans la configuration Release pour activer l’éditeur de liens. Nous vous recommandons de créer la version finale lors du déploiement de vos Blazor WebAssembly applications. 
 
@@ -126,7 +124,7 @@ Pour contrôler les assemblys I18N qui sont conservés, définissez la `<BlazorW
 | `all`            | Tous les assemblys inclus |
 | `cjk`            | `I18N.CJK.dll`          |
 | `mideast`        | `I18N.MidEast.dll`      |
-| `none` (valeur par défaut) | None                    |
+| `none` (valeur par défaut) | Aucun                    |
 | `other`          | `I18N.Other.dll`        |
 | `rare`           | `I18N.Rare.dll`         |
 | `west`           | `I18N.West.dll`         |

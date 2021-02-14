@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 744449240fabc3dae317d0d7bc9090311521c224
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: f44f348947e31864f5d0d44c9caf1a3aa9c3b1d4
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94570118"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280348"
 ---
-# <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>Appliquer une stratégie de sécurité de contenu pour ASP.NET Core Blazor
-
-Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)
+# <a name="enforce-a-content-security-policy-for-aspnet-core-blazor"></a>Appliquer une stratégie de sécurité de contenu pour ASP.NET Core Blazor
 
 L’exécution de scripts [entre sites (XSS)](xref:security/cross-site-scripting) est une faille de sécurité dans laquelle un attaquant place un ou plusieurs scripts malveillants côté client dans le contenu rendu d’une application. Une stratégie de sécurité de contenu (CSP) vous aide à vous protéger contre les attaques XSS en informant le navigateur de la validité :
 

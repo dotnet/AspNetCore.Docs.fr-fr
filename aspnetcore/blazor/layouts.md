@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 417f69e797296cdcd01fc4ce326388512a406368
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: d1f3e2028ca120b5901aca0b24802d872ae52597
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058270"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279726"
 ---
-# <a name="aspnet-core-no-locblazor-layouts"></a>Dispositions de ASP.NET Core Blazor
-
-Par [Rainer Stropek](https://www.timecockpit.com) et [Luke Latham](https://github.com/guardrex)
+# <a name="aspnet-core-blazor-layouts"></a>Dispositions de ASP.NET Core Blazor
 
 Certains éléments de l’application, tels que les menus, les messages de copyright et les logos de l’entreprise, font généralement partie de la mise en page globale de l’application et sont utilisés par chaque composant de l’application. La copie du code de ces éléments dans tous les composants d’une application n’est pas une approche efficace. Chaque fois que l’un des éléments requiert une mise à jour, chaque composant doit être mis à jour. Une telle duplication est difficile à gérer et peut entraîner une incohérence du contenu au fil du temps. Les *dispositions* résolvent ce problème.
 
@@ -125,9 +123,9 @@ Enfin, `MasterLayout` dans `MasterLayout.razor` contient les éléments de dispo
 
 [!code-razor[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
 
-## <a name="share-a-no-locrazor-pages-layout-with-integrated-components"></a>Partager une Razor disposition de pages avec des composants intégrés
+## <a name="share-a-razor-pages-layout-with-integrated-components"></a>Partager une Razor disposition de pages avec des composants intégrés
 
-Lorsque des composants routables sont intégrés à une Razor application pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d'informations, consultez <xref:blazor/components/prerendering-and-integration>.
+Lorsque des composants routables sont intégrés à une Razor application pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d’informations, consultez <xref:blazor/components/prerendering-and-integration>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

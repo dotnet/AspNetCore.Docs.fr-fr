@@ -19,20 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 5031273c3395be4365b3a6d239ebce7aaf9b66ac
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: 5a3d3c6e06653de7f0d01565444d37013f347a5b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658636"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280319"
 ---
-# <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Sécuriser les Blazor Server applications ASP.net Core
-
-Par [Luke Latham](https://github.com/guardrex)
+# <a name="secure-aspnet-core-blazor-server-apps"></a>Sécuriser les Blazor Server applications ASP.net Core
 
 Blazor Server les applications sont configurées pour la sécurité de la même façon que les applications ASP.NET Core. Pour plus d’informations, consultez les articles sous <xref:security/index> . Les rubriques de cette vue d’ensemble s’appliquent spécifiquement à Blazor Server .
 
-## <a name="no-locblazor-server-project-template"></a>Blazor Server modèle de projet
+## <a name="blazor-server-project-template"></a>Blazor Server modèle de projet
 
 Le Blazor Server modèle de projet peut être configuré pour l’authentification lors de la création du projet.
 
@@ -120,16 +118,16 @@ Pour plus d'informations :
 
 ---
 
-## <a name="scaffold-no-locidentity"></a>Destin Identity
+## <a name="scaffold-identity"></a>Destin Identity
 
 Génération Identity de modèles automatique dans un Blazor Server projet :
 
 * [Sans autorisation existante](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-without-existing-authorization).
 * [Avec autorisation](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-with-authorization).
 
-## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Azure App Service sur Linux avec Identity serveur
+## <a name="azure-app-service-on-linux-with-identity-server"></a>Azure App Service sur Linux avec Identity serveur
 
-Spécifiez l’émetteur de manière explicite lors du déploiement sur Azure App Service sur Linux avec le Identity serveur. Pour plus d'informations, consultez <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
+Spécifiez l’émetteur de manière explicite lors du déploiement sur Azure App Service sur Linux avec le Identity serveur. Pour plus d’informations, consultez <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

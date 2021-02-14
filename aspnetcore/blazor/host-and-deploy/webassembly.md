@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: b849cbfe803ef51cbb845566b4d5d27b2761e00c
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 04eba2e004e920e9ca799b316781857f0b0b4ca3
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100106867"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279784"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Héberger et déployer des ASP.NET Core Blazor WebAssembly
-
-Par [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com), [Daniel Roth](https://github.com/danroth27), [Ben Adams](https://twitter.com/ben_a_adams)et [safia Abdalla](https://safia.rocks)
 
 Avec le [ Blazor WebAssembly modèle d’hébergement](xref:blazor/hosting-models#blazor-webassembly):
 
@@ -55,7 +53,7 @@ Blazor s’appuie sur l’hôte pour servir les fichiers compressés appropriés
   * Obtenez le décodeur Brotli JavaScript à partir du [référentiel GitHub Google/Brotli](https://github.com/google/brotli). Le fichier du décodeur est nommé `decode.js` et se trouve dans le [ `js` dossier](https://github.com/google/brotli/tree/master/js)du référentiel.
   
     > [!NOTE]
-    > Une régression est présente dans la version minimisés du `decode.js` script ( `decode.min.js` ) dans le [référentiel GitHub Google/brotli](https://github.com/google/brotli). Vous pouvez soit réduire le script par vous-même, soit utiliser le [package NPM](https://www.npmjs.com/package/brotli) jusqu’à ce que le problème [TypeError dans decode.min.js (google/brotli #881)](https://github.com/google/brotli/issues/881) soit résolu. L’exemple de code dans cette section utilise la version **unminified** du script.
+    > Une régression est présente dans la version minimisés du `decode.js` script ( `decode.min.js` ) dans le [référentiel GitHub Google/brotli](https://github.com/google/brotli). Réduire le script par vous-même (par exemple, consultez [regroupement et minimisation BuildBundlerMinifier](xref:client-side/bundling-and-minification#configure-bundling-and-minification)) ou utilisez le [package NPM](https://www.npmjs.com/package/brotli) jusqu’à ce que le problème [TypeError dans decode.min.js (Google/brotli #881)](https://github.com/google/brotli/issues/881) soit résolu. L’exemple de code dans cette section utilise la version **unminified** du script.
 
   * Mettez à jour l’application pour utiliser le décodeur. Remplacez le balisage dans la `<body>` balise de fermeture par `wwwroot/index.html` ce qui suit :
   

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: d35dd0acf626a6305f00e295e7918c82c7d6a912
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: c74711c10fe399718600f879c3d9151bfb1abd42
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658701"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100281003"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Sécuriser une Blazor WebAssembly application hébergée ASP.net core avec le Identity serveur
-
-Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Sécuriser une Blazor WebAssembly application hébergée ASP.net core avec le Identity serveur
 
 Cet article explique comment créer une [ Blazor WebAssembly application hébergée](xref:blazor/hosting-models#blazor-webassembly) qui utilise le [ Identity serveur](https://identityserver.io/) pour authentifier les utilisateurs et les appels d’API.
 
@@ -126,19 +124,18 @@ La `Startup` classe a les ajouts suivants.
   * L’intergiciel d’autorisation active les fonctionnalités d’autorisation :
 
     ```csharp
-    app.UseAuthentication();
     app.UseAuthorization();
     ```
 
 ### <a name="azure-app-service-on-linux"></a>Azure App Service sur Linux
 
-Spécifiez l’émetteur de manière explicite lors du déploiement sur Azure App Service sur Linux. Pour plus d'informations, consultez <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
+Spécifiez l’émetteur de manière explicite lors du déploiement sur Azure App Service sur Linux. Pour plus d’informations, consultez <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
 
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
 La <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> méthode d’assistance configure [ Identity Server](https://identityserver.io/) pour les scénarios de ASP.net core. IdentityLe serveur est un Framework puissant et extensible pour gérer les problèmes de sécurité des applications. IdentityLe serveur expose une complexité inutile pour les scénarios les plus courants. Par conséquent, un ensemble de conventions et d’options de configuration est fourni, que nous considérons comme un bon point de départ. Une fois vos besoins d’authentification modifiés, toute la puissance du Identity serveur est disponible pour personnaliser l’authentification en fonction des exigences d’une application.
 
-### <a name="addno-locidentityserverjwt"></a>Ajouter Identity ServerJwt
+### <a name="addidentityserverjwt"></a>Ajouter Identity ServerJwt
 
 La <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> méthode d’assistance configure un modèle de stratégie pour l’application en tant que gestionnaire d’authentification par défaut. La stratégie est configurée pour autoriser Identity à gérer toutes les demandes routées vers n’importe quel sous-chemin dans l' Identity espace d’URL `/Identity` . Le <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> gère toutes les autres requêtes. En outre, cette méthode :
 
@@ -147,7 +144,7 @@ La <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.Add
 
 ### <a name="weatherforecastcontroller"></a>WeatherForecastController
 
-Dans `WeatherForecastController` ( `Controllers/WeatherForecastController.cs` ), l' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut est appliqué à la classe. L’attribut indique que l’utilisateur doit être autorisé en fonction de la stratégie par défaut pour accéder à la ressource. La stratégie d’autorisation par défaut est configurée pour utiliser le schéma d’authentification par défaut, qui est configuré par <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> . La méthode d’assistance configure <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> en tant que gestionnaire par défaut pour les demandes à l’application.
+Dans `WeatherForecastController` ( `Controllers/WeatherForecastController.cs` ), l' [ `[Authorize]` attribut](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) est appliqué à la classe. L’attribut indique que l’utilisateur doit être autorisé en fonction de la stratégie par défaut pour accéder à la ressource. La stratégie d’autorisation par défaut est configurée pour utiliser le schéma d’authentification par défaut, qui est configuré par <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> . La méthode d’assistance configure <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> en tant que gestionnaire par défaut pour les demandes à l’application.
 
 ### <a name="applicationdbcontext"></a>ApplicationDbContext
 
@@ -374,7 +371,7 @@ services.AddDefaultIdentity<ApplicationUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
 
-### <a name="configure-no-locidentity-server"></a>Configurer le Identity serveur
+### <a name="configure-identity-server"></a>Configurer le Identity serveur
 
 Utilisez l' **une** des approches suivantes :
 

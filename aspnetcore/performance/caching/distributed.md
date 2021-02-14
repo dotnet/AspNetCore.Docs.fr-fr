@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 6d87c8de66bf5600189465b96dee903841106b6f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6f89046f2e1805111dd81b3282253a72a7c6ea09
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061143"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100281020"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Mise en cache distribuée dans ASP.NET Core
 
@@ -129,12 +129,12 @@ Consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues
 
 [NCache](https://github.com/Alachisoft/NCache) est un cache distribué en mémoire Open source développé en mode natif dans .NET et .net core. NCache fonctionne localement et est configuré en tant que cluster de cache distribué pour une application ASP.NET Core s’exécutant dans Azure ou sur d’autres plateformes d’hébergement.
 
-Pour installer et configurer NCache sur votre ordinateur local, consultez le [Guide de prise en main NCache pour Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Pour installer et configurer NCache sur votre ordinateur local, consultez [Guide de prise en main pour Windows (.net et .net Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Pour configurer NCache :
 
 1. Installez [NuGet Open source de NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Configurez le cluster de cache dans [client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Configurez le cluster de cache dans [client. ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Ajoutez le code suivant à `Startup.ConfigureServices` :
 
    ```csharp
@@ -156,7 +156,7 @@ Lorsque l’exemple d’application démarre, <xref:Microsoft.Extensions.Caching
 
 L’exemple d’application injecte <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> dans le `IndexModel` pour une utilisation par la page d’index.
 
-Chaque fois que la page d’index est chargée, la durée de mise en cache est vérifiée dans le cache `OnGetAsync` . Si l’heure mise en cache n’a pas expiré, l’heure est affichée. Si 20 secondes se sont écoulées depuis le dernier accès à l’heure de mise en cache (la dernière fois que cette page a été chargée), la page affiche le *temps mis en cache expiré* .
+Chaque fois que la page d’index est chargée, la durée de mise en cache est vérifiée dans le cache `OnGetAsync` . Si l’heure mise en cache n’a pas expiré, l’heure est affichée. Si 20 secondes se sont écoulées depuis le dernier accès à l’heure de mise en cache (la dernière fois que cette page a été chargée), la page affiche le *temps mis en cache expiré*.
 
 Mettez immédiatement à jour l’heure de mise en cache à l’heure actuelle en sélectionnant le bouton **réinitialisation du temps mis en cache** . Le bouton déclenche la `OnPostResetCachedTime` méthode de gestionnaire.
 
@@ -299,12 +299,12 @@ Pour installer les éléments ReDim sur votre ordinateur local :
 
 [NCache](https://github.com/Alachisoft/NCache) est un cache distribué en mémoire Open source développé en mode natif dans .NET et .net core. NCache fonctionne localement et est configuré en tant que cluster de cache distribué pour une application ASP.NET Core s’exécutant dans Azure ou sur d’autres plateformes d’hébergement.
 
-Pour installer et configurer NCache sur votre ordinateur local, consultez le [Guide de prise en main NCache pour Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Pour installer et configurer NCache sur votre ordinateur local, consultez [Guide de prise en main pour Windows (.net et .net Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Pour configurer NCache :
 
 1. Installez [NuGet Open source de NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Configurez le cluster de cache dans [client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Configurez le cluster de cache dans [client. ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Ajoutez le code suivant à `Startup.ConfigureServices` :
 
    ```csharp
@@ -326,7 +326,7 @@ Lorsque l’exemple d’application démarre, <xref:Microsoft.Extensions.Caching
 
 L’exemple d’application injecte <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> dans le `IndexModel` pour une utilisation par la page d’index.
 
-Chaque fois que la page d’index est chargée, la durée de mise en cache est vérifiée dans le cache `OnGetAsync` . Si l’heure mise en cache n’a pas expiré, l’heure est affichée. Si 20 secondes se sont écoulées depuis le dernier accès à l’heure de mise en cache (la dernière fois que cette page a été chargée), la page affiche le *temps mis en cache expiré* .
+Chaque fois que la page d’index est chargée, la durée de mise en cache est vérifiée dans le cache `OnGetAsync` . Si l’heure mise en cache n’a pas expiré, l’heure est affichée. Si 20 secondes se sont écoulées depuis le dernier accès à l’heure de mise en cache (la dernière fois que cette page a été chargée), la page affiche le *temps mis en cache expiré*.
 
 Mettez immédiatement à jour l’heure de mise en cache à l’heure actuelle en sélectionnant le bouton **réinitialisation du temps mis en cache** . Le bouton déclenche la `OnPostResetCachedTime` méthode de gestionnaire.
 
@@ -475,12 +475,12 @@ Pour installer les éléments ReDim sur votre ordinateur local :
 
 [NCache](https://github.com/Alachisoft/NCache) est un cache distribué en mémoire Open source développé en mode natif dans .NET et .net core. NCache fonctionne localement et est configuré en tant que cluster de cache distribué pour une application ASP.NET Core s’exécutant dans Azure ou sur d’autres plateformes d’hébergement.
 
-Pour installer et configurer NCache sur votre ordinateur local, consultez le [Guide de prise en main NCache pour Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Pour installer et configurer NCache sur votre ordinateur local, consultez [Guide de prise en main pour Windows (.net et .net Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Pour configurer NCache :
 
 1. Installez [NuGet Open source de NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Configurez le cluster de cache dans [client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Configurez le cluster de cache dans [client. ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Ajoutez le code suivant à `Startup.ConfigureServices` :
 
    ```csharp
@@ -502,7 +502,7 @@ Lorsque l’exemple d’application démarre, <xref:Microsoft.Extensions.Caching
 
 L’exemple d’application injecte <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> dans le `IndexModel` pour une utilisation par la page d’index.
 
-Chaque fois que la page d’index est chargée, la durée de mise en cache est vérifiée dans le cache `OnGetAsync` . Si l’heure mise en cache n’a pas expiré, l’heure est affichée. Si 20 secondes se sont écoulées depuis le dernier accès à l’heure de mise en cache (la dernière fois que cette page a été chargée), la page affiche le *temps mis en cache expiré* .
+Chaque fois que la page d’index est chargée, la durée de mise en cache est vérifiée dans le cache `OnGetAsync` . Si l’heure mise en cache n’a pas expiré, l’heure est affichée. Si 20 secondes se sont écoulées depuis le dernier accès à l’heure de mise en cache (la dernière fois que cette page a été chargée), la page affiche le *temps mis en cache expiré*.
 
 Mettez immédiatement à jour l’heure de mise en cache à l’heure actuelle en sélectionnant le bouton **réinitialisation du temps mis en cache** . Le bouton déclenche la `OnPostResetCachedTime` méthode de gestionnaire.
 

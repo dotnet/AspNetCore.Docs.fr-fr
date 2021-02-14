@@ -20,16 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 5901a1cb693dfe8e34e62ce2a28456bcf584221c
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: a17b16563ac12d634e6bdc32638991f45e2a66d5
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252264"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280675"
 ---
-# <a name="tooling-for-aspnet-core-no-locblazor"></a>Outils pour ASP.NET Core Blazor
-
-Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
+# <a name="tooling-for-aspnet-core-blazor"></a>Outils pour ASP.NET Core Blazor
 
 ::: zone pivot="windows"
 
@@ -127,11 +125,11 @@ Si une invite s’affiche pour faire confiance au certificat de développement, 
 
 ::: zone-end
 
-## <a name="use-visual-studio-code-for-cross-platform-no-locblazor-development"></a>Utiliser Visual Studio Code pour le développement multiplateforme Blazor
+## <a name="use-visual-studio-code-for-cross-platform-blazor-development"></a>Utiliser Visual Studio Code pour le développement multiplateforme Blazor
 
 [Visual Studio code](https://code.visualstudio.com/) est un environnement de développement intégré (IDE) Open source et multiplateforme qui peut être utilisé pour développer des Blazor applications. Utilisez l’interface CLI .NET pour créer une nouvelle Blazor application en vue du développement avec Visual Studio code. Pour plus d’informations, consultez la [version Linux de cet article](?pivots=linux).
 
-## <a name="no-locblazor-template-options"></a>Blazor options de modèle
+## <a name="blazor-template-options"></a>Blazor options de modèle
 
 Le Blazor Framework fournit des modèles pour créer des applications pour chacun des deux Blazor modèles d’hébergement. Les modèles sont utilisés pour créer des Blazor projets et des solutions, quels que soient les outils que vous sélectionnez pour le Blazor développement (Visual Studio, Visual Studio pour Mac, Visual Studio code ou l’interface de commande .net) :
 

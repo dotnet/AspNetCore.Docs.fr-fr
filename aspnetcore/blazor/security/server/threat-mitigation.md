@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: 270589b1effc8d82f54d2760b315fa2686699f67
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 524a1f85838d083ed2f01afd96601bcd5e6ce12b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100106750"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280985"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>Guide d’atténuation des menaces pour ASP.NET Core Blazor Server
-
-Par [Javier Calvarro Nelson](https://github.com/javiercn)
 
 Blazor Server les applications adoptent un modèle de traitement des données *avec état* , où le serveur et le client maintiennent une relation à long terme. L’état persistant est géré par un [circuit](xref:blazor/state-management)qui peut s’étendre sur des connexions qui sont également potentiellement durables.
 

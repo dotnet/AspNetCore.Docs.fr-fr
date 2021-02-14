@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/rendering
-ms.openlocfilehash: 27701d175c86cdf4b74a9e6332b30b4d55806650
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: e1222981d4af3f4e233cdc0c57bb96a71972af15
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107036"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280043"
 ---
 # <a name="aspnet-core-blazor-component-rendering"></a>Rendu des composants de ASP.NET Core Blazor
-
-Par [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 Les composants *doivent* être rendus lorsqu’ils sont ajoutés pour la première fois à la hiérarchie des composants par leur composant parent. Il s’agit de la seule fois où un composant doit absolument être rendu.
 

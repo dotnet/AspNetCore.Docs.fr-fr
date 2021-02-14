@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: a209109210ef5e335734a974ceb0c2af7cb8e1a1
-ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
+ms.openlocfilehash: 75682171a59a610a24364778616774c49257d2ad
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "94595439"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279849"
 ---
 # <a name="host-and-deploy-blazor-server"></a>Héberger et déployer Blazor Server
-
-Par [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) et [Daniel Roth](https://github.com/danroth27)
 
 ## <a name="host-configuration-values"></a>Valeurs de configuration de l’hôte
 
@@ -40,7 +38,7 @@ les [ Blazor Server applications](xref:blazor/hosting-models#blazor-server) peuv
 
 Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Visual Studio comprend le modèle de projet d' **Blazor Server application** ( `blazorserverside` modèle lors de l’utilisation de la [`dotnet new`](/dotnet/core/tools/dotnet-new) commande).
 
-## <a name="scalability"></a>Scalabilité
+## <a name="scalability"></a>Extensibilité
 
 Planifiez un déploiement pour tirer le meilleur parti de l’infrastructure disponible pour une Blazor Server application. Consultez les ressources suivantes pour résoudre l' Blazor Server évolutivité des applications :
 

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/templated-components
-ms.openlocfilehash: 28f98596046877672b2935cb1f0feb508548398d
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 579cabd9e6b7141ec6af4c6e221b805272a2fe40
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99529928"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280033"
 ---
 # <a name="aspnet-core-blazor-templated-components"></a>Composants ASP.NET Core basés sur un Blazor modèle
-
-Par [Luke Latham](https://github.com/guardrex) et [Daniel Roth](https://github.com/danroth27)
 
 Les composants basés sur un modèle sont des composants qui acceptent un ou plusieurs modèles d’interface utilisateur en tant que paramètres, qui peuvent ensuite être utilisés dans le cadre de la logique de rendu du composant. Les composants basés sur un modèle vous permettent de créer des composants de niveau supérieur qui sont plus réutilisables que les composants normaux. Voici quelques exemples :
 

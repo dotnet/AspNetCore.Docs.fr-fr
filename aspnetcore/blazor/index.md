@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: d42136de00ccc9b7565c5ae088e1ecf4560a63c5
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 560fead9868bab9888c0d6a69cf09f135bbf39cc
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100106880"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279747"
 ---
 # <a name="introduction-to-aspnet-core-blazor"></a>Présentation de ASP.NET Core Blazor
-
-Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
 
 *Bienvenue Blazor !*
 
@@ -48,7 +46,7 @@ L’utilisation de .NET dans le développement web côté client offre les avant
 * Restez productif avec [Visual Studio](https://visualstudio.microsoft.com) sur Windows, Linux et MacOS.
 * Développez avec un ensemble commun de langages, de frameworks et d’outils stables, riches en fonctionnalités et faciles à utiliser.
 
-## <a name="components"></a>Composants
+## <a name="components"></a>Components
 
 Blazor les applications sont basées sur des *composants*. Un composant dans Blazor est un élément de l’interface utilisateur, tel qu’une page, une boîte de dialogue ou un formulaire de saisie de données.
 

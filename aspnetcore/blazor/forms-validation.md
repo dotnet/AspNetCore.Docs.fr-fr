@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: c0c672167680cbe2490c7e5b6ff028ca1893d5aa
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 012c8794b3d239ce93ac942000c7ec4f71d06cbf
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100106958"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280005"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor les formulaires et la validation
-
-Par [Daniel Roth](https://github.com/danroth27), [Rémi Bourgarel](https://remibou.github.io/)et [Luke Latham](https://github.com/guardrex)
 
 Les formulaires et la validation sont pris en charge dans Blazor l’utilisation des [Annotations de données](xref:mvc/models/validation).
 
@@ -1200,7 +1198,7 @@ L’un des effets secondaires de l’approche précédente est qu’un <xref:Mic
 }
 ```
 
-## <a name="troubleshoot"></a>Résoudre des problèmes
+## <a name="troubleshoot"></a>Dépanner
 
 > InvalidOperationException : EditForm requiert un paramètre de modèle, ou un paramètre EditContext, mais pas les deux.
 

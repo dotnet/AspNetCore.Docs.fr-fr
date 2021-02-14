@@ -20,16 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 5b7a6fefd13d7255fbe3ae7010df48c6211fa755
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 811ec08eb457fcf0697a64dc4990d29082454f73
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97854325"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280860"
 ---
-# <a name="aspnet-core-no-locblazor-state-management"></a>Gestion de l’état des ASP.NET Core Blazor
-
-Par [Steve Sanderson](https://github.com/SteveSandersonMS) et [Luke Latham](https://github.com/guardrex)
+# <a name="aspnet-core-blazor-state-management"></a>Gestion de l’état des ASP.NET Core Blazor
 
 ::: zone pivot="webassembly"
 
@@ -71,9 +69,9 @@ Les emplacements communs existent pour l’état de persistance :
 
 <h2 id="server-side-storage-wasm">Stockage côté serveur</h2>
 
-Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser un stockage indépendant côté serveur accessible via une API Web. Options disponibles :
+Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser un stockage indépendant côté serveur accessible via une API Web. Les options sont :
 
-* Stockage d'objets blob
+* Stockage Blob
 * Stockage clé-valeur
 * Base de données relationnelle
 * Stockage de tables
@@ -180,9 +178,9 @@ Les emplacements communs existent pour l’état de persistance :
 
 <h2 id="server-side-storage-server">Stockage côté serveur</h2>
 
-Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser le stockage côté serveur. Options disponibles :
+Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser le stockage côté serveur. Les options sont :
 
-* Stockage d'objets blob
+* Stockage Blob
 * Stockage clé-valeur
 * Base de données relationnelle
 * Stockage de tables

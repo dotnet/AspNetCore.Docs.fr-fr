@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: f0c7723e8de7167b4fe5021ea1ca26e7cf198581
-ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
+ms.openlocfilehash: e38838930dba70abfcfe4db9c204132e67866041
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98710566"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280939"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Sécuriser une Blazor WebAssembly application hébergée ASP.net core avec Azure Active Directory
-
-Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory"></a>Sécuriser une Blazor WebAssembly application hébergée ASP.net core avec Azure Active Directory
 
 Cet article explique comment créer une [ Blazor WebAssembly application hébergée](xref:blazor/hosting-models#blazor-webassembly) qui utilise [Azure Active Directory (AAD)](https://azure.microsoft.com/services/active-directory/) pour l’authentification.
 
@@ -58,7 +56,7 @@ Inscrire une application AAD pour l' *application API serveur*:
 1. Choisissez un **type de compte pris en charge**. Pour cette expérience, vous pouvez sélectionner des **comptes dans ce répertoire d’organisation uniquement** (un seul locataire).
 1. L' *application API serveur* ne requiert pas d' **URI de redirection** dans ce scénario, laissez la liste déroulante définie sur **Web** et n’entrez pas d’URI de redirection.
 1. Désactivez **la case**  >  à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Enregistrer**.
+1. Sélectionnez **Inscription**.
 
 Notez les informations suivantes :
 
@@ -94,7 +92,7 @@ Inscrire une application AAD pour l' *application cliente*:
 1. Choisissez un **type de compte pris en charge**. Pour cette expérience, vous pouvez sélectionner des **comptes dans ce répertoire d’organisation uniquement** (un seul locataire).
 1. Définissez la liste déroulante **URI de redirection** sur **une application à page unique (Spa)** et fournissez l’URI de redirection suivante : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les *`Server`* Propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque apparaît dans la section [créer une application](#create-the-app) pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Enregistrer**.
+1. Sélectionnez **Inscription**.
 
 Enregistrez l' *`Client`* ID de l’application (client) de l’application (par exemple, `4369008b-21fa-427c-abaa-9b53bf58e538` ).
 
@@ -114,7 +112,7 @@ Dans configurations de plateforme **d’authentification** , >  > **application 
 1. Choisissez un **type de compte pris en charge**. Pour cette expérience, vous pouvez sélectionner des **comptes dans ce répertoire d’organisation uniquement** (un seul locataire).
 1. Laissez la liste déroulante **URI de redirection** définie sur **Web** et indiquez l’URI de redirection suivant : `https://localhost:{PORT}/authentication/login-callback` . Le port par défaut pour une application s’exécutant sur Kestrel est 5001. Si l’application est exécutée sur un autre port Kestrel, utilisez le port de l’application. Par IIS Express, le port généré de manière aléatoire pour l’application se trouve dans les *`Server`* Propriétés de l’application dans le panneau **débogage** . Étant donné que l’application n’existe pas à ce stade et que le port IIS Express n’est pas connu, revenez à cette étape après la création de l’application et mettez à jour l’URI de redirection. Une remarque apparaît dans la section [créer une application](#create-the-app) pour rappeler IIS Express utilisateurs de mettre à jour l’URI de redirection.
 1. Désactivez **la case** > à cocher **accorder le consentement de l’administrateur aux autorisations OpenID et offline_access** .
-1. Sélectionnez **Enregistrer**.
+1. Sélectionnez **Inscription**.
 
 Enregistrez l' *`Client`* ID de l’application (client) de l’application (par exemple, `4369008b-21fa-427c-abaa-9b53bf58e538` ).
 
@@ -137,7 +135,7 @@ Dans **autorisations d’API**:
 1. Sélectionnez **Ajouter des autorisations**.
 1. Sélectionnez le bouton **accorder le consentement de l’administrateur pour {nom du locataire}** . Sélectionnez **Oui** pour confirmer.
 
-### <a name="create-the-app"></a>Créer l'application
+### <a name="create-the-app"></a>Créer l’application
 
 Dans un dossier vide, remplacez les espaces réservés dans la commande suivante par les informations enregistrées précédemment et exécutez la commande dans une interface de commande :
 
@@ -249,7 +247,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 ```
 
-### <a name="userno-locidentityname"></a>Utilisateur. Identity . Nomme
+### <a name="useridentityname"></a>Utilisateur. Identity . Nomme
 
 Par défaut, l' *`Server`* API d’application remplit `User.Identity.Name` la valeur du type de `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` revendication (par exemple, `2d64b3da-d9d5-42c6-9352-53d8df33d770@contoso.onmicrosoft.com` ).
 
@@ -357,10 +355,10 @@ Exemple :
 
 ### <a name="weatherforecast-controller"></a>Contrôleur WeatherForecast
 
-Le contrôleur WeatherForecast (*Controllers/WeatherForecastController. cs*) expose une API protégée avec l' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut appliqué au contrôleur. Il est **important** de comprendre que :
+Le contrôleur WeatherForecast (*Controllers/WeatherForecastController. cs*) expose une API protégée avec l' [ `[Authorize]` attribut](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) appliqué au contrôleur. Il est **important** de comprendre que :
 
-* L' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut dans ce contrôleur d’API est la seule chose qui protège cette API contre tout accès non autorisé.
-* L' [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribut utilisé dans l' Blazor WebAssembly application sert uniquement d’indicateur à l’application que l’utilisateur doit être autorisé à utiliser correctement pour l’application.
+* L' [ `[Authorize]` attribut](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) dans ce contrôleur d’API est la seule chose qui protège cette API contre tout accès non autorisé.
+* L' [ `[Authorize]` attribut](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) utilisé dans l' Blazor WebAssembly application sert uniquement d’indicateur à l’application que l’utilisateur doit être autorisé à utiliser correctement pour l’application.
 
 ```csharp
 [Authorize]

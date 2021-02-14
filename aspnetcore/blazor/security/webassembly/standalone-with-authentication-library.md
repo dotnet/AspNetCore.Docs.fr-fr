@@ -5,7 +5,7 @@ description: Découvrez comment sécuriser une Blazor WebAssembly application AS
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/27/2020
+ms.date: 02/10/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,23 +19,21 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 3da9ea045de996602ead052f6f13ffc999273a50
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: a198606caf55232c221f1d1f1224918d3f87f04c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252485"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280885"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>Sécuriser une Blazor WebAssembly application ASP.net Core autonome avec la bibliothèque d’authentification
-
-Par [Javier Calvarro Nelson](https://github.com/javiercn) et [Luke Latham](https://github.com/guardrex)
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Sécuriser une Blazor WebAssembly application ASP.net Core autonome avec la bibliothèque d’authentification
 
 *Pour Azure Active Directory (AAD) et Azure Active Directory B2C (AAD B2C), ne suivez pas les instructions de cette rubrique. Consultez les rubriques AAD et AAD B2C dans ce nœud de table des matières.*
 
-Pour créer une [ Blazor WebAssembly application autonome](xref:blazor/hosting-models#blazor-webassembly) qui utilise [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) la bibliothèque, suivez les instructions de votre choix d’outils.
+Pour créer une [ Blazor WebAssembly application autonome](xref:blazor/hosting-models#blazor-webassembly) qui utilise [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) la bibliothèque, suivez les instructions de votre choix d’outils. Si vous ajoutez la prise en charge de l’authentification, consultez les sections suivantes de cet article pour obtenir de l’aide sur l’installation et la configuration de l’application.
 
 > [!NOTE]
-> Le Identity fournisseur (IP) doit utiliser [OpenID Connect (OIDC)](https://openid.net/connect/). Par exemple, l’adresse IP de Facebook n’est pas un fournisseur conforme à OIDC, de sorte que les instructions de cette rubrique ne fonctionnent pas avec l’adresse IP Facebook. Pour plus d'informations, consultez <xref:blazor/security/webassembly/index#authentication-library>.
+> Le Identity fournisseur (IP) doit utiliser [OpenID Connect (OIDC)](https://openid.net/connect/). Par exemple, l’adresse IP de Facebook n’est pas un fournisseur conforme à OIDC, de sorte que les instructions de cette rubrique ne fonctionnent pas avec l’adresse IP Facebook. Pour plus d’informations, consultez <xref:blazor/security/webassembly/index#authentication-library>.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -43,11 +41,11 @@ Pour créer un nouveau Blazor WebAssembly projet avec un mécanisme d’authenti
 
 1. Après avoir choisi le modèle d' **Blazor WebAssembly application** dans la boîte de dialogue **créer une application Web ASP.net Core** , sélectionnez **modifier** sous **authentification**.
 
-1. Sélectionnez **des comptes d’utilisateur individuels** avec l’option **stocker les comptes d’utilisateur dans l’application** pour stocker les utilisateurs au sein de l’application à l’aide du système de ASP.net Core [Identity](xref:security/authentication/identity) .
+1. Sélectionnez **des comptes d’utilisateur individuels** avec l’option **stocker les comptes d’utilisateur dans l’application** pour utiliser le système de ASP.net Core [Identity](xref:security/authentication/identity) . Cette sélection ajoute la prise en charge de l’authentification et n’entraîne pas le stockage des utilisateurs dans une base de données. Les sections suivantes de cet article fournissent des informations supplémentaires.
 
 # <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code/.NET Core CLI](#tab/visual-studio-code+netcore-cli)
 
-Créez un Blazor WebAssembly projet avec un mécanisme d’authentification dans un dossier vide. Spécifiez le `Individual` mécanisme d’authentification avec l' `-au|--auth` option permettant de stocker les utilisateurs au sein de l’application à l’aide du système de ASP.net Core [Identity](xref:security/authentication/identity) :
+Créez un Blazor WebAssembly projet avec un mécanisme d’authentification dans un dossier vide. Spécifiez le `Individual` mécanisme d’authentification avec l' `-au|--auth` option permettant d’utiliser le système de ASP.net Core [Identity](xref:security/authentication/identity) . Cette sélection ajoute la prise en charge de l’authentification et n’entraîne pas le stockage des utilisateurs dans une base de données. Les sections suivantes de cet article fournissent des informations supplémentaires.
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual -o {APP NAME}
@@ -67,7 +65,7 @@ Pour créer un nouveau Blazor WebAssembly projet avec un mécanisme d’authenti
 
 1. Dans l’étape **configurer votre nouvelle Blazor WebAssembly application** , sélectionnez **authentification individuelle (dans l’application)** dans la liste déroulante **authentification** .
 
-1. L’application est créée pour les utilisateurs individuels stockés dans l’application avec ASP.NET Core [Identity](xref:security/authentication/identity) .
+1. L’application est créée pour utiliser ASP.NET Core [Identity](xref:security/authentication/identity) et n’entraîne pas le stockage des utilisateurs dans une base de données. Les sections suivantes de cet article fournissent des informations supplémentaires.
 
 ---
 
@@ -88,6 +86,8 @@ Pour l’espace réservé `{VERSION}` , la dernière version stable du package q
 ## <a name="authentication-service-support"></a>Prise en charge du service d’authentification
 
 La prise en charge de l’authentification des utilisateurs est inscrite dans le conteneur de service avec la <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> méthode d’extension fournie par le [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) Package. Cette méthode permet de configurer les services requis pour que l’application interagisse avec le Identity fournisseur (IP).
+
+Pour une nouvelle application, fournissez des valeurs pour les `{AUTHORITY}` `{CLIENT ID}` espaces réservés et dans la configuration suivante. Fournissez d’autres valeurs de configuration requises pour l’utilisation de l’adresse IP de l’application. L’exemple est pour Google, qui requiert `PostLogoutRedirectUri` , `RedirectUri` et `ResponseType` . Si vous ajoutez l’authentification à une application, ajoutez manuellement le code et la configuration suivants à l’application avec des valeurs pour les espaces réservés et d’autres valeurs de configuration.
 
 `Program.cs`:
 
@@ -131,7 +131,9 @@ La prise en charge de l’authentification pour les applications autonomes est o
 
 Le Blazor WebAssembly modèle configure automatiquement les étendues par défaut pour `openid` et `profile` .
 
-Le Blazor WebAssembly modèle ne configure pas automatiquement l’application pour demander un jeton d’accès pour une API sécurisée. Pour approvisionner un jeton d’accès dans le cadre du processus de connexion, ajoutez l’étendue aux étendues de jetons par défaut du <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions> :
+Le Blazor WebAssembly modèle ne configure pas automatiquement l’application pour demander un jeton d’accès pour une API sécurisée. Pour approvisionner un jeton d’accès dans le cadre du processus de connexion, ajoutez l’étendue aux étendues de jetons par défaut de <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions> . Si vous ajoutez l’authentification à une application, ajoutez manuellement le code suivant et configurez l’URI de l’étendue.
+
+`Program.cs`:
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>

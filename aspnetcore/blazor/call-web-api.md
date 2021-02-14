@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 18afa7faa254f89ef664e0188be357a85c790523
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: b3c783623252512621a0cee7a3607c69cb6d09bb
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252433"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280271"
 ---
-# <a name="call-a-web-api-from-aspnet-core-no-locblazor"></a>Appeler une API Web à partir de ASP.NET Core Blazor
-
-Par [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27)et [Juan de la Cruz](https://github.com/juandelacruz23)
+# <a name="call-a-web-api-from-aspnet-core-blazor"></a>Appeler une API Web à partir de ASP.NET Core Blazor
 
 > [!NOTE]
 > Cette rubrique s’applique à Blazor WebAssembly . [Blazor Server](xref:blazor/hosting-models#blazor-server) les applications appellent des API Web à l’aide d' <xref:System.Net.Http.HttpClient> instances, généralement créées à l’aide de <xref:System.Net.Http.IHttpClientFactory> . Pour obtenir des instructions qui s’appliquent à Blazor Server , consultez <xref:fundamentals/http-requests> .
@@ -397,7 +395,7 @@ protected override async Task OnInitializedAsync()
 > [!NOTE]
 > L’exemple précédent est fourni à des fins de démonstration. Une application serveur d’API Web peut être configurée pour retourner JSON même lorsqu’un point de terminaison n’existe pas ou qu’une exception non gérée s’est produite sur le serveur.
 
-Pour plus d'informations, consultez <xref:blazor/fundamentals/handle-errors>.
+Pour plus d’informations, consultez <xref:blazor/fundamentals/handle-errors>.
 
 ## <a name="cross-origin-resource-sharing-cors"></a>Partage des ressources cross-origin (CORS)
 

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 5bdfcc5660b4c897d3552d4cf25e43dade71541c
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: aed9e800074dc72a2b55b816a2710722470cd7d1
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252511"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280061"
 ---
-# <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de débogage Blazor WebAssembly
-
-[Daniel Roth](https://github.com/danroth27)
+# <a name="debug-aspnet-core-blazor-webassembly"></a>ASP.NET Core de débogage Blazor WebAssembly
 
 Blazor WebAssembly les applications peuvent être déboguées à l’aide des outils de développement de navigateur dans les navigateurs basés sur le chrome (Edge/chrome). Vous pouvez également déboguer votre application à l’aide des environnements de développement intégré (IDE) suivants :
 
@@ -192,7 +190,7 @@ Pour plus d’informations sur l’utilisation d’un chemin d’accès de base 
 > [!NOTE]
 > Les points d’arrêt ne sont **pas** atteints pendant le démarrage de l’application avant l’exécution du proxy de débogage. Cela comprend les points d’arrêt dans `Program.Main` ( `Program.cs` ) et les points d’arrêt dans les [ `OnInitialized{Async}` méthodes](xref:blazor/components/lifecycle#component-initialization-methods) des composants qui sont chargés par la première page demandée à partir de l’application.
 
-## <a name="debug-hosted-no-locblazor-webassembly"></a>Débogage hébergé Blazor WebAssembly
+## <a name="debug-hosted-blazor-webassembly"></a>Débogage hébergé Blazor WebAssembly
 
 1. Ouvrez le Blazor WebAssembly dossier de solution de l’application hébergée dans vs code.
 
@@ -238,7 +236,7 @@ Les options de configuration de lancement suivantes sont prises en charge pour l
 
 ## <a name="example-launch-configurations"></a>Exemples de configurations de lancement
 
-### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a>Lancer et déboguer une Blazor WebAssembly application autonome
+### <a name="launch-and-debug-a-standalone-blazor-webassembly-app"></a>Lancer et déboguer une Blazor WebAssembly application autonome
 
 ```json
 {
@@ -259,7 +257,7 @@ Les options de configuration de lancement suivantes sont prises en charge pour l
 }
 ```
 
-### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a>Lancer et déboguer une application hébergée Blazor WebAssembly avec Microsoft Edge
+### <a name="launch-and-debug-a-hosted-blazor-webassembly-app-with-microsoft-edge"></a>Lancer et déboguer une application hébergée Blazor WebAssembly avec Microsoft Edge
 
 La configuration du navigateur est par défaut Google Chrome. Lorsque vous utilisez Microsoft Edge pour le débogage, affectez à la valeur `browser` `edge` . Pour utiliser Google Chrome, vous ne devez pas définir l' `browser` option ou définir la valeur de l’option sur `chrome` .
 
@@ -365,7 +363,7 @@ Pour obtenir des instructions de configuration du [pare-feu Windows](/windows/se
 Si vous rencontrez des erreurs, les conseils suivants peuvent vous aider :
 
 * Dans l’onglet **débogueur** , ouvrez les outils de développement de votre navigateur. Dans la console, exécutez `localStorage.clear()` pour supprimer tous les points d’arrêt.
-* Confirmez que vous avez installé et approuvé le certificat de développement ASP.NET Core HTTPs. Pour plus d'informations, consultez <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
+* Confirmez que vous avez installé et approuvé le certificat de développement ASP.NET Core HTTPs. Pour plus d’informations, consultez <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
 * Visual Studio requiert l’option **activer le débogage JavaScript pour ASP.net (chrome, Edge et IE)** dans **Outils**  >  **options**  >  **débogage**  >  **général**. Il s’agit du paramètre par défaut pour Visual Studio. Si le débogage ne fonctionne pas, vérifiez que l’option est sélectionnée.
 * Si votre environnement utilise un proxy HTTP, assurez-vous qu' `localhost` il est inclus dans les paramètres de contournement du proxy. Pour ce faire, vous pouvez définir la `NO_PROXY` variable d’environnement dans l’un ou l’autre des éléments suivants :
   * `launchSettings.json`Fichier pour le projet.

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: fe50b95dda14afeae35c4922d0ae3470280bfd02
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: f6a93eb9d95182d29a60cc1a5c48122b9166aa84
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252524"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280148"
 ---
-# <a name="aspnet-core-no-locblazor-event-handling"></a>BlazorGestion des événements ASP.net Core
-
-Par [Luke Latham](https://github.com/guardrex) et [Daniel Roth](https://github.com/danroth27)
+# <a name="aspnet-core-blazor-event-handling"></a>BlazorGestion des événements ASP.net Core
 
 Razor les composants fournissent des fonctionnalités de gestion des événements. Pour un attribut d’élément HTML nommé [`@on{EVENT}`](xref:mvc/views/razor#onevent) (par exemple, `@onclick` ) avec une valeur de type délégué, un Razor composant traite la valeur de l’attribut en tant que gestionnaire d’événements.
 
@@ -208,7 +206,7 @@ Un scénario courant avec des composants imbriqués est le désir d’exécuter 
 Lorsque le bouton est sélectionné dans le `ChildComponent` :
 
 * La `ParentComponent` `ShowMessage` méthode de est appelée. `messageText` est mis à jour et affiché dans le `ParentComponent` .
-* Un appel à [`StateHasChanged`](xref:blazor/components/lifecycle#state-changes) n’est pas requis dans la méthode du rappel ( `ShowMessage` ). <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> est appelé automatiquement pour rerestituer le `ParentComponent` , tout comme les événements enfants déclenchent le rerendu des composants dans les gestionnaires d’événements qui s’exécutent dans l’enfant. Pour plus d'informations, consultez <xref:blazor/components/rendering>.
+* Un appel à [`StateHasChanged`](xref:blazor/components/lifecycle#state-changes) n’est pas requis dans la méthode du rappel ( `ShowMessage` ). <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> est appelé automatiquement pour rerestituer le `ParentComponent` , tout comme les événements enfants déclenchent le rerendu des composants dans les gestionnaires d’événements qui s’exécutent dans l’enfant. Pour plus d’informations, consultez <xref:blazor/components/rendering>.
 
 <xref:Microsoft.AspNetCore.Components.EventCallback> et <xref:Microsoft.AspNetCore.Components.EventCallback%601> autorisent les délégués asynchrones. <xref:Microsoft.AspNetCore.Components.EventCallback> est faiblement typé et permet de passer n’importe quel argument de type dans `InvokeAsync(Object)` . <xref:Microsoft.AspNetCore.Components.EventCallback%601> est fortement typé et requiert le passage d’un `T` argument dans `InvokeAsync(T)` qui peut être assigné à `TValue` .
 

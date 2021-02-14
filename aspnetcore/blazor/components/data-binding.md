@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 67a63f1b4f705a4857dea2e6d1a942d4f21469f5
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 76cc0ddc46dd08a5b8b88cf6045b84beab57c295
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057094"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280133"
 ---
-# <a name="aspnet-core-no-locblazor-data-binding"></a>BlazorLiaison de données ASP.net Core
-
-Par [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27)et [Steve Sanderson](https://github.com/SteveSandersonMS)
+# <a name="aspnet-core-blazor-data-binding"></a>BlazorLiaison de données ASP.net Core
 
 Razor les composants fournissent des fonctionnalités de liaison de données via un attribut d’élément HTML nommé [`@bind`](xref:mvc/views/razor#bind) avec une valeur de champ, de propriété ou d' Razor expression.
 

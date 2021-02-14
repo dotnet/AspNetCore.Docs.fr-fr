@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 76dbf3cae1c264fa474101bc4398da28f45a1c10
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100254370"
+---
 Les composants imbriqués lient généralement les données à l’aide d’une *liaison chaînée* , comme décrit dans <xref:blazor/components/data-binding> . Les composants imbriqués et non imbriqués peuvent partager l’accès aux données à l’aide d’un conteneur d’État en mémoire enregistré. Une classe de conteneur d’état personnalisée peut utiliser un assignable <xref:System.Action> pour notifier des composants dans différentes parties de l’application des modifications d’État. Dans l’exemple suivant :
 
 * Une paire de composants utilise un conteneur d’État pour effectuer le suivi d’une propriété.
@@ -22,13 +42,13 @@ public class StateContainer
 }
 ```
 
-In `Program.Main` (The éblouissant Webassembly) :
+Dans `Program.Main` ( Blazor WebAssembly ) :
 
 ```csharp
 builder.Services.AddSingleton<StateContainer>();
 ```
 
-Dans `Startup.ConfigureServices` (serveur éblouissant) :
+Dans `Startup.ConfigureServices` ( Blazor Server ) :
 
 ```csharp
 services.AddSingleton<StateContainer>();
@@ -59,7 +79,7 @@ services.AddSingleton<StateContainer>();
 
     private void ChangePropertyValue()
     {
-        StateContainer.SetProperty($"New value set in Component 1 {DateTime.Now}");
+        StateContainer.SetProperty($"New value set in Component 1: {DateTime.Now}");
     }
 
     public void Dispose()
@@ -91,7 +111,7 @@ services.AddSingleton<StateContainer>();
 
     private void ChangePropertyValue()
     {
-        StateContainer.SetProperty($"New value set in Component 2 {DateTime.Now}");
+        StateContainer.SetProperty($"New value set in Component 2: {DateTime.Now}");
     }
 
     public void Dispose()
@@ -100,3 +120,5 @@ services.AddSingleton<StateContainer>();
     }
 }
 ```
+
+Les composants précédents implémentent <xref:System.IDisposable> , et les `OnChange` délégués sont désabonnés dans les `Dispose` méthodes, qui sont appelées par le Framework quand les composants sont supprimés. Pour plus d’informations, consultez <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/cascading-values-and-parameters
-ms.openlocfilehash: 9b667ff83bf6dd9b400805eff403c8c3f5c7b82a
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 1fb9d75ca1613a7098840efd3ecb86ee90f4064c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107088"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280242"
 ---
 # <a name="aspnet-core-blazor-cascading-values-and-parameters"></a>ASP.NET Core Blazor les valeurs et paramètres en cascade
-
-Par [Luke Latham](https://github.com/guardrex) et [Daniel Roth](https://github.com/danroth27)
 
 Les *valeurs et les paramètres en cascade* offrent un moyen convienent de transmettre les données vers le niveau d’une hiérarchie de composants à partir d’un composant ancêtre vers un nombre quelconque de composants decendent. Contrairement aux [paramètres de composant](xref:blazor/components/index#component-parameters), les valeurs et paramètres en cascade ne nécessitent pas d’affectation d’attribut pour chaque composant de descendant dans lequel les données sont consommées. Les valeurs et les paramètres en cascade permettent également de coordonner les composants entre eux dans une hiérarchie de composants.
 

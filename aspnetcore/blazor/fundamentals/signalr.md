@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/signalr
-ms.openlocfilehash: 31cd68baa0fbc773f09fe3a1b37091b2dfc0b0a0
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 3198f45819020ca551617aa12a146f2b8a9a9f8e
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100110037"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279858"
 ---
 # <a name="aspnet-core-blazor-signalr-guidance"></a>Blazor SignalR Aide ASP.net Core
-
-Par [Daniel Roth](https://github.com/danroth27), [MacKinnon argent](https://github.com/MackinnonBuck)et [Luke Latham](https://github.com/guardrex)
 
 Pour obtenir des conseils généraux sur la configuration de ASP.NET Core SignalR , consultez les rubriques dans la <xref:signalr/introduction> section de la documentation. Pour configurer l' SignalR [Ajout à une Blazor WebAssembly solution hébergée](xref:tutorials/signalr-blazor), consultez <xref:signalr/configuration#configure-server-options> .
 

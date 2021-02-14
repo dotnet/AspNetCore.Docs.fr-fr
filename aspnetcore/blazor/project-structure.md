@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/project-structure
-ms.openlocfilehash: 958fa23a1befac3696d850d5409d4021dd109c22
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 94b5a3d8c0f5b94ecac32e6fc5f94efeb8337f37
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751540"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280360"
 ---
-# <a name="aspnet-core-no-locblazor-project-structure"></a>BlazorStructure de projet ASP.net Core
-
-Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
+# <a name="aspnet-core-blazor-project-structure"></a>BlazorStructure de projet ASP.net Core
 
 Cet article décrit les fichiers et les dossiers qui composent une Blazor application générée à partir des Blazor modèles de projet.
 

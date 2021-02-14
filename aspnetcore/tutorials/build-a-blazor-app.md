@@ -5,7 +5,7 @@ description: Générez une Blazor application pas à pas.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/14/2020
+ms.date: 02/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 106e1119db777074b5eae24f5d7e216e6127ca13
-ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
+ms.openlocfilehash: 939841ca7214e212a2f197ea1e00b0f6152c471e
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99238306"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280510"
 ---
-# <a name="build-a-no-locblazor-todo-list-app"></a>Créer une Blazor application de liste de tâches
-
-Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
+# <a name="build-a-blazor-todo-list-app"></a>Créer une Blazor application de liste de tâches
 
 Ce didacticiel vous montre comment créer et modifier une Blazor application. Vous allez apprendre à effectuer les actions suivantes :
 
@@ -54,7 +52,7 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
 ::: moniker-end
 
-## <a name="create-a-todo-list-no-locblazor-app"></a>Créer une application de liste de tâches Blazor
+## <a name="create-a-todo-list-blazor-app"></a>Créer une application de liste de tâches Blazor
 
 1. Créez une Blazor application nommée `TodoList` dans une interface de commande :
 
@@ -83,7 +81,17 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
    `Pages/Todo.razor`:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo0.razor?highlight=1)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo0.razor?highlight=1)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo0.razor?highlight=1)]
+
+   ::: moniker-end
 
    Enregistrez le fichier `Pages/Todo.razor`.
 
@@ -95,7 +103,17 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
    Dans `Shared/NavMenu.razor` :
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/NavMenu.razor?highlight=5-9)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Shared/build-a-blazor-app/NavMenu.razor?highlight=5-9)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Shared/build-a-blazor-app/NavMenu.razor?highlight=5-9)]
+
+   ::: moniker-end
 
    Enregistrez le fichier `Shared/NavMenu.razor`.
 
@@ -107,8 +125,18 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
    `TodoItem.cs`:
 
-   [!code-csharp[](build-a-blazor-app/samples_snapshot/TodoItem.cs)]
-   
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-csharp[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/build-a-blazor-app/TodoItem.cs)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-csharp[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/build-a-blazor-app/TodoItem.cs)]
+
+   ::: moniker-end
+
    > [!NOTE]
    > Si vous utilisez Visual Studio pour créer le `ToDoItem.cs` fichier et la `ToDoItem` classe, utilisez l’une des approches suivantes :
    >
@@ -122,11 +150,31 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
    `Pages/Todo.razor`:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo2.razor?highlight=5-10,13)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo2.razor?highlight=5-10,13)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo2.razor?highlight=5-10,13)]
+
+   ::: moniker-end
 
 1. L’application nécessite des éléments d’interface utilisateur pour ajouter des éléments todo à la liste. Ajoutez une entrée de texte (`<input>`) et un bouton (`<button>`) sous la liste non ordonnée (`<ul>...</ul>`) :
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo3.razor?highlight=12-13)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo3.razor?highlight=12-13)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo3.razor?highlight=12-13)]
+
+   ::: moniker-end
 
 1. Enregistrez le `TodoItem.cs` fichier et le fichier mis à jour `Pages/Todo.razor` . Dans l’interface de commande, l’application est automatiquement reconstruite lors de l’enregistrement des fichiers. Le navigateur perd temporairement sa connexion à l’application, puis recharge la page lorsque la connexion est rétablie.
 
@@ -134,11 +182,31 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
 1. Ajoutez une `AddTodo` méthode au `Todo` composant et enregistrez la méthode pour le bouton à l’aide de l' `@onclick` attribut. La méthode C# `AddTodo` est appelée lorsque le bouton est sélectionné :
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo4.razor?highlight=2,7-10)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo4.razor?highlight=2,7-10)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo4.razor?highlight=2,7-10)]
+
+   ::: moniker-end
 
 1. Pour obtenir le titre du nouvel élément TODO, ajoutez un `newTodo` champ de chaîne en haut du `@code` bloc :
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo5.razor?highlight=3)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo5.razor?highlight=3)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo5.razor?highlight=3)]
+
+   ::: moniker-end
 
    Modifiez l' `<input>` élément de texte pour établir une liaison `newTodo` avec l' `@bind` attribut :
 
@@ -148,13 +216,33 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
 1. Mettez à jour la méthode `AddTodo` pour ajouter `TodoItem` avec le titre spécifié à la liste. Supprimez la valeur du texte d’entrée en définissant `newTodo` sur une chaîne vide :
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo6.razor?highlight=19-26)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo6.razor?highlight=19-26)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo6.razor?highlight=19-26)]
+
+   ::: moniker-end
 
 1. Enregistrez le fichier `Pages/Todo.razor`. L’application est automatiquement reconstruite dans l’interface de commande. La page se recharge dans le navigateur une fois que le navigateur s’est reconnecté à l’application.
 
 1. Le texte du titre pour chaque élément todo peut être rendu modifiable et une case à cocher peut aider l’utilisateur à effectuer le suivi des éléments terminés. Ajoutez une entrée de case à cocher pour chaque élément todo et liez sa valeur à la propriété `IsDone`. Basculer `@todo.Title` vers un `<input>` élément lié à `todo.Title` avec `@bind` :
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo7.razor?highlight=4-7)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo7.razor?name=snippet&highlight=4-7)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo7.razor?name=snippet&highlight=4-7)]
+
+   ::: moniker-end
 
 1. Mettez à jour l' `<h3>` en-tête pour afficher le nombre d’éléments todo qui ne sont pas complets (a la valeur `IsDone` `false` ).
 
@@ -164,7 +252,17 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
 
 1. Le `Todo` composant terminé ( `Pages/Todo.razor` ) :
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo1.razor)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo1.razor)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo1.razor)]
+
+   ::: moniker-end
 
 1. Enregistrez le fichier `Pages/Todo.razor`. L’application est automatiquement reconstruite dans l’interface de commande. La page se recharge dans le navigateur une fois que le navigateur s’est reconnecté à l’application.
 

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/additional-scenarios
-ms.openlocfilehash: 56b226f8e4a10aa996b0344f10c76dad2ae32b51
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d47cfba75b640f57cc713049594d4e8acd1fcd0e
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93234432"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280329"
 ---
-# <a name="aspnet-core-no-locblazor-server-additional-security-scenarios"></a>ASP.NET Core Blazor Server des scénarios de sécurité supplémentaires
-
-Par [Javier Calvarro Nelson](https://github.com/javiercn)
+# <a name="aspnet-core-blazor-server-additional-security-scenarios"></a>ASP.NET Core Blazor Server des scénarios de sécurité supplémentaires
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -365,7 +363,7 @@ Si l’ajout d’un segment à l’autorité n’est pas approprié pour le four
 
   Pour plus d’informations, consultez [étendues, et non pas les ressources](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#scopes-not-resources) dans la documentation Azure.
 
-### <a name="app-id-uri"></a>URI ID de l’application
+### <a name="app-id-uri"></a>URI ID d’application
 
 * Lors de l’utilisation de points de terminaison v 2.0, les API définissent un *`App ID URI`* , qui est destiné à représenter un identificateur unique pour l’API.
 * Toutes les étendues incluent l’URI ID d’application en tant que préfixe, et les points de terminaison v 2.0 émettent des jetons d’accès avec l’URI ID d’application en tant que public.
