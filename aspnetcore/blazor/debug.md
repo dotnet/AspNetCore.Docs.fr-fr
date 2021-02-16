@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: aed9e800074dc72a2b55b816a2710722470cd7d1
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 9214fa10a2bf7d53a4cb12263a3fa69bded84b29
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280061"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536231"
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>ASP.NET Core de débogage Blazor WebAssembly
 
@@ -162,6 +162,8 @@ Pour plus d’informations sur l’utilisation d’un chemin d’accès de base 
 
 <h2 id="vscode">Déboguer autonome Blazor WebAssembly</h2>
 
+Pour plus d’informations sur la configuration des ressources VS Code dans le `.vscode` dossier, consultez le Guide du système d’exploitation **Linux** dans <xref:blazor/tooling> .
+
 1. Ouvrez l' Blazor WebAssembly application autonome dans vs code.
 
    Vous pouvez recevoir une notification indiquant qu’une configuration supplémentaire est requise pour activer le débogage :
@@ -197,6 +199,8 @@ Pour plus d’informations sur l’utilisation d’un chemin d’accès de base 
 1. Si aucune configuration de lancement n’est définie pour le projet, la notification suivante s’affiche. Sélectionnez **Oui**.
 
    > Les ressources requises pour la génération et le débogage sont manquantes dans « {nom de l’APPLICATION} ». Faut-il les ajouter ?  »
+
+   Pour plus d’informations sur la configuration des ressources VS Code dans le `.vscode` dossier, consultez le Guide du système d’exploitation **Linux** dans <xref:blazor/tooling> .
 
 1. Dans la palette de commandes en haut de la fenêtre, sélectionnez le projet *serveur* dans la solution hébergée.
 

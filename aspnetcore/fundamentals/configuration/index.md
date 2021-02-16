@@ -5,7 +5,7 @@ description: Découvrez comment utiliser l’API de configuration pour configure
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/24/2020
+ms.date: 1/29/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 62c9d1a58e0f771d91e2bc57f39ec5ebb25baaed
-ms.sourcegitcommit: 37186f76e4a50d7fb7389026dd0e5e234b51ebb2
+ms.openlocfilehash: 0f069b049889f7caade493e238ac7a23db5e79af
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99541366"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536290"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -232,9 +232,30 @@ setx Logging__1__Name=ToConsole
 setx Logging__1__Level=Information
 ```
 
-### <a name="environment-variables-set-in-launchsettingsjson"></a>Variables d’environnement définies dans launchSettings.jssur
+### <a name="environment-variables-set-in-generated-launchsettingsjson"></a>Variables d’environnement définies dans les launchSettings.jsgénérées sur
 
-Les variables d’environnement définies dans *launchSettings.jslors de* la substitution de celles définies dans l’environnement système.
+Les variables d’environnement définies dans *launchSettings.jslors de* la substitution de celles définies dans l’environnement système. Par exemple, les modèles Web ASP.NET Core génèrent un *launchSettings.jssur* un fichier qui définit la configuration du point de terminaison sur :
+
+```json
+"applicationUrl": "https://localhost:5001;http://localhost:5000"
+```
+
+La configuration de `applicationUrl` définit la `ASPNETCORE_URLS` variable d’environnement et remplace les valeurs définies dans l’environnement.
+
+### <a name="escape-environment-variables-on-linux"></a>Variables d’environnement d’échappement sur Linux
+
+Sur Linux, la valeur des variables d’environnement URL doit être placée dans une séquence d’échappement pour `systemd` pouvoir être analysée. Utiliser l’outil Linux `systemd-escape` qui génère `http:--localhost:5001`
+ 
+ ```cmd
+ groot@terminus:~$ systemd-escape http://localhost:5001
+ http:--localhost:5001
+ ```
+
+### <a name="display-environment-variables"></a>Afficher les variables d’environnement
+
+Le code suivant affiche les variables d’environnement et les valeurs au démarrage de l’application, ce qui peut être utile lors du débogage des paramètres d’environnement :
+
+[!code-csharp[](~/fundamentals/configuration/index/samples_snippets/5.x/Program.cs?name=snippet)]
 
 <a name="clcp"></a>
 
@@ -556,6 +577,38 @@ Dans le code précédent, `config.AddInMemoryCollection(Dict)` est ajouté aprè
 
 Pour un autre exemple, consultez [lier un tableau](#boa) à l’aide de `MemoryConfigurationProvider` .
 
+::: moniker-end
+::: moniker range=">= aspnetcore-5.0"
+
+<a name="kestrel"></a>
+
+## <a name="kestrel-endpoint-configuration"></a>Configuration de point de terminaison Kestrel
+
+La configuration de point de terminaison spécifique à Kestrel remplace toutes les configurations [de point de terminaison inter-serveurs](xref:fundamentals/servers/index) . Les configurations de point de terminaison entre serveurs sont les suivantes :
+
+  * [UseUrls](xref:fundamentals/host/web-host#server-urls)
+  * `--urls` sur la [ligne de commande](xref:fundamentals/configuration/index#command-line)
+  * La [variable d’environnement](xref:fundamentals/configuration/index#environment-variables)`ASPNETCORE_URLS`
+
+Considérez le *appsettings.json* fichier suivant utilisé dans une application web ASP.net Core :
+
+[!code-json[](~/fundamentals/configuration/index/samples_snippets/5.x/appsettings.json?highlight=2-8)]
+
+Lorsque le balisage en surbrillance précédent est utilisé dans une application Web ASP.NET Core ***et*** que l’application est lancée sur la ligne de commande avec la configuration de point de terminaison inter-serveurs suivante :
+
+`dotnet run --urls="https://localhost:7777"`
+
+Kestrel crée une liaison avec le point de terminaison configuré spécifiquement pour Kestrel dans le *appsettings.json* fichier ( `https://localhost:9999` ) et non `https://localhost:7777` .
+
+Considérez le point de terminaison spécifique à Kestrel configuré comme une variable d’environnement :
+
+`set Kestrel__Endpoints__Https__Url=https://localhost:8888`
+
+Dans la variable d’environnement précédente, `Https` est le nom du point de terminaison spécifique à Kestrel. Le *appsettings.json* fichier précédent définit également un point de terminaison spécifique à Kestrel nommé `Https` . Par [défaut](#default-configuration), les variables d’environnement utilisant le [fournisseur de configuration des variables d’environnement](#evcp) sont lues après *appSettings.* `Environment` *. JSON*, par conséquent, la variable d’environnement précédente est utilisée pour le `Https` point de terminaison.
+
+::: moniker-end
+::: moniker range=">= aspnetcore-3.0"
+
 ## <a name="getvalue"></a>GetValue
 
 [`ConfigurationBinder.GetValue<T>`](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) extrait une valeur unique de la configuration avec une clé spécifiée et la convertit en type spécifié :
@@ -773,7 +826,7 @@ Avant que l’application ne soit configurée et démarrée, un *hôte* est conf
 
 ## <a name="default-host-configuration"></a>Configuration de l’hôte par défaut
 
-Pour plus de détails sur la configuration par défaut lors de l’utilisation de l’[hôte Web](xref:fundamentals/host/web-host), consultez la [version ASP.NET Core 2.2. de cette rubrique](?view=aspnetcore-2.2).
+Pour plus de détails sur la configuration par défaut lors de l’utilisation de l’[hôte Web](xref:fundamentals/host/web-host), consultez la [version ASP.NET Core 2.2. de cette rubrique](?view=aspnetcore-2.2&preserve-view=true).
 
 * La configuration de l’hôte est fournie à partir des éléments suivants :
   * Les variables d’environnement précédées du préfixe `DOTNET_` (par exemple, `DOTNET_ENVIRONMENT` ) à l’aide du [fournisseur de configuration des variables d’environnement](#environment-variables). Le préfixe (`DOTNET_`) est supprimé lorsque les paires clé-valeur de la configuration sont chargées.

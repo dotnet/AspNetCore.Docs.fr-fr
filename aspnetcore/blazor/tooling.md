@@ -5,7 +5,7 @@ description: En savoir plus sur les outils disponibles pour créer des Blazor ap
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/28/2020
+ms.date: 02/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: a17b16563ac12d634e6bdc32638991f45e2a66d5
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 6b61d9a4645d273b0c78fae0388d569771c43a2d
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280675"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536244"
 ---
 # <a name="tooling-for-aspnet-core-blazor"></a>Outils pour ASP.NET Core Blazor
 
@@ -49,6 +49,8 @@ ms.locfileid: "100280675"
 
 Pour plus d’informations sur l’approbation du certificat de développement HTTPs ASP.NET Core, consultez <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos> .
 
+Lors de l’exécution d’une application hébergée Blazor WebAssembly , exécutez l’application à partir du projet de la solution **`Server`** .
+
 ::: zone-end
 
 ::: zone pivot="linux"
@@ -70,11 +72,11 @@ Pour plus d’informations sur l’approbation du certificat de développement H
    ```
 
    Pour une expérience hébergée Blazor WebAssembly , ajoutez l’option de l’option Hosted ( `-ho` ou `--hosted` ) à la commande :
-   
+
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1 -ho
    ```
-   
+
    Pour une Blazor Server expérience, exécutez la commande suivante dans une interface de commande :
 
    ```dotnetcli
@@ -86,6 +88,57 @@ Pour plus d’informations sur l’approbation du certificat de développement H
 1. Ouvrez le dossier `WebApplication1` dans Visual Studio Code.
 
 1. L’IDE demande que vous ajoutiez des ressources pour générer et déboguer le projet. Sélectionnez **Oui**.
+
+   **Blazor WebAssemblyConfiguration de lancement et de tâche hébergée**
+
+   Pour les Blazor WebAssembly solutions hébergées, ajoutez (ou déplacez) le `.vscode` dossier avec les `launch.json` `tasks.json` fichiers et dans le dossier parent de la solution, qui est le dossier qui contient les noms de dossier de projet standard `Client` , `Server` et `Shared` . Mettez à jour ou confirmez que la configuration dans les `launch.json` `tasks.json` fichiers et exécute une application hébergée Blazor WebAssembly à partir du **`Server`** projet.
+
+   **`.vscode/launch.json`** ( `launch` Configuration) :
+
+   ```json
+   ...
+   "cwd": "${workspaceFolder}/{SERVER APP FOLDER}",
+   ...
+   ```
+
+   Dans la configuration précédente du répertoire de travail actuel ( `cwd` ), l' `{SERVER APP FOLDER}` espace réservé est le **`Server`** dossier du projet, généralement « `Server` ».
+
+   Si Microsoft Edge est utilisé et que Google Chrome n’est pas installé sur le système, ajoutez une propriété supplémentaire de `"browser": "edge"` à la configuration.
+
+   Exemple de dossier de projet de `Server` et qui génère Microsoft Edge comme navigateur pour les exécutions de débogage au lieu du navigateur par défaut Google Chrome :
+
+   ```json
+   ...
+   "cwd": "${workspaceFolder}/Server",
+   "browser": "edge"
+   ...
+   ```
+
+   **`.vscode/tasks.json`**(arguments de [ `dotnet` commande](/dotnet/core/tools/dotnet) ) :
+
+   ```json
+   ...
+   "${workspaceFolder}/{SERVER APP FOLDER}/{PROJECT NAME}.csproj",
+   ...
+   ```
+
+   Dans l’argument précédent :
+
+   * L' `{SERVER APP FOLDER}` espace réservé est le **`Server`** dossier du projet, généralement « `Server` ».
+   * L' `{PROJECT NAME}` espace réservé est le nom de l’application, généralement basé sur le nom de la solution suivi de « `.Server` » dans une application générée à partir du Blazor modèle de projet.
+
+   L’exemple suivant du [didacticiel sur l’utilisation de SignalR avec une Blazor WebAssembly application](xref:tutorials/signalr-blazor) utilise un nom de dossier de projet `Server` et un nom de projet `BlazorWebAssemblySignalRApp.Server` :
+
+   ```json
+   ...
+   "args": [
+     "build",
+       "${workspaceFolder}/Server/BlazorWebAssemblySignalRApp.Server.csproj",
+       "/property:GenerateFullPaths=true",
+       "/consoleloggerparameters:NoSummary"
+   ],
+   ...
+   ```
 
 1. Appuyez sur <kbd>CTRL</kbd> + <kbd>F5</kbd> pour exécuter l’application.
 
@@ -122,6 +175,8 @@ Pour plus d’informations, consultez les conseils fournis par le fabricant de v
 1. Sélectionnez **exécuter**  >  **Démarrer sans débogage** pour exécuter l’application *sans le débogueur*. Exécutez l’application avec   >  le bouton exécuter **Démarrer le débogage** ou exécuter (&#9654;) pour exécuter l’application *avec le débogueur*.
 
 Si une invite s’affiche pour faire confiance au certificat de développement, approuvez le certificat et continuez. Les mots de passe utilisateur et trousseau sont requis pour approuver le certificat. Pour plus d’informations sur l’approbation du certificat de développement HTTPs ASP.NET Core, consultez <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos> .
+
+Lors de l’exécution d’une application hébergée Blazor WebAssembly , exécutez l’application à partir du projet de la solution **`Server`** .
 
 ::: zone-end
 

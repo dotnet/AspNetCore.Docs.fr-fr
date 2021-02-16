@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: tutorials/signalr-blazor
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 355db5ad5462747be0058096bc0132ed1071f290
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: f4e51b39c4c3b0c444b08025e9bd74eec0747541
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280991"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536368"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor"></a>Utiliser ASP.NET Core SignalR avec Blazor
 
@@ -134,7 +134,7 @@ Suivez les instructions de votre choix d’outils :
    dotnet new blazorwasm -ho -o BlazorWebAssemblySignalRApp
    ```
 
-   L' `-ho|--hosted` option crée une solution hébergée Blazor WebAssembly .
+   L' `-ho|--hosted` option crée une solution hébergée Blazor WebAssembly . Pour plus d’informations sur la configuration des ressources VS Code dans le `.vscode` dossier, consultez le Guide du système d’exploitation **Linux** dans <xref:blazor/tooling> .
 
    L' `-o|--output` option crée un dossier pour la solution. Si vous avez créé un dossier pour la solution et que l’interface de commande est ouverte dans ce dossier, omettez l' `-o|--output` option et la valeur pour créer la solution.
 
@@ -378,6 +378,8 @@ Suivez les instructions pour vos outils :
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
+Pour plus d’informations sur la configuration des ressources VS Code dans le `.vscode` dossier, consultez le Guide du système d’exploitation **Linux** dans <xref:blazor/tooling> .
+
 1. Appuyez sur <kbd>F5</kbd> pour exécuter l’application avec débogage ou sur <kbd>CTRL</kbd> + <kbd>F5</kbd> pour exécuter l’application sans débogage.
 
 1. Copiez l’URL à partir de la barre d’adresse, ouvrez un autre onglet ou instance du navigateur, puis collez l’URL dans la barre d’adresse.
@@ -465,7 +467,7 @@ Suivez les instructions de votre choix d’outils :
 
 1. Dans Visual Studio Code, ouvrez le dossier du projet de l’application.
 
-1. Quand la boîte de dialogue semble ajouter des éléments multimédias pour générer et déboguer l’application, sélectionnez **Oui**. Visual Studio Code ajoute automatiquement le `.vscode` dossier avec les `launch.json` fichiers et générés `tasks.json` .
+1. Quand la boîte de dialogue semble ajouter des éléments multimédias pour générer et déboguer l’application, sélectionnez **Oui**. Visual Studio Code ajoute automatiquement le `.vscode` dossier avec les `launch.json` fichiers et générés `tasks.json` . Pour plus d’informations sur la configuration des ressources VS Code dans le `.vscode` dossier, consultez le Guide du système d’exploitation **Linux** dans <xref:blazor/tooling> .
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
