@@ -1,15 +1,35 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 05c94351ee4747813cfa8dc2318a6fc02c3a46bf
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551369"
+---
 ```console
 npm run release
 ```
 
-<span data-ttu-id="8640f-101">Cette commande génère les ressources côté client à utiliser lors de l’exécution de l’application.</span><span class="sxs-lookup"><span data-stu-id="8640f-101">This command generates the client-side assets to be served when running the app.</span></span> <span data-ttu-id="8640f-102">Les ressources sont placées dans le dossier *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="8640f-102">The assets are placed in the *wwwroot* folder.</span></span>
+<span data-ttu-id="0a357-101">Cette commande génère les ressources côté client à utiliser lors de l’exécution de l’application.</span><span class="sxs-lookup"><span data-stu-id="0a357-101">This command generates the client-side assets to be served when running the app.</span></span> <span data-ttu-id="0a357-102">Les ressources sont placées dans le dossier *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="0a357-102">The assets are placed in the *wwwroot* folder.</span></span>
 
-<span data-ttu-id="8640f-103">Webpack a effectué les tâches suivantes :</span><span class="sxs-lookup"><span data-stu-id="8640f-103">Webpack completed the following tasks:</span></span>
+<span data-ttu-id="0a357-103">Webpack a effectué les tâches suivantes :</span><span class="sxs-lookup"><span data-stu-id="0a357-103">Webpack completed the following tasks:</span></span>
 
-* <span data-ttu-id="8640f-104">Purge du contenu du répertoire *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="8640f-104">Purged the contents of the *wwwroot* directory.</span></span>
-* <span data-ttu-id="8640f-105">Conversion de la machine à écrire en JavaScript dans un processus appelé *transpilation*.</span><span class="sxs-lookup"><span data-stu-id="8640f-105">Converted the TypeScript to JavaScript in a process known as *transpilation*.</span></span>
-* <span data-ttu-id="8640f-106">A tronqué le code JavaScript généré pour réduire la taille du fichier dans un processus connu sous le nom de *minimisation*.</span><span class="sxs-lookup"><span data-stu-id="8640f-106">Mangled the generated JavaScript to reduce file size in a process known as *minification*.</span></span>
-* <span data-ttu-id="8640f-107">Copie des fichiers JavaScript, CSS et HTML traités à partir de *src* dans le répertoire *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="8640f-107">Copied the processed JavaScript, CSS, and HTML files from *src* to the *wwwroot* directory.</span></span>
-* <span data-ttu-id="8640f-108">Injection des éléments suivants dans le fichier *wwwroot/index.html* :</span><span class="sxs-lookup"><span data-stu-id="8640f-108">Injected the following elements into the *wwwroot/index.html* file:</span></span>
-  * <span data-ttu-id="8640f-109">Une `<link>` balise, référençant le *wwwroot/main. \<hash\> fichier CSS* .</span><span class="sxs-lookup"><span data-stu-id="8640f-109">A `<link>` tag, referencing the *wwwroot/main.\<hash\>.css* file.</span></span> <span data-ttu-id="8640f-110">Cette balise est placée immédiatement avant la balise `</head>` de fermeture.</span><span class="sxs-lookup"><span data-stu-id="8640f-110">This tag is placed immediately before the closing `</head>` tag.</span></span>
-  * <span data-ttu-id="8640f-111">Une `<script>` balise, référençant le minimisés *wwwroot/main. \<hash\> . fichier js* .</span><span class="sxs-lookup"><span data-stu-id="8640f-111">A `<script>` tag, referencing the minified *wwwroot/main.\<hash\>.js* file.</span></span> <span data-ttu-id="8640f-112">Cette balise est placée immédiatement avant la balise `</body>` de fermeture.</span><span class="sxs-lookup"><span data-stu-id="8640f-112">This tag is placed immediately before the closing `</body>` tag.</span></span>
+* <span data-ttu-id="0a357-104">Purge du contenu du répertoire *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="0a357-104">Purged the contents of the *wwwroot* directory.</span></span>
+* <span data-ttu-id="0a357-105">Conversion de la machine à écrire en JavaScript dans un processus appelé *transpilation*.</span><span class="sxs-lookup"><span data-stu-id="0a357-105">Converted the TypeScript to JavaScript in a process known as *transpilation*.</span></span>
+* <span data-ttu-id="0a357-106">A tronqué le code JavaScript généré pour réduire la taille du fichier dans un processus connu sous le nom de *minimisation*.</span><span class="sxs-lookup"><span data-stu-id="0a357-106">Mangled the generated JavaScript to reduce file size in a process known as *minification*.</span></span>
+* <span data-ttu-id="0a357-107">Copie des fichiers JavaScript, CSS et HTML traités à partir de *src* dans le répertoire *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="0a357-107">Copied the processed JavaScript, CSS, and HTML files from *src* to the *wwwroot* directory.</span></span>
+* <span data-ttu-id="0a357-108">Injection des éléments suivants dans le fichier *wwwroot/index.html* :</span><span class="sxs-lookup"><span data-stu-id="0a357-108">Injected the following elements into the *wwwroot/index.html* file:</span></span>
+  * <span data-ttu-id="0a357-109">Une `<link>` balise, référençant le *wwwroot/main. \<hash\> fichier CSS* .</span><span class="sxs-lookup"><span data-stu-id="0a357-109">A `<link>` tag, referencing the *wwwroot/main.\<hash\>.css* file.</span></span> <span data-ttu-id="0a357-110">Cette balise est placée immédiatement avant la balise `</head>` de fermeture.</span><span class="sxs-lookup"><span data-stu-id="0a357-110">This tag is placed immediately before the closing `</head>` tag.</span></span>
+  * <span data-ttu-id="0a357-111">Une `<script>` balise, référençant le minimisés *wwwroot/main. \<hash\> . fichier js* .</span><span class="sxs-lookup"><span data-stu-id="0a357-111">A `<script>` tag, referencing the minified *wwwroot/main.\<hash\>.js* file.</span></span> <span data-ttu-id="0a357-112">Cette balise est placée immédiatement avant la balise `</body>` de fermeture.</span><span class="sxs-lookup"><span data-stu-id="0a357-112">This tag is placed immediately before the closing `</body>` tag.</span></span>

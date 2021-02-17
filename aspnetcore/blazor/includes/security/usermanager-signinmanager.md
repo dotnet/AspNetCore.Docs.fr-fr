@@ -1,11 +1,31 @@
-## <a name="usermanager-and-signinmanager"></a><span data-ttu-id="00540-101">UserManager et SignInManager</span><span class="sxs-lookup"><span data-stu-id="00540-101">UserManager and SignInManager</span></span>
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: d6c3c1800bd341cc1c21ec6ec80421932dae61df
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552706"
+---
+## <a name="usermanager-and-signinmanager"></a><span data-ttu-id="4ef05-101">UserManager et SignInManager</span><span class="sxs-lookup"><span data-stu-id="4ef05-101">UserManager and SignInManager</span></span>
 
-<span data-ttu-id="00540-102">Définir le type de revendication de l’identificateur d’utilisateur lorsqu’une application serveur requiert :</span><span class="sxs-lookup"><span data-stu-id="00540-102">Set the user identifier claim type when a Server app requires:</span></span>
+<span data-ttu-id="4ef05-102">Définir le type de revendication de l’identificateur d’utilisateur lorsqu’une application serveur requiert :</span><span class="sxs-lookup"><span data-stu-id="4ef05-102">Set the user identifier claim type when a Server app requires:</span></span>
 
-* <span data-ttu-id="00540-103"><xref:Microsoft.AspNetCore.Identity.UserManager%601> ou <xref:Microsoft.AspNetCore.Identity.SignInManager%601> dans un point de terminaison d’API.</span><span class="sxs-lookup"><span data-stu-id="00540-103"><xref:Microsoft.AspNetCore.Identity.UserManager%601> or <xref:Microsoft.AspNetCore.Identity.SignInManager%601> in an API endpoint.</span></span>
-* <span data-ttu-id="00540-104"><xref:Microsoft.AspNetCore.Identity.IdentityUser> détails, tels que le nom de l’utilisateur, l’adresse de messagerie ou l’heure de fin du verrouillage.</span><span class="sxs-lookup"><span data-stu-id="00540-104"><xref:Microsoft.AspNetCore.Identity.IdentityUser> details, such as the user's name, email address, or lockout end time.</span></span>
+* <span data-ttu-id="4ef05-103"><xref:Microsoft.AspNetCore.Identity.UserManager%601> ou <xref:Microsoft.AspNetCore.Identity.SignInManager%601> dans un point de terminaison d’API.</span><span class="sxs-lookup"><span data-stu-id="4ef05-103"><xref:Microsoft.AspNetCore.Identity.UserManager%601> or <xref:Microsoft.AspNetCore.Identity.SignInManager%601> in an API endpoint.</span></span>
+* <span data-ttu-id="4ef05-104"><xref:Microsoft.AspNetCore.Identity.IdentityUser> détails, tels que le nom de l’utilisateur, l’adresse de messagerie ou l’heure de fin du verrouillage.</span><span class="sxs-lookup"><span data-stu-id="4ef05-104"><xref:Microsoft.AspNetCore.Identity.IdentityUser> details, such as the user's name, email address, or lockout end time.</span></span>
 
-<span data-ttu-id="00540-105">Dans `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="00540-105">In `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="4ef05-105">Dans `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="4ef05-105">In `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 using System.Security.Claims;
@@ -16,7 +36,7 @@ services.Configure<IdentityOptions>(options =>
     options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
 ```
 
-<span data-ttu-id="00540-106">L’exemple suivant `WeatherForecastController` enregistre le <xref:Microsoft.AspNetCore.Identity.IdentityUser%601.UserName> lorsque la `Get` méthode est appelée :</span><span class="sxs-lookup"><span data-stu-id="00540-106">The following `WeatherForecastController` logs the <xref:Microsoft.AspNetCore.Identity.IdentityUser%601.UserName> when the `Get` method is called:</span></span>
+<span data-ttu-id="4ef05-106">L’exemple suivant `WeatherForecastController` enregistre le <xref:Microsoft.AspNetCore.Identity.IdentityUser%601.UserName> lorsque la `Get` méthode est appelée :</span><span class="sxs-lookup"><span data-stu-id="4ef05-106">The following `WeatherForecastController` logs the <xref:Microsoft.AspNetCore.Identity.IdentityUser%601.UserName> when the `Get` method is called:</span></span>
 
 ```csharp
 using System;
