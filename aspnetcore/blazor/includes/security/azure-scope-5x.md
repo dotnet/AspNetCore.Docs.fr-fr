@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 5964554c36e2242b70faee390374828acd2bd860
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552306"
+---
 Lorsque vous utilisez une API serveur inscrite auprès d’AAD et que l’inscription AAD de l’application se trouve dans un locataire qui s’appuie sur un [domaine d’éditeur non vérifié](/azure/active-directory/develop/howto-configure-publisher-domain), l’URI ID d’application de votre application API serveur n’est pas au `api://{SERVER API APP CLIENT ID OR CUSTOM VALUE}` format `https://{TENANT}.onmicrosoft.com/{SERVER API APP CLIENT ID OR CUSTOM VALUE}` . Si c’est le cas, l’étendue du jeton d’accès par défaut dans `Program.Main` ( `Program.cs` ) de l' *`Client`* application ressemble à ce qui suit :
 
 ```csharp

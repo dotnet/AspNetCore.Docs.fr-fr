@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: d51a4a43f585b0a0b7e3aab2c5de1b2d215de494
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a8bb659a72e8370c31cc9c213689399e74f11b5c
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059596"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564060"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Résoudre les problèmes de ASP.NET Core sur Azure App Service et IIS
 
@@ -321,6 +321,8 @@ Le journal stdout du module ASP.NET Core enregistre souvent des messages d’err
 Désactivez la journalisation stdout lorsque la résolution des problèmes est terminée en définissant `stdoutLogEnabled="false"` .
 
 Pour plus d’informations, consultez <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+
+<a name="enhanced-diagnostic-logs"></a>
 
 ### <a name="aspnet-core-module-debug-log-azure-app-service"></a>Journal de débogage du module ASP.NET Core (Azure App Service)
 
@@ -796,7 +798,7 @@ Le journal stdout du module ASP.NET Core enregistre souvent des messages d’err
 1. Définissez **stdoutLogEnabled** sur `true` et remplacez le chemin **stdoutLogFile** par : `\\?\%home%\LogFiles\stdout`.
 1. Sélectionnez **Enregistrer** pour enregistrer le fichier *web.config* mis à jour.
 1. Adressez une requête à l’application.
-1. Revenez au Portail Azure. Sélectionnez le panneau **Outils avancés** dans la zone **OUTILS DE DÉVELOPPEMENT**. Sélectionnez le **bouton &rarr; OK** . La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+1. Revenez au portail Azure. Sélectionnez le panneau **Outils avancés** dans la zone **OUTILS DE DÉVELOPPEMENT**. Sélectionnez le **bouton &rarr; OK** . La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
 1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
 1. Sélectionnez le dossier **LogFiles**.
 1. Inspectez la colonne **Modifié** et sélectionnez l’icône en forme de crayon pour modifier le journal stdout avec la date de dernière modification.
@@ -1274,7 +1276,7 @@ Le journal stdout du module ASP.NET Core enregistre souvent des messages d’err
 1. Définissez **stdoutLogEnabled** sur `true` et remplacez le chemin **stdoutLogFile** par : `\\?\%home%\LogFiles\stdout`.
 1. Sélectionnez **Enregistrer** pour enregistrer le fichier *web.config* mis à jour.
 1. Adressez une requête à l’application.
-1. Revenez au Portail Azure. Sélectionnez le panneau **Outils avancés** dans la zone **OUTILS DE DÉVELOPPEMENT**. Sélectionnez le **bouton &rarr; OK** . La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+1. Revenez au portail Azure. Sélectionnez le panneau **Outils avancés** dans la zone **OUTILS DE DÉVELOPPEMENT**. Sélectionnez le **bouton &rarr; OK** . La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
 1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
 1. Sélectionnez le dossier **LogFiles**.
 1. Inspectez la colonne **Modifié** et sélectionnez l’icône en forme de crayon pour modifier le journal stdout avec la date de dernière modification.

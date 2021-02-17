@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 44cef0c1491cc609dd9b821910014ec88ecaad81
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552031"
+---
 ::: moniker range=">= aspnetcore-3.0"
 
 <a name="dc"></a>
@@ -14,7 +34,7 @@ Le code précédent crée une propriété `DbSet` pour le jeu d’entités. Dans
 
 ### <a name="add-a-database-connection-string"></a>Ajouter une chaîne de connexion de base de données
 
-Ajoutez une chaîne de connexion au *appsettings.jssur* le fichier :
+Ajoutez une chaîne de connexion au *appsettings.json* fichier :
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
 
@@ -53,7 +73,7 @@ Le code précédent crée une propriété `DbSet` pour le jeu d’entités. Dans
 
 ### <a name="add-a-database-connection-string"></a>Ajouter une chaîne de connexion de base de données
 
-Ajoutez une chaîne de connexion au *appsettings.jssur* le fichier :
+Ajoutez une chaîne de connexion au *appsettings.json* fichier :
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 

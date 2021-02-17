@@ -1,4 +1,24 @@
-Bien qu’une application de serveur éblouissante soit prérendue, certaines actions, telles que l’appel en JavaScript, ne sont pas possibles, car une connexion avec le navigateur n’a pas été établie. Les composants peuvent avoir besoin d’être restitués différemment lorsqu’ils sont prérendus.
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: c152524e0acd3803bd3b8078f667cce01180e25d
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551495"
+---
+Pendant Blazor Server le prérendu d’une application, certaines actions, telles que l’appel de JavaScript, ne sont pas possibles, car une connexion avec le navigateur n’a pas été établie. Les composants peuvent avoir besoin d’être restitués différemment lorsqu’ils sont prérendus.
 
 Pour différer les appels Interop JavaScript jusqu’à ce que la connexion avec le navigateur soit établie, vous pouvez utiliser l' [événement du cycle de vie du composant OnAfterRenderAsync](xref:blazor/components/lifecycle#after-component-render). Cet événement est appelé uniquement une fois que l’application est entièrement rendue et que la connexion cliente est établie.
 
@@ -22,7 +42,7 @@ Pour différer les appels Interop JavaScript jusqu’à ce que la connexion avec
 }
 ```
 
-Pour l’exemple de code précédent, fournissez une `setElementText` fonction JavaScript à l’intérieur `<head>` de l’élément de `wwwroot/index.html` (éblouissante webassembly) ou `Pages/_Host.cshtml` (serveur éblouissant). La fonction est appelée avec <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> et ne retourne pas de valeur :
+Pour l’exemple de code précédent, fournissez une `setElementText` fonction JavaScript à l’intérieur `<head>` de l’élément de `wwwroot/index.html` ( Blazor WebAssembly ) ou `Pages/_Host.cshtml` ( Blazor Server ). La fonction est appelée avec <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> et ne retourne pas de valeur :
 
 ```html
 <script>
@@ -31,7 +51,7 @@ Pour l’exemple de code précédent, fournissez une `setElementText` fonction J
 ```
 
 > [!WARNING]
-> L’exemple précédent modifie directement le Document Object Model (DOM) à des fins de démonstration uniquement. La modification directe du DOM avec JavaScript n’est pas recommandée dans la plupart des scénarios, car JavaScript peut interférer avec le suivi des modifications de éblouissant.
+> L’exemple précédent modifie directement le Document Object Model (DOM) à des fins de démonstration uniquement. La modification directe du DOM avec JavaScript n’est pas recommandée dans la plupart des scénarios, car JavaScript peut interférer avec le Blazor suivi des modifications de.
 
 Le composant suivant montre comment utiliser l’interopérabilité JavaScript dans le cadre de la logique d’initialisation d’un composant d’une manière compatible avec le prérendu. Le composant montre qu’il est possible de déclencher une mise à jour de rendu depuis l’intérieur <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> . Le développeur doit éviter de créer une boucle infinie dans ce scénario.
 
@@ -70,7 +90,7 @@ Set value via JS interop call:
 }
 ```
 
-Pour l’exemple de code précédent, fournissez une `setElementText` fonction JavaScript à l’intérieur `<head>` de l’élément de `wwwroot/index.html` (éblouissante webassembly) ou `Pages/_Host.cshtml` (serveur éblouissant). La fonction est appelée avec <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> et retourne une valeur :
+Pour l’exemple de code précédent, fournissez une `setElementText` fonction JavaScript à l’intérieur `<head>` de l’élément de `wwwroot/index.html` ( Blazor WebAssembly ) ou `Pages/_Host.cshtml` ( Blazor Server ). La fonction est appelée avec <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> et retourne une valeur :
 
 ```html
 <script>
@@ -82,4 +102,4 @@ Pour l’exemple de code précédent, fournissez une `setElementText` fonction J
 ```
 
 > [!WARNING]
-> L’exemple précédent modifie directement le Document Object Model (DOM) à des fins de démonstration uniquement. La modification directe du DOM avec JavaScript n’est pas recommandée dans la plupart des scénarios, car JavaScript peut interférer avec le suivi des modifications de éblouissant.
+> L’exemple précédent modifie directement le Document Object Model (DOM) à des fins de démonstration uniquement. La modification directe du DOM avec JavaScript n’est pas recommandée dans la plupart des scénarios, car JavaScript peut interférer avec le Blazor suivi des modifications de.

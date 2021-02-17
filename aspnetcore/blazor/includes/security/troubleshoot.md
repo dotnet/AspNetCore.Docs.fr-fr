@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 4e7c0e9b0a164e0181af5d6baaedf0669c1c06aa
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551662"
+---
 ## <a name="troubleshoot"></a>Dépanner
 
 ::: moniker range=">= aspnetcore-5.0"
@@ -22,16 +42,16 @@
 
 ### <a name="cookies-and-site-data"></a>Cookies et données de site
 
-Les cookies et les données de site peuvent persister sur les mises à jour des applications et perturber les tests et le dépannage. Désactivez les éléments suivants lorsque vous apportez des modifications de code d’application, des modifications de compte d’utilisateur avec le fournisseur ou des modifications de configuration d’application de fournisseur :
+Cookieles s et les données de site peuvent être conservées entre les mises à jour d’application et interfèrent avec les tests et la résolution des problèmes. Désactivez les éléments suivants lorsque vous apportez des modifications de code d’application, des modifications de compte d’utilisateur avec le fournisseur ou des modifications de configuration d’application de fournisseur :
 
-* Cookies de connexion de l’utilisateur
-* Cookies de l’application
+* Connexion cookie de l’utilisateur
+* Application cookie s
 * Données de site mises en cache et stockées
 
-L’une des méthodes permettant d’empêcher les cookies en attente et les données de site d’interférer avec les tests et la résolution des problèmes consiste à :
+L’une des méthodes permettant d’empêcher les éléments en attente cookie et les données de site d’interférer avec les tests et la résolution des problèmes consiste à :
 
 * Configurer un navigateur
-  * Utilisez un navigateur pour le test que vous pouvez configurer pour supprimer tous les cookies et les données de site chaque fois que le navigateur est fermé.
+  * Utilisez un navigateur pour le test que vous pouvez configurer pour supprimer toutes les cookie données de site et chaque fois que le navigateur est fermé.
   * Assurez-vous que le navigateur est fermé manuellement ou par l’IDE pour toute modification apportée à l’application, à l’utilisateur de test ou à la configuration du fournisseur.
 * Utilisez une commande personnalisée pour ouvrir un navigateur en mode Incognito ou privé dans Visual Studio :
   * Ouvrez la boîte de dialogue **naviguer avec** à partir du bouton **exécuter** de Visual Studio.
@@ -51,7 +71,7 @@ L’une des méthodes permettant d’empêcher les cookies en attente et les don
 
 ### <a name="run-the-server-app"></a>Exécuter l’application serveur
 
-Lors du test et du dépannage d’une application éblouissante hébergée, assurez-vous que vous exécutez l’application à partir du **`Server`** projet. Par exemple, dans Visual Studio, vérifiez que le projet serveur est mis en surbrillance dans **Explorateur de solutions** avant de démarrer l’application avec l’une des approches suivantes :
+Lors du test et du dépannage d’une application hébergée, assurez- Blazor vous que vous exécutez l’application à partir du **`Server`** projet. Par exemple, dans Visual Studio, vérifiez que le projet serveur est mis en surbrillance dans **Explorateur de solutions** avant de démarrer l’application avec l’une des approches suivantes :
 
 * Sélectionnez le bouton **Run**.
 * Utilisez **débogage**  >  **Démarrer le débogage** à partir du menu.

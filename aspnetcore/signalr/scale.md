@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: d3e9cd23a55702bcf9b002dcce556428683afeca
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e70f3143159a1817e326a95b30e7369a5c9ab025
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052771"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564011"
 ---
-# <a name="aspnet-core-no-locsignalr-hosting-and-scaling"></a>SignalRHébergement et mise à l’échelle ASP.net Core
+# <a name="aspnet-core-signalr-hosting-and-scaling"></a>SignalRHébergement et mise à l’échelle ASP.net Core
 
 Par [Andrew Stanton-infirmière](https://twitter.com/anurse), [Brady Gaster](https://twitter.com/bradygaster)et [Tom Dykstra](https://github.com/tdykstra)
 
@@ -46,13 +46,13 @@ Pour obtenir des conseils sur la configuration de Azure App Service pour SignalR
 
 ## <a name="tcp-connection-resources"></a>Ressources de connexion TCP
 
-Le nombre de connexions TCP simultanées qu’un serveur Web peut prendre en charge est limité. Les clients HTTP standard utilisent des connexions *éphémères* . Ces connexions peuvent être fermées lorsque le client devient inactif et rouvert ultérieurement. En revanche, une SignalR connexion est *persistante* . SignalR les connexions restent ouvertes même lorsque le client devient inactif. Dans une application à trafic élevé qui dessert de nombreux clients, ces connexions persistantes peuvent entraîner l’atteinte du nombre maximal de connexions des serveurs.
+Le nombre de connexions TCP simultanées qu’un serveur Web peut prendre en charge est limité. Les clients HTTP standard utilisent des connexions *éphémères* . Ces connexions peuvent être fermées lorsque le client devient inactif et rouvert ultérieurement. En revanche, une SignalR connexion est *persistante*. SignalR les connexions restent ouvertes même lorsque le client devient inactif. Dans une application à trafic élevé qui dessert de nombreux clients, ces connexions persistantes peuvent entraîner l’atteinte du nombre maximal de connexions des serveurs.
 
 Les connexions persistantes consomment également de la mémoire supplémentaire pour effectuer le suivi de chaque connexion.
 
 L’utilisation intensive des ressources liées à la connexion par SignalR peut affecter les autres applications Web qui sont hébergées sur le même serveur. Lorsque SignalR ouvre et contient les dernières connexions TCP disponibles, les autres applications Web sur le même serveur n’ont pas non plus de connexions disponibles.
 
-Si un serveur est à court de connexions, vous verrez des erreurs de socket aléatoires et des erreurs de réinitialisation de la connexion. Exemple :
+Si un serveur est à court de connexions, vous verrez des erreurs de socket aléatoires et des erreurs de réinitialisation de la connexion. Par exemple :
 
 ```
 An attempt was made to access a socket in a way forbidden by its access permissions...
@@ -70,7 +70,7 @@ Une application qui utilise SignalR doit effectuer le suivi de toutes ses connex
 
 Les options permettant de résoudre ce problème sont [le SignalR service Azure](#azure-signalr-service) et le [fond de panier ReDim](#redis-backplane).
 
-## <a name="azure-no-locsignalr-service"></a>SignalRService Azure
+## <a name="azure-signalr-service"></a>SignalRService Azure
 
 Le SignalR service Azure est un proxy plutôt qu’un fond de panier. Chaque fois qu’un client initie une connexion au serveur, le client est redirigé pour se connecter au service. Ce processus est illustré dans le diagramme suivant :
 
@@ -201,10 +201,11 @@ Pour plus d’informations sur l’équilibrage de charge et les sessions réman
 Pour plus d’informations sur les ASP.NET Core avec nginx, consultez l’article suivant :
 * <xref:host-and-deploy/linux-nginx>
 
-## <a name="third-party-no-locsignalr-backplane-providers"></a>SignalRFournisseurs de fond de panier tiers
+## <a name="third-party-signalr-backplane-providers"></a>SignalRFournisseurs de fond de panier tiers
 
 * [NCache](https://www.alachisoft.com/ncache/asp-net-core-signalr.html)
 * [Orléans](https://github.com/OrleansContrib/SignalR.Orleans)
+* [Rebus](https://github.com/rebus-org/Rebus.SignalR)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

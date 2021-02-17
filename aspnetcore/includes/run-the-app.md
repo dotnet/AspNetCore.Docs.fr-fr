@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: d05b0f327eb1670847125e6a73ef7277ebd069b5
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552653"
+---
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Appuyez sur Ctrl+F5 pour exécuter sans le débogueur.
