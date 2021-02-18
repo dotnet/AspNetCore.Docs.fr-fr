@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 8c9d0d9c24e0ce81925ccde463bcf085531b665e
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: fa1060ae1a046a40d55e9fef4a094aa9e51a18af
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024732"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101169"
 ---
-# <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a>Partie 4 de la série de didacticiels sur les Razor pages
+# <a name="part-4-of-tutorial-series-on-razor-pages"></a>Partie 4 de la série de didacticiels sur les Razor pages
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://twitter.com/joeaudette)
 
@@ -142,14 +142,14 @@ Dans le code précédent, la `Main` méthode a été modifiée pour effectuer le
 
 * Obtenir une instance de contexte de base de données à partir du conteneur d’injection de dépendance.
 * Appelez la `seedData.Initialize` méthode, en lui transmettant l’instance de contexte de base de données.
-* Supprimer le contexte une fois la méthode seed terminée. L' [instruction using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garantit que le contexte est supprimé.
+* Supprimer le contexte une fois la méthode seed terminée. L' [instruction using](/dotnet/csharp/language-reference/keywords/using-statement) garantit que le contexte est supprimé.
 
 L’exception suivante se produit lorsque `Update-Database` n’a pas été exécuté :
 
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
 
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a>Test de l'application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -296,14 +296,14 @@ Dans le code précédent, la `Main` méthode a été modifiée pour effectuer le
 
 * Obtenir une instance de contexte de base de données à partir du conteneur d’injection de dépendance.
 * Appelez la `seedData.Initialize` méthode, en lui transmettant l’instance de contexte de base de données.
-* Supprimer le contexte une fois la méthode seed terminée. L' [instruction using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garantit que le contexte est supprimé.
+* Supprimer le contexte une fois la méthode seed terminée. L' [instruction using](/dotnet/csharp/language-reference/keywords/using-statement) garantit que le contexte est supprimé.
 
 L’exception suivante se produit lorsque `Update-Database` n’a pas été exécuté :
 
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
 
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a>Test de l'application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -440,14 +440,14 @@ Dans le code précédent, la `Main` méthode a été modifiée pour effectuer le
 
 * Obtenir une instance de contexte de base de données à partir du conteneur d’injection de dépendance.
 * Appelez la `seedData.Initialize` méthode, en lui transmettant l’instance de contexte de base de données.
-* Supprimer le contexte une fois la méthode seed terminée. L' [instruction using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garantit que le contexte est supprimé.
+* Supprimer le contexte une fois la méthode seed terminée. L' [instruction using](/dotnet/csharp/language-reference/keywords/using-statement) garantit que le contexte est supprimé.
 
 Une application de production n’appelle pas `Database.Migrate`. Il est ajouté au code précédent afin d’éviter l’exception suivante quand `Update-Database` n’a pas été exécutée :
 
 SqlException : impossible d’ouvrir la base de données « Razor PagesMovieContext-21 » demandée par la connexion. La connexion a échoué.
 Échec de la connexion de l’utilisateur 'nom utilisateur'.
 
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a>Test de l'application
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

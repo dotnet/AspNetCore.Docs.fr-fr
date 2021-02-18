@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: e4cf10d09c1629afb298aef0c2b86ad3bf7b646c
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: d2f3e9dc7445b59c677f917bbd6c466b5037390c
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057367"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101195"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>Fournisseurs de stockage de clés dans ASP.NET Core
 
@@ -59,7 +59,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Si l’application Web s’exécute en tant que service Azure, la chaîne de connexion peut être utilisée pour l’authentification auprès du stockage Azure à l’aide d' [Azure. Storage. blob](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient).
+Si l’application Web s’exécute en tant que service Azure, la chaîne de connexion peut être utilisée pour l’authentification auprès du stockage Azure à l’aide d' [Azure. Storage. blob](/dotnet/api/azure.storage.blobs.blobcontainerclient).
 
 ```csharp
 string connectionString = "<connection_string>";
@@ -166,7 +166,7 @@ Le paramètre générique, `TContext` , doit hériter de [DbContext](/dotnet/api
 
 Créez la table `DataProtectionKeys`.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez les commandes suivantes dans la fenêtre **console du gestionnaire de package** (PMC) :
 

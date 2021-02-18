@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 2961fcaa8bbb93527eb80f5aa7b18ef04761fb50
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 852c26f89b229d89797d9ce6fce2983319defe9c
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97486159"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101144"
 ---
-# <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Partie 7, ajouter un nouveau champ à une Razor page dans ASP.net Core
+# <a name="part-7-add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Partie 7, ajouter un nouveau champ à une Razor page dans ASP.net Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -41,7 +41,7 @@ Dans cette section, Migrations [Entity Framework](/ef/core/get-started/aspnetcor
 
 Quand vous utilisez EF Code First pour créer automatiquement une base de données, Code First :
 
-* Ajoute une [`__EFMigrationsHistory`](https://docs.microsoft.com/ef/core/managing-schemas/migrations/history-table) table à la base de données pour déterminer si le schéma de la base de données est synchronisé avec les classes de modèle à partir desquelles il a été généré.
+* Ajoute une [`__EFMigrationsHistory`](/ef/core/managing-schemas/migrations/history-table) table à la base de données pour déterminer si le schéma de la base de données est synchronisé avec les classes de modèle à partir desquelles il a été généré.
 * Si les classes de modèle ne sont pas synchronisées avec la base de données, EF lève une exception.
 
 Vérification automatique que le schéma et le modèle sont synchronisés facilite la recherche de problèmes de code de base de données incohérents.
@@ -182,7 +182,7 @@ Dans cette section, Migrations [Entity Framework](/ef/core/get-started/aspnetcor
 
 Quand vous utilisez EF Code First pour créer automatiquement une base de données, Code First :
 
-* Ajoute une [`__EFMigrationsHistory`](https://docs.microsoft.com/ef/core/managing-schemas/migrations/history-table) table à la base de données pour déterminer si le schéma de la base de données est synchronisé avec les classes de modèle à partir desquelles il a été généré.
+* Ajoute une [`__EFMigrationsHistory`](/ef/core/managing-schemas/migrations/history-table) table à la base de données pour déterminer si le schéma de la base de données est synchronisé avec les classes de modèle à partir desquelles il a été généré.
 * Si les classes de modèle ne sont pas synchronisées avec la base de données, EF lève une exception.
 
 Vérification automatique que le schéma et le modèle sont synchronisés facilite la recherche de problèmes de code de base de données incohérents.
@@ -323,7 +323,7 @@ Dans cette section, Migrations [Entity Framework](/ef/core/get-started/aspnetcor
 
 Quand vous utilisez EF Code First pour créer automatiquement une base de données, Code First :
 
-* Ajoute une [`__EFMigrationsHistory`](https://docs.microsoft.com/ef/core/managing-schemas/migrations/history-table) table à la base de données pour déterminer si le schéma de la base de données est synchronisé avec les classes de modèle à partir desquelles il a été généré.
+* Ajoute une [`__EFMigrationsHistory`](/ef/core/managing-schemas/migrations/history-table) table à la base de données pour déterminer si le schéma de la base de données est synchronisé avec les classes de modèle à partir desquelles il a été généré.
 * Si les classes de modèle ne sont pas synchronisées avec la base de données, EF lève une exception.
 
 Vérification automatique que le schéma et le modèle sont synchronisés facilite la recherche de problèmes de code de base de données incohérents.
