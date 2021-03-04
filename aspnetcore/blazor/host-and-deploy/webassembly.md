@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 04eba2e004e920e9ca799b316781857f0b0b4ca3
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: c50cae5231abba7cf2a7aaf5806cab33c6434ec9
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100279784"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109687"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Héberger et déployer des ASP.NET Core Blazor WebAssembly
 
@@ -53,7 +53,13 @@ Blazor s’appuie sur l’hôte pour servir les fichiers compressés appropriés
   * Obtenez le décodeur Brotli JavaScript à partir du [référentiel GitHub Google/Brotli](https://github.com/google/brotli). Le fichier du décodeur est nommé `decode.js` et se trouve dans le [ `js` dossier](https://github.com/google/brotli/tree/master/js)du référentiel.
   
     > [!NOTE]
-    > Une régression est présente dans la version minimisés du `decode.js` script ( `decode.min.js` ) dans le [référentiel GitHub Google/brotli](https://github.com/google/brotli). Réduire le script par vous-même (par exemple, consultez [regroupement et minimisation BuildBundlerMinifier](xref:client-side/bundling-and-minification#configure-bundling-and-minification)) ou utilisez le [package NPM](https://www.npmjs.com/package/brotli) jusqu’à ce que le problème [TypeError dans decode.min.js (Google/brotli #881)](https://github.com/google/brotli/issues/881) soit résolu. L’exemple de code dans cette section utilise la version **unminified** du script.
+    > Une régression est présente dans la version minimisés du `decode.js` script ( `decode.min.js` ) dans le [référentiel GitHub Google/brotli](https://github.com/google/brotli). Jusqu’à ce que le problème [TypeError dans decode.min.js (Google/brotli #881)](https://github.com/google/brotli/issues/881) soit résolu, adoptez l’une des approches suivantes :
+    > 
+    > * Utilisez temporairement la version unminified du script.
+    > * Réduire automatiquement le script au moment de la génération avec un outil de minimisation tiers compatible avec ASP.NET Core.
+    > * Utilisez le [package NPM](https://www.npmjs.com/package/brotli).
+    > 
+    > L’exemple de code dans cette section utilise la version **unminified** du script ( `decode.js` ).
 
   * Mettez à jour l’application pour utiliser le décodeur. Remplacez le balisage dans la `<body>` balise de fermeture par `wwwroot/index.html` ce qui suit :
   

@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 47bb9b96bd5565a3a67f3cbdf9a4b6bc1f987447
-ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
+ms.openlocfilehash: 1a13fe31859b9ed41edc746ba450f552bc07f344
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99975259"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110207"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Partie 2 : ajouter un contrôleur à une application ASP.NET Core MVC
 
@@ -44,8 +44,8 @@ Les applications basées sur MVC contiennent :
 
 Dans une application MVC, la vue affiche uniquement des informations. Le contrôleur gère et répond aux entrées et aux interactions de l’utilisateur. Par exemple, le contrôleur gère les segments d’URL et les valeurs de chaîne de requête, et transmet ces valeurs au modèle. Le modèle peut utiliser ces valeurs pour interroger la base de données. Par exemple :
 
-* `Https://localhost:5001/Home/Privacy`: spécifie le `Home`  contrôleur et l' `Privacy` action.
-* `Https://localhost:5001/Movies/Edit/5`: demande de modifier le film avec ID = 5 à l’aide du `Movies` contrôleur et de l' `Edit` action, qui sont détaillées plus loin dans le didacticiel.
+* `https://localhost:5001/Home/Privacy`: spécifie le `Home` contrôleur et l' `Privacy` action.
+* `https://localhost:5001/Movies/Edit/5`: demande de modifier le film avec ID = 5 à l’aide du `Movies` contrôleur et de l' `Edit` action, qui sont détaillées plus loin dans le didacticiel.
 
 Les données d’itinéraire sont expliquées plus loin dans le didacticiel.
 
@@ -53,7 +53,7 @@ Le modèle architectural MVC sépare une application en trois groupes principaux
 
 Ces concepts sont présentés et présentés dans cette série de didacticiels lors de la création d’une application de film. Le projet MVC contient des dossiers pour les *contrôleurs* et pour les *vues*.
 
-## <a name="add-a-controller"></a>Ajouter un contrôleur
+## <a name="add-a-controller"></a>Ajout d'un contrôleur
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -196,7 +196,7 @@ Le modèle MVC vous permet de créer des applications qui séparent les différe
 
 Nous présentons ces concepts dans cette série de didacticiels et nous vous montrons comment les utiliser pour créer une application de gestion de films. Le projet MVC contient des dossiers pour les *contrôleurs* et pour les *vues*.
 
-## <a name="add-a-controller"></a>Ajouter un contrôleur
+## <a name="add-a-controller"></a>Ajout d'un contrôleur
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

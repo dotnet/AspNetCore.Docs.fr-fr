@@ -462,6 +462,8 @@
               href: blazor/forms-validation.md#built-in-forms-components
             - name: InputTextArea
               href: blazor/forms-validation.md#built-in-forms-components
+            - name: LayoutView
+              href: blazor/layouts.md#apply-a-layout-to-arbitrary-content-layoutview-component
             - name: MainLayout
               href: blazor/layouts.md#mainlayout-component
             - name: NavLink
@@ -1171,7 +1173,7 @@
     - name: Protection des données
       displayName: encryption
       items:
-        - name: Vue d’ensemble
+        - name: Vue d'ensemble
           uid: security/data-protection/introduction
         - name: API de protection des données
           uid: security/data-protection/using-data-protection

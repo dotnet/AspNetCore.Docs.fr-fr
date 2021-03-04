@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 1f7c7db857090ff0a174d37b86e1265bab40b4fd
-ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
+ms.openlocfilehash: 43b243c946384be55019b39bf558182e1e95de90
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100564083"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110194"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Création d’une API web avec ASP.NET Core
 
@@ -45,16 +45,16 @@ Dans ce tutoriel, vous allez apprendre à :
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données.
 
-## <a name="overview"></a>Vue d’ensemble
+## <a name="overview"></a>Vue d'ensemble
 
 Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obtenir toutes les tâches | None | Tableau de tâches|
-|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | None | Tâche|
+|`GET /api/TodoItems` | Obtenir toutes les tâches | Aucun | Tableau de tâches|
+|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | Aucun | Tâche|
 |`POST /api/TodoItems` | Ajouter un nouvel élément | Tâche | Tâche |
-|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | None |
+|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -268,8 +268,8 @@ Le *contexte de base de données* est la classe principale qui coordonne les fon
 ### <a name="add-nuget-packages"></a>Ajouter des packages NuGet
 
 * Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Gérer les packages NuGet pour la solution**.
-* Sélectionnez l’onglet **Parcourir** , puis entrez **Microsoft. EntityFrameworkCore. InMemory** dans la zone de recherche.
-* Dans le volet gauche, sélectionnez **Microsoft. EntityFrameworkCore. InMemory** .
+* Sélectionnez l’onglet **Parcourir** , puis entrez `Microsoft.EntityFrameworkCore.InMemory` dans la zone de recherche.
+* Sélectionnez `Microsoft.EntityFrameworkCore.InMemory` dans le volet gauche.
 * Cochez la case **Projet** dans le volet droit, puis sélectionnez **Installer**.
 
 ![Gestionnaire de package NuGet](first-web-api/_static/5/vsNuGet.png)
@@ -323,8 +323,8 @@ Exécutez les commandes suivantes :
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet tool install -g dotnet-aspnet-codegenerator
-dotnet tool update -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
@@ -564,16 +564,16 @@ Dans ce tutoriel, vous allez apprendre à :
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données.
 
-## <a name="overview"></a>Vue d’ensemble
+## <a name="overview"></a>Vue d'ensemble
 
 Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obtenir toutes les tâches | None | Tableau de tâches|
-|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | None | Tâche|
+|`GET /api/TodoItems` | Obtenir toutes les tâches | Aucun | Tableau de tâches|
+|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | Aucun | Tâche|
 |`POST /api/TodoItems` | Ajouter un nouvel élément | Tâche | Tâche |
-|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | None |
+|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -1058,10 +1058,10 @@ Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obtenir toutes les tâches | None | Tableau de tâches|
-|GET /api/TodoItems/{id} | Obtenir un élément par ID | None | Tâche|
+|GET /api/TodoItems | Obtenir toutes les tâches | Aucun | Tableau de tâches|
+|GET /api/TodoItems/{id} | Obtenir un élément par ID | Aucun | Tâche|
 |POST /api/TodoItems | Ajouter un nouvel élément | Tâche | Tâche |
-|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | None |
+|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
 |SUPPRIMER/api/TodoItems/{id} &nbsp;&nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -1501,3 +1501,4 @@ Pour plus d’informations, consultez les ressources suivantes :
 * <xref:host-and-deploy/azure-apps/index>
 * <xref:host-and-deploy/index>
 * [Version YouTube de ce tutoriel](https://www.youtube.com/watch?v=TTkhEyGBfAk)
+* [Microsoft Learn : créer une API Web avec ASP.NET Core](/learn/modules/build-web-api-aspnet-core/)

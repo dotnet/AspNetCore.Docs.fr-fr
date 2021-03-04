@@ -19,14 +19,14 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: f1aa388015bd540a6fda263eac53753ada63bf79
-ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
+ms.openlocfilehash: e06c73edfc999053e0aa37f05d984a2b428f69a9
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94673989"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109934"
 ---
-# <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>Utiliser des SameSite cookie dans ASP.net Core
+# <a name="work-with-samesite-cookies-in-aspnet-core"></a>Utiliser des SameSite cookie dans ASP.net Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -42,13 +42,13 @@ Le `SameSite=Lax` paramètre fonctionne pour la plupart des applications cookie 
 
 Chaque composant ASP.NET Core qui émet des cookie s doit décider si SameSite est approprié.
 
-## <a name="samesite-and-no-locidentity"></a>SameSite et Identity
+## <a name="samesite-and-identity"></a>SameSite et Identity
 
 [!INCLUDE[](~/includes/SameSiteIdentity.md)]
 
 ## <a name="samesite-test-sample-code"></a>Exemple de code de test SameSite
 
- ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
+::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
 
 Les exemples suivants peuvent être téléchargés et testés :
 
@@ -62,7 +62,6 @@ Les exemples suivants peuvent être téléchargés et testés :
 ::: moniker range=">= aspnetcore-3.0"
 
 L’exemple suivant peut être téléchargé et testé :
-
 
 | Exemple               | Document |
 | ----------------- | ------------ |
@@ -101,7 +100,7 @@ La valeur SameSite par défaut pour l’authentification par formulaire et l’�
 
 Tous les composants ASP.NET Core qui émettent des cookie s remplacent les valeurs par défaut précédentes par les paramètres appropriés pour leurs scénarios. Les valeurs par défaut substituées ne sont pas modifiées.
 
-| Composant | cookie | Par défaut |
+| Composant | cookie | Default |
 | ------------- | ------------- |
 | <xref:Microsoft.AspNetCore.Http.CookieBuilder> | <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite> | `Unspecified` |
 | <xref:Microsoft.AspNetCore.Http.HttpContext.Session>  | [SessionOptions.Cookie](xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie) |`Lax` |
@@ -227,7 +226,7 @@ Edge prend en charge l’ancien standard SameSite. Edge version 44 ne présente 
 
 Les indicateurs SameSite sont définis sur la `edge://flags/#same-site-by-default-cookies` page. Aucun problème de compatibilité n’a été découvert avec le chrome Edge.
 
-### <a name="test-with-no-locelectron"></a>Tester avec Electron
+### <a name="test-with-electron"></a>Tester avec Electron
 
 Les versions de Electron incluent des versions antérieures de chrome. Par exemple, la version de Electron utilisée par teams est chrome 66, qui présente l’ancien comportement. Vous devez effectuer vos propres tests de compatibilité avec la version de Electron utilisée par votre produit. Consultez [prise en charge des navigateurs plus anciens](#sob) dans la section suivante.
 

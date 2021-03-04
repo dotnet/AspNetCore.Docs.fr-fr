@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 9214fa10a2bf7d53a4cb12263a3fa69bded84b29
-ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.openlocfilehash: 0421fd0509fbd89e4635dc7d80a584508627b52c
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100536231"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109778"
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>ASP.NET Core de débogage Blazor WebAssembly
 
@@ -58,6 +58,13 @@ Le débogage requiert l’un des navigateurs suivants :
 * Microsoft Edge (version 80 ou ultérieure)
 
 Assurez-vous que les pare-feu ou les proxys ne bloquent pas la communication avec le proxy de débogage ( `NodeJS` processus). Pour plus d’informations, consultez la section [configuration du pare-feu](#firewall-configuration) .
+
+Visual Studio Code utilisateurs requièrent les extensions suivantes :
+
+* [C# pour l’extension de Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+* [ Blazor Extension de débogage WASM](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.blazorwasm-companion) (lors de l’utilisation de C# pour la version d’extension de Visual Studio code 1.23.9 ou version ultérieure)
+
+Après avoir ouvert un projet dans VS Code, vous pouvez recevoir une notification indiquant qu’une configuration supplémentaire est requise pour activer le débogage. Si nécessaire, installez les extensions requises à partir du Visual Studio Marketplace. Pour inspecter les extensions installées, ouvrez **Afficher** les  >  **Extensions** à partir de la barre de menus ou sélectionnez l’icône **Extensions** dans l’encadré **activité** .
 
 Visual Studio pour Mac nécessite la version 8,8 (Build 1532) ou version ultérieure :
 
@@ -173,7 +180,8 @@ Pour plus d’informations sur la configuration des ressources VS Code dans le `
    Si vous recevez la notification :
 
    * Vérifiez que la dernière [extension C# pour Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) est installée. Pour inspecter les extensions installées, ouvrez **Afficher** les  >  **Extensions** à partir de la barre de menus ou sélectionnez l’icône **Extensions** dans l’encadré **activité** .
-   * Confirmez que le débogage de l’aperçu JavaScript est activé. Ouvrez les paramètres à partir de la barre de menus (paramètres préférences de **fichiers**  >    >  ). Recherchez à l’aide des mots clés `debug preview` . Dans les résultats de la recherche, vérifiez que la case à cocher **Déboguer > JavaScript : utiliser l’aperçu** est activée. Si l’option permettant d’activer le débogage de l’aperçu n’est pas présente, effectuez une mise à niveau vers la dernière version de VS Code ou installez l' [extension de débogueur JavaScript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) (VS Code versions 1,46 ou antérieures).
+   * Lorsque vous utilisez [C# pour la version d’extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) **1.23.9 ou ultérieure**, vérifiez que la dernière extension Visual Studio code de [ Blazor débogage WASM](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.blazorwasm-companion) est installée. Pour inspecter les extensions installées, ouvrez **Afficher** les  >  **Extensions** à partir de la barre de menus ou sélectionnez l’icône **Extensions** dans l’encadré **activité** .
+   * Confirmez que le débogage de l’aperçu JavaScript est activé. Ouvrez les paramètres à partir de la barre de menus (paramètres préférences de **fichiers**  >    >  ). Recherchez à l’aide des mots clés `debug preview` . Dans les résultats de la recherche, définissez ou confirmez que la case à cocher **Déboguer > JavaScript : utiliser l’aperçu** est activée. Si l’option permettant d’activer le débogage de l’aperçu n’est pas présente, effectuez une mise à niveau vers la dernière version de VS Code ou installez l' [extension de débogueur JavaScript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) (VS Code versions 1,46 ou antérieures).
    * Rechargez la fenêtre.
 
 1. Démarrez le débogage à l’aide du raccourci clavier <kbd>F5</kbd> ou de l’élément de menu.

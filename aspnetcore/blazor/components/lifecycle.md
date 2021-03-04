@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 03a49c827a1f70e6b721adf293857bb33475ed36
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 6e9d2c3180fb9e4c3e5ccc0b6d8e17183f78d698
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107075"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109843"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>BlazorCycle de vie ASP.net Core
 
@@ -36,7 +36,7 @@ Les diagrammes suivants illustrent le Blazor cycle de vie. Les méthodes de cycl
 
 1. Si le composant est rendu pour la première fois sur une demande :
    * Créez l’instance du composant.
-   * Effectuez l’injection de propriété. Exécutez [`SetParametersAsync`](#before-parameters-are-set) .
+   * Effectuez l’injection de propriété. Exécutez [`SetParametersAsync`](#before-parameters-are-set).
    * Appelez [`OnInitialized{Async}`](#component-initialization-methods) . Si un <xref:System.Threading.Tasks.Task> est retourné, <xref:System.Threading.Tasks.Task> est attendu et le composant est rendu. Si un <xref:System.Threading.Tasks.Task> n’est pas retourné, le composant est rendu.
 1. Appelez [`OnParametersSet{Async}`](#after-parameters-are-set) et affichez le composant. Si un <xref:System.Threading.Tasks.Task> est retourné à partir de `OnParametersSetAsync` , <xref:System.Threading.Tasks.Task> est attendu, puis le composant est restitué à un rendu.
 
@@ -253,11 +253,21 @@ Dans le `FetchData` composant des Blazor modèles, <xref:Microsoft.AspNetCore.Co
 
 `Pages/FetchData.razor` dans le Blazor Server modèle :
 
-[!code-razor[](lifecycle/samples_snapshot/FetchData.razor?highlight=9,21,25)]
+::: moniker range=">= aspnetcore-5.0"
 
-## <a name="handle-errors"></a>Gérer les erreurs
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_Server/Pages/components-lifecycle/FetchData.razor?name=snippet&highlight=9,21,25)]
 
-Pour plus d’informations sur la gestion des erreurs lors de l’exécution de la méthode de cycle de vie, consultez <xref:blazor/fundamentals/handle-errors#lifecycle-methods> .
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_Server/Pages/components-lifecycle/FetchData.razor?name=snippet&highlight=9,21,25)]
+
+::: moniker-end
+
+## <a name="handle-errors"></a>des erreurs
+
+Pour plus d’informations sur la gestion des erreurs lors de l’exécution de la méthode de cycle de vie, consultez <xref:blazor/fundamentals/handle-errors> .
 
 ## <a name="stateful-reconnection-after-prerendering"></a>Reconnexion avec état après le prérendu
 
@@ -395,11 +405,31 @@ Annule l’abonnement des gestionnaires d’événements des événements .NET. 
 
 * Approche de champ privé et lambda
 
-  [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-1.razor?highlight=23,28)]
+  ::: moniker range=">= aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal1.razor?name=snippet&highlight=24,29)]
+
+  ::: moniker-end
+
+  ::: moniker range="< aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal1.razor?name=snippet&highlight=24,29)]
+
+  ::: moniker-end
 
 * Approche de la méthode privée
 
-  [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
+  ::: moniker range=">= aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal2.razor?name=snippet&highlight=16,26)]
+
+  ::: moniker-end
+
+  ::: moniker range="< aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal2.razor?name=snippet&highlight=16,26)]
+
+  ::: moniker-end
 
 Lorsque des fonctions, des méthodes ou des expressions [anonymes](/dotnet/csharp/programming-guide/statements-expressions-operators/anonymous-functions)sont utilisées, il n’est pas nécessaire d’implémenter <xref:System.IDisposable> et de désabonner des délégués. Toutefois, l’échec de l’annulation de l’abonnement à un délégué est un problème **lorsque l’objet qui expose l’événement indique la durée de vie du composant qui inscrit le délégué**. Dans ce cas, une fuite de mémoire est due au fait que le délégué inscrit conserve l’objet d’origine actif. Par conséquent, utilisez uniquement les approches suivantes lorsque vous savez que le délégué d’événement s’en supprime rapidement. En cas de doute sur la durée de vie des objets qui nécessitent une suppression, abonnez une méthode déléguée et supprimez correctement le délégué comme le montrent les exemples précédents.
 
