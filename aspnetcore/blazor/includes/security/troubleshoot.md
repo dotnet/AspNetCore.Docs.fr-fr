@@ -11,18 +11,47 @@ no-loc:
 - Let's Encrypt
 - Razor
 - SignalR
-ms.openlocfilehash: 4e7c0e9b0a164e0181af5d6baaedf0669c1c06aa
-ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.openlocfilehash: eefd16dca126c9bce1efa2cdc90d4201bac09b91
+ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551662"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102193659"
 ---
 ## <a name="troubleshoot"></a>Dépanner
 
-::: moniker range=">= aspnetcore-5.0"
-
 ### <a name="common-errors"></a>Erreurs courantes
+
+* Inconfiguration de l’application ou du Identity fournisseur (IP)
+
+  Les erreurs les plus courantes sont provoquées par une configuration incorrecte. Voici quelques exemples :
+  
+  * Selon les exigences du scénario, une autorité, une instance, un ID de locataire, un domaine de locataire, un ID de client ou un URI de redirection manquant ou incorrect empêche une application d’authentifier des clients.
+  * Une étendue de jeton d’accès incorrecte empêche les clients d’accéder aux points de terminaison de l’API Web du serveur.
+  * Les autorisations d’API serveur incorrectes ou manquantes empêchent les clients d’accéder aux points de terminaison de l’API Web du serveur.
+  
+  Les sections de configuration de cet article montrent des exemples de configuration correcte. Vérifiez attentivement chaque section de l’article à la recherche de la configuration de l’application et de l’adresse IP.
+  
+  Si la configuration semble correcte :
+  
+  * Analyser les journaux des applications.
+  * Examinez le trafic réseau entre l’application cliente et l’application IP ou serveur avec les outils de développement du navigateur. Souvent, un message d’erreur exact ou un message indiquant ce qui est à l’origine du problème est renvoyé au client par l’application IP ou serveur après avoir effectué une demande. Des conseils sur les outils de développement sont disponibles dans les articles suivants :
+
+    * [Google Chrome](https://developers.google.com/web/tools/chrome-devtools/network) (documentation Google)
+    * [Microsoft Edge](/microsoft-edge/devtools-guide-chromium/network/)
+    * [Mozilla Firefox](https://developer.mozilla.org/docs/Tools/Network_Monitor) (documentation Mozilla)
+
+  * Décoder le contenu d’un JSON Web Token (JWT) utilisé pour l’authentification d’un client ou l’accès à une API Web de serveur, en fonction de l’endroit où le problème se produit. Pour plus d’informations, consultez [inspecter le contenu d’un JSON Web Token (JWT)](#inspect-the-content-of-a-json-web-token-jwt).
+  
+  L’équipe documentation répond aux commentaires sur les documents et aux bogues dans les articles (en ouvrant un problème de la section commentaires sur **cette page** ), mais ne peut pas fournir de support technique. Plusieurs forums de support publics sont disponibles pour vous aider à résoudre les problèmes d’une application. Nous recommandons ce qui suit :
+  
+  * [Stack Overflow (étiquette : `blazor` )](https://stackoverflow.com/questions/tagged/blazor)
+  * [Équipe de marge ASP.NET Core](http://tattoocoder.com/aspnet-slack-sign-up/)
+  * [Blazor Gitter](https://gitter.im/aspnet/Blazor)
+  
+  Pour les rapports de bogues d’infrastructure reproductibles non-sécurité, non sensibles et non confidentiels, [ouvrez un problème avec l’unité de produit ASP.net Core](https://github.com/dotnet/aspnetcore/issues). N’ouvrez pas de problème avec l’unité de produit tant que vous n’avez pas soigneusement étudié la cause d’un problème et que vous ne pouvez pas le résoudre par vous-même et avec l’aide de la communauté sur un forum de support public. L’unité de produit n’est pas en mesure de dépanner des applications individuelles endommagées en raison d’une configuration simple ou de cas d’utilisation impliquant des services tiers. Si un rapport est sensible ou confidentiel par nature ou décrit une faille de sécurité potentielle dans le produit que des attaquants peuvent exploiter, consultez Rapports sur les [problèmes de sécurité et les bogues (référentiel GitHub dotnet/aspnetcore)](https://github.com/dotnet/aspnetcore/blob/main/CONTRIBUTING.md#reporting-security-issues-and-bugs).
+
+::: moniker range=">= aspnetcore-5.0"
 
 * Client non autorisé pour AAD
 
@@ -69,6 +98,18 @@ L’une des méthodes permettant d’empêcher les éléments en attente cookie 
   * Pour éviter d’avoir à sélectionner le profil de navigateur pour chaque itération de test avec une application, définissez le profil par défaut avec le bouton **définir comme valeur par défaut** .
   * Assurez-vous que le navigateur est fermé par l’IDE pour toute modification apportée à l’application, à l’utilisateur de test ou à la configuration du fournisseur.
 
+### <a name="app-upgrades"></a>Mise à niveau d’applications
+
+Une application fonctionnelle peut échouer immédiatement après la mise à niveau de la kit SDK .NET Core sur l’ordinateur de développement ou la modification des versions de package dans l’application. Dans certains cas, les packages incohérents peuvent bloquer une application quand vous effectuez des mises à niveau majeures. Vous pouvez résoudre la plupart de ces problèmes en suivant les instructions suivantes :
+
+1. Effacez les caches de package NuGet du système local en exécutant [`dotnet nuget locals all --clear`](/dotnet/core/tools/dotnet-nuget-locals) à partir d’une interface de commande.
+1. Supprimez les `bin` dossiers et du projet `obj` .
+1. Restaurez et regénérez le projet.
+1. Supprimez tous les fichiers du dossier de déploiement sur le serveur avant de redéployer l’application.
+
+> [!NOTE]
+> L’utilisation de versions de package incompatibles avec le Framework cible de l’application n’est pas prise en charge. Pour plus d’informations sur un package, utilisez la [galerie NuGet](https://www.nuget.org) ou l' [Explorateur de packages FuGet](https://www.fuget.org).
+
 ### <a name="run-the-server-app"></a>Exécuter l’application serveur
 
 Lors du test et du dépannage d’une application hébergée, assurez- Blazor vous que vous exécutez l’application à partir du **`Server`** projet. Par exemple, dans Visual Studio, vérifiez que le projet serveur est mis en surbrillance dans **Explorateur de solutions** avant de démarrer l’application avec l’une des approches suivantes :
@@ -80,3 +121,29 @@ Lors du test et du dépannage d’une application hébergée, assurez- Blazor vo
 ### <a name="inspect-the-content-of-a-json-web-token-jwt"></a>Inspecter le contenu d’un JSON Web Token (JWT)
 
 Pour décoder un JSON Web Token (JWT), utilisez l’outil [JWT.ms](https://jwt.ms/) de Microsoft. Les valeurs de l’interface utilisateur ne laissent jamais votre navigateur.
+
+Exemple de JWT encodé (raccourci pour l’affichage) :
+
+> eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1j ... bQdHBHGcQQRbW7Wmo6SWYG4V_bU55Ug_PW4pLPr20tTS8Ct7_uwy9DWrzCMzpD-EiwT5IjXwlGX3IXVjHIlX50IVIydBoPQtadvT7saKo1G5Jmutgq41o-dmz6-yBMKV2_nXA25Q
+
+Exemple JWT décodé par l’outil pour une application qui s’authentifie auprès d’Azure AAD B2C :
+
+```json
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "X5eXk4xyojNFum1kl2Ytv8dlNP4-c57dO6QGTVBwaNk"
+}.{
+  "exp": 1610059429,
+  "nbf": 1610055829,
+  "ver": "1.0",
+  "iss": "https://mysiteb2c.b2clogin.com/5cc15ea8-a296-4aa3-97e4-226dcc9ad298/v2.0/",
+  "sub": "5ee963fb-24d6-4d72-a1b6-889c6e2c7438",
+  "aud": "70bde375-fce3-4b82-984a-b247d823a03f",
+  "nonce": "b2641f54-8dc4-42ca-97ea-7f12ff4af871",
+  "iat": 1610055829,
+  "auth_time": 1610055822,
+  "idp": "idp.com",
+  "tfp": "B2C_1_signupsignin"
+}.[Signature]
+```
