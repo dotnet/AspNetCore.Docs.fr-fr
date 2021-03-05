@@ -1173,7 +1173,7 @@
     - name: Protection des données
       displayName: encryption
       items:
-        - name: Vue d'ensemble
+        - name: Vue d’ensemble
           uid: security/data-protection/introduction
         - name: API de protection des données
           uid: security/data-protection/using-data-protection
@@ -1368,6 +1368,9 @@
       uid: fundamentals/middleware/extensibility-third-party-container
 - name: Migration
   items:
+    - name: '5,0 à 6,0'
+      displayName: 'migrate, migration'
+      uid: migration/50-to-60
     - name: 3.1 à 5.0
       displayName: 'migrate, migration'
       uid: migration/31-to-50

@@ -17,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/crud
-ms.openlocfilehash: 4a48fb094888d51aa6f881c82e4f20ffbc84c8e2
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c424f2a46fb62af6283ffa3a02c4134bbe35ffc9
+ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96901169"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102118926"
 ---
-# <a name="part-2-no-locrazor-pages-with-ef-core-in-aspnet-core---crud"></a>Partie 2, Razor pages avec EF Core dans ASP.net Core-CRUD
+# <a name="part-2-razor-pages-with-ef-core-in-aspnet-core---crud"></a>Partie 2, Razor pages avec EF Core dans ASP.net Core-CRUD
 
 Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -376,7 +376,7 @@ Le code généré automatiquement utilise le modèle suivant pour les pages Crea
 
 Les pages Index et Details obtiennent et affichent les données demandées avec la méthode HTTP GET `OnGetAsync`.
 
-## <a name="singleordefaultasync-vs-firstordefaultasync"></a>SingleOrDefaultAsync et FirstOrDefaultAsync
+## <a name="singleordefaultasync-vs-firstordefaultasync"></a>`SingleOrDefaultAsync` vs. `FirstOrDefaultAsync`
 
 Le code généré utilise [FirstOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Threading_CancellationToken_), qui est généralement préféré à [SingleOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_).
 
@@ -565,7 +565,7 @@ Le code précédent récupère l’entité sélectionnée, puis appelle la méth
 * L’exception de la base de données est interceptée.
 * La méthode `OnGetAsync` des pages est appelée avec `saveChangesError=true`.
 
-### <a name="update-the-delete-no-locrazor-page"></a>Mettre à jour la page de suppression Razor
+### <a name="update-the-delete-razor-page"></a>Mettre à jour la page de suppression Razor
 
 Ajoutez le message d’erreur en surbrillance suivant à la page de suppression Razor .
 <!--

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/performance
-ms.openlocfilehash: 622c6ba042c5832f99bba379fadd9aba7d7163f2
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 386359adfe0e876fa5c067dc82153fd3de0f3fba
+ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060402"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102118939"
 ---
 # <a name="performance-best-practices-with-grpc"></a>Meilleures pratiques en matière de performances avec gRPC
 
@@ -89,7 +89,7 @@ Il existe deux solutions de contournement pour les applications .NET Core 3,1 :
 > * Conflit de threads entre les flux tentant d’écrire dans la connexion.
 > * La perte de paquets de connexion entraîne le blocage de tous les appels au niveau de la couche TCP.
 
-## <a name="load-balancing"></a>Équilibrage de charge
+## <a name="load-balancing"></a>Équilibrage de la charge
 
 Certains équilibrages de charge ne fonctionnent pas efficacement avec gRPC. Les équilibreurs de charge L4 (transport) fonctionnent à un niveau de connexion, en répartissant les connexions TCP entre les points de terminaison. Cette approche fonctionne bien pour le chargement des appels d’API d’équilibrage effectués avec HTTP/1.1. Les appels simultanés effectués avec HTTP/1.1 sont envoyés sur des connexions différentes, ce qui permet d’équilibrer la charge des appels entre les points de terminaison.
 
@@ -105,7 +105,7 @@ Il existe deux options pour équilibrer la charge de manière efficace gRPC :
 
 ### <a name="client-side-load-balancing"></a>Équilibrage de charge côté client
 
-Avec l’équilibrage de charge côté client, le client connaît les points de terminaison. Pour chaque appel gRPC, il sélectionne un autre point de terminaison auquel envoyer l’appel. L’équilibrage de charge côté client est un bon choix lorsque la latence est importante. Il n’y a pas de proxy entre le client et le service afin que l’appel soit envoyé directement au service. L’inconvénient de l’équilibrage de charge côté client est que chaque client doit effectuer le suivi des points de terminaison disponibles qu’il doit utiliser.
+Avec l’équilibrage de charge côté client, le client connaît les points de terminaison. Pour chaque appel gRPC, il sélectionne un autre point de terminaison auquel envoyer l’appel. L’équilibrage de charge côté client est un bon choix lorsque la latence est importante. Il n’existe aucun proxy entre le client et le service. l’appel est donc envoyé directement au service. L’inconvénient de l’équilibrage de charge côté client est que chaque client doit effectuer le suivi des points de terminaison disponibles qu’il doit utiliser.
 
 L’équilibrage de la charge du client en parallèle est une technique dans laquelle l’état de l’équilibrage de charge est stocké dans un emplacement central. Les clients interrogent régulièrement l’emplacement central pour rechercher les informations à utiliser lors de la prise de décision d’équilibrage de charge.
 

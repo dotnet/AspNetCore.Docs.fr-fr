@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 5d228af00ee34e7f8ca60a5085872fdb93842367
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 5fa7bc15bac2609c89fea54f8a788aaf9f5ad055
+ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057497"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119030"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Mettre en forme les données des réponses dans l’API web ASP.NET Core
 
@@ -132,7 +132,7 @@ Le code précédent sérialise les résultats à l’aide de `XmlSerializer` .
 
 Lorsque vous utilisez le code précédent, les méthodes de contrôleur retournent le format approprié en fonction de l' `Accept` en-tête de la demande.
 
-### <a name="configure-systemtextjson-based-formatters"></a>Configurer System.Text.Jssur des formateurs basés sur
+### <a name="configure-systemtextjson-based-formatters"></a>Configurer des `System.Text.Json` formateurs basés sur
 
 Les fonctionnalités des `System.Text.Json` formateurs basés sur peuvent être configurées à l’aide de <xref:Microsoft.AspNetCore.Mvc.JsonOptions.JsonSerializerOptions?displayProperty=fullName> . La mise en forme par défaut est la casse mixte. Le code en surbrillance suivant définit la mise en forme casse Pascal :
 
