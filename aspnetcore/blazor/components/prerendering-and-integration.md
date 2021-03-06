@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/components/prerendering-and-integration
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: d120440c292d15b7741260ed31af92d60db2261c
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: a86b50abff9c5ec52aab2bdb7eb6d563a5197d1a
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280073"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395173"
 ---
 # <a name="prerender-and-integrate-aspnet-core-razor-components"></a>Prérendu et intégration des Razor composants ASP.net Core
 
@@ -39,7 +39,7 @@ Razor les composants peuvent être intégrés dans des Razor pages et des applic
 
 Pour configurer le prérendu d’une Blazor WebAssembly application :
 
-1. Hébergez l' Blazor WebAssembly application dans une application ASP.net core. Une Blazor WebAssembly application autonome peut être ajoutée à une solution ASP.net Core, ou vous pouvez utiliser une application hébergée Blazor WebAssembly créée à partir du Blazor modèle de projet hébergé.
+1. Hébergez l' Blazor WebAssembly application dans une application ASP.net core. Une Blazor WebAssembly application autonome peut être ajoutée à une solution ASP.net Core, ou vous pouvez utiliser une application hébergée Blazor WebAssembly créée à partir du [ Blazor WebAssembly modèle de projet](xref:blazor/project-structure).
 
 1. Supprimez le fichier statique par défaut `wwwroot/index.html` du Blazor WebAssembly projet client.
 
@@ -76,7 +76,7 @@ Pour configurer le prérendu d’une Blazor WebAssembly application :
 
    * Appelez `UseDeveloperExceptionPage` sur le générateur d’applications dans l’environnement de développement.
    * Appelez `UseBlazorFrameworkFiles` sur le générateur d’applications.
-   * Modifiez le secours de la `index.html` page ( `endpoints.MapFallbackToFile("index.html");` ) à la `_Host.cshtml` page.
+   * Remplacez la valeur de secours du `index.html` fichier ( `endpoints.MapFallbackToFile("index.html");` ) par la `_Host.cshtml` page : `endpoints.MapFallbackToPage("/_Host");` .
 
    ```csharp
    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

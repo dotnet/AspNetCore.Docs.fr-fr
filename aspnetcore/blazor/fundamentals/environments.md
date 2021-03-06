@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/environments
-ms.openlocfilehash: a5ead59e467da331b585e8daefb1d7d259c7edba
-ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+ms.openlocfilehash: 86484fe2e2ce8e20e397a78f118d8b1bbe0cc88a
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101101046"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395108"
 ---
 # <a name="aspnet-core-blazor-environments"></a>BlazorEnvironnements ASP.net Core
 
@@ -33,7 +33,7 @@ ms.locfileid: "101101046"
 
 Lors de l’exécution locale d’une application, l’environnement est par défaut développement. Lorsque l’application est publiée, l’environnement prend par défaut la valeur production.
 
-L’application côté client Blazor ( *`Client`* ) d’une solution hébergée Blazor WebAssembly détermine l’environnement à partir de l' *`Server`* application de la solution via un intergiciel (middleware) qui communique l’environnement au navigateur. L' *`Server`* application ajoute un en-tête nommé `blazor-environment` avec l’environnement comme valeur de l’en-tête. L' *`Client`* application lit l’en-tête. L' *`Server`* application de la solution est une application ASP.net Core, de sorte que vous trouverez plus d’informations sur la configuration de l’environnement dans <xref:fundamentals/environments> .
+L’application côté client Blazor ( **`Client`** ) d’une solution hébergée Blazor WebAssembly détermine l’environnement à partir de l' **`Server`** application de la solution via un intergiciel (middleware) qui communique l’environnement au navigateur. L' **`Server`** application ajoute un en-tête nommé `blazor-environment` avec l’environnement comme valeur de l’en-tête. L' **`Client`** application lit l’en-tête. L' **`Server`** application de la solution est une application ASP.net Core, de sorte que vous trouverez plus d’informations sur la configuration de l’environnement dans <xref:fundamentals/environments> .
 
 Pour une Blazor WebAssembly application autonome exécutée localement, le serveur de développement ajoute l' `blazor-environment` en-tête pour spécifier l’environnement de développement. Pour spécifier l’environnement pour d’autres environnements d’hébergement, ajoutez l' `blazor-environment` en-tête.
 

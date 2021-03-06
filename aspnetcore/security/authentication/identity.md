@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 266781d0abc564952e124bc6eca3805c07592251
-ms.sourcegitcommit: 50d3e939a90c5480df480f651dda032901468dd5
+ms.openlocfilehash: 4fa49f795b78b88e00bd32d04f74acd8689383b2
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819053"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394471"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Présentation de Identity sur ASP.net Core
 
@@ -386,6 +386,15 @@ Ajoutez les fichiers Register, login et LogOut.
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 Si vous avez créé le projet avec le nom **application Web 1**, exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour `ApplicationDbContext` :
+
+Lorsque vous utilisez SQLite, vous `--useSqLite` devez spécifier :
+
+```dotnetcli
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout" --useSqLite
+```
+
+Avec SQL Express, utilisez les commandes suivantes :
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design

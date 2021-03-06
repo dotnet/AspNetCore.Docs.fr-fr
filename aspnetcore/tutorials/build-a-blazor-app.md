@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: d984023a1c46c5383d47a1634c54e61747b83d60
-ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+ms.openlocfilehash: 260d921316d6fadecbd42db11048593b19a5ddee
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101101208"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394432"
 ---
 # <a name="build-a-blazor-todo-list-app"></a>Créer une Blazor application de liste de tâches
 
@@ -138,7 +138,7 @@ Ce didacticiel vous montre comment créer et modifier une Blazor application. Vo
    ::: moniker-end
 
    > [!NOTE]
-   > Si vous utilisez Visual Studio pour créer le `ToDoItem.cs` fichier et la `ToDoItem` classe, utilisez l’une des approches suivantes :
+   > Si vous utilisez Visual Studio pour créer le `TodoItem.cs` fichier et la `TodoItem` classe, utilisez l’une des approches suivantes :
    >
    > * Supprimez l’espace de noms généré par Visual Studio pour la classe.
    > * Utilisez le bouton **copier** dans le bloc de code précédent et remplacez l’intégralité du contenu du fichier généré par Visual Studio.

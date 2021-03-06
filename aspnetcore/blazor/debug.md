@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 0421fd0509fbd89e4635dc7d80a584508627b52c
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: adf22001e7d9b8ee4f36456cd4b07d2791a7331f
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109778"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395148"
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>ASP.NET Core de débogage Blazor WebAssembly
 
@@ -48,7 +48,7 @@ Pour le moment, vous *ne pouvez pas*:
 * Arrêt sur les exceptions non gérées.
 * Atteindre les points d’arrêt pendant le démarrage de l’application avant l’exécution du proxy de débogage. Cela comprend les points d’arrêt dans `Program.Main` ( `Program.cs` ) et les points d’arrêt dans les [ `OnInitialized{Async}` méthodes](xref:blazor/components/lifecycle#component-initialization-methods) des composants qui sont chargés par la première page demandée à partir de l’application.
 * Déboguez dans des scénarios non locaux (par exemple, [sous-système Windows pour Linux (WSL)](/windows/wsl/) ou [Visual Studio Codespaces](/visualstudio/codespaces/overview/what-is-vsonline)).
-* Régénérez automatiquement l' `*Server*` application principale d’une solution hébergée Blazor pendant le débogage, par exemple en exécutant l’application avec [`dotnet watch run`](xref:tutorials/dotnet-watch) .
+* Régénérez automatiquement l' `*Server*` application principale d’une solution hébergée Blazor WebAssembly pendant le débogage, par exemple en exécutant l’application avec [`dotnet watch run`](xref:tutorials/dotnet-watch) .
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -97,7 +97,7 @@ Les valeurs d’espace réservé pour le protocole WebSockets ( `wsProtocol` ), 
 
 Pour déboguer une Blazor WebAssembly application dans Visual Studio :
 
-1. Créez une nouvelle ASP.NET Core application hébergée Blazor WebAssembly .
+1. Créer une solution hébergée Blazor WebAssembly .
 1. Appuyez sur <kbd>F5</kbd> pour exécuter l’application dans le débogueur.
 
    > [!NOTE]
@@ -202,7 +202,7 @@ Pour plus d’informations sur la configuration des ressources VS Code dans le `
 
 ## <a name="debug-hosted-blazor-webassembly"></a>Débogage hébergé Blazor WebAssembly
 
-1. Ouvrez le Blazor WebAssembly dossier de solution de l’application hébergée dans vs code.
+1. Ouvrez le **`Client`** dossier du projet du Blazor dossier de solution hébergé dans vs code.
 
 1. Si aucune configuration de lancement n’est définie pour le projet, la notification suivante s’affiche. Sélectionnez **Oui**.
 

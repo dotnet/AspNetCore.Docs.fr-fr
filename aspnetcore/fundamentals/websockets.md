@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: 6edf2017cc889321cfb484e643b75711fd66004d
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 2864d98c1e3cff4474ce38d05c47f7cd0e8b3cc5
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058348"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395238"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Prise en charge des WebSockets dans ASP.NET Core
 
@@ -61,6 +61,9 @@ Pour certaines applications, [gRPC sur .net](xref:grpc/index) fournit une altern
 Ajoutez le middleware WebSocket dans la méthode `Configure` de la classe `Startup` :
 
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSockets)]
+
+> [!NOTE]
+> Si vous souhaitez accepter les demandes WebSocket dans un contrôleur, l’appel à `app.UseWebSockets` doit se produire avant `app.UseEndpoints` .
 
 ::: moniker range="< aspnetcore-2.2"
 
@@ -184,7 +187,7 @@ Si vous utilisez la prise en charge de WebSocket dans [Socket.IO](https://socket
 </system.webServer>
 ```
 
-## <a name="sample-app"></a>Exemple d'application
+## <a name="sample-app"></a>Exemple d’application
 
 [L’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) qui accompagne cet article est une application d’écho. Elle dispose d’une page Web qui établit des connexions WebSocket et le serveur renvoie tous les messages qu’elle reçoit au client. L’exemple d’application n’est pas configuré pour s’exécuter à partir de Visual Studio avec IIS Express. vous devez donc exécuter l’application dans un interpréteur de commandes avec [`dotnet run`](/dotnet/core/tools/dotnet-run) et naviguer dans un navigateur vers `http://localhost:5000` . La page Web affiche l’état de la connexion :
 

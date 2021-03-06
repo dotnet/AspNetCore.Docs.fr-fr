@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: c50cae5231abba7cf2a7aaf5806cab33c6434ec9
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: fbd6698eeb65ef9ab6263d389f1f50ffcac8be79
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109687"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394991"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Héberger et déployer des ASP.NET Core Blazor WebAssembly
 
@@ -54,11 +54,11 @@ Blazor s’appuie sur l’hôte pour servir les fichiers compressés appropriés
   
     > [!NOTE]
     > Une régression est présente dans la version minimisés du `decode.js` script ( `decode.min.js` ) dans le [référentiel GitHub Google/brotli](https://github.com/google/brotli). Jusqu’à ce que le problème [TypeError dans decode.min.js (Google/brotli #881)](https://github.com/google/brotli/issues/881) soit résolu, adoptez l’une des approches suivantes :
-    > 
+    >
     > * Utilisez temporairement la version unminified du script.
     > * Réduire automatiquement le script au moment de la génération avec un outil de minimisation tiers compatible avec ASP.NET Core.
     > * Utilisez le [package NPM](https://www.npmjs.com/package/brotli).
-    > 
+    >
     > L’exemple de code dans cette section utilise la version **unminified** du script ( `decode.js` ).
 
   * Mettez à jour l’application pour utiliser le décodeur. Remplacez le balisage dans la `<body>` balise de fermeture par `wwwroot/index.html` ce qui suit :
@@ -131,9 +131,11 @@ Un *déploiement hébergé* sert l' Blazor WebAssembly application aux navigateu
 
 L’application cliente Blazor WebAssembly est publiée dans le `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` dossier de l’application serveur, ainsi que les autres ressources Web statiques de l’application serveur. Les deux applications sont déployées ensemble. Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Pour un déploiement hébergé, Visual Studio comprend le modèle de projet d' **Blazor WebAssembly application** ( `blazorwasm` modèle lors de l’utilisation de la [`dotnet new`](/dotnet/core/tools/dotnet-new) commande) avec l' **`Hosted`** option sélectionnée (lors de l' `-ho|--hosted` utilisation de la `dotnet new` commande).
 
-Pour plus d’informations sur l’hébergement et le déploiement d’applications ASP.NET Core, consultez <xref:host-and-deploy/index>.
+Pour plus d’informations, consultez les articles suivants :
 
-Pour plus d’informations concernant le déploiement sur Azure App Service, consultez <xref:tutorials/publish-to-azure-webapp-using-vs>.
+* ASP.NET Core l’hébergement et le déploiement d’applications : <xref:host-and-deploy/index>
+* Déploiement sur Azure App Service : <xref:tutorials/publish-to-azure-webapp-using-vs>
+* Blazor modèles de projet : <xref:blazor/project-structure>
 
 ## <a name="hosted-deployment-with-multiple-blazor-webassembly-apps"></a>Déploiement hébergé avec plusieurs Blazor WebAssembly applications
 
@@ -169,7 +171,7 @@ Utilisez une solution hébergée existante Blazor ou créez une nouvelle solutio
     * `Server` Répertoire
     * `Shared` Répertoire
     * `{SOLUTION NAME}.sln` txt
-    
+
     L’espace réservé `{SOLUTION NAME}` est le nom de la solution.
 
   * Créez une Blazor WebAssembly application nommée `SecondBlazorApp.Client` dans le `SecondClient` dossier à partir du Blazor WebAssembly modèle de projet.

@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/handle-errors
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 96f4d7fcacf1f8eb03ffe83ba18b353e5588448e
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: d4c8054afc3818d58bc2a047a0aa74613ae6047b
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109704"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395095"
 ---
 # <a name="handle-errors-in-aspnet-core-blazor-apps"></a>Gérer les erreurs dans les Blazor applications ASP.net Core
 
@@ -40,7 +40,7 @@ Quand une Blazor application ne fonctionne pas correctement pendant le développ
 * Pendant le développement, la barre vous dirige vers la console du navigateur, où vous pouvez voir l’exception.
 * En production, la barre avertit l’utilisateur qu’une erreur s’est produite et recommande l’actualisation du navigateur.
 
-L’interface utilisateur de cette expérience de gestion des erreurs fait partie des Blazor modèles de projet.
+L’interface utilisateur de cette expérience de gestion des erreurs fait partie des [ Blazor modèles de projet](xref:blazor/project-structure).
 
 Dans une Blazor WebAssembly application, personnalisez l’expérience dans le `wwwroot/index.html` fichier :
 
@@ -257,7 +257,7 @@ Quand une Blazor application ne fonctionne pas correctement pendant le développ
 * Pendant le développement, la barre vous dirige vers la console du navigateur, où vous pouvez voir l’exception.
 * En production, la barre avertit l’utilisateur qu’une erreur s’est produite et recommande l’actualisation du navigateur.
 
-L’interface utilisateur de cette expérience de gestion des erreurs fait partie des Blazor modèles de projet.
+L’interface utilisateur de cette expérience de gestion des erreurs fait partie des [ Blazor modèles de projet](xref:blazor/project-structure).
 
 Dans une Blazor Server application, personnalisez l’expérience dans le `Pages/_Host.cshtml` fichier :
 

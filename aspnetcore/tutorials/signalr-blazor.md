@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: tutorials/signalr-blazor
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: f4e51b39c4c3b0c444b08025e9bd74eec0747541
-ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.openlocfilehash: 50e5f2d5b1f9d0bf229bc57e6a1f599f9574b27c
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100536368"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395225"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor"></a>Utiliser ASP.NET Core SignalR avec Blazor
 
@@ -290,13 +290,13 @@ Dans le `BlazorWebAssemblySignalRApp.Server` projet, créez un `Hubs` dossier (p
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
@@ -314,14 +314,14 @@ Dans le `BlazorWebAssemblySignalRApp.Server` projet, créez un `Hubs` dossier (p
 
 1. Ajoutez SignalR et répondez les services d’intergiciel (middleware) de compression à `Startup.ConfigureServices` :
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
 
 1. Dans `Startup.Configure` :
 
    * Utilisez l’intergiciel de compression de réponse en haut de la configuration du pipeline de traitement.
    * Entre les points de terminaison pour les contrôleurs et le secours côté client, ajoutez un point de terminaison pour le Hub.
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
 
 ::: moniker-end
 
@@ -329,14 +329,14 @@ Dans le `BlazorWebAssemblySignalRApp.Server` projet, créez un `Hubs` dossier (p
 
 1. Ajoutez SignalR et répondez les services d’intergiciel (middleware) de compression à `Startup.ConfigureServices` :
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
 
 1. Dans `Startup.Configure` :
 
    * Utilisez l’intergiciel de compression de réponse en haut de la configuration du pipeline de traitement.
    * Entre les points de terminaison pour les contrôleurs et le secours côté client, ajoutez un point de terminaison pour le Hub.
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
 
 ::: moniker-end
 
@@ -348,7 +348,7 @@ Dans le `BlazorWebAssemblySignalRApp.Server` projet, créez un `Hubs` dossier (p
 
 1. Remplacez le balisage par le code suivant :
 
-   [!code-razor[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
 
 ::: moniker-end
 
@@ -356,7 +356,7 @@ Dans le `BlazorWebAssemblySignalRApp.Server` projet, créez un `Hubs` dossier (p
 
 1. Remplacez le balisage par le code suivant :
 
-   [!code-razor[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
 
 ::: moniker-end
 
@@ -615,13 +615,13 @@ Créez un `Hubs` dossier (pluriel) et ajoutez la `ChatHub` classe suivante ( `Hu
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
@@ -640,14 +640,14 @@ Créez un `Hubs` dossier (pluriel) et ajoutez la `ChatHub` classe suivante ( `Hu
 
 1. Ajoutez des services d’intergiciels (middleware) de compression des réponses à `Startup.ConfigureServices` :
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
 
 1. Dans `Startup.Configure` :
 
    * Utilisez l’intergiciel de compression de réponse en haut de la configuration du pipeline de traitement.
    * Entre les points de terminaison pour le mappage du Blazor Hub et le secours côté client, ajoutez un point de terminaison pour le Hub.
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
 
 ::: moniker-end
 
@@ -655,14 +655,14 @@ Créez un `Hubs` dossier (pluriel) et ajoutez la `ChatHub` classe suivante ( `Hu
 
 1. Ajoutez des services d’intergiciels (middleware) de compression des réponses à `Startup.ConfigureServices` :
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
 
 1. Dans `Startup.Configure` :
 
    * Utilisez l’intergiciel de compression de réponse en haut de la configuration du pipeline de traitement.
    * Entre les points de terminaison pour le mappage du Blazor Hub et le secours côté client, ajoutez un point de terminaison pour le Hub.
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
 
 ::: moniker-end
 
@@ -674,7 +674,7 @@ Créez un `Hubs` dossier (pluriel) et ajoutez la `ChatHub` classe suivante ( `Hu
 
 1. Remplacez le balisage par le code suivant :
 
-   [!code-razor[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Pages/Index.razor)]
 
 ::: moniker-end
 
@@ -682,7 +682,7 @@ Créez un `Hubs` dossier (pluriel) et ajoutez la `ChatHub` classe suivante ( `Hu
 
 1. Remplacez le balisage par le code suivant :
 
-   [!code-razor[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Pages/Index.razor)]
 
 ::: moniker-end
 

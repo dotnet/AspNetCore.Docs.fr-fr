@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: ee1e4eb8e682f77273370c707306bf9f267fa676
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: b5447a55dfa9e4fa55e1a09a3cc00e1f1a965c6e
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109505"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394516"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>Appeler des fonctions JavaScript à partir de méthodes .NET dans ASP.NET Core Blazor
 
@@ -96,17 +96,17 @@ Dans l’exemple d’application côté client qui accompagne cette rubrique, de
 
 `wwwroot/exampleJsInterop.js`:
 
-[!code-javascript[](./common/samples/5.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=2-7)]
+[!code-javascript[](~/blazor/common/samples/5.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
 Placez la `<script>` balise qui référence le fichier JavaScript dans le fichier `wwwroot/index.html` ( Blazor WebAssembly ) ou le `Pages/_Host.cshtml` fichier ( Blazor Server ).
 
 `wwwroot/index.html` (Blazor WebAssembly):
 
-[!code-html[](./common/samples/5.x/BlazorWebAssemblySample/wwwroot/index.html?highlight=22)]
+[!code-html[](~/blazor/common/samples/5.x/BlazorWebAssemblySample/wwwroot/index.html?highlight=22)]
 
 `Pages/_Host.cshtml` (Blazor Server):
 
-[!code-cshtml[](./common/samples/5.x/BlazorServerSample/Pages/_Host.cshtml?highlight=33)]
+[!code-cshtml[](~/blazor/common/samples/5.x/BlazorServerSample/Pages/_Host.cshtml?highlight=33)]
 
 Ne placez pas de `<script>` balise dans un fichier de composant parce que la `<script>` balise ne peut pas être mise à jour dynamiquement.
 
@@ -819,4 +819,4 @@ D’autres types de données, tels que les tableaux de chaînes, peuvent être c
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:blazor/call-dotnet-from-javascript>
-* [Exemple InteropComponent. Razor (référentiel GitHub dotnet/AspNetCore, branche de version 3,1)](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
+* [ `InteropComponent.razor` exemple ( `main` branche de dépôt github de dotnet/AspNetCore)](https://github.com/dotnet/AspNetCore/blob/main/src/Components/test/testassets/BasicTestApp/InteropComponent.razor): la `main` branche représente le développement actuel de l’unité du produit pour la prochaine version de ASP.net core. Pour sélectionner la branche pour une version différente (par exemple, `release/5.0` ), utilisez la liste déroulante **permuter les branches ou les balises** pour sélectionner la branche.

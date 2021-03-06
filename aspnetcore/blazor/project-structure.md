@@ -19,20 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/project-structure
-ms.openlocfilehash: 94b5a3d8c0f5b94ecac32e6fc5f94efeb8337f37
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: fe42c2d43b79ea959bb0ba8e5b96e6c865b2a416
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280360"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394874"
 ---
 # <a name="aspnet-core-blazor-project-structure"></a>BlazorStructure de projet ASP.net Core
 
-Cet article décrit les fichiers et les dossiers qui composent une Blazor application générée à partir des Blazor modèles de projet.
+Cet article décrit les fichiers et les dossiers qui composent une Blazor application générée à partir de l’un des modèles de projet de l' Blazor infrastructure. Pour plus d’informations sur l’utilisation des outils pour créer une Blazor application à partir d’un Blazor modèle de projet, consultez <xref:blazor/tooling> . Pour plus d’informations sur les Blazor modèles d’hébergement de Blazor WebAssembly et Blazor Server , consultez <xref:blazor/hosting-models> .
 
 ## Blazor WebAssembly
 
-Le Blazor WebAssembly modèle ( `blazorwasm` ) crée les fichiers et la structure de répertoire initiaux pour une Blazor WebAssembly application. L’application est remplie avec un code de démonstration pour un `FetchData` composant qui charge des données à partir d’une ressource statique, et de l' `weather.json` interaction utilisateur avec un `Counter` composant.
+Blazor WebAssembly modèle de projet : `blazorwasm`
+
+Le Blazor WebAssembly modèle crée les fichiers et la structure de répertoire initiaux pour une Blazor WebAssembly application. L’application est remplie avec un code de démonstration pour un `FetchData` composant qui charge des données à partir d’une ressource statique, et de l' `weather.json` interaction utilisateur avec un `Counter` composant.
 
 * `Pages` dossier : contient les composants/pages routables ( `.razor` ) qui composent l' Blazor application. L’itinéraire de chaque page est spécifié à l’aide de la [`@page`](xref:mvc/views/razor#page) directive. Le modèle comprend les composants suivants :
   * `Counter` Component ( `Counter.razor` ) : implémente la page de compteur.
@@ -104,7 +106,9 @@ Le Blazor WebAssembly modèle ( `blazorwasm` ) crée les fichiers et la structur
 
 ## Blazor Server
 
-Le Blazor Server modèle ( `blazorserver` ) crée les fichiers et la structure de répertoire initiaux pour une Blazor Server application. L’application est remplie avec le code de démonstration pour un `FetchData` composant qui charge des données à partir d’un service inscrit, et de l' `WeatherForecastService` interaction utilisateur avec un `Counter` composant.
+Blazor Server modèle de projet : `blazorserver`
+
+Le Blazor Server modèle crée les fichiers et la structure de répertoire initiaux pour une Blazor Server application. L’application est remplie avec le code de démonstration pour un `FetchData` composant qui charge des données à partir d’un service inscrit, et de l' `WeatherForecastService` interaction utilisateur avec un `Counter` composant.
 
 * `Data` dossier : contient la `WeatherForecast` classe et l’implémentation du `WeatherForecastService` qui fournit des exemples de données météorologiques au composant de l’application `FetchData` .
 
@@ -158,3 +162,8 @@ Le Blazor Server modèle ( `blazorserver` ) crée les fichiers et la structure d
   * `Configure`: Configure le pipeline de traitement des demandes de l’application :
     * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A> est appelé pour configurer un point de terminaison pour la connexion en temps réel avec le navigateur. La connexion est créée avec [SignalR](xref:signalr/introduction) , qui est une infrastructure permettant d’ajouter des fonctionnalités Web en temps réel aux applications.
     * [`MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*) est appelé pour configurer la page racine de l’application ( `Pages/_Host.cshtml` ) et activer la navigation.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* <xref:blazor/tooling>
+* <xref:blazor/hosting-models>

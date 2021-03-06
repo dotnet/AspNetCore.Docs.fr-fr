@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: c720747983da4ef6997d95d77c3f5305cfd7d3c0
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: af3c059e7192d6b0d2b0a902b6e3a6121fdf6709
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100279925"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395030"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>Configurer l’éditeur de liens pour ASP.NET Core Blazor
 
@@ -91,7 +91,7 @@ Contrôlez la liaison pour chaque assembly en fournissant un fichier de configur
 </linker>
 ```
 
-Pour plus d’informations et d’exemples, consultez [formats de données (référentiel GitHub mono/éditeur de liens)](https://github.com/mono/linker/blob/master/docs/data-formats.md).
+Pour plus d’informations et d’exemples, consultez [formats de données (référentiel GitHub mono/éditeur de liens)](https://github.com/mono/linker/blob/main/docs/data-formats.md).
 
 ## <a name="add-an-xml-linker-configuration-file-to-a-library"></a>Ajouter un fichier de configuration de l’éditeur de liens XML à une bibliothèque
 
@@ -124,7 +124,7 @@ Pour contrôler les assemblys I18N qui sont conservés, définissez la `<BlazorW
 | `all`            | Tous les assemblys inclus |
 | `cjk`            | `I18N.CJK.dll`          |
 | `mideast`        | `I18N.MidEast.dll`      |
-| `none` (valeur par défaut) | Aucun                    |
+| `none` (valeur par défaut) | None                    |
 | `other`          | `I18N.Other.dll`        |
 | `rare`           | `I18N.Rare.dll`         |
 | `west`           | `I18N.West.dll`         |

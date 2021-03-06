@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 811ec08eb457fcf0697a64dc4990d29082454f73
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: fee4473aede3fd213314c51a18284b4e4ad95b2b
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280860"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394666"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>Gestion de l’état des ASP.NET Core Blazor
 
@@ -69,9 +69,9 @@ Les emplacements communs existent pour l’état de persistance :
 
 <h2 id="server-side-storage-wasm">Stockage côté serveur</h2>
 
-Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser un stockage indépendant côté serveur accessible via une API Web. Les options sont :
+Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser un stockage indépendant côté serveur accessible via une API Web. Options disponibles :
 
-* Stockage Blob
+* Stockage d'objets blob
 * Stockage clé-valeur
 * Base de données relationnelle
 * Stockage de tables
@@ -178,9 +178,9 @@ Les emplacements communs existent pour l’état de persistance :
 
 <h2 id="server-side-storage-server">Stockage côté serveur</h2>
 
-Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser le stockage côté serveur. Les options sont :
+Pour la persistance des données permanente qui s’étend sur plusieurs utilisateurs et appareils, l’application peut utiliser le stockage côté serveur. Options disponibles :
 
-* Stockage Blob
+* Stockage d'objets blob
 * Stockage clé-valeur
 * Base de données relationnelle
 * Stockage de tables
@@ -254,7 +254,7 @@ Le choix dépend de l’emplacement de stockage du navigateur que vous souhaitez
 
 La `@using` directive peut être placée dans le fichier de l’application `_Imports.razor` plutôt que dans le composant. L’utilisation du `_Imports.razor` fichier rend l’espace de noms disponible pour les plus grands segments de l’application ou de l’application entière.
 
-Pour rendre la `currentCount` valeur persistante dans le `Counter` composant d’une application en fonction du Blazor Server modèle de projet, modifiez la `IncrementCount` méthode pour utiliser `ProtectedSessionStore.SetAsync` :
+Pour rendre la `currentCount` valeur persistante dans le `Counter` composant d’une application en fonction du [ Blazor Server modèle de projet](xref:blazor/project-structure), modifiez la `IncrementCount` méthode pour utiliser `ProtectedSessionStore.SetAsync` :
 
 ```csharp
 private async Task IncrementCount()
@@ -502,7 +502,7 @@ Le choix dépend de l’emplacement de stockage du navigateur que vous souhaitez
 
 L' `@using` instruction peut être placée dans un `_Imports.razor` fichier plutôt que dans le composant. L’utilisation du `_Imports.razor` fichier rend l’espace de noms disponible pour les plus grands segments de l’application ou de l’application entière.
 
-Pour rendre la `currentCount` valeur persistante dans le `Counter` composant d’une application en fonction du Blazor Server modèle de projet, modifiez la `IncrementCount` méthode pour utiliser `ProtectedSessionStore.SetAsync` :
+Pour rendre la `currentCount` valeur persistante dans le `Counter` composant d’une application en fonction du [ Blazor Server modèle de projet](xref:blazor/project-structure), modifiez la `IncrementCount` méthode pour utiliser `ProtectedSessionStore.SetAsync` :
 
 ```csharp
 private async Task IncrementCount()

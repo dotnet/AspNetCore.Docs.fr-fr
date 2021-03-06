@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 6a8fd8e3498dda9b7c10834791e64df6276e2823
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 8a593654fa31e643e7c239f361f035589c75ce98
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253018"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395251"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Héberger ASP.NET Core sur Linux avec Nginx
 
@@ -46,13 +46,9 @@ Ce guide montre comment effectuer les opérations suivantes :
 
 ## <a name="prerequisites"></a>Prérequis
 
-1. Accédez à un serveur Ubuntu 16.04 avec un compte d’utilisateur standard disposant de privilèges sudo.
-1. Installez le runtime .NET Core sur le serveur.
-   1. Visitez la [page Télécharger .net Core](https://dotnet.microsoft.com/download/dotnet-core).
-   1. Sélectionnez la dernière version non préliminaire de .NET Core.
-   1. Téléchargez le dernier Runtime non Preview dans le tableau sous **exécuter des applications-Runtime**.
-   1. Sélectionnez le lien **des instructions du gestionnaire de package** Linux et suivez les instructions Ubuntu pour votre version d’Ubuntu.
-1. Une application ASP.NET Core existante.
+* Accédez à un serveur Ubuntu 16.04 avec un compte d’utilisateur standard disposant de privilèges sudo.
+* Le [Runtime .net](/dotnet/core/install/linux) non-preview le plus récent installé sur le serveur.
+* Une application ASP.NET Core existante.
 
 À tout moment après la mise à niveau de l’infrastructure partagée, redémarrez le ASP.NET Core les applications hébergées par le serveur.
 
@@ -127,7 +123,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
+Pour plus d’informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
 ### <a name="install-nginx"></a>Installer Nginx
 
@@ -385,7 +381,7 @@ Configurez le serveur avec les modules nécessaires supplémentaires. Pour renfo
 
 **Configurer l’application pour les connexions locales sécurisées (HTTPS)**
 
-La commande [dotnet Run](/dotnet/core/tools/dotnet-run) utilise les *Propriétés/launchSettings.js* de l’application sur le fichier, ce qui configure l’application pour qu’elle écoute les URL fournies par la `applicationUrl` propriété. Par exemple, `https://localhost:5001;http://localhost:5000`.
+La commande [dotnet Run](/dotnet/core/tools/dotnet-run) utilise les *Propriétés/launchSettings.js* de l’application sur le fichier, ce qui configure l’application pour qu’elle écoute les URL fournies par la `applicationUrl` propriété. Par exemple : `https://localhost:5001;http://localhost:5000`.
 
 Configurez l’application pour qu’elle utilise un certificat en développement pour la `dotnet run` commande ou l’environnement de développement (<kbd>F5</kbd> ou <kbd>CTRL</kbd> + <kbd>F5</kbd> dans Visual Studio code) à l’aide de l’une des approches suivantes :
 
@@ -430,7 +426,7 @@ Ajoutez le fichier de configuration */etc/nginx/proxy.conf* :
 [!code-nginx[](linux-nginx/nginx.conf?highlight=2)]
 
 > [!NOTE]
-> Blazor WebAssembly les applications requièrent une plus grande `burst` valeur de paramètre pour prendre en charge le plus grand nombre de requêtes effectuées par une application. Pour plus d'informations, consultez <xref:blazor/host-and-deploy/webassembly#nginx>.
+> Blazor WebAssembly les applications requièrent une plus grande `burst` valeur de paramètre pour prendre en charge le plus grand nombre de requêtes effectuées par une application. Pour plus d’informations, consultez <xref:blazor/host-and-deploy/webassembly#nginx>.
 
 #### <a name="secure-nginx-from-clickjacking"></a>Sécuriser Nginx contre le détournement de clic
 
@@ -446,7 +442,7 @@ Pour atténuer les attaques par détournement de clic :
 
    Ajoutez la ligne : `add_header X-Frame-Options "SAMEORIGIN";`
 
-1. Enregistrez le fichier.
+1. Enregistrez le fichier .
 1. Redémarrez Nginx.
 
 #### <a name="mime-type-sniffing"></a>Détection de type MIME
@@ -461,7 +457,7 @@ Cet en-tête empêche la plupart des navigateurs de détourner le type MIME d’
 
    Ajoutez la ligne : `add_header X-Content-Type-Options "nosniff";`
 
-1. Enregistrez le fichier.
+1. Enregistrez le fichier .
 1. Redémarrez Nginx.
 
 ## <a name="additional-nginx-suggestions"></a>Suggestions supplémentaires pour Nginx

@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 6b61d9a4645d273b0c78fae0388d569771c43a2d
-ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.openlocfilehash: 19270bb74326dccfee9466b7c1fa61daeab805a2
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100536244"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394458"
 ---
 # <a name="tooling-for-aspnet-core-blazor"></a>Outils pour ASP.NET Core Blazor
 
@@ -125,7 +125,7 @@ Lors de l’exécution d’une application hébergée Blazor WebAssembly , exéc
    Dans l’argument précédent :
 
    * L' `{SERVER APP FOLDER}` espace réservé est le **`Server`** dossier du projet, généralement « `Server` ».
-   * L' `{PROJECT NAME}` espace réservé est le nom de l’application, généralement basé sur le nom de la solution suivi de « `.Server` » dans une application générée à partir du Blazor modèle de projet.
+   * L' `{PROJECT NAME}` espace réservé est le nom de l’application, généralement basé sur le nom de la solution suivi de « `.Server` » dans une application générée à partir du [ Blazor modèle de projet](xref:blazor/project-structure).
 
    L’exemple suivant du [didacticiel sur l’utilisation de SignalR avec une Blazor WebAssembly application](xref:tutorials/signalr-blazor) utilise un nom de dossier de projet `Server` et un nom de projet `BlazorWebAssemblySignalRApp.Server` :
 
@@ -191,7 +191,7 @@ Le Blazor Framework fournit des modèles pour créer des applications pour chacu
 * Blazor WebAssembly modèle de projet : `blazorwasm`
 * Blazor Server modèle de projet : `blazorserver`
 
-Pour plus d’informations sur les Blazor modèles d’hébergement de, consultez <xref:blazor/hosting-models> .
+Pour plus d’informations sur les Blazor modèles d’hébergement de, consultez <xref:blazor/hosting-models> . Pour plus d’informations sur les Blazor modèles de projet, consultez <xref:blazor/project-structure> .
 
 Les options de modèle sont disponibles en passant l’option d’aide ( `-h` ou `--help` ) à la [`dotnet new`](/dotnet/core/tools/dotnet-new) commande CLI dans une interface de commande :
 
@@ -199,3 +199,8 @@ Les options de modèle sont disponibles en passant l’option d’aide ( `-h` ou
 dotnet new blazorwasm -h
 dotnet new blazorserver -h
 ```
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* <xref:blazor/hosting-models>
+* <xref:blazor/project-structure>

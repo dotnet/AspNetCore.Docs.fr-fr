@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 41b588acdef3eedd9fc081f50040d160147bab4b
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: 147ebbeb84e1755307d627ef428d92d1b0248c74
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109648"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394861"
 ---
 # <a name="secure-aspnet-core-blazor-server-apps"></a>Sécuriser les Blazor Server applications ASP.net Core
 
@@ -32,7 +32,7 @@ Blazor Server les applications sont configurées pour la sécurité de la même 
 
 ## <a name="blazor-server-project-template"></a>Blazor Server modèle de projet
 
-Le Blazor Server modèle de projet peut être configuré pour l’authentification lors de la création du projet.
+Le [ Blazor Server modèle de projet](xref:blazor/project-structure) peut être configuré pour l’authentification lors de la création du projet.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

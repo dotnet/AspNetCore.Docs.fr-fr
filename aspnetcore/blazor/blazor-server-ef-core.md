@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/blazor-server-ef-core
-ms.openlocfilehash: 6fc8913640a0a8d506e2c00002912897edbfd826
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: db70bafc85311f8ccbf87e123739ea99c8d8f3c5
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280482"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394575"
 ---
 # <a name="aspnet-core-blazor-server-with-entity-framework-core-efcore"></a>ASP.NET Core Blazor Server avec Entity Framework Core (EFCore)
 
@@ -35,7 +35,7 @@ Blazor Server est une infrastructure d’application avec état. L’application
 > [!NOTE]
 > Cet article traite de EF Core dans les Blazor Server applications. Blazor WebAssembly les applications s’exécutent dans un bac à sable (sandbox) webassembly qui empêche la plupart des connexions directes. L’exécution de EF Core dans Blazor WebAssembly dépasse le cadre de cet article.
 
-<h2 id="sample-app-5x">Exemple d'application</h2>
+<h2 id="sample-app-5x">Exemple d’application</h2>
 
 L’exemple d’application a été créé en tant que référence pour les Blazor Server applications qui utilisent EF Core. L’exemple d’application comprend une grille avec des opérations de tri et de filtrage, de suppression, d’ajout et de mise à jour. L’exemple illustre l’utilisation de EF Core pour gérer l’accès concurrentiel optimiste.
 
@@ -43,7 +43,7 @@ L’exemple d’application a été créé en tant que référence pour les Blaz
 
 L’exemple utilise une base de données [SQLite](https://www.sqlite.org/index.html) locale pour qu’elle puisse être utilisée sur n’importe quelle plateforme. L’exemple configure également la journalisation de la base de données pour afficher les requêtes SQL qui sont générées. Cette configuration est configurée dans `appsettings.Development.json` :
 
-[!code-json[](./common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/appsettings.Development.json?highlight=8)]
+[!code-json[](~/blazor/common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/appsettings.Development.json?highlight=8)]
 
 Les composants de grille, d’ajout et de vue utilisent le modèle « contexte par opération », où un contexte est créé pour chaque opération. Le composant Edit utilise le modèle « contexte par composant », où un contexte est créé pour chaque composant.
 
@@ -100,11 +100,11 @@ La solution recommandée pour créer un nouveau <xref:Microsoft.EntityFrameworkC
 
 L’exemple suivant configure [SQLite](https://www.sqlite.org/index.html) et active la journalisation des données. Le code utilise une [méthode d’extension ( `AddDbContextFactory` )](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Data/FactoryExtensions.cs) pour configurer la fabrique de base de données pour di et fournir les options par défaut :
 
-[!code-csharp[](./common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Startup.cs?name=snippet1)]
+[!code-csharp[](~/blazor/common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Startup.cs?name=snippet1)]
 
 La fabrique est injectée dans des composants et utilisée pour créer de nouvelles instances. Par exemple, dans `Pages/Index.razor` :
 
-[!code-csharp[](./common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor?name=snippet1)]
+[!code-csharp[](~/blazor/common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor?name=snippet1)]
 
 > [!NOTE]
 > `Wrapper` est une [référence de composant](xref:blazor/components/index#capture-references-to-components) au `GridWrapper` composant. Consultez le `Index` composant ( `Pages/Index.razor` ) dans l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor).
@@ -134,11 +134,11 @@ Vous pouvez utiliser la fabrique pour créer un contexte et effectuer le suivi d
 
 L’exemple d’application s’assure que le contexte est supprimé lorsque le composant est supprimé :
 
-[!code-csharp[](./common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor?name=snippet1)]
+[!code-csharp[](~/blazor/common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor?name=snippet1)]
 
 Enfin, [`OnInitializedAsync`](xref:blazor/components/lifecycle) est substitué pour créer un nouveau contexte. Dans l’exemple d’application, [`OnInitializedAsync`](xref:blazor/components/lifecycle) charge le contact dans la même méthode :
 
-[!code-csharp[](./common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor?name=snippet2)]
+[!code-csharp[](~/blazor/common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor?name=snippet2)]
 
 <h3 id="enable-sensitive-data-logging">Activer la journalisation des données sensibles</h3>
 
@@ -166,7 +166,7 @@ Blazor Server est une infrastructure d’application avec état. L’application
 > [!NOTE]
 > Cet article traite de EF Core dans les Blazor Server applications. Blazor WebAssembly les applications s’exécutent dans un bac à sable (sandbox) webassembly qui empêche la plupart des connexions directes. L’exécution de EF Core dans Blazor WebAssembly dépasse le cadre de cet article.
 
-<h2 id="sample-app-3x">Exemple d'application</h2>
+<h2 id="sample-app-3x">Exemple d’application</h2>
 
 L’exemple d’application a été créé en tant que référence pour les Blazor Server applications qui utilisent EF Core. L’exemple d’application comprend une grille avec des opérations de tri et de filtrage, de suppression, d’ajout et de mise à jour. L’exemple illustre l’utilisation de EF Core pour gérer l’accès concurrentiel optimiste.
 
@@ -174,7 +174,7 @@ L’exemple d’application a été créé en tant que référence pour les Blaz
 
 L’exemple utilise une base de données [SQLite](https://www.sqlite.org/index.html) locale pour qu’elle puisse être utilisée sur n’importe quelle plateforme. L’exemple configure également la journalisation de la base de données pour afficher les requêtes SQL qui sont générées. Cette configuration est configurée dans `appsettings.Development.json` :
 
-[!code-json[](./common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/appsettings.Development.json?highlight=8)]
+[!code-json[](~/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/appsettings.Development.json?highlight=8)]
 
 Les composants de grille, d’ajout et de vue utilisent le modèle « contexte par opération », où un contexte est créé pour chaque opération. Le composant Edit utilise le modèle « contexte par composant », où un contexte est créé pour chaque composant.
 
@@ -229,7 +229,7 @@ Le moyen le plus rapide de créer une nouvelle <xref:Microsoft.EntityFrameworkCo
 
 La solution recommandée pour créer un nouveau <xref:Microsoft.EntityFrameworkCore.DbContext> avec des dépendances consiste à utiliser une fabrique. L’exemple d’application implémente sa propre fabrique dans `Data/DbContextFactory.cs` .
 
-[!code-csharp[](./common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Data/DbContextFactory.cs)]
+[!code-csharp[](~/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Data/DbContextFactory.cs)]
 
 Dans la fabrique précédente :
 
@@ -238,11 +238,11 @@ Dans la fabrique précédente :
 
 L’exemple suivant configure [SQLite](https://www.sqlite.org/index.html) et active la journalisation des données. Le code utilise une méthode d’extension pour configurer la fabrique de base de données pour DI et fournir les options par défaut :
 
-[!code-csharp[](./common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Startup.cs?name=snippet1)]
+[!code-csharp[](~/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Startup.cs?name=snippet1)]
 
 La fabrique est injectée dans des composants et utilisée pour créer de nouvelles instances. Par exemple, dans `Pages/Index.razor` :
 
-[!code-csharp[](./common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor?name=snippet1)]
+[!code-csharp[](~/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor?name=snippet1)]
 
 > [!NOTE]
 > `Wrapper` est une [référence de composant](xref:blazor/components/index#capture-references-to-components) au `GridWrapper` composant. Consultez le `Index` composant ( `Pages/Index.razor` ) dans l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor).
@@ -272,11 +272,11 @@ Vous pouvez utiliser la fabrique pour créer un contexte et effectuer le suivi d
 
 L’exemple d’application s’assure que le contexte est supprimé lorsque le composant est supprimé :
 
-[!code-csharp[](./common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor?name=snippet1)]
+[!code-csharp[](~/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor?name=snippet1)]
 
 Enfin, [`OnInitializedAsync`](xref:blazor/components/lifecycle) est substitué pour créer un nouveau contexte. Dans l’exemple d’application, [`OnInitializedAsync`](xref:blazor/components/lifecycle) charge le contact dans la même méthode :
 
-[!code-csharp[](./common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor?name=snippet2)]
+[!code-csharp[](~/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor?name=snippet2)]
 
 Dans l’exemple précédent :
 

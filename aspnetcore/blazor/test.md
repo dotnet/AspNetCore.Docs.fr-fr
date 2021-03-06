@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/test
-ms.openlocfilehash: 67ebfcd322ae08acf2fddae9bd6101f13fa77e7e
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 1a7b1114934f4fe7006d60bdbd0f06792d2c6935
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280701"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394549"
 ---
 # <a name="test-components-in-aspnet-core-blazor"></a>Tester des composants dans ASP.NET Core Blazor
 
@@ -64,7 +64,7 @@ Les tests E2E impliquent le lancement de plusieurs processus, l’e/s réseau et
 
 Le tableau suivant résume la différence entre les deux approches de test.
 
-| Fonctionnalité                       | Test unitaire                     | Test E2E                             |
+| Fonctionnalité                       | Test des unités                     | Test E2E                             |
 | -------------------------------- | -------------------------------- | --------------------------------------- |
 | Étendue de test                       | Blazor composant ( Razor /c #) uniquement | Blazor composant ( Razor /c #) avec CSS/js |
 | Durée d’exécution des tests              | Millisecondes                     | Secondes                                 |
@@ -78,8 +78,8 @@ Examinez le scénario lorsque vous choisissez le type de test à effectuer. Cert
 
 | Scénario | Approche suggérée | Notes |
 | -------- | ------------------ | ------- |
-| Composant sans logique d’interopérabilité JS | Test unitaire | Lorsqu’il n’existe aucune dépendance vis-à-vis de l’interopérabilité de JS dans un Blazor composant, le composant peut être testé sans accès à js ou à l’API DOM. Dans ce scénario, il n’y a aucun inconvénient à choisir des tests unitaires. |
-| Composant avec une logique d’interopérabilité JS simple | Test unitaire | Il est courant que les composants interrogent le DOM ou déclenchent des animations par le biais de l’interopérabilité de JS. Les tests unitaires sont généralement préférés dans ce scénario, car il est facile de simuler l’interaction JS par le biais de l' <xref:Microsoft.JSInterop.IJSRuntime> interface. |
+| Composant sans logique d’interopérabilité JS | Test des unités | Lorsqu’il n’existe aucune dépendance vis-à-vis de l’interopérabilité de JS dans un Blazor composant, le composant peut être testé sans accès à js ou à l’API DOM. Dans ce scénario, il n’y a aucun inconvénient à choisir des tests unitaires. |
+| Composant avec une logique d’interopérabilité JS simple | Test des unités | Il est courant que les composants interrogent le DOM ou déclenchent des animations par le biais de l’interopérabilité de JS. Les tests unitaires sont généralement préférés dans ce scénario, car il est facile de simuler l’interaction JS par le biais de l' <xref:Microsoft.JSInterop.IJSRuntime> interface. |
 | Composant qui dépend d’un code JS complexe | Test unitaire et test JS distinct | Si un composant utilise l’interopérabilité JS pour appeler une bibliothèque JS volumineuse ou complexe, mais que l’interaction entre la Blazor bibliothèque Component et js est simple, la meilleure approche consiste à traiter la bibliothèque Component et JS ou le code comme deux parties distinctes et à tester chacune individuellement. Testez le Blazor composant à l’aide d’une bibliothèque de tests unitaires, puis testez js avec une bibliothèque de tests js. |
 | Composant avec une logique qui dépend de la manipulation JS du DOM du navigateur | Test E2E | Lorsque la fonctionnalité d’un composant dépend de JS et de sa manipulation du DOM, vérifiez à la fois le code JS et le Blazor code dans un test E2E. Il s’agit de l’approche Blazor adoptée par les développeurs de l’infrastructure avec la Blazor logique de rendu du navigateur de, qui a un code C# et JS étroitement couplé. Le code C# et JS doit fonctionner ensemble pour restituer correctement les Blazor composants dans un navigateur.
 | Composant qui dépend d’une bibliothèque de composants tiers avec des dépendances difficiles à simuler | Test E2E | Lorsque la fonctionnalité d’un composant dépend d’une bibliothèque de composants tiers qui a des dépendances difficile à simuler, telles que l’interopérabilité de JS, le test E2E peut être la seule option pour tester le composant. |
@@ -100,7 +100,7 @@ bUnit fonctionne avec des infrastructures de test à usage général, telles que
 > [!NOTE]
 > Les concepts de test et les implémentations de test dans différents frameworks de test sont similaires, mais pas identiques. Reportez-vous à la documentation de l’infrastructure de test pour obtenir de l’aide.
 
-L’exemple suivant illustre la structure d’un test bUnit sur le `Counter` composant dans une application basée sur un Blazor modèle de projet. Le `Counter` composant affiche et incrémente un compteur en fonction de l’utilisateur qui sélectionne un bouton dans la page :
+L’exemple suivant illustre la structure d’un test bUnit sur le `Counter` composant dans une application basée sur un [ Blazor modèle de projet](xref:blazor/project-structure). Le `Counter` composant affiche et incrémente un compteur en fonction de l’utilisateur qui sélectionne un bouton dans la page :
 
 ```razor
 @page "/counter"

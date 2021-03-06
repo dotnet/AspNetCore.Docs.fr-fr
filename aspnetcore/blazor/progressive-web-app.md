@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 515da543fc6b6cca0b90968b154d91b611ea3345
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 9e7063297e124aabbdf1defd01ac90f735ef5321
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280556"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395004"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Créez des applications Web progressifs avec ASP.NET Core Blazor WebAssembly
 
@@ -104,15 +104,17 @@ Pour obtenir des ressources statiques, utilisez l' **une** des approches suivant
   
   Dans la commande précédente, l' `-o|--output` option crée un nouveau dossier pour l’application nommée `MyBlazorPwa` .
   
-  Si vous ne convertissez pas une application pour la dernière version, transmettez l' `-f|--framework` option. L’exemple suivant crée l’application pour ASP.NET Core version 3,1 :
+  **Si vous ne convertissez pas une application pour la dernière version**, transmettez l' `-f|--framework` option. L’exemple suivant crée l’application pour ASP.NET Core version 3,1 :
   
   ```dotnetcli
   dotnet new blazorwasm -o MyBlazorPwa --pwa -f netcoreapp3.1
   ```
 
-* Accédez au référentiel ASP.NET Core GitHub à l’URL suivante, qui établit un lien vers la source de référence de version 5,0 et les ressources. Si vous ne convertissez pas une application pour la version 5,0, sélectionnez la version que vous utilisez dans la liste déroulante **changer de branches ou de balises** qui s’applique à votre application.
+* Accédez au référentiel ASP.NET Core GitHub à l’URL suivante, qui établit un lien vers la `main` source de référence des branches et les ressources. Sélectionnez la version que vous utilisez dans la liste déroulante **changer de branches ou de balises** qui s’applique à votre application.
 
-  [dossier de modèle de projet dotnet/aspnetcore (version 5,0) Blazor WebAssembly `wwwroot`](https://github.com/dotnet/aspnetcore/tree/release/5.0/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+  [Blazor WebAssembly`wwwroot`dossier de modèle de projet (branche de dépôt github dotnet/aspnetcore `main` )](https://github.com/dotnet/aspnetcore/tree/main/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+
+  [!INCLUDE[](~/blazor/includes/aspnetcore-repo-ref-source-links.md)]
 
 ::: moniker-end
 
@@ -128,12 +130,14 @@ Pour obtenir des ressources statiques, utilisez l' **une** des approches suivant
 
 * Accédez au référentiel ASP.NET Core GitHub à l’URL suivante, qui pointe vers la source et les ressources de référence de la version 3,1 :
 
-  [dossier de modèle de projet dotnet/aspnetcore (version 3,1) Blazor WebAssembly `wwwroot`](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/ProjectTemplates/ComponentsWebAssembly.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+  [Blazor WebAssembly`wwwroot`dossier de modèle de projet (branche de dépôt github dotnet/aspnetcore `release 3.1` )](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/ProjectTemplates/ComponentsWebAssembly.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
 
   > [!NOTE]
-  > L’URL du Blazor WebAssembly modèle de projet a changé après la publication de ASP.NET Core 3,1. Les ressources de référence pour 5,0 ou version ultérieure sont disponibles à l’adresse suivante :
+  > L’URL du Blazor WebAssembly modèle de projet a changé après la publication de ASP.NET Core 3,1. Les ressources de référence pour toutes les versions sont disponibles à partir de la source de référence ASP.NET Core. Sélectionnez la version que vous utilisez dans la liste déroulante **changer de branches ou de balises** qui s’applique à votre application.
   >
-  > [dossier de modèle de projet dotnet/aspnetcore (version 5,0) Blazor WebAssembly `wwwroot`](https://github.com/dotnet/aspnetcore/tree/release/5.0/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+  > [Blazor WebAssembly`wwwroot`dossier de modèle de projet (branche de dépôt github dotnet/aspnetcore `main` )](https://github.com/dotnet/aspnetcore/tree/main/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+  >
+  > [!INCLUDE[](~/blazor/includes/aspnetcore-repo-ref-source-links.md)]
 
 ::: moniker-end
 
@@ -316,7 +320,7 @@ Les `AssetUrl` métadonnées spécifient l’URL relative de base que le navigat
 > [!IMPORTANT]
 > L’ajout de `ServiceWorkerAssetsManifestItem` n’entraîne pas la publication du fichier dans le répertoire de l’application `wwwroot` . La sortie de publication doit être contrôlée séparément. Le `ServiceWorkerAssetsManifestItem` seul fait apparaître une entrée supplémentaire dans le manifeste des ressources du Worker.
 
-## <a name="push-notifications"></a>Notifications push
+## <a name="push-notifications"></a>Notifications Push
 
 Comme tout autre PWA, Blazor WebAssembly PWA peut recevoir des notifications push à partir d’un serveur principal. Le serveur peut envoyer des notifications push à tout moment, même lorsque l’utilisateur n’utilise pas activement l’application. Par exemple, les notifications push peuvent être envoyées lorsqu’un autre utilisateur effectue une action appropriée.
 

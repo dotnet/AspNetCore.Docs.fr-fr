@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: f6a93eb9d95182d29a60cc1a5c48122b9166aa84
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 4c574a630176010ab30006b53c42e5cad7f93a54
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280148"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395186"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>BlazorGestion des événements ASP.net Core
 
@@ -128,7 +128,10 @@ Les informations prises en charge <xref:System.EventArgs> sont indiquées dans l
 
 Pour plus d’informations, consultez les ressources suivantes :
 
-* [ `EventArgs` classes de la source de référence ASP.net Core (branche dotnet/aspnetcore `master` )](https://github.com/dotnet/aspnetcore/tree/master/src/Components/Web/src/Web). La `master` branche représente l’API en cours de développement pour la *prochaine* version de ASP.net core. Pour la version actuelle, sélectionnez la branche de dépôt GitHub appropriée (par exemple, `release/3.1` ).
+* [`EventArgs` classes dans la source de référence ASP.NET Core (branche dotnet/aspnetcore `main` )](https://github.com/dotnet/aspnetcore/tree/main/src/Components/Web/src/Web)
+
+  [!INCLUDE[](~/blazor/includes/aspnetcore-repo-ref-source-links.md)]
+
 * [MDN Web docs : GlobalEventHandlers](https://developer.mozilla.org/docs/Web/API/GlobalEventHandlers): contient des informations sur les éléments HTML qui prennent en charge chaque événement DOM.
 
 ## <a name="lambda-expressions"></a>Expressions lambda
@@ -174,7 +177,7 @@ Un scénario courant avec des composants imbriqués est le désir d’exécuter 
 
 `ChildComponent`Dans l’exemple d’application ( `Components/ChildComponent.razor` ), montre comment un gestionnaire de bouton `onclick` est configuré pour recevoir un <xref:Microsoft.AspNetCore.Components.EventCallback> délégué à partir de l’exemple de `ParentComponent` . Le <xref:Microsoft.AspNetCore.Components.EventCallback> est typé avec `MouseEventArgs` , ce qui est approprié pour un `onclick` événement à partir d’un périphérique :
 
-[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
+[!code-razor[](~/blazor/common/samples/5.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
 `ParentComponent`Définit le () de l’enfant <xref:Microsoft.AspNetCore.Components.EventCallback%601> `OnClickCallback` sur sa `ShowMessage` méthode.
 

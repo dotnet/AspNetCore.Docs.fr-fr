@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: a942c7848c77444d185ff73338a98a4205451992
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: eb72810a5b65232aa778daa556a9b2d406807e87
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109726"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395134"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor les formulaires et la validation
 
@@ -454,7 +454,7 @@ La validation du serveur peut être effectuée à l’aide d’un [composant](#v
 
 L’exemple suivant est basé sur :
 
-* Solution hébergée Blazor créée par le [ Blazor modèle de projet hébergé](xref:blazor/hosting-models#blazor-webassembly). L’exemple peut être utilisé avec l’une des solutions hébergées sécurisées Blazor décrites dans la [ Identity documentation et la sécurité](xref:blazor/security/webassembly/index#implementation-guidance).
+* Solution hébergée Blazor WebAssembly créée à partir du [ Blazor WebAssembly modèle de projet](xref:blazor/project-structure). L’exemple peut être utilisé avec l’une des solutions hébergées sécurisées Blazor décrites dans la [ Identity documentation et la sécurité](xref:blazor/security/webassembly/index#implementation-guidance).
 * Exemple *de formulaire de base de données Starfleet Starship* dans la section [composants de formulaires intégrés](#built-in-forms-components) précédents.
 * BlazorComposant du Framework <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> .
 * `CustomValidator`Composant affiché dans la section [composants du validateur](#validator-components) .
@@ -966,7 +966,9 @@ L' Blazor infrastructure ne gère pas automatiquement les `null` conversions de 
 
 ## <a name="validation-support"></a>Prise en charge de la validation
 
-Le <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant attache la prise en charge de la validation à l’aide d’annotations de données à la Cascaded <xref:Microsoft.AspNetCore.Components.Forms.EditContext> . L’activation de la prise en charge de la validation à l’aide d’annotations de données requiert ce geste explicite. Pour utiliser un système de validation différent des annotations de données, remplacez <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> par une implémentation personnalisée. L’implémentation de ASP.NET Core est disponible pour l’inspection dans la source de référence : [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs) / [`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs) . Les liens précédents vers la source de référence fournissent du code à partir de la branche du référentiel `master` , qui représente le développement actuel de l’unité du produit pour la prochaine version de ASP.net core. Pour sélectionner la branche pour une version différente, utilisez le sélecteur de branche GitHub (par exemple `release/3.1` ).
+Le <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> composant attache la prise en charge de la validation à l’aide d’annotations de données à la Cascaded <xref:Microsoft.AspNetCore.Components.Forms.EditContext> . L’activation de la prise en charge de la validation à l’aide d’annotations de données requiert ce geste explicite. Pour utiliser un système de validation différent des annotations de données, remplacez <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> par une implémentation personnalisée. Les implémentations de ASP.NET Core sont disponibles pour l’inspection dans la source de référence : [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/main/src/Components/Forms/src/DataAnnotationsValidator.cs) / [`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/main/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs) .
+
+[!INCLUDE[](~/blazor/includes/aspnetcore-repo-ref-source-links.md)]
 
 Blazor effectue deux types de validation :
 

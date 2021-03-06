@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 55e2cbc01af7352facad7121c05c754e9d438ae3
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: ee6de9a13a69154eef6b677663091667d391452f
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100279889"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395056"
 ---
 # <a name="aspnet-core-blazor-routing"></a>Routage de ASP.NET Core Blazor
 
@@ -59,7 +59,7 @@ Au moment de l’exécution, le <xref:Microsoft.AspNetCore.Components.RouteView>
 * Reçoit du avec <xref:Microsoft.AspNetCore.Components.RouteData> <xref:Microsoft.AspNetCore.Components.Routing.Router> tous les paramètres d’itinéraire.
 * Restitue le composant spécifié avec sa [disposition](xref:blazor/layouts), y compris les dispositions imbriquées supplémentaires.
 
-Vous pouvez également spécifier un <xref:Microsoft.AspNetCore.Components.RouteView.DefaultLayout> paramètre avec une classe de disposition pour les composants qui ne spécifient pas de disposition avec la [ `@layout` directive](xref:blazor/layouts#specify-a-layout-in-a-component). Les modèles de projet de l’infrastructure Blazor spécifient le `MainLayout` composant ( `Shared/MainLayout.razor` ) comme disposition par défaut de l’application. Pour plus d’informations sur les mises en page, consultez <xref:blazor/layouts> .
+Vous pouvez également spécifier un <xref:Microsoft.AspNetCore.Components.RouteView.DefaultLayout> paramètre avec une classe de disposition pour les composants qui ne spécifient pas de disposition avec la [ `@layout` directive](xref:blazor/layouts#apply-a-layout-to-a-component). Les modèles de [ Blazor projet](xref:blazor/project-structure) de l’infrastructure spécifient le `MainLayout` composant ( `Shared/MainLayout.razor` ) comme disposition par défaut de l’application. Pour plus d’informations sur les mises en page, consultez <xref:blazor/layouts> .
 
 Les composants prennent en charge plusieurs modèles de routage à l’aide de plusieurs [ `@page` directives](xref:mvc/views/razor#page). L’exemple de composant suivant se charge sur les demandes pour `/BlazorRoute` et `/DifferentBlazorRoute` .
 
@@ -102,7 +102,7 @@ Dans le `App` composant, définissez le contenu personnalisé dans le <xref:Micr
 
 ::: moniker-end
 
-Les éléments arbitraires sont pris en charge en tant que contenu des `<NotFound>` balises, comme d’autres composants interactifs. Pour appliquer une disposition par défaut au <xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound> contenu, consultez <xref:blazor/layouts#default-layout> .
+Les éléments arbitraires sont pris en charge en tant que contenu des `<NotFound>` balises, comme d’autres composants interactifs. Pour appliquer une disposition par défaut au <xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound> contenu, consultez <xref:blazor/layouts#apply-a-layout-to-arbitrary-content-layoutview-component> .
 
 ## <a name="route-to-components-from-multiple-assemblies"></a>Acheminer vers des composants à partir de plusieurs assemblys
 
@@ -196,7 +196,7 @@ Dans l’exemple suivant, l’itinéraire vers le `User` composant correspond un
 
 Les contraintes de routage indiquées dans le tableau suivant sont disponibles. Pour plus d’informations sur les contraintes d’itinéraire qui correspondent à la culture dite indifférente, consultez l’avertissement sous le tableau.
 
-| Contrainte |  Exemple           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
+| Contrainte | Exemple           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
 | `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Non                               |
 | `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Oui                              |
@@ -230,7 +230,7 @@ Prenons le `Example` composant suivant qui peut recevoir un paramètre d’itin�
 
 ::: moniker-end
 
-Pour permettre à l' *`Server`* application d’une Blazor WebAssembly solution hébergée d’acheminer la demande avec un point dans le `param` paramètre d’itinéraire, ajoutez un modèle d’itinéraire de fichier de secours avec le paramètre facultatif dans `Startup.Configure` .
+Pour permettre à l' **`Server`** application d’une Blazor WebAssembly solution hébergée d’acheminer la demande avec un point dans le `param` paramètre d’itinéraire, ajoutez un modèle d’itinéraire de fichier de secours avec le paramètre facultatif dans `Startup.Configure` .
 
 `Startup.cs`:
 
@@ -371,7 +371,7 @@ Le `NavMenu` composant suivant crée une [`Bootstrap`](https://getbootstrap.com/
 ::: moniker-end
 
 > [!NOTE]
-> Le `NavMenu` composant ( `NavMenu.razor` ) est fourni dans le `Shared` dossier d’une application générée à partir des Blazor modèles de projet.
+> Le `NavMenu` composant ( `NavMenu.razor` ) est fourni dans le `Shared` dossier d’une application générée à partir des [ Blazor modèles de projet](xref:blazor/project-structure).
 
 Il existe deux <xref:Microsoft.AspNetCore.Components.Routing.NavLinkMatch> options que vous pouvez assigner à l' `Match` attribut de l' `<NavLink>` élément :
 

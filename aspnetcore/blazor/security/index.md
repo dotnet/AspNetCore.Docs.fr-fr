@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 9a14a8e16d8e50b47c479cf4d973459fbf61cec7
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: a840e5d54d48441e10c2a58af591a530c8fd7de9
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280373"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394887"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>BlazorAuthentification et autorisation ASP.net Core
 
@@ -299,7 +299,7 @@ Si les conditions d’autorisation ne sont pas spécifiées, <xref:Microsoft.Asp
 
 Le <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> composant peut être utilisé dans le `NavMenu` composant ( `Shared/NavMenu.razor` ) pour afficher un élément de liste ( `<li>...</li>` ) pour un [ `NavLink` composant](xref:blazor/fundamentals/routing#navlink-and-navmenu-components) ( <xref:Microsoft.AspNetCore.Components.Routing.NavLink> ), mais notez que cette approche supprime uniquement l’élément de liste de la sortie rendue. Elle n’empêche pas l’utilisateur de naviguer jusqu’au composant.
 
-Les applications créées à partir d’un Blazor modèle de projet qui incluent l’authentification utilisent un `LoginDisplay` composant qui dépend d’un `AuthorizeView` composant. Le `AuthorizeView` composant affiche de manière sélective du contenu aux utilisateurs pour Identity le travail associé. L’exemple suivant provient du Blazor WebAssembly modèle de projet.
+Les applications créées à partir d’un [ Blazor modèle de projet](xref:blazor/project-structure) qui incluent l’authentification utilisent un `LoginDisplay` composant qui dépend d’un `AuthorizeView` composant. Le `AuthorizeView` composant affiche de manière sélective du contenu aux utilisateurs pour Identity le travail associé. L’exemple suivant provient du [ Blazor WebAssembly modèle de projet](xref:blazor/project-structure).
 
 `Shared/LoginDisplay.razor`:
 
@@ -329,7 +329,7 @@ Les applications créées à partir d’un Blazor modèle de projet qui incluent
 }
 ```
 
-L’exemple suivant provient du Blazor Server modèle de projet et utilise des ASP.NET Core Identity points de terminaison dans la `Identity` zone de l’application pour le Identity travail lié au processus.
+L’exemple suivant provient du [ Blazor Server modèle de projet](xref:blazor/project-structure) et utilise des ASP.NET Core Identity points de terminaison dans la `Identity` zone de l’application pour le Identity travail lié au processus.
 
 `Shared/LoginDisplay.razor`:
 
@@ -442,7 +442,7 @@ Le <xref:Microsoft.AspNetCore.Components.Routing.Router> composant, conjointemen
 * L’autorisation asynchrone est en cours, ce qui signifie généralement que le processus d’authentification de l’utilisateur est en cours. Le balisage de l' [`<Authorizing>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing?displayProperty=nameWithType) élément est affiché.
 * Le contenu est introuvable. Le balisage de l' [`<NotFound>`](xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound?displayProperty=nameWithType) élément est affiché.
 
-Dans le modèle de projet par défaut Blazor Server , le `App` composant ( `App.razor` ) montre comment définir un contenu personnalisé :
+Dans le [ Blazor Server modèle de projet](xref:blazor/project-structure)par défaut, le `App` composant ( `App.razor` ) montre comment définir un contenu personnalisé :
 
 ```razor
 <CascadingAuthenticationState>

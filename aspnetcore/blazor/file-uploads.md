@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 ms.date: 02/18/2021
 uid: blazor/file-uploads
-ms.openlocfilehash: 26dada3a749a114fc27da89897701076378eef11
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: a31821f03efd39d774a4a3c61d027983a1783e2d
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109765"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395121"
 ---
 # <a name="aspnet-core-blazor-file-uploads"></a>BlazorChargements de fichiers ASP.net Core
 
@@ -419,7 +419,7 @@ public class FilesaveController : ControllerBase
 
 Dans Blazor WebAssembly , les données de fichier sont transmises directement dans le code .net au sein du navigateur.
 
-Dans Blazor Server , les données de fichier sont diffusées en continu via la SignalR connexion dans du code .net sur le serveur lors de la lecture du fichier à partir du flux. [`Forms.RemoteBrowserFileStreamOptions`](https://github.com/dotnet/aspnetcore/blob/master/src/Components/Web/src/Forms/InputFile/RemoteBrowserFileStreamOptions.cs) autorise la configuration des caractéristiques de chargement de fichier pour Blazor Server .
+Dans Blazor Server , les données de fichier sont diffusées en continu via la SignalR connexion dans du code .net sur le serveur lors de la lecture du fichier à partir du flux. <xref:Microsoft.AspNetCore.Components.Forms.RemoteBrowserFileStreamOptions> autorise la configuration des caractéristiques de chargement de fichier pour Blazor Server .
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
