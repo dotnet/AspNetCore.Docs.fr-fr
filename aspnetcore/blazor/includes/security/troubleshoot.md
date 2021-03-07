@@ -11,12 +11,12 @@ no-loc:
 - Let's Encrypt
 - Razor
 - SignalR
-ms.openlocfilehash: eefd16dca126c9bce1efa2cdc90d4201bac09b91
-ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
+ms.openlocfilehash: f58da78475d65cbb70b0b177e1b0443535e97d55
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102193659"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102402310"
 ---
 ## <a name="troubleshoot"></a>Dépanner
 
@@ -29,6 +29,7 @@ ms.locfileid: "102193659"
   * Selon les exigences du scénario, une autorité, une instance, un ID de locataire, un domaine de locataire, un ID de client ou un URI de redirection manquant ou incorrect empêche une application d’authentifier des clients.
   * Une étendue de jeton d’accès incorrecte empêche les clients d’accéder aux points de terminaison de l’API Web du serveur.
   * Les autorisations d’API serveur incorrectes ou manquantes empêchent les clients d’accéder aux points de terminaison de l’API Web du serveur.
+  * Exécution de l’application sur un port différent de celui configuré dans l’URI de redirection de l’inscription de l' Identity application du fournisseur.
   
   Les sections de configuration de cet article montrent des exemples de configuration correcte. Vérifiez attentivement chaque section de l’article à la recherche de la configuration de l’application et de l’adresse IP.
   
@@ -112,7 +113,7 @@ Une application fonctionnelle peut échouer immédiatement après la mise à niv
 
 ### <a name="run-the-server-app"></a>Exécuter l’application serveur
 
-Lors du test et du dépannage d’une application hébergée, assurez- Blazor vous que vous exécutez l’application à partir du **`Server`** projet. Par exemple, dans Visual Studio, vérifiez que le projet serveur est mis en surbrillance dans **Explorateur de solutions** avant de démarrer l’application avec l’une des approches suivantes :
+Lors du test et du dépannage d’une solution hébergée, assurez- Blazor vous que vous exécutez l’application à partir du **`Server`** projet. Par exemple, dans Visual Studio, vérifiez que le projet serveur est mis en surbrillance dans **Explorateur de solutions** avant de démarrer l’application avec l’une des approches suivantes :
 
 * Sélectionnez le bouton **Run**.
 * Utilisez **débogage**  >  **Démarrer le débogage** à partir du menu.
