@@ -12,7 +12,7 @@ Vous devez avoir une connaissance élémentaire de [Git et GitHub.com](https://g
 
 * Ouvrez un [problème](https://github.com/dotnet/AspNetCore.Docs/issues/new) décrivant ce que vous voulez faire, par exemple changer un article existant ou en créer un. Nous demandons souvent le plan des nouvelles rubriques suggérées. Attendez l’approbation de l’équipe avant de vous investir davantage.
 * Dupliquez (fork) le dépôt [aspnet/Docs](https://github.com/dotnet/AspNetCore.Docs/) et créez une branche pour vos modifications.
-* Soumettez une demande de tirage dans la branche master avec vos modifications.
+* Envoyez une demande de tirage (PR) à la branche *principale* avec vos modifications.
 * Si votre demande de tirage se voit attribuer l’étiquette « cla-required », [signez le contrat CLA (Contribution License Agreement)](https://cla.dotnetfoundation.org/).
 * Répondez aux commentaires sur la demande de tirage.
 
@@ -24,11 +24,11 @@ Si vous utilisez Visual Studio Code pour contribuer à la documentation ASP.NET,
 
 ## <a name="markdown-syntax"></a>Syntaxe Markdown
 
-Les articles sont écrits en [DFM (DocFX Flavored Markdown)](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html), qui est un sur-ensemble de [GFM (GitHub Flavored Markdown)](https://guides.github.com/features/mastering-markdown/). Pour obtenir des exemples de syntaxe DFM illustrant les fonctionnalités de l’interface utilisateur couramment utilisées dans la documentation ASP.NET, consultez [Metadata and Markdown Template](https://github.com/dotnet/docs/blob/master/styleguide/template.md) dans le guide de style du dépôt .NET Docs. 
+Les articles sont écrits en [DFM (DocFX Flavored Markdown)](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html), qui est un sur-ensemble de [GFM (GitHub Flavored Markdown)](https://guides.github.com/features/mastering-markdown/). Pour obtenir des exemples de syntaxe DFM illustrant les fonctionnalités de l’interface utilisateur couramment utilisées dans la documentation ASP.NET, consultez [Metadata and Markdown Template](https://github.com/dotnet/docs/blob/main/styleguide/template.md) dans le guide de style du dépôt .NET Docs. 
 
 ## <a name="folder-structure-conventions"></a>Conventions relatives à la structure des dossiers
 
-Pour chaque fichier Markdown, un dossier pour les images et un dossier pour l’exemple de code peuvent exister. Si l’article est [fundamentals/configuration/index.md](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/fundamentals/configuration/index.md), les images se trouvent dans [fundamentals/configuration/index/\_static](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/_static), tandis que les exemples de fichiers de projet d’application se trouvent dans [fundamentals/configuration/index/sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/sample). Une image dans le fichier *fundamentals/configuration/index.md* est affichée par le code Markdown suivant :
+Pour chaque fichier Markdown, un dossier pour les images et un dossier pour l’exemple de code peuvent exister. Si l’article est [fundamentals/configuration/index.md](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/fundamentals/configuration/index.md), les images se trouvent dans [fundamentals/configuration/index/\_static](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/_static), tandis que les exemples de fichiers de projet d’application se trouvent dans [fundamentals/configuration/index/sample](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/sample). Une image dans le fichier *fundamentals/configuration/index.md* est affichée par le code Markdown suivant :
 
 ```md
 ![description of image for alt attribute](configuration/index/_static/imagename.png)
@@ -149,7 +149,7 @@ DocFX nécessite :
 
 ## <a name="voice-and-tone"></a>Voix et ton
 
-Notre objectif est d’écrire une documentation facile à comprendre par le plus grand nombre. À cette fin, nous avons établi des instructions sur le style que nos collaborateurs sont invités à suivre. Pour plus d’informations, consultez [Voice and tone guidelines](https://github.com/dotnet/docs/blob/master/styleguide/voice-tone.md) dans le dépôt .NET.
+Notre objectif est d’écrire une documentation facile à comprendre par le plus grand nombre. À cette fin, nous avons établi des instructions sur le style que nos collaborateurs sont invités à suivre. Pour plus d’informations, consultez [Voice and tone guidelines](https://github.com/dotnet/docs/blob/main/styleguide/voice-tone.md) dans le dépôt .NET.
 
 ## <a name="microsoft-writing-style-guide"></a>Guide de style d’écriture Microsoft
 
@@ -157,4 +157,4 @@ Le [Guide de style d’écriture Microsoft](https://docs.microsoft.com/style-gui
 
 ## <a name="redirects"></a>Redirection
 
-Si vous supprimez un article, changez son nom de fichier ou déplacez-le vers un autre dossier, créez une redirection afin que les personnes qui ont créé un signet pour l’article ne reçoivent pas une erreur *404 Non trouvé*. Ajoutez les redirections au [fichier de redirection dans la branche master](https://github.com/dotnet/AspNetCore.Docs/blob/master/.openpublishing.redirection.json).
+Si vous supprimez un article, changez son nom de fichier ou déplacez-le vers un autre dossier, créez une redirection afin que les personnes qui ont créé un signet pour l’article ne reçoivent pas une erreur *404 Non trouvé*. Ajoutez des redirections au [fichier de redirection principal](https://github.com/dotnet/AspNetCore.Docs/blob/main/.openpublishing.redirection.json).

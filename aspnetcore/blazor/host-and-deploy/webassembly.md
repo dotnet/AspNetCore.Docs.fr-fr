@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: fbd6698eeb65ef9ab6263d389f1f50ffcac8be79
-ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
+ms.openlocfilehash: bb45b763fb24b5270c92b3ffd18f3fbc3ba1093b
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2021
-ms.locfileid: "102394991"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589424"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Héberger et déployer des ASP.NET Core Blazor WebAssembly
 
@@ -552,7 +552,7 @@ La suppression du gestionnaire ou la désactivation de l’héritage est effectu
 
 *Cette section s’applique uniquement aux Blazor WebAssembly applications autonomes. Blazor les applications hébergées utilisent un fichier d’application ASP.net Core par défaut `web.config` , et non le fichier lié dans cette section.*
 
-IIS peut être configuré via `web.config` pour servir des ressources compressées Brotli ou gzip Blazor pour des applications autonomes Blazor WebAssembly . Pour obtenir un exemple de fichier de configuration, consultez [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true) .
+IIS peut être configuré via `web.config` pour servir des ressources compressées Brotli ou gzip Blazor pour des applications autonomes Blazor WebAssembly . Pour obtenir un exemple de fichier de configuration, consultez [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true) .
 
 Une configuration supplémentaire de l’exemple de `web.config` fichier peut être nécessaire dans les scénarios suivants :
 
@@ -956,7 +956,7 @@ Si vous confirmez que le serveur retourne des données correctes plausibly, il d
 
 ### <a name="troubleshoot-integrity-powershell-script"></a>Résoudre les problèmes de script PowerShell d’intégrité
 
-Utilisez le [`integrity.ps1`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/integrity.ps1?raw=true) script PowerShell pour valider une application publiée et déployée Blazor . Le script est fourni comme point de départ lorsque l’application rencontre des problèmes d’intégrité que l' Blazor infrastructure ne peut pas identifier. La personnalisation du script peut être nécessaire pour vos applications.
+Utilisez le [`integrity.ps1`](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/blazor/host-and-deploy/webassembly/_samples/integrity.ps1?raw=true) script PowerShell pour valider une application publiée et déployée Blazor . Le script est fourni comme point de départ lorsque l’application rencontre des problèmes d’intégrité que l' Blazor infrastructure ne peut pas identifier. La personnalisation du script peut être nécessaire pour vos applications.
 
 Le script vérifie les fichiers dans le `publish` dossier et les télécharge à partir de l’application déployée pour détecter les problèmes dans les différents manifestes qui contiennent des hachages d’intégrité. Ces contrôles doivent détecter les problèmes les plus courants :
 

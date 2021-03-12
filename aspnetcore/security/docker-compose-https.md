@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-compose-https
-ms.openlocfilehash: 37a0142dac1e26afd26dbf2aad46bee20693652e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 69c449527a64ec928d436245e9e971ec49303489
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051640"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588755"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a>Hébergement d’images ASP.NET Core avec Docker Compose sur HTTPs
 
@@ -33,7 +33,7 @@ ASP.NET Core utilise le [protocole HTTPS par défaut](./enforcing-ssl.md). [Http
 
 Ce document explique comment exécuter des images conteneur prégénérées avec HTTPs.
 
-Consultez [développement d’Applications ASP.net core avec l’arrimeur sur https](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md) pour les scénarios de développement.
+Consultez [développement d’Applications ASP.net core avec l’arrimeur sur https](https://github.com/dotnet/dotnet-docker/blob/main/samples/run-aspnetcore-https-development.md) pour les scénarios de développement.
 
 Cet exemple requiert l' [ancrage 17,06](https://docs.docker.com/release-notes/docker-ce) ou une version ultérieure du [client dockr](https://www.docker.com/products/docker).
 
@@ -52,7 +52,7 @@ Pour les certificats de production :
 * L' `dotnet dev-certs` outil n’est pas requis.
 * Les certificats n’ont pas besoin d’être stockés à l’emplacement utilisé dans les instructions. Stockez les certificats dans n’importe quel emplacement en dehors de l’annuaire de sites.
 
-Les instructions contenues dans la section suivante contiennent des certificats de montage de volume dans des conteneurs à l’aide `volumes` de la propriété dans *docker-compose. yml.* Vous pouvez ajouter des certificats dans des images de conteneur à l’aide d’une `COPY` commande dans un *fichier dockerfile* , mais cela n’est pas recommandé. La copie de certificats dans une image n’est pas recommandée pour les raisons suivantes :
+Les instructions contenues dans la section suivante contiennent des certificats de montage de volume dans des conteneurs à l’aide `volumes` de la propriété dans *docker-compose. yml.* Vous pouvez ajouter des certificats dans des images de conteneur à l’aide d’une `COPY` commande dans un *fichier dockerfile*, mais cela n’est pas recommandé. La copie de certificats dans une image n’est pas recommandée pour les raisons suivantes :
 
 * Il est donc difficile d’utiliser la même image pour le test avec des certificats de développeur.
 * Il est donc difficile d’utiliser la même image pour l’hébergement avec des certificats de production.

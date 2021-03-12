@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 61fcc07aeb30db15014fb716194328d366f27859
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 1d0e0da3a5d047d7457e7ca7587c81029e33cb69
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058335"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586005"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/view-components/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="view-components"></a>Composants de vue
 
@@ -54,7 +54,7 @@ Les composants de vue sont conçus pour être utilisés là où vous avez une lo
 
 Un composant de vue a deux éléments : sa classe (généralement dérivée de [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) et le résultat qu’il retourne (en général, une vue). Comme les contrôleurs, un composant de vue peut être un OCT, mais la plupart des développeurs préfèrent utiliser les méthodes et propriétés dérivées de `ViewComponent`.
 
-Si vous envisagez que les composants de vue répondent aux spécifications d’une application, envisagez plutôt d’utiliser des Razor composants. Razor les composants combinent également le balisage avec du code C# pour produire des unités d’interface utilisateur réutilisables. Razor les composants sont conçus pour la productivité des développeurs lorsqu’ils fournissent la logique de l’interface utilisateur côté client et la composition. Pour plus d'informations, consultez <xref:blazor/components/index>. Pour plus d’informations sur la façon d’incorporer des Razor composants dans une application MVC ou Razor pages, consultez <xref:blazor/components/prerendering-and-integration?pivots=server> .
+Si vous envisagez que les composants de vue répondent aux spécifications d’une application, envisagez plutôt d’utiliser des Razor composants. Razor les composants combinent également le balisage avec du code C# pour produire des unités d’interface utilisateur réutilisables. Razor les composants sont conçus pour la productivité des développeurs lorsqu’ils fournissent la logique de l’interface utilisateur côté client et la composition. Pour plus d’informations, consultez <xref:blazor/components/index>. Pour plus d’informations sur la façon d’incorporer des Razor composants dans une application MVC ou Razor pages, consultez <xref:blazor/components/prerendering-and-integration?pivots=server> .
 
 ## <a name="creating-a-view-component"></a>Création d’un composant de vue
 
@@ -167,7 +167,7 @@ Dans cet exemple, le composant de vue est appelé directement du contrôleur :
 
 ## <a name="walkthrough-creating-a-simple-view-component"></a>Procédure pas à pas : Création d’un composant de vue simple
 
-[Téléchargez](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample), générez et testez le code de démarrage. Il s’agit d’un projet simple avec un contrôleur `ToDo` qui affiche une liste de tâches *ToDo*.
+[Téléchargez](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/view-components/sample), générez et testez le code de démarrage. Il s’agit d’un projet simple avec un contrôleur `ToDo` qui affiche une liste de tâches *ToDo*.
 
 ![Liste des tâches Todo](view-components/_static/2dos.png)
 
@@ -193,7 +193,7 @@ Remarques sur le code :
 * `InvokeAsync` expose une méthode qui peut être appelée à partir d’une vue et qui peut prendre un nombre arbitraire d’arguments.
 * La méthode `InvokeAsync` retourne l’ensemble des tâches `ToDo` qui correspondent aux paramètres `isDone` et `maxPriority` spécifiés.
 
-### <a name="create-the-view-component-no-locrazor-view"></a>Créer la vue de composant de vue Razor
+### <a name="create-the-view-component-razor-view"></a>Créer la vue de composant de vue Razor
 
 * Créez le dossier *Views/Shared/Components*. Ce dossier **doit** être nommé *Components*.
 

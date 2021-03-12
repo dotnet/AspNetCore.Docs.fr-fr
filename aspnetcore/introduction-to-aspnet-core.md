@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: index
-ms.openlocfilehash: 4301e0d59364573767ab4cae25a4818ff84b9abc
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 3e41336d084e25319f8b1ab4c4ab3175b758d23d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93052225"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588800"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -198,8 +198,8 @@ Pour obtenir un guide de référence sur la migration d’applications ASP.NET v
 
 La plupart des articles et tutoriels contiennent des liens vers des exemples de code.
 
-1. [Téléchargez le fichier zip du référentiel ASP.NET](https://codeload.github.com/dotnet/AspNetCore.Docs/zip/master).
-1. Décompressez le fichier *Docs-master.zip*.
+1. [Téléchargez le fichier zip du référentiel ASP.NET](https://codeload.github.com/dotnet/AspNetCore.Docs/zip/main).
+1. Décompressez le fichier *Docs-main.zip* .
 1. Utilisez l’URL contenue dans l’exemple de lien pour vous aider à naviguer dans l’exemple de répertoire.
 
 ### <a name="preprocessor-directives-in-sample-code"></a>Directives de préprocesseur dans l’exemple de code
@@ -244,7 +244,7 @@ L’extrait de code C# précédent est référencé dans le fichier Markdown de 
 
 Vous pouvez ignorer (ou supprimer) en toute sécurité `#region` les `#endregion` directives et qui entourent le code. Ne modifiez pas le code dans ces directives si vous envisagez d’exécuter les exemples de scénarios décrits dans la rubrique. N’hésitez pas à modifier le code quand vous testez d’autres scénarios.
 
-Pour plus d’informations, consultez [Contribuer à la documentation ASP.NET : extraits de code](https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md#code-snippets).
+Pour plus d’informations, consultez [Contribuer à la documentation ASP.NET : extraits de code](https://github.com/dotnet/AspNetCore.Docs/blob/main/CONTRIBUTING.md#code-snippets).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

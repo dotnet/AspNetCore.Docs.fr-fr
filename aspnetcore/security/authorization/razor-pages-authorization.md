@@ -19,20 +19,20 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: 69e1d639aeb55ae64cc54b1cda402ed6bcbb04ab
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ffcb16b626773da69c45b8ab5dbd7c3cdc84bb5f
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060181"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589112"
 ---
-# <a name="no-locrazor-pages-authorization-conventions-in-aspnet-core"></a>Razor Conventions d’autorisation des pages dans ASP.NET Core
+# <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>Razor Conventions d’autorisation des pages dans ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
 Une façon de contrôler l’accès dans votre Razor application pages consiste à utiliser des conventions d’autorisation au démarrage. Ces conventions vous permettent d’autoriser les utilisateurs et d’autoriser les utilisateurs anonymes à accéder à des pages ou des dossiers de pages individuels. Les conventions décrites dans cette rubrique appliquent automatiquement des [filtres d’autorisation](xref:mvc/controllers/filters#authorization-filters) pour contrôler l’accès.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/razor-pages-authorization/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple d’application utilise [ cookie l' ASP.NET Core Identity authentification sans ](xref:security/authentication/cookie). Les concepts et les exemples présentés dans cette rubrique s’appliquent également aux applications qui utilisent ASP.NET Core Identity . Pour utiliser ASP.NET Core Identity , suivez les instructions de la <xref:security/authentication/identity> .
 
@@ -75,7 +75,7 @@ Utilisez la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollect
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-Le nom de la page est le chemin d’accès du fichier sans extension par rapport au répertoire racine des pages pour la zone spécifiée. Par exemple, le nom de la page zones de fichier */ Identity /pages/manage/Accounts.cshtml* est */Manage/Accounts* .
+Le nom de la page est le chemin d’accès du fichier sans extension par rapport au répertoire racine des pages pour la zone spécifiée. Par exemple, le nom de la page zones de fichier */ Identity /pages/manage/Accounts.cshtml* est */Manage/Accounts*.
 
 Pour spécifier une [stratégie d’autorisation](xref:security/authorization/policies), utilisez une [surcharge AuthorizeAreaPage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):
 
@@ -91,7 +91,7 @@ Utilisez la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollect
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-Le chemin d’accès au dossier est le chemin d’accès du dossier relatif au répertoire racine des pages pour la zone spécifiée. Par exemple, le chemin d’accès au dossier pour les fichiers sous *Areas/ Identity /pages/manage/* est */Manage* .
+Le chemin d’accès au dossier est le chemin d’accès du dossier relatif au répertoire racine des pages pour la zone spécifiée. Par exemple, le chemin d’accès au dossier pour les fichiers sous *Areas/ Identity /pages/manage/* est */Manage*.
 
 Pour spécifier une [stratégie d’autorisation](xref:security/authorization/policies), utilisez une [surcharge AuthorizeAreaFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):
 
@@ -144,7 +144,7 @@ La demande d’autorisation sur la page privée échoue. Lorsque <xref:Microsoft
 
 Une façon de contrôler l’accès dans votre Razor application pages consiste à utiliser des conventions d’autorisation au démarrage. Ces conventions vous permettent d’autoriser les utilisateurs et d’autoriser les utilisateurs anonymes à accéder à des pages ou des dossiers de pages individuels. Les conventions décrites dans cette rubrique appliquent automatiquement des [filtres d’autorisation](xref:mvc/controllers/filters#authorization-filters) pour contrôler l’accès.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/razor-pages-authorization/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple d’application utilise [ cookie l' ASP.NET Core Identity authentification sans ](xref:security/authentication/cookie). Les concepts et les exemples présentés dans cette rubrique s’appliquent également aux applications qui utilisent ASP.NET Core Identity . Pour utiliser ASP.NET Core Identity , suivez les instructions de la <xref:security/authentication/identity> .
 
@@ -187,7 +187,7 @@ Utilisez la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollect
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-Le nom de la page est le chemin d’accès du fichier sans extension par rapport au répertoire racine des pages pour la zone spécifiée. Par exemple, le nom de la page zones de fichier */ Identity /pages/manage/Accounts.cshtml* est */Manage/Accounts* .
+Le nom de la page est le chemin d’accès du fichier sans extension par rapport au répertoire racine des pages pour la zone spécifiée. Par exemple, le nom de la page zones de fichier */ Identity /pages/manage/Accounts.cshtml* est */Manage/Accounts*.
 
 Pour spécifier une [stratégie d’autorisation](xref:security/authorization/policies), utilisez une [surcharge AuthorizeAreaPage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):
 
@@ -203,7 +203,7 @@ Utilisez la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollect
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-Le chemin d’accès au dossier est le chemin d’accès du dossier relatif au répertoire racine des pages pour la zone spécifiée. Par exemple, le chemin d’accès au dossier pour les fichiers sous *Areas/ Identity /pages/manage/* est */Manage* .
+Le chemin d’accès au dossier est le chemin d’accès du dossier relatif au répertoire racine des pages pour la zone spécifiée. Par exemple, le chemin d’accès au dossier pour les fichiers sous *Areas/ Identity /pages/manage/* est */Manage*.
 
 Pour spécifier une [stratégie d’autorisation](xref:security/authorization/policies), utilisez une [surcharge AuthorizeAreaFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):
 

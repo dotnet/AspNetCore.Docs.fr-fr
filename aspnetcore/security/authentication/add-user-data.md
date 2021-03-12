@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/add-user-data
-ms.openlocfilehash: a4e1fd780947cfa5f09fb1e03964595fa09f0f18
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 2d921a0c72fb7c03cd88966077e2d33e4b19ffa1
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061416"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585914"
 ---
-# <a name="add-download-and-delete-custom-user-data-to-no-locidentity-in-an-aspnet-core-project"></a>Ajouter, télécharger et supprimer des données utilisateur personnalisées Identity dans un projet ASP.net Core
+# <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Ajouter, télécharger et supprimer des données utilisateur personnalisées Identity dans un projet ASP.net Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -36,7 +36,7 @@ Cet article montre comment :
 
 L’exemple de projet est créé à partir d’une Razor application Web pages, mais les instructions sont similaires pour une asp.net Core application Web MVC.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/add-user-data) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -52,13 +52,13 @@ L’exemple de projet est créé à partir d’une Razor application Web pages, 
 
 ::: moniker-end
 
-## <a name="create-a-no-locrazor-web-app"></a>Créer une Razor application Web
+## <a name="create-a-razor-web-app"></a>Créer une Razor application Web
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* Dans Visual Studio, dans le menu **Fichier** , sélectionnez **Nouveau** > **Projet** . Nommez le projet **application Web 1** si vous souhaitez qu’il corresponde à l’espace de noms de l’exemple de code de [Téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
+* Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**. Nommez le projet **application Web 1** si vous souhaitez qu’il corresponde à l’espace de noms de l’exemple de code de [Téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
 * Sélectionnez **ASP.net Core application Web** > **OK**
 * Sélectionnez **ASP.NET Core 3,0** dans la liste déroulante
 * Sélectionner l' **application Web** > **OK**
@@ -68,7 +68,7 @@ L’exemple de projet est créé à partir d’une Razor application Web pages, 
 
 ::: moniker range="< aspnetcore-3.0"
 
-* Dans Visual Studio, dans le menu **Fichier** , sélectionnez **Nouveau** > **Projet** . Nommez le projet **application Web 1** si vous souhaitez qu’il corresponde à l’espace de noms de l’exemple de code de [Téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
+* Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**. Nommez le projet **application Web 1** si vous souhaitez qu’il corresponde à l’espace de noms de l’exemple de code de [Téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
 * Sélectionnez **ASP.net Core application Web** > **OK**
 * Sélectionnez **ASP.NET Core 2,2** dans la liste déroulante
 * Sélectionner l' **application Web** > **OK**
@@ -85,20 +85,20 @@ dotnet new webapp -o WebApp1
 
 ---
 
-## <a name="run-the-no-locidentity-scaffolder"></a>Exécuter le générateur de Identity modèles
+## <a name="run-the-identity-scaffolder"></a>Exécuter le générateur de Identity modèles
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans **Explorateur de solutions** , cliquez avec le bouton droit sur le projet > **Ajouter**  >  **un nouvel élément de génération de modèles** automatique.
-* Dans le volet gauche de la boîte de dialogue **Ajouter une structure** , sélectionnez **Identity**  >  **Ajouter** .
+* Dans **Explorateur de solutions**, cliquez avec le bouton droit sur le projet > **Ajouter**  >  **un nouvel élément de génération de modèles** automatique.
+* Dans le volet gauche de la boîte de dialogue **Ajouter une structure** , sélectionnez **Identity**  >  **Ajouter**.
 * Dans la boîte de dialogue **ajouter Identity** , les options suivantes sont disponibles :
   * Sélectionner le fichier de disposition existant  *~/Pages/Shared/_Layout. cshtml*
   * Sélectionnez les fichiers suivants à remplacer :
     * **Compte/inscription**
     * **Compte/gestion/index**
-  * Sélectionnez le **+** bouton pour créer une **classe de contexte de données** . Acceptez le type ( **application Web 1. Models. WebApp1Context** si le projet est nommé **application Web 1** ).
-  * Sélectionnez le **+** bouton pour créer une nouvelle **classe d’utilisateur** . Acceptez le type ( **WebApp1User** si le projet est nommé **application Web 1** ) > **Ajouter** .
-* Sélectionnez **Ajouter** .
+  * Sélectionnez le **+** bouton pour créer une **classe de contexte de données**. Acceptez le type (**application Web 1. Models. WebApp1Context** si le projet est nommé **application Web 1**).
+  * Sélectionnez le **+** bouton pour créer une nouvelle **classe d’utilisateur**. Acceptez le type (**WebApp1User** si le projet est nommé **application Web 1**) > **Ajouter**.
+* Sélectionnez **Ajouter**.
 
 # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
@@ -141,9 +141,9 @@ Suivez les instructions dans [migrations, UseAuthentication et Layout](xref:secu
   * Sélectionnez le bouton **Télécharger** et examinez le *PersonalData.js* fichier.
   * Testez le bouton **supprimer** , qui supprime l’utilisateur connecté.
 
-## <a name="add-custom-user-data-to-the-no-locidentity-db"></a>Ajouter des données utilisateur personnalisées à la base de données Identity
+## <a name="add-custom-user-data-to-the-identity-db"></a>Ajouter des données utilisateur personnalisées à la base de données Identity
 
-Mettez à jour la `IdentityUser` classe dérivée avec des propriétés personnalisées. Si vous avez nommé le projet application Web 1, le fichier est nommé *Areas/ Identity /Data/WebApp1User.cs* . Mettez à jour le fichier avec le code suivant :
+Mettez à jour la `IdentityUser` classe dérivée avec des propriétés personnalisées. Si vous avez nommé le projet application Web 1, le fichier est nommé *Areas/ Identity /Data/WebApp1User.cs*. Mettez à jour le fichier avec le code suivant :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -215,7 +215,7 @@ Créez le projet.
 
 ### <a name="add-a-migration-for-the-custom-user-data"></a>Ajouter une migration pour les données utilisateur personnalisées
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans la console du **Gestionnaire de package** Visual Studio :
 
@@ -241,7 +241,7 @@ Testez l’application :
 * Affichez les données utilisateur personnalisées sur la `/Identity/Account/Manage` page.
 * Téléchargez et affichez les données personnelles des utilisateurs à partir de la `/Identity/Account/Manage/PersonalData` page.
 
-## <a name="add-claims-to-no-locidentity-using-iuserclaimsprincipalfactoryapplicationuser"></a>Ajouter des revendications à à Identity l’aide de IUserClaimsPrincipalFactory<ApplicationUser>
+## <a name="add-claims-to-identity-using-iuserclaimsprincipalfactoryapplicationuser"></a>Ajouter des revendications à à Identity l’aide de IUserClaimsPrincipalFactory<ApplicationUser>
 
 > [!NOTE]
 > Cette section n’est pas une extension du didacticiel précédent. Pour appliquer les étapes suivantes à l’application générée à l’aide du didacticiel, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/18797).

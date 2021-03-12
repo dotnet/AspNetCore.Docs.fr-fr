@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/handle-errors
-ms.openlocfilehash: 92e9350a7892f8f38f64d4ebd68d54a97ec7e994
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: f9cc38f444bd3db826595b7de64db05792915a23
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058374"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585719"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>Gérer les erreurs dans les API Web ASP.NET Core
 
 Cet article explique comment gérer et personnaliser la gestion des erreurs avec ASP.NET Core API Web.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/handle-errors/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/handle-errors/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="developer-exception-page"></a>Page d’exceptions du développeur
 
@@ -80,7 +80,7 @@ Host: localhost:44312
 User-Agent: curl/7.55.1
 ```
 
-Pour afficher une réponse au format HTML à la place, définissez l' `Accept` en-tête de la requête HTTP sur le `text/html` type de média. Exemple :
+Pour afficher une réponse au format HTML à la place, définissez l' `Accept` en-tête de la requête HTTP sur le `text/html` type de média. Par exemple :
 
 ```bash
 curl -i -H "Accept: text/html" https://localhost:5001/weatherforecast/chicago

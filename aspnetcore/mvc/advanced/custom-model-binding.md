@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 7675e95c43b9ee428ee5fda86ea3ead9815ed645
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: b674d3a034124a26e2e76f2a7f0220e3f0ecea56
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058465"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588768"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Liaison de données personnalisée dans ASP.NET Core
 
@@ -32,7 +32,7 @@ Par [Steve Smith](https://ardalis.com/) et [Kirk Larkin](https://twitter.com/ser
 
 La liaison de données permet aux actions du contrôleur de fonctionner directement avec des types de modèle (passés en tant qu’arguments de méthode), plutôt qu’avec des requêtes HTTP. Le mappage entre les données de requête entrantes et les modèles d’application est pris en charge par les classeurs de modèles. Les développeurs peuvent étendre la fonctionnalité de liaison de données intégrée en implémentant des classeurs de modèles personnalisés (même si, en règle générale, vous n’avez pas besoin d’écrire votre propre fournisseur).
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/custom-model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="default-model-binder-limitations"></a>Limitations du classeur de modèles par défaut
 
@@ -46,7 +46,7 @@ Avant de créer votre propre classeur de modèles personnalisé, vérifiez la fa
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>Utilisation de ByteArrayModelBinder
 
-Les chaînes encodées au format Base64 peuvent être utilisées pour représenter des données binaires. Par exemple, une image peut être encodée sous forme de chaîne. L’exemple comprend une image sous forme de chaîne encodée en Base64 dans [Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/3.x/CustomModelBindingSample/Base64String.txt).
+Les chaînes encodées au format Base64 peuvent être utilisées pour représenter des données binaires. Par exemple, une image peut être encodée sous forme de chaîne. L’exemple comprend une image sous forme de chaîne encodée en Base64 dans [Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/advanced/custom-model-binding/samples/3.x/CustomModelBindingSample/Base64String.txt).
 
 ASP.NET Core MVC peut accepter une chaîne encodée au format base64 et utiliser `ByteArrayModelBinder` pour la convertir en tableau d’octets. Les <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider> `byte[]` arguments Maps pour `ByteArrayModelBinder` :
 
@@ -156,7 +156,7 @@ Par [Steve Smith](https://ardalis.com/)
 
 La liaison de données permet aux actions du contrôleur de fonctionner directement avec des types de modèle (passés en tant qu’arguments de méthode), plutôt qu’avec des requêtes HTTP. Le mappage entre les données de requête entrantes et les modèles d’application est pris en charge par les classeurs de modèles. Les développeurs peuvent étendre la fonctionnalité de liaison de données intégrée en implémentant des classeurs de modèles personnalisés (même si, en règle générale, vous n’avez pas besoin d’écrire votre propre fournisseur).
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/custom-model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="default-model-binder-limitations"></a>Limitations du classeur de modèles par défaut
 
@@ -170,7 +170,7 @@ Avant de créer votre propre classeur de modèles personnalisé, vérifiez la fa
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>Utilisation de ByteArrayModelBinder
 
-Les chaînes encodées au format Base64 peuvent être utilisées pour représenter des données binaires. Par exemple, une image peut être encodée sous forme de chaîne. L’exemple comprend une image sous forme de chaîne encodée en Base64 dans [Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/2.x/CustomModelBindingSample/Base64String.txt).
+Les chaînes encodées au format Base64 peuvent être utilisées pour représenter des données binaires. Par exemple, une image peut être encodée sous forme de chaîne. L’exemple comprend une image sous forme de chaîne encodée en Base64 dans [Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/advanced/custom-model-binding/samples/2.x/CustomModelBindingSample/Base64String.txt).
 
 ASP.NET Core MVC peut accepter une chaîne encodée au format base64 et utiliser `ByteArrayModelBinder` pour la convertir en tableau d’octets. Les <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider> `byte[]` arguments Maps pour `ByteArrayModelBinder` :
 

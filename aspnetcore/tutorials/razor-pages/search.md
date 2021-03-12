@@ -19,26 +19,26 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: d852766c9706941a1a5f4f3af2c9293ffc4e6a26
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 0ffe4ed251eed551b2799c1a66424ba31137dc18
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97486211"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589515"
 ---
-# <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>Partie 6, ajouter une recherche aux Razor Pages ASP.net Core
+# <a name="part-6-add-search-to-aspnet-core-razor-pages"></a>Partie 6, ajouter une recherche aux Razor Pages ASP.net Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ::: moniker-end
 
@@ -71,7 +71,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-La requête est uniquement ***définie** _ à ce stade, elle n’a _*_pas_*_ été exécutée sur la base de données.
+La requête est uniquement ***définie** _ à ce stade, elle n’a _ *_pas_** été exécutée sur la base de données.
 
 Si la propriété `SearchString` n’est pas nulle ou vide, la requête sur les films est modifiée de façon à filtrer sur la chaîne de recherche :
 
@@ -96,11 +96,11 @@ La contrainte d’itinéraire précédente permet de rechercher le titre comme d
 
 ![::: No-Loc (index) ::: View avec le mot fantôme ajouté à l’URL et une liste de films retournée de deux films, Ghostbusters et Ghostbusters 2](search/_static/g2.png)
 
-Le runtime ASP.NET Core utilise la [liaison de modèle](xref:mvc/models/model-binding) pour définir la valeur de la propriété `SearchString` à partir de la chaîne de requête (`?searchString=Ghost`) ou des données de la route (`https://localhost:5001/Movies/Ghost`). La liaison de modèle ne respecte _*_pas_*_ la casse.
+Le runtime ASP.NET Core utilise la [liaison de modèle](xref:mvc/models/model-binding) pour définir la valeur de la propriété `SearchString` à partir de la chaîne de requête (`?searchString=Ghost`) ou des données de la route (`https://localhost:5001/Movies/Ghost`). La liaison de modèle ne respecte ***pas*** la casse.
 
 Toutefois, les utilisateurs ne sont pas censés modifier l’URL pour rechercher un film. Dans cette étape, une interface utilisateur est ajoutée pour filtrer les films. Si vous avez ajouté la contrainte d’itinéraire `"{searchString?}"`, supprimez-la.
 
-Ouvrez le fichier _Pages/movies/ Index . cshtml * et ajoutez le balisage mis en surbrillance dans le code suivant :
+Ouvrez le fichier *pages/movies/ Index . cshtml* et ajoutez le balisage mis en surbrillance dans le code suivant :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/Index2.cshtml?highlight=14-19&range=1-22)]
 
@@ -127,7 +127,7 @@ La liste `SelectList` de genres est créée en projetant des différents genres.
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
 
-### <a name="add-search-by-genre-to-the-no-locrazor-page"></a>Ajouter la recherche par genre à la Razor page
+### <a name="add-search-by-genre-to-the-razor-page"></a>Ajouter la recherche par genre à la Razor page
 
 1. Mettez à jour le *Index . cshtml* [ `<form>` élément] ( https://developer.mozilla.org/docs/Web/HTML/Element/form) mis en surbrillance dans le balisage suivant :
 
@@ -145,7 +145,7 @@ La liste `SelectList` de genres est créée en projetant des différents genres.
 
 ::: moniker range="< aspnetcore-3.0"
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 Dans les sections suivantes, la recherche de films par *genre* ou par *nom* est ajoutée.
 
@@ -196,11 +196,11 @@ La contrainte d’itinéraire précédente permet de rechercher le titre comme d
 
 ![::: No-Loc (index) ::: View avec le mot fantôme ajouté à l’URL et une liste de films retournée de deux films, Ghostbusters et Ghostbusters 2](search/_static/g2.png)
 
-Le runtime ASP.NET Core utilise la [liaison de modèle](xref:mvc/models/model-binding) pour définir la valeur de la propriété `SearchString` à partir de la chaîne de requête (`?searchString=Ghost`) ou des données de la route (`https://localhost:5001/Movies/Ghost`). La liaison de modèle est *_sans_* respect de la casse.
+Le runtime ASP.NET Core utilise la [liaison de modèle](xref:mvc/models/model-binding) pour définir la valeur de la propriété `SearchString` à partir de la chaîne de requête (`?searchString=Ghost`) ou des données de la route (`https://localhost:5001/Movies/Ghost`). La liaison de modèle ne respecte ***pas*** la casse.
 
 Toutefois, les utilisateurs ne sont pas censés modifier l’URL pour rechercher un film. Dans cette étape, une interface utilisateur est ajoutée pour filtrer les films. Si vous avez ajouté la contrainte d’itinéraire `"{searchString?}"`, supprimez-la.
 
-Ouvrez le fichier _Pages/movies/ Index . cshtml * et ajoutez le `<form>` balisage mis en surbrillance dans le code suivant :
+Ouvrez le fichier *pages/movies/ Index . cshtml* et ajoutez le `<form>` balisage mis en surbrillance dans le code suivant :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index2.cshtml?highlight=14-19&range=1-22)]
 
@@ -227,7 +227,7 @@ La liste `SelectList` de genres est créée en projetant des différents genres.
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
 
-### <a name="add-search-by-genre-to-the-no-locrazor-page"></a>Ajouter la recherche par genre à la Razor page
+### <a name="add-search-by-genre-to-the-razor-page"></a>Ajouter la recherche par genre à la Razor page
 
 Mettez à jour le *Index . cshtml* [ `<form>` élément] ( https://developer.mozilla.org/docs/Web/HTML/Element/form) mis en surbrillance dans le balisage suivant :
 

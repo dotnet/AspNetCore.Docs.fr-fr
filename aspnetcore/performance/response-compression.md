@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/response-compression
-ms.openlocfilehash: 9327c98c22a4d42d31ea8ba1eb8337153040b5b5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 239f9e84d068bfd75c84ccf16f0e74cdbbbebfb2
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056970"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586317"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compression des réponses en ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "93056970"
 
 La bande passante réseau est une ressource limitée. La réduction de la taille de la réponse augmente généralement la réactivité d’une application, souvent considérablement. Une façon de réduire les tailles de charge utile consiste à compresser les réponses d’une application.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>Quand utiliser l’intergiciel (middleware) de compression des réponses
 
@@ -57,12 +57,12 @@ Lorsqu’un client peut traiter du contenu compressé, le client doit informer l
 | `Accept-Encoding` valeurs d’en-tête | Intergiciel pris en charge | Description |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Oui (valeur par défaut)        | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | No                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | No                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
-| `gzip`                          | Yes                  | [Format de fichier gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Yes                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
-| `pack200-gzip`                  | No                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Yes                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
+| `deflate`                       | Non                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | Non                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `gzip`                          | Oui                  | [Format de fichier gzip](https://tools.ietf.org/html/rfc1952) |
+| `identity`                      | Oui                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
+| `pack200-gzip`                  | Non                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Oui                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
 
 Pour plus d’informations, consultez la [liste de codage de contenu officielle IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -83,7 +83,7 @@ Les en-têtes impliqués dans la demande, l’envoi, la mise en cache et la réc
 | `Content-Type`     | Spécifie le type MIME du contenu. Chaque réponse doit spécifier son `Content-Type` . L’intergiciel vérifie cette valeur pour déterminer si la réponse doit être compressée. L’intergiciel (middleware) spécifie un ensemble de [types MIME par défaut](#mime-types) qu’il peut encoder, mais vous pouvez remplacer ou ajouter des types MIME. |
 | `Vary`             | Lorsqu’il est envoyé par le serveur avec une valeur `Accept-Encoding` à clients et proxys, l' `Vary` en-tête indique au client ou au proxy qu’il doit mettre en cache (variation) les réponses en fonction de la valeur de l' `Accept-Encoding` en-tête de la demande. Le résultat de la restitution du contenu avec l' `Vary: Accept-Encoding` en-tête est que les réponses compressées et non compressées sont mises en cache séparément. |
 
-Explorez les fonctionnalités de l’intergiciel de compression des réponses avec l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). L’exemple illustre les éléments suivants :
+Explorez les fonctionnalités de l’intergiciel de compression des réponses avec l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples). L’exemple illustre les éléments suivants :
 
 * La compression des réponses de l’application à l’aide de gzip et des fournisseurs de compression personnalisés.
 * Comment ajouter un type MIME à la liste par défaut des types MIME pour la compression.
@@ -113,7 +113,7 @@ public class Startup
 
 Remarques :
 
-* `app.UseResponseCompression` doit être appelé avant tout middleware qui compresse les réponses. Pour plus d'informations, consultez <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` doit être appelé avant tout middleware qui compresse les réponses. Pour plus d’informations, consultez <xref:fundamentals/middleware/index#middleware-order>.
 * Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)ou [postal](https://www.getpostman.com/) pour définir l' `Accept-Encoding` en-tête de la demande et étudier les en-têtes, la taille et le corps de la réponse.
 
 Envoyez une demande à l’exemple d’application sans l' `Accept-Encoding` en-tête et observez que la réponse n’est pas compressée. Les `Content-Encoding` `Vary` en-têtes et ne sont pas présents dans la réponse.
@@ -234,7 +234,7 @@ L’intergiciel (middleware) spécifie un ensemble de types MIME par défaut pou
 * `text/plain`
 * `text/xml`
 
-Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière ( *Banner. svg* ).
+Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière (*Banner. svg*).
 
 [!code-csharp[](response-compression/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -278,7 +278,7 @@ Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](
 
 La bande passante réseau est une ressource limitée. La réduction de la taille de la réponse augmente généralement la réactivité d’une application, souvent considérablement. Une façon de réduire les tailles de charge utile consiste à compresser les réponses d’une application.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>Quand utiliser l’intergiciel (middleware) de compression des réponses
 
@@ -303,12 +303,12 @@ Lorsqu’un client peut traiter du contenu compressé, le client doit informer l
 | `Accept-Encoding` valeurs d’en-tête | Intergiciel pris en charge | Description |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Oui (valeur par défaut)        | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | No                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | No                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
-| `gzip`                          | Yes                  | [Format de fichier gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Yes                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
-| `pack200-gzip`                  | No                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Yes                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
+| `deflate`                       | Non                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | Non                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `gzip`                          | Oui                  | [Format de fichier gzip](https://tools.ietf.org/html/rfc1952) |
+| `identity`                      | Oui                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
+| `pack200-gzip`                  | Non                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Oui                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
 
 Pour plus d’informations, consultez la [liste de codage de contenu officielle IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -329,7 +329,7 @@ Les en-têtes impliqués dans la demande, l’envoi, la mise en cache et la réc
 | `Content-Type`     | Spécifie le type MIME du contenu. Chaque réponse doit spécifier son `Content-Type` . L’intergiciel vérifie cette valeur pour déterminer si la réponse doit être compressée. L’intergiciel (middleware) spécifie un ensemble de [types MIME par défaut](#mime-types) qu’il peut encoder, mais vous pouvez remplacer ou ajouter des types MIME. |
 | `Vary`             | Lorsqu’il est envoyé par le serveur avec une valeur `Accept-Encoding` à clients et proxys, l' `Vary` en-tête indique au client ou au proxy qu’il doit mettre en cache (variation) les réponses en fonction de la valeur de l' `Accept-Encoding` en-tête de la demande. Le résultat de la restitution du contenu avec l' `Vary: Accept-Encoding` en-tête est que les réponses compressées et non compressées sont mises en cache séparément. |
 
-Explorez les fonctionnalités de l’intergiciel de compression des réponses avec l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). L’exemple illustre les éléments suivants :
+Explorez les fonctionnalités de l’intergiciel de compression des réponses avec l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples). L’exemple illustre les éléments suivants :
 
 * La compression des réponses de l’application à l’aide de gzip et des fournisseurs de compression personnalisés.
 * Comment ajouter un type MIME à la liste par défaut des types MIME pour la compression.
@@ -359,7 +359,7 @@ public class Startup
 
 Remarques :
 
-* `app.UseResponseCompression` doit être appelé avant tout middleware qui compresse les réponses. Pour plus d'informations, consultez <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` doit être appelé avant tout middleware qui compresse les réponses. Pour plus d’informations, consultez <xref:fundamentals/middleware/index#middleware-order>.
 * Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)ou [postal](https://www.getpostman.com/) pour définir l' `Accept-Encoding` en-tête de la demande et étudier les en-têtes, la taille et le corps de la réponse.
 
 Envoyez une demande à l’exemple d’application sans l' `Accept-Encoding` en-tête et observez que la réponse n’est pas compressée. Les `Content-Encoding` `Vary` en-têtes et ne sont pas présents dans la réponse.
@@ -479,7 +479,7 @@ L’intergiciel (middleware) spécifie un ensemble de types MIME par défaut pou
 * `text/plain`
 * `text/xml`
 
-Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière ( *Banner. svg* ).
+Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière (*Banner. svg*).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -523,7 +523,7 @@ Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](
 
 La bande passante réseau est une ressource limitée. La réduction de la taille de la réponse augmente généralement la réactivité d’une application, souvent considérablement. Une façon de réduire les tailles de charge utile consiste à compresser les réponses d’une application.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>Quand utiliser l’intergiciel (middleware) de compression des réponses
 
@@ -548,12 +548,12 @@ Lorsqu’un client peut traiter du contenu compressé, le client doit informer l
 | `Accept-Encoding` valeurs d’en-tête | Intergiciel pris en charge | Description |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Non                   | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | No                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | No                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `deflate`                       | Non                   | [Format de données compressées compressé](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | Non                   | [Échange XML efficace W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Oui (valeur par défaut)        | [Format de fichier gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Yes                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
-| `pack200-gzip`                  | No                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Yes                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
+| `identity`                      | Oui                  | Identificateur « no Encoding » : la réponse ne doit pas être encodée. |
+| `pack200-gzip`                  | Non                   | [Format de transfert réseau pour les archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Oui                  | Tout encodage de contenu disponible qui n’est pas explicitement demandé |
 
 Pour plus d’informations, consultez la [liste de codage de contenu officielle IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -574,7 +574,7 @@ Les en-têtes impliqués dans la demande, l’envoi, la mise en cache et la réc
 | `Content-Type`     | Spécifie le type MIME du contenu. Chaque réponse doit spécifier son `Content-Type` . L’intergiciel vérifie cette valeur pour déterminer si la réponse doit être compressée. L’intergiciel (middleware) spécifie un ensemble de [types MIME par défaut](#mime-types) qu’il peut encoder, mais vous pouvez remplacer ou ajouter des types MIME. |
 | `Vary`             | Lorsqu’il est envoyé par le serveur avec une valeur `Accept-Encoding` à clients et proxys, l' `Vary` en-tête indique au client ou au proxy qu’il doit mettre en cache (variation) les réponses en fonction de la valeur de l' `Accept-Encoding` en-tête de la demande. Le résultat de la restitution du contenu avec l' `Vary: Accept-Encoding` en-tête est que les réponses compressées et non compressées sont mises en cache séparément. |
 
-Explorez les fonctionnalités de l’intergiciel de compression des réponses avec l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). L’exemple illustre les éléments suivants :
+Explorez les fonctionnalités de l’intergiciel de compression des réponses avec l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples). L’exemple illustre les éléments suivants :
 
 * La compression des réponses de l’application à l’aide de gzip et des fournisseurs de compression personnalisés.
 * Comment ajouter un type MIME à la liste par défaut des types MIME pour la compression.
@@ -604,7 +604,7 @@ public class Startup
 
 Remarques :
 
-* `app.UseResponseCompression` doit être appelé avant tout middleware qui compresse les réponses. Pour plus d'informations, consultez <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` doit être appelé avant tout middleware qui compresse les réponses. Pour plus d’informations, consultez <xref:fundamentals/middleware/index#middleware-order>.
 * Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)ou [postal](https://www.getpostman.com/) pour définir l' `Accept-Encoding` en-tête de la demande et étudier les en-têtes, la taille et le corps de la réponse.
 
 Envoyez une demande à l’exemple d’application sans l' `Accept-Encoding` en-tête et observez que la réponse n’est pas compressée. Les `Content-Encoding` `Vary` en-têtes et ne sont pas présents dans la réponse.
@@ -684,7 +684,7 @@ L’intergiciel (middleware) spécifie un ensemble de types MIME par défaut pou
 * `text/plain`
 * `text/xml`
 
-Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière ( *Banner. svg* ).
+Remplacez ou ajoutez des types MIME par les options de l’intergiciel (middleware) de compression des réponses. Notez que les types MIME génériques, tels que `text/*` ne sont pas pris en charge. L’exemple d’application ajoute un type MIME pour `image/svg+xml` et compresse et sert le ASP.net Core image de bannière (*Banner. svg*).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 

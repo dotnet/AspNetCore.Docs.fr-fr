@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: e797228d498ec9b269e718c099a0532bbb4504d3
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 55fcc2883dac31fc22bad1b5f9367e20879b6c43
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530240"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586421"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages avec Entity Framework Core dans ASP.NET Core-didacticiel 1 sur 8
 
@@ -33,7 +33,7 @@ Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitte
 
 Il s’agit de la première d’une série de didacticiels qui montrent comment utiliser Entity Framework (EF) Core dans une application [ASP.net Core Razor pages](xref:razor-pages/index) . Dans ces tutoriels, un site web est créé pour une université fictive nommée Contoso. Le site comprend des fonctionnalités comme l’admission des étudiants, la création de cours et les affectations des formateurs. Le didacticiel utilise l’approche code First. Pour plus d’informations sur ce didacticiel avec la première approche basée sur la base de données, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/16897).
 
-[Télécharger ou afficher l’application terminée.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Instructions de téléchargement](xref:index#how-to-download-a-sample).
+[Télécharger ou afficher l’application terminée.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples) [Instructions de téléchargement](xref:index#how-to-download-a-sample).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -59,7 +59,7 @@ Si vous choisissez d’utiliser SQLite, téléchargez et installez un outil tier
 
 ## <a name="troubleshooting"></a>Dépannage
 
-Si vous rencontrez un problème que vous ne pouvez pas résoudre, comparez votre code au [projet terminé](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Un bon moyen d’obtenir de l’aide est de poster une question sur StackOverflow.com en utilisant le [mot-clé ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) ou le [mot-clé EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
+Si vous rencontrez un problème que vous ne pouvez pas résoudre, comparez votre code au [projet terminé](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples). Un bon moyen d’obtenir de l’aide est de poster une question sur StackOverflow.com en utilisant le [mot-clé ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) ou le [mot-clé EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 ## <a name="the-sample-app"></a>Exemple d’application
 
@@ -117,7 +117,7 @@ To run the app after downloading the completed project:
 
 ## <a name="create-the-web-app-project"></a>Créer le projet d’application web
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Démarrez Visual Studio et sélectionnez **Créer un projet**.
 1. Dans la boîte de dialogue **créer un nouveau projet** , sélectionnez **ASP.net Core application Web** > **suivant**.
@@ -226,7 +226,7 @@ Dans cette section, vous allez utiliser l’outil de génération de modèles au
 * Classe EF Core `DbContext` . Le contexte est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données déterminé. Il dérive de la classe <xref:Microsoft.EntityFrameworkCore.DbContext?displayProperty=fullName>.
 * Razor les pages qui gèrent les opérations de création, lecture, mise à jour et suppression (CRUD) pour l' `Student` entité.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Créez un dossier *Pages/Students*.
 * Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages/Students*, puis sélectionnez **Ajouter** > **Nouvel élément généré automatiquement**.
@@ -304,7 +304,7 @@ Le processus de génération de modèles automatique :
 
 L’outil de génération de modèles automatique génère une chaîne de connexion dans le *appsettings.json* fichier.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 La chaîne de connexion spécifie [SQL Server](/sql/database-engine/configure-windows/sql-server-2016-express-localdb)base de données locale :
 
@@ -353,7 +353,7 @@ ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependen
 
 L’outil de génération de modèles automatique a inscrit automatiquement la classe du contexte dans le conteneur d’injection de dépendances.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Les lignes en surbrillance suivantes ont été ajoutées par le générateur de modèles :
 
@@ -375,7 +375,7 @@ Le nom de la chaîne de connexion est transmis au contexte en appelant une méth
 
 Ajoutez <xref:Microsoft.Extensions.DependencyInjection.DatabaseDeveloperPageExceptionFilterServiceExtensions.AddDatabaseDeveloperPageExceptionFilter%2A> à `ConfigureServices` , comme indiqué dans le code suivant :
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!code-csharp[Main](intro/samples/cu50/Startup.cs?name=snippet_ConfigureServices&highlight=8)]
 
@@ -397,7 +397,7 @@ Le `Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore` package NuGet fournit 
 
 Le `AddDatabaseDeveloperPageExceptionFilter` fournit des informations d’erreur utiles dans l' [environnement de développement](xref:fundamentals/environments).
 
-## <a name="create-the-database"></a>Créer la base de données
+## <a name="create-the-database"></a>Création de la base de données
 
 Mettez à jour *Program.cs* pour créer la base de données si elle n’existe pas :
 
@@ -437,7 +437,7 @@ Dans *Program.cs*, remplacez l’appel `EnsureCreated` par un appel `DbInitializ
   DbInitializer.Initialize(context);
   ```
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Arrêtez l’application si elle est en cours d’exécution et exécutez la commande suivante dans la **Console du gestionnaire de package** :
 
@@ -458,7 +458,7 @@ Répondre avec `Y` pour supprimer la base de données.
 
 ## <a name="view-the-database"></a>Afficher la base de données
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Ouvrez **l’Explorateur d’objets SQL Server** (SSOX) à partir du menu **Affichage** de Visual Studio.
 * Dans SSOX, sélectionnez **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}**. Le nom de la base de données est généré à partir du nom de contexte indiqué précédemment, ainsi que d’un tiret et d’un GUID.
@@ -530,7 +530,7 @@ La pagination est traitée plus loin dans le didacticiel.
 
 Il s’agit de la première d’une série de didacticiels qui montrent comment utiliser Entity Framework (EF) Core dans une application [ASP.net Core Razor pages](xref:razor-pages/index) . Dans ces tutoriels, un site web est créé pour une université fictive nommée Contoso. Le site comprend des fonctionnalités comme l’admission des étudiants, la création de cours et les affectations des formateurs. Le didacticiel utilise l’approche code First. Pour plus d’informations sur ce didacticiel avec la première approche basée sur la base de données, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/16897).
 
-[Télécharger ou afficher l’application terminée.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Instructions de téléchargement](xref:index#how-to-download-a-sample).
+[Télécharger ou afficher l’application terminée.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples) [Instructions de téléchargement](xref:index#how-to-download-a-sample).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -556,7 +556,7 @@ Si vous choisissez d’utiliser SQLite, téléchargez et installez un outil tier
 
 ## <a name="troubleshooting"></a>Dépannage
 
-Si vous rencontrez un problème que vous ne pouvez pas résoudre, comparez votre code au [projet terminé](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Un bon moyen d’obtenir de l’aide est de poster une question sur StackOverflow.com en utilisant le [mot-clé ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) ou le [mot-clé EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
+Si vous rencontrez un problème que vous ne pouvez pas résoudre, comparez votre code au [projet terminé](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples). Un bon moyen d’obtenir de l’aide est de poster une question sur StackOverflow.com en utilisant le [mot-clé ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) ou le [mot-clé EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 ## <a name="the-sample-app"></a>Exemple d’application
 
@@ -570,7 +570,7 @@ Le style de l’interface utilisateur de ce site repose sur les modèles de proj
 
 Suivez le lien en haut de la page pour obtenir le code source du projet terminé. Le dossier *cu30* contient le code de la version 3.0 d’ASP.NET Core. Les fichiers qui reflètent l’état du code pour les tutoriels 1-7 se trouvent dans le dossier *cu30snapshots*.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Pour exécuter l’application après avoir téléchargé le projet terminé :
 
@@ -613,7 +613,7 @@ Pour exécuter l’application après avoir téléchargé le projet terminé :
 
 ## <a name="create-the-web-app-project"></a>Créer le projet d’application web
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
 * Sélectionnez **Application web ASP.NET Core**.
@@ -715,7 +715,7 @@ Dans cette section, vous allez utiliser l’outil de génération de modèles au
 * Une classe de *contexte* EF Core. Le contexte est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données déterminé. Il dérive de la classe `Microsoft.EntityFrameworkCore.DbContext`.
 * Razor les pages qui gèrent les opérations de création, lecture, mise à jour et suppression (CRUD) pour l' `Student` entité.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Créez un dossier *Students* dans le dossier *Pages*.
 * Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages/Students*, puis sélectionnez **Ajouter** > **Nouvel élément généré automatiquement**.
@@ -791,7 +791,7 @@ Le processus de génération de modèles automatique :
 
 ## <a name="database-connection-string"></a>Chaîne de connexion de base de données
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Le *appsettings.json* fichier spécifie la chaîne de connexion [SQL Server](/sql/database-engine/configure-windows/sql-server-2016-express-localdb)la base de données locale.
 
@@ -832,7 +832,7 @@ ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependen
 
 L’outil de génération de modèles automatique a inscrit automatiquement la classe du contexte dans le conteneur d’injection de dépendances.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans `ConfigureServices`, les lignes en surbrillance ont été ajoutées par l’outil de génération de modèles automatique :
 
@@ -848,7 +848,7 @@ L’outil de génération de modèles automatique a inscrit automatiquement la c
 
 Le nom de la chaîne de connexion est transmis au contexte en appelant une méthode sur un objet [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Pour le développement local, le [système de configuration ASP.net Core](xref:fundamentals/configuration/index) lit la chaîne de connexion à partir du *appsettings.json* fichier.
 
-## <a name="create-the-database"></a>Créer la base de données
+## <a name="create-the-database"></a>Création de la base de données
 
 Mettez à jour *Program.cs* pour créer la base de données si elle n’existe pas :
 
@@ -888,7 +888,7 @@ Créez *Data/DbInitializer.cs* avec le code suivant :
   DbInitializer.Initialize(context);
   ```
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Arrêtez l’application si elle est en cours d’exécution et exécutez la commande suivante dans la **Console du gestionnaire de package** :
 
@@ -908,7 +908,7 @@ Drop-Database
 
 ## <a name="view-the-database"></a>Afficher la base de données
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Ouvrez **l’Explorateur d’objets SQL Server** (SSOX) à partir du menu **Affichage** de Visual Studio.
 * Dans SSOX, sélectionnez **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}**. Le nom de la base de données est généré à partir du nom de contexte indiqué précédemment, ainsi que d’un tiret et d’un GUID.
@@ -967,7 +967,7 @@ L’exemple d’application Web Contoso University montre comment créer une Raz
 
 L’exemple d’application est un site web pour une université Contoso fictive. Il comprend des fonctionnalités telles que l’admission des étudiants, la création des cours et les affectations des formateurs. Cette page est la première d’une série de didacticiels qui expliquent comment générer l’exemple d’application Contoso University.
 
-[Télécharger ou afficher l’application terminée.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Instructions de téléchargement](xref:index#how-to-download-a-sample).
+[Télécharger ou afficher l’application terminée.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples) [Instructions de téléchargement](xref:index#how-to-download-a-sample).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -985,7 +985,7 @@ Vous êtes familiarisé avec les [ Razor pages](xref:razor-pages/index). Les nou
 
 ## <a name="troubleshooting"></a>Dépannage
 
-Si vous rencontrez un problème que vous ne pouvez pas résoudre, vous pouvez généralement trouver la solution en comparant votre code au [projet terminé](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Un bon moyen d’obtenir de l’aide est de publier une question sur [StackOverflow.com](https://stackoverflow.com/questions/tagged/asp.net-core) pour [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) ou [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
+Si vous rencontrez un problème que vous ne pouvez pas résoudre, vous pouvez généralement trouver la solution en comparant votre code au [projet terminé](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples). Un bon moyen d’obtenir de l’aide est de publier une question sur [StackOverflow.com](https://stackoverflow.com/questions/tagged/asp.net-core) pour [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) ou [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 ## <a name="the-contoso-university-web-app"></a>L’application web Contoso University
 
@@ -1001,7 +1001,7 @@ Le style de l’interface utilisateur de ce site est proche de ce qui est géné
 
 ## <a name="create-the-contosouniversity-razor-pages-web-app"></a>Créer l' Razor application Web ContosoUniversity pages
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
 * Créez une application web ASP.NET Core. Nommez le projet **ContosoUniversity**. Il est important de nommer le projet *ContosoUniversity* afin que les espaces de noms correspondent quand le code est copié/collé.
@@ -1097,7 +1097,7 @@ Dans cette section, le modèle d’étudiant est généré automatiquement. Autr
 * Créez le projet.
 * Créez le dossier *Pages/Students*.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages/Students* > **Ajouter** > **Nouvel élément généré automatiquement**.
 * Dans la boîte de dialogue **Ajouter une structure** , sélectionnez **Razor pages à l’aide de Entity Framework (CRUD)** > **Ajouter**.
@@ -1216,7 +1216,7 @@ Dans *Program.cs*, modifiez la méthode `Main` pour appeler `Initialize` :
 
 [!code-csharp[](intro/samples/cu21/Program.cs?name=snippet2&highlight=14-15)]
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Arrêtez l’application si elle est en cours d’exécution et exécutez la commande suivante dans la **Console du gestionnaire de package** :
 

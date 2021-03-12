@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 7c8f562bcf0b7e2672f2f1ac244e0d9278e4c204
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: aebbc3f29b0356c7993abd83869ab21d3613bf61
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97485925"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589346"
 ---
 # <a name="tutorial-part-5-apply-migrations-to-the-contoso-university-sample"></a>Didacticiel : partie 5, appliquer des migrations à l’exemple Contoso University
 
@@ -39,7 +39,7 @@ Dans ce tutoriel, vous allez :
 > * En savoir plus sur la capture instantanée du modèle de données
 > * Appliquer la migration
 
-## <a name="prerequisites"></a>Conditions préalables requises
+## <a name="prerequisites"></a>Prérequis
 
 * [Tri, filtrage et pagination](sort-filter-page.md)
 
@@ -171,7 +171,7 @@ Pour plus d’informations sur les commandes de la console du Gestionnaire de pa
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples)
+[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-mvc/intro/samples)
 
 ## <a name="next-step"></a>Étape suivante
 

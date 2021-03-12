@@ -19,22 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/groups
-ms.openlocfilehash: a86408eaae8d3df32faef79453d9db0cdbd64a78
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8f9e91f34386bb5b4cf79bee429a39ae27c03c5e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050951"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589216"
 ---
-# <a name="manage-users-and-groups-in-no-locsignalr"></a>Gérer les utilisateurs et les groupes dans SignalR
+# <a name="manage-users-and-groups-in-signalr"></a>Gérer les utilisateurs et les groupes dans SignalR
 
 Par [Brennan Conroy](https://github.com/BrennanConroy)
 
 SignalR permet d’envoyer des messages à toutes les connexions associées à un utilisateur spécifique, ainsi qu’à des groupes nommés de connexions.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/groups/sample/) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/groups/sample/) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
 
-## <a name="users-in-no-locsignalr"></a>Utilisateurs dans SignalR
+## <a name="users-in-signalr"></a>Utilisateurs dans SignalR
 
 Un utilisateur unique dans SignalR peut avoir plusieurs connexions à une application. Par exemple, un utilisateur peut être connecté sur son bureau, ainsi que sur son téléphone. Chaque appareil dispose d’une SignalR connexion distincte, mais tous sont associés au même utilisateur. Si un message est envoyé à l’utilisateur, toutes les connexions associées à cet utilisateur reçoivent le message. L’identificateur d’utilisateur pour une connexion est accessible par la `Context.UserIdentifier` propriété dans le concentrateur.
 
@@ -47,7 +47,7 @@ Envoyez un message à un utilisateur spécifique en passant l’identificateur d
 
 [!code-csharp[Configure service](groups/sample/Hubs/ChatHub.cs?range=29-32)]
 
-## <a name="groups-in-no-locsignalr"></a>Groupes dans SignalR
+## <a name="groups-in-signalr"></a>Groupes dans SignalR
 
 Un groupe est une collection de connexions associées à un nom. Les messages peuvent être envoyés à toutes les connexions d’un groupe. Les groupes sont la méthode recommandée pour l’envoi à une connexion ou à plusieurs connexions, car les groupes sont gérés par l’application. Une connexion peut être membre de plusieurs groupes. Les groupes sont idéaux pour une application de conversation, où chaque pièce peut être représentée en tant que groupe. Les connexions sont ajoutées ou supprimées des groupes via `AddToGroupAsync` les `RemoveFromGroupAsync` méthodes et.
 
@@ -63,5 +63,5 @@ Pour protéger l’accès aux ressources lors de l’utilisation de groupes, uti
 ## <a name="related-resources"></a>Ressources associées
 
 * [Prise en main](xref:tutorials/signalr)
-* [Hubs](xref:signalr/hubs)
-* [Publication dans Azure](xref:signalr/publish-to-azure-web-app)
+* [Concentrateurs](xref:signalr/hubs)
+* [Publier sur Azure](xref:signalr/publish-to-azure-web-app)

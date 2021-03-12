@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: d53cafb605939fd85bdbb71b2fbf13e7bd7a9b7b
-ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
+ms.openlocfilehash: 54d7304430c2a77347b6e3279f638cf6d7add77e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98571000"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589039"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
@@ -45,7 +45,7 @@ Kestrel prend en charge les scénarios suivants :
 
 Kestrel est pris en charge sur toutes les plateformes et les versions prises en charge par .NET Core.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/5.x) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/5.x) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started"></a>Bien démarrer
 
@@ -93,7 +93,7 @@ Kestrel prend en charge les scénarios suivants :
 
 Kestrel est pris en charge sur toutes les plateformes et les versions prises en charge par .NET Core.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/3.x) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/3.x) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>Assistance HTTP/2
 
@@ -1092,7 +1092,7 @@ Kestrel prend en charge les scénarios suivants :
 
 Kestrel est pris en charge sur toutes les plateformes et les versions prises en charge par .NET Core.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>Assistance HTTP/2
 
@@ -2078,7 +2078,7 @@ Kestrel prend en charge les scénarios suivants :
 
 Kestrel est pris en charge sur toutes les plateformes et les versions prises en charge par .NET Core.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Quand utiliser Kestrel avec un proxy inverse ?
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: 1027887738740d50c30e24e800c0402b1ce4ad02
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: aeff3fd06719095660d1b3bb794ef74a8549f761
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854663"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585758"
 ---
 # <a name="test-web-apis-with-the-httprepl"></a>Tester les API Web avec HttpRepl
 
@@ -46,9 +46,9 @@ Les [verbes HTTP](https://github.com/microsoft/api-guidelines/blob/vNext/Guideli
 * [POST](#test-http-post-requests)
 * [PUT](#test-http-put-requests)
 
-Pour continuer, [consultez ou téléchargez l’exemple d’API web ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([comment télécharger](xref:index#how-to-download-a-sample)).
+Pour continuer, [consultez ou téléchargez l’exemple d’API web ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/http-repl/samples) ([comment télécharger](xref:index#how-to-download-a-sample)).
 
-## <a name="prerequisites"></a>Conditions préalables requises
+## <a name="prerequisites"></a>Prérequis
 
 * [!INCLUDE [2.1-SDK](~/includes/2.1-SDK.md)]
 
@@ -62,7 +62,7 @@ dotnet tool install -g Microsoft.dotnet-httprepl
 
 Un [outil global .NET Core](/dotnet/core/tools/global-tools#install-a-global-tool) est installé à partir du package NuGet [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl).
 
-## <a name="usage"></a>Usage
+## <a name="usage"></a>Utilisation
 
 Une fois l’installation de l’outil réussie, exécutez la commande suivante pour démarrer le HttpRepl :
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/advanced
-ms.openlocfilehash: 9f14929a7d298d6f4d66abcc88665db34fc072bf
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: de3abb7b5f89e3b84da38a8eabb183f9551cc1f9
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058610"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588917"
 ---
 # <a name="advanced-configuration-of-the-aspnet-core-module-and-iis"></a>Configuration avancée du module ASP.NET Core et des services IIS
 
@@ -73,7 +73,7 @@ Quand le chemin de la configuration partagée ne se trouve pas sur la même mach
 1. Exportez le fichier mis à jour `applicationHost.config` vers le partage de fichiers.
 1. Réactivez la configuration partagée IIS.
 
-## <a name="data-protection"></a>Protection de données
+## <a name="data-protection"></a>Protection des données
 
 La [pile de protection des données ASP.NET Core](xref:security/data-protection/introduction) est utilisée par plusieurs [intergiciels (middlewares)](xref:fundamentals/middleware/index) ASP.NET Core, y compris l’intergiciel utilisé dans l’authentification. Même si les API de protection des données ne sont pas appelées par le code de l’utilisateur, la protection des données doit être configurée avec un script de déploiement ou dans un code utilisateur pour créer un [magasin de clés](xref:security/data-protection/implementation/key-management) de chiffrement persistantes. Si la protection des données n’est pas configurée, les clés sont conservées en mémoire et ignorées au redémarrage de l’application.
 
@@ -89,7 +89,7 @@ Pour configurer la protection des données sous IIS afin de rendre persistante l
 
   Les clés de protection des données utilisées par les applications ASP.NET Core sont stockées dans le registre à l’extérieur des applications. Pour conserver les clés pour une application donnée, créez des clés de Registre pour le pool d’applications.
 
-  Pour les installations IIS autonomes hors d’une batterie de serveurs, le [script PowerShell Provision-AutoGenKeys.ps1 de protection des données](https://github.com/dotnet/AspNetCore/blob/master/src/DataProtection/Provision-AutoGenKeys.ps1) peut être utilisé pour chaque pool d’applications utilisé avec une application ASP.NET Core. Ce script crée une clé de Registre dans le Registre HKLM qui est accessible uniquement au compte du processus de travail du pool d’applications de l’application. Les clés sont chiffrées au repos à l’aide de DPAPI avec une clé à l’échelle de la machine.
+  Pour les installations IIS autonomes hors d’une batterie de serveurs, le [script PowerShell Provision-AutoGenKeys.ps1 de protection des données](https://github.com/dotnet/AspNetCore/blob/main/src/DataProtection/Provision-AutoGenKeys.ps1) peut être utilisé pour chaque pool d’applications utilisé avec une application ASP.NET Core. Ce script crée une clé de Registre dans le Registre HKLM qui est accessible uniquement au compte du processus de travail du pool d’applications de l’application. Les clés sont chiffrées au repos à l’aide de DPAPI avec une clé à l’échelle de la machine.
 
   Dans les scénarios de batterie de serveurs Web, une application peut être configurée pour utiliser un chemin UNC pour stocker son anneau de clé de protection des données. Par défaut, les clés ne sont pas chiffrées. Assurez-vous que les autorisations de fichiers pour le partage réseau sont limitées au compte Windows sous lequel l’application s’exécute. Un certificat X509 peut être utilisé pour protéger les clés au repos. Prenons l’exemple d’un mécanisme permettant aux utilisateurs de télécharger des certificats. Placez les certificats dans le magasin de certificats approuvés de l’utilisateur et vérifiez qu’ils sont disponibles sur toutes les machines où s’exécute l’application de l’utilisateur. Pour plus d’informations, consultez <xref:security/data-protection/configuration/overview>.
 
@@ -198,7 +198,7 @@ L’isolation des pools d’applications est déterminée par le modèle d’hé
 
 La boîte de dialogue **Ajouter un site web** d’IIS applique un seul pool d’applications par application par défaut. Quand un **Nom du site** est fourni, le texte est automatiquement transféré vers la zone de texte **Pool d’applications**. Un nouveau pool d’applications est créé avec le nom du site une fois qu’il est ajouté.
 
-## <a name="application-pool-no-locidentity"></a>Pool d’applications Identity
+## <a name="application-pool-identity"></a>Pool d’applications Identity
 
 Un compte d’identité du pool d’applications permet à une application de s’exécuter sous un compte unique sans qu’il soit nécessaire de créer et de gérer des domaines ou des comptes locaux. Sur IIS 8.0 ou version ultérieure, le processus Worker d’administration IIS (WAS) crée un compte virtuel avec le nom du nouveau pool d’applications et exécute les processus Worker du pool d’applications sous ce compte par défaut. Dans la console de gestion IIS, sous **Paramètres avancés** pour le pool d’applications, assurez-vous que le **Identity** est configuré pour utiliser `ApplicationPoolIdentity` :
 

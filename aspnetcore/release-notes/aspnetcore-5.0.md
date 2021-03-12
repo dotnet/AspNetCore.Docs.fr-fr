@@ -18,18 +18,18 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 5caa412773bf9c8e3bed5ebc529d48b886de6956
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 64e068194744d6c5495d8ecaf31076c7a1c1f349
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253070"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585797"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Nouveautés de ASP.NET Core 5,0
 
 Cet article met en évidence les modifications les plus importantes apportées à ASP.NET Core 5,0 avec des liens vers la documentation appropriée.
 
-## <a name="aspnet-core-mvc-and-no-locrazor-improvements"></a>ASP.NET Core MVC et Razor améliorations
+## <a name="aspnet-core-mvc-and-razor-improvements"></a>ASP.NET Core MVC et Razor améliorations
 
 ### <a name="model-binding-datetime-as-utc"></a>Date et heure de liaison de modèle UTC
 
@@ -130,37 +130,37 @@ Avec OpenAPI activé par défaut, l’expérience de lancement d’application (
 
 ## Blazor
 
-### <a name="performance-improvements"></a>Amélioration des performances
+### <a name="performance-improvements"></a>Optimisation des performances
 
 Pour .NET 5, nous avons apporté des améliorations significatives aux Blazor WebAssembly performances de l’exécution avec un focus spécifique sur le rendu de l’interface utilisateur complexe et la SÉRIALISATION JSON. Dans nos tests de performances, Blazor WebAssembly dans .net 5, il s’agit de deux à trois fois plus rapides pour la plupart des scénarios. Pour plus d’informations, consultez le [Blog ASP.net : ASP.net Core des mises à jour dans .net 5 Release Candidate 1](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-5-release-candidate-1/#blazor-webassembly-performance-improvements).
 
 ### <a name="css-isolation"></a>Isolation CSS
 
-Blazor prend désormais en charge la définition de styles CSS dont la portée est limitée à un composant donné. Les styles CSS spécifiques aux composants permettent de mieux comprendre les styles dans une application et d’éviter les effets secondaires involontaires des styles globaux. Pour plus d'informations, consultez <xref:blazor/components/css-isolation>.
+Blazor prend désormais en charge la définition de styles CSS dont la portée est limitée à un composant donné. Les styles CSS spécifiques aux composants permettent de mieux comprendre les styles dans une application et d’éviter les effets secondaires involontaires des styles globaux. Pour plus d’informations, consultez <xref:blazor/components/css-isolation>.
 
 ### <a name="new-inputfile-component"></a>Nouveau `InputFile` composant
 
-Le `InputFile` composant permet de lire un ou plusieurs fichiers sélectionnés par un utilisateur pour le téléchargement. Pour plus d'informations, consultez <xref:blazor/file-uploads>.
+Le `InputFile` composant permet de lire un ou plusieurs fichiers sélectionnés par un utilisateur pour le téléchargement. Pour plus d’informations, consultez <xref:blazor/file-uploads>.
 
 ### <a name="new-inputradio-and-inputradiogroup-components"></a>Nouveaux `InputRadio` `InputRadioGroup` composants et
 
-Blazor a des composants intégrés `InputRadio` et `InputRadioGroup` qui simplifient la liaison de données aux groupes de cases d’option avec validation intégrée. Pour plus d'informations, consultez <xref:blazor/forms-validation>.
+Blazor a des composants intégrés `InputRadio` et `InputRadioGroup` qui simplifient la liaison de données aux groupes de cases d’option avec validation intégrée. Pour plus d’informations, consultez <xref:blazor/forms-validation>.
 
 ### <a name="component-virtualization"></a>Virtualisation de composant
 
-Améliorez les performances perçues du rendu des composants à l’aide de la Blazor prise en charge intégrée de la virtualisation du Framework. Pour plus d'informations, consultez <xref:blazor/components/virtualization>.
+Améliorez les performances perçues du rendu des composants à l’aide de la Blazor prise en charge intégrée de la virtualisation du Framework. Pour plus d’informations, consultez <xref:blazor/components/virtualization>.
 
 ### <a name="ontoggle-event-support"></a>`ontoggle` prise en charge des événements
 
-Blazor les événements prennent désormais en charge l' `ontoggle` événement DOM. Pour plus d'informations, consultez <xref:blazor/components/event-handling#event-argument-types>.
+Blazor les événements prennent désormais en charge l' `ontoggle` événement DOM. Pour plus d’informations, consultez <xref:blazor/components/event-handling#event-argument-types>.
 
-### <a name="set-ui-focus-in-no-locblazor-apps"></a>Définir le focus de l’interface utilisateur dans les Blazor applications
+### <a name="set-ui-focus-in-blazor-apps"></a>Définir le focus de l’interface utilisateur dans les Blazor applications
 
-Utilisez la `FocusAsync` méthode pratique sur les références d’éléments pour définir le focus de l’interface utilisateur sur cet élément. Pour plus d'informations, consultez <xref:blazor/components/event-handling#focus-an-element>.
+Utilisez la `FocusAsync` méthode pratique sur les références d’éléments pour définir le focus de l’interface utilisateur sur cet élément. Pour plus d’informations, consultez <xref:blazor/components/event-handling#focus-an-element>.
 
 ### <a name="custom-validation-class-attributes"></a>Attributs de classe de validation personnalisée
 
-Les noms des classes de validation personnalisées sont utiles lors de l’intégration avec des frameworks CSS, tels que bootstrap. Pour plus d'informations, consultez <xref:blazor/forms-validation#custom-validation-class-attributes>.
+Les noms des classes de validation personnalisées sont utiles lors de l’intégration avec des frameworks CSS, tels que bootstrap. Pour plus d’informations, consultez <xref:blazor/forms-validation#custom-validation-class-attributes>.
 
 ### <a name="iasyncdisposable-support"></a>Support IAsyncDisposable
 
@@ -168,7 +168,7 @@ Blazor les composants prennent désormais en charge l' <xref:System.IAsyncDispos
 
 ### <a name="javascript-isolation-and-object-references"></a>Isolation JavaScript et références d’objets
 
-Blazor active l’isolation JavaScript dans les [modules JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)standard. Pour plus d'informations, consultez <xref:blazor/call-javascript-from-dotnet#blazor-javascript-isolation-and-object-references>.
+Blazor active l’isolation JavaScript dans les [modules JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)standard. Pour plus d’informations, consultez <xref:blazor/call-javascript-from-dotnet#blazor-javascript-isolation-and-object-references>.
 
 ### <a name="form-components-support-display-name"></a>Nom complet de la prise en charge des composants de formulaire
 
@@ -178,25 +178,25 @@ Les composants intégrés suivants prennent en charge les noms complets avec le 
 * `InputNumber`
 * `InputSelect`
 
-Pour plus d'informations, consultez <xref:blazor/forms-validation#display-name-support>.
+Pour plus d’informations, consultez <xref:blazor/forms-validation#display-name-support>.
 
 ### <a name="catch-all-route-parameters"></a>Paramètres d’itinéraire de rattrapage
 
-Les paramètres d’itinéraire Catch-All, qui capturent les chemins d’accès dans plusieurs limites de dossiers, sont pris en charge dans les composants. Pour plus d'informations, consultez <xref:blazor/fundamentals/routing#catch-all-route-parameters>.
+Les paramètres d’itinéraire Catch-All, qui capturent les chemins d’accès dans plusieurs limites de dossiers, sont pris en charge dans les composants. Pour plus d’informations, consultez <xref:blazor/fundamentals/routing#catch-all-route-parameters>.
 
 ### <a name="debugging-improvements"></a>Améliorations du débogage
 
-Le débogage Blazor WebAssembly des applications est amélioré dans ASP.NET Core 5,0. En outre, le débogage est désormais pris en charge sur Visual Studio pour Mac. Pour plus d'informations, consultez <xref:blazor/debug>.
+Le débogage Blazor WebAssembly des applications est amélioré dans ASP.NET Core 5,0. En outre, le débogage est désormais pris en charge sur Visual Studio pour Mac. Pour plus d’informations, consultez <xref:blazor/debug>.
 
-### <a name="microsoft-no-locidentity-v20-and-msal-v20"></a>Microsoft Identity v 2.0 et MSAL v 2.0
+### <a name="microsoft-identity-v20-and-msal-v20"></a>Microsoft Identity v 2.0 et MSAL v 2.0
 
 Blazor la sécurité utilise désormais Microsoft Identity v 2.0 ( [`Microsoft.Identity.Web`](https://www.nuget.org/packages/Microsoft.Identity.Web) et [`Microsoft.Identity.Web.UI`](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) ) et MSAL v 2.0. Pour plus d’informations, consultez les rubriques relatives à la [ Blazor sécurité et au Identity nœud](xref:blazor/security/index).
 
-### <a name="protected-browser-storage-for-no-locblazor-server"></a>Stockage du navigateur protégé pour Blazor Server
+### <a name="protected-browser-storage-for-blazor-server"></a>Stockage du navigateur protégé pour Blazor Server
 
-Blazor Server les applications peuvent désormais utiliser la prise en charge intégrée pour le stockage de l’état de l’application dans le navigateur qui a été protégé contre la falsification à l’aide de la protection des données ASP.NET Core. Les données peuvent être stockées dans le stockage du navigateur local ou dans un stockage de session. Pour plus d'informations, consultez <xref:blazor/state-management>.
+Blazor Server les applications peuvent désormais utiliser la prise en charge intégrée pour le stockage de l’état de l’application dans le navigateur qui a été protégé contre la falsification à l’aide de la protection des données ASP.NET Core. Les données peuvent être stockées dans le stockage du navigateur local ou dans un stockage de session. Pour plus d’informations, consultez <xref:blazor/state-management>.
 
-### <a name="no-locblazor-webassembly-prerendering"></a>Blazor WebAssembly préaffichant
+### <a name="blazor-webassembly-prerendering"></a>Blazor WebAssembly préaffichant
 
 L’intégration des composants est améliorée entre les modèles d’hébergement, et les Blazor WebAssembly applications peuvent désormais prérestituer la sortie sur le serveur. <!-- UNCOMMENT AFTER https://github.com/dotnet/AspNetCore.Docs/pull/19887 MERGES: For more information, see <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps> and <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>. -->
 
@@ -206,15 +206,15 @@ Blazor WebAssembly effectue le découpage/la liaison de langage intermédiaire a
 
 ### <a name="browser-compatibility-analyzer"></a>Analyseur de compatibilité des navigateurs
 
-Blazor WebAssembly les applications ciblent la surface d’exposition complète de l’API .NET, mais toutes les API .NET ne sont pas prises en charge sur webassembly en raison des contraintes du bac à sable (sandbox). Les API non prises en charge sont levées <xref:System.PlatformNotSupportedException> lors de l’exécution sur Webassembly. Un analyseur de compatibilité de plateforme avertit le développeur lorsque l’application utilise des API qui ne sont pas prises en charge par les plateformes cibles de l’application. Pour plus d'informations, consultez <xref:blazor/components/class-libraries#browser-compatibility-analyzer-for-blazor-webassembly>.
+Blazor WebAssembly les applications ciblent la surface d’exposition complète de l’API .NET, mais toutes les API .NET ne sont pas prises en charge sur webassembly en raison des contraintes du bac à sable (sandbox). Les API non prises en charge sont levées <xref:System.PlatformNotSupportedException> lors de l’exécution sur Webassembly. Un analyseur de compatibilité de plateforme avertit le développeur lorsque l’application utilise des API qui ne sont pas prises en charge par les plateformes cibles de l’application. Pour plus d’informations, consultez <xref:blazor/components/class-libraries#browser-compatibility-analyzer-for-blazor-webassembly>.
 
 ### <a name="lazy-load-assemblies"></a>Charger des assemblys en différé
 
-Blazor WebAssembly les performances de démarrage de l’application peuvent être améliorées en différant le chargement de certains assemblys d’application jusqu’à ce qu’ils soient nécessaires. Pour plus d'informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
+Blazor WebAssembly les performances de démarrage de l’application peuvent être améliorées en différant le chargement de certains assemblys d’application jusqu’à ce qu’ils soient nécessaires. Pour plus d’informations, consultez <xref:blazor/webassembly-lazy-load-assemblies>.
 
 ### <a name="updated-globalization-support"></a>Support de globalisation mis à jour
 
-La prise en charge de la globalisation est disponible pour Blazor WebAssembly basée sur les composants internationaux pour Unicode (ICU). Pour plus d'informations, consultez <xref:blazor/globalization-localization>.
+La prise en charge de la globalisation est disponible pour Blazor WebAssembly basée sur les composants internationaux pour Unicode (ICU). Pour plus d’informations, consultez <xref:blazor/globalization-localization>.
 
 ## <a name="grpc"></a>gRPC
 
@@ -224,19 +224,19 @@ Pour plus d’informations sur les gRPC, consultez <xref:grpc/index> .
 
 ## SignalR
 
-### <a name="no-locsignalr-hub-filters"></a>SignalR Filtres de concentrateur
+### <a name="signalr-hub-filters"></a>SignalR Filtres de concentrateur
 
 SignalR Les filtres de concentrateur, appelés pipelines Hub dans ASP.NET SignalR , sont une fonctionnalité qui permet au code de s’exécuter avant et après l’appel des méthodes de concentrateur. L’exécution de code avant et après l’appel de méthodes de concentrateur est semblable à la façon dont l’intergiciel peut exécuter du code avant et après une requête HTTP. Les utilisations courantes incluent la journalisation, la gestion des erreurs et la validation d’argument.
 
 Pour plus d’informations, consultez [utiliser des filtres de SignalR concentrateur dans ASP.net Core ](xref:signalr/hub-filters).
 
-### <a name="no-locsignalr-parallel-hub-invocations"></a>SignalR appels de concentrateur parallèles
+### <a name="signalr-parallel-hub-invocations"></a>SignalR appels de concentrateur parallèles
 
 ASP.NET Core SignalR est désormais en capacité de gérer les appels de concentrateur parallèle. Le comportement par défaut peut être modifié pour permettre aux clients d’appeler plusieurs méthodes de concentrateur à la fois :
 
 [!code-csharp[](~/release-notes/sample/StartupSignalRhubs.cs?name=snippet)]
 
-### <a name="added-messagepack-support-in-no-locsignalr-java-client"></a>Ajout de la prise en charge de Messagepack dans SignalR java client
+### <a name="added-messagepack-support-in-signalr-java-client"></a>Ajout de la prise en charge de Messagepack dans SignalR java client
 
 Un nouveau package, [com. Microsoft. signalr. messagepack](https://mvnrepository.com/artifact/com.microsoft.signalr.messagepack), ajoute la prise en charge de messagepack au SignalR client Java. Pour utiliser le protocole MessagePack Hub, ajoutez `.withHubProtocol(new MessagePackHubProtocol())` au générateur de connexions :
 
@@ -278,7 +278,7 @@ See [Update SignalR code](xref:migration/31-to-50#signalr) for migration instruc
         });
   ```
 
-### <a name="no-lockestrel-endpoint-specific-options-via-configuration"></a>Kestrel options spécifiques au point de terminaison via la configuration
+### <a name="kestrel-endpoint-specific-options-via-configuration"></a>Kestrel options spécifiques au point de terminaison via la configuration
 
 Une prise en charge a été ajoutée pour la configuration des Kestrel options spécifiques aux points de terminaison par [configuration](xref:fundamentals/configuration/index). Les configurations spécifiques aux points de terminaison incluent les éléments suivants :
 
@@ -328,7 +328,7 @@ L’exemple suivant montre comment spécifier un point de terminaison spécifiqu
 
 Indication du nom du serveur (SNI) est une extension TLS pour inclure un domaine virtuel dans le cadre de la négociation SSL. Cela signifie que le nom de domaine virtuel, ou un nom d’hôte, peut être utilisé pour identifier le point de terminaison réseau.
 
-## <a name="performance-improvements"></a>Amélioration des performances
+## <a name="performance-improvements"></a>Optimisation des performances
 
 ### <a name="http2"></a>HTTP/2
 
@@ -353,13 +353,13 @@ Indication du nom du serveur (SNI) est une extension TLS pour inclure un domaine
    ```
    <!-- review: KeepAlivePingInterval not found in RC1. Try testing with RC1. See https://github.com/dotnet/aspnetcore/pull/22565/files see C:/Users/riande/source/repos/WebApplication128/WebApplication128 -->
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Conteneurs
 
 Avant .NET 5,0, la génération et la publication d’un *fichier dockerfile* pour une application ASP.net Core nécessitait l’extraction de l’ensemble des kit SDK .net Core et de l’image ASP.net core. Avec cette version, l’extraction des octets des images du SDK est réduite et les octets tirés pour l’image ASP.NET Core sont en grande partie éliminés. Pour plus d’informations, consultez [ce commentaire de problème GitHub](https://github.com/dotnet/dotnet-docker/issues/1814#issuecomment-625294750).
 
 ## <a name="authentication-and-authorization"></a>Authentification et autorisation
 
-### <a name="azure-active-directory-authentication-with-microsoftno-locidentityweb"></a>Azure Active Directory l’authentification auprès de Microsoft. Identity . Internet
+### <a name="azure-active-directory-authentication-with-microsoftidentityweb"></a>Azure Active Directory l’authentification auprès de Microsoft. Identity . Internet
 
 Les modèles de projet ASP.NET Core s’intègrent désormais <xref:Microsoft.Identity.Web?displayProperty=fullName> à pour gérer l’authentification avec [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD). [Microsoft. Identity . Le package Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) fournit les éléments suivants :
 
@@ -374,7 +374,7 @@ La `AllowAnonymous` méthode d’extension autorise un accès anonyme à un poin
 
 ### <a name="custom-handling-of-authorization-failures"></a>Gestion personnalisée des échecs d’autorisation
 
-La gestion personnalisée des échecs d’autorisation est désormais plus facile avec la nouvelle interface [IAuthorizationMiddlewareResultHandler](https://github.com/dotnet/aspnetcore/blob/v5.0.0-rc.1.20451.17/src/Security/Authorization/Policy/src/IAuthorizationMiddlewareResultHandler.cs) appelée par l' [intergiciel (middleware](xref:fundamentals/middleware/index)) [d’autorisation](xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A) . L’implémentation par défaut reste la même, mais un gestionnaire personnalisé peut être inscrit dans [injection de dépendances, qui autorise les réponses HTTP personnalisées en fonction de la raison de l’échec de l’autorisation. Consultez [cet exemple](https://github.com/dotnet/aspnetcore/blob/master/src/Security/samples/CustomAuthorizationFailureResponse/Authorization/SampleAuthorizationMiddlewareResultHandler.cs) qui illustre l’utilisation de `IAuthorizationMiddlewareResultHandler` .
+La gestion personnalisée des échecs d’autorisation est désormais plus facile avec la nouvelle interface [IAuthorizationMiddlewareResultHandler](https://github.com/dotnet/aspnetcore/blob/v5.0.0-rc.1.20451.17/src/Security/Authorization/Policy/src/IAuthorizationMiddlewareResultHandler.cs) appelée par l' [intergiciel (middleware](xref:fundamentals/middleware/index)) [d’autorisation](xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A) . L’implémentation par défaut reste la même, mais un gestionnaire personnalisé peut être inscrit dans [injection de dépendances, qui autorise les réponses HTTP personnalisées en fonction de la raison de l’échec de l’autorisation. Consultez [cet exemple](https://github.com/dotnet/aspnetcore/blob/main/src/Security/samples/CustomAuthorizationFailureResponse/Authorization/SampleAuthorizationMiddlewareResultHandler.cs) qui illustre l’utilisation de `IAuthorizationMiddlewareResultHandler` .
 
 ### <a name="authorization-when-using-endpoint-routing"></a>Autorisation lors de l’utilisation du routage de point de terminaison
 
@@ -390,7 +390,7 @@ Voir [authentification Kerberos et contrôle d’accès en fonction du rôle (RB
 
 Les données JSON peuvent être lues et écrites dans à partir d’un `HttpRequest` et `HttpResponse` à l’aide des <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> méthodes d’extension et nouvelles `WriteAsJsonAsync` . Ces méthodes d’extension utilisent l' [System.Text.Jssur](xref:System.Text.Json) le sérialiseur pour gérer les données JSON. La nouvelle `HasJsonContentType` méthode d’extension peut également vérifier si une demande a un type de contenu JSON.
 
-Les méthodes d’extension JSON peuvent être combinées avec le [routage de point de terminaison](xref:fundamentals/routing) pour créer des API JSON dans un style de programmation que nous appelons ***router vers le code** _. C’est une nouvelle option pour les développeurs qui souhaitent créer des API JSON de base de façon légère. Par exemple, une application Web qui n’a que quelques points de terminaison peut choisir d’utiliser l’itinéraire vers du code plutôt que les fonctionnalités complètes de ASP.NET Core MVC :
+Les méthodes d’extension JSON peuvent être combinées avec le [routage de point de terminaison](xref:fundamentals/routing) pour créer des API JSON dans un style de programmation que nous appelons ***acheminer vers le code***. C’est une nouvelle option pour les développeurs qui souhaitent créer des API JSON de base de façon légère. Par exemple, une application Web qui n’a que quelques points de terminaison peut choisir d’utiliser l’itinéraire vers du code plutôt que les fonctionnalités complètes de ASP.NET Core MVC :
 
 ```csharp
 endpoints.MapGet("/weather/{city:alpha}", async context =>
@@ -450,8 +450,8 @@ public class Program
 
 Dans .NET 5, l’exécution de [dotnet Watch](xref:tutorials/dotnet-watch) sur un projet de ASP.net Core lance le navigateur par défaut et actualise automatiquement le navigateur à mesure que des modifications sont apportées au code. Cela signifie que vous pouvez :
 
-_ Ouvrir un projet de ASP.NET Core dans un éditeur de texte.
-* Exécutez `dotnet watch`.
+* Ouvrez un projet ASP.NET Core dans un éditeur de texte.
+* Exécuter `dotnet watch`.
 * Concentrez-vous sur les modifications de code, tandis que les outils gèrent la reconstruction, le redémarrage et le rechargement de l’application.
 
 ### <a name="console-logger-formatter"></a>Formateur d’enregistreur de console

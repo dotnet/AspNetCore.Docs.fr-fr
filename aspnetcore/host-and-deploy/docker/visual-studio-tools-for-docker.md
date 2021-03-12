@@ -18,20 +18,20 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: 2cfd200c44290a0931cdeb2f68e99b90c11aa612
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c11261fef84234a9caaf872ae9871932d02617fa
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059817"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585992"
 ---
 # <a name="visual-studio-container-tools-with-aspnet-core"></a>Outils de conteneur Visual Studio avec ASP.NET Core
 
 Visual Studio 2017 et versions ultérieures prennent en charge la génération, le débogage et l’exécution d’applications ASP.NET Core conteneurisées ciblant .NET Core. Les conteneurs Windows et Linux sont pris en charge.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Conditions préalables requises
+## <a name="prerequisites"></a>Prérequis
 
 * [Docker pour Windows](https://docs.docker.com/docker-for-windows/install/)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail **Développement multiplateforme .NET Core**

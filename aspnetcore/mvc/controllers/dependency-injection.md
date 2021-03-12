@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 1282cd984584be423fba755e64e5d2f1afd2af89
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f3654e008733c57b4cd4cd34a52b747af2258be1
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060610"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589073"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Injection de dépendances dans les contrôleurs dans ASP.NET Core
 
@@ -32,7 +32,7 @@ Par [Shadi Namrouti](https://github.com/shadinamrouti), [Rick Anderson](https://
 
 Les contrôleurs ASP.NET Core MVC demandent les dépendances explicitement via des constructeurs. ASP.NET Core offre une prise en charge intégrée de l’[injection de dépendances](xref:fundamentals/dependency-injection). L’injection de dépendances facilite le test et la maintenance des applications.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/dependency-injection/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="constructor-injection"></a>Injection de constructeurs
 
@@ -66,7 +66,7 @@ Exécutez l’application et un message s’affiche en fonction de l’heure.
 
 L’accès aux paramètres de configuration ou d’application à partir d’un contrôleur est un modèle commun. Le *modèle options* décrit dans <xref:fundamentals/configuration/options> est l’approche à privilégier pour gérer les paramètres. En règle générale, n’injectez pas directement <xref:Microsoft.Extensions.Configuration.IConfiguration> dans un contrôleur.
 
-Créez une classe qui représente les options. Exemple :
+Créez une classe qui représente les options. Par exemple :
 
 [!code-csharp[](dependency-injection/3.1sample/ControllerDI/Models/SampleWebSettings.cs?name=snippet)]
 
@@ -96,7 +96,7 @@ Par [Shadi Namrouti](https://github.com/shadinamrouti), [Rick Anderson](https://
 
 Les contrôleurs ASP.NET Core MVC demandent les dépendances explicitement via des constructeurs. ASP.NET Core offre une prise en charge intégrée de l’[injection de dépendances](xref:fundamentals/dependency-injection). L’injection de dépendances facilite le test et la maintenance des applications.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/dependency-injection/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="constructor-injection"></a>Injection de constructeurs
 
@@ -130,7 +130,7 @@ Exécutez l’application et un message s’affiche en fonction de l’heure.
 
 L’accès aux paramètres de configuration ou d’application à partir d’un contrôleur est un modèle commun. Le *modèle options* décrit dans <xref:fundamentals/configuration/options> est l’approche à privilégier pour gérer les paramètres. En règle générale, n’injectez pas directement <xref:Microsoft.Extensions.Configuration.IConfiguration> dans un contrôleur.
 
-Créez une classe qui représente les options. Exemple :
+Créez une classe qui représente les options. Par exemple :
 
 [!code-csharp[](dependency-injection/sample/ControllerDI/Models/SampleWebSettings.cs?name=snippet)]
 

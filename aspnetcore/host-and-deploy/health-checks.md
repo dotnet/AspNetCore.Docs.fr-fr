@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 32b7a4c6722ba45ba998f9430f5d6da6ddca53f9
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 272f1f098ca90434f26d6c057859a00b5519602e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058660"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588904"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Contrôles d’intégrité dans ASP.NET Core
 
@@ -40,7 +40,7 @@ Les contrôles d’intégrité sont exposés par une application comme des point
 * L’utilisation de la mémoire, des disques et des autres ressources de serveur physique peut être supervisée dans le cadre d’un contrôle d’intégrité.
 * Les contrôles d’intégrité peuvent tester les dépendances d’une application, telles que les bases de données et les points de terminaison de service externes, dans le but de vérifier leur disponibilité et leur bon fonctionnement.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/host-and-deploy/health-checks/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple d’application comprend des exemples pour les scénarios décrits dans cette rubrique. Pour exécuter l’exemple d’application selon un scénario donné, utilisez la commande [dotnet run](/dotnet/core/tools/dotnet-run) dans un interpréteur de commandes, à partir du dossier du projet. Pour plus d’informations sur l’utilisation de l’exemple d’application, consultez le fichier *README.md* de l’exemple d’application ainsi que les descriptions de scénarios de cette rubrique.
 
@@ -716,7 +716,7 @@ Pour distribuer une bibliothèque comme un contrôle d’intégrité :
    * Nom du contrôle d’intégrité (`name`). Si `null`, `example_health_check` est utilisé.
    * Point de données de chaîne du contrôle d’intégrité (`data1`).
    * Point de données Integer du contrôle d’intégrité (`data2`). Si `null`, `1` est utilisé.
-   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). La valeur par défaut est `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
+   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). Par défaut, il s’agit de `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
    * Étiquettes (`IEnumerable<string>`).
 
    ```csharp
@@ -809,7 +809,7 @@ Les contrôles d’intégrité sont exposés par une application comme des point
 * L’utilisation de la mémoire, des disques et des autres ressources de serveur physique peut être supervisée dans le cadre d’un contrôle d’intégrité.
 * Les contrôles d’intégrité peuvent tester les dépendances d’une application, telles que les bases de données et les points de terminaison de service externes, dans le but de vérifier leur disponibilité et leur bon fonctionnement.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/host-and-deploy/health-checks/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple d’application comprend des exemples pour les scénarios décrits dans cette rubrique. Pour exécuter l’exemple d’application selon un scénario donné, utilisez la commande [dotnet run](/dotnet/core/tools/dotnet-run) dans un interpréteur de commandes, à partir du dossier du projet. Pour plus d’informations sur l’utilisation de l’exemple d’application, consultez le fichier *README.md* de l’exemple d’application ainsi que les descriptions de scénarios de cette rubrique.
 
@@ -1391,7 +1391,7 @@ Pour distribuer une bibliothèque comme un contrôle d’intégrité :
    * Nom du contrôle d’intégrité (`name`). Si `null`, `example_health_check` est utilisé.
    * Point de données de chaîne du contrôle d’intégrité (`data1`).
    * Point de données Integer du contrôle d’intégrité (`data2`). Si `null`, `1` est utilisé.
-   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). La valeur par défaut est `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
+   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). Par défaut, il s’agit de `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
    * Étiquettes (`IEnumerable<string>`).
 
    ```csharp

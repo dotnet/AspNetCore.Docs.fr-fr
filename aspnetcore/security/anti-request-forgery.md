@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 3bb3c059eafa8e948fe2e719207927c009902e59
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 5d6f2915dd9b27142ac7d8ac55e68c6a26e41f81
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057445"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585784"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Empêcher les attaques de falsification de requête intersites (XSRF/CSRF) dans ASP.NET Core
 
@@ -85,7 +85,7 @@ Toutefois, les vulnérabilités CSRF sont fondamentalement un problème avec l�
 
 Cookiel’authentification basée sur est une forme d’authentification courante. Les systèmes d’authentification basés sur les jetons augmentent en popularité, en particulier pour les applications à page unique (SPAs).
 
-### <a name="no-loccookie-based-authentication"></a>Cookieauthentification basée sur
+### <a name="cookie-based-authentication"></a>Cookieauthentification basée sur
 
 Lorsqu’un utilisateur s’authentifie à l’aide de son nom d’utilisateur et de son mot de passe, il reçoit un jeton qui contient un ticket d’authentification pouvant être utilisé pour l’authentification et l’autorisation. Le jeton est stocké en tant cookie que qui accompagne chaque demande que le client effectue. La génération et la validation de cette opération cookie sont effectuées par l' Cookie intergiciel (middleware) d’authentification. L' [intergiciel](xref:fundamentals/middleware/index) sérialise un principal d’utilisateur dans un chiffrement cookie . Lors des demandes suivantes, l’intergiciel valide le cookie , recrée le principal et attribue le principal à la propriété [User](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user) de [HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext).
 
@@ -327,7 +327,7 @@ L' `ValidateAntiForgeryToken` attribut requiert un jeton pour les demandes aux m
 ASP.NET Core applications ne génèrent pas de jetons anti-contrefaçon pour les méthodes HTTP sécurisées (obtenir, tête, OPTIONS et TRACE). Au lieu d’appliquer globalement l' `ValidateAntiForgeryToken` attribut, puis de le remplacer par des `IgnoreAntiforgeryToken` attributs, l’attribut [AutoValidateAntiforgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.autovalidateantiforgerytokenattribute) peut être utilisé. Cet attribut fonctionne de la même façon `ValidateAntiForgeryToken` que l’attribut, sauf qu’il ne requiert pas de jetons pour les demandes effectuées à l’aide des méthodes http suivantes :
 
 * GET
-* TÊTE
+* HEAD
 * OPTIONS
 * TRACE
 
@@ -487,9 +487,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="windows-authentication-and-antiforgery-no-loccookies"></a>Authentification Windows et anti-contrefaçon cookie
+## <a name="windows-authentication-and-antiforgery-cookies"></a>Authentification Windows et anti-contrefaçon cookie
 
 Lors de l’utilisation de l’authentification Windows, les points de terminaison d’application doivent être protégés contre les attaques CSRF de la même façon que pour les cookie .  Le navigateur envoie implicitement le contexte d’authentification au serveur, par conséquent les points de terminaison doivent être protégés contre les attaques CSRF.
 

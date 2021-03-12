@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: f1c7acba0b7fb7dc07da576b188e580328ff4b89
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 6d82611eb2176126652d0d6c8db3779cde70dab5
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96901156"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586239"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Déployer une application sur App Service
 
@@ -141,10 +141,10 @@ Pour déployer l’application, vous devez créer une [application Web](/azure/a
     git remote add azure-prod GIT_DEPLOYMENT_URL
     ```
 
-    b. Poussez la branche par défaut locale (*Master*) vers la branche par défaut (*Master*) d' *Azure-prod* Remote.
+    b. Poussez la branche locale par défaut (*main*) vers la branche par défaut de l' *Azure-prod* Remote (*main*).
 
     ```console
-    git push azure-prod master
+    git push azure-prod main
     ```
 
     Vous serez invité à entrer les informations d’identification de déploiement que vous avez créées précédemment. Observez la sortie dans l’interface de commande. Azure génère l’application ASP.NET Core à distance.
@@ -214,10 +214,10 @@ Les emplacements de déploiement prennent en charge la mise en lots des modifica
     git remote add azure-staging <Git_staging_deployment_URL>
     ```
 
-    b. Pousser la branche locale par défaut (*Master*) vers la branche par défaut (*Master*) de la succursale *Azure intermédiaire* .
+    b. Transmettent la branche par défaut locale (*main*) à la branche par défaut de la base de distribution *Azure* (*main*).
 
     ```console
-    git push azure-staging master
+    git push azure-staging main
     ```
 
     Patientez pendant que Azure génère et déploie l’application.

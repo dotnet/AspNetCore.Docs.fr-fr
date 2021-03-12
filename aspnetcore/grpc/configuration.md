@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/configuration
-ms.openlocfilehash: 617c042c628dc431391f39c2ecb2d2f9c9463fa5
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 3f03d774a2223dc1fc08adcbc85cdc9a2b63dea0
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "95417589"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588891"
 ---
 # <a name="grpc-for-net-configuration"></a>configuration de gRPC pour .NET
 
@@ -36,11 +36,11 @@ les services gRPC sont configurés avec `AddGrpc` dans *Startup.cs*. Le tableau 
 | ------ | ------------- | ----------- |
 | MaxSendMessageSize | `null` | Taille maximale du message, en octets, qui peut être envoyée à partir du serveur. Toute tentative d’envoi d’un message qui dépasse la taille de message maximale configurée entraîne une exception. Lorsque la valeur `null` est, la taille du message est illimitée. |
 | MaxReceiveMessageSize | 4 Mo | Taille maximale du message, en octets, qui peut être reçue par le serveur. Si le serveur reçoit un message qui dépasse cette limite, il lève une exception. L’augmentation de cette valeur permet au serveur de recevoir des messages plus volumineux, mais peut avoir un impact négatif sur la consommation de mémoire. Lorsque la valeur `null` est, la taille du message est illimitée. |
-| EnableDetailedErrors | `false` | Si `true` la valeur est, les messages d’exception détaillés sont retournés aux clients lorsqu’une exception est levée dans une méthode de service. La valeur par défaut est `false`. La définition `EnableDetailedErrors` de sur peut entraîner une `true` fuite d’informations sensibles. |
+| EnableDetailedErrors | `false` | Si `true` la valeur est, les messages d’exception détaillés sont retournés aux clients lorsqu’une exception est levée dans une méthode de service. Par défaut, il s’agit de `false`. La définition `EnableDetailedErrors` de sur peut entraîner une `true` fuite d’informations sensibles. |
 | CompressionProviders | gzip | Collection de fournisseurs de compression utilisée pour compresser et décompresser des messages. Des fournisseurs de compression personnalisés peuvent être créés et ajoutés à la collection. Les fournisseurs configurés par défaut prennent en charge la compression **gzip** . |
 | <span style="word-break:normal;word-wrap:normal">ResponseCompressionAlgorithm</span> | `null` | Algorithme de compression utilisé pour compresser les messages envoyés à partir du serveur. L’algorithme doit correspondre à un fournisseur de compression dans `CompressionProviders` . Pour que l’algorithme compresse une réponse, le client doit indiquer qu’il prend en charge l’algorithme en l’envoyant dans l’en-tête **GRPC-Accept-Encoding** . |
 | ResponseCompressionLevel | `null` | Niveau de compression utilisé pour compresser les messages envoyés à partir du serveur. |
-| Intercepteurs | None | Collection d’intercepteurs exécutés avec chaque appel gRPC. Les intercepteurs sont exécutés dans l’ordre dans lequel ils sont inscrits. Les intercepteurs configurés globalement sont exécutés avant les intercepteurs configurés pour un service unique. Pour plus d’informations sur les intercepteurs gRPC, consultez [intercepteurs gRPC et intergiciel](xref:grpc/migration#grpc-interceptors-vs-middleware). |
+| Intercepteurs | Aucun | Collection d’intercepteurs exécutés avec chaque appel gRPC. Les intercepteurs sont exécutés dans l’ordre dans lequel ils sont inscrits. Les intercepteurs configurés globalement sont exécutés avant les intercepteurs configurés pour un service unique. Pour plus d’informations sur les intercepteurs gRPC, consultez [intercepteurs gRPC et intergiciel](xref:grpc/migration#grpc-interceptors-vs-middleware). |
 | IgnoreUnknownServices | `false` | Si `true` la valeur est, les appels aux services et méthodes inconnus ne retournent pas un État non **implémenté** et la demande passe au middleware inscrit suivant dans ASP.net core. |
 
 Les options peuvent être configurées pour tous les services en fournissant un délégué d’options à l' `AddGrpc` appel dans `Startup.ConfigureServices` :
@@ -62,10 +62,14 @@ la configuration du client gRPC est activée `GrpcChannelOptions` . Le tableau s
 | DisposeHttpClient | `false` | Si la valeur est définie sur `true` et si `HttpMessageHandler` ou `HttpClient` est spécifié, le `HttpHandler` ou `HttpClient` , respectivement, est supprimé lorsque `GrpcChannel` est supprimé. |
 | LoggerFactory | `null` | `LoggerFactory`Utilisé par le client pour enregistrer des informations sur les appels gRPC. Une `LoggerFactory` instance peut être résolue à partir de l’injection de dépendances ou créée à l’aide de `LoggerFactory.Create` . Pour obtenir des exemples de configuration de la journalisation, consultez <xref:grpc/diagnostics#grpc-client-logging> . |
 | MaxSendMessageSize | `null` | Taille maximale du message, en octets, qui peut être envoyée à partir du client. Toute tentative d’envoi d’un message qui dépasse la taille de message maximale configurée entraîne une exception. Lorsque la valeur `null` est, la taille du message est illimitée. |
-| <span style="word-break:normal;word-wrap:normal">MaxReceiveMessageSize</span> | 4 Mo | Taille maximale du message, en octets, qui peut être reçue par le client. Si le client reçoit un message qui dépasse cette limite, il lève une exception. L’augmentation de cette valeur permet au client de recevoir des messages plus volumineux, mais peut avoir un impact négatif sur la consommation de mémoire. Lorsque la valeur `null` est, la taille du message est illimitée. |
+| MaxReceiveMessageSize | 4 Mo | Taille maximale du message, en octets, qui peut être reçue par le client. Si le client reçoit un message qui dépasse cette limite, il lève une exception. L’augmentation de cette valeur permet au client de recevoir des messages plus volumineux, mais peut avoir un impact négatif sur la consommation de mémoire. Lorsque la valeur `null` est, la taille du message est illimitée. |
 | Informations d'identification | `null` | Instance de `ChannelCredentials`. Les informations d’identification sont utilisées pour ajouter des métadonnées d’authentification à des appels gRPC. |
 | CompressionProviders | gzip | Collection de fournisseurs de compression utilisée pour compresser et décompresser des messages. Des fournisseurs de compression personnalisés peuvent être créés et ajoutés à la collection. Les fournisseurs configurés par défaut prennent en charge la compression **gzip** . |
 | ThrowOperationCanceledOnCancellation | `false` | Si la valeur est `true` , les clients lèvent <xref:System.OperationCanceledException> une exception lorsqu’un appel est annulé ou que son échéance est dépassée. |
+| MaxRetryAttempts | 5 | Nombre maximal de nouvelles tentatives. Cette valeur limite les nouvelles tentatives et les valeurs de tentative de couverture spécifiées dans la configuration du service. La définition de cette valeur seule ne permet pas d’activer les nouvelles tentatives. Les nouvelles tentatives sont activées dans la configuration du service, ce qui peut être fait à l’aide de `ServiceConfig` . Une `null` valeur supprime la limite maximale de nouvelles tentatives. Pour plus d’informations sur les nouvelles tentatives, consultez <xref:grpc/retries> . |
+| MaxRetryBufferSize | 16 Mo | Taille maximale de la mémoire tampon en octets qui peut être utilisée pour stocker les messages envoyés lors de nouvelles tentatives ou d’appels de couverture. Si la limite de la mémoire tampon est dépassée, aucune nouvelle tentative n’est effectuée et tous les appels de couverture, mais l’un d’eux seront annulés. Cette limite est appliquée pour tous les appels effectués à l’aide du canal. Une `null` valeur supprime la limite maximale de la taille de la mémoire tampon des nouvelles tentatives. |
+| <span style="word-break:normal;word-wrap:normal">MaxRetryBufferPerCallSize</span> | 1 Mo | Taille maximale de la mémoire tampon en octets qui peut être utilisée pour stocker les messages envoyés lors de nouvelles tentatives ou d’appels de couverture. Si la limite de la mémoire tampon est dépassée, aucune nouvelle tentative n’est effectuée et tous les appels de couverture, mais l’un d’eux seront annulés. Cette limite est appliquée à un appel. Une `null` valeur supprime la limite maximale de la taille de la mémoire tampon des nouvelles tentatives par appel. |
+| ServiceConfig | `null` | Configuration du service pour un canal gRPC. Une configuration de service peut être utilisée pour configurer les [nouvelles tentatives gRPC](xref:grpc/retries). |
 
 Le code suivant :
 

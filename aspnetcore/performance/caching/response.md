@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/response
-ms.openlocfilehash: 2864de5b9931ed255569cb087c67c71004c4df92
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 539ddb118279adb3a53394cdb0c2e5169092ebc0
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059011"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589229"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Mise en cache des réponses dans ASP.NET Core
 
 Par [John Luo](https://github.com/JunTaoLuo), [Rick Anderson](https://twitter.com/RickAndMSFT)et [Steve Smith](https://ardalis.com/)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/response/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/response/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 La mise en cache des réponses réduit le nombre de demandes qu’un client ou un proxy effectue sur un serveur Web. La mise en cache des réponses réduit également la quantité de travail effectuée par le serveur Web pour générer une réponse. La mise en cache des réponses est contrôlée par des en-têtes qui spécifient comment vous souhaitez que le client, le proxy et l’intergiciel (middleware) effectuent le cache des réponses.
 
@@ -48,14 +48,14 @@ La [spécification de mise en cache HTTP 1,1](https://tools.ietf.org/html/rfc723
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | Un cache peut stocker la réponse. |
 | [priv](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | La réponse ne doit pas être stockée par un cache partagé. Un cache privé peut stocker et réutiliser la réponse. |
 | [âge maximal](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | Le client n’accepte pas de réponse dont l’âge est supérieur au nombre de secondes spécifié. Exemples : `max-age=60` (60 secondes), `max-age=2592000` (1 mois) |
-| [non-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **Sur les demandes** : un cache ne doit pas utiliser une réponse stockée pour satisfaire la demande. Le serveur d’origine régénère la réponse pour le client, et l’intergiciel met à jour la réponse stockée dans son cache.<br><br>**Sur les réponses** : la réponse ne doit pas être utilisée pour une demande ultérieure sans validation sur le serveur d’origine. |
-| [non-Store](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **Sur les demandes** : un cache ne doit pas stocker la demande.<br><br>**Sur les réponses** : un cache ne doit pas stocker une partie de la réponse. |
+| [non-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **Sur les demandes**: un cache ne doit pas utiliser une réponse stockée pour satisfaire la demande. Le serveur d’origine régénère la réponse pour le client, et l’intergiciel met à jour la réponse stockée dans son cache.<br><br>**Sur les réponses**: la réponse ne doit pas être utilisée pour une demande ultérieure sans validation sur le serveur d’origine. |
+| [non-Store](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **Sur les demandes**: un cache ne doit pas stocker la demande.<br><br>**Sur les réponses**: un cache ne doit pas stocker une partie de la réponse. |
 
 Les autres en-têtes de cache qui jouent un rôle dans la mise en cache sont répertoriés dans le tableau suivant.
 
 | En-tête                                                     | Fonction |
 | ---------------------------------------------------------- | -------- |
-| [Age](https://tools.ietf.org/html/rfc7234#section-5.1) (Âge)     | Estimation de la durée en secondes depuis que la réponse a été générée ou validée sur le serveur d’origine. |
+| [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | Estimation de la durée en secondes depuis que la réponse a été générée ou validée sur le serveur d’origine. |
 | [Expire](https://tools.ietf.org/html/rfc7234#section-5.3) | Heure après laquelle la réponse est considérée comme périmée. |
 | [Bali](https://tools.ietf.org/html/rfc7234#section-5.4)  | Existe pour la compatibilité descendante avec les caches HTTP/1.0 pour la définition du `no-cache` comportement. Si l' `Cache-Control` en-tête est présent, l' `Pragma` en-tête est ignoré. |
 | [Varier](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | Spécifie qu’une réponse mise en cache ne doit pas être envoyée, sauf si tous les `Vary` champs d’en-tête correspondent à la fois à la demande d’origine de la réponse mise en cache et à la nouvelle requête. |
@@ -72,27 +72,27 @@ Il n’existe aucun contrôle de développeur sur ce comportement de mise en cac
 
 ### <a name="in-memory-caching"></a>Mise en cache en mémoire
 
-La mise en cache en mémoire utilise la mémoire du serveur pour stocker les données mises en cache. Ce type de mise en cache convient pour un serveur unique ou plusieurs serveurs à l’aide de *sessions rémanentes* . Les sessions rémanentes signifient que les demandes d’un client sont toujours routées vers le même serveur pour traitement.
+La mise en cache en mémoire utilise la mémoire du serveur pour stocker les données mises en cache. Ce type de mise en cache convient pour un serveur unique ou plusieurs serveurs à l’aide de *sessions rémanentes*. Les sessions rémanentes signifient que les demandes d’un client sont toujours routées vers le même serveur pour traitement.
 
-Pour plus d'informations, consultez <xref:performance/caching/memory>.
+Pour plus d’informations, consultez <xref:performance/caching/memory>.
 
 ### <a name="distributed-cache"></a>Cache distribué
 
 Utilisez un cache distribué pour stocker les données en mémoire lorsque l’application est hébergée dans une batterie de serveurs ou un Cloud. Le cache est partagé entre les serveurs qui traitent les demandes. Un client peut soumettre une demande gérée par n’importe quel serveur du groupe si les données mises en cache pour le client sont disponibles. ASP.NET Core fonctionne avec les caches distribués SQL Server, [ReDim](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)et [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) .
 
-Pour plus d'informations, consultez <xref:performance/caching/distributed>.
+Pour plus d’informations, consultez <xref:performance/caching/distributed>.
 
 ### <a name="cache-tag-helper"></a>Tag Helper de cache
 
 Mettez en cache le contenu à partir d’une vue ou d’une Razor page MVC avec le tag Helper cache. Le tag Helper cache utilise la mise en cache en mémoire pour stocker les données.
 
-Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>.
+Pour plus d’informations, consultez <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>.
 
 ### <a name="distributed-cache-tag-helper"></a>Tag Helper Cache distribué
 
 Mettez en cache le contenu à partir d’une vue ou d’une Razor page MVC dans des scénarios de batterie de serveurs Web ou de Cloud distribué avec le tag Helper de cache distribué. Le tag Helper de cache distribué utilise SQL Server, les [redims](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)ou [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) pour stocker des données.
 
-Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>.
+Pour plus d’informations, consultez <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>.
 
 ## <a name="responsecache-attribute"></a>Attribut ResponseCache
 
@@ -105,7 +105,7 @@ Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/distr
 
 L' [intergiciel de mise en cache des réponses](xref:performance/caching/middleware) doit être activé pour définir la <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> propriété. Dans le cas contraire, une exception Runtime est levée. Il n’existe pas d’en-tête HTTP correspondant pour la <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> propriété. La propriété est une fonctionnalité HTTP gérée par l’intergiciel (middleware) de mise en cache des réponses. Pour que l’intergiciel serve une réponse mise en cache, la chaîne de requête et la valeur de chaîne de requête doivent correspondre à une demande précédente. Par exemple, considérez la séquence de requêtes et les résultats présentés dans le tableau suivant.
 
-| Requête                          | Résultat                    |
+| Requête                          | Résultats                    |
 | -------------------------------- | ------------------------- |
 | `http://example.com?key1=value1` | Retourné à partir du serveur. |
 | `http://example.com?key1=value1` | Renvoyé par l’intergiciel (middleware). |

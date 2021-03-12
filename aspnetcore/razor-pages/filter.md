@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/filter
-ms.openlocfilehash: a6d25c1b88e09560c1aad9aefd9148f7fe293909
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 178e6348d2d50dae34feea6a0ed261de01037136
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93056827"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586135"
 ---
-# <a name="filter-methods-for-no-locrazor-pages-in-aspnet-core"></a>Méthodes de filtre pour les Razor pages dans ASP.net Core
+# <a name="filter-methods-for-razor-pages-in-aspnet-core"></a>Méthodes de filtre pour les Razor pages dans ASP.net Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -44,7 +44,7 @@ Razor Filtres de page :
 
 Alors que les constructeurs de page et l’intergiciel (middleware) activent l’exécution de code personnalisé avant l’exécution d’une méthode de gestionnaire, seuls Razor les filtres de page permettent l’accès à <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext> et à la page. L’intergiciel a accès à `HttpContext` , mais pas au « contexte de page ». Les filtres ont un <xref:Microsoft.AspNetCore.Mvc.Filters.FilterContext> paramètre dérivé, qui fournit l’accès à `HttpContext` . Voici un exemple de filtre de page : [implémentez un attribut de filtre](#ifa) qui ajoute un en-tête à la réponse, ce qui ne peut pas être fait avec des constructeurs ou des intergiciels (middleware). L’accès au contexte de page, qui comprend l’accès aux instances de la page et de son modèle, sont disponibles uniquement lors de l’exécution de filtres, de gestionnaires ou du corps d’une Razor page.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/filter/3.1sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/filter/3.1sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 Razor Les filtres de page fournissent les méthodes suivantes, qui peuvent être appliquées globalement ou au niveau de la page :
 
@@ -61,7 +61,7 @@ Razor Les filtres de page fournissent les méthodes suivantes, qui peuvent être
 
 Implémentez la version synchrone ou asynchrone d’une interface de filtre, mais **pas** **les deux** . Le framework vérifie d’abord si le filtre implémente l’interface asynchrone et, le cas échéant, il appelle cette interface. Dans le cas contraire, il appelle la ou les méthodes de l’interface synchrone. Si les deux interfaces sont implémentées, seules les méthodes Async sont appelées. La même règle s’applique aux substitutions dans les pages : implémentez la version synchrone ou asynchrone de la substitution, mais pas les deux.
 
-## <a name="implement-no-locrazor-page-filters-globally"></a>Implémenter des Razor filtres de page globalement
+## <a name="implement-razor-page-filters-globally"></a>Implémenter des Razor filtres de page globalement
 
 Le code suivant implémente `IAsyncPageFilter` :
 
@@ -85,7 +85,7 @@ Le code suivant active le filtre `SamplePageFilter` :
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/StartupSync.cs?name=snippet2)]
 
-## <a name="implement-no-locrazor-page-filters-by-overriding-filter-methods"></a>Implémenter Razor des filtres de page en substituant des méthodes de filtre
+## <a name="implement-razor-page-filters-by-overriding-filter-methods"></a>Implémenter Razor des filtres de page en substituant des méthodes de filtre
 
 Le code suivant remplace les filtres de page asynchrones Razor :
 
@@ -135,7 +135,7 @@ Razor Filtres de page :
 
 Le code peut être exécuté avant l’exécution d’une méthode de gestionnaire à l’aide du constructeur de page ou de l’intergiciel (middleware), mais seuls les Razor filtres de page ont accès à [HttpContext](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.httpcontext?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_HttpContext). Les filtres ont un paramètre dérivé de [FilterContext](/dotnet/api/microsoft.aspnetcore.mvc.filters.filtercontext?view=aspnetcore-2.0) qui fournit un accès à `HttpContext`. Par exemple, l’exemple [Implémenter un attribut de filtre](#ifa) ajoute un en-tête à la réponse, ce qu’il est impossible de faire avec des constructeurs ou des middlewares.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/filter/sample/PageFilter) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/filter/sample/PageFilter) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 Razor Les filtres de page fournissent les méthodes suivantes, qui peuvent être appliquées globalement ou au niveau de la page :
 
@@ -153,7 +153,7 @@ Razor Les filtres de page fournissent les méthodes suivantes, qui peuvent être
 > [!NOTE]
 > Implémentez la version synchrone **ou bien** la version asynchrone d’une interface de filtre, mais pas les deux. Le framework vérifie d’abord si le filtre implémente l’interface asynchrone et, le cas échéant, il appelle cette interface. Dans le cas contraire, il appelle la ou les méthodes de l’interface synchrone. Si les deux interfaces sont implémentées, seules les méthodes Async sont appelées. La même règle s’applique aux substitutions dans les pages : implémentez la version synchrone ou asynchrone de la substitution, mais pas les deux.
 
-## <a name="implement-no-locrazor-page-filters-globally"></a>Implémenter des Razor filtres de page globalement
+## <a name="implement-razor-page-filters-globally"></a>Implémenter des Razor filtres de page globalement
 
 Le code suivant implémente `IAsyncPageFilter` :
 
@@ -181,7 +181,7 @@ Le code suivant active le filtre `SamplePageFilter` :
 
 [!code-csharp[Main](filter/sample/PageFilter/StartupSync.cs?name=snippet2&highlight=11)]
 
-## <a name="implement-no-locrazor-page-filters-by-overriding-filter-methods"></a>Implémenter Razor des filtres de page en substituant des méthodes de filtre
+## <a name="implement-razor-page-filters-by-overriding-filter-methods"></a>Implémenter Razor des filtres de page en substituant des méthodes de filtre
 
 Le code suivant remplace les filtres de page synchrones Razor :
 

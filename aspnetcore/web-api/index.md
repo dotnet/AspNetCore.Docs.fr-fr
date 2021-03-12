@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 03debcb211a8cb8f0ebd6d5e67fbc8de7b574e27
-ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
+ms.openlocfilehash: fb7dfa53be1fee9904b4539a5c9da0700c2aa884
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551666"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585732"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Créer des API web avec ASP.NET Core
 
@@ -32,7 +32,7 @@ De [Scott Addie](https://github.com/scottaddie) et [Tom Dykstra](https://github.
 
 ASP.NET Core prend en charge la création de services RESTful, également appelés API web, à l’aide de C#. Pour traiter les demandes, une API web utilise des contrôleurs. Les *contrôleurs* dans une API web sont des classes qui dérivent de `ControllerBase`. Cet article explique comment utiliser des contrôleurs pour gérer les demandes d’API Web.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/index/samples). ([Procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/index/samples). ([Procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="controllerbase-class"></a>Classe ControllerBase
 
@@ -76,7 +76,7 @@ L’espace de noms <xref:Microsoft.AspNetCore.Mvc> fournit des attributs qui peu
 
 Voici d’autres exemples d’attributs disponibles.
 
-|Attribut|Remarques|
+|Attribut|Notes|
 |---------|-----|
 |[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |Spécifie le modèle d’URL pour un contrôleur ou une action.|
 |[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |Spécifie le préfixe et les propriétés à inclure pour la liaison de modèle.|

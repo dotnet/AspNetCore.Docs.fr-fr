@@ -19,26 +19,26 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/dotnet-client
-ms.openlocfilehash: 7849322e50aeceda0850d94f9c9bcda79a6051c8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: db2bfa6d3aa440615c5a9c17ae843dbe22755c97
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061221"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589242"
 ---
-# <a name="aspnet-core-no-locsignalr-net-client"></a>SignalRClient .net ASP.net Core
+# <a name="aspnet-core-signalr-net-client"></a>SignalRClient .net ASP.net Core
 
 La SignalR bibliothèque cliente .net ASP.net Core vous permet de communiquer avec des SignalR hubs à partir d’applications .net.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/dotnet-client/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple de code dans cet article est une application WPF qui utilise le SignalR client ASP.net core .net.
 
-## <a name="install-the-no-locsignalr-net-client-package"></a>Installer le SignalR package client .net
+## <a name="install-the-signalr-net-client-package"></a>Installer le SignalR package client .net
 
 [Microsoft. AspNetCore. SignalR . ](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)Le package client est requis pour que les clients .net se connectent aux SignalR hubs.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Pour installer la bibliothèque cliente, exécutez la commande suivante dans la fenêtre **console du gestionnaire de package** :
 
@@ -268,7 +268,7 @@ Gérer les erreurs à l’aide d’une instruction try-catch. Inspectez l' `Exce
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Hubs](xref:signalr/hubs)
+* [Concentrateurs](xref:signalr/hubs)
 * [Client JavaScript](xref:signalr/javascript-client)
-* [Publication dans Azure](xref:signalr/publish-to-azure-web-app)
+* [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
 * [SignalRDocumentation sans serveur de service Azure](/azure/azure-signalr/signalr-concept-serverless-development-config)

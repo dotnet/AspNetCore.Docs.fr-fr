@@ -18,22 +18,22 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/cookie
-ms.openlocfilehash: 04469e0e75c433b40b364873a7e72e30421936f4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5b1f1bb3de7126c401a81b89b99a45c7e45f8f8d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061351"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586291"
 ---
-# <a name="use-no-loccookie-authentication-without-no-locaspnet-core-identity"></a>Utiliser cookie l’authentification sans ASP.NET Core Identity
+# <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Utiliser cookie l’authentification sans ASP.NET Core Identity
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-ASP.NET Core Identity est un fournisseur d’authentification complet et complet pour la création et la gestion des connexions. Toutefois, cookie il n’est pas possible d’utiliser un fournisseur d’authentification basé sur ASP.NET Core Identity . Pour plus d'informations, consultez <xref:security/authentication/identity>.
+ASP.NET Core Identity est un fournisseur d’authentification complet et complet pour la création et la gestion des connexions. Toutefois, cookie il n’est pas possible d’utiliser un fournisseur d’authentification basé sur ASP.NET Core Identity . Pour plus d’informations, consultez <xref:security/authentication/identity>.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/cookie/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 À des fins de démonstration dans l’exemple d’application, le compte d’utilisateur de l’utilisateur hypothétique, Maria Rodriguez, est codé en dur dans l’application. Utilisez l’adresse de **messagerie** `maria.rodriguez@contoso.com` et un mot de passe pour vous connecter à l’utilisateur. L’utilisateur est authentifié dans la `AuthenticateUser` méthode dans le fichier *pages/Account/login. cshtml. cs* . Dans un exemple réel, l’utilisateur est authentifié par rapport à une base de données.
 
@@ -47,7 +47,7 @@ Dans la `Startup.ConfigureServices` méthode, créez les services d’intergicie
 
 Le schéma d’authentification de l’application est différent du schéma d’authentification de l’application cookie . Lorsqu’un cookie schéma d’authentification n’est pas fourni à <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> , il utilise `CookieAuthenticationDefaults.AuthenticationScheme` (« Cookie s »).
 
-La cookie propriété de l’authentification <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> a la valeur `true` par défaut. cookieLes s d’authentification sont autorisées lorsqu’un visiteur du site n’a pas consenti à la collecte de données. Pour plus d'informations, consultez <xref:security/gdpr#essential-cookies>.
+La cookie propriété de l’authentification <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> a la valeur `true` par défaut. cookieLes s d’authentification sont autorisées lorsqu’un visiteur du site n’a pas consenti à la collecte de données. Pour plus d’informations, consultez <xref:security/gdpr#essential-cookies>.
 
 Dans `Startup.Configure` , appelez `UseAuthentication` et `UseAuthorization` pour définir la `HttpContext.User` propriété et exécuter l’intergiciel (middleware) des autorisations pour les demandes. Appelez les `UseAuthentication` `UseAuthorization` méthodes et avant d’appeler `UseEndpoints` :
 
@@ -65,7 +65,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     });
 ```
 
-## <a name="no-loccookie-policy-middleware"></a>Cookie Intergiciel de stratégie
+## <a name="cookie-policy-middleware"></a>Cookie Intergiciel de stratégie
 
 L' [ Cookie intergiciel (middleware](xref:Microsoft.AspNetCore.CookiePolicy.CookiePolicyMiddleware) ) de stratégie active les cookie fonctionnalités de stratégie. L’ajout de l’intergiciel au pipeline de traitement de l’application est sensible à l’ordre &mdash; . il affecte uniquement les composants en aval inscrits dans le pipeline.
 
@@ -92,7 +92,7 @@ Le Cookie paramètre d’intergiciel de stratégie pour `MinimumSameSitePolicy` 
 | SameSiteMode. Lax      | SameSiteMode. None<br>SameSiteMode. Lax<br>SameSiteMode. strict | SameSiteMode. Lax<br>SameSiteMode. Lax<br>SameSiteMode. strict |
 | SameSiteMode. strict   | SameSiteMode. None<br>SameSiteMode. Lax<br>SameSiteMode. strict | SameSiteMode. strict<br>SameSiteMode. strict<br>SameSiteMode. strict |
 
-## <a name="create-an-authentication-no-loccookie"></a>Créer une authentification cookie
+## <a name="create-an-authentication-cookie"></a>Créer une authentification cookie
 
 Pour créer un cookie contenant des informations sur l’utilisateur, construisez un <xref:System.Security.Claims.ClaimsPrincipal> . Les informations utilisateur sont sérialisées et stockées dans le cookie . 
 
@@ -209,7 +209,7 @@ Imaginez une situation dans laquelle le nom de l’utilisateur est mis à jour &
 > [!WARNING]
 > L’approche décrite ici est déclenchée à chaque demande. La validation des cookie s d’authentification pour tous les utilisateurs à chaque demande peut entraîner une baisse importante des performances de l’application.
 
-## <a name="persistent-no-loccookies"></a>Persistant cookie s
+## <a name="persistent-cookies"></a>Persistant cookie s
 
 Vous souhaiterez peut-être cookie conserver le à travers les sessions de navigateur. Cette persistance doit être activée uniquement avec le consentement explicite de l’utilisateur avec une case à cocher « Mémoriser mes propres » lors de la connexion ou d’un mécanisme similaire. 
 
@@ -229,7 +229,7 @@ await HttpContext.SignInAsync(
     });
 ```
 
-## <a name="absolute-no-loccookie-expiration"></a>cookieExpiration absolue
+## <a name="absolute-cookie-expiration"></a>cookieExpiration absolue
 
 Une heure d’expiration absolue peut être définie avec <xref:Microsoft.AspNetCore.Authentication.AuthenticationProperties.ExpiresUtc> . Pour créer un persistant cookie , `IsPersistent` doit également être défini. Dans le cas contraire, le cookie est créé avec une durée de vie basée sur la session et peut expirer avant ou après le ticket d’authentification qu’il contient. Lorsque `ExpiresUtc` est défini, il remplace la valeur de l' <xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions.ExpireTimeSpan> option de <xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> , si elle est définie.
 
@@ -252,9 +252,9 @@ await HttpContext.SignInAsync(
 
 ::: moniker range="< aspnetcore-3.0"
 
-ASP.NET Core Identity est un fournisseur d’authentification complet et complet pour la création et la gestion des connexions. Toutefois, cookie il n’est pas possible d’utiliser un fournisseur d’authentification basé sur ASP.NET Core Identity . Pour plus d'informations, consultez <xref:security/authentication/identity>.
+ASP.NET Core Identity est un fournisseur d’authentification complet et complet pour la création et la gestion des connexions. Toutefois, cookie il n’est pas possible d’utiliser un fournisseur d’authentification basé sur ASP.NET Core Identity . Pour plus d’informations, consultez <xref:security/authentication/identity>.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/cookie/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 À des fins de démonstration dans l’exemple d’application, le compte d’utilisateur de l’utilisateur hypothétique, Maria Rodriguez, est codé en dur dans l’application. Utilisez l’adresse de **messagerie** `maria.rodriguez@contoso.com` et un mot de passe pour vous connecter à l’utilisateur. L’utilisateur est authentifié dans la `AuthenticateUser` méthode dans le fichier *pages/Account/login. cshtml. cs* . Dans un exemple réel, l’utilisateur est authentifié par rapport à une base de données.
 
@@ -270,7 +270,7 @@ Dans la `Startup.ConfigureServices` méthode, créez le service d’intergiciel 
 
 Le schéma d’authentification de l’application est différent du schéma d’authentification de l’application cookie . Lorsqu’un cookie schéma d’authentification n’est pas fourni à <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> , il utilise `CookieAuthenticationDefaults.AuthenticationScheme` (« Cookie s »).
 
-La cookie propriété de l’authentification <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> a la valeur `true` par défaut. cookieLes s d’authentification sont autorisées lorsqu’un visiteur du site n’a pas consenti à la collecte de données. Pour plus d'informations, consultez <xref:security/gdpr#essential-cookies>.
+La cookie propriété de l’authentification <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> a la valeur `true` par défaut. cookieLes s d’authentification sont autorisées lorsqu’un visiteur du site n’a pas consenti à la collecte de données. Pour plus d’informations, consultez <xref:security/gdpr#essential-cookies>.
 
 Dans la `Startup.Configure` méthode, appelez la `UseAuthentication` méthode pour appeler l’intergiciel (middleware) d’authentification qui définit la `HttpContext.User` propriété. Appelez la `UseAuthentication` méthode avant d’appeler `UseMvcWithDefaultRoute` ou `UseMvc` :
 
@@ -288,7 +288,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     });
 ```
 
-## <a name="no-loccookie-policy-middleware"></a>Cookie Intergiciel de stratégie
+## <a name="cookie-policy-middleware"></a>Cookie Intergiciel de stratégie
 
 L' [ Cookie intergiciel (middleware](xref:Microsoft.AspNetCore.CookiePolicy.CookiePolicyMiddleware) ) de stratégie active les cookie fonctionnalités de stratégie. L’ajout de l’intergiciel au pipeline de traitement de l’application est sensible à l’ordre &mdash; . il affecte uniquement les composants en aval inscrits dans le pipeline.
 
@@ -315,7 +315,7 @@ Le Cookie paramètre d’intergiciel de stratégie pour `MinimumSameSitePolicy` 
 | SameSiteMode. Lax      | SameSiteMode. None<br>SameSiteMode. Lax<br>SameSiteMode. strict | SameSiteMode. Lax<br>SameSiteMode. Lax<br>SameSiteMode. strict |
 | SameSiteMode. strict   | SameSiteMode. None<br>SameSiteMode. Lax<br>SameSiteMode. strict | SameSiteMode. strict<br>SameSiteMode. strict<br>SameSiteMode. strict |
 
-## <a name="create-an-authentication-no-loccookie"></a>Créer une authentification cookie
+## <a name="create-an-authentication-cookie"></a>Créer une authentification cookie
 
 Pour créer un cookie contenant des informations sur l’utilisateur, construisez un <xref:System.Security.Claims.ClaimsPrincipal> . Les informations utilisateur sont sérialisées et stockées dans le cookie . 
 
@@ -426,7 +426,7 @@ Imaginez une situation dans laquelle le nom de l’utilisateur est mis à jour &
 > [!WARNING]
 > L’approche décrite ici est déclenchée à chaque demande. La validation des cookie s d’authentification pour tous les utilisateurs à chaque demande peut entraîner une baisse importante des performances de l’application.
 
-## <a name="persistent-no-loccookies"></a>Persistant cookie s
+## <a name="persistent-cookies"></a>Persistant cookie s
 
 Vous souhaiterez peut-être cookie conserver le à travers les sessions de navigateur. Cette persistance doit être activée uniquement avec le consentement explicite de l’utilisateur avec une case à cocher « Mémoriser mes propres » lors de la connexion ou d’un mécanisme similaire. 
 
@@ -446,7 +446,7 @@ await HttpContext.SignInAsync(
     });
 ```
 
-## <a name="absolute-no-loccookie-expiration"></a>cookieExpiration absolue
+## <a name="absolute-cookie-expiration"></a>cookieExpiration absolue
 
 Une heure d’expiration absolue peut être définie avec <xref:Microsoft.AspNetCore.Authentication.AuthenticationProperties.ExpiresUtc> . Pour créer un persistant cookie , `IsPersistent` doit également être défini. Dans le cas contraire, le cookie est créé avec une durée de vie basée sur la session et peut expirer avant ou après le ticket d’authentification qu’il contient. Lorsque `ExpiresUtc` est défini, il remplace la valeur de l' <xref:Microsoft.AspNetCore.Builder.CookieAuthenticationOptions.ExpireTimeSpan> option de <xref:Microsoft.AspNetCore.Builder.CookieAuthenticationOptions> , si elle est définie.
 
