@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/action-return-types
-ms.openlocfilehash: 62c8227ca770a3a9adbe780685b140bc0e86841e
-ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
+ms.openlocfilehash: b377025a843f82a57fd0aac4961ddcedc67ff3b9
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98710696"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589723"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Types de retour des actions des contrôleurs dans l’API web ASP.NET Core
 
 Par [Scott Addie](https://github.com/scottaddie)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/action-return-types/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/action-return-types/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ASP.NET Core offre les options suivantes pour les types de retours d’action du contrôleur d’API Web :
 

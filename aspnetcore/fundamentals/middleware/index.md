@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/index
-ms.openlocfilehash: bdeccf81a3bb620c2e1fe15a798d5a83375842c8
-ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
+ms.openlocfilehash: 15d011e88ab291173668a0b6dc5f46e97fdfeff0
+ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96556539"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102605709"
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -258,7 +258,7 @@ Le tableau suivant présente les requêtes et les réponses de `http://localhost
 | Requête                       | response                     |
 | ----------------------------- | ---------------------------- |
 | localhost:1234                | Hello from non-Map delegate. |
-| localhost:1234/?branch=master | Branch used = master         |
+| localhost : 1234/ ? Branch = main | Branche utilisée = main         |
 
 <xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen%2A> branche également le pipeline de requêtes en fonction du résultat du prédicat donné. Contrairement à `MapWhen` , cette branche est rejointe au pipeline principal s’il n’y a pas de court-circuit ou qu’il contient un intergiciel (middleware) de terminal :
 
@@ -270,7 +270,7 @@ Dans l’exemple précédent, une réponse « hello from principal pipeline »
 
 ASP.NET Core est fourni avec les composants de middleware suivant. La colonne *Ordre* fournit des notes sur l’emplacement du middleware dans le pipeline de traitement de la requête et sur les conditions dans lesquelles le middleware peut mettre fin au traitement de la requête. Lorsqu’un middleware court-circuite le pipeline de traitement de la requête et empêche tout middleware en aval de traiter une requête, on parle de *middleware terminal*. Pour plus d’informations sur le court-circuit, consultez la section [Créer un pipeline de middlewares avec IApplicationBuilder](#create-a-middleware-pipeline-with-iapplicationbuilder).
 
-| Intergiciel (middleware) | Description | Commande |
+| Middleware | Description | Commande |
 | ---------- | ----------- | ----- |
 | [Authentification](xref:security/authentication/identity) | Prend en charge l’authentification. | Avant que `HttpContext.User` ne soit nécessaire. Terminal pour les rappels OAuth. |
 | [Autorisation](xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A) | Fournit la prise en charge des autorisations. | Immédiatement après l’intergiciel (middleware) d’authentification. |
@@ -455,7 +455,7 @@ Le tableau suivant présente les requêtes et les réponses de `http://localhost
 | Requête                       | response                     |
 | ----------------------------- | ---------------------------- |
 | localhost:1234                | Hello from non-Map delegate. |
-| localhost:1234/?branch=master | Branch used = master         |
+| localhost : 1234/ ? Branch = main | Branche utilisée = main         |
 
 `Map` prend en charge l’imbrication, par exemple :
 
@@ -478,7 +478,7 @@ app.Map("/level1", level1App => {
 
 ASP.NET Core est fourni avec les composants de middleware suivant. La colonne *Ordre* fournit des notes sur l’emplacement du middleware dans le pipeline de traitement de la requête et sur les conditions dans lesquelles le middleware peut mettre fin au traitement de la requête. Lorsqu’un middleware court-circuite le pipeline de traitement de la requête et empêche tout middleware en aval de traiter une requête, on parle de *middleware terminal*. Pour plus d’informations sur le court-circuit, consultez la section [Créer un pipeline de middlewares avec IApplicationBuilder](#create-a-middleware-pipeline-with-iapplicationbuilder).
 
-| Intergiciel (middleware) | Description | Commande |
+| Middleware | Description | Commande |
 | ---------- | ----------- | ----- |
 | [Authentification](xref:security/authentication/identity) | Prend en charge l’authentification. | Avant que `HttpContext.User` ne soit nécessaire. Terminal pour les rappels OAuth. |
 | [Cookie Renvoi](xref:security/gdpr) | Effectue le suivi du consentement des utilisateurs pour le stockage des informations personnelles et applique les normes minimales pour les cookie champs, tels que `secure` et `SameSite` . | Avant l’intergiciel (middleware) qui émet cookie s. Exemples : authentification, session, MVC (TempData). |

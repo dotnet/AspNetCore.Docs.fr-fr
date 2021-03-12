@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: ffa2a7c73e00ccfb5dd726a084352c0b80cc41b0
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: 8574bc06b7c27fbb8caf834754188dba67bcb4e3
+ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102586967"
+ms.locfileid: "102605695"
 ---
 # <a name="aspnet-core-module"></a>Module ASP.NET Core
 
@@ -1078,5 +1078,5 @@ Vous trouverez les fichiers en recherchant *aspnetcore* dans le fichier *applica
 
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/azure-apps/index>
-* [Source de référence du Module ASP.net Core [branche par défaut (Master)]](https://github.com/dotnet/aspnetcore/tree/main/src/Servers/IIS/AspNetCoreModuleV2): utilisez la liste déroulante **branche** pour sélectionner une version spécifique (par exemple, `release/3.1` ).
+* [Source de référence du Module ASP.net Core [default Branch (main)]](https://github.com/dotnet/aspnetcore/tree/main/src/Servers/IIS/AspNetCoreModuleV2): utilisez la liste déroulante de la **branche** pour sélectionner une version spécifique (par exemple, `release/3.1` ).
 * <xref:host-and-deploy/iis/modules>

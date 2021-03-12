@@ -18,24 +18,24 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: c89098bf0b2c4396f9856aca2be9967af5df0cb7
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f1c4366e4e4afa3dd86a816a649ad0a8b2ce817b
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051900"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588625"
 ---
-# <a name="custom-storage-providers-for-no-locaspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
+# <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 
 Par [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core Identity est un système extensible qui vous permet de créer un fournisseur de stockage personnalisé et de le connecter à votre application. Cette rubrique explique comment créer un fournisseur de stockage personnalisé pour ASP.NET Core Identity . Il couvre les concepts importants pour la création de votre propre fournisseur de stockage, mais n’est pas une procédure pas à pas.
 
-[Affichez ou téléchargez un exemple depuis GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample).
+[Affichez ou téléchargez un exemple depuis GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample).
 
 ## <a name="introduction"></a>Introduction
 
-Par défaut, le ASP.NET Core Identity système stocke les informations utilisateur dans une base de données SQL Server à l’aide de Entity Framework Core. Pour de nombreuses applications, cette approche fonctionne bien. Toutefois, vous préférerez peut-être utiliser un mécanisme de persistance ou un schéma de données différent. Exemple :
+Par défaut, le ASP.NET Core Identity système stocke les informations utilisateur dans une base de données SQL Server à l’aide de Entity Framework Core. Pour de nombreuses applications, cette approche fonctionne bien. Toutefois, vous préférerez peut-être utiliser un mécanisme de persistance ou un schéma de données différent. Par exemple :
 
 * Vous utilisez le [stockage table Azure](/azure/storage/) ou un autre magasin de données.
 * Les tables de votre base de données ont une structure différente. 
@@ -51,7 +51,7 @@ Lorsque vous utilisez l’CLI .NET Core, ajoutez `-au Individual` :
 dotnet new mvc -au Individual
 ```
 
-## <a name="the-no-locaspnet-core-identity-architecture"></a>L' ASP.NET Core Identity architecture
+## <a name="the-aspnet-core-identity-architecture"></a>L' ASP.NET Core Identity architecture
 
 ASP.NET Core Identity se compose de classes appelées gestionnaires et magasins. Les *gestionnaires* sont des classes de haut niveau qu’un développeur d’applications utilise pour effectuer des opérations, telles que la création d’un Identity utilisateur. Les *magasins* sont des classes de niveau inférieur qui spécifient la façon dont les entités, telles que les utilisateurs et les rôles, sont conservées. Les magasins suivent le modèle de référentiel et sont étroitement couplés avec le mécanisme de persistance. Les gestionnaires sont dissociés des magasins, ce qui signifie que vous pouvez remplacer le mécanisme de persistance sans modifier le code de votre application (à l’exception de la configuration).
 
@@ -65,7 +65,7 @@ Lorsque vous créez une nouvelle instance de `UserManager` ou `RoleManager` que 
 
 [Reconfigurer l’application pour utiliser le nouveau fournisseur de stockage](#reconfigure-app-to-use-a-new-storage-provider) montre comment instancier `UserManager` et `RoleManager` avec un magasin personnalisé.
 
-## <a name="no-locaspnet-core-identity-stores-data-types"></a>ASP.NET Core Identity stocke les types de données
+## <a name="aspnet-core-identity-stores-data-types"></a>ASP.NET Core Identity stocke les types de données
 
 [ASP.NET Core Identity](https://github.com/aspnet/identity) les types de données sont détaillés dans les sections suivantes :
 
@@ -150,7 +150,7 @@ Créez une `UserStore` classe qui fournit les méthodes pour toutes les opérati
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)
 * [IUserLockoutStore](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)
 
-Les interfaces facultatives héritent de `IUserStore<TUser>` . Vous pouvez voir un exemple de magasin d’utilisateurs partiellement implémenté dans l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs).
+Les interfaces facultatives héritent de `IUserStore<TUser>` . Vous pouvez voir un exemple de magasin d’utilisateurs partiellement implémenté dans l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs).
 
 Dans la `UserStore` classe, vous utilisez les classes d’accès aux données que vous avez créées pour effectuer des opérations. Ils sont passés à l’aide de l’injection de dépendances. Par exemple, dans le SQL Server avec l’implémentation de dapper, la `UserStore` classe a la `CreateAsync` méthode qui utilise une instance de `DapperUsersTable` pour insérer un nouvel enregistrement :
 
@@ -181,7 +181,7 @@ Dans la `UserStore` classe, vous utilisez les classes d’accès aux données qu
 * **IQueryableUserStore**  
  L' [interface &lt; IQueryableUserStore &gt; TUser](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) définit les membres que vous implémentez pour fournir un magasin d’utilisateurs interrogeable.
 
-Vous implémentez uniquement les interfaces qui sont nécessaires dans votre application. Exemple :
+Vous implémentez uniquement les interfaces qui sont nécessaires dans votre application. Par exemple :
 
 ```csharp
 public class UserStore : IUserStore<IdentityUser>,
@@ -195,7 +195,7 @@ public class UserStore : IUserStore<IdentityUser>,
 }
 ```
 
-### <a name="no-locidentityuserclaim-no-locidentityuserlogin-and-no-locidentityuserrole"></a>IdentityUserClaim, Identity Userlogin et Identity userrole
+### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim, Identity Userlogin et Identity userrole
 
 L' `Microsoft.AspNet.Identity.EntityFramework` espace de noms contient des implémentations des classes [ Identity UserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [ Identity Userlogin](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)et [ Identity userrole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) . Si vous utilisez ces fonctionnalités, vous souhaiterez peut-être créer vos propres versions de ces classes et définir les propriétés de votre application. Toutefois, il est parfois plus efficace de ne pas charger ces entités dans la mémoire lors de l’exécution d’opérations de base (telles que l’ajout ou la suppression d’une revendication d’utilisateur). Au lieu de cela, les classes du magasin principal peuvent exécuter ces opérations directement sur la source de données. Par exemple, la `UserStore.GetClaimsAsync` méthode peut appeler la `userClaimTable.FindByUserId(user.Id)` méthode pour exécuter directement une requête sur cette table et retourner une liste de revendications.
 
@@ -250,4 +250,4 @@ public void ConfigureServices(IServiceCollection services)
 ## <a name="references"></a>Références
 
 * [Fournisseurs de stockage personnalisés pour ASP.NET 4. x Identity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
-* [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/master/src/Identity): Ce référentiel contient des liens vers des fournisseurs de magasins gérés par la communauté.
+* [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/main/src/Identity): Ce référentiel contient des liens vers des fournisseurs de magasins gérés par la communauté.

@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: aaf930eee351ed757be60f648bce88b182d52799
-ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
+ms.openlocfilehash: 8e5f216a354b1ed7559b433d3a4867627bf60df3
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98710767"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589775"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Bien démarrer avec ASP.NET Core MVC
 
@@ -43,7 +43,7 @@ Il s’agit du premier didacticiel d’une série qui enseigne ASP.NET Core dév
 > * Utiliser une base de données.
 > * Ajouter une fonctionnalité de recherche et de validation.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mvc-app/start-mvc/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-mvc-app/start-mvc/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -141,7 +141,7 @@ Ce didacticiel part du principe que vous êtes familiarisé avec VS Code. Pour p
 Le lancement de l’application sans débogage en sélectionnant CTRL + F5 vous permet d’effectuer les opérations suivantes :
 
 * Modifiez le code.
-* Enregistrez le fichier.
+* Enregistrez le fichier .
 * Actualisez rapidement le navigateur et consultez les modifications de code.
 
 Vous pouvez lancer l’application en mode débogage ou non-débogage à partir de l’élément de menu **Déboguer** :
@@ -173,7 +173,7 @@ L’image suivante montre l’application :
 Le lancement de l’application sans débogage en sélectionnant CTRL + F5 vous permet d’effectuer les opérations suivantes :
 
 * Modifiez le code.
-* Enregistrez le fichier.
+* Enregistrez le fichier .
 * Actualisez rapidement le navigateur et consultez les modifications de code.
 
   ![Page d’accueil ou d’index](start-mvc/_static/home50-port5001.png)
@@ -223,7 +223,7 @@ Il s’agit du premier didacticiel d’une série qui enseigne ASP.NET Core dév
 > * Utiliser une base de données.
 > * Ajouter une fonctionnalité de recherche et de validation.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mvc-app/start-mvc/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-mvc-app/start-mvc/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -322,7 +322,7 @@ Ce didacticiel part du principe que vous êtes familiarisé avec VS Code. Pour p
 Le lancement de l’application sans débogage en sélectionnant CTRL + F5 vous permet d’effectuer les opérations suivantes :
 
 * Modifiez le code.
-* Enregistrez le fichier.
+* Enregistrez le fichier .
 * Actualisez rapidement le navigateur et consultez les modifications de code.
 
 Vous pouvez lancer l’application en mode débogage ou non-débogage à partir de l’élément de menu **Déboguer** :
@@ -354,7 +354,7 @@ L’image suivante montre l’application :
 Le lancement de l’application sans débogage en sélectionnant CTRL + F5 vous permet d’effectuer les opérations suivantes :
 
 * Modifiez le code.
-* Enregistrez le fichier.
+* Enregistrez le fichier .
 * Actualisez rapidement le navigateur et consultez les modifications de code.
 
   ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)

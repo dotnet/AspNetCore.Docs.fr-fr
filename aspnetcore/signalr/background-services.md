@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 4b877c64a881fec15ac9e9bd74ffdde0b5fa60f9
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 9d95d7c9a33bcf2f4a603d815269752124133ee6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530175"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589697"
 ---
 # <a name="host-aspnet-core-signalr-in-background-services"></a>ASP.NET Core SignalR des hôtes dans les services d’arrière-plan
 
@@ -37,12 +37,12 @@ Cet article fournit des conseils pour :
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/samples/3.x) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/background-service/samples/3.x) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
 
 ::: moniker-end
 ::: moniker range="<= aspnetcore-2.2"
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/samples/2.2) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/background-service/samples/2.2) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
 
 ::: moniker-end
 
@@ -161,6 +161,6 @@ Pendant la `IHostedService.StopAsync` méthode, le `HubConnection` est supprimé
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Prise en main](xref:tutorials/signalr)
-* [Concentr](xref:signalr/hubs)
-* [Publication dans Azure](xref:signalr/publish-to-azure-web-app)
+* [Concentrateurs](xref:signalr/hubs)
+* [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
 * [Hubs fortement typés](xref:signalr/hubs#strongly-typed-hubs)

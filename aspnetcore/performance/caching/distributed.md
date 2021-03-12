@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 6f89046f2e1805111dd81b3282253a72a7c6ea09
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: a4fd179772a26ffd20fa79cef4720cd5a4746ab3
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100281020"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588612"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Mise en cache distribuée dans ASP.NET Core
 
@@ -44,7 +44,7 @@ Lorsque les données mises en cache sont distribuées, les données :
 
 La configuration du cache distribué est spécifique à l’implémentation. Cet article explique comment configurer des caches distribués SQL Server et Redims. Des implémentations tierces sont également disponibles, telles que [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache sur GitHub](https://github.com/Alachisoft/NCache)). Quelle que soit l’implémentation sélectionnée, l’application interagit avec le cache à l’aide de l' <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> interface.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/distributed/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -211,7 +211,7 @@ Lorsque les données mises en cache sont distribuées, les données :
 
 La configuration du cache distribué est spécifique à l’implémentation. Cet article explique comment configurer des caches distribués SQL Server et Redims. Des implémentations tierces sont également disponibles, telles que [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache sur GitHub](https://github.com/Alachisoft/NCache)). Quelle que soit l’implémentation sélectionnée, l’application interagit avec le cache à l’aide de l' <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> interface.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/distributed/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -381,7 +381,7 @@ Lorsque les données mises en cache sont distribuées, les données :
 
 La configuration du cache distribué est spécifique à l’implémentation. Cet article explique comment configurer des caches distribués SQL Server et Redims. Des implémentations tierces sont également disponibles, telles que [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache sur GitHub](https://github.com/Alachisoft/NCache)). Quelle que soit l’implémentation sélectionnée, l’application interagit avec le cache à l’aide de l' <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> interface.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/distributed/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Prérequis
 

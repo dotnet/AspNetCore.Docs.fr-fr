@@ -18,16 +18,16 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: df9c78770f3494b1ae9e0d3604926d77cb1e67bb
-ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
+ms.openlocfilehash: fdec03422f4a4517950ff6de2a0400df5307b40f
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99578319"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588534"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Bien démarrer avec Swashbuckle et ASP.NET Core
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 Swashbuckle repose sur trois composants principaux :
 
@@ -41,7 +41,7 @@ Swashbuckle repose sur trois composants principaux :
 
 Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
 
-### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * À partir de la fenêtre **Console du Gestionnaire de package** :
   * Accéder à **la**  >  console du gestionnaire de  >  **package** Windows
@@ -174,7 +174,7 @@ L’IU Swagger affiche les informations de la version :
 
 Vous pouvez activer les commentaires XML en adoptant l’une des approches suivantes :
 
-#### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+#### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 

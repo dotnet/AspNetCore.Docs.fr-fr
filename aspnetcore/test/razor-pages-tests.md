@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: test/razor-pages-tests
-ms.openlocfilehash: 2486eb8c9fd0fc33ea77b0fedd99795218d7f4ca
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a67f51561d0a165db04418f2040ffe68e3ebe8ce
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058036"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588488"
 ---
-# <a name="no-locrazor-pages-unit-tests-in-aspnet-core"></a>Razor Pages tests unitaires dans ASP.NET Core
+# <a name="razor-pages-unit-tests-in-aspnet-core"></a>Razor Pages tests unitaires dans ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -43,7 +43,7 @@ Cette rubrique suppose que vous avez une connaissance de base des Razor applicat
 * <xref:tutorials/razor-pages/razor-pages-start>
 * [Effectuer des tests unitaires de C# dans .NET Core à l’aide de dotnet test et de xUnit](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/test/razor-pages-tests/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple de projet est composé de deux applications :
 
@@ -227,7 +227,7 @@ Cette rubrique suppose que vous avez une connaissance de base des Razor applicat
 * <xref:tutorials/razor-pages/razor-pages-start>
 * [Effectuer des tests unitaires de C# dans .NET Core à l’aide de dotnet test et de xUnit](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/test/razor-pages-tests/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple de projet est composé de deux applications :
 

@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 4d4e50f8acea73859f5e839616f13f90a42291c4
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 61ff4edfaedb22ea88d6bb0be2390ff734879942
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97486224"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588436"
 ---
-# <a name="tutorial-get-started-with-no-locrazor-pages-in-aspnet-core"></a>Didacticiel : prise en main des Razor pages dans ASP.net Core
+# <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Didacticiel : prise en main des Razor pages dans ASP.net Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -37,7 +37,7 @@ Pour obtenir une présentation plus avancée destinée aux développeurs qui con
 
 À la fin de la série, vous disposez d’une application qui gère une base de données de films.  
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 Dans ce tutoriel, vous allez :
 
@@ -66,7 +66,7 @@ Dans ce tutoriel, vous allez :
 
 ---
 
-## <a name="create-a-no-locrazor-pages-web-app"></a>Créer une Razor application Web pages
+## <a name="create-a-razor-pages-web-app"></a>Créer une Razor application Web pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -185,7 +185,7 @@ Pour obtenir une présentation plus avancée destinée aux développeurs qui con
 
 À la fin de la série, vous disposez d’une application qui gère une base de données de films.  
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 Dans ce tutoriel, vous allez :
 
@@ -214,7 +214,7 @@ Dans ce tutoriel, vous allez :
 
 ---
 
-## <a name="create-a-no-locrazor-pages-web-app"></a>Créer une Razor application Web pages
+## <a name="create-a-razor-pages-web-app"></a>Créer une Razor application Web pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -327,7 +327,7 @@ Pour obtenir une présentation plus avancée destinée aux développeurs qui con
 
 À la fin de la série, vous disposez d’une application qui gère une base de données de films.  
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 Dans ce tutoriel, vous allez :
 
@@ -356,7 +356,7 @@ Dans ce tutoriel, vous allez :
 
 ---
 
-## <a name="create-a-no-locrazor-pages-web-app"></a>Créer une Razor application Web pages
+## <a name="create-a-razor-pages-web-app"></a>Créer une Razor application Web pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

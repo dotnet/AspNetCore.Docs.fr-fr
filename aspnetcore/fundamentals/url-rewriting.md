@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 55993f951bfe910fb179fdb25b8d04f81d4ee2c9
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 44e6570090de9c5f3550d18a30fcde758fb16f85
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057458"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588521"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Intergiciel (middleware) de réécriture d’URL dans ASP.NET Core
 
@@ -47,7 +47,7 @@ La réécriture d’URL consiste à modifier des URL de requête en fonction d�
 > [!NOTE]
 > La réécriture d’URL peut réduire les performances d’une application. Quand c’est possible, limitez le nombre et la complexité des règles.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>Redirection d’URL et réécriture d’URL
 
@@ -77,7 +77,7 @@ Même si le client peut récupérer la ressource à l’URL réécrite, il n’e
 
 ## <a name="url-rewriting-sample-app"></a>Exemple d’application de réécriture d’URL
 
-Vous pouvez explorer les fonctionnalités du middleware de réécriture d’URL avec [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). L’application applique des règles de redirection et de réécriture, et montre l’URL redirigée ou réécrite pour plusieurs scénarios.
+Vous pouvez explorer les fonctionnalités du middleware de réécriture d’URL avec [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/). L’application applique des règles de redirection et de réécriture, et montre l’URL redirigée ou réécrite pour plusieurs scénarios.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>Quand utiliser l’intergiciel (middleware) de réécriture d’URL
 
@@ -399,7 +399,7 @@ La réécriture d’URL consiste à modifier des URL de requête en fonction d�
 > [!NOTE]
 > La réécriture d’URL peut réduire les performances d’une application. Quand c’est possible, limitez le nombre et la complexité des règles.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>Redirection d’URL et réécriture d’URL
 
@@ -429,7 +429,7 @@ Même si le client peut récupérer la ressource à l’URL réécrite, il n’e
 
 ## <a name="url-rewriting-sample-app"></a>Exemple d’application de réécriture d’URL
 
-Vous pouvez explorer les fonctionnalités du middleware de réécriture d’URL avec [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). L’application applique des règles de redirection et de réécriture, et montre l’URL redirigée ou réécrite pour plusieurs scénarios.
+Vous pouvez explorer les fonctionnalités du middleware de réécriture d’URL avec [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/). L’application applique des règles de redirection et de réécriture, et montre l’URL redirigée ou réécrite pour plusieurs scénarios.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>Quand utiliser l’intergiciel (middleware) de réécriture d’URL
 
