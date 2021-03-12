@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 306416db3d9ae0219f859c3cf459eb08a5b778cf
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e0c9f450e4eded49694cbbb0e9fa2614a221ab14
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060922"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586824"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started-with-tag-helpers"></a>Bien démarrer avec les Tag Helpers
 
@@ -37,13 +37,13 @@ Ce didacticiel fournit une introduction à la programmation des Tag Helpers. [In
 
 Un Tag Helper est toute classe qui implémente l’interface `ITagHelper`. Toutefois, quand vous créez un Tag Helper, vous dérivez généralement de `TagHelper`, ce qui vous permet d’accéder à la méthode `Process`.
 
-1. Créez un projet ASP.NET Core nommé **AuthoringTagHelpers** . Vous n’aurez pas besoin d’authentification pour ce projet.
+1. Créez un projet ASP.NET Core nommé **AuthoringTagHelpers**. Vous n’aurez pas besoin d’authentification pour ce projet.
 
-1. Créez un dossier pour stocker les Tag Helpers appelé *TagHelpers* . Le dossier *TagHelpers* n’est *pas* obligatoire, mais il est judicieux de le créer. Commençons à présent à écrire quelques Tag Helpers simples.
+1. Créez un dossier pour stocker les Tag Helpers appelé *TagHelpers*. Le dossier *TagHelpers* n’est *pas* obligatoire, mais il est judicieux de le créer. Commençons à présent à écrire quelques Tag Helpers simples.
 
 ## <a name="a-minimal-tag-helper"></a>Tag Helper minimal
 
-Dans cette section, vous écrivez un Tag Helper qui met à jour une balise e-mail. Exemple :
+Dans cette section, vous écrivez un Tag Helper qui met à jour une balise e-mail. Par exemple :
 
 ```html
 <email>Support</email>
@@ -57,11 +57,11 @@ Le serveur utilise notre Tag Helper e-mail pour convertir ce balisage en code su
 
 Autrement dit, une balise d’ancrage qui en fait un lien e-mail. Vous pouvez effectuer cette opération si vous écrivez un moteur de blog qui doit envoyer des e-mails pour le marketing, le support et d’autres contacts, tous dans le même domaine.
 
-1. Ajoutez la classe `EmailTagHelper` suivante au dossier *TagHelpers* .
+1. Ajoutez la classe `EmailTagHelper` suivante au dossier *TagHelpers*.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs)]
 
-   * Les Tag Helpers utilisent une convention de nommage qui cible des éléments du nom de classe racine (moins la partie *TagHelper* du nom de classe). Dans cet exemple, le nom racine de **EmailTagHelper** est *email* , donc la `<email>` balise est ciblée. Cette convention de nommage doit fonctionner pour la plupart des Tag Helpers et je vous montrerai plus tard comment la remplacer.
+   * Les Tag Helpers utilisent une convention de nommage qui cible des éléments du nom de classe racine (moins la partie *TagHelper* du nom de classe). Dans cet exemple, le nom racine de **EmailTagHelper** est *email*, donc la `<email>` balise est ciblée. Cette convention de nommage doit fonctionner pour la plupart des Tag Helpers et je vous montrerai plus tard comment la remplacer.
 
    * La classe `EmailTagHelper` est dérivée de `TagHelper`. La classe `TagHelper` fournit des méthodes et propriétés pour l’écriture des Tag Helpers.
 
@@ -71,7 +71,7 @@ Autrement dit, une balise d’ancrage qui en fait un lien e-mail. Vous pouvez ef
 
    * Le paramètre de sortie pour `Process` (et `ProcessAsync`) contient un élément HTML avec état représentatif de la source d’origine utilisée pour générer une balise HTML et le contenu.
 
-   * Le nom de notre classe comporte un suffixe **TagHelper** , ce qui n’est *pas* obligatoire, mais est considéré comme une bonne pratique. Vous pouvez déclarer la classe comme suit :
+   * Le nom de notre classe comporte un suffixe **TagHelper**, ce qui n’est *pas* obligatoire, mais est considéré comme une bonne pratique. Vous pouvez déclarer la classe comme suit :
 
    ```csharp
    public class Email : TagHelper
@@ -94,7 +94,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
 -->
 
-Pour ajouter un Tag Helper à une vue à l’aide d’un nom qualifié complet, ajoutez d’abord ce nom (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), puis le **nom d’assembly** ( *AuthoringTagHelpers* , pas nécessairement `namespace`). La plupart des développeurs préfèrent utiliser la syntaxe d’expressions génériques. [Introduction aux Tag Helpers](intro.md) décrit en détail l’ajout et la suppression de Tag Helpers, la hiérarchie et la syntaxe d’expressions génériques.
+Pour ajouter un Tag Helper à une vue à l’aide d’un nom qualifié complet, ajoutez d’abord ce nom (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), puis le **nom d’assembly** (*AuthoringTagHelpers*, pas nécessairement `namespace`). La plupart des développeurs préfèrent utiliser la syntaxe d’expressions génériques. [Introduction aux Tag Helpers](intro.md) décrit en détail l’ajout et la suppression de Tag Helpers, la hiérarchie et la syntaxe d’expressions génériques.
 
 1. Mettez à jour le balisage dans le fichier *Views/Home/Contact.cshtml* avec les modifications suivantes :
 
@@ -143,7 +143,7 @@ Dans cette section, nous allons écrire un Tag Helper e-mail asynchrone.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelper.cs?range=6-17)]
 
-   **Remarques**  :
+   **Remarques :**
 
    * Cette version utilise la méthode `ProcessAsync` asynchrone. L’élément `GetChildContentAsync` asynchrone retourne un élément `Task` contenant `TagHelperContent`.
 
@@ -157,7 +157,7 @@ Dans cette section, nous allons écrire un Tag Helper e-mail asynchrone.
 
 ### <a name="removeall-precontentsethtmlcontent-and-postcontentsethtmlcontent"></a>RemoveAll, PreContent.SetHtmlContent et PostContent.SetHtmlContent
 
-1. Ajoutez la classe `BoldTagHelper` suivante au dossier *TagHelpers* .
+1. Ajoutez la classe `BoldTagHelper` suivante au dossier *TagHelpers*.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/BoldTagHelper.cs)]
 
@@ -169,7 +169,7 @@ Dans cette section, nous allons écrire un Tag Helper e-mail asynchrone.
 
    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
 
-1. Exécutez l’application. Vous pouvez utiliser votre navigateur favori pour inspecter la source et vérifier le balisage.
+1. Exécutez l'application. Vous pouvez utiliser votre navigateur favori pour inspecter la source et vérifier le balisage.
 
    L’attribut `[HtmlTargetElement]` ci-dessus cible uniquement le balisage HTML qui fournit le nom d’attribut « bold ». L’élément `<bold>` n’a pas été modifié par le Tag Helper.
 
@@ -195,13 +195,13 @@ Vous pouvez également utiliser l’attribut `[HtmlTargetElement]` pour modifier
 
 ## <a name="pass-a-model-to-a-tag-helper"></a>Passer un modèle à un Tag Helper
 
-1. Ajoutez un dossier *Models* .
+1. Ajoutez un dossier *Models*.
 
 1. Ajoutez la classe `WebsiteContext` suivante au dossier *Models* :
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs)]
 
-1. Ajoutez la classe `WebsiteInformationTagHelper` suivante au dossier *TagHelpers* .
+1. Ajoutez la classe `WebsiteInformationTagHelper` suivante au dossier *TagHelpers*.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
@@ -227,7 +227,7 @@ Vous pouvez également utiliser l’attribut `[HtmlTargetElement]` pour modifier
    $@"<ul><li><strong>Version:</strong> {Info.Version}</li>
    ```
 
-1. Ajoutez le balisage suivant à la vue *About.cshtml* . Le balisage en surbrillance affiche les informations de site web.
+1. Ajoutez le balisage suivant à la vue *About.cshtml*. Le balisage en surbrillance affiche les informations de site web.
 
    [!code-cshtml[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,4-8, 18-999)]
 
@@ -249,7 +249,7 @@ Vous pouvez également utiliser l’attribut `[HtmlTargetElement]` pour modifier
 
 Le Tag Helper Condition restitue la sortie quand une valeur true lui est transmise.
 
-1. Ajoutez la classe `ConditionTagHelper` suivante au dossier *TagHelpers* .
+1. Ajoutez la classe `ConditionTagHelper` suivante au dossier *TagHelpers*.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/ConditionTagHelper.cs)]
 
@@ -276,7 +276,7 @@ Dans cette section, vous écrivez une paire de Tag Helpers de liaison automatiqu
 
 Comme ces deux Tag Helpers sont étroitement liés et que vous pouvez les refactoriser à l’avenir, nous allons les conserver dans le même fichier.
 
-1. Ajoutez la classe `AutoLinkerHttpTagHelper` suivante au dossier *TagHelpers* .
+1. Ajoutez la classe `AutoLinkerHttpTagHelper` suivante au dossier *TagHelpers*.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?range=7-19)]
 
@@ -293,7 +293,7 @@ Comme ces deux Tag Helpers sont étroitement liés et que vous pouvez les refact
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?highlight=15-34&range=7-34)]
 
-1. Exécutez l’application. Notez que le texte www est affiché sous forme de lien, contrairement au texte HTTP. Si vous placez un point d’arrêt dans les deux classes, vous pouvez voir que la classe du Tag Helper HTTP s’exécute en premier. Le problème est que la sortie du Tag Helper est mise en cache et, quand le Tag Helper WWW est exécuté, il remplace la sortie mise en cache du Tag Helper HTTP. Plus loin dans ce didacticiel, nous verrons comment contrôler l’ordre d’exécution des Tag Helpers. Nous allons corriger le code avec les éléments suivants :
+1. Exécutez l'application. Notez que le texte www est affiché sous forme de lien, contrairement au texte HTTP. Si vous placez un point d’arrêt dans les deux classes, vous pouvez voir que la classe du Tag Helper HTTP s’exécute en premier. Le problème est que la sortie du Tag Helper est mise en cache et, quand le Tag Helper WWW est exécuté, il remplace la sortie mise en cache du Tag Helper HTTP. Plus loin dans ce didacticiel, nous verrons comment contrôler l’ordre d’exécution des Tag Helpers. Nous allons corriger le code avec les éléments suivants :
 
    [!code-csharp[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10,21,22,26&range=8-37)]
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: d0e6c0c31890c58aaca936fc6f1e92cb9a1ab456
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: ffa2a7c73e00ccfb5dd726a084352c0b80cc41b0
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96901234"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586967"
 ---
 # <a name="aspnet-core-module"></a>Module ASP.NET Core
 
@@ -93,7 +93,7 @@ Les caractéristiques suivantes s’appliquent lors de l’hébergement in-proce
 
 * Dans ASP.NET Core 2.2.1 ou version antérieure, <xref:System.IO.Directory.GetCurrentDirectory*> retourne le répertoire Worker du processus démarré par IIS plutôt que le répertoire de l’application (par exemple, `C:\Windows\System32\inetsrv` pour `w3wp.exe` ).
 
-  Pour obtenir un exemple de code qui définit le répertoire actif de l’application, consultez la [ `CurrentDirectoryHelpers` classe](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/aspnet-core-module/samples_snapshot/3.x/CurrentDirectoryHelpers.cs). Appelez la méthode `SetCurrentDirectory` . Les appels suivants à <xref:System.IO.Directory.GetCurrentDirectory*> fournissent le répertoire de l’application.
+  Pour obtenir un exemple de code qui définit le répertoire actif de l’application, consultez la [ `CurrentDirectoryHelpers` classe](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/host-and-deploy/aspnet-core-module/samples_snapshot/3.x/CurrentDirectoryHelpers.cs). Appelez la méthode `SetCurrentDirectory` . Les appels suivants à <xref:System.IO.Directory.GetCurrentDirectory*> fournissent le répertoire de l’application.
 
 * Dans le cas d’un hébergement in-process, <xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*> n’est pas appelé en interne pour initialiser un utilisateur. Par conséquent, une implémentation de <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> utilisée pour transformer les revendications après chaque authentification n’est pas activée par défaut. Si vous transformez les revendications avec une implémentation de <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation>, appelez <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> pour ajouter des services d’authentification :
 
@@ -509,7 +509,7 @@ Les caractéristiques suivantes s’appliquent lors de l’hébergement in-proce
 
 * Dans ASP.NET Core version 2.2.1 ou antérieure, <xref:System.IO.Directory.GetCurrentDirectory*> retourne le répertoire de travail du processus démarré par IIS, et non le répertoire de l’application (par exemple, *C:\Windows\System32\inetsrv* pour *w3wp.exe*).
 
-  Pour connaître l’exemple de code qui définit le répertoire actuel de l’application, consultez [CurrentDirectoryHelpers, classe](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/aspnet-core-module/samples_snapshot/2.x/CurrentDirectoryHelpers.cs). Appelez la méthode `SetCurrentDirectory` . Les appels suivants à <xref:System.IO.Directory.GetCurrentDirectory*> fournissent le répertoire de l’application.
+  Pour connaître l’exemple de code qui définit le répertoire actuel de l’application, consultez [CurrentDirectoryHelpers, classe](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/host-and-deploy/aspnet-core-module/samples_snapshot/2.x/CurrentDirectoryHelpers.cs). Appelez la méthode `SetCurrentDirectory` . Les appels suivants à <xref:System.IO.Directory.GetCurrentDirectory*> fournissent le répertoire de l’application.
 
 * Dans le cas d’un hébergement in-process, <xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*> n’est pas appelé en interne pour initialiser un utilisateur. Par conséquent, une implémentation de <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> utilisée pour transformer les revendications après chaque authentification n’est pas activée par défaut. Si vous transformez les revendications avec une implémentation de <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation>, appelez <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> pour ajouter des services d’authentification :
 
@@ -1078,5 +1078,5 @@ Vous trouverez les fichiers en recherchant *aspnetcore* dans le fichier *applica
 
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/azure-apps/index>
-* [Source de référence du Module ASP.net Core [branche par défaut (Master)]](https://github.com/dotnet/aspnetcore/tree/master/src/Servers/IIS/AspNetCoreModuleV2): utilisez la liste déroulante **branche** pour sélectionner une version spécifique (par exemple, `release/3.1` ).
+* [Source de référence du Module ASP.net Core [branche par défaut (Master)]](https://github.com/dotnet/aspnetcore/tree/main/src/Servers/IIS/AspNetCoreModuleV2): utilisez la liste déroulante **branche** pour sélectionner une version spécifique (par exemple, `release/3.1` ).
 * <xref:host-and-deploy/iis/modules>

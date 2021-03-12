@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 43b243c946384be55019b39bf558182e1e95de90
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: 789cd1a867bc8c17401bbac5c02951b4bd2999b6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102110194"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587656"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Création d’une API web avec ASP.NET Core
 
@@ -45,7 +45,7 @@ Dans ce tutoriel, vous allez apprendre à :
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données.
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d’ensemble
 
 Ce didacticiel crée l’API suivante :
 
@@ -564,7 +564,7 @@ Dans ce tutoriel, vous allez apprendre à :
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données.
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d’ensemble
 
 Ce didacticiel crée l’API suivante :
 
@@ -1489,7 +1489,7 @@ Pour supprimer une tâche, vous devez définir le `type` sur l’appel AJAX avec
 
 ## <a name="additional-resources-21"></a>Ressources supplémentaires 2,1
 
-[Affichez ou téléchargez l’exemple de code de ce tutoriel](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Consultez [Guide pratique pour télécharger](xref:index#how-to-download-a-sample).
+[Affichez ou téléchargez l’exemple de code de ce tutoriel](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-web-api/samples). Consultez [Guide pratique pour télécharger](xref:index#how-to-download-a-sample).
 
 Pour plus d’informations, consultez les ressources suivantes :
 

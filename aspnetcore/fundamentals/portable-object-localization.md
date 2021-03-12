@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 175614c426c564ce91068e18035ce05311432698
-ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
+ms.openlocfilehash: ed41657b364c7f845491b3e452db8a4d5c5aa389
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689238"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587175"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurer la localisation d’objets portables dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Cet article présente les étapes d’utilisation d’objets portables (PO, Port
 
 **Remarque :** Orchard Core n’est pas un produit Microsoft. Par conséquent, Microsoft ne fournit aucun support pour cette fonctionnalité.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/3.x/POLocalization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/3.x/POLocalization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>Qu’est-ce qu’un fichier PO ?
 
@@ -249,7 +249,7 @@ Cet article présente les étapes d’utilisation d’objets portables (PO, Port
 
 **Remarque :** Orchard Core n’est pas un produit Microsoft. Par conséquent, Microsoft ne fournit aucun support pour cette fonctionnalité.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/2.x/POLocalization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/2.x/POLocalization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>Qu’est-ce qu’un fichier PO ?
 

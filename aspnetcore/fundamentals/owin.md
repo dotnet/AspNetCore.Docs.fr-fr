@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/owin
-ms.openlocfilehash: c44803c6f67d8e03759a01f7aa71d82088be9a11
-ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
+ms.openlocfilehash: e476f3f62a250d960c809e5062b3bd8ca3a1940a
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99975272"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587230"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>OWIN (Open Web Interface for .NET) avec ASP.NET Core
 
@@ -46,7 +46,7 @@ Cela permet à ASP.NET Core d’être hébergé sur un serveur/hôte compatible 
 > [!NOTE]
 > L’utilisation de ces adaptateurs a un impact sur les performances. Les applications utilisant uniquement des composants ASP.NET Core ne doivent pas utiliser les adaptateurs ou le package `Microsoft.AspNetCore.Owin`.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/owin/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/owin/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="running-owin-middleware-in-the-aspnet-core-pipeline"></a>Exécution de l’intergiciel (middleware) OWIN dans le pipeline ASP.NET Core
 
@@ -176,7 +176,7 @@ OWIN dépend d’un objet `IDictionary<string,object>` pour communiquer des info
 
 ### <a name="request-data-owin-v100"></a>Données de requête (OWIN v1.0.0)
 
-| Clé               | Valeur (type) | Description |
+| Clé :               | Valeur (type) | Description |
 | ----------------- | ------------ | ----------- |
 | owin.RequestScheme | `String` |  |
 | owin.RequestMethod  | `String` | |    
@@ -189,13 +189,13 @@ OWIN dépend d’un objet `IDictionary<string,object>` pour communiquer des info
 
 ### <a name="request-data-owin-v110"></a>Données de requête (OWIN v1.1.0)
 
-| Clé               | Valeur (type) | Description |
+| Clé :               | Valeur (type) | Description |
 | ----------------- | ------------ | ----------- |
 | owin.RequestId | `String` | Facultatif |
 
 ### <a name="response-data-owin-v100"></a>Données de réponse (OWIN v1.0.0)
 
-| Clé               | Valeur (type) | Description |
+| Clé :               | Valeur (type) | Description |
 | ----------------- | ------------ | ----------- |
 | owin.ResponseStatusCode | `int` | Facultatif |
 | owin.ResponseReasonPhrase | `String` | Facultatif |
@@ -204,14 +204,14 @@ OWIN dépend d’un objet `IDictionary<string,object>` pour communiquer des info
 
 ### <a name="other-data-owin-v100"></a>Autres données (OWIN v1.0.0)
 
-| Clé               | Valeur (type) | Description |
+| Clé :               | Valeur (type) | Description |
 | ----------------- | ------------ | ----------- |
 | owin.CallCancelled | `CancellationToken` |  |
 | owin.Version  | `String` | |   
 
 ### <a name="common-keys"></a>Clés communes
 
-| Clé               | Valeur (type) | Description |
+| Clé :               | Valeur (type) | Description |
 | ----------------- | ------------ | ----------- |
 | ssl.ClientCertificate | `X509Certificate` |  |
 | ssl.LoadClientCertAsync  | `Func<Task>` | |    
@@ -224,13 +224,13 @@ OWIN dépend d’un objet `IDictionary<string,object>` pour communiquer des info
 
 ### <a name="sendfiles-v030"></a>SendFiles v0.3.0
 
-| Clé               | Valeur (type) | Description |
+| Clé :               | Valeur (type) | Description |
 | ----------------- | ------------ | ----------- |
 | sendfile.SendAsync | Voir [Signature du délégué](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | Par requête |
 
 ### <a name="opaque-v030"></a>Opaque v0.3.0
 
-| Clé               | Valeur (type) | Description |
+| Clé :               | Valeur (type) | Description |
 | ----------------- | ------------ | ----------- |
 | opaque.Version | `String` |  |
 | opaque.Upgrade | `OpaqueUpgrade` | Voir [Signature du délégué](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
@@ -239,7 +239,7 @@ OWIN dépend d’un objet `IDictionary<string,object>` pour communiquer des info
 
 ### <a name="websocket-v030"></a>WebSocket v0.3.0
 
-| Clé               | Valeur (type) | Description |
+| Clé :               | Valeur (type) | Description |
 | ----------------- | ------------ | ----------- |
 | websocket.Version | `String` |  |
 | websocket.Accept | `WebSocketAccept` | Voir [Signature du délégué](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: 4b035fe59b8576eb387ddce67943386ccab55492
-ms.sourcegitcommit: 8dfcd2b4be936950c228b4d98430622a04254cd7
+ms.openlocfilehash: ab3a462a3e09113e96c6bdd0c034bff3e0bebdfa
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/26/2020
-ms.locfileid: "97792084"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588293"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 
@@ -37,7 +37,7 @@ Ce document explique comment utiliser le fournisseur de configuration [Azure Key
 * Contrôle de l’accès aux données de configuration sensibles.
 * Respect de la configuration requise pour les modules de sécurité matériels (HSM) certifiés FIPS 140-2 de niveau 2 lors du stockage des données de configuration.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/key-vault-configuration/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="packages"></a>Paquets
 
@@ -46,7 +46,7 @@ Ajoutez des références de package pour les packages suivants :
 * [Azure.Extensions.AspNetCore.Configfiguration. Secrète](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets)
 * [Bleu.Identity](https://www.nuget.org/packages/Azure.Identity)
 
-## <a name="sample-app"></a>Exemple d'application
+## <a name="sample-app"></a>Exemple d’application
 
 L’exemple d’application s’exécute dans l’un des deux modes déterminés par l' `#define` instruction en haut du fichier *Program.cs* :
 
@@ -384,13 +384,13 @@ Ce document explique comment utiliser le fournisseur de configuration [Microsoft
 * Contrôle de l’accès aux données de configuration sensibles.
 * Respect de la configuration requise pour les modules de sécurité matériels (HSM) certifiés FIPS 140-2 de niveau 2 lors du stockage des données de configuration.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/key-vault-configuration/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="packages"></a>Paquets
 
 Ajoutez une référence de package à la [Microsoft.Extensions.Configfiguration. Package AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) .
 
-## <a name="sample-app"></a>Exemple d'application
+## <a name="sample-app"></a>Exemple d’application
 
 L’exemple d’application s’exécute dans l’un des deux modes déterminés par l' `#define` instruction en haut du fichier *Program.cs* :
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: d6fa7e4524a8afdc23d4ad46354d9d8b395656a3
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 412f95e67fa35e952a907db328395183f1698b9e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530188"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587214"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validation de modèle dans ASP.NET Core MVC et les Razor pages
 
@@ -33,7 +33,7 @@ Par [Kirk Larkin](https://github.com/serpent5)
 
 Cet article explique comment valider une entrée d’utilisateur dans une application ASP.NET Core MVC ou Razor pages.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>État du modèle
 
@@ -419,7 +419,7 @@ L’approche précédente n’empêchera pas la validation côté client de la A
 
 Cet article explique comment valider une entrée d’utilisateur dans une application ASP.NET Core MVC ou Razor pages.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>État du modèle
 
@@ -439,7 +439,7 @@ La validation est automatique, mais vous souhaiterez peut-être la répéter man
 
 ## <a name="validation-attributes"></a>Attributs de validation
 
-Les attributs de validation vous permettent de spécifier des règles de validation pour des propriétés de modèle. L’exemple suivant tiré de l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) montre une classe de modèle qui est annotée avec des attributs de validation. L’attribut `[ClassicMovie]` est un attribut de validation personnalisé, et les autres sont prédéfinis. Non affiché est `[ClassicMovie2]` , qui illustre une autre façon d’implémenter un attribut personnalisé.
+Les attributs de validation vous permettent de spécifier des règles de validation pour des propriétés de modèle. L’exemple suivant tiré de l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/sample) montre une classe de modèle qui est annotée avec des attributs de validation. L’attribut `[ClassicMovie]` est un attribut de validation personnalisé, et les autres sont prédéfinis. Non affiché est `[ClassicMovie2]` , qui illustre une autre façon d’implémenter un attribut personnalisé.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/Movie.cs?name=snippet_ModelClass)]
 

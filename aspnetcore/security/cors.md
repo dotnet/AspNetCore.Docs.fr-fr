@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: 03008f40fc1c4b323535d08a1bb4c4007bc145f7
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7afa8105e0ab007153d5c3e8238765d4e9f22641
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060818"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586798"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Activer les requêtes Cross-Origin (CORS) dans ASP.NET Core
 
@@ -33,7 +33,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Kirk Larkin](https://tw
 
 Cet article explique comment activer CORS dans une application ASP.NET Core.
 
-La sécurité du navigateur empêche une page Web d’effectuer des demandes vers un autre domaine que celui qui a servi la page Web. Cette restriction est appelée *stratégie de même origine* . La stratégie de même origine empêche un site malveillant de lire des données sensibles à partir d’un autre site. Parfois, vous souhaiterez peut-être autoriser d’autres sites à effectuer des demandes Cross-Origin à votre application. Pour plus d’informations, consultez l' [article Mozilla cors](https://developer.mozilla.org/docs/Web/HTTP/CORS).
+La sécurité du navigateur empêche une page Web d’effectuer des demandes vers un autre domaine que celui qui a servi la page Web. Cette restriction est appelée *stratégie de même origine*. La stratégie de même origine empêche un site malveillant de lire des données sensibles à partir d’un autre site. Parfois, vous souhaiterez peut-être autoriser d’autres sites à effectuer des demandes Cross-Origin à votre application. Pour plus d’informations, consultez l' [article Mozilla cors](https://developer.mozilla.org/docs/Web/HTTP/CORS).
 
 [Partage des ressources Cross-Origin](https://www.w3.org/TR/cors/) (cors) :
 
@@ -42,7 +42,7 @@ La sécurité du navigateur empêche une page Web d’effectuer des demandes ver
 * Permet à un serveur d’autoriser explicitement certaines demandes Cross-Origin tout en rejetant d’autres.
 * Est plus sûr et plus flexible que les techniques antérieures, telles que [JSONP](/dotnet/framework/wcf/samples/jsonp).
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="same-origin"></a>Même origine
 
@@ -441,7 +441,7 @@ Cette section décrit ce qui se produit dans une demande [cors](https://develope
 
 La [spécification cors](https://www.w3.org/TR/cors/) a introduit plusieurs nouveaux en-têtes HTTP qui permettent des demandes Cross-Origin. Si un navigateur prend en charge CORS, il définit automatiquement ces en-têtes pour les demandes Cross-Origin. Le code JavaScript personnalisé n’est pas nécessaire pour activer CORS.
 
-[Bouton put test](https://cors3.azurewebsites.net/test) sur l' [exemple](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) déployé
+[Bouton put test](https://cors3.azurewebsites.net/test) sur l' [exemple](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI) déployé
 
 Voici un exemple de demande Cross-Origin à partir du bouton de test des [valeurs](https://cors3.azurewebsites.net/) vers `https://cors1.azurewebsites.net/api/values` . L' `Origin` en-tête :
 
@@ -468,7 +468,7 @@ Vary: Accept-Encoding
 X-Powered-By: ASP.NET
 ```
 
-**En-têtes de requête**
+**En-têtes de demande**
 
 ```
 Accept: */*
@@ -484,7 +484,7 @@ Sec-Fetch-Site: cross-site
 User-Agent: Mozilla/5.0 ...
 ```
 
-Dans `OPTIONS` les demandes, le serveur définit l’en-tête des **en-têtes de réponse** `Access-Control-Allow-Origin: {allowed origin}` dans la réponse. Par exemple, l' [exemple](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI)de requête de bouton [delete [EnableCors]](https://cors1.azurewebsites.net/test?number=2) déployé `OPTIONS` contient les en-têtes suivants :
+Dans `OPTIONS` les demandes, le serveur définit l’en-tête des **en-têtes de réponse** `Access-Control-Allow-Origin: {allowed origin}` dans la réponse. Par exemple, l' [exemple](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI)de requête de bouton [delete [EnableCors]](https://cors1.azurewebsites.net/test?number=2) déployé `OPTIONS` contient les en-têtes suivants :
 
 **En-têtes généraux**
 
@@ -506,7 +506,7 @@ Vary: Origin
 X-Powered-By: ASP.NET
 ```
 
-**En-têtes de requête**
+**En-têtes de demande**
 
 ```
 Accept: */*
@@ -550,7 +550,7 @@ Lors du déploiement sur IIS, CORS doit s’exécuter avant l’authentification
 
 ## <a name="test-cors"></a>Tester CORS
 
-L' [exemple de téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) contient du code pour tester cors. Consultez [Guide pratique pour télécharger](xref:index#how-to-download-a-sample). L’exemple est un projet d’API avec des Razor pages ajoutées :
+L' [exemple de téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI) contient du code pour tester cors. Consultez [Guide pratique pour télécharger](xref:index#how-to-download-a-sample). L’exemple est un projet d’API avec des Razor pages ajoutées :
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupTest2.cs?name=snippet2)]
 
@@ -605,9 +605,9 @@ Les éléments suivants `TodoItems1Controller` fournissent des points de termina
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/Controllers/TodoItems1Controller.cs?name=snippet2)]
 
-Testez le code précédent à partir de la [page de test](https://cors1.azurewebsites.net/test?number=1) de l' [exemple](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI)déployé.
+Testez le code précédent à partir de la [page de test](https://cors1.azurewebsites.net/test?number=1) de l' [exemple](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI)déployé.
 
-Les boutons **supprimer [EnableCors]** et **obtenir [EnableCors]** fonctionnent correctement, car les points de terminaison ont `[EnableCors]` et répondent aux demandes préliminaires. Les autres points de terminaison échouent. Le bouton d' **extraction** échoue, car le [code JavaScript](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI/wwwroot/js/MyJS.js) envoie :
+Les boutons **supprimer [EnableCors]** et **obtenir [EnableCors]** fonctionnent correctement, car les points de terminaison ont `[EnableCors]` et répondent aux demandes préliminaires. Les autres points de terminaison échouent. Le bouton d' **extraction** échoue, car le [code JavaScript](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI/wwwroot/js/MyJS.js) envoie :
 
 ```javascript
  headers: {
@@ -619,11 +619,11 @@ Les éléments suivants `TodoItems2Controller` fournissent des points de termina
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/Controllers/TodoItems2Controller.cs?name=snippet2)]
 
-Testez le code précédent à partir de la [page de test](https://cors1.azurewebsites.net/test?number=2) de l’exemple déployé. Dans la liste déroulante **contrôleur** , sélectionnez **prévols** , puis **définir le contrôleur** . Tous les appels CORS aux points de terminaison ont été `TodoItems2Controller` correctement effectués.
+Testez le code précédent à partir de la [page de test](https://cors1.azurewebsites.net/test?number=2) de l’exemple déployé. Dans la liste déroulante **contrôleur** , sélectionnez **prévols** , puis **définir le contrôleur**. Tous les appels CORS aux points de terminaison ont été `TodoItems2Controller` correctement effectués.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Partage des ressources cross-origin (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS)
+* [Partage des ressources Cross-Origin (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS)
 * [Prise en main du module IIS CORS](https://blogs.iis.net/iisteam/getting-started-with-the-iis-cors-module)
 
 ::: moniker-end
@@ -634,7 +634,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Cet article explique comment activer CORS dans une application ASP.NET Core.
 
-La sécurité du navigateur empêche une page Web d’effectuer des demandes vers un autre domaine que celui qui a servi la page Web. Cette restriction est appelée *stratégie de même origine* . La stratégie de même origine empêche un site malveillant de lire des données sensibles à partir d’un autre site. Parfois, vous souhaiterez peut-être autoriser d’autres sites à effectuer des demandes Cross-Origin à votre application. Pour plus d’informations, consultez l' [article Mozilla cors](https://developer.mozilla.org/docs/Web/HTTP/CORS).
+La sécurité du navigateur empêche une page Web d’effectuer des demandes vers un autre domaine que celui qui a servi la page Web. Cette restriction est appelée *stratégie de même origine*. La stratégie de même origine empêche un site malveillant de lire des données sensibles à partir d’un autre site. Parfois, vous souhaiterez peut-être autoriser d’autres sites à effectuer des demandes Cross-Origin à votre application. Pour plus d’informations, consultez l' [article Mozilla cors](https://developer.mozilla.org/docs/Web/HTTP/CORS).
 
 [Partage des ressources Cross-Origin](https://www.w3.org/TR/cors/) (cors) :
 
@@ -643,7 +643,7 @@ La sécurité du navigateur empêche une page Web d’effectuer des demandes ver
 * Permet à un serveur d’autoriser explicitement certaines demandes Cross-Origin tout en rejetant d’autres.
 * Est plus sûr et plus flexible que les techniques antérieures, telles que [JSONP](/dotnet/framework/wcf/samples/jsonp).
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="same-origin"></a>Même origine
 
@@ -724,7 +724,7 @@ L' `[EnableCors]` attribut peut être appliqué aux éléments suivants :
 * Contrôleur
 * Méthode d’action du contrôleur
 
-Vous pouvez appliquer différentes stratégies à Controller/page-Model/action avec l'  `[EnableCors]` attribut. Lorsque l' `[EnableCors]` attribut est appliqué à un modèle de contrôleurs/page/méthode d’action et que cors est activé dans l’intergiciel (middleware), **les deux** stratégies sont appliquées. Nous vous recommandons de **ne pas** combiner les stratégies. Utilisez l' `[EnableCors]` attribut ou l’intergiciel (middleware), **pas les deux** . Lorsque vous utilisez `[EnableCors]` , ne définissez **pas** de stratégie par défaut.
+Vous pouvez appliquer différentes stratégies à Controller/page-Model/action avec l'  `[EnableCors]` attribut. Lorsque l' `[EnableCors]` attribut est appliqué à un modèle de contrôleurs/page/méthode d’action et que cors est activé dans l’intergiciel (middleware), **les deux** stratégies sont appliquées. Nous vous recommandons de **ne pas** combiner les stratégies. Utilisez l' `[EnableCors]` attribut ou l’intergiciel (middleware), **pas les deux**. Lorsque vous utilisez `[EnableCors]` , ne définissez **pas** de stratégie par défaut.
 
 Le code suivant applique une stratégie différente à chaque méthode :
 
@@ -775,7 +775,7 @@ Cette section décrit les différentes options qui peuvent être définies dans 
 
 ### <a name="set-the-allowed-request-headers"></a>Définir les en-têtes de demande autorisés
 
-Pour autoriser l’envoi d’en-têtes spécifiques dans une demande CORS, appelée *créer des en-têtes de demande* , appelez <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> et spécifiez les en-têtes autorisés :
+Pour autoriser l’envoi d’en-têtes spécifiques dans une demande CORS, appelée *créer des en-têtes de demande*, appelez <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> et spécifiez les en-têtes autorisés :
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=55-60&highlight=5)]
 
@@ -868,7 +868,7 @@ La spécification CORS indique également que le paramètre Origins to `"*"` (Al
 
 ### <a name="preflight-requests"></a>Demandes préliminaires
 
-Pour certaines demandes CORS, le navigateur envoie une demande supplémentaire avant d’effectuer la demande réelle. Cette demande porte le nom de *demande préliminaire* . Le navigateur peut ignorer la demande préliminaire si les conditions suivantes sont remplies :
+Pour certaines demandes CORS, le navigateur envoie une demande supplémentaire avant d’effectuer la demande réelle. Cette demande porte le nom de *demande préliminaire*. Le navigateur peut ignorer la demande préliminaire si les conditions suivantes sont remplies :
 
 * La méthode de demande est : obtenir, début ou publication.
 * L’application ne définit pas les en-têtes de requête autres que `Accept` , `Accept-Language` ,, `Content-Language` `Content-Type` ou `Last-Event-ID` .
@@ -991,8 +991,8 @@ Si la réponse n’inclut pas l' `Access-Control-Allow-Origin` en-tête, la dema
 
 Pour tester CORS :
 
-1. [Créez un projet d’API](xref:tutorials/first-web-api). Vous pouvez également [Télécharger l’exemple](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors).
-1. Activez CORS à l’aide de l’une des approches décrites dans ce document. Exemple :
+1. [Créez un projet d’API](xref:tutorials/first-web-api). Vous pouvez également [Télécharger l’exemple](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/sample/Cors).
+1. Activez CORS à l’aide de l’une des approches décrites dans ce document. Par exemple :
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 
@@ -1029,7 +1029,7 @@ Lors du déploiement sur IIS, CORS doit s’exécuter avant l’authentification
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Partage des ressources cross-origin (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS)
+* [Partage des ressources Cross-Origin (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS)
 * [Prise en main du module IIS CORS](https://blogs.iis.net/iisteam/getting-started-with-the-iis-cors-module)
 
 ::: moniker-end

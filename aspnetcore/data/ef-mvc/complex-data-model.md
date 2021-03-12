@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: cee9e9eb4c5435f3f63f7d1d04f131d88effe9f6
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a881ff28d41a272ade559c60efbd884f2a3c4e3e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93054474"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587786"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Didacticiel : créer un modèle de données complexe-ASP.NET MVC avec EF Core
 
@@ -522,7 +522,7 @@ Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez 
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

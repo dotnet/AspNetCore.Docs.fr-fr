@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 27420fe00ba6375e15b67fb359be06df055eff1f
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 84cae3b3babe28c2ebf6dba50023b020112d1bb3
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060038"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587578"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Développer des applications ASP.NET Core à l’aide d’un observateur de fichiers
 
@@ -32,7 +32,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Victor Hurdugaci](https
 
 Ce tutoriel utilise une API web existante avec deux points de terminaison : un qui retourne une somme et un qui retourne un produit. La méthode du produit comporte un bogue, qui est résolu dans ce tutoriel.
 
-Téléchargez l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Elle se compose de deux projets : *WebApp* (API web ASP.NET Core) et *WebAppTests* (API de tests unitaires pour le web).
+Téléchargez l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/dotnet-watch/sample). Elle se compose de deux projets : *WebApp* (API web ASP.NET Core) et *WebAppTests* (API de tests unitaires pour le web).
 
 Dans une interface de commande, accédez au dossier *WebApp*. Exécutez la commande suivante :
 
@@ -131,7 +131,7 @@ Vérifiez que `http://localhost:<port number>/api/math/product?a=4&b=5` retourne
 1. Changez la méthode `Product` de *MathController.cs* pour qu’elle retourne à nouveau la somme. Enregistrez le fichier .
 1. Dans une interface de commande, accédez au dossier *WebAppTests*.
 1. Exécutez [dotnet restore](/dotnet/core/tools/dotnet-restore).
-1. Exécutez `dotnet watch test`. Sa sortie indique qu’un test a échoué et que l’observateur est en attente de changement de fichier :
+1. Exécuter `dotnet watch test`. Sa sortie indique qu’un test a échoué et que l’observateur est en attente de changement de fichier :
 
      ```console
      Total tests: 2. Passed: 1. Failed: 1. Skipped: 0.
@@ -219,7 +219,3 @@ Certaines options de configuration peuvent être passées à `dotnet watch` via 
 | `DOTNET_WATCH_SUPPRESS_MSBUILD_INCREMENTALISM`   | Par défaut, `dotnet watch` optimise la génération en évitant certaines opérations, telles que l’exécution de la restauration ou la réévaluation de l’ensemble des fichiers surveillés à chaque modification de fichier. Si la valeur est « 1 » ou « true », ces optimisations sont désactivées. |
 | `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`   | `dotnet watch run` tente de lancer des navigateurs pour les applications Web avec `launchBrowser` configuré dans *launchSettings.jssur*. Si la valeur est « 1 » ou « true », ce comportement est supprimé. |
 | `DOTNET_WATCH_SUPPRESS_BROWSER_REFRESH`   | `dotnet watch run` tente d’actualiser les navigateurs lorsqu’il détecte des modifications de fichier. Si la valeur est « 1 » ou « true », ce comportement est supprimé. Ce comportement est également supprimé si `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER` est défini. |
-
-## <a name="dotnet-watch-in-github"></a>`dotnet-watch` dans GitHub
-
-`dotnet-watch` fait partie du référentiel GitHub [dotnet/AspNetCore](https://github.com/dotnet/AspNetCore/tree/master/src/Tools/dotnet-watch).

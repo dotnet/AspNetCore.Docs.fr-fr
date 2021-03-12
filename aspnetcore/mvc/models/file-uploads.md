@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: c32d20d4616650db004c78fb4d8ea9a4d5a3beab
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 90bde63ac94ba3fd29a067962989cf773ec613db
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252797"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587233"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Charger des fichiers dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Par [Steve Smith](https://ardalis.com/) et [Rutger Storm](https://github.com/rut
 
 ASP.NET Core prend en charge le chargement d’un ou plusieurs fichiers à l’aide d’une liaison de modèle mise en mémoire tampon pour les fichiers plus petits et la diffusion en continu sans mise en mémoire tampon pour les fichiers plus volumineux
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Considérations relatives à la sécurité
 
@@ -113,7 +113,7 @@ Les ressources (disque, mémoire) utilisées par les chargements de fichiers dé
 La mise en mémoire tampon de petits fichiers est traitée dans les sections suivantes de cette rubrique :
 
 * [Stockage physique](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Sauvegarde de la base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -195,7 +195,7 @@ L’exemple suivant est similaire à l’exemple précédent, à l’exception d
 Pour exécuter la publication de formulaire dans JavaScript pour les clients qui [ne prennent pas en charge l’API FETCH](https://caniuse.com/#feat=fetch), utilisez l’une des approches suivantes :
 
 * Utilisez un Polyfill d’extraction (par exemple, [Window. Fetch Polyfill (GitHub/fetch)](https://github.com/github/fetch)).
-* Utiliser `XMLHttpRequest`. Exemple :
+* Utiliser `XMLHttpRequest`. Par exemple :
 
   ```javascript
   <script>
@@ -238,7 +238,7 @@ Les fichiers individuels téléchargés sur le serveur sont accessibles via la [
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> Les exemples fournis jusqu’à présent ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Les exemples fournis jusqu’à présent ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Considérations relatives à la sécurité](#security-considerations)
 > * [Validation](#validation)
@@ -409,7 +409,7 @@ L’exemple précédent est semblable à un scénario illustré dans l’exemple
 >
 > Ne vous fiez pas à la `FileName` propriété de sans validation ni à approuver celle-ci <xref:Microsoft.AspNetCore.Http.IFormFile> . La `FileName` propriété doit uniquement être utilisée à des fins d’affichage et uniquement après l’encodage HTML.
 >
-> Les exemples fournis ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Les exemples fournis ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Considérations relatives à la sécurité](#security-considerations)
 > * [Validation](#validation)
@@ -468,7 +468,7 @@ L’analyse des fichiers exige des ressources serveur dans des scénarios de vol
 
 ### <a name="file-extension-validation"></a>Validation de l’extension de fichier
 
-L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Exemple :
+L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Par exemple :
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -758,7 +758,7 @@ Les exemples de cette rubrique reposent sur <xref:System.IO.MemoryStream> pour s
 
 ASP.NET Core prend en charge le chargement d’un ou plusieurs fichiers à l’aide d’une liaison de modèle mise en mémoire tampon pour les fichiers plus petits et la diffusion en continu sans mise en mémoire tampon pour les fichiers plus volumineux
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Considérations relatives à la sécurité
 
@@ -837,7 +837,7 @@ Les ressources (disque, mémoire) utilisées par les chargements de fichiers dé
 La mise en mémoire tampon de petits fichiers est traitée dans les sections suivantes de cette rubrique :
 
 * [Stockage physique](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Sauvegarde de la base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -919,7 +919,7 @@ L’exemple suivant est similaire à l’exemple précédent, à l’exception d
 Pour exécuter la publication de formulaire dans JavaScript pour les clients qui [ne prennent pas en charge l’API FETCH](https://caniuse.com/#feat=fetch), utilisez l’une des approches suivantes :
 
 * Utilisez un Polyfill d’extraction (par exemple, [Window. Fetch Polyfill (GitHub/fetch)](https://github.com/github/fetch)).
-* Utiliser `XMLHttpRequest`. Exemple :
+* Utiliser `XMLHttpRequest`. Par exemple :
 
   ```javascript
   <script>
@@ -962,7 +962,7 @@ Les fichiers individuels téléchargés sur le serveur sont accessibles via la [
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> Les exemples fournis jusqu’à présent ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Les exemples fournis jusqu’à présent ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Considérations relatives à la sécurité](#security-considerations)
 > * [Validation](#validation)
@@ -1133,7 +1133,7 @@ L’exemple précédent est semblable à un scénario illustré dans l’exemple
 >
 > Ne vous fiez pas à la `FileName` propriété de sans validation ni à approuver celle-ci <xref:Microsoft.AspNetCore.Http.IFormFile> . La `FileName` propriété doit uniquement être utilisée à des fins d’affichage et uniquement après l’encodage HTML.
 >
-> Les exemples fournis ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Les exemples fournis ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Considérations relatives à la sécurité](#security-considerations)
 > * [Validation](#validation)
@@ -1192,7 +1192,7 @@ L’analyse des fichiers exige des ressources serveur dans des scénarios de vol
 
 ### <a name="file-extension-validation"></a>Validation de l’extension de fichier
 
-L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Exemple :
+L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Par exemple :
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -1458,7 +1458,7 @@ services.Configure<IISServerOptions>(options =>
 });
 ```
 
-Pour plus d'informations, consultez <xref:host-and-deploy/iis/index#iis-options>.
+Pour plus d’informations, consultez <xref:host-and-deploy/iis/index#iis-options>.
 
 ## <a name="troubleshoot"></a>Dépanner
 
@@ -1493,7 +1493,7 @@ Les exemples de cette rubrique reposent sur <xref:System.IO.MemoryStream> pour s
 
 ASP.NET Core prend en charge le chargement d’un ou plusieurs fichiers à l’aide d’une liaison de modèle mise en mémoire tampon pour les fichiers plus petits et la diffusion en continu sans mise en mémoire tampon pour les fichiers plus volumineux
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Considérations relatives à la sécurité
 
@@ -1572,7 +1572,7 @@ Les ressources (disque, mémoire) utilisées par les chargements de fichiers dé
 La mise en mémoire tampon de petits fichiers est traitée dans les sections suivantes de cette rubrique :
 
 * [Stockage physique](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Sauvegarde de la base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -1654,7 +1654,7 @@ L’exemple suivant est similaire à l’exemple précédent, à l’exception d
 Pour exécuter la publication de formulaire dans JavaScript pour les clients qui [ne prennent pas en charge l’API FETCH](https://caniuse.com/#feat=fetch), utilisez l’une des approches suivantes :
 
 * Utilisez un Polyfill d’extraction (par exemple, [Window. Fetch Polyfill (GitHub/fetch)](https://github.com/github/fetch)).
-* Utiliser `XMLHttpRequest`. Exemple :
+* Utiliser `XMLHttpRequest`. Par exemple :
 
   ```javascript
   <script>
@@ -1697,7 +1697,7 @@ Les fichiers individuels téléchargés sur le serveur sont accessibles via la [
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> Les exemples fournis jusqu’à présent ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Les exemples fournis jusqu’à présent ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Considérations relatives à la sécurité](#security-considerations)
 > * [Validation](#validation)
@@ -1868,7 +1868,7 @@ L’exemple précédent est semblable à un scénario illustré dans l’exemple
 >
 > Ne vous fiez pas à la `FileName` propriété de sans validation ni à approuver celle-ci <xref:Microsoft.AspNetCore.Http.IFormFile> . La `FileName` propriété doit uniquement être utilisée à des fins d’affichage et uniquement après l’encodage HTML.
 >
-> Les exemples fournis ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Les exemples fournis ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Considérations relatives à la sécurité](#security-considerations)
 > * [Validation](#validation)
@@ -1927,7 +1927,7 @@ L’analyse des fichiers exige des ressources serveur dans des scénarios de vol
 
 ### <a name="file-extension-validation"></a>Validation de l’extension de fichier
 
-L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Exemple :
+L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Par exemple :
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -2188,7 +2188,7 @@ services.Configure<IISServerOptions>(options =>
 });
 ```
 
-Pour plus d'informations, consultez <xref:host-and-deploy/iis/index#iis-options>.
+Pour plus d’informations, consultez <xref:host-and-deploy/iis/index#iis-options>.
 
 ## <a name="troubleshoot"></a>Dépanner
 

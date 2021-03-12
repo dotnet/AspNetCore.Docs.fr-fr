@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: 3a7b054adc50be57028dfa0364f80ae8733b02f7
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 0a8e4a4fdecd657840c6c02424ffffa64d4ab473
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252706"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586876"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vues partielles dans ASP.NET Core
 
@@ -37,7 +37,7 @@ Le terme *vue partielle* est utilisé lors du développement d’une application
 
 ::: moniker-end
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/partial/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-partial-views"></a>Quand utiliser des vues partielles ?
 
@@ -84,7 +84,7 @@ Les noms de fichiers des vues partielles commencent souvent par un trait de soul
 
 ::: moniker range=">= aspnetcore-2.0"
 
-### <a name="use-a-partial-view-in-a-no-locrazor-pages-pagemodel"></a>Utiliser une vue partielle dans une Razor page PageModel
+### <a name="use-a-partial-view-in-a-razor-pages-pagemodel"></a>Utiliser une vue partielle dans une Razor page PageModel
 
 Dans ASP.NET Core 2,0 ou 2,1, la méthode de gestionnaire suivante restitue la vue partielle *\_ AuthorPartialRP. cshtml* à la réponse :
 
@@ -169,7 +169,7 @@ L’exemple suivant référence une vue partielle avec un chemin relatif :
 <partial name="../Account/_PartialName.cshtml" />
 ```
 
-Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
+Pour plus d’informations, consultez <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
 
 ::: moniker-end
 

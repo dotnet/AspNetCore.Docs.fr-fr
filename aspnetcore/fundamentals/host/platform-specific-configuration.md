@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: c12487875db69472ee328dfc7a611ee99974c770
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: b39215a70f990afeb7d3fe0a62981113b154354e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93061052"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588241"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Utiliser des assemblys de démarrage d’hébergement dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Par [Pavel Krymets](https://github.com/pakrym)
 
 Une <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> implémentation (hébergement de démarrage) ajoute des améliorations à une application au démarrage à partir d’un assembly externe. Par exemple, une bibliothèque externe peut utiliser une implémentation d’hébergement au démarrage pour fournir des fournisseurs ou services de configuration supplémentaires à une application.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="hostingstartup-attribute"></a>Attribut HostingStartup
 
@@ -106,7 +106,7 @@ Créez un hébergement au démarrage avec un des types de projet suivants :
 
 Une amélioration de l’hébergement au démarrage peut être fournie dans une bibliothèque de classes. La bibliothèque contient un attribut `HostingStartup`.
 
-L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une Razor application pages, *HostingStartupApp* et une bibliothèque de classes, *HostingStartupLibrary*. La bibliothèque de classes :
+L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une Razor application pages, *HostingStartupApp* et une bibliothèque de classes, *HostingStartupLibrary*. La bibliothèque de classes :
 
 * Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`. `ServiceKeyInjection` Ajoute une paire de chaînes de service à la configuration de l’application à l’aide du fournisseur de configuration en mémoire ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).
 * Inclut un attribut `HostingStartup` qui identifie l’espace de noms et la classe d’hébergement au démarrage.
@@ -123,7 +123,7 @@ La page d’index de l’application lit et affiche les valeurs de configuration
 
 [!code-csharp[](platform-specific-configuration/samples/3.x/HostingStartupApp/Pages/Index.cshtml.cs?name=snippet1&highlight=5-6,11-12)]
 
-[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) inclut également un projet de package NuGet qui fournit un hébergement au démarrage distinct, *HostingStartupPackage*. Le package a les mêmes caractéristiques que la bibliothèque de classes décrite précédemment. Le package :
+[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) inclut également un projet de package NuGet qui fournit un hébergement au démarrage distinct, *HostingStartupPackage*. Le package a les mêmes caractéristiques que la bibliothèque de classes décrite précédemment. Le package :
 
 * Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`. `ServiceKeyInjection` ajoute une paire de chaînes de service à la configuration de l’application.
 * Inclut un attribut `HostingStartup`.
@@ -387,7 +387,7 @@ Une amélioration de l’hébergement au démarrage peut être fournie par un as
 
 ## <a name="sample-code"></a>Exemple de code
 
-[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([Comment télécharger un exemple](xref:index#how-to-download-a-sample)) montre des scénarios d’implémentation de l’hébergement au démarrage :
+[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([Comment télécharger un exemple](xref:index#how-to-download-a-sample)) montre des scénarios d’implémentation de l’hébergement au démarrage :
 
 * Deux assemblys d’hébergement au démarrage (bibliothèques de classes) définissent chacun une paire clé-valeur de configuration en mémoire :
   * Package NuGet (*HostingStartupPackage*)
@@ -460,7 +460,7 @@ dotnet nuget locals all --clear
 
 Une <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> implémentation (hébergement de démarrage) ajoute des améliorations à une application au démarrage à partir d’un assembly externe. Par exemple, une bibliothèque externe peut utiliser une implémentation d’hébergement au démarrage pour fournir des fournisseurs ou services de configuration supplémentaires à une application.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="hostingstartup-attribute"></a>Attribut HostingStartup
 
@@ -504,7 +504,7 @@ Créez un hébergement au démarrage avec un des types de projet suivants :
 
 Une amélioration de l’hébergement au démarrage peut être fournie dans une bibliothèque de classes. La bibliothèque contient un attribut `HostingStartup`.
 
-L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une Razor application pages, *HostingStartupApp* et une bibliothèque de classes, *HostingStartupLibrary*. La bibliothèque de classes :
+L' [exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) comprend une Razor application pages, *HostingStartupApp* et une bibliothèque de classes, *HostingStartupLibrary*. La bibliothèque de classes :
 
 * Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`. `ServiceKeyInjection` Ajoute une paire de chaînes de service à la configuration de l’application à l’aide du fournisseur de configuration en mémoire ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).
 * Inclut un attribut `HostingStartup` qui identifie l’espace de noms et la classe d’hébergement au démarrage.
@@ -521,7 +521,7 @@ La page d’index de l’application lit et affiche les valeurs de configuration
 
 [!code-csharp[](platform-specific-configuration/samples/2.x/HostingStartupApp/Pages/Index.cshtml.cs?name=snippet1&highlight=5-6,11-12)]
 
-[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) inclut également un projet de package NuGet qui fournit un hébergement au démarrage distinct, *HostingStartupPackage*. Le package a les mêmes caractéristiques que la bibliothèque de classes décrite précédemment. Le package :
+[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) inclut également un projet de package NuGet qui fournit un hébergement au démarrage distinct, *HostingStartupPackage*. Le package a les mêmes caractéristiques que la bibliothèque de classes décrite précédemment. Le package :
 
 * Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`. `ServiceKeyInjection` ajoute une paire de chaînes de service à la configuration de l’application.
 * Inclut un attribut `HostingStartup`.
@@ -773,7 +773,7 @@ Une amélioration de l’hébergement au démarrage peut être fournie par un as
 
 ## <a name="sample-code"></a>Exemple de code
 
-[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([Comment télécharger un exemple](xref:index#how-to-download-a-sample)) montre des scénarios d’implémentation de l’hébergement au démarrage :
+[L’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([Comment télécharger un exemple](xref:index#how-to-download-a-sample)) montre des scénarios d’implémentation de l’hébergement au démarrage :
 
 * Deux assemblys d’hébergement au démarrage (bibliothèques de classes) définissent chacun une paire clé-valeur de configuration en mémoire :
   * Package NuGet (*HostingStartupPackage*)

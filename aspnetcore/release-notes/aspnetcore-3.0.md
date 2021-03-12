@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 161d6aeefe1882b86ce97cdcfa7e5b23048693f0
-ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
+ms.openlocfilehash: fe68c54ff16751058a3eeee3880a11657344c40a
+ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217503"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102605670"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Nouveautés de ASP.NET Core 3,0
 
@@ -53,11 +53,11 @@ Pour plus d’informations, consultez <xref:blazor/index>.
 
 Blazor dissocie la logique de rendu des composants de l’application des mises à jour de l’interface utilisateur. Blazor Server prend en charge l’hébergement de Razor composants sur le serveur dans une application ASP.net core. Les mises à jour de l’interface utilisateur sont gérées via une SignalR connexion. Blazor Server est pris en charge dans ASP.NET Core 3,0.
 
-### <a name="no-locblazor-webassembly-preview"></a>Blazor WebAssembly (version préliminaire)
+### <a name="blazor-webassembly-preview"></a>Blazor WebAssembly (version préliminaire)
 
 Blazor les applications peuvent également être exécutées directement dans le navigateur à l’aide d’un Runtime .NET basé sur webassembly. Blazor WebAssembly est en version préliminaire et *n’est pas* pris en charge dans ASP.net Core 3,0. Blazor WebAssembly sera pris en charge dans une prochaine version de ASP.NET Core.
 
-### <a name="no-locrazor-components"></a>Composants Razor
+### <a name="razor-components"></a>Composants Razor
 
 Blazor les applications sont générées à partir de composants. Les composants sont des blocs autonomes de l’interface utilisateur (IU), tels qu’une page, une boîte de dialogue ou un formulaire. Les composants sont des classes .NET normales qui définissent la logique de rendu de l’interface utilisateur et les gestionnaires d’événements côté client. Vous pouvez créer des applications Web riches et interactives sans JavaScript.
 
@@ -324,14 +324,14 @@ ASP.NET Core 3,0 utilise désormais par <xref:System.Text.Json> défaut pour la 
 
 Pour ajouter Json.NET à ASP.NET Core 3,0, consultez [ajouter Newtonsoft.Jsprise en charge du format JSON basé sur](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support).
 
-## <a name="new-no-locrazor-directives"></a>Nouvelles Razor directives
+## <a name="new-razor-directives"></a>Nouvelles Razor directives
 
 La liste suivante contient de nouvelles Razor directives :
 
 * [`@attribute`](xref:mvc/views/razor#attribute): La `@attribute` directive applique l’attribut donné à la classe de la page ou de la vue générée. Par exemple : `@attribute [Authorize]`.
 * [`@implements`](xref:mvc/views/razor#implements): La `@implements` directive implémente une interface pour la classe générée. Par exemple : `@implements IDisposable`.
 
-## <a name="no-locidentityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>Identity4 prend en charge l’authentification et l’autorisation pour les API Web et SPAs
+## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>Identity4 prend en charge l’authentification et l’autorisation pour les API Web et SPAs
 
 ASP.NET Core 3,0 offre une authentification dans les applications à page unique (SPAs) à l’aide de la prise en charge de l’autorisation de l’API Web. ASP.NET Core Identitypour l’authentification et le stockage des utilisateurs est associé à [ Identity 4](https://identityserver.io/) pour l’implémentation de OpenID Connect.
 
@@ -407,7 +407,7 @@ Pour plus d’informations, consultez <xref:security/authentication/windowsauth>
 Les modèles d’interface utilisateur Web ( Razor pages, MVC avec contrôleur et vues) ont les éléments suivants supprimés :
 
 * L' cookie interface utilisateur de consentement n’est plus incluse. Pour activer la cookie fonctionnalité de consentement dans une application ASP.net Core générée par un modèle 3,0, consultez <xref:security/gdpr> .
-* Les scripts et les ressources statiques associées sont désormais référencés en tant que fichiers locaux au lieu d’utiliser CDN. Pour plus d’informations, consultez [les scripts et les ressources statiques associées sont désormais référencés en tant que fichiers locaux au lieu d’utiliser CDN en fonction de l’environnement actuel (ASPNET/AspNetCore.Docs #14350)](https://github.com/dotnet/AspNetCore.Docs/issues/14350).
+* Les scripts et les ressources statiques associées sont désormais référencés en tant que fichiers locaux au lieu d’utiliser CDN. Pour plus d’informations, consultez [les scripts et les ressources statiques associées sont désormais référencés en tant que fichiers locaux au lieu d’utiliser CDN en fonction de l’environnement actuel (dotnet/AspNetCore.Docs #14350)](https://github.com/dotnet/AspNetCore.Docs/issues/14350).
 
 Modèle angulaire mis à jour pour utiliser le 8 angulaire.
 
@@ -489,7 +489,7 @@ Pour plus d’informations, consultez les articles suivants :
 
 ## <a name="pipes-on-httpcontext"></a>Canaux sur HttpContext
 
-Il est maintenant possible de lire le corps de la demande et d’écrire le corps de la réponse à l’aide de l' <xref:System.IO.Pipelines> API. La clé publique du signataire doit être fournie à la classe <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` la propriété fournit un <xref:System.IO.Pipelines.PipeReader> qui peut être utilisé pour lire le corps de la requête. La clé publique du signataire doit être fournie à la classe <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` la propriété fournit un <xref:System.IO.Pipelines.PipeWriter> qui peut être utilisé pour écrire le corps de la réponse. `HttpRequest.BodyReader` est un analogue du `HttpRequest.Body` flux. `HttpResponse.BodyWriter` est un analogue du `HttpResponse.Body` flux.
+Il est maintenant possible de lire le corps de la demande et d’écrire le corps de la réponse à l’aide de l' <xref:System.IO.Pipelines> API. Les <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` la propriété fournit un <xref:System.IO.Pipelines.PipeReader> qui peut être utilisé pour lire le corps de la requête. Les <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` la propriété fournit un <xref:System.IO.Pipelines.PipeWriter> qui peut être utilisé pour écrire le corps de la réponse. `HttpRequest.BodyReader` est un analogue du `HttpRequest.Body` flux. `HttpResponse.BodyWriter` est un analogue du `HttpResponse.Body` flux.
 
 <!-- indirectly related, https://github.com/dotnet/docs/pull/14414 won't be published by 9/23  -->
 
@@ -513,7 +513,7 @@ Dans les versions précédentes de ASP.NET Core, l’appel de <xref:Microsoft.As
 
 Ce scénario est résolu dans ASP.NET Core 3,0. L’hôte active l' [intergiciel d’en-tête transféré](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options) lorsque la `ASPNETCORE_FORWARDEDHEADERS_ENABLED` variable d’environnement a la valeur `true` . `ASPNETCORE_FORWARDEDHEADERS_ENABLED` a la valeur `true` dans nos images de conteneur.
 
-## <a name="performance-improvements"></a>Amélioration des performances
+## <a name="performance-improvements"></a>Optimisation des performances
 
 ASP.NET Core 3,0 comprend de nombreuses améliorations qui réduisent l’utilisation de la mémoire et améliorent le débit :
 

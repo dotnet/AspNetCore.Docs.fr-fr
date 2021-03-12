@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 5fa7bc15bac2609c89fea54f8a788aaf9f5ad055
-ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
+ms.openlocfilehash: e3e176072032494f94f120efabb95d6c127fb5e6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119030"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587812"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Mettre en forme les données des réponses dans l’API web ASP.NET Core
 
@@ -31,7 +31,7 @@ De [Rick Anderson](https://twitter.com/RickAndMSFT) et [Steve Smith](https://ard
 
 ASP.NET Core MVC prend en charge la mise en forme des données de réponse. Les données de réponse peuvent être formatées à l’aide de formats spécifiques ou en réponse au format demandé par le client.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/formatting) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/advanced/formatting) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="format-specific-action-results"></a>Résultats des actions spécifiques au format
 

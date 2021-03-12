@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: b4b1bc6131a6676710adbf2503efe3f304d89a58
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1b5c89c1beaf36912766b3e08b9f16c4d33945f8
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050847"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588059"
 ---
-# <a name="aspnet-core-no-locsignalr-javascript-client"></a>SignalRClient JavaScript ASP.net Core
+# <a name="aspnet-core-signalr-javascript-client"></a>SignalRClient JavaScript ASP.net Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -34,15 +34,15 @@ Par [Rachel Appel](https://twitter.com/rachelappel)
 
 La SignalR bibliothèque cliente JavaScript ASP.net Core permet aux développeurs d’appeler le code de concentrateur côté serveur.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/javascript-client/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="install-the-no-locsignalr-client-package"></a>Installer le SignalR package client
+## <a name="install-the-signalr-client-package"></a>Installer le SignalR package client
 
 La SignalR bibliothèque cliente JavaScript est fournie en tant que package [NPM](https://www.npmjs.com/) . Les sections suivantes décrivent différentes façons d’installer la bibliothèque cliente.
 
 ### <a name="install-with-npm"></a>Installer avec NPM
 
-Pour Visual Studio, exécutez les commandes suivantes à partir de la **console du gestionnaire de package** dans le dossier racine. Pour Visual Studio Code, exécutez les commandes suivantes à partir du **Terminal intégré** .
+Pour Visual Studio, exécutez les commandes suivantes à partir de la **console du gestionnaire de package** dans le dossier racine. Pour Visual Studio Code, exécutez les commandes suivantes à partir du **Terminal intégré**.
 
 ```bash
 npm init -y
@@ -51,7 +51,7 @@ npm install @microsoft/signalr
 
 NPM installe le contenu du package dans le dossier *node_modules \\ @microsoft\signalr\dist\browser* . Créez un nouveau dossier nommé *signalr* sous le dossier de la *\\ bibliothèque wwwroot* . Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*
 
-Référencez le SignalR client JavaScript dans l' `<script>` élément. Exemple :
+Référencez le SignalR client JavaScript dans l' `<script>` élément. Par exemple :
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -59,7 +59,7 @@ Référencez le SignalR client JavaScript dans l' `<script>` élément. Exemple�
 
 ### <a name="use-a-content-delivery-network-cdn"></a>Utiliser un réseau de distribution de contenu (CDN)
 
-Pour utiliser la bibliothèque cliente sans le composant requis NPM, référencez une copie hébergée par CDN de la bibliothèque cliente. Exemple :
+Pour utiliser la bibliothèque cliente sans le composant requis NPM, référencez une copie hébergée par CDN de la bibliothèque cliente. Par exemple :
 
 [!code-html[](javascript-client/samples/3.x/SignalRChat/Pages/Index.cshtml?name=snippet_CDN)]
 
@@ -287,9 +287,9 @@ Une implémentation réelle utilise une interruption exponentielle ou une nouvel
 * [Informations de référence sur l’API JavaScript](/javascript/api/?view=signalr-js-latest&preserve-view=true )
 * [Didacticiel JavaScript](xref:tutorials/signalr)
 * [Didacticiel WebPack et machine à écrire](xref:tutorials/signalr-typescript-webpack)
-* [Hubs](xref:signalr/hubs)
+* [Concentrateurs](xref:signalr/hubs)
 * [Client .NET](xref:signalr/dotnet-client)
-* [Publication dans Azure](xref:signalr/publish-to-azure-web-app)
+* [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
 * [Requêtes Cross-Origin (CORS)](xref:security/cors)
 * [SignalRDocumentation sans serveur de service Azure](/azure/azure-signalr/signalr-concept-serverless-development-config)
 * [Résoudre les erreurs de connexion](xref:signalr/troubleshoot)
@@ -302,15 +302,15 @@ Par [Rachel Appel](https://twitter.com/rachelappel)
 
 La SignalR bibliothèque cliente JavaScript ASP.net Core permet aux développeurs d’appeler le code de concentrateur côté serveur.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/javascript-client/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="install-the-no-locsignalr-client-package"></a>Installer le SignalR package client
+## <a name="install-the-signalr-client-package"></a>Installer le SignalR package client
 
 La SignalR bibliothèque cliente JavaScript est fournie en tant que package [NPM](https://www.npmjs.com/) . Les sections suivantes décrivent différentes façons d’installer la bibliothèque cliente.
 
 ### <a name="install-with-npm"></a>Installer avec NPM
 
-Si vous utilisez Visual Studio, exécutez les commandes suivantes à partir de la **console du gestionnaire de package** dans le dossier racine. Pour Visual Studio Code, exécutez les commandes suivantes à partir du **Terminal intégré** .
+Si vous utilisez Visual Studio, exécutez les commandes suivantes à partir de la **console du gestionnaire de package** dans le dossier racine. Pour Visual Studio Code, exécutez les commandes suivantes à partir du **Terminal intégré**.
 
 ```bash
 npm init -y
@@ -319,7 +319,7 @@ npm install @aspnet/signalr
 
 NPM installe le contenu du package dans le dossier *node_modules \\ @aspnet\signalr\dist\browser* . Créez un nouveau dossier nommé *signalr* sous le dossier de la *\\ bibliothèque wwwroot* . Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*
 
-Référencez le SignalR client JavaScript dans l' `<script>` élément. Exemple :
+Référencez le SignalR client JavaScript dans l' `<script>` élément. Par exemple :
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -327,7 +327,7 @@ Référencez le SignalR client JavaScript dans l' `<script>` élément. Exemple�
 
 ### <a name="use-a-content-delivery-network-cdn"></a>Utiliser un réseau de distribution de contenu (CDN)
 
-Pour utiliser la bibliothèque cliente sans le composant requis NPM, référencez une copie hébergée par CDN de la bibliothèque cliente. Exemple :
+Pour utiliser la bibliothèque cliente sans le composant requis NPM, référencez une copie hébergée par CDN de la bibliothèque cliente. Par exemple :
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.3/signalr.min.js"></script>
@@ -432,9 +432,9 @@ Une implémentation réelle utilise une interruption exponentielle ou une nouvel
 * [Informations de référence sur l’API JavaScript](/javascript/api/?view=signalr-js-latest)
 * [Didacticiel JavaScript](xref:tutorials/signalr)
 * [Didacticiel WebPack et machine à écrire](xref:tutorials/signalr-typescript-webpack)
-* [Hubs](xref:signalr/hubs)
+* [Concentrateurs](xref:signalr/hubs)
 * [Client .NET](xref:signalr/dotnet-client)
-* [Publication dans Azure](xref:signalr/publish-to-azure-web-app)
+* [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
 * [Requêtes Cross-Origin (CORS)](xref:security/cors)
 * [SignalRDocumentation sans serveur de service Azure](/azure/azure-signalr/signalr-concept-serverless-development-config)
 

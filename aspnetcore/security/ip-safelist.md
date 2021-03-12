@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/ip-safelist
-ms.openlocfilehash: dfc134b97bb0976bc682a53d536cd27785550c7d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f89191cff1faa5b55ee9031a6a6d0749a74e43c0
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059661"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587539"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>Client IP safelier pour ASP.NET Core
 
@@ -43,7 +43,7 @@ Dans chaque cas, une chaîne contenant des adresses IP clientes approuvées est 
 
 L’accès est autorisé si le tableau contient l’adresse IP. Dans le cas contraire, un code d’état HTTP 403 interdit est retourné.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/ip-safelist/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="ip-address-safelist"></a>Adresse IP safelit
 
@@ -68,7 +68,7 @@ L’intergiciel (middleware) analyse la chaîne dans un tableau et recherche l�
 
 ## <a name="action-filter"></a>Filtre d’action
 
-Si vous souhaitez un contrôle d’accès piloté par safeli pour des contrôleurs MVC ou des méthodes d’action spécifiques, utilisez un filtre d’action. Exemple :
+Si vous souhaitez un contrôle d’accès piloté par safeli pour des contrôleurs MVC ou des méthodes d’action spécifiques, utilisez un filtre d’action. Par exemple :
 
 [!code-csharp[](ip-safelist/samples/Shared/ClientIpSafelistComponents/Filters/ClientIpCheckActionFilter.cs?name=snippet_ClassOnly)]
 
@@ -103,9 +103,9 @@ Dans l’exemple d’application, le filtre d’action est appliqué à la `Get`
 
 * Un verbe de requête HTTP autre que obtenir, l' `AdminSafeListMiddleware` intergiciel (middleware) valide l’adresse IP du client.
 
-## <a name="no-locrazor-pages-filter"></a>Razor Filtre de pages
+## <a name="razor-pages-filter"></a>Razor Filtre de pages
 
-Si vous souhaitez un contrôle d’accès piloté par safelis pour une Razor application pages, utilisez un Razor filtre pages. Exemple :
+Si vous souhaitez un contrôle d’accès piloté par safelis pour une Razor application pages, utilisez un Razor filtre pages. Par exemple :
 
 [!code-csharp[](ip-safelist/samples/Shared/ClientIpSafelistComponents/Filters/ClientIpCheckPageFilter.cs?name=snippet_ClassOnly)]
 

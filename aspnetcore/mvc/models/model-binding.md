@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: 4de34a75da932b41190caa8434ac5be8cc0710fd
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: 5eaedf6dbe5df59848b9cf8a5bda67add48db2a6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981932"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586941"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "94981932"
 
 Cet article explique ce qu’est la liaison de modèle, comment elle fonctionne et comment personnaliser son comportement.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="what-is-model-binding"></a>Description de la liaison de modèle
 
@@ -165,7 +165,7 @@ Les données sources sont fournies au système de liaison de modèle par les *fo
 * Créez une classe qui implémente `IValueProviderFactory`.
 * Inscrivez la classe de fabrique dans `Startup.ConfigureServices`.
 
-L’exemple d’application comprend un [fournisseur de valeur](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) et un exemple d' [usine](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) qui obtient des valeurs de cookie s. Voici le code d’inscription dans `Startup.ConfigureServices` :
+L’exemple d’application comprend un [fournisseur de valeur](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) et un exemple d' [usine](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) qui obtient des valeurs de cookie s. Voici le code d’inscription dans `Startup.ConfigureServices` :
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=4)]
 
@@ -211,7 +211,7 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Décimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Variables](xref:System.ComponentModel.EnumConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
 * [Uniques](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Unique](xref:System.ComponentModel.SingleConverter)
@@ -280,11 +280,11 @@ Plusieurs attributs intégrés sont disponibles pour contrôler la liaison de mo
 * `[BindNever]`
 
 > [!WARNING]
-> Ces attributs affectent la liaison de modèle quand les données de formulaire postées représentent la source des valeurs. Ils ne ***pas** _ affectent les formateurs d’entrée qui traitent les corps de requête JSON et XML publiés. Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).
+> Ces attributs affectent la liaison de modèle quand les données de formulaire postées représentent la source des valeurs. Ils n’affectent ***pas*** les formateurs d’entrée qui traitent les corps de requête JSON et XML publiés. Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).
 
 ### <a name="bind-attribute"></a>Attribut [Bind]
 
-Il peut être appliqué à une classe ou à un paramètre de méthode. Il spécifie les propriétés d’un modèle à inclure dans la liaison de modèle. `[Bind]` n’affecte _*_pas_*_ les formateurs d’entrée.
+Il peut être appliqué à une classe ou à un paramètre de méthode. Il spécifie les propriétés d’un modèle à inclure dans la liaison de modèle. `[Bind]` n’affecte ***pas*** les formateurs d’entrée.
 
 Dans l’exemple suivant, seules les propriétés spécifiées du modèle `Instructor` sont liées quand une méthode de gestionnaire ou une méthode d’action est appelée :
 
@@ -300,7 +300,7 @@ Dans l’exemple suivant, seules les propriétés spécifiées du modèle `Instr
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-L' `[Bind]` attribut peut être utilisé pour empêcher la survalidation dans les scénarios _create *. Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées. Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`. Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).
+Vous pouvez utiliser l’attribut `[Bind]` pour éviter le surpostage dans les scénarios de *création*. Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées. Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`. Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).
 
 ### <a name="modelbinder-attribute"></a>Attribut [ModelBinder]
 
@@ -471,7 +471,7 @@ En revanche, les valeurs provenant des données de formulaire subissent une conv
 Pour que le fournisseur de valeurs d’itinéraire ASP.NET Core et le fournisseur de valeurs de chaîne de requête soient soumis à une conversion dépendante de la culture :
 
 * Héritent de <xref:Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory>
-* Copiez le code à partir de [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) ou [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
+* Copiez le code à partir de [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) ou [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
 * Remplacer la [valeur de culture](https://github.com/dotnet/AspNetCore/blob/e625fe29b049c60242e8048b4ea743cca65aa7b5/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs#L30) passée au constructeur de fournisseur de valeur par [CultureInfo. CurrentCulture](xref:System.Globalization.CultureInfo.CurrentCulture)
 * Remplacez la fabrique de fournisseur de valeur par défaut dans les options MVC par la nouvelle.
 
@@ -580,7 +580,7 @@ Le nom de cet attribut suit le modèle des attributs de liaison de modèle qui s
 
 Cet article explique ce qu’est la liaison de modèle, comment elle fonctionne et comment personnaliser son comportement.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="what-is-model-binding"></a>Description de la liaison de modèle
 
@@ -714,7 +714,7 @@ Les données sources sont fournies au système de liaison de modèle par les *fo
 * Créez une classe qui implémente `IValueProviderFactory`.
 * Inscrivez la classe de fabrique dans `Startup.ConfigureServices`.
 
-L’exemple d’application comprend un [fournisseur de valeur](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) et un exemple d' [usine](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) qui obtient des valeurs de cookie s. Voici le code d’inscription dans `Startup.ConfigureServices` :
+L’exemple d’application comprend un [fournisseur de valeur](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) et un exemple d' [usine](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) qui obtient des valeurs de cookie s. Voici le code d’inscription dans `Startup.ConfigureServices` :
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=3)]
 
@@ -760,7 +760,7 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Décimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Variables](xref:System.ComponentModel.EnumConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
 * [Uniques](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Unique](xref:System.ComponentModel.SingleConverter)
@@ -958,7 +958,7 @@ En revanche, les valeurs provenant des données de formulaire subissent une conv
 Pour que le fournisseur de valeurs d’itinéraire ASP.NET Core et le fournisseur de valeurs de chaîne de requête soient soumis à une conversion dépendante de la culture :
 
 * Héritent de <xref:Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory>
-* Copiez le code à partir de [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) ou [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
+* Copiez le code à partir de [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) ou [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
 * Remplacer la [valeur de culture](https://github.com/dotnet/AspNetCore/blob/e625fe29b049c60242e8048b4ea743cca65aa7b5/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs#L30) passée au constructeur de fournisseur de valeur par [CultureInfo. CurrentCulture](xref:System.Globalization.CultureInfo.CurrentCulture)
 * Remplacez la fabrique de fournisseur de valeur par défaut dans les options MVC par la nouvelle.
 

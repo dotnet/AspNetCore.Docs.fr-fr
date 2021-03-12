@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 1485e1a97e51bb4d12d0d74ca1550e5cf18258d8
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 561f41dd9d50df0651c060fac4f75d9d59244029
+ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93053785"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102605644"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Déploiement continu sur Azure avec Visual Studio et Git avec ASP.NET Core
 
@@ -172,7 +172,7 @@ Dans cette section, créez un dépôt Git local à l’aide de Visual Studio, et
 
 1. Entrez la commande suivante dans la fenêtre Commande :
 
-   `git push -u Azure-SampleApp master`
+   `git push -u Azure-SampleApp main`
 
 1. Entrez le mot de passe des **informations d’identification de déploiement** Azure créé précédemment dans Azure.
 
@@ -183,8 +183,8 @@ Dans cette section, créez un dépôt Git local à l’aide de Visual Studio, et
    remote: Running post deployment command(s)...
    remote: Deployment successful.
    To https://username@samplewebappdemo01.scm.azurewebsites.net:443/SampleWebAppDemo01.git
-   * [new branch]      master -> master
-   Branch master set up to track remote branch master from Azure-SampleApp.
+   * [new branch]      main -> main
+   Branch main set up to track remote branch main from Azure-SampleApp.
    ```
 
    > [!NOTE]
@@ -232,7 +232,7 @@ Après avoir apporté des modifications au code local, effectuez une republicati
 > [!NOTE]
 > Vous pouvez aussi envoyer (push) les modifications à partir de la **Fenêtre Commande** en ouvrant la **Fenêtre Commande**, en accédant au répertoire du projet et en entrant une commande Git. Exemple :
 > 
-> `git push -u Azure-SampleApp master`
+> `git push -u Azure-SampleApp main`
 
 ## <a name="view-the-updated-web-app-in-azure"></a>Afficher l’application web mise à jour dans Azure
 

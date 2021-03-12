@@ -17,20 +17,20 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 33deb5ff794982e0c074186bb2abb88344e8a116
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 23bc1db6a184e7babe87e2d311a8ac4a59e78dd0
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061182"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588358"
 ---
-# <a name="share-controllers-views-no-locrazor-pages-and-more-with-application-parts"></a>Partager des contrôleurs, des affichages, des Razor pages et d’autres éléments avec des composants d’application
+# <a name="share-controllers-views-razor-pages-and-more-with-application-parts"></a>Partager des contrôleurs, des affichages, des Razor pages et d’autres éléments avec des composants d’application
 
 ::: moniker range=">= aspnetcore-3.0"
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 Une *partie d’application* est une abstraction sur les ressources d’une application. Les composants de l’application permettent à ASP.NET Core de découvrir les contrôleurs, les composants de vue, les tag helpers, Razor les pages, les sources de compilation Razor et bien plus encore. <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart> est une partie de l’application. `AssemblyPart` encapsule une référence d’assembly et expose des types et des références de compilation.
 
@@ -48,7 +48,7 @@ Le code suivant présente une approche alternative à la configuration de `Appli
 
 [!code-csharp[](./app-parts/3.0sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-Les deux exemples de code précédents chargent `SharedController` à partir d’un assembly. Le `SharedController` n’est pas dans le projet de l’application. Consultez le téléchargement de l’exemple de [solution WebAppParts](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/3.0sample1/WebAppParts) .
+Les deux exemples de code précédents chargent `SharedController` à partir d’un assembly. Le `SharedController` n’est pas dans le projet de l’application. Consultez le téléchargement de l’exemple de [solution WebAppParts](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts/3.0sample1/WebAppParts) .
 
 ### <a name="include-views"></a>Inclure les vues
 
@@ -76,7 +76,7 @@ Les fournisseurs de fonctionnalités d’application examinent les parties de l�
 * <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperFeatureProvider>
 * <xref:Microsoft.AspNetCore.Mvc.Razor.Compilation.MetadataReferenceFeatureProvider>
 * <xref:Microsoft.AspNetCore.Mvc.Razor.Compilation.ViewsFeatureProvider>
-* `internal class`[ Razor CompiledItemFeatureProvider](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Razor/src/ApplicationParts/RazorCompiledItemFeatureProvider.cs#L14)
+* `internal class`[ Razor CompiledItemFeatureProvider](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Razor/src/ApplicationParts/RazorCompiledItemFeatureProvider.cs#L14)
 
 Les fournisseurs de fonctionnalités héritent de <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.IApplicationFeatureProvider`1>, où `T` correspond au type de la fonctionnalité. Les fournisseurs de fonctionnalités peuvent être implémentés pour l’un des types de fonctionnalités précédemment listés. L’ordre des fournisseurs de fonctionnalités dans le peut avoir un `ApplicationPartManager.FeatureProviders` impact sur le comportement de l’exécution. Les fournisseurs ajoutés ultérieurement peuvent réagir aux actions effectuées par les fournisseurs précédemment ajoutés.
 
@@ -86,7 +86,7 @@ Les fonctionnalités disponibles pour une application peuvent être énumérées
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-L' [exemple Download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) utilise le code précédent pour afficher les fonctionnalités de l’application :
+L' [exemple Download](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts/sample2) utilise le code précédent pour afficher les fonctionnalités de l’application :
 
 ```text
 Controllers:
@@ -120,7 +120,7 @@ Les erreurs HTTP 404 ne sont pas rares lors du développement avec des composant
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 Une *partie d’application* est une abstraction sur les ressources d’une application. Les composants de l’application permettent à ASP.NET Core de découvrir les contrôleurs, les composants de vue, les tag helpers, Razor les pages, les sources de compilation Razor et bien plus encore. [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) est une partie de l’application. `AssemblyPart` encapsule une référence d’assembly et expose des types et des références de compilation.
 
@@ -138,7 +138,7 @@ Le code suivant présente une approche alternative à la configuration de `Appli
 
 [!code-csharp[](./app-parts/sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-Les deux exemples de code précédents chargent `SharedController` à partir d’un assembly. Le `SharedController` n’est pas dans le projet de l’application. Consultez le téléchargement de l’exemple de [solution WebAppParts](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts) .
+Les deux exemples de code précédents chargent `SharedController` à partir d’un assembly. Le `SharedController` n’est pas dans le projet de l’application. Consultez le téléchargement de l’exemple de [solution WebAppParts](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts) .
 
 ### <a name="include-views"></a>Inclure les vues
 
@@ -160,7 +160,7 @@ Le `ApplicationPartManager` comprend des parties pour :
 
 Les fournisseurs de fonctionnalités d’application examinent les parties de l’application et fournissent des fonctionnalités pour ces parties. Il existe des fournisseurs de fonctionnalités intégrés pour les fonctionnalités de ASP.NET Core suivantes :
 
-* [Contrôleurs](/dotnet/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
+* [Controllers](/dotnet/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
 * [Tag Helpers](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
 * [Afficher les composants](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
 
@@ -172,7 +172,7 @@ Les fonctionnalités disponibles pour une application peuvent être énumérées
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-L' [exemple Download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) utilise le code précédent pour afficher les fonctionnalités de l’application :
+L' [exemple Download](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts/sample2) utilise le code précédent pour afficher les fonctionnalités de l’application :
 
 ```text
 Controllers:

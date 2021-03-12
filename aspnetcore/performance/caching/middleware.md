@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 3c28b6c736f07c0d0483152eeec4300a5a92224c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0f1f5dfcb9595270a9659a02141f7d1eba5c44ef
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052108"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587695"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Intergiciel de mise en cache des réponses dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Par [John Luo](https://github.com/JunTaoLuo)
 
 Cet article explique comment configurer l’intergiciel (middleware) de mise en cache des réponses dans une application ASP.NET Core. L’intergiciel détermine quand les réponses sont pouvant être mises en cache, stocke les réponses et sert les réponses du cache. Pour obtenir une présentation de la mise en cache HTTP et de l' [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) attribut, consultez [mise en cache des réponses](xref:performance/caching/response).
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/middleware/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="configuration"></a>Configuration
 
@@ -92,7 +92,7 @@ services.AddResponseCaching(options =>
 
 ## <a name="varybyquerykeys"></a>VaryByQueryKeys
 
-Lors de l’utilisation de contrôleurs d’API Web ou de modèles d’API MVC/Web Razor , l' [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) attribut spécifie les paramètres nécessaires à la définition des en-têtes appropriés pour la mise en cache des réponses. Le seul paramètre de l' `[ResponseCache]` attribut qui requiert strictement l’intergiciel est <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> , qui ne correspond pas à un en-tête HTTP réel. Pour plus d'informations, consultez <xref:performance/caching/response#responsecache-attribute>.
+Lors de l’utilisation de contrôleurs d’API Web ou de modèles d’API MVC/Web Razor , l' [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) attribut spécifie les paramètres nécessaires à la définition des en-têtes appropriés pour la mise en cache des réponses. Le seul paramètre de l' `[ResponseCache]` attribut qui requiert strictement l’intergiciel est <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> , qui ne correspond pas à un en-tête HTTP réel. Pour plus d’informations, consultez <xref:performance/caching/response#responsecache-attribute>.
 
 Quand vous n’utilisez pas l' `[ResponseCache]` attribut, la mise en cache des réponses peut être modifiée avec `VaryByQueryKeys` . Utilisez le <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingFeature> directement à partir du [HttpContext. Features](xref:Microsoft.AspNetCore.Http.HttpContext.Features):
 
@@ -149,7 +149,7 @@ Lors du test et du dépannage du comportement de mise en cache, un navigateur pe
 
 * La demande doit aboutir à une réponse du serveur avec un code d’état 200 (OK).
 * La méthode de demande doit être obtenir ou HEAD.
-* Dans `Startup.Configure` , l’intergiciel de mise en cache des réponses doit être placé avant l’intergiciel (middleware) qui requiert la mise en cache. Pour plus d'informations, consultez <xref:fundamentals/middleware/index>.
+* Dans `Startup.Configure` , l’intergiciel de mise en cache des réponses doit être placé avant l’intergiciel (middleware) qui requiert la mise en cache. Pour plus d’informations, consultez <xref:fundamentals/middleware/index>.
 * L' `Authorization` en-tête ne doit pas être présent.
 * `Cache-Control` les paramètres d’en-tête doivent être valides et la réponse doit être marquée `public` et non marquée `private` .
 * L’en- `Pragma: no-cache` tête ne doit pas être présent si l' `Cache-Control` en-tête n’est pas présent, car l’en `Cache-Control` -tête remplace l' `Pragma` en-tête lorsqu’il est présent.
@@ -181,7 +181,7 @@ Lors du test et du dépannage du comportement de mise en cache, un navigateur pe
 
 Cet article explique comment configurer l’intergiciel (middleware) de mise en cache des réponses dans une application ASP.NET Core. L’intergiciel détermine quand les réponses sont pouvant être mises en cache, stocke les réponses et sert les réponses du cache. Pour obtenir une présentation de la mise en cache HTTP et de l' [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) attribut, consultez [mise en cache des réponses](xref:performance/caching/response).
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/middleware/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="configuration"></a>Configuration
 
@@ -236,7 +236,7 @@ services.AddResponseCaching(options =>
 
 ## <a name="varybyquerykeys"></a>VaryByQueryKeys
 
-Lors de l’utilisation de contrôleurs d’API Web ou de modèles d’API MVC/Web Razor , l' [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) attribut spécifie les paramètres nécessaires à la définition des en-têtes appropriés pour la mise en cache des réponses. Le seul paramètre de l' `[ResponseCache]` attribut qui requiert strictement l’intergiciel est <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> , qui ne correspond pas à un en-tête HTTP réel. Pour plus d'informations, consultez <xref:performance/caching/response#responsecache-attribute>.
+Lors de l’utilisation de contrôleurs d’API Web ou de modèles d’API MVC/Web Razor , l' [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) attribut spécifie les paramètres nécessaires à la définition des en-têtes appropriés pour la mise en cache des réponses. Le seul paramètre de l' `[ResponseCache]` attribut qui requiert strictement l’intergiciel est <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> , qui ne correspond pas à un en-tête HTTP réel. Pour plus d’informations, consultez <xref:performance/caching/response#responsecache-attribute>.
 
 Quand vous n’utilisez pas l' `[ResponseCache]` attribut, la mise en cache des réponses peut être modifiée avec `VaryByQueryKeys` . Utilisez le <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingFeature> directement à partir du [HttpContext. Features](xref:Microsoft.AspNetCore.Http.HttpContext.Features):
 
@@ -293,7 +293,7 @@ Lors du test et du dépannage du comportement de mise en cache, un navigateur pe
 
 * La demande doit aboutir à une réponse du serveur avec un code d’état 200 (OK).
 * La méthode de demande doit être obtenir ou HEAD.
-* Dans `Startup.Configure` , l’intergiciel de mise en cache des réponses doit être placé avant l’intergiciel (middleware) qui requiert la mise en cache. Pour plus d'informations, consultez <xref:fundamentals/middleware/index>.
+* Dans `Startup.Configure` , l’intergiciel de mise en cache des réponses doit être placé avant l’intergiciel (middleware) qui requiert la mise en cache. Pour plus d’informations, consultez <xref:fundamentals/middleware/index>.
 * L' `Authorization` en-tête ne doit pas être présent.
 * `Cache-Control` les paramètres d’en-tête doivent être valides et la réponse doit être marquée `public` et non marquée `private` .
 * L’en- `Pragma: no-cache` tête ne doit pas être présent si l' `Cache-Control` en-tête n’est pas présent, car l’en `Cache-Control` -tête remplace l' `Pragma` en-tête lorsqu’il est présent.

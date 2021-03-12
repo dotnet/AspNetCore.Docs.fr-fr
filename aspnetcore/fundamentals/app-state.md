@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
-ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
+ms.openlocfilehash: ab09867a1b1aa73e423babbe295036e292fc733f
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "93051406"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586577"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Gestion de session et d’état dans ASP.NET Core
 
@@ -33,7 +33,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Kirk Larkin](https://twit
 
 HTTP est un protocole sans état. Par défaut, les requêtes HTTP sont des messages indépendants qui ne conservent pas les valeurs utilisateur. Cet article décrit plusieurs approches permettant de conserver les données utilisateur entre les demandes.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/app-state/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/app-state/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="state-management"></a>Gestion de l'état
 
@@ -303,7 +303,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Steve Smith](https://arda
 
 HTTP est un protocole sans état. Sans effectuer des étapes supplémentaires, les requêtes HTTP sont des messages indépendants qui ne conservent pas les valeurs utilisateur ou l’état de l’application. Cet article décrit plusieurs approches pour conserver l’état de l’application et les données utilisateur entre les requêtes.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/app-state/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/app-state/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="state-management"></a>Gestion de l'état
 

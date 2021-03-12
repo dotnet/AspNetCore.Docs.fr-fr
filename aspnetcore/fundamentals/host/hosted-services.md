@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: b8d6ec079ed39fb3a2c314816ebae6cea0847a36
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c0492c0c5b660e1387b0d0a4f6be405ded49ee92
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93061078"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587474"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tâches d’arrière-plan avec des services hébergés dans ASP.NET Core
 
@@ -38,7 +38,7 @@ Dans ASP.NET Core, les tâches d’arrière-plan peuvent être implémentées en
 * Service hébergé qui active un [service étendu](xref:fundamentals/dependency-injection#service-lifetimes). Le service étendu peut utiliser l' [injection de dépendances (di)](xref:fundamentals/dependency-injection).
 * Tâches d’arrière-plan en file d’attente qui s’exécutent séquentiellement.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/host/hosted-services/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="worker-service-template"></a>Modèle Service Worker
 
@@ -193,7 +193,7 @@ Dans ASP.NET Core, les tâches d’arrière-plan peuvent être implémentées en
 * Service hébergé qui active un [service étendu](xref:fundamentals/dependency-injection#service-lifetimes). Le service étendu peut utiliser l' [injection de dépendances (di)](xref:fundamentals/dependency-injection)
 * Tâches d’arrière-plan en file d’attente qui s’exécutent séquentiellement.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/host/hosted-services/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="package"></a>Paquet
 

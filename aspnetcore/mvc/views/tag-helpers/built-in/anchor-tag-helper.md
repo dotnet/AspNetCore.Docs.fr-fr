@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: d39db59b0fc273fe4193a4864f302ecd3f4ad348
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 2e49c545b0d343475ce44a636a6ae66324f9d3bf
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060909"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587201"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Tag Helper Ancre dans ASP.NET Core
 
@@ -33,7 +33,7 @@ Le [Tag Helper Ancre](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) 
 
 Pour avoir une vue d’ensemble de Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 *SpeakerController* est utilisé dans les exemples dans ce document :
 
@@ -53,7 +53,7 @@ Code HTML généré :
 <a href="/Speaker">All Speakers</a>
 ```
 
-Si l’attribut `asp-controller` est spécifié et que `asp-action` ne l’est pas, la valeur par défaut `asp-action` est l’action du contrôleur associée à la vue en cours d’exécution. Si `asp-action` est omis du balisage précédent, et le Tag Helper Ancre est utilisé dans la vue *Index* de *HomeController* ( */Home* ), le code HTML généré est :
+Si l’attribut `asp-controller` est spécifié et que `asp-action` ne l’est pas, la valeur par défaut `asp-action` est l’action du contrôleur associée à la vue en cours d’exécution. Si `asp-action` est omis du balisage précédent, et le Tag Helper Ancre est utilisé dans la vue *Index* de *HomeController* (*/Home*), le code HTML généré est :
 
 ```html
 <a href="/Home">All Speakers</a>
@@ -139,7 +139,7 @@ Dans le balisage suivant, l’attribut `asp-route` fait référence à l’itin�
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspRoute)]
 
-Le Tag Helper Ancre génère un itinéraire directement vers cette action de contrôleur à l’aide de l’URL */Speaker/Evaluations* . Code HTML généré :
+Le Tag Helper Ancre génère un itinéraire directement vers cette action de contrôleur à l’aide de l’URL */Speaker/Evaluations*. Code HTML généré :
 
 ```html
 <a href="/Speaker/Evaluations">Speaker Evaluations</a>
@@ -185,7 +185,7 @@ Les balises de hachage sont utiles lors de la création des applications côté 
 
 L’attribut [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) définit le nom de la zone utilisé pour définir l’itinéraire approprié. Les exemples suivants décrivent la façon dont l’attribut `asp-area` entraîne un remappage des itinéraires.
 
-#### <a name="usage-in-no-locrazor-pages"></a>Utilisation dans les Razor pages
+#### <a name="usage-in-razor-pages"></a>Utilisation dans les Razor pages
 
 Razor Les zones de pages sont prises en charge dans ASP.NET Core 2,1 ou version ultérieure.
 
@@ -227,14 +227,14 @@ Considérez la hiérarchie de répertoires suivante :
   * **wwwroot**
   * **Zones (Areas)**
     * **Blogs**
-      * **Contrôleurs**
+      * **Controllers**
         * *HomeController.cs*
       * **Views**
         * **Page d'accueil**
           * *AboutBlog.cshtml*
           * *Index.cshtml*
         * *\_ViewStart. cshtml*
-  * **Contrôleurs**
+  * **Controllers**
 
 L’affectation de la valeur « Blogs » à `asp-area` préfixe le répertoire *Areas/Blogs* dans les itinéraires des vues et contrôleurs associés pour cette balise d’ancrage. Le balisage pour faire référence à la vue *AboutBlog* est :
 
@@ -247,13 +247,13 @@ Code HTML généré :
 ```
 
 > [!TIP]
-> Pour prendre en charge les zones dans une application MVC, le modèle de routage doit inclure une référence à la zone si elle existe. Ce modèle est représenté par le deuxième paramètre de l' `routes.MapRoute` appel de la méthode dans *Startup.Configurer* :
+> Pour prendre en charge les zones dans une application MVC, le modèle de routage doit inclure une référence à la zone si elle existe. Ce modèle est représenté par le deuxième paramètre de l' `routes.MapRoute` appel de la méthode dans *Startup.Configurer*:
 >
 > [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
 ### <a name="asp-protocol"></a>asp-protocol
 
-L’attribut [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) permet de spécifier un protocole (tel que `https`) dans l’URL. Exemple :
+L’attribut [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) permet de spécifier un protocole (tel que `https`) dans l’URL. Par exemple :
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
@@ -267,7 +267,7 @@ Le nom d’hôte dans l’exemple est localhost. Le Tag Helper Ancre utilise le 
 
 ### <a name="asp-host"></a>asp-host
 
-L’attribut [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) est destiné à spécifier un nom d’hôte dans votre URL. Exemple :
+L’attribut [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) est destiné à spécifier un nom d’hôte dans votre URL. Par exemple :
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 

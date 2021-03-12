@@ -19,24 +19,24 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubs
-ms.openlocfilehash: 4a31c16eb44e2244574d0df49c30e7a44b2bba6e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 872b88cc3c87137365de8c50a37bf5dd5fd9fe10
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050938"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587864"
 ---
-# <a name="use-hubs-in-no-locsignalr-for-aspnet-core"></a>Utiliser des hubs dans SignalR pour ASP.net Core
+# <a name="use-hubs-in-signalr-for-aspnet-core"></a>Utiliser des hubs dans SignalR pour ASP.net Core
 
 Par [Rachel appel](https://twitter.com/rachelappel) et [Kevin Griffin](https://twitter.com/1kevgriff)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/hubs/sample/ ) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
 
-## <a name="what-is-a-no-locsignalr-hub"></a>Qu’est-ce qu’un SignalR Hub ?
+## <a name="what-is-a-signalr-hub"></a>Qu’est-ce qu’un SignalR Hub ?
 
 L' SignalR API hubs vous permet d’appeler des méthodes sur des clients connectés à partir du serveur. Dans le code serveur, vous définissez des méthodes qui sont appelées par le client. Dans le code client, vous définissez des méthodes qui sont appelées à partir du serveur. SignalR s’occupe de tout en arrière-plan qui rend possible les communications de client à serveur et de serveur à client en temps réel.
 
-## <a name="configure-no-locsignalr-hubs"></a>Configurer des SignalR hubs
+## <a name="configure-signalr-hubs"></a>Configurer des SignalR hubs
 
 L' SignalR intergiciel (middleware) requiert des services qui sont configurés en appelant `services.AddSignalR` .
 
@@ -156,7 +156,7 @@ Cette interface peut être utilisée pour refactoriser l' `ChatHub` exemple pré
 
 L’utilisation `Hub<IChatClient>` de active la vérification au moment de la compilation des méthodes clientes. Cela empêche les problèmes causés par l’utilisation de chaînes magiques, car `Hub<T>` peut uniquement fournir l’accès aux méthodes définies dans l’interface.
 
-L’utilisation d’un fortement typé `Hub<T>` désactive la capacité à utiliser `SendAsync` . Toutes les méthodes définies sur l’interface peuvent toujours être définies comme asynchrones. En fait, chacune de ces méthodes doit retourner un `Task` . Étant donné qu’il s’agit d’une interface, n’utilisez pas le `async` mot clé. Exemple :
+L’utilisation d’un fortement typé `Hub<T>` désactive la capacité à utiliser `SendAsync` . Toutes les méthodes définies sur l’interface peuvent toujours être définies comme asynchrones. En fait, chacune de ces méthodes doit retourner un `Task` . Étant donné qu’il s’agit d’une interface, n’utilisez pas le `async` mot clé. Par exemple :
 
 ```csharp
 public interface IClient
@@ -186,13 +186,13 @@ Substituez la `OnDisconnectedAsync` méthode virtuelle pour exécuter des action
 
 [!INCLUDE[](~/includes/connectionid-signalr.md)]
 
-## <a name="handle-errors"></a>Gérer les erreurs
+## <a name="handle-errors"></a>des erreurs
 
 Les exceptions levées dans vos méthodes de concentrateur sont envoyées au client qui a appelé la méthode. Sur le client JavaScript, la `invoke` méthode retourne une [promesse JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises). Lorsque le client reçoit une erreur avec un gestionnaire attaché à la promesse à l’aide de `catch` , il est appelé et transmis en tant qu' `Error` objet JavaScript.
 
 [!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
-Si votre Hub lève une exception, les connexions ne sont pas fermées. Par défaut, SignalR retourne un message d’erreur générique au client. Exemple :
+Si votre Hub lève une exception, les connexions ne sont pas fermées. Par défaut, SignalR retourne un message d’erreur générique au client. Par exemple :
 
 ```
 Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking 'MethodName' on the server.
@@ -200,7 +200,7 @@ Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking
 
 Les exceptions inattendues contiennent souvent des informations sensibles, telles que le nom d’un serveur de base de données dans une exception déclenchée lorsque la connexion à la base de données échoue. SignalR n’expose pas ces messages d’erreur détaillés par défaut en tant que mesure de sécurité. Pour plus d’informations sur la raison pour laquelle les détails de l’exception sont supprimés, consultez l' [article considérations](xref:signalr/security#exceptions) sur la sécurité.
 
-Si vous avez une condition *exceptionnelle que vous souhaitez* propager au client, vous pouvez utiliser la `HubException` classe. Si vous levez un `HubException` à partir de votre méthode de concentrateur, enverra SignalR **will** l’intégralité du message au client, sans modification.
+Si vous avez une condition *exceptionnelle que vous souhaitez* propager au client, vous pouvez utiliser la `HubException` classe. Si vous levez un `HubException` à partir de votre méthode de concentrateur, enverra SignalR  l’intégralité du message au client, sans modification.
 
 [!code-csharp[ThrowHubException](hubs/sample/hubs/chathub.cs?name=ThrowHubException&highlight=3)]
 
@@ -211,4 +211,4 @@ Si vous avez une condition *exceptionnelle que vous souhaitez* propager au clien
 
 * [Introduction à ASP.NET Core SignalR](xref:signalr/introduction)
 * [Client JavaScript](xref:signalr/javascript-client)
-* [Publication dans Azure](xref:signalr/publish-to-azure-web-app)
+* [Publier sur Azure](xref:signalr/publish-to-azure-web-app)

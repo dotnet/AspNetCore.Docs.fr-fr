@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 0c5ea8ba69e4c6287afce1771ac9cee65bb188a8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1e6526f46fbd177add3699fb5b667021b741c6a4
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052537"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587838"
 ---
 # <a name="use-web-api-conventions"></a>Utiliser les conventions d’API web
 
@@ -37,11 +37,11 @@ Une convention vous permet de :
 * Définir les types de retours les plus courants et les codes d’état retournés à partir d’un type d’action spécifique.
 * Identifier les actions qui s’écartent de la norme définie.
 
-ASP.NET Core MVC 2.2 et ses versions ultérieures incluent un ensemble de conventions par défaut dans <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>. Les conventions sont basées sur le contrôleur ( *ValuesController.cs* ) fourni dans le modèle de projet de l’ **API** ASP.NET Core. Si vos actions suivent les profils dans le modèle, vous devriez normalement réussir à utiliser les conventions par défaut. Si les conventions par défaut ne répondent pas à vos besoins, consultez [Créer des conventions d’API web](#create-web-api-conventions).
+ASP.NET Core MVC 2.2 et ses versions ultérieures incluent un ensemble de conventions par défaut dans <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>. Les conventions sont basées sur le contrôleur (*ValuesController.cs*) fourni dans le modèle de projet de l’**API** ASP.NET Core. Si vos actions suivent les profils dans le modèle, vous devriez normalement réussir à utiliser les conventions par défaut. Si les conventions par défaut ne répondent pas à vos besoins, consultez [Créer des conventions d’API web](#create-web-api-conventions).
 
 À l’exécution, <xref:Microsoft.AspNetCore.Mvc.ApiExplorer> comprend les conventions. `ApiExplorer` est l’abstraction de MVC pour communiquer avec des générateurs de documents [OpenAPI](https://www.openapis.org/) (également nommé Swagger). Les attributs provenant de la convention appliquée sont associés à une action et sont inclus dans la documentation OpenAPI de l’action. Les [analyseurs d’API](xref:web-api/advanced/analyzers) comprennent également les conventions. Si votre action n’est pas conventionnelle (par exemple, elle retourne un code d’état qui n’est pas documenté par la convention appliquée), un avertissement vous encourage à documenter le code d’état.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/conventions/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/advanced/conventions/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="apply-web-api-conventions"></a>Appliquer des conventions d’API web
 
@@ -70,7 +70,7 @@ Les conventions ne se combinent pas : chaque action peut être associée à une 
 
     [!code-csharp[](conventions/sample/Controllers/ContactsConventionController.cs?name=snippet_ApiConventionTypeAttribute&highlight=2)]
 
-1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` appliqué à un assembly &mdash; applique le type de convention spécifié à tous les contrôleurs dans l’assembly actif. Il est recommandé d’appliquer des attributs de niveau assembly au fichier *Startup.cs* .
+1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` appliqué à un assembly &mdash; applique le type de convention spécifié à tous les contrôleurs dans l’assembly actif. Il est recommandé d’appliquer des attributs de niveau assembly au fichier *Startup.cs*.
 
     Dans l’exemple suivant, l’ensemble de conventions par défaut est appliqué à tous les contrôleurs dans l’assembly :
 
@@ -85,7 +85,7 @@ Si les conventions d’API par défaut ne répondent pas à vos besoins, créez 
 
 ### <a name="response-types"></a>Types de réponse
 
-Ces méthodes sont annotées avec des attributs `[ProducesResponseType]` ou `[ProducesDefaultResponseType]`. Exemple :
+Ces méthodes sont annotées avec des attributs `[ProducesResponseType]` ou `[ProducesDefaultResponseType]`. Par exemple :
 
 ```csharp
 public static class MyAppConventions
@@ -105,7 +105,7 @@ Si des attributs de métadonnées plus spécifiques sont absents, l’applicatio
 
 ### <a name="naming-requirements"></a>Conditions de nommage
 
-Les attributs `[ApiConventionNameMatch]` et `[ApiConventionTypeMatch]` peuvent être appliqués à la méthode de convention qui détermine les actions auxquelles ils s’appliquent. Exemple :
+Les attributs `[ApiConventionNameMatch]` et `[ApiConventionTypeMatch]` peuvent être appliqués à la méthode de convention qui détermine les actions auxquelles ils s’appliquent. Par exemple :
 
 ```csharp
 [ProducesResponseType(StatusCodes.Status200OK)]

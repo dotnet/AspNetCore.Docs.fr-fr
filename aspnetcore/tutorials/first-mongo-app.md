@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 12f08d953fa9050d8f15243371955644f8dbd149
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: 489a15f2011e44ffd9f9bfe7d5410b7d79a10632
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109492"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587604"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Créer une API web avec ASP.NET Core et MongoDB
 
@@ -43,7 +43,7 @@ Dans ce tutoriel, vous allez apprendre à :
 > * Effectuer des opérations CRUD MongoDB à partir d’une API web
 > * Personnaliser la sérialisation JSON
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-mongo-app/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -393,7 +393,7 @@ Dans ce tutoriel, vous allez apprendre à :
 > * Effectuer des opérations CRUD MongoDB à partir d’une API web
 > * Personnaliser la sérialisation JSON
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-mongo-app/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Prérequis
 

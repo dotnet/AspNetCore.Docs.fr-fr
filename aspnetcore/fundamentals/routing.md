@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 1355fdaeae58b6f4e0cf8d41a74b1c28aee0e8fe
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 0ce89d2dee3fb2054655c003daddfda2ffa52696
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253083"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587280"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -36,7 +36,7 @@ Le routage est responsable de la mise en correspondance des demandes HTTP entran
 
 Les applications peuvent configurer le routage à l’aide de :
 
-- Contrôleurs
+- Controllers
 - Razor Pages
 - SignalR
 - Services gRPC
@@ -53,7 +53,7 @@ Le système de routage des points de terminaison décrit dans ce document s’ap
 * Sélecteur de version d’une version précédente.
 * Sélectionnez [ASP.net Core routage 2,1](?view=aspnetcore-2.1).
 
-[Afficher ou télécharger l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples/3.x) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples/3.x) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 Les exemples de téléchargement de ce document sont activés par une `Startup` classe spécifique. Pour exécuter un exemple spécifique, modifiez *Program.cs* pour appeler la `Startup` classe souhaitée.
 
@@ -261,7 +261,7 @@ L’intergiciel (middleware) terminal peut être un outil efficace, mais peut n�
 
 Envisagez l’intégration avec le routage avant d’écrire un intergiciel (middleware) Terminal.
 
-Un intergiciel (middleware) terminal existant qui s’intègre à [Map](xref:fundamentals/middleware/index#branch-the-middleware-pipeline) ou <xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*> peut généralement être converti en point de terminaison prenant en charge le routage. [MapHealthChecks](https://github.com/aspnet/AspNetCore/blob/master/src/Middleware/HealthChecks/src/Builder/HealthCheckEndpointRouteBuilderExtensions.cs#L16) illustre le modèle de routeur-Ware :
+Un intergiciel (middleware) terminal existant qui s’intègre à [Map](xref:fundamentals/middleware/index#branch-the-middleware-pipeline) ou <xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*> peut généralement être converti en point de terminaison prenant en charge le routage. [MapHealthChecks](https://github.com/dotnet/AspNetCore/blob/main/src/Middleware/HealthChecks/src/Builder/HealthCheckEndpointRouteBuilderExtensions.cs#L16) illustre le modèle de routeur-Ware :
 * Écrire une méthode d’extension sur <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder> .
 * Créez un pipeline d’intergiciel (middleware) imbriqué à l’aide de <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder.CreateApplicationBuilder*> .
 * Attachez l’intergiciel au nouveau pipeline. Dans ce cas, <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>.
@@ -345,7 +345,7 @@ En raison des types d’extensibilité fournis par le routage, il n’est pas po
 
 ### <a name="route-template-precedence-and-endpoint-selection-order"></a>Priorité des modèles de routage et ordre de sélection des points de terminaison
 
-La [priorité des modèles de routage](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Template/RoutePrecedence.cs#L16) est un système qui affecte à chaque modèle de routage une valeur en fonction de sa spécificité. Priorité du modèle de routage :
+La [priorité des modèles de routage](https://github.com/dotnet/aspnetcore/blob/main/src/Http/Routing/src/Template/RoutePrecedence.cs#L16) est un système qui affecte à chaque modèle de routage une valeur en fonction de sa spécificité. Priorité du modèle de routage :
 
 * Évite d’avoir à ajuster l’ordre des points de terminaison dans les cas courants.
 * Tente de faire correspondre les attentes de sens commun du comportement de routage.
@@ -360,7 +360,7 @@ Les détails du fonctionnement de la précédence sont associés à la façon do
 * Un segment complexe est considéré comme un segment de paramètre spécifique avec une contrainte.
 * Les paramètres Catch-All sont les moins spécifiques. Pour obtenir des informations importantes sur les itinéraires d’interception, consultez la section « **catch-all »** dans la [référence de modèle de routage](#rtr) .
 
-Consultez le [code source sur GitHub](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Template/RoutePrecedence.cs#L189) pour obtenir une référence des valeurs exactes.
+Consultez le [code source sur GitHub](https://github.com/dotnet/aspnetcore/blob/main/src/Http/Routing/src/Template/RoutePrecedence.cs#L189) pour obtenir une référence des valeurs exactes.
 
 <a name="lg"></a>
 
@@ -437,7 +437,7 @@ Les modèles d’URL qui tentent de capturer un nom de fichier avec une extensio
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Les paramètres de route peuvent avoir des **valeurs par défaut**, désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Les paramètres de routage sont rendus facultatifs en ajoutant un point d’interrogation ( `?` ) à la fin du nom du paramètre. Par exemple, `id?`. La différence entre les valeurs facultatives et les paramètres d’itinéraire par défaut est la suivante :
+Les paramètres de route peuvent avoir des **valeurs par défaut**, désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Les paramètres de routage sont rendus facultatifs en ajoutant un point d’interrogation ( `?` ) à la fin du nom du paramètre. Par exemple : `id?`. La différence entre les valeurs facultatives et les paramètres d’itinéraire par défaut est la suivante :
 
 * Un paramètre d’itinéraire avec une valeur par défaut produit toujours une valeur.
 * Un paramètre facultatif a une valeur uniquement lorsqu’une valeur est fournie par l’URL de la requête.
@@ -586,9 +586,9 @@ Vous pouvez créer des contraintes de routage personnalisées en implémentant l
 
 Les contraintes de routage personnalisées sont rarement nécessaires. Avant d’implémenter une contrainte d’itinéraire personnalisée, envisagez d’autres méthodes, telles que la liaison de modèle.
 
-Le dossier ASP.NET Core [Constraints](https://github.com/dotnet/aspnetcore/tree/master/src/Http/Routing/src/Constraints) fournit de bons exemples de création de contraintes. Par exemple, [GuidRouteConstraint](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Constraints/GuidRouteConstraint.cs#L18).
+Le dossier ASP.NET Core [Constraints](https://github.com/dotnet/aspnetcore/tree/main/src/Http/Routing/src/Constraints) fournit de bons exemples de création de contraintes. Par exemple, [GuidRouteConstraint](https://github.com/dotnet/aspnetcore/blob/main/src/Http/Routing/src/Constraints/GuidRouteConstraint.cs#L18).
 
-Pour utiliser un personnalisé `IRouteConstraint` , le type de contrainte d’itinéraire doit être enregistré avec l’application <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> dans le conteneur de service. Un `ConstraintMap` est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations `IRouteConstraint` qui valident ces contraintes. Le `ConstraintMap` d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
+Pour utiliser un personnalisé `IRouteConstraint` , le type de contrainte d’itinéraire doit être enregistré avec l’application <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> dans le conteneur de service. Un `ConstraintMap` est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations `IRouteConstraint` qui valident ces contraintes. Le `ConstraintMap` d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/StartupConstraint.cs?name=snippet)]
 
@@ -947,7 +947,7 @@ app.UseEndpoints(endpoints =>
 
 **Envisagez** d’écrire votre propre <xref:Microsoft.AspNetCore.Routing.EndpointDataSource> . `EndpointDataSource` est la primitive de bas niveau pour déclarer et mettre à jour une collection de points de terminaison. `EndpointDataSource` est une API puissante utilisée par les contrôleurs et les Razor pages.
 
-Les tests de routage ont un [exemple de base](https://github.com/aspnet/AspNetCore/blob/master/src/Http/Routing/test/testassets/RoutingSandbox/Framework/FrameworkEndpointDataSource.cs#L17) d’une source de données qui ne met pas à jour.
+Les tests de routage ont un [exemple de base](https://github.com/dotnet/AspNetCore/blob/main/src/Http/Routing/test/testassets/RoutingSandbox/Framework/FrameworkEndpointDataSource.cs#L17) d’une source de données qui ne met pas à jour.
 
 **N’essayez pas** d’inscrire un `EndpointDataSource` par défaut. Obligez les utilisateurs à inscrire votre infrastructure dans <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> . La philosophie du routage est que rien n’est inclus par défaut et qu’il `UseEndpoints` s’agit de l’emplacement où inscrire des points de terminaison.
 
@@ -1029,7 +1029,7 @@ Pour plus d’informations sur le routage basé sur <xref:Microsoft.AspNetCore.R
 > [!IMPORTANT]
 > Ce document traite du routage ASP.NET Core de bas niveau. Pour plus d’informations sur le routage ASP.NET Core MVC, consultez <xref:mvc/controllers/routing>. Pour plus d’informations sur les conventions de routage dans les Razor pages, consultez <xref:razor-pages/razor-pages-conventions> .
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Concepts de base du routage
 
@@ -1505,7 +1505,7 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 Outre les contraintes d’itinéraire intégré, les contraintes d’itinéraire personnalisé peuvent être créées en implémentant l’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. L’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> contient une méthode unique, `Match`, qui retourne `true` si la contrainte est satisfaite et `false` dans le cas contraire.
 
-Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
+Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
 
 ```csharp
 services.AddRouting(options =>
@@ -1514,7 +1514,7 @@ services.AddRouting(options =>
 });
 ```
 
-La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Exemple :
+La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Par exemple :
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -1565,7 +1565,7 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
+Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples).
 
 Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de `Home` est utilisée.
 
@@ -1611,7 +1611,7 @@ services.AddMvc()
 > [!IMPORTANT]
 > Ce document traite du routage ASP.NET Core de bas niveau. Pour plus d’informations sur le routage ASP.NET Core MVC, consultez <xref:mvc/controllers/routing>. Pour plus d’informations sur les conventions de routage dans les Razor pages, consultez <xref:razor-pages/razor-pages-conventions> .
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Concepts de base du routage
 
@@ -1949,7 +1949,7 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 Outre les contraintes d’itinéraire intégré, les contraintes d’itinéraire personnalisé peuvent être créées en implémentant l’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. L’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> contient une méthode unique, `Match`, qui retourne `true` si la contrainte est satisfaite et `false` dans le cas contraire.
 
-Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
+Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
 
 ```csharp
 services.AddRouting(options =>
@@ -1958,7 +1958,7 @@ services.AddRouting(options =>
 });
 ```
 
-La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Exemple :
+La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Par exemple :
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -1971,7 +1971,7 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
+Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples).
 
 Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de `Home` est utilisée.
 

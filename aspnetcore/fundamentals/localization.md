@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 67f245b7f4e4aa97b30c5318c73732617aea44c7
-ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
+ms.openlocfilehash: 8212025bbf778334045b8fbe7a5dae312524b426
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217568"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588020"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
@@ -42,7 +42,7 @@ La localisation d’une application implique les étapes suivantes :
 1. Fournir des ressources localisées aux langues et cultures prises en charge
 1. Implémenter une stratégie de sélection de la langue/culture pour chaque requête
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/3.x/Localization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/3.x/Localization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>Rendre le contenu de l’application localisable
 
@@ -261,7 +261,7 @@ Si vous passez uniquement l’une des deux (`culture` ou `ui-culture`), le fourn
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
 Les applications de production fournissent souvent un mécanisme pour définir la culture avec la culture ASP.NET Core cookie . Utilisez la `MakeCookieValue` méthode pour créer un cookie .
 
@@ -396,7 +396,7 @@ La localisation d’une application implique les étapes suivantes :
 1. Fournir des ressources localisées aux langues et cultures prises en charge
 1. Implémenter une stratégie de sélection de la langue/culture pour chaque requête
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/Localization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>Rendre le contenu de l’application localisable
 
@@ -617,7 +617,7 @@ Si vous passez uniquement l’une des deux (`culture` ou `ui-culture`), le fourn
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
 Les applications de production fournissent souvent un mécanisme pour définir la culture avec la culture ASP.NET Core cookie . Utilisez la `MakeCookieValue` méthode pour créer un cookie .
 
@@ -751,7 +751,7 @@ La localisation d’une application implique les étapes suivantes :
 1. Fournir des ressources localisées aux langues et cultures prises en charge
 1. Implémenter une stratégie de sélection de la langue/culture pour chaque requête
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/2.x/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/2.x/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>Rendre le contenu de l’application localisable
 
@@ -972,7 +972,7 @@ Si vous passez uniquement l’une des deux (`culture` ou `ui-culture`), le fourn
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
 Les applications de production fournissent souvent un mécanisme pour définir la culture avec la culture ASP.NET Core cookie . Utilisez la `MakeCookieValue` méthode pour créer un cookie .
 

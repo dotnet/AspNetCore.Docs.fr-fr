@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: b5447a55dfa9e4fa55e1a09a3cc00e1f1a965c6e
-ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
+ms.openlocfilehash: ab342f6bdc5da68f2a2ee8d9aee29911a050056d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2021
-ms.locfileid: "102394516"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586616"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>Appeler des fonctions JavaScript à partir de méthodes .NET dans ASP.NET Core Blazor
 
@@ -32,7 +32,7 @@ Une Blazor application peut appeler des fonctions JavaScript à partir de métho
 
 Cet article traite de l’appel de fonctions JavaScript à partir de .NET. Pour plus d’informations sur la façon d’appeler des méthodes .NET à partir de JavaScript, consultez <xref:blazor/call-dotnet-from-javascript> .
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 > [!NOTE]
 > Ajoutez des fichiers JS ( `<script>` balises) avant la `</body>` balise de fermeture dans le fichier `wwwroot/index.html` ( Blazor WebAssembly ) ou le `Pages/_Host.cshtml` fichier ( Blazor Server ). Assurez-vous que les fichiers JS avec les méthodes d’interopérabilité JS sont inclus avant les Blazor fichiers Framework js.

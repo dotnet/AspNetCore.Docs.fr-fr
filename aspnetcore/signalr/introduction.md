@@ -19,16 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: 1810fef903362addcef4a6c9ec53264604f58d2b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5e3a96d38424b895fa8f34897a4f0a1d818ff479
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051471"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588085"
 ---
-# <a name="introduction-to-aspnet-core-no-locsignalr"></a>Présentation de ASP.NET Core SignalR
+# <a name="introduction-to-aspnet-core-signalr"></a>Présentation de ASP.NET Core SignalR
 
-## <a name="what-is-no-locsignalr"></a>Qu’est-ce que c’est SignalR ?
+## <a name="what-is-signalr"></a>Qu’est-ce que SignalR ?
 
 ASP.NET Core SignalR est une bibliothèque open source qui simplifie l’ajout de fonctionnalités Web en temps réel aux applications. La fonctionnalité Web en temps réel permet au code côté serveur de transmettre instantanément du contenu aux clients.
 
@@ -48,7 +48,7 @@ Voici quelques-unes des fonctionnalités de SignalR pour ASP.net Core :
 * Envoie des messages à des clients ou groupes de clients spécifiques.
 * Met à l’échelle pour gérer le trafic qui augmente.
 
-La source est hébergée dans un [ SignalR référentiel sur GitHub](https://github.com/dotnet/AspNetCore/tree/master/src/SignalR).
+La source est hébergée dans un [ SignalR référentiel sur GitHub](https://github.com/dotnet/AspNetCore/tree/main/src/SignalR).
 
 ## <a name="transports"></a>Transports
 
@@ -60,7 +60,7 @@ SignalR prend en charge les techniques suivantes pour gérer les communications 
 
 SignalR choisit automatiquement la meilleure méthode de transport parmi les capacités du serveur et du client.
 
-## <a name="hubs"></a>Hubs
+## <a name="hubs"></a>Concentrateurs
 
 SignalR utilise des *concentrateurs* pour la communication entre les clients et les serveurs.
 
@@ -72,5 +72,5 @@ Les hubs appellent le code côté client en envoyant des messages qui contiennen
 
 * [Prise en main SignalR de pour ASP.net Core](xref:tutorials/signalr)
 * [Plateformes prises en charge](xref:signalr/supported-platforms)
-* [Hubs](xref:signalr/hubs)
+* [Concentrateurs](xref:signalr/hubs)
 * [Client JavaScript](xref:signalr/javascript-client)

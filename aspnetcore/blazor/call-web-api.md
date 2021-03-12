@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: b3c783623252512621a0cee7a3607c69cb6d09bb
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 9ac17e7c22b23ced7a8f12a6ef0d456f6244318b
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280271"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586759"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>Appeler une API Web à partir de ASP.NET Core Blazor
 
@@ -33,7 +33,7 @@ ms.locfileid: "100280271"
 
 [Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) les applications appellent des API Web à l’aide d’un <xref:System.Net.Http.HttpClient> service préconfiguré. Composez des requêtes, qui peuvent inclure des options de l' [API d’extraction](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, à l’aide Blazor des applications auxiliaires JSON ou de <xref:System.Net.Http.HttpRequestMessage> . Le <xref:System.Net.Http.HttpClient> service dans les Blazor WebAssembly applications est axé sur l’exécution de requêtes sur le serveur d’origine. Les instructions de cette rubrique concernent uniquement les Blazor WebAssembly applications.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample)) : sélectionnez l' `BlazorWebAssemblySample` application.
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample)) : sélectionnez l' `BlazorWebAssemblySample` application.
 
 Consultez les composants suivants dans l' `BlazorWebAssemblySample` exemple d’application :
 
@@ -153,7 +153,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
       }
 
       private async Task SaveItem() =>
-          await Http.PutAsJsonAsync($"api/TodoItems/{editItem.Id}, editItem);
+          await Http.PutAsJsonAsync($"api/TodoItems/{editItem.Id}", editItem);
   }
   ```
   
@@ -367,7 +367,7 @@ requestMessage.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
 
 Pour plus d’informations sur les options de l’API FETCH, consultez [MDN Web docs : WindowOrWorkerGlobalScope. Fetch () :P arameters](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters).
 
-## <a name="handle-errors"></a>Gérer les erreurs
+## <a name="handle-errors"></a>des erreurs
 
 Lorsque des erreurs se produisent lors de l’interaction avec une API Web, elles peuvent être gérées par le code du développeur. Par exemple, <xref:System.Net.Http.Json.HttpClientJsonExtensions.GetFromJsonAsync%2A> attend une réponse JSON de l’API du serveur avec un `Content-Type` de `application/json` . Si la réponse n’est pas au format JSON, la validation du contenu lève une exception <xref:System.NotSupportedException> .
 
@@ -401,7 +401,7 @@ Pour plus d’informations, consultez <xref:blazor/fundamentals/handle-errors>.
 
 La sécurité du navigateur empêche une page Web d’effectuer des demandes vers un autre domaine que celui qui a servi la page Web. Cette restriction est appelée *stratégie de même origine*. La stratégie de même origine empêche un site malveillant de lire des données sensibles à partir d’un autre site. Pour effectuer des demandes à partir du navigateur vers un point de terminaison avec une origine différente, le *point de terminaison* doit activer le [partage des ressources Cross-Origin (cors)](https://www.w3.org/TR/cors/).
 
-L' [ Blazor WebAssembly exemple d’application ( Blazor WebAssemblySample)](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) illustre l’utilisation de cors dans le composant appeler l’API Web ( `Pages/CallWebAPI.razor` ).
+L' [ Blazor WebAssembly exemple d’application ( Blazor WebAssemblySample)](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/blazor/common/samples/) illustre l’utilisation de cors dans le composant appeler l’API Web ( `Pages/CallWebAPI.razor` ).
 
 Pour plus d’informations sur CORS avec des demandes sécurisées dans les Blazor applications, consultez <xref:blazor/security/webassembly/additional-scenarios#cross-origin-resource-sharing-cors> .
 

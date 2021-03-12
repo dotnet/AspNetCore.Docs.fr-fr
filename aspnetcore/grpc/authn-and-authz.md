@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 833114a12c8c1ac67097b3592cf410d7a69bb628
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5120964459a81ef2d668877bb08ecde512c2389d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94673976"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587994"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>Authentification et autorisation dans gRPC pour ASP.NET Core
 
 Par [James Newton-King](https://twitter.com/jamesnk)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/grpc/authn-and-authz/sample/) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/grpc/authn-and-authz/sample/) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
 
 ## <a name="authenticate-users-calling-a-grpc-service"></a>Authentifier les utilisateurs appelant un service gRPC
 
@@ -156,7 +156,7 @@ Un grand nombre ASP.NET Core mécanismes d’authentification pris en charge fon
 * Certificat client
 * IdentityServeur
 * Jeton JWT
-* OAuth 2.0
+* OAuth 2.0
 * OpenID Connect
 * Un certificat de fournisseur d'identité WS-Federation
 
