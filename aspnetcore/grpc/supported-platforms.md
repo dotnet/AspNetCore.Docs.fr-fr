@@ -4,7 +4,7 @@ author: jamesnk
 description: En savoir plus sur les plateformes prises en charge pour gRPC sur .NET.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 01/22/2021
+ms.date: 3/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,44 +18,53 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/supported-platforms
-ms.openlocfilehash: 6e48a19027f79b75edeebde9c584419871fba533
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: c2bd808d16f11077e39aada829d79e8aedf2755b
+ms.sourcegitcommit: 07e7ee573fe4e12be93249a385db745d714ff6ae
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530162"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103413416"
 ---
 # <a name="grpc-on-net-supported-platforms"></a>gRPC sur les plateformes prises en charge par .NET
 
 Par [James Newton-King](https://twitter.com/jamesnk)
 
-Cet article décrit la configuration requise et les plateformes prises en charge pour l’utilisation de gRPC avec .NET.
+Cet article décrit la configuration requise et les plateformes prises en charge pour l’utilisation de gRPC avec .NET. Il existe différentes exigences pour les deux charges de travail gRPC majeures :
+
+* [Hébergement des services gRPC dans ASP.NET Core](#aspnet-core-grpc-server-requirements)
+* [Appel de gRPC à partir d’applications clientes .NET](#net-grpc-client-requirements)
+
+## <a name="wire-formats"></a>Formats filaires
 
 gRPC tire parti des fonctionnalités avancées disponibles dans HTTP/2. HTTP/2 n’est pas pris en charge dans tous les pays, mais un deuxième format filaire à l’aide de HTTP/1.1 est disponible pour gRPC :
 
 * [`application/grpc`](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) -gRPC sur HTTP/2 indique comment gRPC est généralement utilisé.
-* [`application/grpc-web`](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md) -gRPC-Web modifie le protocole gRPC pour qu’il soit compatible avec HTTP/1.1. gRPC-Web peut être utilisé à d’autres endroits, notamment s’il peut être appelé par des applications de navigateur. Deux fonctionnalités gRPC avancées ne sont plus prises en charge : la diffusion en continu du client et la diffusion bidirectionnelle.
+* [`application/grpc-web`](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md) -gRPC-Web modifie le protocole gRPC pour qu’il soit compatible avec HTTP/1.1. gRPC-Web peut être utilisé à d’autres endroits. gRPC-Web peut être utilisé par les applications de navigateur et les réseaux sans prise en charge complète de HTTP/2. Deux fonctionnalités gRPC avancées ne sont plus prises en charge : la diffusion en continu du client et la diffusion bidirectionnelle.
 
-gRPC sur .NET prend en charge les formats câblés. gRPC sur HTTP/2 est utilisé par défaut. Pour plus d’informations sur la configuration de gRPC-Web, consultez <xref:grpc/browser> .
+gRPC sur .NET prend en charge les formats câblés. `application/grpc` est utilisé par défaut. gRPC-Web doit être configuré sur le client et sur le serveur pour les appels gRPC-Web réussis. Pour plus d’informations sur la configuration de gRPC-Web, consultez <xref:grpc/browser> .
 
-## <a name="device-requirements"></a>Exigences relatives aux appareils
+## <a name="aspnet-core-grpc-server-requirements"></a>ASP.NET Core configuration requise du serveur gRPC
 
-gRPC sur .NET prend en charge tous les appareils que .NET Core prend en charge.
+L’hébergement des services gRPC avec ASP.NET Core nécessite .NET Core 3. x ou une version ultérieure.
+
+> [!div class="checklist"]
+>
+> * .NET 5 ou version ultérieure
+> * .NET Core 3
+
+ASP.NET Core Services gRPC peuvent être hébergés sur tous les systèmes d’exploitation pris en charge par .NET Core.
 
 > [!div class="checklist"]
 >
 > * Windows
 > * Linux
 > * macOS&dagger;
-> * Navigateurs&Dagger;
 
-&dagger;[MacOS ne prend pas en charge l’hébergement d’applications ASP.net core avec HTTPS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos). les clients gRPC sur macOS peuvent appeler des services distants qui utilisent le protocole HTTPs.
+&dagger;[MacOS ne prend pas en charge l’hébergement d’applications ASP.net core avec HTTPS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).
 
-&Dagger;Blazor WebAssembly les applications peuvent appeler gRPC services avec gRPC-Web.
+### <a name="supported-aspnet-core-servers"></a>Serveurs de ASP.NET Core pris en charge
 
-## <a name="aspnet-core-server-requirements"></a>Configuration requise pour ASP.NET Core Server
-
-les services gRPC peuvent être hébergés sur tous les serveurs ASP.NET Core intégrés.
+Tous les serveurs ASP.NET Core intégrés sont pris en charge.
 
 > [!div class="checklist"]
 >
@@ -70,18 +79,7 @@ les services gRPC peuvent être hébergés sur tous les serveurs ASP.NET Core in
 
 Pour plus d’informations sur la configuration des serveurs ASP.NET Core pour exécuter gRPC, consultez <xref:grpc/aspnetcore#server-options> .
 
-## <a name="net-version-requirements"></a>Configuration requise pour la version .NET
-
-gRPC sur .NET prend en charge .NET Core 3 et .NET 5 ou version ultérieure.
-
-> [!div class="checklist"]
->
-> * .NET 5 ou version ultérieure
-> * .NET Core 3
-
-gRPC sur .NET ne prend pas en charge l’exécution sur .NET Framework et Xamarin. [GRPC C# Core-Library](https://grpc.io/docs/languages/csharp/quickstart/) est une bibliothèque tierce qui prend en charge .NET Framework et Xamarin. gRPC C-Core n’est pas pris en charge par Microsoft.
-
-## <a name="azure-services"></a>Services Azure
+### <a name="azure-services"></a>Services Azure
 
 > [!div class="checklist"]
 >
@@ -92,6 +90,32 @@ gRPC sur .NET ne prend pas en charge l’exécution sur .NET Framework et Xamari
 
 Le travail est en cours pour améliorer la prise en charge de gRPC avec HTTP/2 dans Azure App Service. Pour plus d’informations, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore/issues/9020).
 
+## <a name="net-grpc-client-requirements"></a>Configuration requise du client .NET gRPC
+
+Le package [GRPC .net. client](https://www.nuget.org/packages/Grpc.Net.Client/) prend en charge les appels GRPC sur http/2 sur .net Core 3 et .net 5 ou version ultérieure.
+
+Une prise en charge limitée est disponible pour gRPC sur HTTP/2 sur .NET Framework. D’autres versions de .NET telles que UWP, Xamarin et Unity n’ont pas la prise en charge HTTP/2 requise, et doivent utiliser gRPC-Web à la place.
+
+Le tableau suivant répertorie les implémentations .NET et leur prise en charge du client gRPC :
+
+| Implémentation de .NET                          | gRPC sur HTTP/2   | gRPC-Web   |
+|----------------------------------------------|--------------------|------------|
+| .NET 5 ou version ultérieure                              | ✔️                | ✔️         |
+| .NET Core 3                                  | ✔️                | ✔️         |
+| .NET Core 2.1                                | ❌                | ✔️         |
+| .NET Framework 4.6.1                         | ⚠️&dagger;        | ✔️         |
+| Blazor WebAssembly                           | ❌                | ✔️         |
+| Mono 5.4                                     | ❌                | ✔️         |
+| Xamarin.iOS 10.14                            | ❌                | ✔️         |
+| Xamarin.Android 8.0                          | ❌                | ✔️         |
+| Plateforme Windows universelle 10.0.16299        | ❌                | ✔️         |
+| Unity 2018.1                                 | ❌                | ✔️         |
+
+&dagger;.NET Framework nécessite <xref:System.Net.Http.WinHttpHandler> d’être configuré et Windows 10 Build 19622 ou version ultérieure.
+
+L’utilisation `Grpc.Net.Client` de sur .NET Framework ou avec gRPC-Web requiert une configuration supplémentaire. Pour plus d’informations, consultez <xref:grpc/netstandard>.
+
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
+* <xref:grpc/netstandard>
 * [gRPC C# Core-bibliothèque](https://grpc.io/docs/languages/csharp/quickstart/)

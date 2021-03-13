@@ -3,7 +3,7 @@ title: Partie 2, ajouter un modèle
 author: rick-anderson
 description: Partie 2 de la série de didacticiels sur les Razor pages. Dans cette section, des classes de modèle sont ajoutées.
 ms.author: riande
-ms.date: 11/11/2020
+ms.date: 03/10/2021
 ms.custom: contperf-fy21q2
 no-loc:
 - Index
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 3677cd6fe5c2ff901a17c9dccdc749d8eb2709f2
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: defbc73d0c1d6aac30360cd7b83cc518a407bf98
+ms.sourcegitcommit: 07e7ee573fe4e12be93249a385db745d714ff6ae
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102588664"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103413442"
 ---
 # <a name="part-2-add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Partie 2, ajouter un modèle à une Razor application pages dans ASP.net Core
 
@@ -80,38 +80,6 @@ La classe `Movie` contient :
 ### <a name="add-nuget-packages-and-ef-tools"></a>Ajouter des packages NuGet des outils EF
 
 [!INCLUDE[](~/includes/add-EF-NuGet-SQLite-CLI-5.md)]
-
-### <a name="add-a-database-context-class"></a>Ajouter une classe de contexte de base de données
-
-1. Dans le projet *Razor PagesMovie* , créez un dossier nommé *Data*.
-1. Dans le dossier *Data* , ajoutez un fichier nommé *Razor PagesMovieContext.cs* avec le code suivant :
-
-   [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Data/RazorPagesMovieContext.cs)]
-
-   Le code précédent crée une propriété `DbSet` pour le jeu d’entités. Dans la terminologie Entity Framework, un jeu d’entités correspond généralement à une table de base de données, et une entité correspond à une ligne dans la table. Le code n’est pas compilé tant que les dépendances n’ont pas été ajoutées dans une étape ultérieure.
-
-<a name="cs"></a>
-
-### <a name="add-a-database-connection-string"></a>Ajouter une chaîne de connexion de base de données
-
-Ajoutez une chaîne de connexion au *appsettings.json* fichier comme indiqué dans le code en surbrillance suivant :
-
-[!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/appsettings_SQLite.json?highlight=10-12)]
-
-<a name="reg"></a>
-
-### <a name="register-the-database-context"></a>Inscrire le contexte de base de données
-
-1. En tête du fichier *Startup.cs*, ajoutez les instructions `using` suivantes :
-
-   ```csharp
-   using RazorPagesMovie.Data;
-   using Microsoft.EntityFrameworkCore;
-   ```
-
-1. Inscrivez le contexte de base de données avec le conteneur d' [injection de dépendances](xref:fundamentals/dependency-injection) dans `Startup.ConfigureServices` :
-
-   [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Startup.cs?name=snippet_UseSqlite&highlight=5-6)]
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
@@ -355,7 +323,7 @@ Examinez la méthode `Up`.
 
 <a name="test"></a>
 
-## <a name="test-the-app"></a>Test de l'application
+## <a name="test-the-app"></a>Tester l’application
 
 1. Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
 
@@ -730,7 +698,7 @@ Examinez la méthode `Up`.
 
 <a name="test"></a>
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 * Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
 
@@ -1073,7 +1041,7 @@ Examinez la méthode `Up`.
 
 <a name="test"></a>
 
-### <a name="test-the-app"></a>Test de l'application
+### <a name="test-the-app"></a>Tester l’application
 
 * Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
 

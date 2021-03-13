@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 0f1f5dfcb9595270a9659a02141f7d1eba5c44ef
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: 11473bbf8b4e2d67d15798a5d87ee01761682f9a
+ms.sourcegitcommit: 07e7ee573fe4e12be93249a385db745d714ff6ae
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102587695"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103413468"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Intergiciel de mise en cache des réponses dans ASP.NET Core
 
@@ -49,7 +49,7 @@ Configurez l’application pour utiliser l’intergiciel avec la <xref:Microsoft
 [!code-csharp[](middleware/samples/3.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=17)]
 
 > [!WARNING]
-> <xref:Owin.CorsExtensions.UseCors%2A> doit être appelé avant <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> lors de l’utilisation de l' [intergiciel (middleware) cors](xref:security/cors).
+> <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors%2A> doit être appelé avant <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> lors de l’utilisation de l' [intergiciel (middleware) cors](xref:security/cors).
 
 L’exemple d’application ajoute des en-têtes pour contrôler la mise en cache lors des requêtes suivantes :
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/integration-tests
-ms.openlocfilehash: 47d204a0cde258fda8c9c9b78043046e719d8f18
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: 50c3f04c4add9d3dec032b5f2e95ce503466693e
+ms.sourcegitcommit: 07e7ee573fe4e12be93249a385db745d714ff6ae
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102588033"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103413377"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -347,7 +347,7 @@ Le `WebApplicationFactory` constructeur déduit le chemin d’accès [racine du 
 
 ## <a name="disable-shadow-copying"></a>Désactiver les clichés instantanés
 
-Les clichés instantanés provoquent l’exécution des tests dans un répertoire différent de celui du répertoire de sortie. Pour que les tests fonctionnent correctement, les clichés instantanés doivent être désactivés. L' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/test/integration-tests/samples) utilise xUnit et désactive les clichés instantanés pour xUnit en incluant un *xunit.runner.jssur* le fichier avec le paramètre de configuration correct. Pour plus d’informations, consultez [configuration de xUnit avec JSON](https://xunit.github.io/docs/configuring-with-json.html).
+Les clichés instantanés provoquent l’exécution des tests dans un répertoire différent de celui du répertoire de sortie. Pour que les tests fonctionnent correctement, les clichés instantanés doivent être désactivés. L' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/test/integration-tests/samples) utilise xUnit et désactive les clichés instantanés pour xUnit en incluant un *xunit.runner.jssur* le fichier avec le paramètre de configuration correct. Pour plus d’informations, consultez la [documentation xUnit](https://xunit.net/docs/configuration-files).
 
 Ajoutez le *xunit.runner.jssur* le fichier à la racine du projet de test avec le contenu suivant :
 

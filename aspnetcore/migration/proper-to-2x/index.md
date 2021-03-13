@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 059ddc18d0c531efaba8aab916ddbb27b42b5e2c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7961890becc8f4513e0750f28341c9d4cf94e7ad
+ms.sourcegitcommit: 07e7ee573fe4e12be93249a385db745d714ff6ae
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053551"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103413330"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Migrer d’ASP.NET vers ASP.NET Core
 
 De [Isaac Levin](https://isaaclevin.com)
 
-Cet article sert de guide de référence pour la migration d’applications ASP.NET vers ASP.NET Core.
+Cet article sert de guide de référence pour la migration d’applications ASP.NET vers ASP.NET Core. Pour obtenir un guide de Portage complet, consultez le livre électronique [Portage d’applications ASP.NET existantes vers .net Core](https://aka.ms/aspnet-porting-ebook) .
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -62,11 +62,11 @@ Le format de fichier *.csproj* a été simplifié dans ASP.NET Core. Voici certa
 
 ## <a name="globalasax-file-replacement"></a>Remplacement du fichier Global.asax
 
-ASP.NET Core a introduit un nouveau mécanisme pour le démarrage d’une application. Le point d’entrée des applications ASP.NET est le fichier *Global.asax* . Les tâches telles que la configuration de l’itinéraire ou l’inscription des filtres et des zones sont traitées dans le fichier *Global.asax* .
+ASP.NET Core a introduit un nouveau mécanisme pour le démarrage d’une application. Le point d’entrée des applications ASP.NET est le fichier *Global.asax*. Les tâches telles que la configuration de l’itinéraire ou l’inscription des filtres et des zones sont traitées dans le fichier *Global.asax*.
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
-Cette approche couple l’application au serveur sur lequel elle est déployée d’une manière qui interfère avec l’implémentation. Pour y remédier, [OWIN](https://owin.org/) a donc été introduit afin d’optimiser l’utilisation de plusieurs frameworks à la fois. OWIN fournit un pipeline qui permet d’ajouter uniquement les modules nécessaires. L’environnement d’hébergement utilise une fonction [Startup](xref:fundamentals/startup) pour configurer les services et le pipeline de requêtes de l’application. `Startup` inscrit un ensemble d’intergiciels (middleware) auprès de l’application. Pour chaque requête, l’application appelle chacun des composants intergiciels (middleware) à l’aide du pointeur d’en-tête d’une liste liée à un ensemble existant de gestionnaires. Chaque composant intergiciel (middleware) peut ajouter un ou plusieurs gestionnaires au pipeline de traitement des requêtes. Pour ce faire, une référence doit être retournée au gestionnaire qui représente le nouvel en-tête de la liste. Chaque gestionnaire doit mémoriser et appeler le prochain gestionnaire de la liste. Avec ASP.NET Core, comme le point d’entrée d’une application est `Startup`, vous n’avez plus de dépendance relative à *Global.asax* . Quand vous employez OWIN avec le .NET Framework, utilisez l’exemple de code suivant en tant que pipeline :
+Cette approche couple l’application au serveur sur lequel elle est déployée d’une manière qui interfère avec l’implémentation. Pour y remédier, [OWIN](https://owin.org/) a donc été introduit afin d’optimiser l’utilisation de plusieurs frameworks à la fois. OWIN fournit un pipeline qui permet d’ajouter uniquement les modules nécessaires. L’environnement d’hébergement utilise une fonction [Startup](xref:fundamentals/startup) pour configurer les services et le pipeline de requêtes de l’application. `Startup` inscrit un ensemble d’intergiciels (middleware) auprès de l’application. Pour chaque requête, l’application appelle chacun des composants intergiciels (middleware) à l’aide du pointeur d’en-tête d’une liste liée à un ensemble existant de gestionnaires. Chaque composant intergiciel (middleware) peut ajouter un ou plusieurs gestionnaires au pipeline de traitement des requêtes. Pour ce faire, une référence doit être retournée au gestionnaire qui représente le nouvel en-tête de la liste. Chaque gestionnaire doit mémoriser et appeler le prochain gestionnaire de la liste. Avec ASP.NET Core, comme le point d’entrée d’une application est `Startup`, vous n’avez plus de dépendance relative à *Global.asax*. Quand vous employez OWIN avec le .NET Framework, utilisez l’exemple de code suivant en tant que pipeline :
 
 [!code-csharp[](samples/webapi-owin.cs)]
 
@@ -92,7 +92,7 @@ L’hôte et l’application ont été découplés, ce qui permet de passer faci
 
 ## <a name="store-configurations"></a>Stocker les configurations
 
-ASP.NET prend en charge le stockage des paramètres. Ces paramètres sont utilisés, par exemple, pour prendre en charge l’environnement sur lequel les applications ont été déployées. Habituellement, toutes les paires clé-valeur personnalisées sont stockées dans la section `<appSettings>` du fichier *Web.config*  :
+ASP.NET prend en charge le stockage des paramètres. Ces paramètres sont utilisés, par exemple, pour prendre en charge l’environnement sur lequel les applications ont été déployées. Habituellement, toutes les paires clé-valeur personnalisées sont stockées dans la section `<appSettings>` du fichier *Web.config* :
 
 [!code-xml[](samples/webconfig-sample.xml)]
 
@@ -104,7 +104,7 @@ ASP.NET Core peut stocker les données de configuration de l’application dans 
 
 [!code-json[](samples/appsettings-sample.json)]
 
-Le chargement de ce fichier dans une instance de `IConfiguration` au sein de votre application s’effectue dans *Startup.cs*  :
+Le chargement de ce fichier dans une instance de `IConfiguration` au sein de votre application s’effectue dans *Startup.cs* :
 
 [!code-csharp[](samples/startup-builder.cs)]
 
@@ -140,7 +140,7 @@ Injectez `IProductRepository` aux emplacements nécessaires :
 
 [!code-csharp[](samples/sample5.cs)]
 
-Dans la mesure où l’injection de dépendances fait partie d’ASP.NET Core, vous pouvez ajouter votre service à la méthode `ConfigureServices` de *Startup.cs*  :
+Dans la mesure où l’injection de dépendances fait partie d’ASP.NET Core, vous pouvez ajouter votre service à la méthode `ConfigureServices` de *Startup.cs* :
 
 [!code-csharp[](samples/configure-services.cs)]
 
@@ -155,7 +155,7 @@ Une partie importante du développement web réside dans la capacité de traitem
 
 Avec ASP.NET, les fichiers statiques sont stockés dans différents répertoires et référencés dans des vues.
 
-Dans ASP.NET Core, les fichiers statiques sont stockés dans la « racine Web » ( *&lt; racine du contenu &gt; /wwwroot* ), sauf si configuré dans le cas contraire. Les fichiers sont chargés dans le pipeline de requêtes via l’appel de la méthode d’extension `UseStaticFiles` à partir de `Startup.Configure` :
+Dans ASP.NET Core, les fichiers statiques sont stockés dans la « racine Web » (*&lt; racine du contenu &gt; /wwwroot*), sauf si configuré dans le cas contraire. Les fichiers sont chargés dans le pipeline de requêtes via l’appel de la méthode d’extension `UseStaticFiles` à partir de `Startup.Configure` :
 
 [!code-csharp[](../../fundamentals/static-files/samples/1.x/StaticFilesSample/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 
@@ -167,9 +167,13 @@ Par exemple, un composant image dans le dossier *wwwroot/images* est accessible 
 > [!NOTE]
 > Pour obtenir des informations de référence plus approfondies sur le traitement des fichiers statiques dans ASP.NET Core, consultez [Fichiers statiques](xref:fundamentals/static-files).
 
-## <a name="multi-value-no-loccookies"></a>cookieValeurs multiples
+## <a name="multi-value-cookies"></a>cookieValeurs multiples
 
 [Les valeurs à cookie valeurs multiples](xref:System.Web.HttpCookie.Values) ne sont pas prises en charge dans ASP.net core. Créez un cookie par valeur.
+
+## <a name="authentication-cookies-are-not-compressed-in-aspnet-core"></a>Les s d’authentification ne cookie sont pas compressées dans ASP.net Core
+
+[!INCLUDE[](~/includes/cookies-not-compressed.md)]
 
 ## <a name="partial-app-migration"></a>Migration d’application partielle
 
