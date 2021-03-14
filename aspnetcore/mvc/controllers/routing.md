@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: c90ac92cf0866b78bcdb11663e76c116d714ca5d
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: eeae0ef44fc9b8a92da40481f5dbc7422ed8d43c
+ms.sourcegitcommit: d5fa39765959738eed4bcf5ee0b207cefddb4873
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102589060"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103460441"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Routage vers les actions du contrôleur dans ASP.NET Core
 
@@ -509,10 +509,6 @@ Les routes d’attribut peuvent aussi être combinées avec l’héritage. Il s�
 `[Route("[controller]/[action]", Name="[controller]_[action]")]`génère un nom d’itinéraire unique pour chaque action :
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet5)]
-
-Le remplacement des jetons s’applique aussi aux noms de routes définis par des routes d’attribut.
-`[Route("[controller]/[action]", Name="[controller]_[action]")]`
- génère un nom de route unique pour chaque action.
 
 Pour faire correspondre le délimiteur littéral de remplacement de jetons `[` ou `]`, placez-le en échappement en répétant le caractère (`[[` ou `]]`).
 
