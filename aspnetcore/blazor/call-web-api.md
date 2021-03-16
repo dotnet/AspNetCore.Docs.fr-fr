@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 9ac17e7c22b23ced7a8f12a6ef0d456f6244318b
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: 451b6f60a1e5f560606adb4fbaf8596d9d57ec64
+ms.sourcegitcommit: 00368bb6a5420983beaced5b62dabc1f94abdeba
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102586759"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103557813"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>Appeler une API Web à partir de ASP.NET Core Blazor
 
@@ -40,7 +40,7 @@ Consultez les composants suivants dans l' `BlazorWebAssemblySample` exemple d’
 * Appeler l’API Web ( `Pages/CallWebAPI.razor` )
 * Testeur de requêtes HTTP ( `Components/HTTPRequestTester.razor` )
 
-## <a name="packages"></a>Paquets
+## <a name="packages"></a>Packages
 
 Référencez le [`System.Net.Http.Json`](https://www.nuget.org/packages/System.Net.Http.Json) package NuGet dans le fichier projet.
 
@@ -129,7 +129,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
   Appelle pour <xref:System.Net.Http.Json.HttpClientJsonExtensions.PostAsJsonAsync%2A> retourner un <xref:System.Net.Http.HttpResponseMessage> . Pour désérialiser le contenu JSON du message de réponse, utilisez la `ReadFromJsonAsync<T>` méthode d’extension :
   
   ```csharp
-  var content = response.Content.ReadFromJsonAsync<WeatherForecast>();
+  var content = await response.Content.ReadFromJsonAsync<WeatherForecast>();
   ```
 
 * <xref:System.Net.Http.Json.HttpClientJsonExtensions.PutAsJsonAsync%2A>: Envoie une requête HTTP PUT, y compris le contenu encodé JSON.
@@ -160,7 +160,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
   Appelle pour <xref:System.Net.Http.Json.HttpClientJsonExtensions.PutAsJsonAsync%2A> retourner un <xref:System.Net.Http.HttpResponseMessage> . Pour désérialiser le contenu JSON du message de réponse, utilisez la <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> méthode d’extension :
   
   ```csharp
-  var content = response.Content.ReadFromJsonAsync<WeatherForecast>();
+  var content = await response.Content.ReadFromJsonAsync<WeatherForecast>();
   ```
 
 <xref:System.Net.Http> contient des méthodes d’extension supplémentaires pour envoyer des requêtes HTTP et recevoir des réponses HTTP. <xref:System.Net.Http.HttpClient.DeleteAsync%2A?displayProperty=nameWithType> est utilisé pour envoyer une requête HTTP DELETE à une API Web.

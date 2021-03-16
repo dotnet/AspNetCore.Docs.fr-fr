@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 789cd1a867bc8c17401bbac5c02951b4bd2999b6
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: f80c574ddb85c50713e36c7a2cceb826863c7321
+ms.sourcegitcommit: 00368bb6a5420983beaced5b62dabc1f94abdeba
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102587656"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103557840"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Création d’une API web avec ASP.NET Core
 
@@ -51,10 +51,10 @@ Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obtenir toutes les tâches | Aucun | Tableau de tâches|
-|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | Aucun | Tâche|
+|`GET /api/TodoItems` | Obtenir toutes les tâches | None | Tableau de tâches|
+|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | None | Tâche|
 |`POST /api/TodoItems` | Ajouter un nouvel élément | Tâche | Tâche |
-|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
+|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | None |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -82,7 +82,7 @@ Le diagramme suivant illustre la conception de l’application.
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans le menu **fichier** , sélectionnez **nouveau** > **projet**.
-* Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant**.
+* Sélectionnez le modèle **API Web ASP.net Core** , puis cliquez sur **suivant**.
 * Nommez le projet *TodoApi* et cliquez sur **Créer**.
 * Dans la boîte de dialogue **créer une application Web ASP.net Core** , vérifiez que **.net Core** et **ASP.net Core 5,0** sont sélectionnés. Sélectionnez le modèle **API** et cliquez sur **Créer**.
 
@@ -463,7 +463,7 @@ Dans la méthode `GetTodoItem` suivante, `"{id}"` est une variable d’espace r�
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_GetByID&highlight=1-2)]
 
-## <a name="return-values"></a>Valeurs de retour
+## <a name="return-values"></a>Valeurs retournées
 
 Le type de retour des `GetTodoItems` `GetTodoItem` méthodes et est [ActionResult \<T> type](xref:web-api/action-return-types#actionresultt-type). ASP.NET Core sérialise automatiquement l’objet en [JSON](https://www.json.org/) et écrit le JSON dans le corps du message de réponse. Le code de réponse pour ce type de retour est [200 OK](https://developer.mozilla.org/docs/Web/HTTP/Status/200), en supposant qu’il n’existe aucune exception non gérée. Les exceptions non gérées sont converties en erreurs 5xx.
 
@@ -570,10 +570,10 @@ Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obtenir toutes les tâches | Aucun | Tableau de tâches|
-|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | Aucun | Tâche|
+|`GET /api/TodoItems` | Obtenir toutes les tâches | None | Tableau de tâches|
+|`GET /api/TodoItems/{id}` | Obtenir un élément par ID | None | Tâche|
 |`POST /api/TodoItems` | Ajouter un nouvel élément | Tâche | Tâche |
-|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
+|`PUT /api/TodoItems/{id}` | Mettre à jour un élément existant &nbsp; | Tâche | None |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
@@ -947,7 +947,7 @@ Dans la méthode `GetTodoItem` suivante, `"{id}"` est une variable d’espace r�
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_GetByID&highlight=1-2)]
 
-## <a name="return-values"></a>Valeurs de retour 
+## <a name="return-values"></a>Valeurs retournées 
 
 Le type de retour des `GetTodoItems` `GetTodoItem` méthodes et est [ActionResult \<T> type](xref:web-api/action-return-types#actionresultt-type). ASP.NET Core sérialise automatiquement l’objet en [JSON](https://www.json.org/) et écrit le JSON dans le corps du message de réponse. Le code de réponse pour ce type de retour est 200, en supposant qu’il n’existe pas d’exception non gérée. Les exceptions non gérées sont converties en erreurs 5xx.
 
@@ -1058,10 +1058,10 @@ Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obtenir toutes les tâches | Aucun | Tableau de tâches|
-|GET /api/TodoItems/{id} | Obtenir un élément par ID | Aucun | Tâche|
+|GET /api/TodoItems | Obtenir toutes les tâches | None | Tableau de tâches|
+|GET /api/TodoItems/{id} | Obtenir un élément par ID | None | Tâche|
 |POST /api/TodoItems | Ajouter un nouvel élément | Tâche | Tâche |
-|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
+|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | None |
 |SUPPRIMER/api/TodoItems/{id} &nbsp;&nbsp; | Supprimer un élément &nbsp;&nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
